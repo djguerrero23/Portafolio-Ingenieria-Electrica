@@ -83,7 +83,7 @@ Utilice el siguiente simulador computacional para variar la amplitud eficaz de t
 :::
 
 <iframe 
-  src="https://tu-app-calculos-electrica.streamlit.app/?embed=true" 
+  src="https://portafolio-ingenieria-electrica-3bz9smddyjo9zjkfwdqdsp.streamlit.app/?embed=true" 
   title="Calculadora Fasorial Streamlit"
   allow="clipboard-write">
 </iframe>
