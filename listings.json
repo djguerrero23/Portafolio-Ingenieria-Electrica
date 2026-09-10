@@ -1,0 +1,33 @@
+[
+  {
+    "listing": "/circuitos_electricos/index.html",
+    "items": [
+      "/circuitos_electricos/potencia_ca.html",
+      "/circuitos_electricos/teoria_fasores.html"
+    ]
+  },
+  {
+    "listing": "/mediciones_electricas/index.html",
+    "items": [
+      "/mediciones_electricas/puentes_medicion.html"
+    ]
+  },
+  {
+    "listing": "/maquinas_electricas/index.html",
+    "items": [
+      "/maquinas_electricas/circuitos_magneticos.html"
+    ]
+  },
+  {
+    "listing": "/aplicaciones_python/index.html",
+    "items": [
+      "/aplicaciones_python/simulador_fasores.html"
+    ]
+  },
+  {
+    "listing": "/sistemas_potencia/index.html",
+    "items": [
+      "/sistemas_potencia/caida_tension.html"
+    ]
+  }
+]

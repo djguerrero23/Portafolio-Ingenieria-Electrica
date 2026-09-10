@@ -8,8 +8,9 @@
 
 <meta name="author" content="David Guerrero">
 <meta name="dcterms.date" content="2026-09-10">
+<meta name="description" content="Formulación de potencia compleja, deducción del triángulo de potencias, análisis de cargas en atraso/adelanto y simulador interactivo en Streamlit.">
 
-<title>Análisis Fasorial y Potencia en Corriente Alterna – ⚡ Portafolio de Ingeniería Eléctrica</title>
+<title>Potencia en Corriente Alterna y Triángulo de Potencias – ⚡ Portafolio de Ingeniería Eléctrica</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -31,23 +32,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-bb62276ab45c84d9efd712f51ff97b5a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-1bb61e042ff145ec17923bc0da23b575.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bb62276ab45c84d9efd712f51ff97b5a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-1bb61e042ff145ec17923bc0da23b575.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -107,7 +108,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -117,7 +118,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">⚡ Portafolio de Ingeniería Eléctrica</span>
     </a>
   </div>
@@ -128,7 +129,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> <i class="bi bi-house-door-fill" role="img">
+    <a class="nav-link" href="../index.html"> <i class="bi bi-house-door-fill" role="img">
 </i> 
 <span class="menu-text">Inicio</span></a>
   </li>  
@@ -140,15 +141,15 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-circuitos-eléctricos">    
         <li>
-    <a class="dropdown-item" href="./circuitos_electricos/index.html">
+    <a class="dropdown-item" href="../circuitos_electricos/index.html">
  <span class="dropdown-text">⚡ Ver Todo (Módulo Circuitos)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./circuitos_electricos/teoria_fasores.html">
+    <a class="dropdown-item" href="../circuitos_electricos/teoria_fasores.html">
  <span class="dropdown-text">Guía Práctica de Análisis Fasorial</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./circuitos_electricos/potencia_ca.html">
+    <a class="dropdown-item" href="../circuitos_electricos/potencia_ca.html">
  <span class="dropdown-text">Potencia en CA y Triángulo de Potencias</span></a>
   </li>  
     </ul>
@@ -161,12 +162,12 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-máquinas-eléctricas">    
         <li>
-    <a class="dropdown-item" href="./maquinas_electricas/index.html">
+    <a class="dropdown-item" href="../maquinas_electricas/index.html">
  <span class="dropdown-text">⚙️ Ver Todo (Módulo Máquinas)</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li>
-    <a class="dropdown-item" href="./maquinas_electricas/circuitos_magneticos.html">
+    <a class="dropdown-item" href="../maquinas_electricas/circuitos_magneticos.html">
  <span class="dropdown-text">Circuitos Magnéticos y Curva B-H</span></a>
   </li>  
     </ul>
@@ -179,12 +180,12 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-mediciones-eléctricas">    
         <li>
-    <a class="dropdown-item" href="./mediciones_electricas/index.html">
+    <a class="dropdown-item" href="../mediciones_electricas/index.html">
  <span class="dropdown-text">📊 Ver Todo (Módulo Mediciones)</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li>
-    <a class="dropdown-item" href="./mediciones_electricas/puentes_medicion.html">
+    <a class="dropdown-item" href="../mediciones_electricas/puentes_medicion.html">
  <span class="dropdown-text">Puentes de Medición (R, L, C)</span></a>
   </li>  
     </ul>
@@ -197,12 +198,12 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-sistemas-de-potencia">    
         <li>
-    <a class="dropdown-item" href="./sistemas_potencia/index.html">
+    <a class="dropdown-item" href="../sistemas_potencia/index.html">
  <span class="dropdown-text">🏗️ Ver Todo (Módulo Potencia)</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li>
-    <a class="dropdown-item" href="./sistemas_potencia/caida_tension.html">
+    <a class="dropdown-item" href="../sistemas_potencia/caida_tension.html">
  <span class="dropdown-text">Caída de Tensión y Alimentadores (NEC)</span></a>
   </li>  
     </ul>
@@ -215,12 +216,12 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-aplicaciones-python">    
         <li>
-    <a class="dropdown-item" href="./aplicaciones_python/index.html">
+    <a class="dropdown-item" href="../aplicaciones_python/index.html">
  <span class="dropdown-text">🐍 Calculadoras &amp; Simuladores</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li>
-    <a class="dropdown-item" href="./descargas.html">
+    <a class="dropdown-item" href="../descargas.html">
  <span class="dropdown-text">Centro de Descargas &amp; CSVs</span></a>
   </li>  
     </ul>
@@ -248,13 +249,12 @@ window.Quarto = {
     <h2 id="toc-title">Índice de Contenido</h2>
    
   <ul>
-  <li><a href="#fundamentos-teóricos-de-régimen-sinusoidal" id="toc-fundamentos-teóricos-de-régimen-sinusoidal" class="nav-link active" data-scroll-target="#fundamentos-teóricos-de-régimen-sinusoidal"><span class="header-section-number">1</span> 1. Fundamentos Teóricos de Régimen Sinusoidal</a></li>
-  <li><a href="#potencia-compleja-y-triángulo-de-potencias" id="toc-potencia-compleja-y-triángulo-de-potencias" class="nav-link" data-scroll-target="#potencia-compleja-y-triángulo-de-potencias"><span class="header-section-number">2</span> 2. Potencia Compleja y Triángulo de Potencias</a>
-  <ul class="collapse">
-  <li><a href="#componentes-de-potencia" id="toc-componentes-de-potencia" class="nav-link" data-scroll-target="#componentes-de-potencia"><span class="header-section-number">2.1</span> Componentes de Potencia</a></li>
-  </ul></li>
-  <li><a href="#simulador-interactivo-de-potencia-en-tiempo-real" id="toc-simulador-interactivo-de-potencia-en-tiempo-real" class="nav-link" data-scroll-target="#simulador-interactivo-de-potencia-en-tiempo-real"><span class="header-section-number">3</span> 3. Simulador Interactivo de Potencia en Tiempo Real</a></li>
-  <li><a href="#recursos-computacionales-y-descargas" id="toc-recursos-computacionales-y-descargas" class="nav-link" data-scroll-target="#recursos-computacionales-y-descargas"><span class="header-section-number">4</span> 4. Recursos Computacionales y Descargas</a></li>
+  <li><a href="#potencia-instantánea-y-descomposición-armónica" id="toc-potencia-instantánea-y-descomposición-armónica" class="nav-link active" data-scroll-target="#potencia-instantánea-y-descomposición-armónica"><span class="header-section-number">1</span> 1. Potencia Instantánea y Descomposición Armónica</a></li>
+  <li><a href="#potencia-compleja-mathbfs-y-triángulo-de-potencias" id="toc-potencia-compleja-mathbfs-y-triángulo-de-potencias" class="nav-link" data-scroll-target="#potencia-compleja-mathbfs-y-triángulo-de-potencias"><span class="header-section-number">2</span> 2. Potencia Compleja (<span class="math inline">\(\mathbf{S}\)</span>) y Triángulo de Potencias</a></li>
+  <li><a href="#factor-de-potencia-y-convención-de-cargas" id="toc-factor-de-potencia-y-convención-de-cargas" class="nav-link" data-scroll-target="#factor-de-potencia-y-convención-de-cargas"><span class="header-section-number">3</span> 3. Factor de Potencia y Convención de Cargas</a></li>
+  <li><a href="#corrección-del-factor-de-potencia" id="toc-corrección-del-factor-de-potencia" class="nav-link" data-scroll-target="#corrección-del-factor-de-potencia"><span class="header-section-number">4</span> 4. Corrección del Factor de Potencia</a></li>
+  <li><a href="#simulador-interactivo-de-potencia-en-tiempo-real" id="toc-simulador-interactivo-de-potencia-en-tiempo-real" class="nav-link" data-scroll-target="#simulador-interactivo-de-potencia-en-tiempo-real"><span class="header-section-number">5</span> 5. Simulador Interactivo de Potencia en Tiempo Real</a></li>
+  <li><a href="#recursos-computacionales-descargas" id="toc-recursos-computacionales-descargas" class="nav-link" data-scroll-target="#recursos-computacionales-descargas"><span class="header-section-number">6</span> 6. Recursos Computacionales &amp; Descargas</a></li>
   </ul>
 </nav>
     </div>
@@ -263,10 +263,23 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Análisis Fasorial y Potencia en Corriente Alterna</h1>
-<p class="subtitle lead">Modelado matemático en régimen sinusoidal permanente y visualización interactiva de potencia compleja</p>
-</div>
+<h1 class="title">Potencia en Corriente Alterna y Triángulo de Potencias</h1>
+<p class="subtitle lead">Modelado analítico de potencia instantánea, activa, reactiva, aparente y compensación del factor de potencia</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Potencia CA</div>
+    <div class="quarto-category">Potencia Compleja</div>
+    <div class="quarto-category">Factor de Potencia</div>
+    <div class="quarto-category">Triángulo de Potencias</div>
+    <div class="quarto-category">Streamlit</div>
+    <div class="quarto-category">Simulación</div>
+  </div>
+  </div>
 
+<div>
+  <div class="description">
+    Formulación de potencia compleja, deducción del triángulo de potencias, análisis de cargas en atraso/adelanto y simulador interactivo en Streamlit.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta column-page-left">
@@ -299,72 +312,117 @@ window.Quarto = {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>⚡ Interfaz Computacional
+<span class="screen-reader-only">Note</span>⚡ Marco Teórico &amp; Interfaz Computacional
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Esta memoria integra formulación teórica rigurosa con una aplicación de cálculo numérico interactivo ejecutada con Python en <strong>Streamlit Cloud</strong>. La herramienta permite ajustar amplitudes, ángulos de desfase y visualizar el triángulo de potencias en tiempo real.</p>
+<p>En sistemas eléctricos de corriente alterna, la transferencia de energía no se limita a disipación de calor útil, sino que involucra oscilaciones continuas de energía electromagnética entre la fuente y las reactancias. Esta memoria desglosa los fundamentos de la <strong>potencia compleja</strong> e incluye un simulador interactivo para visualización instantánea del triángulo de potencias.</p>
 </div>
 </div>
-<section id="fundamentos-teóricos-de-régimen-sinusoidal" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="fundamentos-teóricos-de-régimen-sinusoidal"><span class="header-section-number">1</span> 1. Fundamentos Teóricos de Régimen Sinusoidal</h2>
-<p>En el análisis de circuitos eléctricos excitados por fuentes sinusoidales de frecuencia angular constante <span class="math inline">\(\omega = 2\pi f\)</span>, las variables temporales de tensión <span class="math inline">\(v(t)\)</span> y corriente <span class="math inline">\(i(t)\)</span> se transforman al dominio de la frecuencia mediante la <strong>notación fasorial</strong>.</p>
-<p>Sea la tensión instantánea y la corriente instantánea:</p>
+<hr>
+<section id="potencia-instantánea-y-descomposición-armónica" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="potencia-instantánea-y-descomposición-armónica"><span class="header-section-number">1</span> 1. Potencia Instantánea y Descomposición Armónica</h2>
+<p>Sea una fuente de tensión senoidal aplicada a una carga pasiva:</p>
 <p><span class="math display">\[
-v(t) = V_{max} \cos(\omega t + \theta_v) \quad \Longrightarrow \quad \mathbf{V} = V_{rms} e^{j\theta_v} = V_{rms} \angle \theta_v
+v(t) = V_m \cos(\omega t + \theta_v)
 \]</span></p>
 <p><span class="math display">\[
-i(t) = I_{max} \cos(\omega t + \theta_i) \quad \Longrightarrow \quad \mathbf{I} = I_{rms} e^{j\theta_i} = I_{rms} \angle \theta_i
+i(t) = I_m \cos(\omega t + \theta_i)
 \]</span></p>
-<p>Donde los valores eficaces (<span class="math inline">\(V_{rms}\)</span>, <span class="math inline">\(I_{rms}\)</span>) corresponden a los valores de cresta divididos por <span class="math inline">\(\sqrt{2}\)</span>.</p>
+<p>La <strong>potencia instantánea</strong> absorbida por la red es el producto temporal <span class="math inline">\(p(t) = v(t) \cdot i(t)\)</span>:</p>
+<p><span class="math display">\[
+p(t) = V_m I_m \cos(\omega t + \theta_v) \cos(\omega t + \theta_i)
+\]</span></p>
+<p>Aplicando la identidad trigonométrica <span class="math inline">\(\cos A \cos B = \frac{1}{2} [\cos(A-B) + \cos(A+B)]\)</span>:</p>
+<p><span class="math display">\[
+p(t) = \underbrace{V_{rms} I_{rms} \cos(\theta_v - \theta_i) \left[ 1 + \cos(2\omega t + 2\theta_v) \right]}_{\text{Componente unidireccional y pulsante activa}} + \underbrace{V_{rms} I_{rms} \sin(\theta_v - \theta_i) \sin(2\omega t + 2\theta_v)}_{\text{Componente reactiva oscilante}}
+\]</span></p>
+<blockquote class="blockquote">
+<p>La potencia instantánea oscila al <strong>doble de la frecuencia de la red</strong> (<span class="math inline">\(2\omega = 120\text{ Hz}\)</span> en sistemas de <span class="math inline">\(60\text{ Hz}\)</span>).</p>
+</blockquote>
 <hr>
 </section>
-<section id="potencia-compleja-y-triángulo-de-potencias" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="potencia-compleja-y-triángulo-de-potencias"><span class="header-section-number">2</span> 2. Potencia Compleja y Triángulo de Potencias</h2>
-<p>La potencia compleja aparente <span class="math inline">\(\mathbf{S}\)</span> transferida hacia un dipolo pasivo o una carga se expresa como el producto del fasor de tensión por el <strong>complejo conjugado</strong> del fasor de corriente:</p>
+<section id="potencia-compleja-mathbfs-y-triángulo-de-potencias" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="potencia-compleja-mathbfs-y-triángulo-de-potencias"><span class="header-section-number">2</span> 2. Potencia Compleja (<span class="math inline">\(\mathbf{S}\)</span>) y Triángulo de Potencias</h2>
+<p>En el dominio fasorial, la <strong>potencia compleja</strong> <span class="math inline">\(\mathbf{S}\)</span> se define como el producto del fasor eficaz de tensión por el <strong>complejo conjugado</strong> del fasor eficaz de corriente:</p>
 <p><span class="math display">\[
-\mathbf{S} = \mathbf{V} \cdot \mathbf{I}^* = \left( V_{rms} e^{j\theta_v} \right) \left( I_{rms} e^{-j\theta_i} \right) = V_{rms} I_{rms} e^{j(\theta_v - \theta_i)}
+\mathbf{S} = \mathbf{V}_{rms} \cdot \mathbf{I}_{rms}^* = \left( V_{rms} e^{j\theta_v} \right) \left( I_{rms} e^{-j\theta_i} \right) = V_{rms} I_{rms} e^{j(\theta_v - \theta_i)}
 \]</span></p>
-<p>Descomponiendo en forma rectangular mediante la identidad de Euler:</p>
+<p>Expresada en forma rectangular:</p>
 <p><span class="math display">\[
 \mathbf{S} = P + jQ
 \]</span></p>
-<section id="componentes-de-potencia" class="level3" data-number="2.1">
-<h3 data-number="2.1" class="anchored" data-anchor-id="componentes-de-potencia"><span class="header-section-number">2.1</span> Componentes de Potencia</h3>
-<ol type="1">
-<li><p><strong>Potencia Activa (<span class="math inline">\(P\)</span>):</strong> Potencia útil transformada en trabajo mecánico, luz o calor. <span class="math display">\[
-P = |\mathbf{V}| |\mathbf{I}| \cos(\theta_v - \theta_i) \quad [\text{W}, \text{kW}, \text{MW}]
-\]</span></p></li>
-<li><p><strong>Potencia Reactiva (<span class="math inline">\(Q\)</span>):</strong> Potencia oscilante requerida para establecer los campos magnéticos en inductancias o eléctricos en condensadores. <span class="math display">\[
-Q = |\mathbf{V}| |\mathbf{I}| \sin(\theta_v - \theta_i) \quad [\text{VAR}, \text{kVAR}]
-\]</span></p></li>
-<li><p><strong>Potencia Aparente (<span class="math inline">\(|\mathbf{S}|\)</span>):</strong> Capacidad total de transporte requerida en transformadores, generadores y conductores. <span class="math display">\[
-|\mathbf{S}| = \sqrt{P^2 + Q^2} \quad [\text{VA}, \text{kVA}]
-\]</span></p></li>
-<li><p><strong>Factor de Potencia (<span class="math inline">\(\text{FP}\)</span>):</strong> Eficiencia de utilización de la energía. <span class="math display">\[
-\text{FP} = \cos(\theta_v - \theta_i) = \frac{P}{|\mathbf{S}|}
-\]</span></p></li>
-</ol>
+<div class="grid" style="margin: 2rem 0;">
+<div class="g-col-12 g-col-md-4">
+<section id="potencia-activa-p" class="level3 card-module" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="potencia-activa-p"><span class="header-section-number">2.1</span> 💡 Potencia Activa (<span class="math inline">\(P\)</span>)</h3>
+<p>Potencia real que se transforma en trabajo útil (mecánico, lumínico o calor). <span class="math display">\[
+P = V_{rms} I_{rms} \cos\theta
+\]</span> <strong>Unidad:</strong> Vatio [<span class="math inline">\(\text{W}\)</span>], [<span class="math inline">\(\text{kW}\)</span>], [<span class="math inline">\(\text{MW}\)</span>]</p>
+</section>
+</div>
+<div class="g-col-12 g-col-md-4">
+<section id="potencia-reactiva-q" class="level3 card-module" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="potencia-reactiva-q"><span class="header-section-number">2.2</span> 🧲 Potencia Reactiva (<span class="math inline">\(Q\)</span>)</h3>
+<p>Potencia intercambiada para sostener los campos magnéticos y eléctricos. <span class="math display">\[
+Q = V_{rms} I_{rms} \sin\theta
+\]</span> <strong>Unidad:</strong> Volt-Amperio Reactivo [<span class="math inline">\(\text{VAR}\)</span>], [<span class="math inline">\(\text{kVAR}\)</span>]</p>
+</section>
+</div>
+<div class="g-col-12 g-col-md-4">
+<section id="potencia-aparente-mathbfs" class="level3 card-module" data-number="2.3">
+<h3 data-number="2.3" class="anchored" data-anchor-id="potencia-aparente-mathbfs"><span class="header-section-number">2.3</span> ⚡ Potencia Aparente (<span class="math inline">\(|\mathbf{S}|\)</span>)</h3>
+<p>Magnitud vectorial total que dimensiona conductores y transformadores. <span class="math display">\[
+|\mathbf{S}| = \sqrt{P^2 + Q^2}
+\]</span> <strong>Unidad:</strong> Volt-Amperio [<span class="math inline">\(\text{VA}\)</span>], [<span class="math inline">\(\text{kVA}\)</span>], [<span class="math inline">\(\text{MVA}\)</span>]</p>
+</section>
+</div>
+</div>
 <hr>
 </section>
+<section id="factor-de-potencia-y-convención-de-cargas" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="factor-de-potencia-y-convención-de-cargas"><span class="header-section-number">3</span> 3. Factor de Potencia y Convención de Cargas</h2>
+<p>El <strong>Factor de Potencia (<span class="math inline">\(\text{FP}\)</span>)</strong> mide la eficiencia con la que la corriente entregada se aprovecha en potencia activa:</p>
+<p><span class="math display">\[
+\text{FP} = \frac{P}{|\mathbf{S}|} = \cos(\theta_v - \theta_i) = \cos\theta
+\]</span></p>
+<p>Donde <span class="math inline">\(\theta = \theta_v - \theta_i\)</span> es el <strong>ángulo de impedancia de la carga</strong>:</p>
+<ul>
+<li><strong>Carga Inductiva (RL) — FP en Atraso (<em>Lagging</em>):</strong> La corriente atrasa a la tensión (<span class="math inline">\(\theta &gt; 0\)</span>). La carga absorbe potencia reactiva positiva (<span class="math inline">\(Q &gt; 0\)</span>). Representa motores, inductores y transformadores.</li>
+<li><strong>Carga Capacitiva (RC) — FP en Adelanto (<em>Leading</em>):</strong> La corriente adelanta a la tensión (<span class="math inline">\(\theta &lt; 0\)</span>). La carga suministra potencia reactiva (<span class="math inline">\(Q &lt; 0\)</span>). Representa bancos de condensadores.</li>
+</ul>
+<hr>
 </section>
-<section id="simulador-interactivo-de-potencia-en-tiempo-real" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="simulador-interactivo-de-potencia-en-tiempo-real"><span class="header-section-number">3</span> 3. Simulador Interactivo de Potencia en Tiempo Real</h2>
-<p>Utilice el siguiente simulador computacional para variar la amplitud eficaz de tensión, corriente y sus respectivos ángulos de fase. El motor calculará automáticamente la potencia activa, reactiva y graficará el plano fasorial en tiempo real:</p>
+<section id="corrección-del-factor-de-potencia" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="corrección-del-factor-de-potencia"><span class="header-section-number">4</span> 4. Corrección del Factor de Potencia</h2>
+<p>Para mejorar la eficiencia y evitar penalizaciones de la red eléctrica, se instalan condensadores en paralelo para elevar el factor de potencia desde <span class="math inline">\(\cos\theta_1\)</span> hasta un valor objetivo <span class="math inline">\(\cos\theta_2\)</span> (<span class="math inline">\(\text{FP} \ge 0.95\)</span>):</p>
+<p><span class="math display">\[
+Q_C = P \left( \tan\theta_1 - \tan\theta_2 \right)
+\]</span></p>
+<p>La capacitancia requerida por fase (en conexión en paralelo a tensión <span class="math inline">\(V_{rms}\)</span> y frecuencia angular <span class="math inline">\(\omega = 2\pi f\)</span>) es:</p>
+<p><span class="math display">\[
+C = \frac{Q_C}{\omega V_{rms}^2}
+\]</span></p>
+<hr>
+</section>
+<section id="simulador-interactivo-de-potencia-en-tiempo-real" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="simulador-interactivo-de-potencia-en-tiempo-real"><span class="header-section-number">5</span> 5. Simulador Interactivo de Potencia en Tiempo Real</h2>
+<p>Ajuste las amplitudes eficaces de tensión y corriente junto a sus respectivos ángulos de fase para visualizar la potencia compleja y el triángulo fasorial de potencias en tiempo real:</p>
 <div class="mockup-browser">
 <div class="mockup-header">
-<p><span class="mockup-dot red"></span> <span class="mockup-dot yellow"></span> <span class="mockup-dot green"></span> <span class="mockup-title">⚡ engine_fasores.py — Streamlit Interactive Engine (Python 3.12)</span></p>
+<p><span class="mockup-dot red"></span> <span class="mockup-dot yellow"></span> <span class="mockup-dot green"></span> <span class="mockup-title">⚡ engine_fasores.py — Streamlit Interactive Power Engine (Python 3.12)</span></p>
 </div>
 <iframe src="https://portafolio-ingenieria-electrica-3bz9smddyjo9zjkfwdqdsp.streamlit.app/?embed=true" title="Calculadora Fasorial Streamlit" allow="clipboard-write">
 </iframe>
 </div>
 <hr>
 </section>
-<section id="recursos-computacionales-y-descargas" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="recursos-computacionales-y-descargas"><span class="header-section-number">4</span> 4. Recursos Computacionales y Descargas</h2>
+<section id="recursos-computacionales-descargas" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="recursos-computacionales-descargas"><span class="header-section-number">6</span> 6. Recursos Computacionales &amp; Descargas</h2>
 <ul>
-<li><a href="descargas/calculo_fasores.py" class="btn btn-primary" role="button">📥 Descargar Script Standalone de Fasores (<code>calculo_fasores.py</code>)</a></li>
-<li><a href="./descargas.html" class="btn btn-outline-primary" role="button">📊 Consultar Tabla de Conductores y Parámetros</a></li>
+<li><a href="../descargas/calculo_fasores.py" class="btn btn-primary" role="button">📥 Descargar Script Standalone en Python (<code>calculo_fasores.py</code>)</a></li>
+<li><a href="../circuitos_electricos/teoria_fasores.html" class="btn btn-outline-primary" role="button">📑 Ver Guía Práctica de Análisis Fasorial</a></li>
+<li><a href="../descargas.html" class="btn btn-outline-secondary" role="button">📊 Acceder al Centro de Descargas y Datasets</a></li>
 </ul>
 
 
@@ -796,5 +854,5 @@ Q = |\mathbf{V}| |\mathbf{I}| \sin(\theta_v - \theta_i) \quad [\text{VAR}, \text
 
 
 
-<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
