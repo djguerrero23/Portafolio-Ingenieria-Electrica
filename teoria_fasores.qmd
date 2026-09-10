@@ -1,0 +1,97 @@
+---
+title: "Análisis Fasorial y Potencia en Corriente Alterna"
+subtitle: "Modelado matemático en régimen sinusoidal permanente y visualización interactiva de potencia compleja"
+author: "David Guerrero"
+date: today
+format:
+  html:
+    toc: true
+    number-sections: true
+---
+
+::: {.callout-note}
+### ⚡ Interfaz Computacional
+Esta memoria integra formulación teórica rigurosa con una aplicación de cálculo numérico interactivo ejecutada con Python en **Streamlit Cloud**. La herramienta permite ajustar amplitudes, ángulos de desfase y visualizar el triángulo de potencias en tiempo real.
+:::
+
+## 1. Fundamentos Teóricos de Régimen Sinusoidal
+
+En el análisis de circuitos eléctricos excitados por fuentes sinusoidales de frecuencia angular constante $\omega = 2\pi f$, las variables temporales de tensión $v(t)$ y corriente $i(t)$ se transforman al dominio de la frecuencia mediante la **notación fasorial**.
+
+Sea la tensión instantánea y la corriente instantánea:
+
+$$
+v(t) = V_{max} \cos(\omega t + \theta_v) \quad \Longrightarrow \quad \mathbf{V} = V_{rms} e^{j\theta_v} = V_{rms} \angle \theta_v
+$$
+
+$$
+i(t) = I_{max} \cos(\omega t + \theta_i) \quad \Longrightarrow \quad \mathbf{I} = I_{rms} e^{j\theta_i} = I_{rms} \angle \theta_i
+$$
+
+Donde los valores eficaces ($V_{rms}$, $I_{rms}$) corresponden a los valores de cresta divididos por $\sqrt{2}$.
+
+---
+
+## 2. Potencia Compleja y Triángulo de Potencias
+
+La potencia compleja aparente $\mathbf{S}$ transferida hacia un dipolo pasivo o una carga se expresa como el producto del fasor de tensión por el **complejo conjugado** del fasor de corriente:
+
+$$
+\mathbf{S} = \mathbf{V} \cdot \mathbf{I}^* = \left( V_{rms} e^{j\theta_v} \right) \left( I_{rms} e^{-j\theta_i} \right) = V_{rms} I_{rms} e^{j(\theta_v - \theta_i)}
+$$
+
+Descomponiendo en forma rectangular mediante la identidad de Euler:
+
+$$
+\mathbf{S} = P + jQ
+$$
+
+### Componentes de Potencia
+
+1. **Potencia Activa ($P$):** Potencia útil transformada en trabajo mecánico, luz o calor.
+   $$
+   P = |\mathbf{V}| |\mathbf{I}| \cos(\theta_v - \theta_i) \quad [\text{W}, \text{kW}, \text{MW}]
+   $$
+
+2. **Potencia Reactiva ($Q$):** Potencia oscilante requerida para establecer los campos magnéticos en inductancias o eléctricos en condensadores.
+   $$
+   Q = |\mathbf{V}| |\mathbf{I}| \sin(\theta_v - \theta_i) \quad [\text{VAR}, \text{kVAR}]
+   $$
+
+3. **Potencia Aparente ($|\mathbf{S}|$):** Capacidad total de transporte requerida en transformadores, generadores y conductores.
+   $$
+   |\mathbf{S}| = \sqrt{P^2 + Q^2} \quad [\text{VA}, \text{kVA}]
+   $$
+
+4. **Factor de Potencia ($\text{FP}$):** Eficiencia de utilización de la energía.
+   $$
+   \text{FP} = \cos(\theta_v - \theta_i) = \frac{P}{|\mathbf{S}|}
+   $$
+
+---
+
+## 3. Simulador Interactivo de Potencia en Tiempo Real
+
+Utilice el siguiente simulador computacional para variar la amplitud eficaz de tensión, corriente y sus respectivos ángulos de fase. El motor calculará automáticamente la potencia activa, reactiva y graficará el plano fasorial en tiempo real:
+
+::: {.mockup-browser}
+::: {.mockup-header}
+<span class="mockup-dot red"></span>
+<span class="mockup-dot yellow"></span>
+<span class="mockup-dot green"></span>
+<span class="mockup-title">⚡ engine_fasores.py — Streamlit Interactive Engine (Python 3.12)</span>
+:::
+
+<iframe 
+  src="https://tu-app-calculos-electrica.streamlit.app/?embed=true" 
+  title="Calculadora Fasorial Streamlit"
+  allow="clipboard-write">
+</iframe>
+:::
+
+---
+
+## 4. Recursos Computacionales y Descargas
+
+- [📥 Descargar Script Standalone de Fasores (`calculo_fasores.py`)](descargas/calculo_fasores.py){.btn .btn-primary role="button"}
+- [📊 Consultar Tabla de Conductores y Parámetros](descargas.qmd){.btn .btn-outline-primary role="button"}

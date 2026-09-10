@@ -1,0 +1,109 @@
+---
+title: ""
+toc: false
+---
+
+::: {.hero-banner-modern}
+
+::: {.hero-pill}
+⚡ PLATAFORMA DE INGENIERÍA ELÉCTRICA & CÁLCULO CIENTÍFICO
+:::
+
+# Sistemas de Potencia, Modelado & Computación Aplicada
+
+Plataforma técnica desarrollada por **David Guerrero** para la difusión de memorias de cálculo, análisis de sistemas eléctricos bajo normativas internacionales (**IEEE / NEC / NTC 2050**), visualización fasorial interactiva y desarrollo de algoritmos en Python.
+
+::: {.hero-actions}
+[Explorar Informes Técnicos](informes/caida_tension.qmd){.btn .btn-white}
+[Calculadoras Interactivas](teoria_fasores.qmd){.btn .btn-outline-white}
+[Repositorio de Datos & Scripts](descargas.qmd){.btn .btn-outline-white}
+:::
+
+::: {.tech-pill-container}
+<span class="tech-pill">Python 3.12</span>
+<span class="tech-pill">NumPy & Matplotlib</span>
+<span class="tech-pill">Streamlit Cloud</span>
+<span class="tech-pill">LaTeX & Quarto</span>
+<span class="tech-pill">Normas IEEE / NEC</span>
+:::
+
+:::
+
+## 🎯 Módulos Principales
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-4}
+::: {.card-module}
+::: {.card-icon}
+📑
+:::
+### Informes Técnicos & Memorias
+Memorias de cálculo con rigor matemático, derivaciones analíticas y cumplimiento estricto de normativas eléctricas.
+
+- **Caída de Tensión:** Dimensionamiento óptimo de alimentadores en baja y media tensión según tablas de reactancia e impedancia.
+- **Formulación $\LaTeX$:** Ecuaciones vectoriales y análisis de pérdidas Joule ($I^2 R$).
+
+[Consultar Informe Técnico →](informes/caida_tension.qmd){.btn .btn-outline-primary .mt-auto}
+:::
+:::
+
+::: {.g-col-12 .g-col-md-4}
+::: {.card-module}
+::: {.card-icon}
+⚡
+:::
+### Simuladores & Apps Interactivas
+Herramientas dinámicas impulsadas por Python en la nube para simulación numérica en tiempo real.
+
+- **Análisis Fasorial:** Cálculo de potencia activa $P$, reactiva $Q$, aparente $S$ y factor de potencia ($\text{FP}$).
+- **Gráficos Dinámicos:** Planos complejos vectoriales interactivos con actualización instantánea.
+
+[Ejecutar Calculadora →](teoria_fasores.qmd){.btn .btn-outline-primary .mt-auto}
+:::
+:::
+
+::: {.g-col-12 .g-col-md-4}
+::: {.card-module}
+::: {.card-icon}
+💾
+:::
+### Centro de Recursos & Scripts
+Datasets normalizados, tablas de calibres de conductores y scripts de automatización listos para usar.
+
+- **Datasets Tabulares:** Tablas de resistencia $R$ y reactancia $X$ en formato CSV y Pandas.
+- **Librerías Python:** Módulos de cálculo vectorial y fasorial listos para terminal o Jupyter.
+
+[Acceder a Descargas →](descargas.qmd){.btn .btn-outline-primary .mt-auto}
+:::
+:::
+
+:::
+
+---
+
+## ⚙️ Arquitectura Computacional Desacoplada
+
+La plataforma implementa una arquitectura moderna que separa la capa de presentación documental de alta velocidad del motor de cálculo numérico en la nube:
+
+```{mermaid}
+%%| fig-align: center
+flowchart LR
+    subgraph S1["🌐 Presentación Estática de Alto Rendimiento"]
+        A["📄 Documentación Quarto (.qmd)"] --> B["📐 Formulación LaTeX & Tablas"]
+        A --> C["📥 Centro de Recursos & CSVs"]
+    end
+
+    subgraph S2["⚡ Motor de Cómputo Científico"]
+        D["🐍 Python Backend (Streamlit / Pyodide)"] --> E["📊 NumPy & Matplotlib"]
+        D --> F["🔢 Solución Numérica en Tiempo Real"]
+    end
+
+    S1 <== "Embed Interactivo / API" ==> S2
+
+    style S1 fill:#f8fafc,stroke:#0284c7,stroke-width:2px,stroke-dasharray: 5 5
+    style S2 fill:#0f172a,stroke:#38bdf8,stroke-width:2px,color:#ffffff
+```
+
+1. **Capa Documental (Quarto):** Renderizado estático ultrarrápido con tipografía optimizada, soporte matemático integral y control de versiones distribuido.
+2. **Capa Computacional (Python & Cloud):** Ejecución de scripts científicos en entornos dedicados con visualización gráfica reactiva.

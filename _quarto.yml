@@ -1,0 +1,51 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "⚡ Portafolio de Ingeniería Eléctrica"
+  description: "Plataforma técnica de memorias de cálculo, análisis de sistemas de potencia y simulaciones interactivas en Python."
+  search: true
+  page-footer:
+    left: "© 2026 **David Guerrero** — Ingeniería Eléctrica & Computación Aplicada"
+    right:
+      - icon: github
+        href: https://github.com/
+        aria-label: GitHub
+  navbar:
+    background: primary
+    search: true
+    collapse: true
+    left:
+      - href: index.qmd
+        text: "Inicio"
+        icon: house-door-fill
+      - text: "Informes Técnicos"
+        icon: file-earmark-code-fill
+        menu:
+          - href: informes/caida_tension.qmd
+            text: "Caída de Tensión y Alimentadores (NEC)"
+      - text: "Cálculos Interactivos"
+        icon: cpu-fill
+        menu:
+          - href: teoria_fasores.qmd
+            text: "Análisis Fasorial y Potencia CA"
+      - href: descargas.qmd
+        text: "Centro de Recursos"
+        icon: folder-symlink-fill
+    right:
+      - icon: github
+        href: https://github.com/
+        aria-label: Repositorio en GitHub
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    toc-depth: 3
+    toc-title: "Índice de Contenido"
+    html-math-method: mathjax
+    code-copy: true
+    smooth-scroll: true
+    highlight-style: github

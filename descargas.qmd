@@ -1,0 +1,74 @@
+---
+title: "Centro de Recursos, Datasets & Scripts"
+subtitle: "Repositorio técnico de datos normativos, tablas de impedancia y módulos computacionales en Python"
+author: "David Guerrero"
+date: today
+---
+
+::: {.callout-note}
+### 💾 Acceso a Recursos de Ingeniería
+En este centro de descargas se encuentran disponibles los archivos de datos, tablas de conductores y scripts de cálculo numérico utilizados en los informes técnicos de la plataforma. Todos los recursos están optimizados para integración directa con Python, Pandas, NumPy y herramientas CAD/CAE.
+:::
+
+## 📁 Catálogo de Archivos Disponibles
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-6}
+::: {.card-module}
+::: {.card-icon}
+📊
+:::
+### Parámetros de Conductores AWG / kcmil
+Matriz de impedancia en corriente alterna ($R_{CA}$ a $75^\circ\text{C}$ y reactancia $X_L$) para conductores de cobre con aislamiento THHN/THWN en canalizaciones de PVC y acero, según la **Tabla 9 del Código Eléctrico Nacional (NEC)**.
+
+- **Formato:** Archivo tabular `.csv` (codificación UTF-8)
+- **Campos:** `calibre`, `area_mm2`, `resistencia_pvc_ohm_km`, `reactancia_pvc_ohm_km`
+- **Uso:** Algoritmos de caída de tensión y optimización de alimentadores
+
+<div class="mt-auto pt-3">
+  <a href="descargas/tabla_calibres_awg.csv" class="btn btn-primary" download>
+    📥 Descargar Dataset (CSV)
+  </a>
+</div>
+:::
+:::
+
+::: {.g-col-12 .g-col-md-6}
+::: {.card-module}
+::: {.card-icon}
+🐍
+:::
+### Script de Análisis Fasorial & Potencia
+Módulo ejecutable en Python puro que implementa las funciones vectoriales de números complejos, descomposición de potencia activa, reactiva y generación de diagramas fasoriales con **Matplotlib**.
+
+- **Formato:** Código fuente `.py`
+- **Dependencias:** Python 3.9+, NumPy, Matplotlib
+- **Uso:** Ejecución en terminal, importación en scripts propios o Jupyter Notebooks
+
+<div class="mt-auto pt-3">
+  <a href="descargas/calculo_fasores.py" class="btn btn-outline-primary" download>
+    📥 Descargar Script (.py)
+  </a>
+</div>
+:::
+:::
+
+:::
+
+---
+
+## ⚡ Integración Directa en Python
+
+Puede consumir los datasets técnicos directamente en sus scripts de análisis utilizando la librería `pandas`:
+
+```python
+import pandas as pd
+
+# Carga del dataset de calibres y parámetros eléctricos
+df_conductores = pd.read_csv("descargas/tabla_calibres_awg.csv")
+
+# Inspección de conductores con resistencia menor a 1.0 Ohm/km
+conductores_optimos = df_conductores[df_conductores["resistencia_pvc_ohm_km"] < 1.0]
+print(conductores_optimos[["calibre", "resistencia_pvc_ohm_km", "reactancia_pvc_ohm_km"]])
+```
