@@ -1,0 +1,49 @@
+---
+title: "Circuitos Magnéticos y Curva de Magnetización $B-H$"
+subtitle: "Leyes de Ampère y Hopkinson, cálculo de reluctancia, entrehierros y análisis con saturación ferromagnética"
+description: "Modelado de circuitos magnéticos en serie y paralelo, cálculo de fuerza magnetomotriz (FMM) y métodos numéricos con curvas B-H no lineales."
+author: "David Guerrero"
+date: "2026-09-10"
+categories: [Circuitos Magnéticos, Curva B-H, Saturación, FMM, Máquinas]
+format:
+  html:
+    toc: true
+    number-sections: true
+---
+
+::: {.callout-note}
+### 🧲 Enfoque Físico & Computacional
+El cálculo preciso de la fuerza magnetomotriz ($\mathcal{F}$) o del flujo magnético ($\Phi$) en núcleos de acero al silicio requiere considerar la no-linealidad de la permeabilidad $\mu(B)$. Esta memoria resume las ecuaciones fundamentales y la analogía con circuitos eléctricos.
+:::
+
+## 1. Analogía entre Circuitos Eléctricos y Magnéticos
+
+La **Ley de Hopkinson** establece una correspondencia formal entre las magnitudes de un circuito eléctrico y las de un circuito magnético:
+
+| Parámetro | Circuito Eléctrico | Circuito Magnético |
+| :--- | :--- | :--- |
+| **Fuerza impulsora** | Tensión / FEM: $E$ $[\text{V}]$ | Fuerza Magnetomotriz: $\mathcal{F} = N I$ $[\text{A-v}]$ |
+| **Flujo de campo** | Corriente eléctrica: $I$ $[\text{A}]$ | Flujo magnético: $\Phi$ $[\text{Wb}]$ |
+| **Oposición al paso** | Resistencia: $R = \frac{\ell}{\sigma A}$ $[\Omega]$ | Reluctancia: $\mathcal{R} = \frac{\ell}{\mu A}$ $[\text{A-v/Wb}]$ |
+| **Densidad de flujo** | Densidad de corriente: $J = \frac{I}{A}$ | Densidad de flujo: $B = \frac{\Phi}{A}$ $[\text{T}]$ |
+| **Intensidad de campo** | Campo eléctrico: $E = \frac{V}{\ell}$ | Campo magnético: $H = \frac{\mathcal{F}}{\ell}$ $[\text{A/m}]$ |
+| **Ley constitutiva** | Ley de Ohm: $J = \sigma E$ | Relación magnética: $B = \mu H = \mu_0 \mu_r H$ |
+
+---
+
+## 2. Ley de Ampère y Conservación de FMM
+
+Para una trayectoria cerrada media $\ell_c$ que atraviesa diferentes tramos de material y un entrehierro ($\ell_g$):
+
+$$
+\oint \mathbf{H} \cdot d\mathbf{\ell} = \sum N I = \mathcal{F}_{\text{total}}
+$$
+
+$$
+\mathcal{F}_{\text{total}} = \sum_{k=1}^{n} H_k \ell_k + H_g \ell_g
+$$
+
+Donde en el entrehierro de aire ($\mu_r = 1$):
+$$
+H_g = \frac{B_g}{\mu_0}, \quad \mu_0 = 4\pi \times 10^{-7} \ \text{H/m}
+$$

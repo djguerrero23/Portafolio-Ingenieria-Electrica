@@ -6,12 +6,12 @@ toc: false
 ::: {.hero-banner-modern}
 
 ::: {.hero-pill}
-⚡ PLATAFORMA DE INGENIERÍA ELÉCTRICA & CÁLCULO CIENTÍFICO
+⚡ PORTAL ACADÉMICO SOBRE INGENIERÍA ELÉCTRICA & CÁLCULO CIENTÍFICO
 :::
 
-# Sistemas de Potencia, Modelado & Computación Aplicada
+# Maquinas Eléctricas, Circuitos Eléctricos, Mediciones Eléctricas, Sistemas de Potencia, Modelado & Computación Aplicada
 
-Plataforma técnica desarrollada por **David Guerrero** para la difusión de memorias de cálculo, análisis de sistemas eléctricos bajo normativas internacionales (**IEEE / NEC / NTC 2050**), visualización fasorial interactiva y desarrollo de algoritmos en Python.
+Plataforma técnica desarrollada por **David Guerrero** para la difusión académica de artículos, información técnica, conceptos, modelado, memorias de cálculo, análisis de sistemas eléctricos bajo normativas internacionales (**IEEE / NEC / NTC 2050**), visualización fasorial interactiva y desarrollo de algoritmos en Python.
 
 ::: {.hero-actions}
 [Explorar Informes Técnicos](informes/caida_tension.qmd){.btn .btn-white}
@@ -29,52 +29,88 @@ Plataforma técnica desarrollada por **David Guerrero** para la difusión de mem
 
 :::
 
-## 🎯 Módulos Principales
+## 📚 Módulos & Materias de Estudio
 
 ::: {.grid}
 
-::: {.g-col-12 .g-col-md-4}
-::: {.card-module}
-::: {.card-icon}
-📑
-:::
-### Informes Técnicos & Memorias
-Memorias de cálculo con rigor matemático, derivaciones analíticas y cumplimiento estricto de normativas eléctricas.
-
-- **Caída de Tensión:** Dimensionamiento óptimo de alimentadores en baja y media tensión según tablas de reactancia e impedancia.
-- **Formulación $\LaTeX$:** Ecuaciones vectoriales y análisis de pérdidas Joule ($I^2 R$).
-
-[Consultar Informe Técnico →](informes/caida_tension.qmd){.btn .btn-outline-primary .mt-auto}
-:::
-:::
-
-::: {.g-col-12 .g-col-md-4}
+::: {.g-col-12 .g-col-md-6}
 ::: {.card-module}
 ::: {.card-icon}
 ⚡
 :::
-### Simuladores & Apps Interactivas
-Herramientas dinámicas impulsadas por Python en la nube para simulación numérica en tiempo real.
+### Circuitos Eléctricos
+Análisis en régimen permanente, leyes de Kirchhoff, teoremas de redes, álgebra fasorial y potencia compleja.
 
-- **Análisis Fasorial:** Cálculo de potencia activa $P$, reactiva $Q$, aparente $S$ y factor de potencia ($\text{FP}$).
-- **Gráficos Dinámicos:** Planos complejos vectoriales interactivos con actualización instantánea.
+- **Análisis Fasorial:** Método del Carril Táctil, reglas de cuadrantes y conversión canónica seno $\to$ coseno.
+- **Potencia en CA:** Potencia activa $P$, reactiva $Q$, aparente $S$, factor de potencia y simulador en tiempo real.
 
-[Ejecutar Calculadora →](teoria_fasores.qmd){.btn .btn-outline-primary .mt-auto}
+<div style="display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: auto; padding-top: 0.5rem;">
+  <a href="circuitos_electricos/teoria_fasores.qmd" class="btn btn-outline-primary" style="font-size: 0.82rem; padding: 0.4rem 0.8rem;">Guía de Fasores →</a>
+  <a href="circuitos_electricos/potencia_ca.qmd" class="btn btn-outline-primary" style="font-size: 0.82rem; padding: 0.4rem 0.8rem;">Potencia en CA →</a>
+</div>
 :::
 :::
 
-::: {.g-col-12 .g-col-md-4}
+::: {.g-col-12 .g-col-md-6}
 ::: {.card-module}
 ::: {.card-icon}
-💾
+⚙️
 :::
-### Centro de Recursos & Scripts
-Datasets normalizados, tablas de calibres de conductores y scripts de automatización listos para usar.
+### Máquinas Eléctricas
+Conversión electromecánica, análisis no lineal de materiales magnéticos, transformadores y máquinas rotativas.
 
-- **Datasets Tabulares:** Tablas de resistencia $R$ y reactancia $X$ en formato CSV y Pandas.
-- **Librerías Python:** Módulos de cálculo vectorial y fasorial listos para terminal o Jupyter.
+- **Circuitos Magnéticos:** Reluctancia, permeabilidad y resolución con curvas de saturación $B-H$.
+- **Transformadores:** Circuitos equivalentes, pruebas en vacío y cortocircuito.
 
-[Acceder a Descargas →](descargas.qmd){.btn .btn-outline-primary .mt-auto}
+[Explorar Módulo de Máquinas →](maquinas_electricas/index.qmd){.btn .btn-outline-primary .mt-auto}
+:::
+:::
+
+::: {.g-col-12 .g-col-md-6}
+::: {.card-module}
+::: {.card-icon}
+📊
+:::
+### Mediciones Eléctricas
+Metrología aplicada, instrumentación, diseño de puentes de medición y evaluación de incertidumbre.
+
+- **Puentes de Medición:** Métodos de deflexión y balance nulo (Wheatstone, Kelvin, Maxwell).
+- **Instrumentación Digital:** Transductores, acondicionamiento de señal y calibración.
+
+[Explorar Módulo de Mediciones →](mediciones_electricas/index.qmd){.btn .btn-outline-primary .mt-auto}
+:::
+:::
+
+::: {.g-col-12 .g-col-md-6}
+::: {.card-module}
+::: {.card-icon}
+🏗️
+:::
+### Sistemas de Potencia & Normativas
+Dimensionamiento de alimentadores, regulación de tensión, flujo de carga y normativas internacionales.
+
+- **Caída de Tensión:** Dimensionamiento según criterios de impedancia del NEC / NTC 2050.
+- **Análisis de Pérdidas:** Eficiencia térmica $I^2 R$ y límites regulatorios IEEE Std 141.
+
+[Explorar Módulo de Potencia →](sistemas_potencia/index.qmd){.btn .btn-outline-primary .mt-auto}
+:::
+:::
+
+::: {.g-col-12}
+::: {.card-module style="background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);"}
+::: {.card-icon}
+🐍
+:::
+### Aplicaciones Python & Centro de Recursos
+Simuladores en tiempo real desarrollados con NumPy, Matplotlib y Streamlit, junto a tablas normalizadas de conductores para descarga.
+
+- **Simulador Fasorial:** Visualización instantánea del triángulo de potencias.
+- **Datasets Tabulares:** Tablas de resistencia $R$ y reactancia $X$ en formato CSV y scripts standalone.
+
+<div style="display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1rem;">
+  <a href="circuitos_electricos/teoria_fasores.qmd#simulador-interactivo-de-potencia-en-tiempo-real" class="btn btn-primary">Abrir Simulador Fasorial →</a>
+  <a href="descargas.qmd" class="btn btn-outline-primary">Ir a Descargas & CSVs →</a>
+</div>
 :::
 :::
 
@@ -82,28 +118,3 @@ Datasets normalizados, tablas de calibres de conductores y scripts de automatiza
 
 ---
 
-## ⚙️ Arquitectura Computacional Desacoplada
-
-La plataforma implementa una arquitectura moderna que separa la capa de presentación documental de alta velocidad del motor de cálculo numérico en la nube:
-
-```{mermaid}
-%%| fig-align: center
-flowchart LR
-    subgraph S1["🌐 Presentación Estática de Alto Rendimiento"]
-        A["📄 Documentación Quarto (.qmd)"] --> B["📐 Formulación LaTeX & Tablas"]
-        A --> C["📥 Centro de Recursos & CSVs"]
-    end
-
-    subgraph S2["⚡ Motor de Cómputo Científico"]
-        D["🐍 Python Backend (Streamlit / Pyodide)"] --> E["📊 NumPy & Matplotlib"]
-        D --> F["🔢 Solución Numérica en Tiempo Real"]
-    end
-
-    S1 <== "Embed Interactivo / API" ==> S2
-
-    style S1 fill:#f8fafc,stroke:#0284c7,stroke-width:2px,stroke-dasharray: 5 5
-    style S2 fill:#0f172a,stroke:#38bdf8,stroke-width:2px,color:#ffffff
-```
-
-1. **Capa Documental (Quarto):** Renderizado estático ultrarrápido con tipografía optimizada, soporte matemático integral y control de versiones distribuido.
-2. **Capa Computacional (Python & Cloud):** Ejecución de scripts científicos en entornos dedicados con visualización gráfica reactiva.

@@ -1,0 +1,17 @@
+---
+title: "📊 Mediciones Eléctricas"
+subtitle: "Metrología, instrumentación analógica y digital, puentes de medición y análisis de incertidumbre"
+listing:
+  contents: 
+    - "*.qmd"
+    - "!index.qmd"
+  sort: "date desc"
+  type: grid
+  categories: true
+  sort-ui: true
+  filter-ui: true
+  fields: [date, title, description, categories, reading-time]
+page-layout: full
+---
+
+Bienvenido al módulo de **Mediciones Eléctricas**. Aquí se recopilan análisis metrológicos, calibración de instrumentos, diseño de puentes de corriente continua y alterna, y métodos de reducción de incertidumbre experimental.

@@ -1,0 +1,17 @@
+---
+title: "⚡ Circuitos Eléctricos"
+subtitle: "Análisis en régimen permanente, teoremas fundamentales, fasores y respuesta en frecuencia"
+listing:
+  contents: 
+    - "*.qmd"
+    - "!index.qmd"
+  sort: "date desc"
+  type: grid
+  categories: true
+  sort-ui: true
+  filter-ui: true
+  fields: [date, title, description, categories, reading-time]
+page-layout: full
+---
+
+Bienvenido al módulo de **Circuitos Eléctricos**. Aquí encontrarás memorias de cálculo, análisis fasorial, métodos de solución sistemática (mallas y nodos) y aplicaciones teóricas con verificación computacional.

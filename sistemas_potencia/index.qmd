@@ -1,0 +1,17 @@
+---
+title: "⚡ Sistemas de Potencia & Distribución"
+subtitle: "Regulación de tensión, dimensionamiento de alimentadores, flujo de carga y normativas eléctricas (NEC / IEEE)"
+listing:
+  contents: 
+    - "*.qmd"
+    - "!index.qmd"
+  sort: "date desc"
+  type: grid
+  categories: true
+  sort-ui: true
+  filter-ui: true
+  fields: [date, title, description, categories, reading-time]
+page-layout: full
+---
+
+Bienvenido al módulo de **Sistemas de Potencia & Distribución**. En este espacio se publican memorias de cálculo aplicadas a instalaciones industriales y comerciales, análisis de pérdidas, regulación de alimentadores y cumplimiento de estándares internacionales.

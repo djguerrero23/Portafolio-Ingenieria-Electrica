@@ -1,0 +1,40 @@
+---
+title: "Simulador Fasorial y Análisis de Potencia Compleja"
+subtitle: "Aplicación interactiva construida en Python y Streamlit para cálculo vectorial y triángulo de potencias"
+description: "Simulación en tiempo real de amplitudes y ángulos de fase, cálculo numérico instantáneo de potencia activa, reactiva y factor de potencia."
+author: "David Guerrero"
+date: "2026-09-10"
+categories: [Python, Streamlit, Simulación, Fasores, NumPy]
+format:
+  html:
+    toc: true
+---
+
+::: {.callout-note}
+### 🐍 Motor Computacional Streamlit
+Esta aplicación interactiva corre sobre Python 3.12 y utiliza **Streamlit Cloud** para el renderizado vectorial de ondas y fasores en el plano complejo.
+:::
+
+## Interfaz Interactiva en Tiempo Real
+
+::: {.mockup-browser}
+::: {.mockup-header}
+<span class="mockup-dot red"></span>
+<span class="mockup-dot yellow"></span>
+<span class="mockup-dot green"></span>
+<span class="mockup-title">⚡ engine_fasores.py — Streamlit Interactive Engine</span>
+:::
+
+<iframe 
+  src="https://portafolio-ingenieria-electrica-3bz9smddyjo9zjkfwdqdsp.streamlit.app/?embed=true" 
+  title="Calculadora Fasorial Streamlit"
+  allow="clipboard-write">
+</iframe>
+:::
+
+---
+
+## Descargas & Código Fuente
+
+- [📥 Descargar Script Standalone (`calculo_fasores.py`)](../descargas/calculo_fasores.py){.btn .btn-primary role="button"}
+- [📊 Tabla de Parámetros de Conductores (CSV)](../descargas.qmd){.btn .btn-outline-primary role="button"}

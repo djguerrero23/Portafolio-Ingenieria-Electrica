@@ -1,0 +1,17 @@
+---
+title: "⚙️ Máquinas Eléctricas"
+subtitle: "Conversión electromecánica de energía, circuitos magnéticos, transformadores y máquinas rotativas"
+listing:
+  contents: 
+    - "*.qmd"
+    - "!index.qmd"
+  sort: "date desc"
+  type: grid
+  categories: true
+  sort-ui: true
+  filter-ui: true
+  fields: [date, title, description, categories, reading-time]
+page-layout: full
+---
+
+Bienvenido al módulo de **Máquinas Eléctricas**. En esta sección se abordan los principios físicos de los circuitos magnéticos, saturación en materiales ferromagnéticos, modelado y pruebas de transformadores, y dinámica de máquinas de corriente alterna y continua.

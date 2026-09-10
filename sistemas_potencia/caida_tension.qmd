@@ -1,0 +1,102 @@
+---
+title: "Cálculo de Caída de Tensión y Dimensionamiento de Alimentadores"
+subtitle: "Memoria de cálculo y análisis comparativo según tablas de impedancia del Código Eléctrico (NEC / NTC 2050)"
+description: "Metodología analítica para regulación de tensión en alimentadores trifásicos y monofásicos de baja tensión, con criterios de pérdidas Joule y selección óptima."
+author: "David Guerrero"
+date: "2026-09-10"
+categories: [Sistemas de Potencia, Caída de Tensión, NEC / NTC 2050, Conductores, IEEE]
+format:
+  html:
+    toc: true
+    number-sections: true
+---
+
+::: {.callout-note}
+### 📌 Resumen Ejecutivo
+Este informe técnico establece el marco metodológico para el cálculo analítico y la verificación de la caída de tensión porcentual ($\Delta V\%$) en alimentadores trifásicos y monofásicos de baja tensión. Se evalúa el impacto de la impedancia en corriente alterna (resistencia efectiva $R$ y reactancia inductiva $X$) sobre la regulación de tensión, asegurando el cumplimiento de los límites normativos del **$3\%$ en el alimentador** y **$5\%$ total acumulado hasta la carga más crítica**.
+:::
+
+## 1. Justificación Técnica y Criterios Normativos
+
+El dimensionamiento de alimentadores en sistemas de distribución de energía no solo debe satisfacer el criterio de **capacidad de corriente (ampacidad)** por temperatura, sino también el criterio de **regulación de tensión**. Una caída excesiva produce:
+
+1. **Sobrecalentamiento y reducción de eficiencia:** Aumento no deseado de pérdidas Joule en los conductores ($P_{loss} = 3 I^2 R$).
+2. **Degradación del par en motores eléctricos:** El par electromagnético de un motor de inducción disminuye proporcionalmente al cuadrado de la tensión aplicada ($T \propto V^2$).
+3. **Inestabilidad en equipos electrónicos sensibles:** Variaciones de tensión fuera del estándar ANSI C84.1 ($+5\%, -10\%$) generan disparos erráticos y desconexión de cargas críticas.
+
+### Límites de Regulación Normativa
+
+| Segmento del Sistema Eléctrico | Caída Máxima Recomendada ($\Delta V\%$) | Referencia |
+| :--- | :---: | :--- |
+| **Alimentador Principal (Tablero General a Subtablero)** | $\le 3.0\%$ | NEC Art. 215.2(A)(1) / NTC 2050 |
+| **Circuito Ramal (Subtablero a Carga Final)** | $\le 3.0\%$ | NEC Art. 210.19(A) |
+| **Caída Total Combinada (Fuente a Carga Final)** | $\le 5.0\%$ | Estándar de Calidad IEEE Std 141 |
+
+: Criterios normativos de regulación de tensión. {#tbl-normativa}
+
+---
+
+## 2. Formulación Matemática de Impedancia Compleja
+
+La caída de tensión fasorial en un alimentador con impedancia $\mathbf{Z} = R + jX$ alimentando una carga con factor de potencia $\cos\theta$ se modela analíticamente considerando la proyección del fasor de caída sobre la tensión de referencia.
+
+### Sistema Trifásico Equilibrado (3 Hilos / 4 Hilos)
+
+Para un sistema trifásico con tensión nominal línea a línea $V_{LL}$:
+
+$$
+\Delta V_{3\phi} = \sqrt{3} \cdot I \cdot L \cdot \left( R_{CA} \cos\theta + X_L \sin\theta \right)
+$$
+
+Donde:
+
+- $I$: Corriente nominal de diseño en amperios ($\text{A}$).
+- $L$: Longitud del alimentador en kilómetros ($\text{km}$).
+- $R_{CA}$: Resistencia efectiva en CA a la temperatura de operación ($75^\circ\text{C}$) en $\Omega/\text{km}$.
+- $X_L$: Reactancia inductiva del conductor en ducto en $\Omega/\text{km}$.
+- $\cos\theta$: Factor de potencia en atraso de la carga instalada.
+- $\sin\theta = \sqrt{1 - \cos^2\theta}$: Factor de reactancia.
+
+La caída de tensión porcentual normalizada se calcula como:
+
+$$
+\Delta V\% = \left( \frac{\Delta V_{3\phi}}{V_{LL}} \right) \times 100\%
+$$
+
+---
+
+## 3. Caso de Estudio Práctico
+
+Se diseña un alimentador trifásico con las siguientes condiciones de servicio:
+
+- **Tensión nominal de línea:** $V_{LL} = 480\text{ V}$ ($3\phi$, $60\text{ Hz}$).
+- **Corriente de carga máxima:** $I = 85\text{ A}$.
+- **Longitud de trayectoria:** $L = 120\text{ m} = 0.12\text{ km}$.
+- **Factor de potencia:** $\cos\theta = 0.88$ en atraso ($\sin\theta = 0.4749$).
+- **Tipo de conductor:** Cobre electrolítico clase B, aislamiento THHN/THWN-2 ($75^\circ\text{C}$), canalización en tubería conduit de PVC.
+
+### Análisis Comparativo de Calibres
+
+A continuación se evalúa la respuesta técnica para calibres comerciales estándar utilizando los parámetros de la **Tabla 9 del NEC**:
+
+| Calibre AWG / kcmil | $R_{CA}$ ($\Omega/\text{km}$) | $X_L$ ($\Omega/\text{km}$) | Caída $\Delta V$ ($\text{V}$) | Regulación $\Delta V\%$ | Cumplimiento Normativo |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **#4 AWG** | $1.050$ | $0.177$ | $17.84\text{ V}$ | **$3.72\%$** | <span class="badge-fail">✕ No Cumple (> 3%)</span> |
+| **#2 AWG** | $0.656$ | $0.167$ | $11.60\text{ V}$ | **$2.42\%$** | <span class="badge-pass">✓ Cumple (≤ 3%)</span> |
+| **#1/0 AWG** | $0.413$ | $0.161$ | $7.74\text{ V}$ | **$1.61\%$** | <span class="badge-pass">✓ Cumple (Óptimo)</span> |
+| **#2/0 AWG** | $0.328$ | $0.157$ | $6.42\text{ V}$ | **$1.34\%$** | <span class="badge-pass">✓ Cumple (Baja Pérdida)</span> |
+
+: Comparación de regulación de tensión para alimentador trifásico de 480 V, 85 A y 120 m. {#tbl-analisis}
+
+---
+
+## 4. Dictamen Técnico y Recomendaciones
+
+1. **Selección por Criterio Técnico:** El calibre mínimo aceptable es **#2 AWG THHN**, el cual garantiza una regulación del **$2.42\%$**, encontrándose dentro del umbral normativo del $3.0\%$.
+2. **Evaluación de Eficiencia Energética:** Para régimen de carga continua ($\ge 16\text{ h/día}$), el calibre **#1/0 AWG** reduce las pérdidas térmicas en los conductores en más de un **$33\%$**, compensando el costo marginal del conductor de cobre en menos de 14 meses de operación.
+
+::: {.callout-tip}
+### 📥 Recursos Disponibles para este Informe
+- [Descargar Dataset de Parámetros de Conductores (CSV)](../descargas/tabla_calibres_awg.csv){.btn .btn-primary role="button"}
+- [Script de Automatización en Python](../descargas/calculo_fasores.py){.btn .btn-outline-primary role="button"}
+:::

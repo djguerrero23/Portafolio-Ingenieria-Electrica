@@ -1,0 +1,45 @@
+---
+title: "Puentes de Medición de Parámetros Pasivos ($R, L, C$)"
+subtitle: "Análisis de equilibrio en puentes de Wheatstone, Kelvin, Maxwell y Wien para medición de precisión"
+description: "Teoría de puentes de medición en corriente continua y alterna, condición de equilibrio fasorial y análisis de sensibilidad de detección."
+author: "David Guerrero"
+date: "2026-09-10"
+categories: [Mediciones, Puentes de Medición, Wheatstone, Kelvin, Metrología]
+format:
+  html:
+    toc: true
+    number-sections: true
+---
+
+::: {.callout-note}
+### 🎯 Precisión Metrológica
+Los métodos de puente utilizan la técnica de balance nulo (detección de corriente cero en el galvanómetro), lo que elimina los errores introducidos por la resistencia interna de los instrumentos indicadores convencionales.
+:::
+
+## 1. Puente de Wheatstone (Medición de Resistencias Medias)
+
+El puente de Wheatstone es la estructura fundamental para la medición de resistencias en el rango de $1 \ \Omega$ a $1 \ \text{M}\Omega$.
+
+### Condición de Equilibrio
+
+Cuando el detector de cero no registra circulación de corriente ($I_G = 0$):
+
+$$
+\frac{R_1}{R_2} = \frac{R_3}{R_x} \quad \Longrightarrow \quad R_x = \frac{R_2 \cdot R_3}{R_1}
+$$
+
+---
+
+## 2. Puente Doble de Kelvin (Medición de Bajas Resistencias)
+
+Para resistencias inferiores a $1 \ \Omega$, los efectos de los terminales y cables de conexión introducen errores inaceptables. El puente de Kelvin compensa estas resistencias residuales mediante una doble rama divisoria proporcional:
+
+$$
+R_x = R_s \frac{R_1}{R_2} + \frac{R_y \cdot r_2}{r_1 + r_2 + R_y} \left( \frac{R_1}{R_2} - \frac{r_1}{r_2} \right)
+$$
+
+Si se mantiene la relación $\frac{R_1}{R_2} = \frac{r_1}{r_2}$, la influencia de la resistencia de contacto $R_y$ se anula exactamente:
+
+$$
+R_x = R_s \frac{R_1}{R_2}
+$$

@@ -1,0 +1,159 @@
+---
+title: "Potencia en Corriente Alterna y Triángulo de Potencias"
+subtitle: "Modelado analítico de potencia instantánea, activa, reactiva, aparente y compensación del factor de potencia"
+description: "Formulación de potencia compleja, deducción del triángulo de potencias, análisis de cargas en atraso/adelanto y simulador interactivo en Streamlit."
+author: "David Guerrero"
+date: "2026-09-10"
+categories: [Potencia CA, Potencia Compleja, Factor de Potencia, Triángulo de Potencias, Streamlit, Simulación]
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+---
+
+::: {.callout-note}
+### ⚡ Marco Teórico & Interfaz Computacional
+En sistemas eléctricos de corriente alterna, la transferencia de energía no se limita a disipación de calor útil, sino que involucra oscilaciones continuas de energía electromagnética entre la fuente y las reactancias. Esta memoria desglosa los fundamentos de la **potencia compleja** e incluye un simulador interactivo para visualización instantánea del triángulo de potencias.
+:::
+
+---
+
+## 1. Potencia Instantánea y Descomposición Armónica
+
+Sea una fuente de tensión senoidal aplicada a una carga pasiva:
+
+$$
+v(t) = V_m \cos(\omega t + \theta_v)
+$$
+
+$$
+i(t) = I_m \cos(\omega t + \theta_i)
+$$
+
+La **potencia instantánea** absorbida por la red es el producto temporal $p(t) = v(t) \cdot i(t)$:
+
+$$
+p(t) = V_m I_m \cos(\omega t + \theta_v) \cos(\omega t + \theta_i)
+$$
+
+Aplicando la identidad trigonométrica $\cos A \cos B = \frac{1}{2} [\cos(A-B) + \cos(A+B)]$:
+
+$$
+p(t) = \underbrace{V_{rms} I_{rms} \cos(\theta_v - \theta_i) \left[ 1 + \cos(2\omega t + 2\theta_v) \right]}_{\text{Componente unidireccional y pulsante activa}} + \underbrace{V_{rms} I_{rms} \sin(\theta_v - \theta_i) \sin(2\omega t + 2\theta_v)}_{\text{Componente reactiva oscilante}}
+$$
+
+> La potencia instantánea oscila al **doble de la frecuencia de la red** ($2\omega = 120\text{ Hz}$ en sistemas de $60\text{ Hz}$).
+
+---
+
+## 2. Potencia Compleja ($\mathbf{S}$) y Triángulo de Potencias
+
+En el dominio fasorial, la **potencia compleja** $\mathbf{S}$ se define como el producto del fasor eficaz de tensión por el **complejo conjugado** del fasor eficaz de corriente:
+
+$$
+\mathbf{S} = \mathbf{V}_{rms} \cdot \mathbf{I}_{rms}^* = \left( V_{rms} e^{j\theta_v} \right) \left( I_{rms} e^{-j\theta_i} \right) = V_{rms} I_{rms} e^{j(\theta_v - \theta_i)}
+$$
+
+Expresada en forma rectangular:
+
+$$
+\mathbf{S} = P + jQ
+$$
+
+::: {.grid style="margin: 2rem 0;"}
+
+::: {.g-col-12 .g-col-md-4}
+::: {.card-module}
+### 💡 Potencia Activa ($P$)
+Potencia real que se transforma en trabajo útil (mecánico, lumínico o calor).
+$$
+P = V_{rms} I_{rms} \cos\theta
+$$
+**Unidad:** Vatio [$\text{W}$], [$\text{kW}$], [$\text{MW}$]
+:::
+:::
+
+::: {.g-col-12 .g-col-md-4}
+::: {.card-module}
+### 🧲 Potencia Reactiva ($Q$)
+Potencia intercambiada para sostener los campos magnéticos y eléctricos.
+$$
+Q = V_{rms} I_{rms} \sin\theta
+$$
+**Unidad:** Volt-Amperio Reactivo [$\text{VAR}$], [$\text{kVAR}$]
+:::
+:::
+
+::: {.g-col-12 .g-col-md-4}
+::: {.card-module}
+### ⚡ Potencia Aparente ($|\mathbf{S}|$)
+Magnitud vectorial total que dimensiona conductores y transformadores.
+$$
+|\mathbf{S}| = \sqrt{P^2 + Q^2}
+$$
+**Unidad:** Volt-Amperio [$\text{VA}$], [$\text{kVA}$], [$\text{MVA}$]
+:::
+:::
+
+:::
+
+---
+
+## 3. Factor de Potencia y Convención de Cargas
+
+El **Factor de Potencia ($\text{FP}$)** mide la eficiencia con la que la corriente entregada se aprovecha en potencia activa:
+
+$$
+\text{FP} = \frac{P}{|\mathbf{S}|} = \cos(\theta_v - \theta_i) = \cos\theta
+$$
+
+Donde $\theta = \theta_v - \theta_i$ es el **ángulo de impedancia de la carga**:
+
+- **Carga Inductiva (RL) — FP en Atraso (*Lagging*):** La corriente atrasa a la tensión ($\theta > 0$). La carga absorbe potencia reactiva positiva ($Q > 0$). Representa motores, inductores y transformadores.
+- **Carga Capacitiva (RC) — FP en Adelanto (*Leading*):** La corriente adelanta a la tensión ($\theta < 0$). La carga suministra potencia reactiva ($Q < 0$). Representa bancos de condensadores.
+
+---
+
+## 4. Corrección del Factor de Potencia
+
+Para mejorar la eficiencia y evitar penalizaciones de la red eléctrica, se instalan condensadores en paralelo para elevar el factor de potencia desde $\cos\theta_1$ hasta un valor objetivo $\cos\theta_2$ ($\text{FP} \ge 0.95$):
+
+$$
+Q_C = P \left( \tan\theta_1 - \tan\theta_2 \right)
+$$
+
+La capacitancia requerida por fase (en conexión en paralelo a tensión $V_{rms}$ y frecuencia angular $\omega = 2\pi f$) es:
+
+$$
+C = \frac{Q_C}{\omega V_{rms}^2}
+$$
+
+---
+
+## 5. Simulador Interactivo de Potencia en Tiempo Real
+
+Ajuste las amplitudes eficaces de tensión y corriente junto a sus respectivos ángulos de fase para visualizar la potencia compleja y el triángulo fasorial de potencias en tiempo real:
+
+::: {.mockup-browser}
+::: {.mockup-header}
+<span class="mockup-dot red"></span>
+<span class="mockup-dot yellow"></span>
+<span class="mockup-dot green"></span>
+<span class="mockup-title">⚡ engine_fasores.py — Streamlit Interactive Power Engine (Python 3.12)</span>
+:::
+
+<iframe 
+  src="https://portafolio-ingenieria-electrica-3bz9smddyjo9zjkfwdqdsp.streamlit.app/?embed=true" 
+  title="Calculadora Fasorial Streamlit"
+  allow="clipboard-write">
+</iframe>
+:::
+
+---
+
+## 6. Recursos Computacionales & Descargas
+
+- [📥 Descargar Script Standalone en Python (`calculo_fasores.py`)](../descargas/calculo_fasores.py){.btn .btn-primary role="button"}
+- [📑 Ver Guía Práctica de Análisis Fasorial](teoria_fasores.qmd){.btn .btn-outline-primary role="button"}
+- [📊 Acceder al Centro de Descargas y Datasets](../descargas.qmd){.btn .btn-outline-secondary role="button"}

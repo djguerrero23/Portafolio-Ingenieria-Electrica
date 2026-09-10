@@ -20,19 +20,47 @@ website:
       - href: index.qmd
         text: "Inicio"
         icon: house-door-fill
-      - text: "Informes Técnicos"
-        icon: file-earmark-code-fill
+      - text: "Circuitos Eléctricos"
+        icon: lightning-charge-fill
         menu:
-          - href: informes/caida_tension.qmd
+          - href: circuitos_electricos/index.qmd
+            text: "⚡ Ver Todo (Módulo Circuitos)"
+          - href: circuitos_electricos/teoria_fasores.qmd
+            text: "Guía Práctica de Análisis Fasorial"
+          - href: circuitos_electricos/potencia_ca.qmd
+            text: "Potencia en CA y Triángulo de Potencias"
+      - text: "Máquinas Eléctricas"
+        icon: gear-wide-connected
+        menu:
+          - href: maquinas_electricas/index.qmd
+            text: "⚙️ Ver Todo (Módulo Máquinas)"
+          - text: "---"
+          - href: maquinas_electricas/circuitos_magneticos.qmd
+            text: "Circuitos Magnéticos y Curva B-H"
+      - text: "Mediciones Eléctricas"
+        icon: speedometre2
+        menu:
+          - href: mediciones_electricas/index.qmd
+            text: "📊 Ver Todo (Módulo Mediciones)"
+          - text: "---"
+          - href: mediciones_electricas/puentes_medicion.qmd
+            text: "Puentes de Medición (R, L, C)"
+      - text: "Sistemas de Potencia"
+        icon: plug-fill
+        menu:
+          - href: sistemas_potencia/index.qmd
+            text: "🏗️ Ver Todo (Módulo Potencia)"
+          - text: "---"
+          - href: sistemas_potencia/caida_tension.qmd
             text: "Caída de Tensión y Alimentadores (NEC)"
-      - text: "Cálculos Interactivos"
-        icon: cpu-fill
+      - text: "Aplicaciones Python"
+        icon: filetype-py
         menu:
-          - href: teoria_fasores.qmd
-            text: "Análisis Fasorial y Potencia CA"
-      - href: descargas.qmd
-        text: "Centro de Recursos"
-        icon: folder-symlink-fill
+          - href: aplicaciones_python/index.qmd
+            text: "🐍 Calculadoras & Simuladores"
+          - text: "---"
+          - href: descargas.qmd
+            text: "Centro de Descargas & CSVs"
     right:
       - icon: github
         href: https://github.com/
@@ -49,3 +77,4 @@ format:
     code-copy: true
     smooth-scroll: true
     highlight-style: github
+    page-layout: full
