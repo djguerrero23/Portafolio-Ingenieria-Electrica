@@ -725,8 +725,30 @@ mjx-container[jax="CHTML"][display="true"] {
   top: 130px;
   right: 1.5rem;
   width: 240px;
+  max-height: calc(100vh - 150px);
+  overflow-y: auto;
+  overflow-x: hidden;
   z-index: 100;
   border-radius: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(239, 68, 68, 0.35) transparent;
+}
+
+#quick-links-sidebar::-webkit-scrollbar {
+  width: 5px;
+}
+
+#quick-links-sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#quick-links-sidebar::-webkit-scrollbar-thumb {
+  background: rgba(239, 68, 68, 0.35);
+  border-radius: 4px;
+}
+
+#quick-links-sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(239, 68, 68, 0.7);
 }
 
 #quick-links-sidebar .btn {
