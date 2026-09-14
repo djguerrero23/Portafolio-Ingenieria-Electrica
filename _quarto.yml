@@ -9,6 +9,7 @@ project:
 website:
   title: "⚡ Portafolio de Ingeniería Eléctrica"
   description: "Plataforma técnica de memorias de cálculo, análisis de sistemas de potencia y simulaciones interactivas en Python."
+  favicon: favicon.svg
   search: true
   page-footer:
     left: "© 2026 **David Guerrero** — Ingeniería Eléctrica & Computación Aplicada"
