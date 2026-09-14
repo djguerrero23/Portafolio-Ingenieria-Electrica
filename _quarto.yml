@@ -1,6 +1,10 @@
 project:
   type: website
   output-dir: docs
+  render:
+    - "**/*.qmd"
+    - "*.qmd"
+
 
 website:
   title: "⚡ Portafolio de Ingeniería Eléctrica"
@@ -25,7 +29,7 @@ website:
         menu:
           - href: circuitos_electricos/index.qmd
             text: "⚡ Ver Todo (Módulo Circuitos)"
-          - href: circuitos_electricos/teoria_fasores.qmd
+          - href: circuitos_electricos/teoria_fasores_V3.qmd
             text: "Guía Práctica de Análisis Fasorial"
           - href: circuitos_electricos/potencia_ca.qmd
             text: "Potencia en CA y Triángulo de Potencias"

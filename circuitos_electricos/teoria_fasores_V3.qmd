@@ -1130,8 +1130,10 @@ La corriente total $i_T(t) = i_1(t) + i_2(t)$ en el dominio del tiempo.
 ##### 💡 Desarrollo y Solución
 
 **Paso 1: Convertir a fasores en forma coseno canónica:**
+
 - $\mathbf I_1 = 4\angle 30^\circ\ \mathrm A$
-- $i_2(t) = 6\cos(\omega t + 60^\circ - 90^\circ) = 6\cos(\omega t - 30^\circ) \implies \mathbf I_2 = 6\angle -30^\circ\ \mathrm A$
+- $i_2(t) = 6\cos(\omega t + 60^\circ - 90^\circ) = 6\cos(\omega t - 30^\circ)$  
+  $\implies \mathbf I_2 = 6\angle -30^\circ\ \mathrm A$
 
 **Paso 2: Descomponer a forma rectangular para sumar:**
 $$
@@ -1143,12 +1145,17 @@ $$
 
 **Paso 3: Suma fasorial $\mathbf I_T = \mathbf I_1 + \mathbf I_2$:**
 $$
-\mathbf I_T = (3.4641 + 5.1962) + j(2.0000 - 3.0000) = 8.6603 - j1.0000\ \mathrm A
+\mathbf I_T = (3.4641 + 5.1962) + j(2.0000 - 3.0000)
+$$
+$$
+\mathbf I_T = 8.6603 - j1.0000\ \mathrm A
 $$
 
 **Paso 4: Conversión a polar y retorno al tiempo:**
+
 - Módulo: $|\mathbf I_T| = \sqrt{8.6603^2 + (-1)^2} = \sqrt{76} \approx 8.72\ \mathrm A$
 - Ángulo (Cuadrante IV): $\theta = \arctan\left(\frac{-1}{8.6603}\right) \approx -6.59^\circ$
+
 $$
 \mathbf I_T \approx 8.72\angle -6.59^\circ\ \mathrm A
 $$
@@ -1184,7 +1191,7 @@ Expresar el resultado en forma rectangular y polar.
 
 **Paso 1: Multiplicación del numerador ($j^2 = -1$):**
 $$
-(4+j3)(2-j4) = 8 - j16 + j6 - j^2(12) = (8+12) - j10 = 20 - j10
+(4+j3)(2-j4) = 8 - j16 + j6 - j^2(12) = 20 - j10
 $$
 
 **Paso 2: División multiplicando por el conjugado $(-1 - j2)$:**
@@ -1200,15 +1207,17 @@ $$
 \mathbf Z_{\text{interior}} = (-8 - j6) + (3.5355 - j3.5355) = -4.4645 - j9.5355
 $$
 
-**Paso 4: Aplicar el operador conjugado $(\ )^*$:**
+**Paso 4: Aplicar el operador conjugado $(\ )^*$:**  
 Cambiamos el signo de la parte imaginaria:
 $$
 \boxed{\mathbf X = -4.4645 + j9.5355}
 $$
 
 **Paso 5: Conversión a forma polar (Cuadrante II, $x<0, y>0$):**
+
 - Módulo: $|\mathbf X| = \sqrt{(-4.4645)^2 + (9.5355)^2} \approx 10.529$
-- Ángulo: $\theta = 180^\circ - \arctan\left(\frac{9.5355}{4.4645}\right) = 180^\circ - 64.91^\circ \approx +115.09^\circ$
+- Ángulo: $\theta = 180^\circ - \arctan\left(\frac{9.5355}{4.4645}\right) \approx +115.09^\circ$
+
 $$
 \boxed{\mathbf X \approx 10.529\angle 115.09^\circ}
 $$
@@ -1258,15 +1267,20 @@ $$
 
 **Paso 3: División por el conjugado $(30 - j5)$:**
 $$
-Z_{eq} = \frac{350 + j200}{30 + j5} \cdot \frac{30 - j5}{30 - j5} = \frac{11500 + j4250}{900 + 25} = \frac{11500 + j4250}{925}
+Z_{eq} = \frac{350 + j200}{30 + j5} \cdot \frac{30 - j5}{30 - j5} = \frac{11500 + j4250}{900 + 25}
+$$
+$$
+Z_{eq} = \frac{11500 + j4250}{925}
 $$
 $$
 \boxed{Z_{eq} \approx 12.43 + j4.59\ \Omega}
 $$
 
 **Paso 4: Conversión a forma polar:**
+
 - Módulo: $|Z_{eq}| = \sqrt{12.43^2 + 4.59^2} \approx 13.25\ \Omega$
 - Ángulo: $\theta = \arctan\left(\frac{4.59}{12.43}\right) \approx +20.28^\circ$
+
 $$
 \boxed{Z_{eq} \approx 13.25\angle 20.28^\circ\ \Omega}
 $$
@@ -1311,22 +1325,24 @@ Los componentes pasivos son:
 ::: {.card .p-3 .h-100 style="border-left: 4px solid #10b981; background: #f8fafc;"}
 ##### 💡 Desarrollo y Solución
 
-**Paso 1: Frecuencia angular e impedancias:**
+**Paso 1: Frecuencia angular e impedancias:**  
 De la fuente, $\omega = 200\ \mathrm{rad/s}$ y $\mathbf V = 100\angle 10^\circ\ \mathrm V$.
+
 - $\mathbf Z_R = 4\ \Omega$
 - $\mathbf Z_L = j\omega L = j(200)(0.025) = j5\ \Omega$
-- $\mathbf Z_C = \frac{1}{j\omega C} = \frac{-j}{(200)(500\times 10^{-6})} = \frac{-j}{0.1} = -j10\ \Omega$
+- $\mathbf Z_C = \frac{1}{j\omega C} = \frac{-j}{(200)(500\times 10^{-6})} = -j10\ \Omega$
 
 **Impedancia equivalente total:**
 $$
 \mathbf Z_{eq} = 4 + j5 - j10 = 4 - j5\ \Omega
 $$
+
 En forma polar:
+- $|\mathbf Z_{eq}| = \sqrt{4^2 + (-5)^2} = \sqrt{41} \approx 6.403\ \Omega$
+- $\theta_Z = \arctan\left(\frac{-5}{4}\right) \approx -51.34^\circ$
+
 $$
-|\mathbf Z_{eq}| = \sqrt{4^2 + (-5)^2} = \sqrt{41} \approx 6.403\ \Omega
-$$
-$$
-\theta_Z = \arctan\left(\frac{-5}{4}\right) \approx -51.34^\circ \implies \boxed{\mathbf Z_{eq} = 6.403\angle -51.34^\circ\ \Omega}
+\boxed{\mathbf Z_{eq} = 6.403\angle -51.34^\circ\ \Omega}
 $$
 
 **Paso 2: Corriente en el circuito (Ley de Ohm fasorial):**
@@ -1335,6 +1351,7 @@ $$
 $$
 
 **Paso 3: Caídas de tensión en $L$ y $C$:**
+
 - Tensión en el inductor:
   $$
   \mathbf V_L = \mathbf I \cdot \mathbf Z_L = (15.62\angle 61.34^\circ)(5\angle 90^\circ) = \boxed{78.10\angle 151.34^\circ\ \mathrm V}
@@ -1380,17 +1397,15 @@ Una fuente de corriente sinusoidal $\mathbf I_s = 5\angle 0^\circ\ \mathrm A$ al
 $$
 \mathbf Z_A + \mathbf Z_B = (6 + 12) + j(8 - 16) = 18 - j8\ \Omega
 $$
+
 En forma polar:
-$$
-|\mathbf Z_A + \mathbf Z_B| = \sqrt{18^2 + (-8)^2} = \sqrt{388} \approx 19.70\ \Omega
-$$
-$$
-\theta_{\text{suma}} = \arctan\left(\frac{-8}{18}\right) \approx -23.96^\circ \implies \mathbf Z_A + \mathbf Z_B \approx 19.70\angle -23.96^\circ\ \Omega
-$$
+- $|\mathbf Z_A + \mathbf Z_B| = \sqrt{18^2 + (-8)^2} = \sqrt{388} \approx 19.70\ \Omega$
+- $\theta_{\text{suma}} = \arctan\left(\frac{-8}{18}\right) \approx -23.96^\circ \implies \mathbf Z_A + \mathbf Z_B \approx 19.70\angle -23.96^\circ\ \Omega$
 
 **Paso 2: Formas polares del numerador:**
+
 - $\mathbf I_s = 5\angle 0^\circ\ \mathrm A$
-- $\mathbf Z_B = 12 - j16\ \Omega = \sqrt{12^2 + (-16)^2}\angle\arctan(-16/12) = 20\angle -53.13^\circ\ \Omega$
+- $\mathbf Z_B = 12 - j16\ \Omega = 20\angle -53.13^\circ\ \Omega$
 
 **Paso 3: Aplicación del divisor de corriente:**
 $$
@@ -1674,109 +1689,199 @@ Primero identifica mentalmente el cuadrante y estima el resultado. Después util
 # La cadena causal completa
 
 ::: {.callout-note style="border-left: 5px solid #0284c7;"}
-### ⚡ El orden no es arbitrario
+### ⚡ El orden no es arbitrario: Flujo Secuencial Obligatorio
 
-El estudiante debe poder reconstruir esta cadena:
+Para resolver cualquier problema en régimen sinusoidal permanente sin perder el sentido físico, reconstruye siempre la siguiente cadena causal:
 
-$$
-\boxed{
-\begin{array}{c}
-v(t)\\
-\downarrow\\
-V_m,\omega,\phi\\
-\downarrow\\
-V_m\cos(\omega t+\phi)\\
-\downarrow\\
-\mathbf V=V\angle\phi\\
-\downarrow\\
-\mathbf Z=R+jX\\
-\downarrow\\
-\mathbf I=\mathbf V/\mathbf Z\\
-\downarrow\\
-\text{tensiones y corrientes}\\
-\downarrow\\
-\text{interpretación física}
-\end{array}
-}
-$$
+```{=html}
+<div class="causal-flow-wrapper">
 
-Esta es la competencia que debe quedar consolidada antes de avanzar hacia potencia en CA.
+  <div class="causal-node">
+    <div class="causal-node-left">
+      <span class="causal-badge">1</span>
+      <span class="causal-title">Señal temporal instantánea</span>
+    </div>
+    <span class="causal-math-pill">v(t)</span>
+  </div>
+
+  <div class="causal-connector"><i class="bi bi-arrow-down-short"></i></div>
+
+  <div class="causal-node">
+    <div class="causal-node-left">
+      <span class="causal-badge">2</span>
+      <span class="causal-title">Extracción de parámetros físicos</span>
+    </div>
+    <span class="causal-math-pill">V_m, &omega;, &phi;</span>
+  </div>
+
+  <div class="causal-connector"><i class="bi bi-arrow-down-short"></i></div>
+
+  <div class="causal-node">
+    <div class="causal-node-left">
+      <span class="causal-badge">3</span>
+      <span class="causal-title">Forma coseno positiva canónica</span>
+    </div>
+    <span class="causal-math-pill">V_m \cos(&omega;t + &phi;)</span>
+  </div>
+
+  <div class="causal-connector"><i class="bi bi-arrow-down-short"></i></div>
+
+  <div class="causal-node">
+    <div class="causal-node-left">
+      <span class="causal-badge">4</span>
+      <span class="causal-title">Fasor en coordenadas polares</span>
+    </div>
+    <span class="causal-math-pill"><b>V</b> = V &ang; &phi;</span>
+  </div>
+
+  <div class="causal-connector"><i class="bi bi-arrow-down-short"></i></div>
+
+  <div class="causal-node">
+    <div class="causal-node-left">
+      <span class="causal-badge">5</span>
+      <span class="causal-title">Modelado de impedancias</span>
+    </div>
+    <span class="causal-math-pill"><b>Z</b> = R + jX</span>
+  </div>
+
+  <div class="causal-connector"><i class="bi bi-arrow-down-short"></i></div>
+
+  <div class="causal-node">
+    <div class="causal-node-left">
+      <span class="causal-badge">6</span>
+      <span class="causal-title">Ley de Ohm y leyes de Kirchhoff</span>
+    </div>
+    <span class="causal-math-pill"><b>I</b> = <b>V</b> / <b>Z</b></span>
+  </div>
+
+  <div class="causal-connector"><i class="bi bi-arrow-down-short"></i></div>
+
+  <div class="causal-node">
+    <div class="causal-node-left">
+      <span class="causal-badge">7</span>
+      <span class="causal-title">Tensiones y corrientes de rama</span>
+    </div>
+    <span class="causal-math-pill"><b>V</b><sub>k</sub>, <b>I</b><sub>k</sub></span>
+  </div>
+
+  <div class="causal-connector"><i class="bi bi-arrow-down-short"></i></div>
+
+  <div class="causal-node" style="border-color: #10b981; background: #f0fdf4;">
+    <div class="causal-node-left">
+      <span class="causal-badge" style="background: #10b981;">8</span>
+      <span class="causal-title fw-bold text-success">Interpretación física y retorno al tiempo</span>
+    </div>
+    <span class="causal-math-pill" style="border-color: #a7f3d0; background: #ffffff; color: #065f46;">i(t), P, Q, desfase</span>
+  </div>
+
+</div>
+```
+
+Esta es la competencia analítica que debe quedar consolidada antes de avanzar hacia el análisis de potencia en corriente alterna.
 :::
 
 ---
 
 # ¿Qué sigue después de Fasores?
 
-Fasores es la **puerta de entrada**, no el final del análisis de CA.
+El análisis fasorial es la **puerta de entrada fundamental**, no el final del estudio de CA. A continuación se presenta la **hoja de ruta progresiva** para dominar los circuitos eléctricos y sistemas de potencia:
 
-La progresión natural es:
+```{=html}
+<div class="roadmap-grid">
 
-$$
-\boxed{\text{Fasores}}
-$$
+  <div class="roadmap-card active">
+    <span class="roadmap-tag active-tag">Nivel Actual (Completado)</span>
+    <h4><i class="bi bi-compass text-primary"></i> 1. Fasores</h4>
+    <p>Transformación temporal-frecuencial, rotación en t=0, valores pico vs. RMS y álgebra en el plano de Gauss.</p>
+    <div class="roadmap-footer">
+      <span>Dominio base</span>
+      <span class="badge bg-primary">Completado ✅</span>
+    </div>
+  </div>
 
-↓
+  <div class="roadmap-card">
+    <span class="roadmap-tag next-tag">Nivel 2</span>
+    <h4><i class="bi bi-layers text-secondary"></i> 2. Impedancias</h4>
+    <p>Reactancias inductivas (+j&omega;L), capacitivas (-j/&omega;C) y combinaciones serie/paralelo.</p>
+    <div class="roadmap-footer">
+      <span>Modelado pasivo</span>
+      <span class="text-muted">Consolidado</span>
+    </div>
+  </div>
 
-$$
-\boxed{\text{Impedancias}}
-$$
+  <div class="roadmap-card">
+    <span class="roadmap-tag next-tag">Nivel 3</span>
+    <h4><i class="bi bi-cpu text-secondary"></i> 3. Redes de CA</h4>
+    <p>Métodos sistemáticos de análisis: Mallas, Nodos, Teoremas de Thévenin, Norton y Máxima Transferencia.</p>
+    <div class="roadmap-footer">
+      <span>Topología de redes</span>
+      <span class="text-muted">Siguiente paso</span>
+    </div>
+  </div>
 
-↓
+  <div class="roadmap-card featured">
+    <span class="roadmap-tag featured-tag">🚀 Módulo Recomendado</span>
+    <h4><i class="bi bi-lightning-charge-fill text-success"></i> 4. Potencia Compleja</h4>
+    <p>Potencia activa P (W), reactiva Q (VAR), aparente <b>S</b> (VA) y el triángulo de potencias <b>S</b> = <b>V</b><b>I</b><sup>*</sup>.</p>
+    <div class="roadmap-footer">
+      <a href="potencia_ca.qmd" class="btn btn-sm btn-success w-100 py-1" style="font-size: 0.8rem;">
+        Ir a Potencia CA <i class="bi bi-arrow-right ms-1"></i>
+      </a>
+    </div>
+  </div>
 
-$$
-\boxed{\text{Circuitos CA}}
-$$
+  <div class="roadmap-card">
+    <span class="roadmap-tag next-tag">Nivel 5</span>
+    <h4><i class="bi bi-speedometer2 text-secondary"></i> 5. Factor de Potencia</h4>
+    <p>Ángulo de desfase cos(&phi;), eficiencia de transporte, penalizaciones de red y pérdidas por efecto Joule.</p>
+    <div class="roadmap-footer">
+      <span>Eficiencia</span>
+      <span class="text-muted">Próximamente</span>
+    </div>
+  </div>
 
-↓
+  <div class="roadmap-card">
+    <span class="roadmap-tag next-tag">Nivel 6</span>
+    <h4><i class="bi bi-battery-charging text-secondary"></i> 6. Compensación FP</h4>
+    <p>Dimensionamiento de bancos de condensadores para corrección de reactivos en instalaciones industriales.</p>
+    <div class="roadmap-footer">
+      <span>Optimización</span>
+      <span class="text-muted">Próximamente</span>
+    </div>
+  </div>
 
-$$
-\boxed{\text{Potencia compleja}}
-$$
+  <div class="roadmap-card">
+    <span class="roadmap-tag next-tag">Nivel 7</span>
+    <h4><i class="bi bi-diagram-3 text-secondary"></i> 7. Sistemas Trifásicos</h4>
+    <p>Generación y distribución polifásica: conexiones Estrella (Y) y Triángulo (&Delta;), secuencia de fases y cargas desbalanceadas.</p>
+    <div class="roadmap-footer">
+      <span>Sistemas Industriales</span>
+      <span class="text-muted">Avanzado</span>
+    </div>
+  </div>
 
-↓
-
-$$
-\boxed{\text{Factor de potencia}}
-$$
-
-↓
-
-$$
-\boxed{\text{Corrección del factor de potencia}}
-$$
-
-↓
-
-$$
-\boxed{\text{Sistemas trifásicos}}
-$$
+</div>
+```
 
 ::: {.callout-tip}
-### 🚀 Siguiente módulo
+### 🚀 Siguiente módulo: Potencia en CA
 
-Una vez dominada esta guía, el siguiente paso es **Potencia en CA**:
-
-$$
-\boxed{
-\mathbf S=\mathbf V\mathbf I^*
-}
-$$
-
-y la relación:
+Una vez dominada esta guía, el siguiente paso es **Potencia en Régimen Permanente**:
 
 $$
 \boxed{
-\mathbf S=P+jQ
+\mathbf S = \mathbf V \mathbf I^* = P + jQ = S\angle\theta
 }
 $$
 
-Aquí los fasores dejan de ser solamente una herramienta de cálculo y comienzan a explicar **potencia activa, reactiva, aparente y factor de potencia**.
+Aquí los fasores dejan de ser únicamente una herramienta de cálculo matemático y comienzan a explicar **potencia activa (trabajo útil), potencia reactiva (campos electromagnéticos), potencia aparente y factor de potencia**.
 :::
 
 ---
 
-## Recursos
+## Recursos y Enlaces Rápidos
 
 - [⚡ Continuar al módulo de Potencia en CA](potencia_ca.qmd){.btn .btn-primary}
-- [📥 Descargar script Python de cálculo fasorial](../descargas/calculo_fasores.py){.btn .btn-outline-primary}
+- [📥 Descargar script Python de cálculo fasorial (`calculo_fasores.py`)](../descargas/calculo_fasores.py){.btn .btn-outline-primary}
 - [📖 Volver al índice de Circuitos Eléctricos](index.qmd){.btn .btn-outline-secondary}
+

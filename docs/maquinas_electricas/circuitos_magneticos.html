@@ -78,8 +78,22 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -145,7 +159,7 @@ window.Quarto = {
  <span class="dropdown-text">⚡ Ver Todo (Módulo Circuitos)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../circuitos_electricos/teoria_fasores.html">
+    <a class="dropdown-item" href="../circuitos_electricos/teoria_fasores_V3.html">
  <span class="dropdown-text">Guía Práctica de Análisis Fasorial</span></a>
   </li>  
         <li>
@@ -259,7 +273,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Circuitos Magnéticos y Curva de Magnetización <span class="math inline">\(B-H\)</span></h1>
+<h1 class="title">Circuitos Magnéticos y Curva de Magnetización <span class="math inline">B-H</span></h1>
 <p class="subtitle lead">Leyes de Ampère y Hopkinson, cálculo de reluctancia, entrehierros y análisis con saturación ferromagnética</p>
   <div class="quarto-categories">
     <div class="quarto-category">Circuitos Magnéticos</div>
@@ -311,7 +325,7 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>El cálculo preciso de la fuerza magnetomotriz (<span class="math inline">\(\mathcal{F}\)</span>) o del flujo magnético (<span class="math inline">\(\Phi\)</span>) en núcleos de acero al silicio requiere considerar la no-linealidad de la permeabilidad <span class="math inline">\(\mu(B)\)</span>. Esta memoria resume las ecuaciones fundamentales y la analogía con circuitos eléctricos.</p>
+<p>El cálculo preciso de la fuerza magnetomotriz (<span class="math inline">\mathcal{F}</span>) o del flujo magnético (<span class="math inline">\Phi</span>) en núcleos de acero al silicio requiere considerar la no-linealidad de la permeabilidad <span class="math inline">\mu(B)</span>. Esta memoria resume las ecuaciones fundamentales y la analogía con circuitos eléctricos.</p>
 </div>
 </div>
 <section id="analogía-entre-circuitos-eléctricos-y-magnéticos" class="level2" data-number="1">
@@ -333,33 +347,33 @@ window.Quarto = {
 <tbody>
 <tr class="odd">
 <td style="text-align: left;"><strong>Fuerza impulsora</strong></td>
-<td style="text-align: left;">Tensión / FEM: <span class="math inline">\(E\)</span> <span class="math inline">\([\text{V}]\)</span></td>
-<td style="text-align: left;">Fuerza Magnetomotriz: <span class="math inline">\(\mathcal{F} = N I\)</span> <span class="math inline">\([\text{A-v}]\)</span></td>
+<td style="text-align: left;">Tensión / FEM: <span class="math inline">E</span> <span class="math inline">[\text{V}]</span></td>
+<td style="text-align: left;">Fuerza Magnetomotriz: <span class="math inline">\mathcal{F} = N I</span> <span class="math inline">[\text{A-v}]</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>Flujo de campo</strong></td>
-<td style="text-align: left;">Corriente eléctrica: <span class="math inline">\(I\)</span> <span class="math inline">\([\text{A}]\)</span></td>
-<td style="text-align: left;">Flujo magnético: <span class="math inline">\(\Phi\)</span> <span class="math inline">\([\text{Wb}]\)</span></td>
+<td style="text-align: left;">Corriente eléctrica: <span class="math inline">I</span> <span class="math inline">[\text{A}]</span></td>
+<td style="text-align: left;">Flujo magnético: <span class="math inline">\Phi</span> <span class="math inline">[\text{Wb}]</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><strong>Oposición al paso</strong></td>
-<td style="text-align: left;">Resistencia: <span class="math inline">\(R = \frac{\ell}{\sigma A}\)</span> <span class="math inline">\([\Omega]\)</span></td>
-<td style="text-align: left;">Reluctancia: <span class="math inline">\(\mathcal{R} = \frac{\ell}{\mu A}\)</span> <span class="math inline">\([\text{A-v/Wb}]\)</span></td>
+<td style="text-align: left;">Resistencia: <span class="math inline">R = \frac{\ell}{\sigma A}</span> <span class="math inline">[\Omega]</span></td>
+<td style="text-align: left;">Reluctancia: <span class="math inline">\mathcal{R} = \frac{\ell}{\mu A}</span> <span class="math inline">[\text{A-v/Wb}]</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>Densidad de flujo</strong></td>
-<td style="text-align: left;">Densidad de corriente: <span class="math inline">\(J = \frac{I}{A}\)</span></td>
-<td style="text-align: left;">Densidad de flujo: <span class="math inline">\(B = \frac{\Phi}{A}\)</span> <span class="math inline">\([\text{T}]\)</span></td>
+<td style="text-align: left;">Densidad de corriente: <span class="math inline">J = \frac{I}{A}</span></td>
+<td style="text-align: left;">Densidad de flujo: <span class="math inline">B = \frac{\Phi}{A}</span> <span class="math inline">[\text{T}]</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><strong>Intensidad de campo</strong></td>
-<td style="text-align: left;">Campo eléctrico: <span class="math inline">\(E = \frac{V}{\ell}\)</span></td>
-<td style="text-align: left;">Campo magnético: <span class="math inline">\(H = \frac{\mathcal{F}}{\ell}\)</span> <span class="math inline">\([\text{A/m}]\)</span></td>
+<td style="text-align: left;">Campo eléctrico: <span class="math inline">E = \frac{V}{\ell}</span></td>
+<td style="text-align: left;">Campo magnético: <span class="math inline">H = \frac{\mathcal{F}}{\ell}</span> <span class="math inline">[\text{A/m}]</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>Ley constitutiva</strong></td>
-<td style="text-align: left;">Ley de Ohm: <span class="math inline">\(J = \sigma E\)</span></td>
-<td style="text-align: left;">Relación magnética: <span class="math inline">\(B = \mu H = \mu_0 \mu_r H\)</span></td>
+<td style="text-align: left;">Ley de Ohm: <span class="math inline">J = \sigma E</span></td>
+<td style="text-align: left;">Relación magnética: <span class="math inline">B = \mu H = \mu_0 \mu_r H</span></td>
 </tr>
 </tbody>
 </table>
@@ -367,16 +381,16 @@ window.Quarto = {
 </section>
 <section id="ley-de-ampère-y-conservación-de-fmm" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="ley-de-ampère-y-conservación-de-fmm"><span class="header-section-number">2</span> 2. Ley de Ampère y Conservación de FMM</h2>
-<p>Para una trayectoria cerrada media <span class="math inline">\(\ell_c\)</span> que atraviesa diferentes tramos de material y un entrehierro (<span class="math inline">\(\ell_g\)</span>):</p>
-<p><span class="math display">\[
+<p>Para una trayectoria cerrada media <span class="math inline">\ell_c</span> que atraviesa diferentes tramos de material y un entrehierro (<span class="math inline">\ell_g</span>):</p>
+<p><span class="math display">
 \oint \mathbf{H} \cdot d\mathbf{\ell} = \sum N I = \mathcal{F}_{\text{total}}
-\]</span></p>
-<p><span class="math display">\[
+</span></p>
+<p><span class="math display">
 \mathcal{F}_{\text{total}} = \sum_{k=1}^{n} H_k \ell_k + H_g \ell_g
-\]</span></p>
-<p>Donde en el entrehierro de aire (<span class="math inline">\(\mu_r = 1\)</span>): <span class="math display">\[
+</span></p>
+<p>Donde en el entrehierro de aire (<span class="math inline">\mu_r = 1</span>): <span class="math display">
 H_g = \frac{B_g}{\mu_0}, \quad \mu_0 = 4\pi \times 10^{-7} \ \text{H/m}
-\]</span></p>
+</span></p>
 
 
 </section>

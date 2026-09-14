@@ -78,8 +78,22 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -145,7 +159,7 @@ window.Quarto = {
  <span class="dropdown-text">⚡ Ver Todo (Módulo Circuitos)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../circuitos_electricos/teoria_fasores.html">
+    <a class="dropdown-item" href="../circuitos_electricos/teoria_fasores_V3.html">
  <span class="dropdown-text">Guía Práctica de Análisis Fasorial</span></a>
   </li>  
         <li>
@@ -322,16 +336,16 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Este informe técnico establece el marco metodológico para el cálculo analítico y la verificación de la caída de tensión porcentual (<span class="math inline">\(\Delta V\%\)</span>) en alimentadores trifásicos y monofásicos de baja tensión. Se evalúa el impacto de la impedancia en corriente alterna (resistencia efectiva <span class="math inline">\(R\)</span> y reactancia inductiva <span class="math inline">\(X\)</span>) sobre la regulación de tensión, asegurando el cumplimiento de los límites normativos del <strong><span class="math inline">\(3\%\)</span> en el alimentador</strong> y <strong><span class="math inline">\(5\%\)</span> total acumulado hasta la carga más crítica</strong>.</p>
+<p>Este informe técnico establece el marco metodológico para el cálculo analítico y la verificación de la caída de tensión porcentual (<span class="math inline">\Delta V\%</span>) en alimentadores trifásicos y monofásicos de baja tensión. Se evalúa el impacto de la impedancia en corriente alterna (resistencia efectiva <span class="math inline">R</span> y reactancia inductiva <span class="math inline">X</span>) sobre la regulación de tensión, asegurando el cumplimiento de los límites normativos del <strong><span class="math inline">3\%</span> en el alimentador</strong> y <strong><span class="math inline">5\%</span> total acumulado hasta la carga más crítica</strong>.</p>
 </div>
 </div>
 <section id="justificación-técnica-y-criterios-normativos" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="justificación-técnica-y-criterios-normativos"><span class="header-section-number">1</span> 1. Justificación Técnica y Criterios Normativos</h2>
 <p>El dimensionamiento de alimentadores en sistemas de distribución de energía no solo debe satisfacer el criterio de <strong>capacidad de corriente (ampacidad)</strong> por temperatura, sino también el criterio de <strong>regulación de tensión</strong>. Una caída excesiva produce:</p>
 <ol type="1">
-<li><strong>Sobrecalentamiento y reducción de eficiencia:</strong> Aumento no deseado de pérdidas Joule en los conductores (<span class="math inline">\(P_{loss} = 3 I^2 R\)</span>).</li>
-<li><strong>Degradación del par en motores eléctricos:</strong> El par electromagnético de un motor de inducción disminuye proporcionalmente al cuadrado de la tensión aplicada (<span class="math inline">\(T \propto V^2\)</span>).</li>
-<li><strong>Inestabilidad en equipos electrónicos sensibles:</strong> Variaciones de tensión fuera del estándar ANSI C84.1 (<span class="math inline">\(+5\%, -10\%\)</span>) generan disparos erráticos y desconexión de cargas críticas.</li>
+<li><strong>Sobrecalentamiento y reducción de eficiencia:</strong> Aumento no deseado de pérdidas Joule en los conductores (<span class="math inline">P_{loss} = 3 I^2 R</span>).</li>
+<li><strong>Degradación del par en motores eléctricos:</strong> El par electromagnético de un motor de inducción disminuye proporcionalmente al cuadrado de la tensión aplicada (<span class="math inline">T \propto V^2</span>).</li>
+<li><strong>Inestabilidad en equipos electrónicos sensibles:</strong> Variaciones de tensión fuera del estándar ANSI C84.1 (<span class="math inline">+5\%, -10\%</span>) generan disparos erráticos y desconexión de cargas críticas.</li>
 </ol>
 <section id="límites-de-regulación-normativa" class="level3" data-number="1.1">
 <h3 data-number="1.1" class="anchored" data-anchor-id="límites-de-regulación-normativa"><span class="header-section-number">1.1</span> Límites de Regulación Normativa</h3>
@@ -350,24 +364,24 @@ Table&nbsp;1: Criterios normativos de regulación de tensión.
 <thead>
 <tr class="header">
 <th style="text-align: left;">Segmento del Sistema Eléctrico</th>
-<th style="text-align: center;">Caída Máxima Recomendada (<span class="math inline">\(\Delta V\%\)</span>)</th>
+<th style="text-align: center;">Caída Máxima Recomendada (<span class="math inline">\Delta V\%</span>)</th>
 <th style="text-align: left;">Referencia</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;"><strong>Alimentador Principal (Tablero General a Subtablero)</strong></td>
-<td style="text-align: center;"><span class="math inline">\(\le 3.0\%\)</span></td>
+<td style="text-align: center;"><span class="math inline">\le 3.0\%</span></td>
 <td style="text-align: left;">NEC Art. 215.2(A)(1) / NTC 2050</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>Circuito Ramal (Subtablero a Carga Final)</strong></td>
-<td style="text-align: center;"><span class="math inline">\(\le 3.0\%\)</span></td>
+<td style="text-align: center;"><span class="math inline">\le 3.0\%</span></td>
 <td style="text-align: left;">NEC Art. 210.19(A)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><strong>Caída Total Combinada (Fuente a Carga Final)</strong></td>
-<td style="text-align: center;"><span class="math inline">\(\le 5.0\%\)</span></td>
+<td style="text-align: center;"><span class="math inline">\le 5.0\%</span></td>
 <td style="text-align: left;">Estándar de Calidad IEEE Std 141</td>
 </tr>
 </tbody>
@@ -380,26 +394,26 @@ Table&nbsp;1: Criterios normativos de regulación de tensión.
 </section>
 <section id="formulación-matemática-de-impedancia-compleja" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="formulación-matemática-de-impedancia-compleja"><span class="header-section-number">2</span> 2. Formulación Matemática de Impedancia Compleja</h2>
-<p>La caída de tensión fasorial en un alimentador con impedancia <span class="math inline">\(\mathbf{Z} = R + jX\)</span> alimentando una carga con factor de potencia <span class="math inline">\(\cos\theta\)</span> se modela analíticamente considerando la proyección del fasor de caída sobre la tensión de referencia.</p>
+<p>La caída de tensión fasorial en un alimentador con impedancia <span class="math inline">\mathbf{Z} = R + jX</span> alimentando una carga con factor de potencia <span class="math inline">\cos\theta</span> se modela analíticamente considerando la proyección del fasor de caída sobre la tensión de referencia.</p>
 <section id="sistema-trifásico-equilibrado-3-hilos-4-hilos" class="level3" data-number="2.1">
 <h3 data-number="2.1" class="anchored" data-anchor-id="sistema-trifásico-equilibrado-3-hilos-4-hilos"><span class="header-section-number">2.1</span> Sistema Trifásico Equilibrado (3 Hilos / 4 Hilos)</h3>
-<p>Para un sistema trifásico con tensión nominal línea a línea <span class="math inline">\(V_{LL}\)</span>:</p>
-<p><span class="math display">\[
+<p>Para un sistema trifásico con tensión nominal línea a línea <span class="math inline">V_{LL}</span>:</p>
+<p><span class="math display">
 \Delta V_{3\phi} = \sqrt{3} \cdot I \cdot L \cdot \left( R_{CA} \cos\theta + X_L \sin\theta \right)
-\]</span></p>
+</span></p>
 <p>Donde:</p>
 <ul>
-<li><span class="math inline">\(I\)</span>: Corriente nominal de diseño en amperios (<span class="math inline">\(\text{A}\)</span>).</li>
-<li><span class="math inline">\(L\)</span>: Longitud del alimentador en kilómetros (<span class="math inline">\(\text{km}\)</span>).</li>
-<li><span class="math inline">\(R_{CA}\)</span>: Resistencia efectiva en CA a la temperatura de operación (<span class="math inline">\(75^\circ\text{C}\)</span>) en <span class="math inline">\(\Omega/\text{km}\)</span>.</li>
-<li><span class="math inline">\(X_L\)</span>: Reactancia inductiva del conductor en ducto en <span class="math inline">\(\Omega/\text{km}\)</span>.</li>
-<li><span class="math inline">\(\cos\theta\)</span>: Factor de potencia en atraso de la carga instalada.</li>
-<li><span class="math inline">\(\sin\theta = \sqrt{1 - \cos^2\theta}\)</span>: Factor de reactancia.</li>
+<li><span class="math inline">I</span>: Corriente nominal de diseño en amperios (<span class="math inline">\text{A}</span>).</li>
+<li><span class="math inline">L</span>: Longitud del alimentador en kilómetros (<span class="math inline">\text{km}</span>).</li>
+<li><span class="math inline">R_{CA}</span>: Resistencia efectiva en CA a la temperatura de operación (<span class="math inline">75^\circ\text{C}</span>) en <span class="math inline">\Omega/\text{km}</span>.</li>
+<li><span class="math inline">X_L</span>: Reactancia inductiva del conductor en ducto en <span class="math inline">\Omega/\text{km}</span>.</li>
+<li><span class="math inline">\cos\theta</span>: Factor de potencia en atraso de la carga instalada.</li>
+<li><span class="math inline">\sin\theta = \sqrt{1 - \cos^2\theta}</span>: Factor de reactancia.</li>
 </ul>
 <p>La caída de tensión porcentual normalizada se calcula como:</p>
-<p><span class="math display">\[
+<p><span class="math display">
 \Delta V\% = \left( \frac{\Delta V_{3\phi}}{V_{LL}} \right) \times 100\%
-\]</span></p>
+</span></p>
 <hr>
 </section>
 </section>
@@ -407,11 +421,11 @@ Table&nbsp;1: Criterios normativos de regulación de tensión.
 <h2 data-number="3" class="anchored" data-anchor-id="caso-de-estudio-práctico"><span class="header-section-number">3</span> 3. Caso de Estudio Práctico</h2>
 <p>Se diseña un alimentador trifásico con las siguientes condiciones de servicio:</p>
 <ul>
-<li><strong>Tensión nominal de línea:</strong> <span class="math inline">\(V_{LL} = 480\text{ V}\)</span> (<span class="math inline">\(3\phi\)</span>, <span class="math inline">\(60\text{ Hz}\)</span>).</li>
-<li><strong>Corriente de carga máxima:</strong> <span class="math inline">\(I = 85\text{ A}\)</span>.</li>
-<li><strong>Longitud de trayectoria:</strong> <span class="math inline">\(L = 120\text{ m} = 0.12\text{ km}\)</span>.</li>
-<li><strong>Factor de potencia:</strong> <span class="math inline">\(\cos\theta = 0.88\)</span> en atraso (<span class="math inline">\(\sin\theta = 0.4749\)</span>).</li>
-<li><strong>Tipo de conductor:</strong> Cobre electrolítico clase B, aislamiento THHN/THWN-2 (<span class="math inline">\(75^\circ\text{C}\)</span>), canalización en tubería conduit de PVC.</li>
+<li><strong>Tensión nominal de línea:</strong> <span class="math inline">V_{LL} = 480\text{ V}</span> (<span class="math inline">3\phi</span>, <span class="math inline">60\text{ Hz}</span>).</li>
+<li><strong>Corriente de carga máxima:</strong> <span class="math inline">I = 85\text{ A}</span>.</li>
+<li><strong>Longitud de trayectoria:</strong> <span class="math inline">L = 120\text{ m} = 0.12\text{ km}</span>.</li>
+<li><strong>Factor de potencia:</strong> <span class="math inline">\cos\theta = 0.88</span> en atraso (<span class="math inline">\sin\theta = 0.4749</span>).</li>
+<li><strong>Tipo de conductor:</strong> Cobre electrolítico clase B, aislamiento THHN/THWN-2 (<span class="math inline">75^\circ\text{C}</span>), canalización en tubería conduit de PVC.</li>
 </ul>
 <section id="análisis-comparativo-de-calibres" class="level3" data-number="3.1">
 <h3 data-number="3.1" class="anchored" data-anchor-id="análisis-comparativo-de-calibres"><span class="header-section-number">3.1</span> Análisis Comparativo de Calibres</h3>
@@ -434,44 +448,44 @@ Table&nbsp;2: Comparación de regulación de tensión para alimentador trifásic
 <thead>
 <tr class="header">
 <th style="text-align: left;">Calibre AWG / kcmil</th>
-<th style="text-align: center;"><span class="math inline">\(R_{CA}\)</span> (<span class="math inline">\(\Omega/\text{km}\)</span>)</th>
-<th style="text-align: center;"><span class="math inline">\(X_L\)</span> (<span class="math inline">\(\Omega/\text{km}\)</span>)</th>
-<th style="text-align: center;">Caída <span class="math inline">\(\Delta V\)</span> (<span class="math inline">\(\text{V}\)</span>)</th>
-<th style="text-align: center;">Regulación <span class="math inline">\(\Delta V\%\)</span></th>
+<th style="text-align: center;"><span class="math inline">R_{CA}</span> (<span class="math inline">\Omega/\text{km}</span>)</th>
+<th style="text-align: center;"><span class="math inline">X_L</span> (<span class="math inline">\Omega/\text{km}</span>)</th>
+<th style="text-align: center;">Caída <span class="math inline">\Delta V</span> (<span class="math inline">\text{V}</span>)</th>
+<th style="text-align: center;">Regulación <span class="math inline">\Delta V\%</span></th>
 <th style="text-align: center;">Cumplimiento Normativo</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;"><strong>#4 AWG</strong></td>
-<td style="text-align: center;"><span class="math inline">\(1.050\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(0.177\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(17.84\text{ V}\)</span></td>
-<td style="text-align: center;"><strong><span class="math inline">\(3.72\%\)</span></strong></td>
+<td style="text-align: center;"><span class="math inline">1.050</span></td>
+<td style="text-align: center;"><span class="math inline">0.177</span></td>
+<td style="text-align: center;"><span class="math inline">17.84\text{ V}</span></td>
+<td style="text-align: center;"><strong><span class="math inline">3.72\%</span></strong></td>
 <td style="text-align: center;"><span class="badge-fail">✕ No Cumple (&gt; 3%)</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>#2 AWG</strong></td>
-<td style="text-align: center;"><span class="math inline">\(0.656\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(0.167\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(11.60\text{ V}\)</span></td>
-<td style="text-align: center;"><strong><span class="math inline">\(2.42\%\)</span></strong></td>
+<td style="text-align: center;"><span class="math inline">0.656</span></td>
+<td style="text-align: center;"><span class="math inline">0.167</span></td>
+<td style="text-align: center;"><span class="math inline">11.60\text{ V}</span></td>
+<td style="text-align: center;"><strong><span class="math inline">2.42\%</span></strong></td>
 <td style="text-align: center;"><span class="badge-pass">✓ Cumple (≤ 3%)</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><strong>#1/0 AWG</strong></td>
-<td style="text-align: center;"><span class="math inline">\(0.413\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(0.161\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(7.74\text{ V}\)</span></td>
-<td style="text-align: center;"><strong><span class="math inline">\(1.61\%\)</span></strong></td>
+<td style="text-align: center;"><span class="math inline">0.413</span></td>
+<td style="text-align: center;"><span class="math inline">0.161</span></td>
+<td style="text-align: center;"><span class="math inline">7.74\text{ V}</span></td>
+<td style="text-align: center;"><strong><span class="math inline">1.61\%</span></strong></td>
 <td style="text-align: center;"><span class="badge-pass">✓ Cumple (Óptimo)</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>#2/0 AWG</strong></td>
-<td style="text-align: center;"><span class="math inline">\(0.328\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(0.157\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(6.42\text{ V}\)</span></td>
-<td style="text-align: center;"><strong><span class="math inline">\(1.34\%\)</span></strong></td>
+<td style="text-align: center;"><span class="math inline">0.328</span></td>
+<td style="text-align: center;"><span class="math inline">0.157</span></td>
+<td style="text-align: center;"><span class="math inline">6.42\text{ V}</span></td>
+<td style="text-align: center;"><strong><span class="math inline">1.34\%</span></strong></td>
 <td style="text-align: center;"><span class="badge-pass">✓ Cumple (Baja Pérdida)</span></td>
 </tr>
 </tbody>
@@ -485,8 +499,8 @@ Table&nbsp;2: Comparación de regulación de tensión para alimentador trifásic
 <section id="dictamen-técnico-y-recomendaciones" class="level2" data-number="4">
 <h2 data-number="4" class="anchored" data-anchor-id="dictamen-técnico-y-recomendaciones"><span class="header-section-number">4</span> 4. Dictamen Técnico y Recomendaciones</h2>
 <ol type="1">
-<li><strong>Selección por Criterio Técnico:</strong> El calibre mínimo aceptable es <strong>#2 AWG THHN</strong>, el cual garantiza una regulación del <strong><span class="math inline">\(2.42\%\)</span></strong>, encontrándose dentro del umbral normativo del <span class="math inline">\(3.0\%\)</span>.</li>
-<li><strong>Evaluación de Eficiencia Energética:</strong> Para régimen de carga continua (<span class="math inline">\(\ge 16\text{ h/día}\)</span>), el calibre <strong>#1/0 AWG</strong> reduce las pérdidas térmicas en los conductores en más de un <strong><span class="math inline">\(33\%\)</span></strong>, compensando el costo marginal del conductor de cobre en menos de 14 meses de operación.</li>
+<li><strong>Selección por Criterio Técnico:</strong> El calibre mínimo aceptable es <strong>#2 AWG THHN</strong>, el cual garantiza una regulación del <strong><span class="math inline">2.42\%</span></strong>, encontrándose dentro del umbral normativo del <span class="math inline">3.0\%</span>.</li>
+<li><strong>Evaluación de Eficiencia Energética:</strong> Para régimen de carga continua (<span class="math inline">\ge 16\text{ h/día}</span>), el calibre <strong>#1/0 AWG</strong> reduce las pérdidas térmicas en los conductores en más de un <strong><span class="math inline">33\%</span></strong>, compensando el costo marginal del conductor de cobre en menos de 14 meses de operación.</li>
 </ol>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">

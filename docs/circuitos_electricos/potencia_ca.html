@@ -78,8 +78,22 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -145,7 +159,7 @@ window.Quarto = {
  <span class="dropdown-text">⚡ Ver Todo (Módulo Circuitos)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../circuitos_electricos/teoria_fasores.html">
+    <a class="dropdown-item" href="../circuitos_electricos/teoria_fasores_V3.html">
  <span class="dropdown-text">Guía Práctica de Análisis Fasorial</span></a>
   </li>  
         <li>
@@ -250,7 +264,7 @@ window.Quarto = {
    
   <ul>
   <li><a href="#potencia-instantánea-y-descomposición-armónica" id="toc-potencia-instantánea-y-descomposición-armónica" class="nav-link active" data-scroll-target="#potencia-instantánea-y-descomposición-armónica"><span class="header-section-number">1</span> 1. Potencia Instantánea y Descomposición Armónica</a></li>
-  <li><a href="#potencia-compleja-mathbfs-y-triángulo-de-potencias" id="toc-potencia-compleja-mathbfs-y-triángulo-de-potencias" class="nav-link" data-scroll-target="#potencia-compleja-mathbfs-y-triángulo-de-potencias"><span class="header-section-number">2</span> 2. Potencia Compleja (<span class="math inline">\(\mathbf{S}\)</span>) y Triángulo de Potencias</a></li>
+  <li><a href="#potencia-compleja-mathbfs-y-triángulo-de-potencias" id="toc-potencia-compleja-mathbfs-y-triángulo-de-potencias" class="nav-link" data-scroll-target="#potencia-compleja-mathbfs-y-triángulo-de-potencias"><span class="header-section-number">2</span> 2. Potencia Compleja (<span class="math inline">\mathbf{S}</span>) y Triángulo de Potencias</a></li>
   <li><a href="#factor-de-potencia-y-convención-de-cargas" id="toc-factor-de-potencia-y-convención-de-cargas" class="nav-link" data-scroll-target="#factor-de-potencia-y-convención-de-cargas"><span class="header-section-number">3</span> 3. Factor de Potencia y Convención de Cargas</a></li>
   <li><a href="#corrección-del-factor-de-potencia" id="toc-corrección-del-factor-de-potencia" class="nav-link" data-scroll-target="#corrección-del-factor-de-potencia"><span class="header-section-number">4</span> 4. Corrección del Factor de Potencia</a></li>
   <li><a href="#simulador-interactivo-de-potencia-en-tiempo-real" id="toc-simulador-interactivo-de-potencia-en-tiempo-real" class="nav-link" data-scroll-target="#simulador-interactivo-de-potencia-en-tiempo-real"><span class="header-section-number">5</span> 5. Simulador Interactivo de Potencia en Tiempo Real</a></li>
@@ -323,58 +337,58 @@ window.Quarto = {
 <section id="potencia-instantánea-y-descomposición-armónica" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="potencia-instantánea-y-descomposición-armónica"><span class="header-section-number">1</span> 1. Potencia Instantánea y Descomposición Armónica</h2>
 <p>Sea una fuente de tensión senoidal aplicada a una carga pasiva:</p>
-<p><span class="math display">\[
+<p><span class="math display">
 v(t) = V_m \cos(\omega t + \theta_v)
-\]</span></p>
-<p><span class="math display">\[
+</span></p>
+<p><span class="math display">
 i(t) = I_m \cos(\omega t + \theta_i)
-\]</span></p>
-<p>La <strong>potencia instantánea</strong> absorbida por la red es el producto temporal <span class="math inline">\(p(t) = v(t) \cdot i(t)\)</span>:</p>
-<p><span class="math display">\[
+</span></p>
+<p>La <strong>potencia instantánea</strong> absorbida por la red es el producto temporal <span class="math inline">p(t) = v(t) \cdot i(t)</span>:</p>
+<p><span class="math display">
 p(t) = V_m I_m \cos(\omega t + \theta_v) \cos(\omega t + \theta_i)
-\]</span></p>
-<p>Aplicando la identidad trigonométrica <span class="math inline">\(\cos A \cos B = \frac{1}{2} [\cos(A-B) + \cos(A+B)]\)</span>:</p>
-<p><span class="math display">\[
+</span></p>
+<p>Aplicando la identidad trigonométrica <span class="math inline">\cos A \cos B = \frac{1}{2} [\cos(A-B) + \cos(A+B)]</span>:</p>
+<p><span class="math display">
 p(t) = \underbrace{V_{rms} I_{rms} \cos(\theta_v - \theta_i) \left[ 1 + \cos(2\omega t + 2\theta_v) \right]}_{\text{Componente unidireccional y pulsante activa}} + \underbrace{V_{rms} I_{rms} \sin(\theta_v - \theta_i) \sin(2\omega t + 2\theta_v)}_{\text{Componente reactiva oscilante}}
-\]</span></p>
+</span></p>
 <blockquote class="blockquote">
-<p>La potencia instantánea oscila al <strong>doble de la frecuencia de la red</strong> (<span class="math inline">\(2\omega = 120\text{ Hz}\)</span> en sistemas de <span class="math inline">\(60\text{ Hz}\)</span>).</p>
+<p>La potencia instantánea oscila al <strong>doble de la frecuencia de la red</strong> (<span class="math inline">2\omega = 120\text{ Hz}</span> en sistemas de <span class="math inline">60\text{ Hz}</span>).</p>
 </blockquote>
 <hr>
 </section>
 <section id="potencia-compleja-mathbfs-y-triángulo-de-potencias" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="potencia-compleja-mathbfs-y-triángulo-de-potencias"><span class="header-section-number">2</span> 2. Potencia Compleja (<span class="math inline">\(\mathbf{S}\)</span>) y Triángulo de Potencias</h2>
-<p>En el dominio fasorial, la <strong>potencia compleja</strong> <span class="math inline">\(\mathbf{S}\)</span> se define como el producto del fasor eficaz de tensión por el <strong>complejo conjugado</strong> del fasor eficaz de corriente:</p>
-<p><span class="math display">\[
+<h2 data-number="2" class="anchored" data-anchor-id="potencia-compleja-mathbfs-y-triángulo-de-potencias"><span class="header-section-number">2</span> 2. Potencia Compleja (<span class="math inline">\mathbf{S}</span>) y Triángulo de Potencias</h2>
+<p>En el dominio fasorial, la <strong>potencia compleja</strong> <span class="math inline">\mathbf{S}</span> se define como el producto del fasor eficaz de tensión por el <strong>complejo conjugado</strong> del fasor eficaz de corriente:</p>
+<p><span class="math display">
 \mathbf{S} = \mathbf{V}_{rms} \cdot \mathbf{I}_{rms}^* = \left( V_{rms} e^{j\theta_v} \right) \left( I_{rms} e^{-j\theta_i} \right) = V_{rms} I_{rms} e^{j(\theta_v - \theta_i)}
-\]</span></p>
+</span></p>
 <p>Expresada en forma rectangular:</p>
-<p><span class="math display">\[
+<p><span class="math display">
 \mathbf{S} = P + jQ
-\]</span></p>
+</span></p>
 <div class="grid" style="margin: 2rem 0;">
 <div class="g-col-12 g-col-md-4">
 <section id="potencia-activa-p" class="level3 card-module" data-number="2.1">
-<h3 data-number="2.1" class="anchored" data-anchor-id="potencia-activa-p"><span class="header-section-number">2.1</span> 💡 Potencia Activa (<span class="math inline">\(P\)</span>)</h3>
-<p>Potencia real que se transforma en trabajo útil (mecánico, lumínico o calor). <span class="math display">\[
+<h3 data-number="2.1" class="anchored" data-anchor-id="potencia-activa-p"><span class="header-section-number">2.1</span> 💡 Potencia Activa (<span class="math inline">P</span>)</h3>
+<p>Potencia real que se transforma en trabajo útil (mecánico, lumínico o calor). <span class="math display">
 P = V_{rms} I_{rms} \cos\theta
-\]</span> <strong>Unidad:</strong> Vatio [<span class="math inline">\(\text{W}\)</span>], [<span class="math inline">\(\text{kW}\)</span>], [<span class="math inline">\(\text{MW}\)</span>]</p>
+</span> <strong>Unidad:</strong> Vatio [<span class="math inline">\text{W}</span>], [<span class="math inline">\text{kW}</span>], [<span class="math inline">\text{MW}</span>]</p>
 </section>
 </div>
 <div class="g-col-12 g-col-md-4">
 <section id="potencia-reactiva-q" class="level3 card-module" data-number="2.2">
-<h3 data-number="2.2" class="anchored" data-anchor-id="potencia-reactiva-q"><span class="header-section-number">2.2</span> 🧲 Potencia Reactiva (<span class="math inline">\(Q\)</span>)</h3>
-<p>Potencia intercambiada para sostener los campos magnéticos y eléctricos. <span class="math display">\[
+<h3 data-number="2.2" class="anchored" data-anchor-id="potencia-reactiva-q"><span class="header-section-number">2.2</span> 🧲 Potencia Reactiva (<span class="math inline">Q</span>)</h3>
+<p>Potencia intercambiada para sostener los campos magnéticos y eléctricos. <span class="math display">
 Q = V_{rms} I_{rms} \sin\theta
-\]</span> <strong>Unidad:</strong> Volt-Amperio Reactivo [<span class="math inline">\(\text{VAR}\)</span>], [<span class="math inline">\(\text{kVAR}\)</span>]</p>
+</span> <strong>Unidad:</strong> Volt-Amperio Reactivo [<span class="math inline">\text{VAR}</span>], [<span class="math inline">\text{kVAR}</span>]</p>
 </section>
 </div>
 <div class="g-col-12 g-col-md-4">
 <section id="potencia-aparente-mathbfs" class="level3 card-module" data-number="2.3">
-<h3 data-number="2.3" class="anchored" data-anchor-id="potencia-aparente-mathbfs"><span class="header-section-number">2.3</span> ⚡ Potencia Aparente (<span class="math inline">\(|\mathbf{S}|\)</span>)</h3>
-<p>Magnitud vectorial total que dimensiona conductores y transformadores. <span class="math display">\[
+<h3 data-number="2.3" class="anchored" data-anchor-id="potencia-aparente-mathbfs"><span class="header-section-number">2.3</span> ⚡ Potencia Aparente (<span class="math inline">|\mathbf{S}|</span>)</h3>
+<p>Magnitud vectorial total que dimensiona conductores y transformadores. <span class="math display">
 |\mathbf{S}| = \sqrt{P^2 + Q^2}
-\]</span> <strong>Unidad:</strong> Volt-Amperio [<span class="math inline">\(\text{VA}\)</span>], [<span class="math inline">\(\text{kVA}\)</span>], [<span class="math inline">\(\text{MVA}\)</span>]</p>
+</span> <strong>Unidad:</strong> Volt-Amperio [<span class="math inline">\text{VA}</span>], [<span class="math inline">\text{kVA}</span>], [<span class="math inline">\text{MVA}</span>]</p>
 </section>
 </div>
 </div>
@@ -382,27 +396,27 @@ Q = V_{rms} I_{rms} \sin\theta
 </section>
 <section id="factor-de-potencia-y-convención-de-cargas" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="factor-de-potencia-y-convención-de-cargas"><span class="header-section-number">3</span> 3. Factor de Potencia y Convención de Cargas</h2>
-<p>El <strong>Factor de Potencia (<span class="math inline">\(\text{FP}\)</span>)</strong> mide la eficiencia con la que la corriente entregada se aprovecha en potencia activa:</p>
-<p><span class="math display">\[
+<p>El <strong>Factor de Potencia (<span class="math inline">\text{FP}</span>)</strong> mide la eficiencia con la que la corriente entregada se aprovecha en potencia activa:</p>
+<p><span class="math display">
 \text{FP} = \frac{P}{|\mathbf{S}|} = \cos(\theta_v - \theta_i) = \cos\theta
-\]</span></p>
-<p>Donde <span class="math inline">\(\theta = \theta_v - \theta_i\)</span> es el <strong>ángulo de impedancia de la carga</strong>:</p>
+</span></p>
+<p>Donde <span class="math inline">\theta = \theta_v - \theta_i</span> es el <strong>ángulo de impedancia de la carga</strong>:</p>
 <ul>
-<li><strong>Carga Inductiva (RL) — FP en Atraso (<em>Lagging</em>):</strong> La corriente atrasa a la tensión (<span class="math inline">\(\theta &gt; 0\)</span>). La carga absorbe potencia reactiva positiva (<span class="math inline">\(Q &gt; 0\)</span>). Representa motores, inductores y transformadores.</li>
-<li><strong>Carga Capacitiva (RC) — FP en Adelanto (<em>Leading</em>):</strong> La corriente adelanta a la tensión (<span class="math inline">\(\theta &lt; 0\)</span>). La carga suministra potencia reactiva (<span class="math inline">\(Q &lt; 0\)</span>). Representa bancos de condensadores.</li>
+<li><strong>Carga Inductiva (RL) — FP en Atraso (<em>Lagging</em>):</strong> La corriente atrasa a la tensión (<span class="math inline">\theta &gt; 0</span>). La carga absorbe potencia reactiva positiva (<span class="math inline">Q &gt; 0</span>). Representa motores, inductores y transformadores.</li>
+<li><strong>Carga Capacitiva (RC) — FP en Adelanto (<em>Leading</em>):</strong> La corriente adelanta a la tensión (<span class="math inline">\theta &lt; 0</span>). La carga suministra potencia reactiva (<span class="math inline">Q &lt; 0</span>). Representa bancos de condensadores.</li>
 </ul>
 <hr>
 </section>
 <section id="corrección-del-factor-de-potencia" class="level2" data-number="4">
 <h2 data-number="4" class="anchored" data-anchor-id="corrección-del-factor-de-potencia"><span class="header-section-number">4</span> 4. Corrección del Factor de Potencia</h2>
-<p>Para mejorar la eficiencia y evitar penalizaciones de la red eléctrica, se instalan condensadores en paralelo para elevar el factor de potencia desde <span class="math inline">\(\cos\theta_1\)</span> hasta un valor objetivo <span class="math inline">\(\cos\theta_2\)</span> (<span class="math inline">\(\text{FP} \ge 0.95\)</span>):</p>
-<p><span class="math display">\[
+<p>Para mejorar la eficiencia y evitar penalizaciones de la red eléctrica, se instalan condensadores en paralelo para elevar el factor de potencia desde <span class="math inline">\cos\theta_1</span> hasta un valor objetivo <span class="math inline">\cos\theta_2</span> (<span class="math inline">\text{FP} \ge 0.95</span>):</p>
+<p><span class="math display">
 Q_C = P \left( \tan\theta_1 - \tan\theta_2 \right)
-\]</span></p>
-<p>La capacitancia requerida por fase (en conexión en paralelo a tensión <span class="math inline">\(V_{rms}\)</span> y frecuencia angular <span class="math inline">\(\omega = 2\pi f\)</span>) es:</p>
-<p><span class="math display">\[
+</span></p>
+<p>La capacitancia requerida por fase (en conexión en paralelo a tensión <span class="math inline">V_{rms}</span> y frecuencia angular <span class="math inline">\omega = 2\pi f</span>) es:</p>
+<p><span class="math display">
 C = \frac{Q_C}{\omega V_{rms}^2}
-\]</span></p>
+</span></p>
 <hr>
 </section>
 <section id="simulador-interactivo-de-potencia-en-tiempo-real" class="level2" data-number="5">
