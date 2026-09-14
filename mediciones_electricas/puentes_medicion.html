@@ -78,8 +78,22 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -145,7 +159,7 @@ window.Quarto = {
  <span class="dropdown-text">⚡ Ver Todo (Módulo Circuitos)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../circuitos_electricos/teoria_fasores.html">
+    <a class="dropdown-item" href="../circuitos_electricos/teoria_fasores_V3.html">
  <span class="dropdown-text">Guía Práctica de Análisis Fasorial</span></a>
   </li>  
         <li>
@@ -262,7 +276,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Puentes de Medición de Parámetros Pasivos (<span class="math inline">\(R, L, C\)</span>)</h1>
+<h1 class="title">Puentes de Medición de Parámetros Pasivos (<span class="math inline">R, L, C</span>)</h1>
 <p class="subtitle lead">Análisis de equilibrio en puentes de Wheatstone, Kelvin, Maxwell y Wien para medición de precisión</p>
   <div class="quarto-categories">
     <div class="quarto-category">Mediciones</div>
@@ -319,26 +333,26 @@ window.Quarto = {
 </div>
 <section id="puente-de-wheatstone-medición-de-resistencias-medias" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="puente-de-wheatstone-medición-de-resistencias-medias"><span class="header-section-number">1</span> 1. Puente de Wheatstone (Medición de Resistencias Medias)</h2>
-<p>El puente de Wheatstone es la estructura fundamental para la medición de resistencias en el rango de <span class="math inline">\(1 \ \Omega\)</span> a <span class="math inline">\(1 \ \text{M}\Omega\)</span>.</p>
+<p>El puente de Wheatstone es la estructura fundamental para la medición de resistencias en el rango de <span class="math inline">1 \ \Omega</span> a <span class="math inline">1 \ \text{M}\Omega</span>.</p>
 <section id="condición-de-equilibrio" class="level3" data-number="1.1">
 <h3 data-number="1.1" class="anchored" data-anchor-id="condición-de-equilibrio"><span class="header-section-number">1.1</span> Condición de Equilibrio</h3>
-<p>Cuando el detector de cero no registra circulación de corriente (<span class="math inline">\(I_G = 0\)</span>):</p>
-<p><span class="math display">\[
+<p>Cuando el detector de cero no registra circulación de corriente (<span class="math inline">I_G = 0</span>):</p>
+<p><span class="math display">
 \frac{R_1}{R_2} = \frac{R_3}{R_x} \quad \Longrightarrow \quad R_x = \frac{R_2 \cdot R_3}{R_1}
-\]</span></p>
+</span></p>
 <hr>
 </section>
 </section>
 <section id="puente-doble-de-kelvin-medición-de-bajas-resistencias" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="puente-doble-de-kelvin-medición-de-bajas-resistencias"><span class="header-section-number">2</span> 2. Puente Doble de Kelvin (Medición de Bajas Resistencias)</h2>
-<p>Para resistencias inferiores a <span class="math inline">\(1 \ \Omega\)</span>, los efectos de los terminales y cables de conexión introducen errores inaceptables. El puente de Kelvin compensa estas resistencias residuales mediante una doble rama divisoria proporcional:</p>
-<p><span class="math display">\[
+<p>Para resistencias inferiores a <span class="math inline">1 \ \Omega</span>, los efectos de los terminales y cables de conexión introducen errores inaceptables. El puente de Kelvin compensa estas resistencias residuales mediante una doble rama divisoria proporcional:</p>
+<p><span class="math display">
 R_x = R_s \frac{R_1}{R_2} + \frac{R_y \cdot r_2}{r_1 + r_2 + R_y} \left( \frac{R_1}{R_2} - \frac{r_1}{r_2} \right)
-\]</span></p>
-<p>Si se mantiene la relación <span class="math inline">\(\frac{R_1}{R_2} = \frac{r_1}{r_2}\)</span>, la influencia de la resistencia de contacto <span class="math inline">\(R_y\)</span> se anula exactamente:</p>
-<p><span class="math display">\[
+</span></p>
+<p>Si se mantiene la relación <span class="math inline">\frac{R_1}{R_2} = \frac{r_1}{r_2}</span>, la influencia de la resistencia de contacto <span class="math inline">R_y</span> se anula exactamente:</p>
+<p><span class="math display">
 R_x = R_s \frac{R_1}{R_2}
-\]</span></p>
+</span></p>
 
 
 </section>

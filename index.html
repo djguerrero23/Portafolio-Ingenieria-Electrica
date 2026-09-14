@@ -75,8 +75,22 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -142,7 +156,7 @@ window.Quarto = {
  <span class="dropdown-text">⚡ Ver Todo (Módulo Circuitos)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./circuitos_electricos/teoria_fasores.html">
+    <a class="dropdown-item" href="./circuitos_electricos/teoria_fasores_V3.html">
  <span class="dropdown-text">Guía Práctica de Análisis Fasorial</span></a>
   </li>  
         <li>
@@ -275,11 +289,11 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="circuitos-eléctricos">Circuitos Eléctricos</h3>
 <p>Análisis en régimen permanente, leyes de Kirchhoff, teoremas de redes, álgebra fasorial y potencia compleja.</p>
 <ul>
-<li><strong>Análisis Fasorial:</strong> Método del Carril Táctil, reglas de cuadrantes y conversión canónica seno <span class="math inline">\(\to\)</span> coseno.</li>
-<li><strong>Potencia en CA:</strong> Potencia activa <span class="math inline">\(P\)</span>, reactiva <span class="math inline">\(Q\)</span>, aparente <span class="math inline">\(S\)</span>, factor de potencia y simulador en tiempo real.</li>
+<li><strong>Análisis Fasorial:</strong> Método del Carril Táctil, reglas de cuadrantes y conversión canónica seno <span class="math inline">\to</span> coseno.</li>
+<li><strong>Potencia en CA:</strong> Potencia activa <span class="math inline">P</span>, reactiva <span class="math inline">Q</span>, aparente <span class="math inline">S</span>, factor de potencia y simulador en tiempo real.</li>
 </ul>
 <div style="display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: auto; padding-top: 0.5rem;">
-<p><a href="./circuitos_electricos/teoria_fasores.html" class="btn btn-outline-primary" style="font-size: 0.82rem; padding: 0.4rem 0.8rem;">Guía de Fasores →</a> <a href="./circuitos_electricos/potencia_ca.html" class="btn btn-outline-primary" style="font-size: 0.82rem; padding: 0.4rem 0.8rem;">Potencia en CA →</a></p>
+<p><a href="./circuitos_electricos/teoria_fasores_V3.html" class="btn btn-outline-primary" style="font-size: 0.82rem; padding: 0.4rem 0.8rem;">Guía de Fasores →</a> <a href="./circuitos_electricos/potencia_ca.html" class="btn btn-outline-primary" style="font-size: 0.82rem; padding: 0.4rem 0.8rem;">Potencia en CA →</a></p>
 </div>
 </section>
 </div>
@@ -293,7 +307,7 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="máquinas-eléctricas">Máquinas Eléctricas</h3>
 <p>Conversión electromecánica, análisis no lineal de materiales magnéticos, transformadores y máquinas rotativas.</p>
 <ul>
-<li><strong>Circuitos Magnéticos:</strong> Reluctancia, permeabilidad y resolución con curvas de saturación <span class="math inline">\(B-H\)</span>.</li>
+<li><strong>Circuitos Magnéticos:</strong> Reluctancia, permeabilidad y resolución con curvas de saturación <span class="math inline">B-H</span>.</li>
 <li><strong>Transformadores:</strong> Circuitos equivalentes, pruebas en vacío y cortocircuito.</li>
 </ul>
 <p><a href="./maquinas_electricas/index.html" class="btn btn-outline-primary mt-auto">Explorar Módulo de Máquinas →</a></p>
@@ -326,7 +340,7 @@ window.Quarto = {
 <p>Dimensionamiento de alimentadores, regulación de tensión, flujo de carga y normativas internacionales.</p>
 <ul>
 <li><strong>Caída de Tensión:</strong> Dimensionamiento según criterios de impedancia del NEC / NTC 2050.</li>
-<li><strong>Análisis de Pérdidas:</strong> Eficiencia térmica <span class="math inline">\(I^2 R\)</span> y límites regulatorios IEEE Std 141.</li>
+<li><strong>Análisis de Pérdidas:</strong> Eficiencia térmica <span class="math inline">I^2 R</span> y límites regulatorios IEEE Std 141.</li>
 </ul>
 <p><a href="./sistemas_potencia/index.html" class="btn btn-outline-primary mt-auto">Explorar Módulo de Potencia →</a></p>
 </section>
@@ -342,7 +356,7 @@ window.Quarto = {
 <p>Simuladores en tiempo real desarrollados con NumPy, Matplotlib y Streamlit, junto a tablas normalizadas de conductores para descarga.</p>
 <ul>
 <li><strong>Simulador Fasorial:</strong> Visualización instantánea del triángulo de potencias.</li>
-<li><strong>Datasets Tabulares:</strong> Tablas de resistencia <span class="math inline">\(R\)</span> y reactancia <span class="math inline">\(X\)</span> en formato CSV y scripts standalone.</li>
+<li><strong>Datasets Tabulares:</strong> Tablas de resistencia <span class="math inline">R</span> y reactancia <span class="math inline">X</span> en formato CSV y scripts standalone.</li>
 </ul>
 <div style="display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1rem;">
 <p><a href="./circuitos_electricos/teoria_fasores.html#simulador-interactivo-de-potencia-en-tiempo-real" class="btn btn-primary">Abrir Simulador Fasorial →</a> <a href="./descargas.html" class="btn btn-outline-primary">Ir a Descargas &amp; CSVs →</a></p>
