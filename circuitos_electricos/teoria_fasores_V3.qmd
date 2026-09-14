@@ -34,9 +34,30 @@ format:
     </div>
 
     <div>
-      <div class="text-muted fw-bold mb-1" style="font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.4px;">Polar a rectangular y viceversa (Casio fx-9750GIII)</div>
-      <a href="https://www.youtube.com/watch?v=-QkvEE_9P4M&t=17s" target="_blank" class="btn btn-danger btn-sm text-start w-100">
+      <div class="text-muted fw-bold mb-1" style="font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.4px;">Tutorial Polar ↔ Rectangular (Casio fx-9750GIII)</div>
+      <a href="https://www.youtube.com/watch?v=-QkvEE_9P4M&t=17s" target="_blank" class="btn btn-danger btn-sm text-start w-100" title="Tutorial Como transformar de polar a rectangular y viceversa Casio fx-9750GIII">
         <i class="bi bi-youtube me-1"></i> Tutorial Casio fx-9750GIII
+      </a>
+    </div>
+
+    <div>
+      <div class="text-muted fw-bold mb-1" style="font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.4px;">Tutorial Polar ↔ Rectangular (Casio fx-991ES PLUS)</div>
+      <a href="https://www.youtube.com/watch?v=mrMpLfHkxRk" target="_blank" class="btn btn-danger btn-sm text-start w-100" title="Tutorial Como transformar de polar a rectangular y viceversa Casio fx-991ES PLUS">
+        <i class="bi bi-youtube me-1"></i> Tutorial Casio fx-991ES PLUS
+      </a>
+    </div>
+
+    <div>
+      <div class="text-muted fw-bold mb-1" style="font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.4px;">Tutorial Polar ↔ Rectangular (Casio fx-82MS)</div>
+      <a href="https://www.youtube.com/watch?v=Em3XkHxGPn4" target="_blank" class="btn btn-danger btn-sm text-start w-100" title="Tutorial Polar a Rectangular Casio fx-82MS / fx-350MS">
+        <i class="bi bi-youtube me-1"></i> Tutorial Casio fx-82MS
+      </a>
+    </div>
+
+    <div>
+      <div class="text-muted fw-bold mb-1" style="font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.4px;">Tutorial Polar ↔ Rectangular (Calculadora Genérica / China)</div>
+      <a href="https://www.youtube.com/watch?v=_OXVmNMPaKY" target="_blank" class="btn btn-danger btn-sm text-start w-100" title="Tutorial Polar a Rectangular Calculadora China Universal">
+        <i class="bi bi-youtube me-1"></i> Tutorial Calc. Universal / China
       </a>
     </div>
 
@@ -502,6 +523,14 @@ El método más rápido para resolver circuitos completos:
    - En Casio clásica: Presiona `SHIFT` + `2` (menú CMPLX) $\longrightarrow$ selecciona `3: ▶r∠θ` $\longrightarrow$ `=`.
    - En Casio ClassWiz: Presiona `OPTN` $\longrightarrow$ flecha abajo $\longrightarrow$ `1: ▶r∠θ` $\longrightarrow$ `=`.
 5. La pantalla mostrará directamente: `5 ∠ 126.87°`.
+
+---
+
+##### 🎬 Videotutoriales paso a paso según tu modelo de calculadora:
+- 📺 **Casio fx-9750GIII (Gráfica):** [Ver tutorial paso a paso](https://www.youtube.com/watch?v=-QkvEE_9P4M&t=17s){target="_blank"}
+- 📺 **Casio fx-991ES PLUS / fx-570ES:** [Ver tutorial paso a paso](https://www.youtube.com/watch?v=mrMpLfHkxRk){target="_blank"}
+- 📺 **Casio fx-82MS / fx-350MS:** [Ver tutorial paso a paso](https://www.youtube.com/watch?v=Em3XkHxGPn4){target="_blank"}
+- 📺 **Calculadora Científica Universal / Genérica China:** [Ver tutorial paso a paso](https://www.youtube.com/watch?v=_OXVmNMPaKY){target="_blank"}
 :::
 
 ## Conversión polar → rectangular
