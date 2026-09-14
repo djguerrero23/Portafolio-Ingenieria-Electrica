@@ -427,28 +427,74 @@ $$
 
 ## Conversión rectangular → polar
 
-$$
-r=\sqrt{x^2+y^2}
-$$
-
-y el ángulo debe determinarse teniendo en cuenta el **cuadrante**:
+Para obtener la magnitud $r$ y el ángulo $\theta$ a partir de las coordenadas cartesianas $(x, y)$:
 
 $$
-\theta=\operatorname{atan2}(y,x)
+\boxed{r=\sqrt{x^2+y^2}}
+$$
+
+y el ángulo $\theta$ debe calcularse considerando estrictamente el **signo de $x$ y de $y$ (ajuste de cuadrante)**:
+
+$$
+\boxed{\theta=\operatorname{atan2}(y,x)}
 $$
 
 ::: {.callout-note}
-### 🧭 ¿Por qué `atan2`?
+### 🧭 ¿Por qué `atan2` y no solo $\arctan(y/x)$?
 
-La expresión:
+La función arco tangente estándar $\arctan(y/x)$ de las matemáticas continuas únicamente devuelve valores en el rango $(-90^\circ, +90^\circ)$ (Cuadrantes I y IV). 
 
-$$
-\arctan\left(\frac yx\right)
-$$
+Si un número complejo tiene $x < 0$ (Cuadrantes II y III), la división $y/x$ arroja un signo ambiguo:
+- $\frac{4}{-3} = -1.33 \implies \arctan(-1.33) = -53.13^\circ$ *(¡Falso! El punto $(-3, 4)$ está en el Cuadrante II a $126.87^\circ$)*.
 
-por sí sola no identifica correctamente todos los cuadrantes.
+La función matemática $\operatorname{atan2}(y,x)$ analiza **ambos signos independientemente** para entregar el ángulo geométrico verdadero en $(-180^\circ, +180^\circ]$.
+:::
 
-La función matemática equivalente a `atan2(y,x)` utiliza simultáneamente el signo de $x$ y de $y$ para determinar el ángulo correcto.
+::: {.callout-tip}
+### 📟 ¿Cómo calcularlo en tu calculadora científica física? (Casio / Sharp / TI)
+
+En tu calculadora física **no existe una tecla llamada `atan2` ni `atan`**. Tienes 3 formas prácticas de calcularlo en exámenes y laboratorio:
+
+#### 🥇 Método 1: La función directa `Pol(` (El `atan2` de la calculadora)
+Las calculadoras científicas estándar (Casio fx-570, fx-991, fx-82, etc.) incluyen la función de conversión automática de coordenadas con ajuste de cuadrante incluido:
+
+* **De Rectangular a Polar:**  
+  1. Presiona `SHIFT` + `+` $\longrightarrow$ Aparece en pantalla **`Pol(`**.
+  2. Digita la parte real $x$, luego la coma con `SHIFT` + `)` y la parte imaginaria $y$.  
+     *Ejemplo:* `Pol(-3, 4)` y presiona `=`.
+  3. **Resultado instantáneo:** `r = 5`, `θ = 126.87°` *(el ángulo ya viene con el cuadrante exacto)*.
+* **De Polar a Rectangular:**  
+  1. Presiona `SHIFT` + `-` $\longrightarrow$ Aparece **`Rec(`**.
+  2. Digita `Rec(r, θ)`. *Ejemplo:* `Rec(5, 126.87) =` $\longrightarrow$ Entrega `X = -3`, `Y = 4`.
+
+---
+
+#### 🥈 Método 2: Con la tecla `tan⁻¹` y ajuste manual de cuadrante
+Si calculas por partes mediante $r = \sqrt{x^2+y^2}$ y la tecla `tan⁻¹` (`SHIFT` + `tan`):
+
+1. Calcula el ángulo base con valores absolutos: $\alpha = \tan^{-1}\left(\left|\frac{y}{x}\right|\right)$.
+2. Aplica la regla según los signos de $(x, y)$:
+
+| Cuadrante | Signos $(x, y)$ | Fórmula de Corrección en Calculadora | Ejemplo con $|x|=3, |y|=4$ ($\alpha = 53.13^\circ$) |
+| :--- | :---: | :--- | :--- |
+| **I** | $(+x, +y)$ | $\theta = \alpha$ | $\mathbf{Z} = 3 + j4 \implies \theta = \mathbf{+53.13^\circ}$ |
+| **II** | $(-x, +y)$ | $\theta = 180^\circ - \alpha$ | $\mathbf{Z} = -3 + j4 \implies \theta = 180^\circ - 53.13^\circ = \mathbf{+126.87^\circ}$ |
+| **III** | $(-x, -y)$ | $\theta = -180^\circ + \alpha$ | $\mathbf{Z} = -3 - j4 \implies \theta = -180^\circ + 53.13^\circ = \mathbf{-126.87^\circ}$ |
+| **IV** | $(+x, -y)$ | $\theta = -\alpha$ | $\mathbf{Z} = 3 - j4 \implies \theta = \mathbf{-53.13^\circ}$ |
+
+---
+
+#### 🥉 Método 3: Modo Números Complejos (`MODE 2: CMPLX`)
+El método más rápido para resolver circuitos completos:
+
+1. **Activar modo complejo:** Presiona `MODE` $\longrightarrow$ `2: CMPLX`.
+2. Verifica que tu calculadora esté en grados sexagesimales (indicador **`D`** o `Deg` en la parte superior).
+3. Escribe el número directamente en pantalla:  
+   Digita `-3 + 4` e inserta la unidad imaginaria $j$ presionando la tecla **`ENG`** (aparece la $i$).
+4. **Convertir a Polar:**  
+   - En Casio clásica: Presiona `SHIFT` + `2` (menú CMPLX) $\longrightarrow$ selecciona `3: ▶r∠θ` $\longrightarrow$ `=`.
+   - En Casio ClassWiz: Presiona `OPTN` $\longrightarrow$ flecha abajo $\longrightarrow$ `1: ▶r∠θ` $\longrightarrow$ `=`.
+5. La pantalla mostrará directamente: `5 ∠ 126.87°`.
 :::
 
 ## Conversión polar → rectangular

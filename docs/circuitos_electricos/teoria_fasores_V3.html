@@ -856,12 +856,13 @@ x(t)=\sin(10t)+\sin(100t)
 </span></p>
 <section id="conversión-rectangular-polar" class="level2" data-number="7.1">
 <h2 data-number="7.1" class="anchored" data-anchor-id="conversión-rectangular-polar"><span class="header-section-number">7.1</span> Conversión rectangular → polar</h2>
+<p>Para obtener la magnitud <span class="math inline">r</span> y el ángulo <span class="math inline">\theta</span> a partir de las coordenadas cartesianas <span class="math inline">(x, y)</span>:</p>
 <p><span class="math display">
-r=\sqrt{x^2+y^2}
+\boxed{r=\sqrt{x^2+y^2}}
 </span></p>
-<p>y el ángulo debe determinarse teniendo en cuenta el <strong>cuadrante</strong>:</p>
+<p>y el ángulo <span class="math inline">\theta</span> debe calcularse considerando estrictamente el <strong>signo de <span class="math inline">x</span> y de <span class="math inline">y</span> (ajuste de cuadrante)</strong>:</p>
 <p><span class="math display">
-\theta=\operatorname{atan2}(y,x)
+\boxed{\theta=\operatorname{atan2}(y,x)}
 </span></p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -869,16 +870,112 @@ r=\sqrt{x^2+y^2}
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>🧭 ¿Por qué <code>atan2</code>?
+<span class="screen-reader-only">Note</span>🧭 ¿Por qué <code>atan2</code> y no solo <span class="math inline">\arctan(y/x)</span>?
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>La expresión:</p>
-<p><span class="math display">
-\arctan\left(\frac yx\right)
-</span></p>
-<p>por sí sola no identifica correctamente todos los cuadrantes.</p>
-<p>La función matemática equivalente a <code>atan2(y,x)</code> utiliza simultáneamente el signo de <span class="math inline">x</span> y de <span class="math inline">y</span> para determinar el ángulo correcto.</p>
+<p>La función arco tangente estándar <span class="math inline">\arctan(y/x)</span> de las matemáticas continuas únicamente devuelve valores en el rango <span class="math inline">(-90^\circ, +90^\circ)</span> (Cuadrantes I y IV).</p>
+<p>Si un número complejo tiene <span class="math inline">x &lt; 0</span> (Cuadrantes II y III), la división <span class="math inline">y/x</span> arroja un signo ambiguo: - <span class="math inline">\frac{4}{-3} = -1.33 \implies \arctan(-1.33) = -53.13^\circ</span> <em>(¡Falso! El punto <span class="math inline">(-3, 4)</span> está en el Cuadrante II a <span class="math inline">126.87^\circ</span>)</em>.</p>
+<p>La función matemática <span class="math inline">\operatorname{atan2}(y,x)</span> analiza <strong>ambos signos independientemente</strong> para entregar el ángulo geométrico verdadero en <span class="math inline">(-180^\circ, +180^\circ]</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>📟 ¿Cómo calcularlo en tu calculadora científica física? (Casio / Sharp / TI)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>En tu calculadora física <strong>no existe una tecla llamada <code>atan2</code> ni <code>atan</code></strong>. Tienes 3 formas prácticas de calcularlo en exámenes y laboratorio:</p>
+<section id="método-1-la-función-directa-pol-el-atan2-de-la-calculadora" class="level4" data-number="7.1.0.1">
+<h4 data-number="7.1.0.1" class="anchored" data-anchor-id="método-1-la-función-directa-pol-el-atan2-de-la-calculadora"><span class="header-section-number">7.1.0.1</span> 🥇 Método 1: La función directa <code>Pol(</code> (El <code>atan2</code> de la calculadora)</h4>
+<p>Las calculadoras científicas estándar (Casio fx-570, fx-991, fx-82, etc.) incluyen la función de conversión automática de coordenadas con ajuste de cuadrante incluido:</p>
+<ul>
+<li><strong>De Rectangular a Polar:</strong>
+<ol type="1">
+<li>Presiona <code>SHIFT</code> + <code>+</code> <span class="math inline">\longrightarrow</span> Aparece en pantalla <strong><code>Pol(</code></strong>.</li>
+<li>Digita la parte real <span class="math inline">x</span>, luego la coma con <code>SHIFT</code> + <code>)</code> y la parte imaginaria <span class="math inline">y</span>.<br>
+<em>Ejemplo:</em> <code>Pol(-3, 4)</code> y presiona <code>=</code>.</li>
+<li><strong>Resultado instantáneo:</strong> <code>r = 5</code>, <code>θ = 126.87°</code> <em>(el ángulo ya viene con el cuadrante exacto)</em>.</li>
+</ol></li>
+<li><strong>De Polar a Rectangular:</strong>
+<ol type="1">
+<li>Presiona <code>SHIFT</code> + <code>-</code> <span class="math inline">\longrightarrow</span> Aparece <strong><code>Rec(</code></strong>.</li>
+<li>Digita <code>Rec(r, θ)</code>. <em>Ejemplo:</em> <code>Rec(5, 126.87) =</code> <span class="math inline">\longrightarrow</span> Entrega <code>X = -3</code>, <code>Y = 4</code>.</li>
+</ol></li>
+</ul>
+<hr>
+</section>
+<section id="método-2-con-la-tecla-tan¹-y-ajuste-manual-de-cuadrante" class="level4" data-number="7.1.0.2">
+<h4 data-number="7.1.0.2" class="anchored" data-anchor-id="método-2-con-la-tecla-tan¹-y-ajuste-manual-de-cuadrante"><span class="header-section-number">7.1.0.2</span> 🥈 Método 2: Con la tecla <code>tan⁻¹</code> y ajuste manual de cuadrante</h4>
+<p>Si calculas por partes mediante <span class="math inline">r = \sqrt{x^2+y^2}</span> y la tecla <code>tan⁻¹</code> (<code>SHIFT</code> + <code>tan</code>):</p>
+<ol type="1">
+<li>Calcula el ángulo base con valores absolutos: <span class="math inline">\alpha = \tan^{-1}\left(\left|\frac{y}{x}\right|\right)</span>.</li>
+<li>Aplica la regla según los signos de <span class="math inline">(x, y)</span>:</li>
+</ol>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 29%">
+<col style="width: 23%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Cuadrante</th>
+<th style="text-align: center;">Signos <span class="math inline">(x, y)</span></th>
+<th style="text-align: left;">Fórmula de Corrección en Calculadora</th>
+<th style="text-align: left;">Ejemplo con <span class="math inline">|x|=3, |y|=4</span> (<span class="math inline">\alpha = 53.13^\circ</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>I</strong></td>
+<td style="text-align: center;"><span class="math inline">(+x, +y)</span></td>
+<td style="text-align: left;"><span class="math inline">\theta = \alpha</span></td>
+<td style="text-align: left;"><span class="math inline">\mathbf{Z} = 3 + j4 \implies \theta = \mathbf{+53.13^\circ}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>II</strong></td>
+<td style="text-align: center;"><span class="math inline">(-x, +y)</span></td>
+<td style="text-align: left;"><span class="math inline">\theta = 180^\circ - \alpha</span></td>
+<td style="text-align: left;"><span class="math inline">\mathbf{Z} = -3 + j4 \implies \theta = 180^\circ - 53.13^\circ = \mathbf{+126.87^\circ}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>III</strong></td>
+<td style="text-align: center;"><span class="math inline">(-x, -y)</span></td>
+<td style="text-align: left;"><span class="math inline">\theta = -180^\circ + \alpha</span></td>
+<td style="text-align: left;"><span class="math inline">\mathbf{Z} = -3 - j4 \implies \theta = -180^\circ + 53.13^\circ = \mathbf{-126.87^\circ}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>IV</strong></td>
+<td style="text-align: center;"><span class="math inline">(+x, -y)</span></td>
+<td style="text-align: left;"><span class="math inline">\theta = -\alpha</span></td>
+<td style="text-align: left;"><span class="math inline">\mathbf{Z} = 3 - j4 \implies \theta = \mathbf{-53.13^\circ}</span></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="método-3-modo-números-complejos-mode-2-cmplx" class="level4" data-number="7.1.0.3">
+<h4 data-number="7.1.0.3" class="anchored" data-anchor-id="método-3-modo-números-complejos-mode-2-cmplx"><span class="header-section-number">7.1.0.3</span> 🥉 Método 3: Modo Números Complejos (<code>MODE 2: CMPLX</code>)</h4>
+<p>El método más rápido para resolver circuitos completos:</p>
+<ol type="1">
+<li><strong>Activar modo complejo:</strong> Presiona <code>MODE</code> <span class="math inline">\longrightarrow</span> <code>2: CMPLX</code>.</li>
+<li>Verifica que tu calculadora esté en grados sexagesimales (indicador <strong><code>D</code></strong> o <code>Deg</code> en la parte superior).</li>
+<li>Escribe el número directamente en pantalla:<br>
+Digita <code>-3 + 4</code> e inserta la unidad imaginaria <span class="math inline">j</span> presionando la tecla <strong><code>ENG</code></strong> (aparece la <span class="math inline">i</span>).</li>
+<li><strong>Convertir a Polar:</strong>
+<ul>
+<li>En Casio clásica: Presiona <code>SHIFT</code> + <code>2</code> (menú CMPLX) <span class="math inline">\longrightarrow</span> selecciona <code>3: ▶r∠θ</code> <span class="math inline">\longrightarrow</span> <code>=</code>.</li>
+<li>En Casio ClassWiz: Presiona <code>OPTN</code> <span class="math inline">\longrightarrow</span> flecha abajo <span class="math inline">\longrightarrow</span> <code>1: ▶r∠θ</code> <span class="math inline">\longrightarrow</span> <code>=</code>.</li>
+</ul></li>
+<li>La pantalla mostrará directamente: <code>5 ∠ 126.87°</code>.</li>
+</ol>
+</section>
 </div>
 </div>
 </section>
@@ -1754,7 +1851,7 @@ Como <span class="math inline">X_C &gt; X_L</span> (<span class="math inline">10
 <li>¿Qué ocurriría si la parte imaginaria fuese negativa?</li>
 </ol>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1763,7 +1860,7 @@ Como <span class="math inline">X_C &gt; X_L</span> (<span class="math inline">10
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>1. Tipo de comportamiento:</strong> Como la reactancia es positiva: <span class="math display">
 X = +6 &gt; 0
