@@ -1800,17 +1800,17 @@ X = +6 &gt; 0
 <!-- Formulario Rectangular a Polar -->
 <div id="panelRec2Pol" class="row g-3 align-items-end">
   <div class="col-md-5">
-    <label for="realPart" class="form-label mb-1"><strong>Parte Real $x$ (Resistencia $R$):</strong></label>
+    <label for="realPart" class="form-label mb-1"><strong>Parte Real <i>x</i> (Resistencia <i>R</i>):</strong></label>
     <div class="input-group">
-      <span class="input-group-text bg-light fw-bold">Re</span>
+      <span class="input-group-text bg-light fw-bold text-secondary">Re</span>
       <input id="realPart" type="number" class="form-control" value="3" step="0.5" oninput="calcularDesdeRectangular()">
     </div>
   </div>
 
   <div class="col-md-5">
-    <label for="imagPart" class="form-label mb-1"><strong>Parte Imaginaria $y$ (Reactancia $X$):</strong></label>
+    <label for="imagPart" class="form-label mb-1"><strong>Parte Imaginaria <i>y</i> (Reactancia <i>X</i>):</strong></label>
     <div class="input-group">
-      <span class="input-group-text bg-light fw-bold">+j Im</span>
+      <span class="input-group-text bg-light fw-bold text-secondary">+<i>j</i> Im</span>
       <input id="imagPart" type="number" class="form-control" value="4" step="0.5" oninput="calcularDesdeRectangular()">
     </div>
   </div>
@@ -1825,17 +1825,17 @@ X = +6 &gt; 0
 <!-- Formulario Polar a Rectangular -->
 <div id="panelPol2Rec" class="row g-3 align-items-end" style="display: none;">
   <div class="col-md-5">
-    <label for="magPart" class="form-label mb-1"><strong>Magnitud o Módulo $r$ ($|\mathbf{Z}|$ o $|\mathbf{V}|$):</strong></label>
+    <label for="magPart" class="form-label mb-1"><strong>Magnitud o Módulo <i>r</i> (|<b>Z</b>| o |<b>V</b>|):</strong></label>
     <div class="input-group">
-      <span class="input-group-text bg-light fw-bold">|r|</span>
+      <span class="input-group-text bg-light fw-bold text-secondary">|<i>r</i>|</span>
       <input id="magPart" type="number" class="form-control" value="5" min="0" step="0.5" oninput="calcularDesdePolar()">
     </div>
   </div>
 
   <div class="col-md-5">
-    <label for="angPart" class="form-label mb-1"><strong>Ángulo de Fase $\theta$ (Grados °):</strong></label>
+    <label for="angPart" class="form-label mb-1"><strong>Ángulo de Fase <i>θ</i> (Grados °):</strong></label>
     <div class="input-group">
-      <span class="input-group-text bg-light fw-bold">∠ θ</span>
+      <span class="input-group-text bg-light fw-bold text-secondary">∠ <i>θ</i></span>
       <input id="angPart" type="number" class="form-control" value="53.13" step="1" oninput="calcularDesdePolar()">
       <span class="input-group-text bg-light">°</span>
     </div>
