@@ -20,8 +20,10 @@
   {
     "listing": "/circuitos_electricos/index.html",
     "items": [
+      "/circuitos_electricos/teoria_fasores_V3.html",
       "/circuitos_electricos/potencia_ca.html",
-      "/circuitos_electricos/teoria_fasores.html"
+      "/circuitos_electricos/teoria_fasores.html",
+      "/circuitos_electricos/teoria_fasores2.html"
     ]
   },
   {

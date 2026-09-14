@@ -19,24 +19,43 @@ En el análisis de circuitos en Corriente Alterna (CA) bajo régimen sinusoidal 
 
 ---
 
-```{=html}
-<div id="quick-links-sidebar" class="card p-3 shadow-sm" style="border-left: 4px solid #ef4444;">
-  <div class="d-flex flex-column gap-2">
-    <a href="https://www.youtube.com/watch?v=CODIGO_DEL_VIDEO" target="_blank" class="btn btn-danger btn-sm text-start">
-      <i class="bi bi-youtube me-1"></i> Ver en YouTube
-    </a>
-    <a href="potencia_ca.qmd" class="btn btn-primary btn-sm text-start">
-      <i class="bi bi-lightning-charge me-1"></i> Módulo Potencia CA
-    </a>
-    <a href="../descargas/calculo_fasores.py" class="btn btn-outline-primary btn-sm text-start">
-      <i class="bi bi-download me-1"></i> Script Python
-    </a>
-    <a href="index.qmd" class="btn btn-outline-secondary btn-sm text-start">
-      <i class="bi bi-book me-1"></i> Índice Circuitos
-    </a>
-  </div>
-</div>
+``{=html}
+<style>
+#quick-links-sidebar {
+  position: fixed;
+  top: 130px;          /* ajusta si tu navbar tiene otra altura */
+  right: 1.5rem;        /* ajusta según el ancho libre a la derecha de tu TOC */
+  width: 200px;
+  z-index: 100;
+}
+/* En pantallas angostas (donde el TOC/margen ya no se muestra),
+   el panel fijo estorbaría sobre el texto: lo regresamos al flujo normal. */
+@media (max-width: 991.98px) {
+  #quick-links-sidebar {
+    position: static;
+    width: auto;
+    margin: 1.5rem 0;
+  }
+}
+</style>
 ```
+
+::: {#quick-links-sidebar .card .p-3 .shadow-sm style="border-left: 4px solid #ef4444;"}
+<div class="d-flex flex-column gap-2">
+  <a href="https://www.youtube.com/watch?v=CODIGO_DEL_VIDEO" target="_blank" class="btn btn-danger btn-sm text-start">
+    <i class="bi bi-youtube me-1"></i> Ver en YouTube
+  </a>
+  <a href="potencia_ca.qmd" class="btn btn-primary btn-sm text-start">
+    <i class="bi bi-lightning-charge me-1"></i> Módulo Potencia CA
+  </a>
+  <a href="../descargas/calculo_fasores.py" class="btn btn-outline-primary btn-sm text-start">
+    <i class="bi bi-download me-1"></i> Script Python
+  </a>
+  <a href="index.qmd" class="btn btn-outline-secondary btn-sm text-start">
+    <i class="bi bi-book me-1"></i> Índice Circuitos
+  </a>
+</div>
+:::
 
 
 ##  El Mapa de Razonamiento Ampliado: El "Carril Táctil"

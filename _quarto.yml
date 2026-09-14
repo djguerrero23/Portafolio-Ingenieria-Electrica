@@ -73,7 +73,7 @@ format:
     toc: true
     toc-depth: 3
     toc-title: "Índice de Contenido"
-    html-math-method: mathjax
+    html-math-method: katex
     code-copy: true
     smooth-scroll: true
     highlight-style: github

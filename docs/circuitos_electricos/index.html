@@ -106,8 +106,22 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <style>html{ scroll-behavior: smooth; }</style>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -274,7 +288,7 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Q2FycmlsJTIwVCVDMyVBMWN0aWw=">Carril Táctil <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Q2lyY3VpdG9zJTIwRWwlQzMlQTljdHJpY29z">Circuitos Eléctricos <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RmFjdG9yJTIwZGUlMjBQb3RlbmNpYQ==">Factor de Potencia <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RmFzb3Jlcw==">Fasores <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TiVDMyVCQW1lcm9zJTIwQ29tcGxlam9z">Números Complejos <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UG90ZW5jaWElMjBDQQ==">Potencia CA <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UG90ZW5jaWElMjBDb21wbGVqYQ==">Potencia Compleja <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UiVDMyVBOWdpbWVuJTIwUGVybWFuZW50ZQ==">Régimen Permanente <span class="quarto-category-count">(1)</span></div><div class="category" data-category="U2ltdWxhY2klQzMlQjNu">Simulación <span class="quarto-category-count">(1)</span></div><div class="category" data-category="U3RyZWFtbGl0">Streamlit <span class="quarto-category-count">(1)</span></div><div class="category" data-category="VHJpJUMzJUExbmd1bG8lMjBkZSUyMFBvdGVuY2lhcw==">Triángulo de Potencias <span class="quarto-category-count">(1)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(4)</span></div><div class="category" data-category="Q0E=">CA <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Q2FycmlsJTIwVCVDMyVBMWN0aWw=">Carril Táctil <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Q2lyY3VpdG9zJTIwRWwlQzMlQTljdHJpY29z">Circuitos Eléctricos <span class="quarto-category-count">(3)</span></div><div class="category" data-category="RmFjdG9yJTIwZGUlMjBQb3RlbmNpYQ==">Factor de Potencia <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RmFzb3Jlcw==">Fasores <span class="quarto-category-count">(3)</span></div><div class="category" data-category="SW1wZWRhbmNpYQ==">Impedancia <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TiVDMyVCQW1lcm9zJTIwQ29tcGxlam9z">Números Complejos <span class="quarto-category-count">(3)</span></div><div class="category" data-category="UG90ZW5jaWElMjBDQQ==">Potencia CA <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UG90ZW5jaWElMjBDb21wbGVqYQ==">Potencia Compleja <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UiVDMyVBOWdpbWVuJTIwUGVybWFuZW50ZQ==">Régimen Permanente <span class="quarto-category-count">(2)</span></div><div class="category" data-category="U2ltdWxhY2klQzMlQjNu">Simulación <span class="quarto-category-count">(1)</span></div><div class="category" data-category="U3RyZWFtbGl0">Streamlit <span class="quarto-category-count">(1)</span></div><div class="category" data-category="VHJpJUMzJUExbmd1bG8lMjBkZSUyMFBvdGVuY2lhcw==">Triángulo de Potencias <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content column-page-left" id="quarto-document-content">
 
@@ -327,7 +341,39 @@ window.Quarto = {
     </div>
 </div>
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="UG90ZW5jaWElMjBDQSUyQ1BvdGVuY2lhJTIwQ29tcGxlamElMkNGYWN0b3IlMjBkZSUyMFBvdGVuY2lhJTJDVHJpJUMzJUExbmd1bG8lMjBkZSUyMFBvdGVuY2lhcyUyQ1N0cmVhbWxpdCUyQ1NpbXVsYWNpJUMzJUIzbg==" data-listing-date-sort="1789020000000" data-listing-file-modified-sort="1789074482490" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="575">
+<div class="g-col-1" data-index="0" data-categories="RmFzb3JlcyUyQ04lQzMlQkFtZXJvcyUyMENvbXBsZWpvcyUyQ0NpcmN1aXRvcyUyMEVsJUMzJUE5Y3RyaWNvcyUyQ0NBJTJDSW1wZWRhbmNpYQ==" data-listing-date-sort="1789106400000" data-listing-file-modified-sort="1789167007521" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="24" data-listing-word-count-sort="4733">
+<a href="../circuitos_electricos/teoria_fasores_V3.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Fasores y Análisis de Circuitos en CA
+</h5>
+<div class="listing-reading-time card-text text-muted">24 min</div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('RmFzb3Jlcw=='); return false;">Fasores</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('TiVDMyVCQW1lcm9zJTIwQ29tcGxlam9z'); return false;">Números Complejos</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Q2lyY3VpdG9zJTIwRWwlQzMlQTljdHJpY29z'); return false;">Circuitos Eléctricos</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Q0E='); return false;">CA</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('SW1wZWRhbmNpYQ=='); return false;">Impedancia</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>Guía progresiva de fasores, números complejos, impedancias RLC y resolución de circuitos en régimen sinusoidal permanente.</p>
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Sep 11, 2026
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="1" data-categories="UG90ZW5jaWElMjBDQSUyQ1BvdGVuY2lhJTIwQ29tcGxlamElMkNGYWN0b3IlMjBkZSUyMFBvdGVuY2lhJTJDVHJpJUMzJUExbmd1bG8lMjBkZSUyMFBvdGVuY2lhcyUyQ1N0cmVhbWxpdCUyQ1NpbXVsYWNpJUMzJUIzbg==" data-listing-date-sort="1789020000000" data-listing-file-modified-sort="1789074482490" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="575">
 <a href="../circuitos_electricos/potencia_ca.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <div class="card-body post-contents">
@@ -361,14 +407,46 @@ Sep 10, 2026
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="RmFzb3JlcyUyQ04lQzMlQkFtZXJvcyUyMENvbXBsZWpvcyUyQ0NpcmN1aXRvcyUyMEVsJUMzJUE5Y3RyaWNvcyUyQ0NhcnJpbCUyMFQlQzMlQTFjdGlsJTJDUiVDMyVBOWdpbWVuJTIwUGVybWFuZW50ZQ==" data-listing-date-sort="1789020000000" data-listing-file-modified-sort="1789079855730" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13" data-listing-word-count-sort="2589">
+<div class="g-col-1" data-index="2" data-categories="RmFzb3JlcyUyQ04lQzMlQkFtZXJvcyUyMENvbXBsZWpvcyUyQ0NpcmN1aXRvcyUyMEVsJUMzJUE5Y3RyaWNvcyUyQ0NhcnJpbCUyMFQlQzMlQTFjdGlsJTJDUiVDMyVBOWdpbWVuJTIwUGVybWFuZW50ZQ==" data-listing-date-sort="1789020000000" data-listing-file-modified-sort="1789155646796" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2716">
 <a href="../circuitos_electricos/teoria_fasores.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Guía Práctica de Análisis Fasorial y Álgebra de Números Complejos
 </h5>
-<div class="listing-reading-time card-text text-muted">13 min</div>
+<div class="listing-reading-time card-text text-muted">14 min</div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('RmFzb3Jlcw=='); return false;">Fasores</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('TiVDMyVCQW1lcm9zJTIwQ29tcGxlam9z'); return false;">Números Complejos</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Q2lyY3VpdG9zJTIwRWwlQzMlQTljdHJpY29z'); return false;">Circuitos Eléctricos</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Q2FycmlsJTIwVCVDMyVBMWN0aWw='); return false;">Carril Táctil</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('UiVDMyVBOWdpbWVuJTIwUGVybWFuZW50ZQ=='); return false;">Régimen Permanente</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>Fundamentos de la notación fasorial, conversión seno-coseno, álgebra de números complejos por cuadrantes e impedancias pasivas en régimen permanente.</p>
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Sep 10, 2026
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="3" data-categories="RmFzb3JlcyUyQ04lQzMlQkFtZXJvcyUyMENvbXBsZWpvcyUyQ0NpcmN1aXRvcyUyMEVsJUMzJUE5Y3RyaWNvcyUyQ0NhcnJpbCUyMFQlQzMlQTFjdGlsJTJDUiVDMyVBOWdpbWVuJTIwUGVybWFuZW50ZQ==" data-listing-date-sort="1789020000000" data-listing-file-modified-sort="1789155623876" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2716">
+<a href="../circuitos_electricos/teoria_fasores2.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Guía Práctica de Análisis Fasorial y Álgebra de Números Complejos
+</h5>
+<div class="listing-reading-time card-text text-muted">14 min</div>
 <div class="listing-categories">
 
 <div class="listing-category" onclick="window.quartoListingCategory('RmFzb3Jlcw=='); return false;">Fasores</div>

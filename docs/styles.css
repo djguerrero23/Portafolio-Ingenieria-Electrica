@@ -466,3 +466,108 @@ pre>code {
   font-size: 0.88rem;
   text-align: center;
 }
+
+/* ==========================================================================
+   PANEL DE ENLACES RÁPIDOS (sticky junto al TOC)
+   ========================================================================== */
+#quick-links-sidebar {
+  position: fixed;
+  top: 130px;
+  right: 1.5rem;
+  width: 240px;
+  z-index: 100;
+  border-radius: 10px;
+}
+
+#quick-links-sidebar .btn {
+  width: 100%;
+  white-space: normal;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.82rem;
+  padding: 0.45rem 0.65rem;
+  line-height: 1.25;
+}
+
+#quick-links-sidebar .btn i {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+/* En pantallas angostas, donde Bootstrap ya colapsa el navbar (<992px)
+   y Quarto oculta el TOC lateral, el panel fijo estorbaría sobre el
+   texto: lo regresamos al flujo normal del documento. */
+@media (max-width: 991.98px) {
+  #quick-links-sidebar {
+    position: static;
+    width: auto;
+    margin: 1.5rem 0;
+  }
+
+  #quick-links-sidebar .btn {
+    width: auto;
+  }
+}
+
+/* ==========================================================================
+   ESTILOS DE IMPRESIÓN Y EXPORTACIÓN A PDF (Ctrl + P)
+   ========================================================================== */
+@media print {
+
+  /* 0. Desactivar animaciones y filtros para renderizado instantáneo */
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* 1. Ocultar barras de navegación, botones flotantes, menús y pies de página */
+  .navbar,
+  #quick-links-sidebar,
+  #quarto-margin-sidebar,
+  .quarto-secondary-nav,
+  .footer-custom,
+  footer,
+  .btn,
+  #quarto-search,
+  .quarto-title-breadcrumbs {
+    display: none !important;
+  }
+
+  /* 2. Ancho completo y fondo blanco para evitar desbordes */
+  body,
+  #quarto-content,
+  main,
+  .page-columns {
+    background: #ffffff !important;
+    color: #000000 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* 3. Evitar cortes indeseados en tarjetas, tablas, llamadas y figuras */
+  .card,
+  .card-module,
+  .callout,
+  table,
+  figure,
+  pre {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    box-shadow: none !important;
+    border: 1px solid #e2e8f0 !important;
+  }
+
+  /* 4. Enlaces limpios sin estilos distractores */
+  a {
+    text-decoration: none !important;
+    color: #0f172a !important;
+  }
+}
