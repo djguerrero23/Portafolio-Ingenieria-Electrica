@@ -288,14 +288,14 @@ window.Quarto = {
    
   <ul>
   <li><a href="#transformación-bidireccional-delta-leftrightarrow-texty-en-ca" id="toc-transformación-bidireccional-delta-leftrightarrow-texty-en-ca" class="nav-link active" data-scroll-target="#transformación-bidireccional-delta-leftrightarrow-texty-en-ca">Transformación Bidireccional <span class="math inline">\Delta \leftrightarrow \text{Y}</span> en CA</a></li>
-  <li><a href="#qué-problema-resuelve-la-transformación-delta-leftrightarrow-texty" id="toc-qué-problema-resuelve-la-transformación-delta-leftrightarrow-texty" class="nav-link" data-scroll-target="#qué-problema-resuelve-la-transformación-delta-leftrightarrow-texty"><span class="header-section-number">1</span> 1. ¿Qué problema resuelve la transformación <span class="math inline">\Delta \leftrightarrow \text{Y}</span>?</a>
+  <li><a href="#qué-problema-resuelve-la-transformación-delta-leftrightarrow-texty" id="toc-qué-problema-resuelve-la-transformación-delta-leftrightarrow-texty" class="nav-link" data-scroll-target="#qué-problema-resuelve-la-transformación-delta-leftrightarrow-texty"><span class="header-section-number">1</span> ¿Qué problema resuelve la transformación <span class="math inline">\Delta \leftrightarrow \text{Y}</span>?</a>
   <ul class="collapse">
-  <li><a href="#la-idea-de-fondo" id="toc-la-idea-de-fondo" class="nav-link" data-scroll-target="#la-idea-de-fondo"><span class="header-section-number">1.0.1</span> La idea de fondo</a></li>
+  <li><a href="#la-idea-de-fondo" id="toc-la-idea-de-fondo" class="nav-link" data-scroll-target="#la-idea-de-fondo"><span class="header-section-number">1.1</span> La idea de fondo</a></li>
   </ul></li>
-  <li><a href="#qué-son-las-configuraciones-delta-y-texty" id="toc-qué-son-las-configuraciones-delta-y-texty" class="nav-link" data-scroll-target="#qué-son-las-configuraciones-delta-y-texty"><span class="header-section-number">2</span> 2. ¿Qué son las configuraciones <span class="math inline">\Delta</span> y <span class="math inline">\text{Y}</span>?</a>
+  <li><a href="#qué-son-las-configuraciones-delta-y-texty" id="toc-qué-son-las-configuraciones-delta-y-texty" class="nav-link" data-scroll-target="#qué-son-las-configuraciones-delta-y-texty"><span class="header-section-number">2</span> ¿Qué son las configuraciones <span class="math inline">\Delta</span> y <span class="math inline">\text{Y}</span>?</a>
   <ul class="collapse">
-  <li><a href="#configuración-delta-delta" id="toc-configuración-delta-delta" class="nav-link" data-scroll-target="#configuración-delta-delta"><span class="header-section-number">2.1</span> 2.1 Configuración Delta (<span class="math inline">\Delta</span>)</a></li>
-  <li><a href="#configuración-estrella-texty" id="toc-configuración-estrella-texty" class="nav-link" data-scroll-target="#configuración-estrella-texty"><span class="header-section-number">2.2</span> 2.2 Configuración Estrella (<span class="math inline">\text{Y}</span>)</a></li>
+  <li><a href="#configuración-delta-delta" id="toc-configuración-delta-delta" class="nav-link" data-scroll-target="#configuración-delta-delta"><span class="header-section-number">2.1</span> Configuración Delta (<span class="math inline">\Delta</span>)</a></li>
+  <li><a href="#configuración-estrella-texty" id="toc-configuración-estrella-texty" class="nav-link" data-scroll-target="#configuración-estrella-texty"><span class="header-section-number">2.2</span> Configuración Estrella (<span class="math inline">\text{Y}</span>)</a></li>
   </ul></li>
   <li><a href="#por-qué-son-importantes-estas-transformaciones" id="toc-por-qué-son-importantes-estas-transformaciones" class="nav-link" data-scroll-target="#por-qué-son-importantes-estas-transformaciones"><span class="header-section-number">3</span> 3. ¿Por qué son importantes estas transformaciones?</a>
   <ul class="collapse">
@@ -414,24 +414,16 @@ window.Quarto = {
 </div>
 <hr>
 <section id="qué-problema-resuelve-la-transformación-delta-leftrightarrow-texty" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> 1. ¿Qué problema resuelve la transformación <span class="math inline">\Delta \leftrightarrow \text{Y}</span>?</h1>
-<p>En el análisis de circuitos, muchas redes pueden simplificarse directamente mediante:</p>
-<p><span class="math display">
-\text{serie}
-\qquad\text{y}\qquad
-\text{paralelo}
-</span></p>
-<p>Sin embargo, existen configuraciones donde estas reglas no pueden aplicarse de manera inmediata. Un ejemplo típico aparece cuando tres impedancias forman una conexión entre tres nodos en forma de:</p>
-<p><span class="math display">
-\boxed{\Delta}
-</span></p>
-<p>o cuando tres impedancias convergen en un nodo común:</p>
-<p><span class="math display">
-\boxed{\text{Y}}
-</span></p>
+<h1 data-number="1"><span class="header-section-number">1</span> ¿Qué problema resuelve la transformación <span class="math inline">\Delta \leftrightarrow \text{Y}</span>?</h1>
+<p>En el análisis de circuitos, muchas redes pueden simplificarse directamente mediante: <span class="math inline">Serie \leftrightarrow Paralelo</span></p>
+<p>Sin embargo, existen configuraciones donde estas reglas no pueden aplicarse de manera inmediata.</p>
+<ul>
+<li><p>Cuando tres impedancias forman una conexión entre tres nodos en forma de: <span class="math inline">\boxed{\Delta}</span></p></li>
+<li><p>Cuando tres impedancias convergen en un nodo común:<span class="math inline">\boxed{\text{Y}}</span></p></li>
+</ul>
 <p>En estos casos, una transformación apropiada puede convertir una topología difícil en otra que permita continuar el análisis mediante técnicas más sencillas.</p>
-<section id="la-idea-de-fondo" class="level3" data-number="1.0.1">
-<h3 data-number="1.0.1" class="anchored" data-anchor-id="la-idea-de-fondo"><span class="header-section-number">1.0.1</span> La idea de fondo</h3>
+<section id="la-idea-de-fondo" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="la-idea-de-fondo"><span class="header-section-number">1.1</span> La idea de fondo</h2>
 <p><span class="math display">
 \boxed{
 \text{topología difícil}
@@ -448,21 +440,124 @@ window.Quarto = {
 </section>
 </section>
 <section id="qué-son-las-configuraciones-delta-y-texty" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> 2. ¿Qué son las configuraciones <span class="math inline">\Delta</span> y <span class="math inline">\text{Y}</span>?</h1>
+<h1 data-number="2"><span class="header-section-number">2</span> ¿Qué son las configuraciones <span class="math inline">\Delta</span> y <span class="math inline">\text{Y}</span>?</h1>
 <section id="configuración-delta-delta" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="configuración-delta-delta"><span class="header-section-number">2.1</span> 2.1 Configuración Delta (<span class="math inline">\Delta</span>)</h2>
+<h2 data-number="2.1" class="anchored" data-anchor-id="configuración-delta-delta"><span class="header-section-number">2.1</span> Configuración Delta (<span class="math inline">\Delta</span>)</h2>
 <p>En una red Delta, tres impedancias están conectadas entre tres pares de terminales:</p>
 <p><span class="math display">
 A-B,\qquad B-C,\qquad C-A
 </span></p>
+<div class="my-4 d-flex justify-content-center">
+  <div class="border rounded-3 bg-white shadow-sm p-3 w-100" style="max-width: 440px;">
+    <svg viewbox="0 0 380 320" width="100%" height="auto" preserveaspectratio="xMidYMid meet" style="display:block; font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;">
+      <!-- Fondo y defs -->
+      <defs>
+        <filter id="shadowFilterDelta" x="-10%" y="-10%" width="120%" height="120%">
+          <fedropshadow dx="0" dy="1" stddeviation="2" flood-opacity="0.08"></fedropshadow>
+        </filter>
+      </defs>
+
+      <!-- ================= DELTA (Δ) ================= -->
+      <text x="190" y="30" font-size="16" font-weight="800" fill="#0369a1" text-anchor="middle">Configuración Delta (Δ)</text>
+      
+      <!-- Ramas Delta -->
+      <line x1="190" y1="70" x2="70" y2="250" stroke="#1e293b" stroke-width="2.8" stroke-linecap="round"></line>
+      <line x1="190" y1="70" x2="310" y2="250" stroke="#1e293b" stroke-width="2.8" stroke-linecap="round"></line>
+      <line x1="70" y1="250" x2="310" y2="250" stroke="#1e293b" stroke-width="2.8" stroke-linecap="round"></line>
+
+      <!-- Etiquetas de Impedancia Delta -->
+      <!-- Z_C (Rama A-B / 1-2) -->
+      <rect x="84" y="145" width="50" height="26" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" filter="url(#shadowFilterDelta)"></rect>
+      <text x="109" y="163" font-size="14" font-weight="700" fill="#0f172a" text-anchor="middle">Z<tspan font-size="10" dy="3">C</tspan></text>
+
+      <!-- Z_B (Rama A-C / 1-3) -->
+      <rect x="246" y="145" width="50" height="26" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" filter="url(#shadowFilterDelta)"></rect>
+      <text x="271" y="163" font-size="14" font-weight="700" fill="#0f172a" text-anchor="middle">Z<tspan font-size="10" dy="3">B</tspan></text>
+
+      <!-- Z_A (Rama B-C / 2-3) -->
+      <rect x="165" y="260" width="50" height="26" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" filter="url(#shadowFilterDelta)"></rect>
+      <text x="190" y="278" font-size="14" font-weight="700" fill="#0f172a" text-anchor="middle">Z<tspan font-size="10" dy="3">A</tspan></text>
+
+      <!-- Nodos Delta -->
+      <!-- Nodo A -->
+      <circle cx="190" cy="70" r="18" fill="#0284c7" opacity="0.18"></circle>
+      <circle cx="190" cy="70" r="14" fill="#bfdbfe" stroke="#0284c7" stroke-width="2.8"></circle>
+      <text x="190" y="75" font-size="15" font-weight="bold" fill="#0f172a" text-anchor="middle">A</text>
+
+      <!-- Nodo B -->
+      <circle cx="70" cy="250" r="18" fill="#0284c7" opacity="0.18"></circle>
+      <circle cx="70" cy="250" r="14" fill="#bfdbfe" stroke="#0284c7" stroke-width="2.8"></circle>
+      <text x="70" y="255" font-size="15" font-weight="bold" fill="#0f172a" text-anchor="middle">B</text>
+
+      <!-- Nodo C -->
+      <circle cx="310" cy="250" r="18" fill="#0284c7" opacity="0.18"></circle>
+      <circle cx="310" cy="250" r="14" fill="#bfdbfe" stroke="#0284c7" stroke-width="2.8"></circle>
+      <text x="310" y="255" font-size="15" font-weight="bold" fill="#0f172a" text-anchor="middle">C</text>
+    </svg>
+  </div>
+</div>
 <p>La red forma un lazo cerrado entre tres nodos.</p>
 </section>
 <section id="configuración-estrella-texty" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="configuración-estrella-texty"><span class="header-section-number">2.2</span> 2.2 Configuración Estrella (<span class="math inline">\text{Y}</span>)</h2>
+<h2 data-number="2.2" class="anchored" data-anchor-id="configuración-estrella-texty"><span class="header-section-number">2.2</span> Configuración Estrella (<span class="math inline">\text{Y}</span>)</h2>
 <p>En una red Estrella, tres impedancias se conectan a un nodo común:</p>
 <p><span class="math display">
 A-O,\qquad B-O,\qquad C-O
 </span></p>
+<div class="my-4 d-flex justify-content-center">
+  <div class="border rounded-3 bg-white shadow-sm p-3 w-100" style="max-width: 440px;">
+    <svg viewbox="0 0 380 320" width="100%" height="auto" preserveaspectratio="xMidYMid meet" style="display:block; font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;">
+      <!-- Fondo y defs -->
+      <defs>
+        <filter id="shadowFilterEstrella" x="-10%" y="-10%" width="120%" height="120%">
+          <fedropshadow dx="0" dy="1" stddeviation="2" flood-opacity="0.08"></fedropshadow>
+        </filter>
+      </defs>
+
+      <!-- ================= ESTRELLA (Y) ================= -->
+      <text x="190" y="30" font-size="16" font-weight="800" fill="#7c3aed" text-anchor="middle">Configuración Estrella (Y)</text>
+
+      <!-- Ramas Estrella -->
+      <line x1="190" y1="70" x2="190" y2="175" stroke="#1e293b" stroke-width="2.8" stroke-linecap="round"></line>
+      <line x1="70" y1="250" x2="190" y2="175" stroke="#1e293b" stroke-width="2.8" stroke-linecap="round"></line>
+      <line x1="310" y1="250" x2="190" y2="175" stroke="#1e293b" stroke-width="2.8" stroke-linecap="round"></line>
+
+      <!-- Etiquetas de Impedancia Estrella -->
+      <!-- Z_1 (Rama A-O) -->
+      <rect x="202" y="110" width="48" height="26" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" filter="url(#shadowFilterEstrella)"></rect>
+      <text x="226" y="128" font-size="14" font-weight="700" fill="#0f172a" text-anchor="middle">Z<tspan font-size="10" dy="3">1</tspan></text>
+
+      <!-- Z_2 (Rama B-O) -->
+      <rect x="90" y="196" width="48" height="26" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" filter="url(#shadowFilterEstrella)"></rect>
+      <text x="114" y="214" font-size="14" font-weight="700" fill="#0f172a" text-anchor="middle">Z<tspan font-size="10" dy="3">2</tspan></text>
+
+      <!-- Z_3 (Rama C-O) -->
+      <rect x="242" y="196" width="48" height="26" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" filter="url(#shadowFilterEstrella)"></rect>
+      <text x="266" y="214" font-size="14" font-weight="700" fill="#0f172a" text-anchor="middle">Z<tspan font-size="10" dy="3">3</tspan></text>
+
+      <!-- Nodo Neutro (O) -->
+      <circle cx="190" cy="175" r="16" fill="#64748b" opacity="0.15"></circle>
+      <circle cx="190" cy="175" r="12" fill="#f1f5f9" stroke="#64748b" stroke-width="2.4"></circle>
+      <text x="190" y="179" font-size="12" font-weight="800" fill="#334155" text-anchor="middle">O</text>
+
+      <!-- Nodos Estrella Externos -->
+      <!-- Nodo A -->
+      <circle cx="190" cy="70" r="18" fill="#7c3aed" opacity="0.18"></circle>
+      <circle cx="190" cy="70" r="14" fill="#ede9fe" stroke="#7c3aed" stroke-width="2.8"></circle>
+      <text x="190" y="75" font-size="15" font-weight="bold" fill="#0f172a" text-anchor="middle">A</text>
+
+      <!-- Nodo B -->
+      <circle cx="70" cy="250" r="18" fill="#7c3aed" opacity="0.18"></circle>
+      <circle cx="70" cy="250" r="14" fill="#ede9fe" stroke="#7c3aed" stroke-width="2.8"></circle>
+      <text x="70" y="255" font-size="15" font-weight="bold" fill="#0f172a" text-anchor="middle">B</text>
+
+      <!-- Nodo C -->
+      <circle cx="310" cy="250" r="18" fill="#7c3aed" opacity="0.18"></circle>
+      <circle cx="310" cy="250" r="14" fill="#ede9fe" stroke="#7c3aed" stroke-width="2.8"></circle>
+      <text x="310" y="255" font-size="15" font-weight="bold" fill="#0f172a" text-anchor="middle">C</text>
+    </svg>
+  </div>
+</div>
 <p>donde <span class="math inline">O</span> representa el nodo central de la estrella.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">

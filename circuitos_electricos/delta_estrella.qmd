@@ -39,31 +39,19 @@ $$
 
 ---
 
-# 1. ¿Qué problema resuelve la transformación $\Delta \leftrightarrow \text{Y}$?
+# ¿Qué problema resuelve la transformación $\Delta \leftrightarrow \text{Y}$?
 
-En el análisis de circuitos, muchas redes pueden simplificarse directamente mediante:
+En el análisis de circuitos, muchas redes pueden simplificarse directamente mediante: $Serie \leftrightarrow Paralelo$ 
 
-$$
-\text{serie}
-\qquad\text{y}\qquad
-\text{paralelo}
-$$
+Sin embargo, existen configuraciones donde estas reglas no pueden aplicarse de manera inmediata. 
 
-Sin embargo, existen configuraciones donde estas reglas no pueden aplicarse de manera inmediata. Un ejemplo típico aparece cuando tres impedancias forman una conexión entre tres nodos en forma de:
+- Cuando tres impedancias forman una conexión entre tres nodos en forma de: $\boxed{\Delta}$
 
-$$
-\boxed{\Delta}
-$$
-
-o cuando tres impedancias convergen en un nodo común:
-
-$$
-\boxed{\text{Y}}
-$$
+- Cuando tres impedancias convergen en un nodo común:$\boxed{\text{Y}}$
 
 En estos casos, una transformación apropiada puede convertir una topología difícil en otra que permita continuar el análisis mediante técnicas más sencillas.
 
-### La idea de fondo
+## La idea de fondo
 
 $$
 \boxed{
@@ -81,9 +69,9 @@ Por eso, **$\Delta \leftrightarrow \text{Y}$ es una herramienta de simplificaci�
 
 ---
 
-# 2. ¿Qué son las configuraciones $\Delta$ y $\text{Y}$?
+# ¿Qué son las configuraciones $\Delta$ y $\text{Y}$?
 
-## 2.1 Configuración Delta ($\Delta$)
+## Configuración Delta ($\Delta$)
 
 En una red Delta, tres impedancias están conectadas entre tres pares de terminales:
 
@@ -91,15 +79,19 @@ $$
 A-B,\qquad B-C,\qquad C-A
 $$
 
+{{< include imagenes/esquemas/_genera_delta.md >}}
+
 La red forma un lazo cerrado entre tres nodos.
 
-## 2.2 Configuración Estrella ($\text{Y}$)
+## Configuración Estrella ($\text{Y}$)
 
 En una red Estrella, tres impedancias se conectan a un nodo común:
 
 $$
 A-O,\qquad B-O,\qquad C-O
 $$
+
+{{< include imagenes/esquemas/_genera_estrella.md >}}
 
 donde $O$ representa el nodo central de la estrella.
 
