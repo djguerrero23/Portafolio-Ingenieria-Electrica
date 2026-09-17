@@ -288,23 +288,53 @@ window.Quarto = {
    
   <ul>
   <li><a href="#transformación-bidireccional-delta-leftrightarrow-texty-en-ca" id="toc-transformación-bidireccional-delta-leftrightarrow-texty-en-ca" class="nav-link active" data-scroll-target="#transformación-bidireccional-delta-leftrightarrow-texty-en-ca">Transformación Bidireccional <span class="math inline">\Delta \leftrightarrow \text{Y}</span> en CA</a></li>
-  <li><a href="#topologías-y-esquemas-de-conexión" id="toc-topologías-y-esquemas-de-conexión" class="nav-link" data-scroll-target="#topologías-y-esquemas-de-conexión"><span class="header-section-number">1</span> Topologías y Esquemas de Conexión</a>
+  <li><a href="#qué-problema-resuelve-la-transformación-delta-leftrightarrow-texty" id="toc-qué-problema-resuelve-la-transformación-delta-leftrightarrow-texty" class="nav-link" data-scroll-target="#qué-problema-resuelve-la-transformación-delta-leftrightarrow-texty"><span class="header-section-number">1</span> 1. ¿Qué problema resuelve la transformación <span class="math inline">\Delta \leftrightarrow \text{Y}</span>?</a>
   <ul class="collapse">
-  <li><a href="#el-puente-de-wheatstone-desbalanceado" id="toc-el-puente-de-wheatstone-desbalanceado" class="nav-link" data-scroll-target="#el-puente-de-wheatstone-desbalanceado"><span class="header-section-number">1.0.1</span> 1. El Puente de Wheatstone Desbalanceado</a></li>
-  <li><a href="#redes-de-acoplamiento-pi-pi-en-líneas-de-transmisión" id="toc-redes-de-acoplamiento-pi-pi-en-líneas-de-transmisión" class="nav-link" data-scroll-target="#redes-de-acoplamiento-pi-pi-en-líneas-de-transmisión"><span class="header-section-number">1.0.2</span> 2. Redes de Acoplamiento <span class="math inline">\Pi</span> (Pi) en Líneas de Transmisión</a></li>
-  <li><a href="#topología-de-celosía-o-puente-cruzado-lattice-network" id="toc-topología-de-celosía-o-puente-cruzado-lattice-network" class="nav-link" data-scroll-target="#topología-de-celosía-o-puente-cruzado-lattice-network"><span class="header-section-number">1.0.3</span> 3. Topología de Celosía o Puente Cruzado (Lattice Network)</a></li>
+  <li><a href="#la-idea-de-fondo" id="toc-la-idea-de-fondo" class="nav-link" data-scroll-target="#la-idea-de-fondo"><span class="header-section-number">1.0.1</span> La idea de fondo</a></li>
   </ul></li>
-  <li><a href="#fórmulas-de-transformación-para-impedancias-complejas" id="toc-fórmulas-de-transformación-para-impedancias-complejas" class="nav-link" data-scroll-target="#fórmulas-de-transformación-para-impedancias-complejas"><span class="header-section-number">2</span> Fórmulas de Transformación para Impedancias Complejas</a>
+  <li><a href="#qué-son-las-configuraciones-delta-y-texty" id="toc-qué-son-las-configuraciones-delta-y-texty" class="nav-link" data-scroll-target="#qué-son-las-configuraciones-delta-y-texty"><span class="header-section-number">2</span> 2. ¿Qué son las configuraciones <span class="math inline">\Delta</span> y <span class="math inline">\text{Y}</span>?</a>
   <ul class="collapse">
-  <li><a href="#de-delta-a-estrella-delta-to-texty" id="toc-de-delta-a-estrella-delta-to-texty" class="nav-link" data-scroll-target="#de-delta-a-estrella-delta-to-texty"><span class="header-section-number">2.1</span> De Delta a Estrella (<span class="math inline">\Delta \to \text{Y}</span>)</a></li>
-  <li><a href="#de-estrella-a-delta-texty-to-delta" id="toc-de-estrella-a-delta-texty-to-delta" class="nav-link" data-scroll-target="#de-estrella-a-delta-texty-to-delta"><span class="header-section-number">2.2</span> De Estrella a Delta (<span class="math inline">\text{Y} \to \Delta</span>)</a></li>
+  <li><a href="#configuración-delta-delta" id="toc-configuración-delta-delta" class="nav-link" data-scroll-target="#configuración-delta-delta"><span class="header-section-number">2.1</span> 2.1 Configuración Delta (<span class="math inline">\Delta</span>)</a></li>
+  <li><a href="#configuración-estrella-texty" id="toc-configuración-estrella-texty" class="nav-link" data-scroll-target="#configuración-estrella-texty"><span class="header-section-number">2.2</span> 2.2 Configuración Estrella (<span class="math inline">\text{Y}</span>)</a></li>
   </ul></li>
-  <li><a href="#errores-frecuentes-en-la-conversión-delta-leftrightarrow-texty" id="toc-errores-frecuentes-en-la-conversión-delta-leftrightarrow-texty" class="nav-link" data-scroll-target="#errores-frecuentes-en-la-conversión-delta-leftrightarrow-texty"><span class="header-section-number">3</span> Errores Frecuentes en la Conversión <span class="math inline">\Delta \leftrightarrow \text{Y}</span></a></li>
-  <li><a href="#módulo-interactivo-de-cálculo-delta-leftrightarrow-texty" id="toc-módulo-interactivo-de-cálculo-delta-leftrightarrow-texty" class="nav-link" data-scroll-target="#módulo-interactivo-de-cálculo-delta-leftrightarrow-texty"><span class="header-section-number">4</span> Módulo Interactivo de Cálculo <span class="math inline">\Delta \leftrightarrow \text{Y}</span></a>
+  <li><a href="#por-qué-son-importantes-estas-transformaciones" id="toc-por-qué-son-importantes-estas-transformaciones" class="nav-link" data-scroll-target="#por-qué-son-importantes-estas-transformaciones"><span class="header-section-number">3</span> 3. ¿Por qué son importantes estas transformaciones?</a>
+  <ul class="collapse">
+  <li><a href="#aplicaciones-típicas" id="toc-aplicaciones-típicas" class="nav-link" data-scroll-target="#aplicaciones-típicas"><span class="header-section-number">3.0.1</span> Aplicaciones típicas</a></li>
+  </ul></li>
+  <li><a href="#qué-significa-que-dos-redes-sean-equivalentes" id="toc-qué-significa-que-dos-redes-sean-equivalentes" class="nav-link" data-scroll-target="#qué-significa-que-dos-redes-sean-equivalentes"><span class="header-section-number">4</span> 4. ¿Qué significa que dos redes sean equivalentes?</a></li>
+  <li><a href="#cuándo-se-requiere-una-transformación" id="toc-cuándo-se-requiere-una-transformación" class="nav-link" data-scroll-target="#cuándo-se-requiere-una-transformación"><span class="header-section-number">5</span> 5. ¿Cuándo se requiere una transformación?</a></li>
+  <li><a href="#cuándo-conviene-delta-rightarrow-texty" id="toc-cuándo-conviene-delta-rightarrow-texty" class="nav-link" data-scroll-target="#cuándo-conviene-delta-rightarrow-texty"><span class="header-section-number">6</span> 6. ¿Cuándo conviene <span class="math inline">\Delta \rightarrow \text{Y}</span>?</a></li>
+  <li><a href="#cuándo-conviene-texty-rightarrow-delta" id="toc-cuándo-conviene-texty-rightarrow-delta" class="nav-link" data-scroll-target="#cuándo-conviene-texty-rightarrow-delta"><span class="header-section-number">7</span> 7. ¿Cuándo conviene <span class="math inline">\text{Y} \rightarrow \Delta</span>?</a></li>
+  <li><a href="#cómo-se-debe-abordar-un-problema-delta-leftrightarrow-texty" id="toc-cómo-se-debe-abordar-un-problema-delta-leftrightarrow-texty" class="nav-link" data-scroll-target="#cómo-se-debe-abordar-un-problema-delta-leftrightarrow-texty"><span class="header-section-number">8</span> 8. ¿Cómo se debe abordar un problema <span class="math inline">\Delta \leftrightarrow \text{Y}</span>?</a>
+  <ul class="collapse">
+  <li><a href="#paso-1-identificar-la-red" id="toc-paso-1-identificar-la-red" class="nav-link" data-scroll-target="#paso-1-identificar-la-red"><span class="header-section-number">8.0.1</span> Paso 1 — Identificar la red</a></li>
+  <li><a href="#paso-2-identificar-el-objetivo" id="toc-paso-2-identificar-el-objetivo" class="nav-link" data-scroll-target="#paso-2-identificar-el-objetivo"><span class="header-section-number">8.0.2</span> Paso 2 — Identificar el objetivo</a></li>
+  <li><a href="#paso-3-buscar-simplificaciones-directas" id="toc-paso-3-buscar-simplificaciones-directas" class="nav-link" data-scroll-target="#paso-3-buscar-simplificaciones-directas"><span class="header-section-number">8.0.3</span> Paso 3 — Buscar simplificaciones directas</a></li>
+  <li><a href="#paso-4-identificar-la-transformación-útil" id="toc-paso-4-identificar-la-transformación-útil" class="nav-link" data-scroll-target="#paso-4-identificar-la-transformación-útil"><span class="header-section-number">8.0.4</span> Paso 4 — Identificar la transformación útil</a></li>
+  <li><a href="#paso-5-transformar" id="toc-paso-5-transformar" class="nav-link" data-scroll-target="#paso-5-transformar"><span class="header-section-number">8.0.5</span> Paso 5 — Transformar</a></li>
+  <li><a href="#paso-6-continuar-el-análisis" id="toc-paso-6-continuar-el-análisis" class="nav-link" data-scroll-target="#paso-6-continuar-el-análisis"><span class="header-section-number">8.0.6</span> Paso 6 — Continuar el análisis</a></li>
+  <li><a href="#paso-7-verificar" id="toc-paso-7-verificar" class="nav-link" data-scroll-target="#paso-7-verificar"><span class="header-section-number">8.0.7</span> Paso 7 — Verificar</a></li>
+  <li><a href="#paso-8-interpretar" id="toc-paso-8-interpretar" class="nav-link" data-scroll-target="#paso-8-interpretar"><span class="header-section-number">8.0.8</span> Paso 8 — Interpretar</a></li>
+  </ul></li>
+  <li><a href="#topologías-y-esquemas-de-conexión" id="toc-topologías-y-esquemas-de-conexión" class="nav-link" data-scroll-target="#topologías-y-esquemas-de-conexión"><span class="header-section-number">9</span> 9. Topologías y Esquemas de Conexión</a>
+  <ul class="collapse">
+  <li><a href="#el-puente-de-wheatstone-desbalanceado" id="toc-el-puente-de-wheatstone-desbalanceado" class="nav-link" data-scroll-target="#el-puente-de-wheatstone-desbalanceado"><span class="header-section-number">9.0.1</span> 1. El Puente de Wheatstone Desbalanceado</a></li>
+  <li><a href="#redes-de-acoplamiento-pi-pi-en-líneas-de-transmisión" id="toc-redes-de-acoplamiento-pi-pi-en-líneas-de-transmisión" class="nav-link" data-scroll-target="#redes-de-acoplamiento-pi-pi-en-líneas-de-transmisión"><span class="header-section-number">9.0.2</span> 2. Redes de Acoplamiento <span class="math inline">\Pi</span> (Pi) en Líneas de Transmisión</a></li>
+  <li><a href="#topología-de-celosía-o-puente-cruzado-lattice-network" id="toc-topología-de-celosía-o-puente-cruzado-lattice-network" class="nav-link" data-scroll-target="#topología-de-celosía-o-puente-cruzado-lattice-network"><span class="header-section-number">9.0.3</span> 3. Topología de Celosía o Puente Cruzado (Lattice Network)</a></li>
+  </ul></li>
+  <li><a href="#deltaestrella-con-impedancias-complejas" id="toc-deltaestrella-con-impedancias-complejas" class="nav-link" data-scroll-target="#deltaestrella-con-impedancias-complejas"><span class="header-section-number">10</span> 10. Delta–Estrella con impedancias complejas</a></li>
+  <li><a href="#fórmulas-de-transformación-para-impedancias-complejas" id="toc-fórmulas-de-transformación-para-impedancias-complejas" class="nav-link" data-scroll-target="#fórmulas-de-transformación-para-impedancias-complejas"><span class="header-section-number">11</span> 11. Fórmulas de Transformación para Impedancias Complejas</a>
+  <ul class="collapse">
+  <li><a href="#de-delta-a-estrella-delta-to-texty" id="toc-de-delta-a-estrella-delta-to-texty" class="nav-link" data-scroll-target="#de-delta-a-estrella-delta-to-texty"><span class="header-section-number">11.1</span> De Delta a Estrella (<span class="math inline">\Delta \to \text{Y}</span>)</a></li>
+  <li><a href="#de-estrella-a-delta-texty-to-delta" id="toc-de-estrella-a-delta-texty-to-delta" class="nav-link" data-scroll-target="#de-estrella-a-delta-texty-to-delta"><span class="header-section-number">11.2</span> De Estrella a Delta (<span class="math inline">\text{Y} \to \Delta</span>)</a></li>
+  </ul></li>
+  <li><a href="#caso-particular-redes-equilibradas" id="toc-caso-particular-redes-equilibradas" class="nav-link" data-scroll-target="#caso-particular-redes-equilibradas"><span class="header-section-number">12</span> 12. Caso particular: redes equilibradas</a></li>
+  <li><a href="#errores-frecuentes-en-la-conversión-delta-leftrightarrow-texty" id="toc-errores-frecuentes-en-la-conversión-delta-leftrightarrow-texty" class="nav-link" data-scroll-target="#errores-frecuentes-en-la-conversión-delta-leftrightarrow-texty"><span class="header-section-number">13</span> 13. Errores Frecuentes en la Conversión <span class="math inline">\Delta \leftrightarrow \text{Y}</span></a></li>
+  <li><a href="#módulo-interactivo-de-cálculo-delta-leftrightarrow-texty" id="toc-módulo-interactivo-de-cálculo-delta-leftrightarrow-texty" class="nav-link" data-scroll-target="#módulo-interactivo-de-cálculo-delta-leftrightarrow-texty"><span class="header-section-number">14</span> 14. Módulo Interactivo de Cálculo <span class="math inline">\Delta \leftrightarrow \text{Y}</span></a>
   <ul class="collapse">
   <li><a href="#solver-de-redes-complejas-análisis-nodal" id="toc-solver-de-redes-complejas-análisis-nodal" class="nav-link" data-scroll-target="#solver-de-redes-complejas-análisis-nodal">🧮 Solver de redes complejas (análisis nodal)</a></li>
   </ul></li>
-  <li><a href="#navegación-del-módulo" id="toc-navegación-del-módulo" class="nav-link" data-scroll-target="#navegación-del-módulo"><span class="header-section-number">5</span> Navegación del Módulo</a></li>
+  <li><a href="#navegación-del-módulo" id="toc-navegación-del-módulo" class="nav-link" data-scroll-target="#navegación-del-módulo"><span class="header-section-number">15</span> 15. Navegación del Módulo</a></li>
   </ul>
 </nav>
     </div>
@@ -357,7 +387,7 @@ window.Quarto = {
 <section id="transformación-bidireccional-delta-leftrightarrow-texty-en-ca" class="level1 unnumbered hero-banner-modern">
 <h1 class="unnumbered">Transformación Bidireccional <span class="math inline">\Delta \leftrightarrow \text{Y}</span> en CA</h1>
 <p><strong>Simplificación de redes complejas mediante equivalencia de impedancias en terminales.</strong></p>
-<p>Permite reducir topologías que no admiten simplificación directa serie o paralelo, tales como redes en puente no equilibradas, filtros doble T y circuitos polifásicos equivalentes.</p>
+<p>Una red eléctrica puede contener conexiones que no admiten una reducción directa mediante combinaciones de serie y paralelo. Cuando una parte de la red presenta una topología <strong>Delta (<span class="math inline">\Delta</span>)</strong> o <strong>Estrella (<span class="math inline">\text{Y}</span>)</strong>, podemos transformar su representación para obtener una red equivalente que resulte más conveniente para el análisis.</p>
 </section>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -365,17 +395,258 @@ window.Quarto = {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>⚡ Principio de Equivalencia Terminal
+<span class="screen-reader-only">Note</span>⚡ Idea central
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Dos redes conectadas a tres terminales accesibles <span class="math inline">(1, 2, 3)</span> son eléctricamente equivalentes en régimen sinusoidal si, para cualquier conjunto de tensiones aplicadas entre dichos terminales, las corrientes de línea resultantes son exactamente idénticas en magnitud y fase.</p>
+<p><strong>La transformación <span class="math inline">\Delta \leftrightarrow \text{Y}</span> no tiene como objetivo cambiar físicamente el circuito.</strong></p>
+<p>Su propósito es <strong>cambiar la representación de una red manteniendo su comportamiento eléctrico visto desde sus terminales</strong>.</p>
+<p>[ ]</p>
 </div>
 </div>
 <hr>
-<section id="topologías-y-esquemas-de-conexión" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Topologías y Esquemas de Conexión</h1>
-<p>Cuando una red de impedancias complejas no se puede reducir mediante combinaciones puras de serie o paralelo, se recurre a la transformación bidireccional entre la configuración <strong>Delta (<span class="math inline">\Delta</span> o triángulo)</strong> y la configuración <strong>Estrella (<span class="math inline">\text{Y}</span> o <span class="math inline">T</span>)</strong>.</p>
+<section id="qué-problema-resuelve-la-transformación-delta-leftrightarrow-texty" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> 1. ¿Qué problema resuelve la transformación <span class="math inline">\Delta \leftrightarrow \text{Y}</span>?</h1>
+<p>En el análisis de circuitos, muchas redes pueden simplificarse directamente mediante:</p>
+<p>[ ]</p>
+<p>Sin embargo, existen configuraciones donde estas reglas no pueden aplicarse de manera inmediata. Un ejemplo típico aparece cuando tres impedancias forman una conexión entre tres nodos en forma de:</p>
+<p>[ ]</p>
+<p>o cuando tres impedancias convergen en un nodo común:</p>
+<p>[ ]</p>
+<p>En estos casos, una transformación apropiada puede convertir una topología difícil en otra que permita continuar el análisis mediante técnicas más sencillas.</p>
+<section id="la-idea-de-fondo" class="level3" data-number="1.0.1">
+<h3 data-number="1.0.1" class="anchored" data-anchor-id="la-idea-de-fondo"><span class="header-section-number">1.0.1</span> La idea de fondo</h3>
+<p>[ ]</p>
+<p>Por eso, <strong><span class="math inline">\Delta \leftrightarrow \text{Y}</span> es una herramienta de simplificación de redes</strong>, no un procedimiento que deba aplicarse automáticamente cada vez que aparezca un triángulo o una estrella.</p>
+<hr>
+</section>
+</section>
+<section id="qué-son-las-configuraciones-delta-y-texty" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> 2. ¿Qué son las configuraciones <span class="math inline">\Delta</span> y <span class="math inline">\text{Y}</span>?</h1>
+<section id="configuración-delta-delta" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="configuración-delta-delta"><span class="header-section-number">2.1</span> 2.1 Configuración Delta (<span class="math inline">\Delta</span>)</h2>
+<p>En una red Delta, tres impedancias están conectadas entre tres pares de terminales:</p>
+<p>[ A-B,B-C,C-A ]</p>
+<p>La red forma un lazo cerrado entre tres nodos.</p>
+</section>
+<section id="configuración-estrella-texty" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="configuración-estrella-texty"><span class="header-section-number">2.2</span> 2.2 Configuración Estrella (<span class="math inline">\text{Y}</span>)</h2>
+<p>En una red Estrella, tres impedancias se conectan a un nodo común:</p>
+<p>[ A-O,B-O,C-O ]</p>
+<p>donde <span class="math inline">O</span> representa el nodo central de la estrella.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>No confundir topología con transformación
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Una carga puede estar <strong>físicamente conectada</strong> en <span class="math inline">\Delta</span> o en <span class="math inline">\text{Y}</span>.</p>
+<p>Pero una transformación <span class="math inline">\Delta \leftrightarrow \text{Y}</span> puede utilizarse como <strong>herramienta matemática de análisis</strong>, aunque el circuito físico no se modifique.</p>
+<p>Por tanto:</p>
+<p>[ ]</p>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="por-qué-son-importantes-estas-transformaciones" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> 3. ¿Por qué son importantes estas transformaciones?</h1>
+<p>La importancia de <span class="math inline">\Delta \leftrightarrow \text{Y}</span> aparece cuando una topología impide utilizar directamente una simplificación conveniente.</p>
+<p>Una transformación bien elegida puede convertir:</p>
+<p>[ ]</p>
+<p>Esto permite continuar posteriormente con otros métodos de análisis, por ejemplo:</p>
+<ul>
+<li>reducción serie-paralelo;</li>
+<li>análisis de nodos;</li>
+<li>análisis de mallas;</li>
+<li>cálculo de impedancia equivalente;</li>
+<li>determinación de corrientes y tensiones.</li>
+</ul>
+<section id="aplicaciones-típicas" class="level3" data-number="3.0.1">
+<h3 data-number="3.0.1" class="anchored" data-anchor-id="aplicaciones-típicas"><span class="header-section-number">3.0.1</span> Aplicaciones típicas</h3>
+<p><strong>Análisis de circuitos:</strong> redes en puente, redes con lazos y otras conexiones de tres terminales que no se reducen directamente.</p>
+<p><strong>Circuitos de corriente alterna:</strong> las ramas pueden tener impedancias complejas,</p>
+<p>[ Z=R+jX ]</p>
+<p>por lo que la transformación debe realizarse utilizando álgebra compleja.</p>
+<p><strong>Sistemas trifásicos:</strong> las cargas pueden representarse en <span class="math inline">\Delta</span> o en <span class="math inline">\text{Y}</span>, y la transformación puede facilitar determinadas etapas del análisis.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Idea importante
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong><span class="math inline">\Delta \leftrightarrow \text{Y}</span> no es exclusivamente una técnica de circuitos trifásicos.</strong></p>
+<p>Es una técnica general de equivalencia para redes de <strong>tres terminales</strong> y puede utilizarse tanto con resistencias como con impedancias complejas.</p>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="qué-significa-que-dos-redes-sean-equivalentes" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> 4. ¿Qué significa que dos redes sean equivalentes?</h1>
+<p>Esta es la idea conceptual más importante del método.</p>
+<p>Consideremos dos redes diferentes conectadas a los mismos tres terminales:</p>
+<p>[ A,B,C ]</p>
+<p>Una red puede tener forma <span class="math inline">\Delta</span> y la otra forma <span class="math inline">\text{Y}</span>.</p>
+<p>Aunque su estructura interna sea diferente, podemos construir una red equivalente si ambas presentan el mismo comportamiento eléctrico visto desde esos terminales.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>⚡ Principio de Equivalencia Terminal
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Dos redes de tres terminales son equivalentes cuando, para las condiciones de excitación correspondientes aplicadas en sus terminales, presentan la misma relación entre tensiones y corrientes terminales.</p>
+<p>En otras palabras:</p>
+<p>[ ]</p>
+</div>
+</div>
+<p>Por eso la transformación puede utilizarse sin alterar las magnitudes eléctricas que interesan al análisis externo de la red.</p>
+<hr>
+</section>
+<section id="cuándo-se-requiere-una-transformación" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> 5. ¿Cuándo se requiere una transformación?</h1>
+<p>La pregunta correcta no es:</p>
+<blockquote class="blockquote">
+<p><strong>¿Hay una <span class="math inline">\Delta</span> o una <span class="math inline">\text{Y}</span>?</strong></p>
+</blockquote>
+<p>La pregunta correcta es:</p>
+<blockquote class="blockquote">
+<p><strong>¿La transformación me permitirá analizar la red con mayor facilidad?</strong></p>
+</blockquote>
+<p>Una estrategia útil es:</p>
+<pre class="text"><code>                    CIRCUITO
+                       │
+                       ▼
+             ¿Se puede simplificar
+             directamente en serie
+                o paralelo?
+                  /       \
+                SÍ         NO
+                │           │
+                ▼           ▼
+          Serie/paralelo   ¿Existe una
+                           red Δ o Y
+                           conveniente?
+                             /   \
+                           SÍ     NO
+                           │       │
+                           ▼       ▼
+                    Considerar    Aplicar
+                     Δ ↔ Y       otro método</code></pre>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Regla de decisión
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>No transformes por transformar.</strong></p>
+<p>Transforma cuando la nueva representación permita continuar el análisis de una manera más sencilla, clara o directa.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="cuándo-conviene-delta-rightarrow-texty" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> 6. ¿Cuándo conviene <span class="math inline">\Delta \rightarrow \text{Y}</span>?</h1>
+<p>La transformación <span class="math inline">\Delta \rightarrow \text{Y}</span> puede ser conveniente cuando la estrella resultante permite crear combinaciones que antes no eran posibles y, especialmente, cuando facilita una reducción posterior en serie o paralelo.</p>
+<p>[ ]</p>
+<p>La elección debe hacerse observando <strong>qué conexiones aparecerán después de la transformación</strong>.</p>
+<p>No basta con reconocer la figura: hay que anticipar qué estructura tendrá la red resultante.</p>
+<hr>
+</section>
+<section id="cuándo-conviene-texty-rightarrow-delta" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> 7. ¿Cuándo conviene <span class="math inline">\text{Y} \rightarrow \Delta</span>?</h1>
+<p>De manera análoga, <span class="math inline">\text{Y} \rightarrow \Delta</span> puede resultar conveniente cuando la nueva configuración permite establecer combinaciones que antes no eran posibles.</p>
+<p>[ ]</p>
+<p>La dirección de transformación debe elegirse según la <strong>topología completa del circuito</strong>, no únicamente según la forma local de la red.</p>
+<hr>
+</section>
+<section id="cómo-se-debe-abordar-un-problema-delta-leftrightarrow-texty" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> 8. ¿Cómo se debe abordar un problema <span class="math inline">\Delta \leftrightarrow \text{Y}</span>?</h1>
+<p>Antes de escribir una sola ecuación, conviene seguir una secuencia de razonamiento.</p>
+<section id="paso-1-identificar-la-red" class="level3" data-number="8.0.1">
+<h3 data-number="8.0.1" class="anchored" data-anchor-id="paso-1-identificar-la-red"><span class="header-section-number">8.0.1</span> Paso 1 — Identificar la red</h3>
+<p>Localiza los tres terminales y determina si la subred está conectada en:</p>
+<p>[ ]</p>
+</section>
+<section id="paso-2-identificar-el-objetivo" class="level3" data-number="8.0.2">
+<h3 data-number="8.0.2" class="anchored" data-anchor-id="paso-2-identificar-el-objetivo"><span class="header-section-number">8.0.2</span> Paso 2 — Identificar el objetivo</h3>
+<p>Pregunta qué necesitas encontrar:</p>
+<p>[ Z_{eq},I,V,P, ]</p>
+</section>
+<section id="paso-3-buscar-simplificaciones-directas" class="level3" data-number="8.0.3">
+<h3 data-number="8.0.3" class="anchored" data-anchor-id="paso-3-buscar-simplificaciones-directas"><span class="header-section-number">8.0.3</span> Paso 3 — Buscar simplificaciones directas</h3>
+<p>Comprueba primero si la red puede resolverse mediante:</p>
+<p>[ ]</p>
+<p>sin transformar nada.</p>
+</section>
+<section id="paso-4-identificar-la-transformación-útil" class="level3" data-number="8.0.4">
+<h3 data-number="8.0.4" class="anchored" data-anchor-id="paso-4-identificar-la-transformación-útil"><span class="header-section-number">8.0.4</span> Paso 4 — Identificar la transformación útil</h3>
+<p>Si la red no puede reducirse directamente, determina si conviene:</p>
+<p>[ ]</p>
+<p>o:</p>
+<p>[ ]</p>
+</section>
+<section id="paso-5-transformar" class="level3" data-number="8.0.5">
+<h3 data-number="8.0.5" class="anchored" data-anchor-id="paso-5-transformar"><span class="header-section-number">8.0.5</span> Paso 5 — Transformar</h3>
+<p>Aplica la relación correspondiente a las tres impedancias.</p>
+</section>
+<section id="paso-6-continuar-el-análisis" class="level3" data-number="8.0.6">
+<h3 data-number="8.0.6" class="anchored" data-anchor-id="paso-6-continuar-el-análisis"><span class="header-section-number">8.0.6</span> Paso 6 — Continuar el análisis</h3>
+<p>La transformación es un <strong>paso intermedio</strong>. Una vez obtenida la red equivalente, continúa con el método que resulte adecuado.</p>
+</section>
+<section id="paso-7-verificar" class="level3" data-number="8.0.7">
+<h3 data-number="8.0.7" class="anchored" data-anchor-id="paso-7-verificar"><span class="header-section-number">8.0.7</span> Paso 7 — Verificar</h3>
+<p>Comprueba que los resultados sean coherentes con:</p>
+<ul>
+<li>las unidades;</li>
+<li>la magnitud de las impedancias;</li>
+<li>el signo de la reactancia;</li>
+<li>la topología resultante;</li>
+<li>las condiciones originales del circuito.</li>
+</ul>
+</section>
+<section id="paso-8-interpretar" class="level3" data-number="8.0.8">
+<h3 data-number="8.0.8" class="anchored" data-anchor-id="paso-8-interpretar"><span class="header-section-number">8.0.8</span> Paso 8 — Interpretar</h3>
+<p>Finalmente, pregunta:</p>
+<blockquote class="blockquote">
+<p><strong>¿Qué simplificación conseguí y por qué esta representación es más conveniente?</strong></p>
+</blockquote>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Cadena de razonamiento
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>[ ]</p>
+<p>La transformación no es el final del problema: es una herramienta dentro de una estrategia de análisis.</p>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="topologías-y-esquemas-de-conexión" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> 9. Topologías y Esquemas de Conexión</h1>
+<p>La transformación se entiende mejor cuando se observa simultáneamente la estructura original y la estructura equivalente.</p>
 <div class="my-4 d-flex justify-content-center">
   <div class="border rounded-3 bg-white shadow-sm p-3 w-100" style="max-width: 780px;">
     <svg viewbox="0 0 740 320" width="100%" height="auto" preserveaspectratio="xMidYMid meet" style="display:block; font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;">
@@ -1177,8 +1448,8 @@ window.Quarto = {
 </div>
 <p>Las topologías que no pueden ser reducidas mediante asociaciones clásicas de serie y paralelo se denominan <strong>redes puenteadas o complejas</strong>. En estos circuitos, existen ramas que interconectan dos nodos de tal forma que la corriente tiene múltiples caminos de retorno, impidiendo que los componentes compartan exclusivamente la misma corriente (serie) o el mismo par de nodos (paralelo).</p>
 <p>Para resolverlas, se emplea el <strong>Teorema de Kennelly</strong> (Transformación Estrella-Triángulo o <span class="math inline">\text{Y}\text{–}\Delta</span>). A continuación se detallan tres ejemplos clásicos, su justificación topológica y cómo ejecutar matemáticamente la transformación para lograr un circuito equivalente reducible.</p>
-<section id="el-puente-de-wheatstone-desbalanceado" class="level3" data-number="1.0.1">
-<h3 data-number="1.0.1" class="anchored" data-anchor-id="el-puente-de-wheatstone-desbalanceado"><span class="header-section-number">1.0.1</span> 1. El Puente de Wheatstone Desbalanceado</h3>
+<section id="el-puente-de-wheatstone-desbalanceado" class="level3" data-number="9.0.1">
+<h3 data-number="9.0.1" class="anchored" data-anchor-id="el-puente-de-wheatstone-desbalanceado"><span class="header-section-number">9.0.1</span> 1. El Puente de Wheatstone Desbalanceado</h3>
 <p>Es la topología irreducible por excelencia en mediciones eléctricas e instrumentación.</p>
 <ul>
 <li><p><strong>Forma Irreducible:</strong> Consiste en dos ramas en paralelo que están interconectadas en sus puntos medios por un resistor central. Si el puente está “desbalanceado” (el producto cruzado de sus resistencias no es igual), la corriente fluye por la rama central. El resistor central no está en serie con ninguno de los otros cuatro (las corrientes se dividen en los nodos), ni en paralelo (no comparte los mismos dos nodos con ningún otro resistor).</p></li>
@@ -1190,8 +1461,8 @@ window.Quarto = {
 <p><strong>Resultado topológico:</strong> Tras aplicar esto, el resistor central desaparece. El circuito resultante tendrá dos ramas en serie pura, que luego quedarán en paralelo, resolviéndose el circuito entero.</p></li>
 </ul>
 </section>
-<section id="redes-de-acoplamiento-pi-pi-en-líneas-de-transmisión" class="level3" data-number="1.0.2">
-<h3 data-number="1.0.2" class="anchored" data-anchor-id="redes-de-acoplamiento-pi-pi-en-líneas-de-transmisión"><span class="header-section-number">1.0.2</span> 2. Redes de Acoplamiento <span class="math inline">\Pi</span> (Pi) en Líneas de Transmisión</h3>
+<section id="redes-de-acoplamiento-pi-pi-en-líneas-de-transmisión" class="level3" data-number="9.0.2">
+<h3 data-number="9.0.2" class="anchored" data-anchor-id="redes-de-acoplamiento-pi-pi-en-líneas-de-transmisión"><span class="header-section-number">9.0.2</span> 2. Redes de Acoplamiento <span class="math inline">\Pi</span> (Pi) en Líneas de Transmisión</h3>
 <p>Utilizadas frecuentemente en el modelado de transformadores y líneas de transmisión (modelos de parámetros distribuidos).</p>
 <ul>
 <li><p><strong>Forma Irreducible:</strong> Una red en <span class="math inline">\Pi</span> está formada por un resistor horizontal y dos resistores verticales conectados a tierra (o a una línea de retorno común). Si esta red se inserta entre una impedancia de fuente y una impedancia de carga, los componentes verticales no están en paralelo con la carga ni con la fuente, y el componente horizontal no está en serie con nada porque en cada extremo hay derivaciones.</p></li>
@@ -1203,8 +1474,8 @@ window.Quarto = {
 <p><strong>Resultado topológico:</strong> Al convertir de <span class="math inline">\Pi</span> a T, el resistor horizontal de la T queda en serie perfecta con la impedancia de carga, permitiendo colapsar esa malla.</p></li>
 </ul>
 </section>
-<section id="topología-de-celosía-o-puente-cruzado-lattice-network" class="level3" data-number="1.0.3">
-<h3 data-number="1.0.3" class="anchored" data-anchor-id="topología-de-celosía-o-puente-cruzado-lattice-network"><span class="header-section-number">1.0.3</span> 3. Topología de Celosía o Puente Cruzado (Lattice Network)</h3>
+<section id="topología-de-celosía-o-puente-cruzado-lattice-network" class="level3" data-number="9.0.3">
+<h3 data-number="9.0.3" class="anchored" data-anchor-id="topología-de-celosía-o-puente-cruzado-lattice-network"><span class="header-section-number">9.0.3</span> 3. Topología de Celosía o Puente Cruzado (Lattice Network)</h3>
 <p>Frecuente en filtros pasa-todo, ecualizadores de fase y análisis de cuadripolos.</p>
 <ul>
 <li><strong>Forma Irreducible:</strong> Se dibuja típicamente como una caja o rectángulo donde hay componentes en los lados superior e inferior, y dos componentes que cruzan en diagonal el interior de la caja (formando una “X”). Ningún componente está en serie o en paralelo debido al cruce de las diagonales que conectan terminales de entrada y salida de forma opuesta.</li>
@@ -1218,85 +1489,94 @@ window.Quarto = {
 <hr>
 </section>
 </section>
-<section id="fórmulas-de-transformación-para-impedancias-complejas" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Fórmulas de Transformación para Impedancias Complejas</h1>
-<section id="de-delta-a-estrella-delta-to-texty" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="de-delta-a-estrella-delta-to-texty"><span class="header-section-number">2.1</span> De Delta a Estrella (<span class="math inline">\Delta \to \text{Y}</span>)</h2>
+<section id="deltaestrella-con-impedancias-complejas" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> 10. Delta–Estrella con impedancias complejas</h1>
+<p>En corriente alterna, las ramas pueden contener resistencia, inductancia y capacitancia. Por ello, una impedancia puede expresarse como:</p>
+<p>[ ]</p>
+<p>Por ejemplo:</p>
+<p>[ Z_R=R ]</p>
+<p>[ Z_L=jL ]</p>
+<p>[ Z_C= ]</p>
+<p>Por tanto, la transformación <span class="math inline">\Delta \leftrightarrow \text{Y}</span> debe realizarse con <strong>impedancias complejas</strong>, respetando tanto su parte real como su parte imaginaria.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Conexión con el análisis fasorial
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La transformación Delta–Estrella no constituye un método separado del análisis fasorial.</p>
+<p>Es una operación de redes que utiliza las impedancias obtenidas en el dominio fasorial:</p>
+<p>[ v(t),,i(t) ;; V,,I ;; Z ;; ]</p>
+<p>Así, Delta–Estrella se integra naturalmente dentro de la cadena de análisis de circuitos de CA.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="fórmulas-de-transformación-para-impedancias-complejas" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> 11. Fórmulas de Transformación para Impedancias Complejas</h1>
+<section id="de-delta-a-estrella-delta-to-texty" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="de-delta-a-estrella-delta-to-texty"><span class="header-section-number">11.1</span> De Delta a Estrella (<span class="math inline">\Delta \to \text{Y}</span>)</h2>
 <p>Dado un triángulo formado por las impedancias complejas <span class="math inline">\mathbf{Z}_A</span> (opuesta al nodo 1), <span class="math inline">\mathbf{Z}_B</span> (opuesta al nodo 2) y <span class="math inline">\mathbf{Z}_C</span> (opuesta al nodo 3), definimos la suma de impedancias del delta:</p>
-<p><span class="math display">\mathbf{Z}_\Sigma = \mathbf{Z}_A + \mathbf{Z}_B + \mathbf{Z}_C</span></p>
+<p>[ _= _A + _B + _C ]</p>
 <p>Las impedancias equivalentes en estrella conectadas a cada nodo <span class="math inline">(1, 2, 3)</span> hacia el neutro común <span class="math inline">O</span> son:</p>
-<p><span class="math display">\mathbf{Z}_1 = \frac{\mathbf{Z}_B \mathbf{Z}_C}{\mathbf{Z}_\Sigma}, \qquad \mathbf{Z}_2 = \frac{\mathbf{Z}_A \mathbf{Z}_C}{\mathbf{Z}_\Sigma}, \qquad \mathbf{Z}_3 = \frac{\mathbf{Z}_A \mathbf{Z}_B}{\mathbf{Z}_\Sigma}</span></p>
+<p>[ _1 = , _2 = , _3 = ]</p>
 <blockquote class="blockquote">
 <p><strong>Regla mnemotécnica (<span class="math inline">\Delta \to \text{Y}</span>):</strong> Cada rama de la estrella es igual al <em>producto de las dos impedancias adyacentes del delta</em> dividido por la <em>suma total de las tres impedancias del delta</em>.</p>
 </blockquote>
 <hr>
 </section>
-<section id="de-estrella-a-delta-texty-to-delta" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="de-estrella-a-delta-texty-to-delta"><span class="header-section-number">2.2</span> De Estrella a Delta (<span class="math inline">\text{Y} \to \Delta</span>)</h2>
+<section id="de-estrella-a-delta-texty-to-delta" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="de-estrella-a-delta-texty-to-delta"><span class="header-section-number">11.2</span> De Estrella a Delta (<span class="math inline">\text{Y} \to \Delta</span>)</h2>
 <p>Dada una estrella con ramas <span class="math inline">\mathbf{Z}_1, \mathbf{Z}_2, \mathbf{Z}_3</span> conectadas al nodo común neutro <span class="math inline">O</span>, definimos la suma de productos dos a dos:</p>
-<p><span class="math display">\Sigma_2 = \mathbf{Z}_1 \mathbf{Z}_2 + \mathbf{Z}_2 \mathbf{Z}_3 + \mathbf{Z}_3 \mathbf{Z}_1</span></p>
+<p>[ _2 = _1 _2 + _2 _3 + _3 _1 ]</p>
 <p>Las impedancias correspondientes del triángulo delta equivalentes son:</p>
-<p><span class="math display">\mathbf{Z}_A = \frac{\Sigma_2}{\mathbf{Z}_1}, \qquad \mathbf{Z}_B = \frac{\Sigma_2}{\mathbf{Z}_2}, \qquad \mathbf{Z}_C = \frac{\Sigma_2}{\mathbf{Z}_3}</span></p>
+<p>[ _A = , _B = , _C = ]</p>
 <blockquote class="blockquote">
 <p><strong>Regla mnemotécnica (<span class="math inline">\text{Y} \to \Delta</span>):</strong> Cada impedancia del delta es igual a la <em>suma de los productos dos a dos de las impedancias de la estrella</em> dividida entre la <em>impedancia opuesta de la estrella</em>.</p>
 </blockquote>
 <hr>
 </section>
 </section>
-<section id="errores-frecuentes-en-la-conversión-delta-leftrightarrow-texty" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Errores Frecuentes en la Conversión <span class="math inline">\Delta \leftrightarrow \text{Y}</span></h1>
+<section id="caso-particular-redes-equilibradas" class="level1" data-number="12">
+<h1 data-number="12"><span class="header-section-number">12</span> 12. Caso particular: redes equilibradas</h1>
+<p>Cuando las tres impedancias de la red son iguales, las expresiones generales se simplifican.</p>
+<p>Para una red equilibrada:</p>
+<p>[ Z_= 3Z_Y ]</p>
+<p>y, equivalentemente,</p>
+<p>[ Z_Y= ]</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Atención al contexto
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Esta relación es un <strong>caso particular de una red equilibrada</strong>. No debe utilizarse como sustituto de las expresiones generales cuando las tres impedancias son diferentes.</p>
+</div>
+</div>
+<p>En sistemas trifásicos equilibrados, esta propiedad permite establecer relaciones muy útiles entre las configuraciones <span class="math inline">\Delta</span> y <span class="math inline">\text{Y}</span>.</p>
+<hr>
+</section>
+<section id="errores-frecuentes-en-la-conversión-delta-leftrightarrow-texty" class="level1" data-number="13">
+<h1 data-number="13"><span class="header-section-number">13</span> 13. Errores Frecuentes en la Conversión <span class="math inline">\Delta \leftrightarrow \text{Y}</span></h1>
 <ol type="1">
-<li><strong>Confusión entre tensiones y corrientes de fase y de línea:</strong>
-<ul>
-<li><strong>En estrella:</strong> La tensión de fase es menor que la tensión de línea por un factor de <span class="math inline">\sqrt{3}</span> (<span class="math inline">V_L = \sqrt{3} V_F</span>), mientras que las corrientes son iguales (<span class="math inline">I_L = I_F</span>).</li>
-<li><strong>En delta:</strong> Las tensiones de fase y de línea son iguales (<span class="math inline">V_L = V_F</span>), mientras que la corriente de línea es <span class="math inline">\sqrt{3}</span> veces mayor que la de fase (<span class="math inline">I_L = \sqrt{3} I_F</span>).</li>
-</ul></li>
-</ol>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 21%">
-<col style="width: 26%">
-<col style="width: 26%">
-<col style="width: 26%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Magnitud</th>
-<th style="text-align: center;">Estrella (<span class="math inline">\text{Y}</span>)</th>
-<th style="text-align: center;">Triángulo (<span class="math inline">\Delta</span>)</th>
-<th style="text-align: center;">Relación</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><strong>Tensión (<span class="math inline">V</span>)</strong></td>
-<td style="text-align: center;"><span class="math inline">V_L &gt; V_F</span></td>
-<td style="text-align: center;"><span class="math inline">V_L = V_F</span></td>
-<td style="text-align: center;"><span class="math inline">V_L = \sqrt{3} \cdot V_F</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>Corriente (<span class="math inline">I</span>)</strong></td>
-<td style="text-align: center;"><span class="math inline">I_L = I_F</span></td>
-<td style="text-align: center;"><span class="math inline">I_L &gt; I_F</span></td>
-<td style="text-align: center;"><span class="math inline">I_L = \sqrt{3} \cdot I_F</span></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>Potencia (<span class="math inline">P</span>)</strong></td>
-<td style="text-align: center;">Menor (<span class="math inline">1/3</span>)</td>
-<td style="text-align: center;">Mayor (Nominal)</td>
-<td style="text-align: center;"><span class="math inline">P_{\Delta} = 3 \cdot P_{\text{Y}}</span></td>
-</tr>
-</tbody>
-</table>
-<ol start="2" type="1">
-<li><strong>Aplicación indiscriminada de fórmulas puramente resistivas:</strong> En CA, todas las operaciones involucran <strong>números complejos</strong> <span class="math inline">\mathbf{Z} = R + jX</span>. Sumar solo las partes reales u omitir los signos en reactancias inductivas (<span class="math inline">+j</span>) o capacitivas (<span class="math inline">-j</span>) produce resultados erróneos.</li>
-<li><strong>Desbalance de impedancias:</strong> En sistemas equilibrados, <span class="math inline">\mathbf{Z}_\Delta = 3 \mathbf{Z}_{\text{Y}}</span> y <span class="math inline">\mathbf{Z}_{\text{Y}} = \frac{\mathbf{Z}_\Delta}{3}</span>. Sin embargo, en redes asimétricas (puentes de medición no balanceados), debe aplicarse la fórmula general completa elemento por elemento.</li>
-<li><strong>Ignorar el nodo neutro ficticio en Estrella:</strong> En la configuración <span class="math inline">\text{Y}</span> aparece un nodo central que no existía en el <span class="math inline">\Delta</span>. Dicho nodo tiene un potencial eléctrico definido que no debe confundirse con la referencia de tierra salvo que esté expresamente conectado a ella.</li>
+<li><p><strong>Confusión entre la transformación de redes y las relaciones de línea/fase:</strong> transformar una subred de impedancias <span class="math inline">\Delta \leftrightarrow \text{Y}</span> no equivale automáticamente a aplicar relaciones de tensión y corriente de un sistema trifásico.</p></li>
+<li><p><strong>Aplicación indiscriminada de fórmulas puramente resistivas:</strong> en CA, todas las operaciones involucran <strong>números complejos</strong> <span class="math inline">\mathbf{Z}=R+jX</span>. Sumar solo las partes reales u omitir los signos en reactancias inductivas (<span class="math inline">+j</span>) o capacitivas (<span class="math inline">-j</span>) produce resultados erróneos.</p></li>
+<li><p><strong>Desbalance de impedancias:</strong> cuando las tres ramas no son iguales, deben utilizarse las relaciones generales de transformación elemento por elemento.</p></li>
+<li><p><strong>Ignorar el nodo neutro ficticio en Estrella:</strong> en la configuración <span class="math inline">\text{Y}</span> aparece un nodo central que no existía en el <span class="math inline">\Delta</span>. Dicho nodo tiene un potencial eléctrico definido y no debe confundirse con la referencia de tierra salvo que esté expresamente conectado a ella.</p></li>
+<li><p><strong>Elegir la transformación sin observar la red completa:</strong> una transformación matemáticamente válida puede no ser la más conveniente para resolver el problema.</p></li>
 </ol>
 <hr>
 </section>
-<section id="módulo-interactivo-de-cálculo-delta-leftrightarrow-texty" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Módulo Interactivo de Cálculo <span class="math inline">\Delta \leftrightarrow \text{Y}</span></h1>
+<section id="módulo-interactivo-de-cálculo-delta-leftrightarrow-texty" class="level1" data-number="14">
+<h1 data-number="14"><span class="header-section-number">14</span> 14. Módulo Interactivo de Cálculo <span class="math inline">\Delta \leftrightarrow \text{Y}</span></h1>
 <p>Utilice el siguiente simulador para ingresar las impedancias complejas en forma rectangular (<span class="math inline">R + jX</span>) y obtener inmediatamente la transformación equivalente en ambas direcciones con verificación de fasores:</p>
 <section id="solver-de-redes-complejas-análisis-nodal" class="level3 unnumbered card-module">
 <h3 class="unnumbered anchored" data-anchor-id="solver-de-redes-complejas-análisis-nodal">🧮 Solver de redes complejas (análisis nodal)</h3>
@@ -1692,8 +1972,8 @@ if (document.readyState === "loading") {
 </section>
 <hr>
 </section>
-<section id="navegación-del-módulo" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Navegación del Módulo</h1>
+<section id="navegación-del-módulo" class="level1" data-number="15">
+<h1 data-number="15"><span class="header-section-number">15</span> 15. Navegación del Módulo</h1>
 <div class="d-flex flex-wrap gap-2 my-3">
 <p><a href="../circuitos_electricos/teoria_fasores.html" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i> Análisis Fasorial</a> <a href="../circuitos_electricos/analisis_nodal.html" class="btn btn-primary"><i class="bi bi-diagram-2 me-1"></i> Siguiente: Análisis Nodal</a> <a href="../circuitos_electricos/analisis_mallas.html" class="btn btn-outline-primary"><i class="bi bi-grid me-1"></i> Análisis de Mallas</a> <a href="../circuitos_electricos/circuito_thevenin.html" class="btn btn-outline-primary"><i class="bi bi-cpu me-1"></i> Teorema de Thévenin</a> <a href="../circuitos_electricos/index.html" class="btn btn-outline-secondary"><i class="bi bi-house me-1"></i> Índice</a></p>
 </div>
