@@ -151,28 +151,28 @@
     "href": "circuitos_electricos/delta_estrella.html#configuración-delta-delta",
     "title": "Transformación Delta – Estrella (Δ ↔︎ Y) en Corriente Alterna",
     "section": "2.1 2.1 Configuración Delta (\\Delta)",
-    "text": "2.1 2.1 Configuración Delta (\\Delta)\nEn una red Delta, tres impedancias están conectadas entre tres pares de terminales:\n[ A-B,B-C,C-A ]\nLa red forma un lazo cerrado entre tres nodos."
+    "text": "2.1 2.1 Configuración Delta (\\Delta)\nEn una red Delta, tres impedancias están conectadas entre tres pares de terminales:\n\nA-B,\\qquad B-C,\\qquad C-A\n\nLa red forma un lazo cerrado entre tres nodos."
   },
   {
     "objectID": "circuitos_electricos/delta_estrella.html#configuración-estrella-texty",
     "href": "circuitos_electricos/delta_estrella.html#configuración-estrella-texty",
     "title": "Transformación Delta – Estrella (Δ ↔︎ Y) en Corriente Alterna",
     "section": "2.2 2.2 Configuración Estrella (\\text{Y})",
-    "text": "2.2 2.2 Configuración Estrella (\\text{Y})\nEn una red Estrella, tres impedancias se conectan a un nodo común:\n[ A-O,B-O,C-O ]\ndonde O representa el nodo central de la estrella.\n\n\n\n\n\n\nTipNo confundir topología con transformación\n\n\n\nUna carga puede estar físicamente conectada en \\Delta o en \\text{Y}.\nPero una transformación \\Delta \\leftrightarrow \\text{Y} puede utilizarse como herramienta matemática de análisis, aunque el circuito físico no se modifique.\nPor tanto:\n[ ]"
+    "text": "2.2 2.2 Configuración Estrella (\\text{Y})\nEn una red Estrella, tres impedancias se conectan a un nodo común:\n\nA-O,\\qquad B-O,\\qquad C-O\n\ndonde O representa el nodo central de la estrella.\n\n\n\n\n\n\nTipNo confundir topología con transformación\n\n\n\nUna carga puede estar físicamente conectada en \\Delta o en \\text{Y}.\nPero una transformación \\Delta \\leftrightarrow \\text{Y} puede utilizarse como herramienta matemática de análisis, aunque el circuito físico no se modifique.\nPor tanto:\n\n\\boxed{\n\\text{transformar la representación}\n\\neq\n\\text{reconstruir físicamente el circuito}\n}"
   },
   {
     "objectID": "circuitos_electricos/delta_estrella.html#de-delta-a-estrella-delta-to-texty",
     "href": "circuitos_electricos/delta_estrella.html#de-delta-a-estrella-delta-to-texty",
     "title": "Transformación Delta – Estrella (Δ ↔︎ Y) en Corriente Alterna",
     "section": "11.1 De Delta a Estrella (\\Delta \\to \\text{Y})",
-    "text": "11.1 De Delta a Estrella (\\Delta \\to \\text{Y})\nDado un triángulo formado por las impedancias complejas \\mathbf{Z}_A (opuesta al nodo 1), \\mathbf{Z}_B (opuesta al nodo 2) y \\mathbf{Z}_C (opuesta al nodo 3), definimos la suma de impedancias del delta:\n[ _= _A + _B + _C ]\nLas impedancias equivalentes en estrella conectadas a cada nodo (1, 2, 3) hacia el neutro común O son:\n[ _1 = , _2 = , _3 = ]\n\nRegla mnemotécnica (\\Delta \\to \\text{Y}): Cada rama de la estrella es igual al producto de las dos impedancias adyacentes del delta dividido por la suma total de las tres impedancias del delta."
+    "text": "11.1 De Delta a Estrella (\\Delta \\to \\text{Y})\nDado un triángulo formado por las impedancias complejas \\mathbf{Z}_A (opuesta al nodo 1), \\mathbf{Z}_B (opuesta al nodo 2) y \\mathbf{Z}_C (opuesta al nodo 3), definimos la suma de impedancias del delta:\n\n\\mathbf{Z}_\\Sigma = \\mathbf{Z}_A + \\mathbf{Z}_B + \\mathbf{Z}_C\n\nLas impedancias equivalentes en estrella conectadas a cada nodo (1, 2, 3) hacia el neutro común O son:\n\n\\mathbf{Z}_1 = \\frac{\\mathbf{Z}_B \\mathbf{Z}_C}{\\mathbf{Z}_\\Sigma}, \\qquad\n\\mathbf{Z}_2 = \\frac{\\mathbf{Z}_A \\mathbf{Z}_C}{\\mathbf{Z}_\\Sigma}, \\qquad\n\\mathbf{Z}_3 = \\frac{\\mathbf{Z}_A \\mathbf{Z}_B}{\\mathbf{Z}_\\Sigma}\n\n\nRegla mnemotécnica (\\Delta \\to \\text{Y}): Cada rama de la estrella es igual al producto de las dos impedancias adyacentes del delta dividido por la suma total de las tres impedancias del delta."
   },
   {
     "objectID": "circuitos_electricos/delta_estrella.html#de-estrella-a-delta-texty-to-delta",
     "href": "circuitos_electricos/delta_estrella.html#de-estrella-a-delta-texty-to-delta",
     "title": "Transformación Delta – Estrella (Δ ↔︎ Y) en Corriente Alterna",
     "section": "11.2 De Estrella a Delta (\\text{Y} \\to \\Delta)",
-    "text": "11.2 De Estrella a Delta (\\text{Y} \\to \\Delta)\nDada una estrella con ramas \\mathbf{Z}_1, \\mathbf{Z}_2, \\mathbf{Z}_3 conectadas al nodo común neutro O, definimos la suma de productos dos a dos:\n[ _2 = _1 _2 + _2 _3 + _3 _1 ]\nLas impedancias correspondientes del triángulo delta equivalentes son:\n[ _A = , _B = , _C = ]\n\nRegla mnemotécnica (\\text{Y} \\to \\Delta): Cada impedancia del delta es igual a la suma de los productos dos a dos de las impedancias de la estrella dividida entre la impedancia opuesta de la estrella."
+    "text": "11.2 De Estrella a Delta (\\text{Y} \\to \\Delta)\nDada una estrella con ramas \\mathbf{Z}_1, \\mathbf{Z}_2, \\mathbf{Z}_3 conectadas al nodo común neutro O, definimos la suma de productos dos a dos:\n\n\\Sigma_2 = \\mathbf{Z}_1 \\mathbf{Z}_2 + \\mathbf{Z}_2 \\mathbf{Z}_3 + \\mathbf{Z}_3 \\mathbf{Z}_1\n\nLas impedancias correspondientes del triángulo delta equivalentes son:\n\n\\mathbf{Z}_A = \\frac{\\Sigma_2}{\\mathbf{Z}_1}, \\qquad\n\\mathbf{Z}_B = \\frac{\\Sigma_2}{\\mathbf{Z}_2}, \\qquad\n\\mathbf{Z}_C = \\frac{\\Sigma_2}{\\mathbf{Z}_3}\n\n\nRegla mnemotécnica (\\text{Y} \\to \\Delta): Cada impedancia del delta es igual a la suma de los productos dos a dos de las impedancias de la estrella dividida entre la impedancia opuesta de la estrella."
   },
   {
     "objectID": "circuitos_electricos/circuito_norton.html",
