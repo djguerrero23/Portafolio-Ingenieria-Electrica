@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="David Guerrero">
-<meta name="dcterms.date" content="2026-09-10">
-<meta name="description" content="Formulación de potencia compleja, deducción del triángulo de potencias, análisis de cargas en atraso/adelanto y simulador interactivo en Streamlit.">
+<meta name="dcterms.date" content="2026-09-16">
+<meta name="description" content="Resolución sistemática de redes eléctricas sinusoidales en régimen permanente mediante potenciales de nodo: planteamiento matricial [Y][V] = [I], supernodos y fuentes controladas.">
 
-<title>Potencia en Corriente Alterna y Triángulo de Potencias – ⚡ Portafolio de Ingeniería Eléctrica</title>
+<title>Análisis Nodal en Corriente Alterna – ⚡ Portafolio de Ingeniería Eléctrica</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -28,6 +28,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -287,12 +322,14 @@ window.Quarto = {
     <h2 id="toc-title">Índice de Contenido</h2>
    
   <ul>
-  <li><a href="#potencia-instantánea-y-descomposición-armónica" id="toc-potencia-instantánea-y-descomposición-armónica" class="nav-link active" data-scroll-target="#potencia-instantánea-y-descomposición-armónica"><span class="header-section-number">1</span> 1. Potencia Instantánea y Descomposición Armónica</a></li>
-  <li><a href="#potencia-compleja-mathbfs-y-triángulo-de-potencias" id="toc-potencia-compleja-mathbfs-y-triángulo-de-potencias" class="nav-link" data-scroll-target="#potencia-compleja-mathbfs-y-triángulo-de-potencias"><span class="header-section-number">2</span> 2. Potencia Compleja (<span class="math inline">\mathbf{S}</span>) y Triángulo de Potencias</a></li>
-  <li><a href="#factor-de-potencia-y-convención-de-cargas" id="toc-factor-de-potencia-y-convención-de-cargas" class="nav-link" data-scroll-target="#factor-de-potencia-y-convención-de-cargas"><span class="header-section-number">3</span> 3. Factor de Potencia y Convención de Cargas</a></li>
-  <li><a href="#corrección-del-factor-de-potencia" id="toc-corrección-del-factor-de-potencia" class="nav-link" data-scroll-target="#corrección-del-factor-de-potencia"><span class="header-section-number">4</span> 4. Corrección del Factor de Potencia</a></li>
-  <li><a href="#simulador-interactivo-de-potencia-en-tiempo-real" id="toc-simulador-interactivo-de-potencia-en-tiempo-real" class="nav-link" data-scroll-target="#simulador-interactivo-de-potencia-en-tiempo-real"><span class="header-section-number">5</span> 5. Simulador Interactivo de Potencia en Tiempo Real</a></li>
-  <li><a href="#recursos-computacionales-navegación" id="toc-recursos-computacionales-navegación" class="nav-link" data-scroll-target="#recursos-computacionales-navegación"><span class="header-section-number">6</span> 6. Recursos Computacionales &amp; Navegación</a></li>
+  <li><a href="#análisis-nodal-en-régimen-sinusoidal-permanente" id="toc-análisis-nodal-en-régimen-sinusoidal-permanente" class="nav-link active" data-scroll-target="#análisis-nodal-en-régimen-sinusoidal-permanente">Análisis Nodal en Régimen Sinusoidal Permanente</a></li>
+  <li><a href="#formulación-matricial-por-admitancias" id="toc-formulación-matricial-por-admitancias" class="nav-link" data-scroll-target="#formulación-matricial-por-admitancias"><span class="header-section-number">1</span> Formulación Matricial por Admitancias</a>
+  <ul class="collapse">
+  <li><a href="#elementos-de-la-matriz-de-admitancias-mathbfy" id="toc-elementos-de-la-matriz-de-admitancias-mathbfy" class="nav-link" data-scroll-target="#elementos-de-la-matriz-de-admitancias-mathbfy"><span class="header-section-number">1.1</span> Elementos de la Matriz de Admitancias <span class="math inline">[\mathbf{Y}]</span></a></li>
+  </ul></li>
+  <li><a href="#tratamiento-de-fuentes-de-tensión-el-supernodo" id="toc-tratamiento-de-fuentes-de-tensión-el-supernodo" class="nav-link" data-scroll-target="#tratamiento-de-fuentes-de-tensión-el-supernodo"><span class="header-section-number">2</span> Tratamiento de Fuentes de Tensión: El Supernodo</a></li>
+  <li><a href="#algoritmo-sistemático-de-resolución-paso-a-paso" id="toc-algoritmo-sistemático-de-resolución-paso-a-paso" class="nav-link" data-scroll-target="#algoritmo-sistemático-de-resolución-paso-a-paso"><span class="header-section-number">3</span> Algoritmo Sistemático de Resolución Paso a Paso</a></li>
+  <li><a href="#navegación-del-módulo" id="toc-navegación-del-módulo" class="nav-link" data-scroll-target="#navegación-del-módulo"><span class="header-section-number">4</span> Navegación del Módulo</a></li>
   </ul>
 </nav>
     </div>
@@ -301,21 +338,20 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Potencia en Corriente Alterna y Triángulo de Potencias</h1>
-<p class="subtitle lead">Modelado analítico de potencia instantánea, activa, reactiva, aparente y compensación del factor de potencia</p>
+<h1 class="title">Análisis Nodal en Corriente Alterna</h1>
+<p class="subtitle lead">Formulación sistemática por Ley de Corrientes de Kirchhoff (LCK) y Matriz de Admitancias Complejas</p>
   <div class="quarto-categories">
-    <div class="quarto-category">Potencia CA</div>
-    <div class="quarto-category">Potencia Compleja</div>
-    <div class="quarto-category">Factor de Potencia</div>
-    <div class="quarto-category">Triángulo de Potencias</div>
-    <div class="quarto-category">Streamlit</div>
-    <div class="quarto-category">Simulación</div>
+    <div class="quarto-category">Métodos de Redes</div>
+    <div class="quarto-category">Análisis Nodal</div>
+    <div class="quarto-category">Admitancias</div>
+    <div class="quarto-category">LCK</div>
+    <div class="quarto-category">Circuitos CA</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    Formulación de potencia compleja, deducción del triángulo de potencias, análisis de cargas en atraso/adelanto y simulador interactivo en Streamlit.
+    Resolución sistemática de redes eléctricas sinusoidales en régimen permanente mediante potenciales de nodo: planteamiento matricial [Y][V] = [I], supernodos y fuentes controladas.
   </div>
 </div>
 
@@ -332,7 +368,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 10, 2026</p>
+      <p class="date">September 16, 2026</p>
     </div>
   </div>
   
@@ -344,121 +380,121 @@ window.Quarto = {
 </header>
 
 
+<section id="análisis-nodal-en-régimen-sinusoidal-permanente" class="level1 unnumbered hero-banner-modern">
+<h1 class="unnumbered">Análisis Nodal en Régimen Sinusoidal Permanente</h1>
+<p><strong>Resolución sistemática de circuitos mediante potenciales de nodo y leyes de corrientes.</strong></p>
+<p>El método de nodos reduce el sistema de ecuaciones de cualquier circuito lineal a un conjunto desacoplado o matricial de tensiones nodales respecto a un punto de referencia común.</p>
+</section>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>⚡ Marco Teórico &amp; Interfaz Computacional
+<span class="screen-reader-only">Note</span>⚡ Fundamento: Ley de Corrientes de Kirchhoff (LCK)
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>En sistemas eléctricos de corriente alterna, la transferencia de energía no se limita a disipación de calor útil, sino que involucra oscilaciones continuas de energía electromagnética entre la fuente y las reactancias. Esta memoria desglosa los fundamentos de la <strong>potencia compleja</strong> e incluye un simulador interactivo para visualización instantánea del triángulo de potencias.</p>
+<p>Para cualquier nodo esencial en régimen sinusoidal permanente, la suma algebraica de los fasores de corriente que convergen al nodo es idénticamente nula:</p>
+<p><span class="math display">\sum_{k=1}^{n} \mathbf{I}_k = 0</span></p>
+<p>Al expresar cada corriente de rama en función de las tensiones nodales y las admitancias complejas (<span class="math inline">\mathbf{I} = \mathbf{Y} \Delta \mathbf{V}</span>), se obtiene un sistema lineal directamente resoluble por álgebra matricial.</p>
 </div>
 </div>
 <hr>
-<section id="potencia-instantánea-y-descomposición-armónica" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="potencia-instantánea-y-descomposición-armónica"><span class="header-section-number">1</span> 1. Potencia Instantánea y Descomposición Armónica</h2>
-<p>Sea una fuente de tensión senoidal aplicada a una carga pasiva:</p>
+<section id="formulación-matricial-por-admitancias" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Formulación Matricial por Admitancias</h1>
+<p>Para un circuito lineal con <span class="math inline">N</span> nodos esenciales independientes (excluyendo el nodo de referencia asignado como tierra, <span class="math inline">0\text{ V}</span>), sin fuentes de tensión entre nodos no referenciales:</p>
 <p><span class="math display">
-v(t) = V_m \cos(\omega t + \theta_v)
+\begin{bmatrix}
+\mathbf{Y}_{11} &amp; \mathbf{Y}_{12} &amp; \cdots &amp; \mathbf{Y}_{1N} \\
+\mathbf{Y}_{21} &amp; \mathbf{Y}_{22} &amp; \cdots &amp; \mathbf{Y}_{2N} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+\mathbf{Y}_{N1} &amp; \mathbf{Y}_{N2} &amp; \cdots &amp; \mathbf{Y}_{NN}
+\end{bmatrix}
+\begin{bmatrix}
+\mathbf{V}_1 \\
+\mathbf{V}_2 \\
+\vdots \\
+\mathbf{V}_N
+\end{bmatrix}
+=
+\begin{bmatrix}
+\mathbf{I}_1 \\
+\mathbf{I}_2 \\
+\vdots \\
+\mathbf{I}_N
+\end{bmatrix}
 </span></p>
-<p><span class="math display">
-i(t) = I_m \cos(\omega t + \theta_i)
-</span></p>
-<p>La <strong>potencia instantánea</strong> absorbida por la red es el producto temporal <span class="math inline">p(t) = v(t) \cdot i(t)</span>:</p>
-<p><span class="math display">
-p(t) = V_m I_m \cos(\omega t + \theta_v) \cos(\omega t + \theta_i)
-</span></p>
-<p>Aplicando la identidad trigonométrica <span class="math inline">\cos A \cos B = \frac{1}{2} [\cos(A-B) + \cos(A+B)]</span>:</p>
-<p><span class="math display">
-p(t) = \underbrace{V_{rms} I_{rms} \cos(\theta_v - \theta_i) \left[ 1 + \cos(2\omega t + 2\theta_v) \right]}_{\text{Componente unidireccional y pulsante activa}} + \underbrace{V_{rms} I_{rms} \sin(\theta_v - \theta_i) \sin(2\omega t + 2\theta_v)}_{\text{Componente reactiva oscilante}}
-</span></p>
-<blockquote class="blockquote">
-<p>La potencia instantánea oscila al <strong>doble de la frecuencia de la red</strong> (<span class="math inline">2\omega = 120\text{ Hz}</span> en sistemas de <span class="math inline">60\text{ Hz}</span>).</p>
-</blockquote>
+<p>En notación compacta:</p>
+<p><span class="math display">[\mathbf{Y}] [\mathbf{V}] = [\mathbf{I}]</span></p>
+<section id="elementos-de-la-matriz-de-admitancias-mathbfy" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="elementos-de-la-matriz-de-admitancias-mathbfy"><span class="header-section-number">1.1</span> Elementos de la Matriz de Admitancias <span class="math inline">[\mathbf{Y}]</span></h2>
+<ol type="1">
+<li><p><strong>Admitancias Propias (<span class="math inline">\mathbf{Y}_{ii}</span>):</strong> Elementos de la diagonal principal.<br>
+<span class="math display">\mathbf{Y}_{ii} = \sum \mathbf{Y}_{\text{conectadas directamente al nodo } i}</span> Es la suma de todas las admitancias complejas incidentes en el nodo <span class="math inline">i</span>. Siempre lleva signo <strong>positivo</strong>.</p></li>
+<li><p><strong>Admitancias Mutuas (<span class="math inline">\mathbf{Y}_{ij}</span> con <span class="math inline">i \neq j</span>):</strong> Elementos fuera de la diagonal.<br>
+<span class="math display">\mathbf{Y}_{ij} = -\sum \mathbf{Y}_{\text{conectadas directamente entre el nodo } i \text{ y el nodo } j}</span> Corresponde al negativo de la suma de admitancias de las ramas que unen directamente los nodos <span class="math inline">i</span> y <span class="math inline">j</span>. En circuitos pasivos recíprocos, la matriz es simétrica: <span class="math inline">\mathbf{Y}_{ij} = \mathbf{Y}_{ji}</span>.</p></li>
+<li><p><strong>Vector de Inyección de Corrientes (<span class="math inline">\mathbf{I}_i</span>):</strong><br>
+<span class="math display">\mathbf{I}_i = \sum \mathbf{I}_{\text{fuentes que entran al nodo } i} - \sum \mathbf{I}_{\text{fuentes que salen del nodo } i}</span> Es la suma fasorial de las fuentes de corriente independientes que inyectan carga al nodo <span class="math inline">i</span>.</p></li>
+</ol>
 <hr>
 </section>
-<section id="potencia-compleja-mathbfs-y-triángulo-de-potencias" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="potencia-compleja-mathbfs-y-triángulo-de-potencias"><span class="header-section-number">2</span> 2. Potencia Compleja (<span class="math inline">\mathbf{S}</span>) y Triángulo de Potencias</h2>
-<p>En el dominio fasorial, la <strong>potencia compleja</strong> <span class="math inline">\mathbf{S}</span> se define como el producto del fasor eficaz de tensión por el <strong>complejo conjugado</strong> del fasor eficaz de corriente:</p>
-<p><span class="math display">
-\mathbf{S} = \mathbf{V}_{rms} \cdot \mathbf{I}_{rms}^* = \left( V_{rms} e^{j\theta_v} \right) \left( I_{rms} e^{-j\theta_i} \right) = V_{rms} I_{rms} e^{j(\theta_v - \theta_i)}
-</span></p>
-<p>Expresada en forma rectangular:</p>
-<p><span class="math display">
-\mathbf{S} = P + jQ
-</span></p>
-<div class="grid" style="margin: 2rem 0;">
-<div class="g-col-12 g-col-md-4">
-<section id="potencia-activa-p" class="level3 card-module" data-number="2.1">
-<h3 data-number="2.1" class="anchored" data-anchor-id="potencia-activa-p"><span class="header-section-number">2.1</span> 💡 Potencia Activa (<span class="math inline">P</span>)</h3>
-<p>Potencia real que se transforma en trabajo útil (mecánico, lumínico o calor). <span class="math display">
-P = V_{rms} I_{rms} \cos\theta
-</span> <strong>Unidad:</strong> Vatio [<span class="math inline">\text{W}</span>], [<span class="math inline">\text{kW}</span>], [<span class="math inline">\text{MW}</span>]</p>
+</section>
+<section id="tratamiento-de-fuentes-de-tensión-el-supernodo" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Tratamiento de Fuentes de Tensión: El Supernodo</h1>
+<p>Cuando el circuito contiene <strong>fuentes de tensión</strong> (ideales o con impedancia interna nula), la corriente que circula a través de ellas no se puede determinar directamente por la Ley de Ohm (<span class="math inline">\mathbf{I} = \Delta \mathbf{V} / 0 \to \text{indefinido}</span>). Se presentan dos situaciones:</p>
+<div class="grid">
+<div class="g-col-12 g-col-md-6">
+<section id="fuente-conectada-a-referencia" class="level4 card-module" style="border-top: 4px solid #0284c7;" data-number="2.0.0.1">
+<h4 data-number="2.0.0.1" class="anchored" data-anchor-id="fuente-conectada-a-referencia"><span class="header-section-number">2.0.0.1</span> 1. Fuente conectada a Referencia</h4>
+<p>Si la fuente de tensión <span class="math inline">\mathbf{V}_s</span> está conectada entre el nodo <span class="math inline">k</span> y el nodo de tierra: - El potencial del nodo <span class="math inline">k</span> queda fijado inmediatamente: <span class="math display">\mathbf{V}_k = \mathbf{V}_s</span> - El número de incógnitas del sistema se reduce en 1. No es necesario plantear la LCK en el nodo <span class="math inline">k</span>.</p>
 </section>
 </div>
-<div class="g-col-12 g-col-md-4">
-<section id="potencia-reactiva-q" class="level3 card-module" data-number="2.2">
-<h3 data-number="2.2" class="anchored" data-anchor-id="potencia-reactiva-q"><span class="header-section-number">2.2</span> 🧲 Potencia Reactiva (<span class="math inline">Q</span>)</h3>
-<p>Potencia intercambiada para sostener los campos magnéticos y eléctricos. <span class="math display">
-Q = V_{rms} I_{rms} \sin\theta
-</span> <strong>Unidad:</strong> Volt-Amperio Reactivo [<span class="math inline">\text{VAR}</span>], [<span class="math inline">\text{kVAR}</span>]</p>
+<div class="g-col-12 g-col-md-6">
+<section id="fuente-flotante-supernodo" class="level4 card-module" style="border-top: 4px solid #f59e0b;" data-number="2.0.0.2">
+<h4 data-number="2.0.0.2" class="anchored" data-anchor-id="fuente-flotante-supernodo"><span class="header-section-number">2.0.0.2</span> 2. Fuente Flotante: Supernodo</h4>
+<p>Si la fuente de tensión está conectada entre dos nodos no referenciales <span class="math inline">k</span> y <span class="math inline">m</span>: 1. Se encierra la fuente de tensión y los dos nodos en una frontera cerrada (<strong>Supernodo</strong>). 2. Se plantea la LCK fasorial para la frontera del supernodo completo. 3. Se agrega la <strong>ecuación de ligadura de tensión</strong>: <span class="math display">\mathbf{V}_k - \mathbf{V}_m = \mathbf{V}_{\text{fuente}}</span></p>
 </section>
 </div>
-<div class="g-col-12 g-col-md-4">
-<section id="potencia-aparente-mathbfs" class="level3 card-module" data-number="2.3">
-<h3 data-number="2.3" class="anchored" data-anchor-id="potencia-aparente-mathbfs"><span class="header-section-number">2.3</span> ⚡ Potencia Aparente (<span class="math inline">|\mathbf{S}|</span>)</h3>
-<p>Magnitud vectorial total que dimensiona conductores y transformadores. <span class="math display">
-|\mathbf{S}| = \sqrt{P^2 + Q^2}
-</span> <strong>Unidad:</strong> Volt-Amperio [<span class="math inline">\text{VA}</span>], [<span class="math inline">\text{kVA}</span>], [<span class="math inline">\text{MVA}</span>]</p>
-</section>
-</div>
-</div>
-<hr>
-</section>
-<section id="factor-de-potencia-y-convención-de-cargas" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="factor-de-potencia-y-convención-de-cargas"><span class="header-section-number">3</span> 3. Factor de Potencia y Convención de Cargas</h2>
-<p>El <strong>Factor de Potencia (<span class="math inline">\text{FP}</span>)</strong> mide la eficiencia con la que la corriente entregada se aprovecha en potencia activa:</p>
-<p><span class="math display">
-\text{FP} = \frac{P}{|\mathbf{S}|} = \cos(\theta_v - \theta_i) = \cos\theta
-</span></p>
-<p>Donde <span class="math inline">\theta = \theta_v - \theta_i</span> es el <strong>ángulo de impedancia de la carga</strong>:</p>
-<ul>
-<li><strong>Carga Inductiva (RL) — FP en Atraso (<em>Lagging</em>):</strong> La corriente atrasa a la tensión (<span class="math inline">\theta &gt; 0</span>). La carga absorbe potencia reactiva positiva (<span class="math inline">Q &gt; 0</span>). Representa motores, inductores y transformadores.</li>
-<li><strong>Carga Capacitiva (RC) — FP en Adelanto (<em>Leading</em>):</strong> La corriente adelanta a la tensión (<span class="math inline">\theta &lt; 0</span>). La carga suministra potencia reactiva (<span class="math inline">Q &lt; 0</span>). Representa bancos de condensadores.</li>
-</ul>
-<hr>
-</section>
-<section id="corrección-del-factor-de-potencia" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="corrección-del-factor-de-potencia"><span class="header-section-number">4</span> 4. Corrección del Factor de Potencia</h2>
-<p>Para mejorar la eficiencia y evitar penalizaciones de la red eléctrica, se instalan condensadores en paralelo para elevar el factor de potencia desde <span class="math inline">\cos\theta_1</span> hasta un valor objetivo <span class="math inline">\cos\theta_2</span> (<span class="math inline">\text{FP} \ge 0.95</span>):</p>
-<p><span class="math display">
-Q_C = P \left( \tan\theta_1 - \tan\theta_2 \right)
-</span></p>
-<p>La capacitancia requerida por fase (en conexión en paralelo a tensión <span class="math inline">V_{rms}</span> y frecuencia angular <span class="math inline">\omega = 2\pi f</span>) es:</p>
-<p><span class="math display">
-C = \frac{Q_C}{\omega V_{rms}^2}
-</span></p>
-<hr>
-</section>
-<section id="simulador-interactivo-de-potencia-en-tiempo-real" class="level2" data-number="5">
-<h2 data-number="5" class="anchored" data-anchor-id="simulador-interactivo-de-potencia-en-tiempo-real"><span class="header-section-number">5</span> 5. Simulador Interactivo de Potencia en Tiempo Real</h2>
-<p>Ajuste las amplitudes eficaces de tensión y corriente junto a sus respectivos ángulos de fase para visualizar la potencia compleja y el triángulo fasorial de potencias en tiempo real:</p>
-<div class="mockup-browser">
-<div class="mockup-header">
-<p><span class="mockup-dot red"></span> <span class="mockup-dot yellow"></span> <span class="mockup-dot green"></span> <span class="mockup-title">⚡ engine_fasores.py — Streamlit Interactive Power Engine (Python 3.12)</span></p>
-</div>
-<iframe src="https://portafolio-ingenieria-electrica-3bz9smddyjo9zjkfwdqdsp.streamlit.app/?embed=true" title="Calculadora Fasorial Streamlit" allow="clipboard-write">
-</iframe>
 </div>
 <hr>
 </section>
-<section id="recursos-computacionales-navegación" class="level2" data-number="6">
-<h2 data-number="6" class="anchored" data-anchor-id="recursos-computacionales-navegación"><span class="header-section-number">6</span> 6. Recursos Computacionales &amp; Navegación</h2>
+<section id="algoritmo-sistemático-de-resolución-paso-a-paso" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Algoritmo Sistemático de Resolución Paso a Paso</h1>
+<ol type="1">
+<li><strong>Transformación al dominio fasorial:</strong> Convertir todas las fuentes temporales a fasores eficaces o de cresta (<span class="math inline">\mathbf{V}_s, \mathbf{I}_s</span>) y todos los elementos pasivos a sus respectivas impedancias complejas (<span class="math inline">\mathbf{Z}_R = R</span>, <span class="math inline">\mathbf{Z}_L = j\omega L</span>, <span class="math inline">\mathbf{Z}_C = -j/(\omega C)</span>) o admitancias (<span class="math inline">\mathbf{Y} = 1/\mathbf{Z}</span>).</li>
+<li><strong>Selección del nodo de referencia:</strong> Elegir el nodo con mayor número de ramas conectadas o el terminal común de fuentes de tensión para simplificar el sistema (<span class="math inline">V_{\text{ref}} = 0\text{ V}</span>).</li>
+<li><strong>Identificación de supernodos:</strong> Encerrar las fuentes de tensión flotantes y escribir sus ecuaciones de ligadura de potencial.</li>
+<li><strong>Ensamblaje matricial:</strong> Construir la matriz de admitancias <span class="math inline">[\mathbf{Y}]</span> y el vector de corrientes inyectadas <span class="math inline">[\mathbf{I}]</span>.</li>
+<li><strong>Solución computacional:</strong> Resolver el sistema lineal <span class="math inline">[\mathbf{V}] = [\mathbf{Y}]^{-1} [\mathbf{I}]</span>. En Python:</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Matriz de admitancias complejas (Siemens)</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> np.array([</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    [<span class="fl">0.2</span> <span class="op">-</span> <span class="ot">0.1j</span>, <span class="op">-</span><span class="fl">0.1</span> <span class="op">+</span> <span class="ot">0.05j</span>],</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    [<span class="op">-</span><span class="fl">0.1</span> <span class="op">+</span> <span class="ot">0.05j</span>, <span class="fl">0.35</span> <span class="op">-</span> <span class="ot">0.15j</span>]</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>], dtype<span class="op">=</span><span class="bu">complex</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Vector de corrientes inyectadas fasoriales (Amperios)</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>I <span class="op">=</span> np.array([</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="fl">5.0</span> <span class="op">*</span> np.exp(<span class="ot">1j</span> <span class="op">*</span> np.deg2rad(<span class="dv">0</span>)),</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="fl">2.5</span> <span class="op">*</span> np.exp(<span class="ot">1j</span> <span class="op">*</span> np.deg2rad(<span class="dv">45</span>))</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>], dtype<span class="op">=</span><span class="bu">complex</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Resolución de tensiones nodales</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> np.linalg.solve(Y, I)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> idx, v <span class="kw">in</span> <span class="bu">enumerate</span>(V, start<span class="op">=</span><span class="dv">1</span>):</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    mag <span class="op">=</span> np.<span class="bu">abs</span>(v)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    ang <span class="op">=</span> np.rad2deg(np.angle(v))</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"V_</span><span class="sc">{</span>idx<span class="sc">}</span><span class="ss"> = </span><span class="sc">{</span>mag<span class="sc">:.2f}</span><span class="ss"> ∠ </span><span class="sc">{</span>ang<span class="sc">:.2f}</span><span class="ss">° V  (</span><span class="sc">{</span>v<span class="sc">.</span>real<span class="sc">:.2f}</span><span class="ss"> + j</span><span class="sc">{</span>v<span class="sc">.</span>imag<span class="sc">:.2f}</span><span class="ss"> V)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="navegación-del-módulo" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Navegación del Módulo</h1>
 <div class="d-flex flex-wrap gap-2 my-3">
-<p><a href="../circuitos_electricos/teoria_fasores.html" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i> Análisis Fasorial</a> <a href="../circuitos_electricos/circuito_thevenin.html" class="btn btn-outline-primary"><i class="bi bi-cpu me-1"></i> Teorema de Thévenin</a> <a href="../circuitos_electricos/circuito_norton.html" class="btn btn-outline-primary"><i class="bi bi-bezier2 me-1"></i> Teorema de Norton</a> <a href="../descargas.html" class="btn btn-outline-secondary"><i class="bi bi-download me-1"></i> Descargas &amp; CSVs</a> <a href="../circuitos_electricos/index.html" class="btn btn-outline-secondary"><i class="bi bi-house me-1"></i> Índice Circuitos</a></p>
+<p><a href="../circuitos_electricos/delta_estrella.html" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i> Transformación Δ–Y</a> <a href="../circuitos_electricos/analisis_mallas.html" class="btn btn-primary"><i class="bi bi-grid me-1"></i> Siguiente: Análisis de Mallas</a> <a href="../circuitos_electricos/circuito_thevenin.html" class="btn btn-outline-primary"><i class="bi bi-cpu me-1"></i> Teorema de Thévenin</a> <a href="../circuitos_electricos/circuito_norton.html" class="btn btn-outline-primary"><i class="bi bi-bezier2 me-1"></i> Teorema de Norton</a> <a href="../circuitos_electricos/index.html" class="btn btn-outline-secondary"><i class="bi bi-house me-1"></i> Índice</a></p>
 </div>
 
 

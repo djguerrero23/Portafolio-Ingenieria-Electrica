@@ -30,10 +30,23 @@ website:
         menu:
           - href: circuitos_electricos/index.qmd
             text: "⚡ Ver Todo (Módulo Circuitos)"
-          - href: circuitos_electricos/teoria_fasores_V3.qmd
+          - text: "---"
+          - href: circuitos_electricos/teoria_fasores.qmd
             text: "Guía Práctica de Análisis Fasorial"
           - href: circuitos_electricos/potencia_ca.qmd
-            text: "Potencia en CA y Triángulo de Potencias"
+            text: "Potencia en CA & Triángulo de Potencias"
+          - text: "---"
+          - text: "MÉTODOS Y TEOREMAS DE REDES"
+          - href: circuitos_electricos/delta_estrella.qmd
+            text: "Transformación Delta–Estrella (Δ ↔ Y)"
+          - href: circuitos_electricos/analisis_nodal.qmd
+            text: "Análisis Nodal en CA (Admitancias)"
+          - href: circuitos_electricos/analisis_mallas.qmd
+            text: "Análisis de Mallas en CA (Impedancias)"
+          - href: circuitos_electricos/circuito_thevenin.qmd
+            text: "Teorema de Thévenin en CA"
+          - href: circuitos_electricos/circuito_norton.qmd
+            text: "Teorema de Norton en CA"
       - text: "Máquinas Eléctricas"
         icon: gear-wide-connected
         menu:

@@ -6,11 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="David Guerrero">
-<meta name="dcterms.date" content="2026-09-10">
-<meta name="description" content="Formulación de potencia compleja, deducción del triángulo de potencias, análisis de cargas en atraso/adelanto y simulador interactivo en Streamlit.">
 
-<title>Potencia en Corriente Alterna y Triángulo de Potencias – ⚡ Portafolio de Ingeniería Eléctrica</title>
+<title>calculadora_operaciones_complejas – ⚡ Portafolio de Ingeniería Eléctrica</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -79,49 +76,6 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
-  <script>document.addEventListener("DOMContentLoaded", function () {
- var mathElements = document.getElementsByClassName("math");
- var macros = [];
- for (var i = 0; i < mathElements.length; i++) {
-  var texText = mathElements[i].firstChild;
-  if (mathElements[i].tagName == "SPAN") {
-   katex.render(texText.data, mathElements[i], {
-    displayMode: mathElements[i].classList.contains('display'),
-    throwOnError: false,
-    macros: macros,
-    fleqn: false
-   });
-}}});
-  </script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -159,36 +113,13 @@ window.Quarto = {
     <a class="dropdown-item" href="../circuitos_electricos/index.html">
  <span class="dropdown-text">⚡ Ver Todo (Módulo Circuitos)</span></a>
   </li>  
-        <li><hr class="dropdown-divider"></li>
         <li>
-    <a class="dropdown-item" href="../circuitos_electricos/teoria_fasores.html">
+    <a class="dropdown-item" href="../circuitos_electricos/teoria_fasores_V3.html">
  <span class="dropdown-text">Guía Práctica de Análisis Fasorial</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../circuitos_electricos/potencia_ca.html">
- <span class="dropdown-text">Potencia en CA &amp; Triángulo de Potencias</span></a>
-  </li>  
-        <li><hr class="dropdown-divider"></li>
-        <li class="dropdown-header">MÉTODOS Y TEOREMAS DE REDES</li>
-        <li>
-    <a class="dropdown-item" href="../circuitos_electricos/delta_estrella.html">
- <span class="dropdown-text">Transformación Delta–Estrella (Δ ↔︎ Y)</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../circuitos_electricos/analisis_nodal.html">
- <span class="dropdown-text">Análisis Nodal en CA (Admitancias)</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../circuitos_electricos/analisis_mallas.html">
- <span class="dropdown-text">Análisis de Mallas en CA (Impedancias)</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../circuitos_electricos/circuito_thevenin.html">
- <span class="dropdown-text">Teorema de Thévenin en CA</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../circuitos_electricos/circuito_norton.html">
- <span class="dropdown-text">Teorema de Norton en CA</span></a>
+ <span class="dropdown-text">Potencia en CA y Triángulo de Potencias</span></a>
   </li>  
     </ul>
   </li>
@@ -287,179 +218,277 @@ window.Quarto = {
     <h2 id="toc-title">Índice de Contenido</h2>
    
   <ul>
-  <li><a href="#potencia-instantánea-y-descomposición-armónica" id="toc-potencia-instantánea-y-descomposición-armónica" class="nav-link active" data-scroll-target="#potencia-instantánea-y-descomposición-armónica"><span class="header-section-number">1</span> 1. Potencia Instantánea y Descomposición Armónica</a></li>
-  <li><a href="#potencia-compleja-mathbfs-y-triángulo-de-potencias" id="toc-potencia-compleja-mathbfs-y-triángulo-de-potencias" class="nav-link" data-scroll-target="#potencia-compleja-mathbfs-y-triángulo-de-potencias"><span class="header-section-number">2</span> 2. Potencia Compleja (<span class="math inline">\mathbf{S}</span>) y Triángulo de Potencias</a></li>
-  <li><a href="#factor-de-potencia-y-convención-de-cargas" id="toc-factor-de-potencia-y-convención-de-cargas" class="nav-link" data-scroll-target="#factor-de-potencia-y-convención-de-cargas"><span class="header-section-number">3</span> 3. Factor de Potencia y Convención de Cargas</a></li>
-  <li><a href="#corrección-del-factor-de-potencia" id="toc-corrección-del-factor-de-potencia" class="nav-link" data-scroll-target="#corrección-del-factor-de-potencia"><span class="header-section-number">4</span> 4. Corrección del Factor de Potencia</a></li>
-  <li><a href="#simulador-interactivo-de-potencia-en-tiempo-real" id="toc-simulador-interactivo-de-potencia-en-tiempo-real" class="nav-link" data-scroll-target="#simulador-interactivo-de-potencia-en-tiempo-real"><span class="header-section-number">5</span> 5. Simulador Interactivo de Potencia en Tiempo Real</a></li>
-  <li><a href="#recursos-computacionales-navegación" id="toc-recursos-computacionales-navegación" class="nav-link" data-scroll-target="#recursos-computacionales-navegación"><span class="header-section-number">6</span> 6. Recursos Computacionales &amp; Navegación</a></li>
+  <li><a href="#herramienta-interactiva-operaciones-con-números-complejos" id="toc-herramienta-interactiva-operaciones-con-números-complejos" class="nav-link active" data-scroll-target="#herramienta-interactiva-operaciones-con-números-complejos">Herramienta interactiva: Operaciones con Números Complejos</a>
+  <ul class="collapse">
+  <li><a href="#calculadora-de-operaciones-entre-dos-fasores" id="toc-calculadora-de-operaciones-entre-dos-fasores" class="nav-link" data-scroll-target="#calculadora-de-operaciones-entre-dos-fasores">🧮 Calculadora de Operaciones entre Dos Fasores</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Potencia en Corriente Alterna y Triángulo de Potencias</h1>
-<p class="subtitle lead">Modelado analítico de potencia instantánea, activa, reactiva, aparente y compensación del factor de potencia</p>
-  <div class="quarto-categories">
-    <div class="quarto-category">Potencia CA</div>
-    <div class="quarto-category">Potencia Compleja</div>
-    <div class="quarto-category">Factor de Potencia</div>
-    <div class="quarto-category">Triángulo de Potencias</div>
-    <div class="quarto-category">Streamlit</div>
-    <div class="quarto-category">Simulación</div>
-  </div>
-  </div>
-
-<div>
-  <div class="description">
-    Formulación de potencia compleja, deducción del triángulo de potencias, análisis de cargas en atraso/adelanto y simulador interactivo en Streamlit.
-  </div>
-</div>
+<main class="content column-page-left" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
-<div class="quarto-title-meta column-page-left">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>David Guerrero </p>
-          </div>
-  </div>
-    
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">September 10, 2026</p>
+
+<section id="herramienta-interactiva-operaciones-con-números-complejos" class="level1">
+<h1>Herramienta interactiva: Operaciones con Números Complejos</h1>
+<section id="calculadora-de-operaciones-entre-dos-fasores" class="level3 unnumbered card-module">
+<h3 class="unnumbered anchored" data-anchor-id="calculadora-de-operaciones-entre-dos-fasores">🧮 Calculadora de Operaciones entre Dos Fasores</h3>
+<!-- Entradas de los dos operandos -->
+<div class="row g-3">
+  <div class="col-md-6">
+    <div class="p-3 rounded-3 border h-100" style="border-left: 4px solid #0284c7 !important;">
+      <strong class="text-primary">Operando <span style="font-family:'JetBrains Mono',monospace;">Z₁</span></strong>
+      <div class="row g-2 mt-1">
+        <div class="col-6">
+          <label class="form-label mb-1 small">Real <em>x</em>₁</label>
+          <input id="op1Real" type="number" class="form-control" value="4" step="0.5" oninput="calcularOperacion()">
+        </div>
+        <div class="col-6">
+          <label class="form-label mb-1 small">Imaginaria <em>y</em>₁</label>
+          <input id="op1Imag" type="number" class="form-control" value="3" step="0.5" oninput="calcularOperacion()">
+        </div>
+      </div>
+      <div id="op1Polar" class="small text-muted mt-2" style="font-family:'JetBrains Mono',monospace;"></div>
     </div>
   </div>
-  
-    
+
+  <div class="col-md-6">
+    <div class="p-3 rounded-3 border h-100" style="border-left: 4px solid #f59e0b !important;">
+      <strong style="color:#d97706;">Operando <span style="font-family:'JetBrains Mono',monospace;">Z₂</span></strong>
+      <div class="row g-2 mt-1">
+        <div class="col-6">
+          <label class="form-label mb-1 small">Real <em>x</em>₂</label>
+          <input id="op2Real" type="number" class="form-control" value="2" step="0.5" oninput="calcularOperacion()">
+        </div>
+        <div class="col-6">
+          <label class="form-label mb-1 small">Imaginaria <em>y</em>₂</label>
+          <input id="op2Imag" type="number" class="form-control" value="-1" step="0.5" oninput="calcularOperacion()">
+        </div>
+      </div>
+      <div id="op2Polar" class="small text-muted mt-2" style="font-family:'JetBrains Mono',monospace;"></div>
+    </div>
   </div>
-  
+</div>
 
-
-</header>
-
-
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>⚡ Marco Teórico &amp; Interfaz Computacional
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>En sistemas eléctricos de corriente alterna, la transferencia de energía no se limita a disipación de calor útil, sino que involucra oscilaciones continuas de energía electromagnética entre la fuente y las reactancias. Esta memoria desglosa los fundamentos de la <strong>potencia compleja</strong> e incluye un simulador interactivo para visualización instantánea del triángulo de potencias.</p>
-</div>
-</div>
-<hr>
-<section id="potencia-instantánea-y-descomposición-armónica" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="potencia-instantánea-y-descomposición-armónica"><span class="header-section-number">1</span> 1. Potencia Instantánea y Descomposición Armónica</h2>
-<p>Sea una fuente de tensión senoidal aplicada a una carga pasiva:</p>
-<p><span class="math display">
-v(t) = V_m \cos(\omega t + \theta_v)
-</span></p>
-<p><span class="math display">
-i(t) = I_m \cos(\omega t + \theta_i)
-</span></p>
-<p>La <strong>potencia instantánea</strong> absorbida por la red es el producto temporal <span class="math inline">p(t) = v(t) \cdot i(t)</span>:</p>
-<p><span class="math display">
-p(t) = V_m I_m \cos(\omega t + \theta_v) \cos(\omega t + \theta_i)
-</span></p>
-<p>Aplicando la identidad trigonométrica <span class="math inline">\cos A \cos B = \frac{1}{2} [\cos(A-B) + \cos(A+B)]</span>:</p>
-<p><span class="math display">
-p(t) = \underbrace{V_{rms} I_{rms} \cos(\theta_v - \theta_i) \left[ 1 + \cos(2\omega t + 2\theta_v) \right]}_{\text{Componente unidireccional y pulsante activa}} + \underbrace{V_{rms} I_{rms} \sin(\theta_v - \theta_i) \sin(2\omega t + 2\theta_v)}_{\text{Componente reactiva oscilante}}
-</span></p>
-<blockquote class="blockquote">
-<p>La potencia instantánea oscila al <strong>doble de la frecuencia de la red</strong> (<span class="math inline">2\omega = 120\text{ Hz}</span> en sistemas de <span class="math inline">60\text{ Hz}</span>).</p>
-</blockquote>
-<hr>
-</section>
-<section id="potencia-compleja-mathbfs-y-triángulo-de-potencias" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="potencia-compleja-mathbfs-y-triángulo-de-potencias"><span class="header-section-number">2</span> 2. Potencia Compleja (<span class="math inline">\mathbf{S}</span>) y Triángulo de Potencias</h2>
-<p>En el dominio fasorial, la <strong>potencia compleja</strong> <span class="math inline">\mathbf{S}</span> se define como el producto del fasor eficaz de tensión por el <strong>complejo conjugado</strong> del fasor eficaz de corriente:</p>
-<p><span class="math display">
-\mathbf{S} = \mathbf{V}_{rms} \cdot \mathbf{I}_{rms}^* = \left( V_{rms} e^{j\theta_v} \right) \left( I_{rms} e^{-j\theta_i} \right) = V_{rms} I_{rms} e^{j(\theta_v - \theta_i)}
-</span></p>
-<p>Expresada en forma rectangular:</p>
-<p><span class="math display">
-\mathbf{S} = P + jQ
-</span></p>
-<div class="grid" style="margin: 2rem 0;">
-<div class="g-col-12 g-col-md-4">
-<section id="potencia-activa-p" class="level3 card-module" data-number="2.1">
-<h3 data-number="2.1" class="anchored" data-anchor-id="potencia-activa-p"><span class="header-section-number">2.1</span> 💡 Potencia Activa (<span class="math inline">P</span>)</h3>
-<p>Potencia real que se transforma en trabajo útil (mecánico, lumínico o calor). <span class="math display">
-P = V_{rms} I_{rms} \cos\theta
-</span> <strong>Unidad:</strong> Vatio [<span class="math inline">\text{W}</span>], [<span class="math inline">\text{kW}</span>], [<span class="math inline">\text{MW}</span>]</p>
-</section>
-</div>
-<div class="g-col-12 g-col-md-4">
-<section id="potencia-reactiva-q" class="level3 card-module" data-number="2.2">
-<h3 data-number="2.2" class="anchored" data-anchor-id="potencia-reactiva-q"><span class="header-section-number">2.2</span> 🧲 Potencia Reactiva (<span class="math inline">Q</span>)</h3>
-<p>Potencia intercambiada para sostener los campos magnéticos y eléctricos. <span class="math display">
-Q = V_{rms} I_{rms} \sin\theta
-</span> <strong>Unidad:</strong> Volt-Amperio Reactivo [<span class="math inline">\text{VAR}</span>], [<span class="math inline">\text{kVAR}</span>]</p>
-</section>
-</div>
-<div class="g-col-12 g-col-md-4">
-<section id="potencia-aparente-mathbfs" class="level3 card-module" data-number="2.3">
-<h3 data-number="2.3" class="anchored" data-anchor-id="potencia-aparente-mathbfs"><span class="header-section-number">2.3</span> ⚡ Potencia Aparente (<span class="math inline">|\mathbf{S}|</span>)</h3>
-<p>Magnitud vectorial total que dimensiona conductores y transformadores. <span class="math display">
-|\mathbf{S}| = \sqrt{P^2 + Q^2}
-</span> <strong>Unidad:</strong> Volt-Amperio [<span class="math inline">\text{VA}</span>], [<span class="math inline">\text{kVA}</span>], [<span class="math inline">\text{MVA}</span>]</p>
-</section>
-</div>
-</div>
-<hr>
-</section>
-<section id="factor-de-potencia-y-convención-de-cargas" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="factor-de-potencia-y-convención-de-cargas"><span class="header-section-number">3</span> 3. Factor de Potencia y Convención de Cargas</h2>
-<p>El <strong>Factor de Potencia (<span class="math inline">\text{FP}</span>)</strong> mide la eficiencia con la que la corriente entregada se aprovecha en potencia activa:</p>
-<p><span class="math display">
-\text{FP} = \frac{P}{|\mathbf{S}|} = \cos(\theta_v - \theta_i) = \cos\theta
-</span></p>
-<p>Donde <span class="math inline">\theta = \theta_v - \theta_i</span> es el <strong>ángulo de impedancia de la carga</strong>:</p>
-<ul>
-<li><strong>Carga Inductiva (RL) — FP en Atraso (<em>Lagging</em>):</strong> La corriente atrasa a la tensión (<span class="math inline">\theta &gt; 0</span>). La carga absorbe potencia reactiva positiva (<span class="math inline">Q &gt; 0</span>). Representa motores, inductores y transformadores.</li>
-<li><strong>Carga Capacitiva (RC) — FP en Adelanto (<em>Leading</em>):</strong> La corriente adelanta a la tensión (<span class="math inline">\theta &lt; 0</span>). La carga suministra potencia reactiva (<span class="math inline">Q &lt; 0</span>). Representa bancos de condensadores.</li>
+<!-- Selector de operación -->
+<ul class="nav nav-pills mb-3 mt-4 justify-content-center" id="opTab" role="tablist">
+  <li class="nav-item"><button class="nav-link active px-3 py-2 fw-bold" data-op="suma" onclick="seleccionarOperacion('suma')">Z₁ + Z₂</button></li>
+  <li class="nav-item"><button class="nav-link px-3 py-2 fw-bold" data-op="resta" onclick="seleccionarOperacion('resta')">Z₁ − Z₂</button></li>
+  <li class="nav-item"><button class="nav-link px-3 py-2 fw-bold" data-op="mult" onclick="seleccionarOperacion('mult')">Z₁ × Z₂</button></li>
+  <li class="nav-item"><button class="nav-link px-3 py-2 fw-bold" data-op="div" onclick="seleccionarOperacion('div')">Z₁ ÷ Z₂</button></li>
 </ul>
-<hr>
-</section>
-<section id="corrección-del-factor-de-potencia" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="corrección-del-factor-de-potencia"><span class="header-section-number">4</span> 4. Corrección del Factor de Potencia</h2>
-<p>Para mejorar la eficiencia y evitar penalizaciones de la red eléctrica, se instalan condensadores en paralelo para elevar el factor de potencia desde <span class="math inline">\cos\theta_1</span> hasta un valor objetivo <span class="math inline">\cos\theta_2</span> (<span class="math inline">\text{FP} \ge 0.95</span>):</p>
-<p><span class="math display">
-Q_C = P \left( \tan\theta_1 - \tan\theta_2 \right)
-</span></p>
-<p>La capacitancia requerida por fase (en conexión en paralelo a tensión <span class="math inline">V_{rms}</span> y frecuencia angular <span class="math inline">\omega = 2\pi f</span>) es:</p>
-<p><span class="math display">
-C = \frac{Q_C}{\omega V_{rms}^2}
-</span></p>
-<hr>
-</section>
-<section id="simulador-interactivo-de-potencia-en-tiempo-real" class="level2" data-number="5">
-<h2 data-number="5" class="anchored" data-anchor-id="simulador-interactivo-de-potencia-en-tiempo-real"><span class="header-section-number">5</span> 5. Simulador Interactivo de Potencia en Tiempo Real</h2>
-<p>Ajuste las amplitudes eficaces de tensión y corriente junto a sus respectivos ángulos de fase para visualizar la potencia compleja y el triángulo fasorial de potencias en tiempo real:</p>
-<div class="mockup-browser">
-<div class="mockup-header">
-<p><span class="mockup-dot red"></span> <span class="mockup-dot yellow"></span> <span class="mockup-dot green"></span> <span class="mockup-title">⚡ engine_fasores.py — Streamlit Interactive Power Engine (Python 3.12)</span></p>
+
+<!-- Resultado + gráfico -->
+<div class="row mt-3 align-items-stretch">
+  <div class="col-lg-5 mb-3 mb-lg-0">
+    <div id="resultadoOperacion" class="h-100"></div>
+  </div>
+
+  <div class="col-lg-7 text-center">
+    <div class="p-3 bg-white rounded-3 border shadow-sm d-inline-block w-100 h-100 d-flex flex-column justify-content-center align-items-center">
+      <div class="d-flex justify-content-center gap-3 w-100 mb-2 px-1 flex-wrap">
+        <span class="badge" style="background:#0284c7;">● Z₁</span>
+        <span class="badge" style="background:#f59e0b;">● Z₂</span>
+        <span class="badge" style="background:#8b5cf6;">● Resultado</span>
+      </div>
+      <canvas id="opCanvas" width="440" height="320" style="max-width: 100%; height: auto; border-radius: 8px;"></canvas>
+    </div>
+  </div>
 </div>
-<iframe src="https://portafolio-ingenieria-electrica-3bz9smddyjo9zjkfwdqdsp.streamlit.app/?embed=true" title="Calculadora Fasorial Streamlit" allow="clipboard-write">
-</iframe>
-</div>
-<hr>
+
+<script>
+let operacionActual = 'suma';
+
+function seleccionarOperacion(op) {
+  operacionActual = op;
+  document.querySelectorAll('#opTab .nav-link').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.op === op);
+  });
+  calcularOperacion();
+}
+
+function aPolar(x, y) {
+  const r = Math.hypot(x, y);
+  let theta = Math.atan2(y, x) * 180 / Math.PI;
+  if (Math.abs(theta) < 1e-10) theta = 0;
+  return { r, theta };
+}
+
+function fmtRect(x, y) {
+  const signo = y >= 0 ? '+' : '−';
+  return `${x.toFixed(3)} ${signo} j${Math.abs(y).toFixed(3)}`;
+}
+
+function dibujarEjes(ctx, w, h, cx, cy) {
+  ctx.clearRect(0, 0, w, h);
+  ctx.strokeStyle = "#f1f5f9";
+  ctx.lineWidth = 1;
+  const step = 22;
+  for (let px = cx % step; px < w; px += step) { ctx.beginPath(); ctx.moveTo(px, 0); ctx.lineTo(px, h); ctx.stroke(); }
+  for (let py = cy % step; py < h; py += step) { ctx.beginPath(); ctx.moveTo(0, py); ctx.lineTo(w, py); ctx.stroke(); }
+
+  ctx.strokeStyle = "#94a3b8";
+  ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(20, cy); ctx.lineTo(w - 20, cy); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(cx, h - 20); ctx.lineTo(cx, 20); ctx.stroke();
+
+  ctx.fillStyle = "#64748b";
+  ctx.font = "bold 11px 'JetBrains Mono', monospace";
+  ctx.fillText("Re", w - 32, cy - 8);
+  ctx.fillText("+j Im", cx + 8, 22);
+}
+
+function dibujarVector(ctx, cx, cy, scale, x, y, color, grosor) {
+  const vx = cx + x * scale;
+  const vy = cy - y * scale;
+  ctx.strokeStyle = color;
+  ctx.fillStyle = color;
+  ctx.lineWidth = grosor;
+  ctx.beginPath();
+  ctx.moveTo(cx, cy);
+  ctx.lineTo(vx, vy);
+  ctx.stroke();
+
+  const headLen = 11;
+  const angleRad = Math.atan2(-y, x);
+  ctx.beginPath();
+  ctx.moveTo(vx, vy);
+  ctx.lineTo(vx - headLen * Math.cos(angleRad - Math.PI / 6), vy - headLen * Math.sin(angleRad - Math.PI / 6));
+  ctx.lineTo(vx - headLen * Math.cos(angleRad + Math.PI / 6), vy - headLen * Math.sin(angleRad + Math.PI / 6));
+  ctx.closePath();
+  ctx.fill();
+  return { vx, vy };
+}
+
+function dibujarOperacion(x1, y1, x2, y2, xr, yr, op) {
+  const canvas = document.getElementById("opCanvas");
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+  const w = canvas.width, h = canvas.height, cx = w / 2, cy = h / 2;
+
+  const maxVal = Math.max(Math.abs(x1), Math.abs(y1), Math.abs(x2), Math.abs(y2), Math.abs(xr), Math.abs(yr), 1);
+  const scale = (Math.min(w, h) / 2 - 45) / maxVal;
+
+  dibujarEjes(ctx, w, h, cx, cy);
+
+  // Construcción del paralelogramo (solo tiene sentido geométrico en suma/resta)
+  if (op === 'suma' || op === 'resta') {
+    ctx.setLineDash([4, 4]);
+    ctx.lineWidth = 1.2;
+    ctx.strokeStyle = "#cbd5e1";
+    const p1 = { x: cx + x1 * scale, y: cy - y1 * scale };
+    const p2 = { x: cx + x2 * scale, y: cy - y2 * scale };
+    const pr = { x: cx + xr * scale, y: cy - yr * scale };
+    ctx.beginPath(); ctx.moveTo(p1.x, p1.y); ctx.lineTo(pr.x, pr.y); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(p2.x, p2.y); ctx.lineTo(pr.x, pr.y); ctx.stroke();
+    ctx.setLineDash([]);
+  }
+
+  dibujarVector(ctx, cx, cy, scale, x1, y1, "#0284c7", 3);
+  dibujarVector(ctx, cx, cy, scale, x2, y2, "#f59e0b", 3);
+  dibujarVector(ctx, cx, cy, scale, xr, yr, "#8b5cf6", 3.5);
+
+  ctx.fillStyle = "#0f172a";
+  ctx.beginPath(); ctx.arc(cx, cy, 3.5, 0, 2 * Math.PI); ctx.fill();
+}
+
+function calcularOperacion() {
+  const x1 = Number(document.getElementById("op1Real").value) || 0;
+  const y1 = Number(document.getElementById("op1Imag").value) || 0;
+  const x2 = Number(document.getElementById("op2Real").value) || 0;
+  const y2 = Number(document.getElementById("op2Imag").value) || 0;
+
+  const p1 = aPolar(x1, y1);
+  const p2 = aPolar(x2, y2);
+  document.getElementById("op1Polar").innerHTML = `Polar: ${p1.r.toFixed(3)} &ang; ${p1.theta.toFixed(2)}&deg;`;
+  document.getElementById("op2Polar").innerHTML = `Polar: ${p2.r.toFixed(3)} &ang; ${p2.theta.toFixed(2)}&deg;`;
+
+  let xr, yr, pasosHtml, tituloOp;
+
+  if (operacionActual === 'suma') {
+    xr = x1 + x2; yr = y1 + y2;
+    tituloOp = "Z&#8321; + Z&#8322;";
+    pasosHtml = `
+      <div class="small text-muted mb-2">
+        <strong>Método: forma rectangular (componente a componente)</strong><br>
+        <code>x = ${x1.toFixed(2)} + (${x2.toFixed(2)}) = ${xr.toFixed(3)}</code><br>
+        <code>y = ${y1.toFixed(2)} + (${y2.toFixed(2)}) = ${yr.toFixed(3)}</code>
+      </div>`;
+  } else if (operacionActual === 'resta') {
+    xr = x1 - x2; yr = y1 - y2;
+    tituloOp = "Z&#8321; − Z&#8322;";
+    pasosHtml = `
+      <div class="small text-muted mb-2">
+        <strong>Método: forma rectangular (componente a componente)</strong><br>
+        <code>x = ${x1.toFixed(2)} − (${x2.toFixed(2)}) = ${xr.toFixed(3)}</code><br>
+        <code>y = ${y1.toFixed(2)} − (${y2.toFixed(2)}) = ${yr.toFixed(3)}</code>
+      </div>`;
+  } else if (operacionActual === 'mult') {
+    const rr = p1.r * p2.r;
+    const th = p1.theta + p2.theta;
+    xr = rr * Math.cos(th * Math.PI / 180);
+    yr = rr * Math.sin(th * Math.PI / 180);
+    tituloOp = "Z&#8321; &times; Z&#8322;";
+    pasosHtml = `
+      <div class="small text-muted mb-2">
+        <strong>Método: forma polar (magnitudes se multiplican, ángulos se suman)</strong><br>
+        <code>r = ${p1.r.toFixed(3)} &middot; ${p2.r.toFixed(3)} = ${rr.toFixed(3)}</code><br>
+        <code>&theta; = ${p1.theta.toFixed(2)}&deg; + ${p2.theta.toFixed(2)}&deg; = ${th.toFixed(2)}&deg;</code>
+      </div>`;
+  } else {
+    if (p2.r === 0) {
+      document.getElementById("resultadoOperacion").innerHTML =
+        `<div class="alert alert-danger">No se puede dividir entre Z&#8322; = 0.</div>`;
+      return;
+    }
+    const rr = p1.r / p2.r;
+    const th = p1.theta - p2.theta;
+    xr = rr * Math.cos(th * Math.PI / 180);
+    yr = rr * Math.sin(th * Math.PI / 180);
+    tituloOp = "Z&#8321; &divide; Z&#8322;";
+    pasosHtml = `
+      <div class="small text-muted mb-2">
+        <strong>Método: forma polar (magnitudes se dividen, ángulos se restan)</strong><br>
+        <code>r = ${p1.r.toFixed(3)} / ${p2.r.toFixed(3)} = ${rr.toFixed(3)}</code><br>
+        <code>&theta; = ${p1.theta.toFixed(2)}&deg; − ${p2.theta.toFixed(2)}&deg; = ${th.toFixed(2)}&deg;</code>
+      </div>`;
+  }
+
+  const pr = aPolar(xr, yr);
+
+  document.getElementById("resultadoOperacion").innerHTML = `
+    <div class="card p-3 border-0 bg-light h-100 shadow-sm" style="border-left: 4px solid #8b5cf6 !important;">
+      <h6 class="mb-3 fw-bold d-flex align-items-center" style="color:#7c3aed;">
+        <i class="bi bi-check-circle-fill me-2"></i> Resultado de ${tituloOp}
+      </h6>
+
+      <div class="mb-2">
+        <span class="text-muted small d-block">Forma Rectangular:</span>
+        <code class="fs-5 text-dark fw-bold">${fmtRect(xr, yr)}</code>
+      </div>
+
+      <div class="mb-2">
+        <span class="text-muted small d-block">Forma Polar:</span>
+        <code class="fs-5 fw-bold" style="color:#7c3aed;">${pr.r.toFixed(3)} &ang; ${pr.theta.toFixed(2)}&deg;</code>
+      </div>
+
+      <hr class="my-2">
+      ${pasosHtml}
+    </div>
+  `;
+
+  dibujarOperacion(x1, y1, x2, y2, xr, yr, operacionActual);
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", calcularOperacion);
+} else {
+  setTimeout(calcularOperacion, 50);
+}
+</script>
 </section>
-<section id="recursos-computacionales-navegación" class="level2" data-number="6">
-<h2 data-number="6" class="anchored" data-anchor-id="recursos-computacionales-navegación"><span class="header-section-number">6</span> 6. Recursos Computacionales &amp; Navegación</h2>
-<div class="d-flex flex-wrap gap-2 my-3">
-<p><a href="../circuitos_electricos/teoria_fasores.html" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i> Análisis Fasorial</a> <a href="../circuitos_electricos/circuito_thevenin.html" class="btn btn-outline-primary"><i class="bi bi-cpu me-1"></i> Teorema de Thévenin</a> <a href="../circuitos_electricos/circuito_norton.html" class="btn btn-outline-primary"><i class="bi bi-bezier2 me-1"></i> Teorema de Norton</a> <a href="../descargas.html" class="btn btn-outline-secondary"><i class="bi bi-download me-1"></i> Descargas &amp; CSVs</a> <a href="../circuitos_electricos/index.html" class="btn btn-outline-secondary"><i class="bi bi-house me-1"></i> Índice Circuitos</a></p>
-</div>
 
 
 </section>

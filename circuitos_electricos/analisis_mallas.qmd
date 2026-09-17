@@ -1,0 +1,152 @@
+---
+title: "Análisis de Mallas en Corriente Alterna"
+subtitle: "Formulación sistemática por Ley de Tensiones de Kirchhoff (LVK) y Matriz de Impedancias Complejas"
+description: "Resolución de circuitos planos de corriente alterna en régimen permanente mediante corrientes ficticias de lazo: matriz de impedancias de malla [Z][I] = [V], supermallas y fuentes controladas."
+author: "David Guerrero"
+date: "2026-09-16"
+categories: [Métodos de Redes, Análisis de Mallas, Impedancias, LVK, Circuitos CA]
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+---
+
+::: {.hero-banner-modern}
+# Análisis de Mallas en Régimen Sinusoidal Permanente {.unnumbered}
+**Resolución sistemática de circuitos planos mediante corrientes de lazo e impedancias complejas.**
+
+El método de mallas aplica la Ley de Tensiones de Kirchhoff a lazos cerrados planos que no encierran otros lazos, reduciendo el problema a un sistema de ecuaciones donde las incógnitas son las corrientes ficticias de cada malla.
+:::
+
+::: {.callout-note}
+### ⚡ Fundamento: Ley de Tensiones de Kirchhoff (LVK)
+A lo largo de cualquier trayectoria cerrada (malla) en régimen sinusoidal permanente, la suma fasorial de las caídas y elevaciones de tensión es idénticamente nula:
+
+$$\sum_{k=1}^{m} \mathbf{V}_k = 0$$
+
+Al expresar cada caída de tensión como el producto de la impedancia de rama por la corriente neta que la atraviesa ($\mathbf{V} = \mathbf{Z} \mathbf{I}_{\text{rama}}$), se establece el sistema matricial de mallas.
+:::
+
+---
+
+# Formulación Matricial por Impedancias
+
+Para un circuito plano con $M$ mallas independientes y todas las corrientes de malla asignadas en el mismo sentido (usualmente horario), sin fuentes de corriente compartidas entre mallas:
+
+$$
+\begin{bmatrix}
+\mathbf{Z}_{11} & \mathbf{Z}_{12} & \cdots & \mathbf{Z}_{1M} \\
+\mathbf{Z}_{21} & \mathbf{Z}_{22} & \cdots & \mathbf{Z}_{2M} \\
+\vdots & \vdots & \ddots & \vdots \\
+\mathbf{Z}_{M1} & \mathbf{Z}_{M2} & \cdots & \mathbf{Z}_{MM}
+\end{bmatrix}
+\begin{bmatrix}
+\mathbf{I}_1 \\
+\mathbf{I}_2 \\
+\vdots \\
+\mathbf{I}_M
+\end{bmatrix}
+=
+\begin{bmatrix}
+\mathbf{V}_{\text{malla } 1} \\
+\mathbf{V}_{\text{malla } 2} \\
+\vdots \\
+\mathbf{V}_{\text{malla } M}
+\end{bmatrix}
+$$
+
+En notación matricial compacta:
+
+$$[\mathbf{Z}] [\mathbf{I}] = [\mathbf{V}]$$
+
+## Elementos de la Matriz de Impedancias $[\mathbf{Z}]$
+
+1. **Impedancias Propias ($\mathbf{Z}_{kk}$):** Elementos de la diagonal principal.  
+   $$\mathbf{Z}_{kk} = \sum \mathbf{Z}_{\text{pertenecientes a la malla } k}$$
+   Es la suma total de las impedancias complejas ($R + j\omega L - j/(\omega C)$) contenidas en el perímetro de la malla $k$.
+
+2. **Impedancias Mutuas ($\mathbf{Z}_{km}$ con $k \neq m$):** Elementos fuera de la diagonal.  
+   $$\mathbf{Z}_{km} = -\sum \mathbf{Z}_{\text{compartidas entre la malla } k \text{ y la malla } m}$$
+   Si ambas corrientes de malla circulan en sentido horario, atraviesan la rama común en sentidos opuestos, por lo que este término lleva siempre signo **negativo**. Para circuitos pasivos bilaterales sin fuentes dependientes, la matriz es simétrica: $\mathbf{Z}_{km} = \mathbf{Z}_{mk}$.
+
+3. **Vector de Elevaciones de Tensión ($\mathbf{V}_{\text{malla } k}$):**  
+   $$\mathbf{V}_{\text{malla } k} = \sum \mathbf{V}_{\text{elevaciones en el sentido horario}} - \sum \mathbf{V}_{\text{caídas en el sentido horario}}$$
+   Es la suma algebraica fasorial de las fuentes de tensión independientes encontradas al recorrer la malla $k$.
+
+---
+
+# Tratamiento de Fuentes de Corriente: La Supermalla
+
+Cuando existe una **fuente de corriente** (independiente o dependiente) en el circuito, la caída de tensión en sus bornes es una incógnita adicional a priori. Dependiendo de su ubicación topológica:
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-6}
+::: {.card-module style="border-top: 4px solid #0284c7;"}
+#### 1. Fuente en una Rama No Compartida
+Si la fuente de corriente $\mathbf{I}_s$ pertenece exclusivamente al perímetro exterior de una única malla $k$:
+- La corriente de esa malla queda fijada directamente:
+$$\mathbf{I}_k = \pm \mathbf{I}_s$$
+- No se requiere plantear la LVK en esa malla; la dimensión del sistema se reduce de inmediato.
+:::
+:::
+
+::: {.g-col-12 .g-col-md-6}
+::: {.card-module style="border-top: 4px solid #f59e0b;"}
+#### 2. Fuente Compartida: Supermalla
+Si la fuente de corriente se encuentra en una rama compartida entre dos mallas contiguas $a$ y $b$:
+1. Se desconecta conceptualmente la rama que contiene la fuente de corriente, fusionando ambas mallas en un lazo mayor (**Supermalla**).
+2. Se plantea la LVK a lo largo de todo el perímetro exterior de la supermalla.
+3. Se agrega la **ecuación de ligadura de corriente**:
+$$\mathbf{I}_a - \mathbf{I}_b = \mathbf{I}_s$$
+:::
+:::
+
+:::
+
+---
+
+# Algoritmo Sistemático de Resolución Paso a Paso
+
+1. **Verificación de planaridad:** Comprobar que el circuito puede dibujarse en un plano sin que las ramas se crucen entre sí (requisito estricto del método de mallas).
+2. **Transformación fasorial:** Convertir todas las fuentes temporales a fasores y todos los resistores, inductores y capacitores a impedancias complejas $\mathbf{Z}$.
+3. **Definición de corrientes de malla:** Asignar una corriente ficticia $\mathbf{I}_1, \mathbf{I}_2, \dots, \mathbf{I}_M$ a cada malla interior, todas en sentido horario.
+4. **Identificación de supermallas:** Aislar ramas con fuentes de corriente compartidas y formular sus ecuaciones de restricción.
+5. **Ensamblaje y resolución matricial:** Construir $[\mathbf{Z}]$ y $[\mathbf{V}]$, y resolver $[\mathbf{I}] = [\mathbf{Z}]^{-1} [\mathbf{V}]$ en Python:
+
+```python
+import numpy as np
+
+# Matriz de impedancias complejas (Ohmios)
+Z = np.array([
+    [10 + 20j, -5 - 10j],
+    [-5 - 10j, 15 - 5j]
+], dtype=complex)
+
+# Vector de tensiones aplicadas fasoriales (Voltios)
+V = np.array([
+    120.0 * np.exp(1j * np.deg2rad(0)),
+    -50.0 * np.exp(1j * np.deg2rad(30))
+], dtype=complex)
+
+# Resolución de corrientes de malla
+I_mallas = np.linalg.solve(Z, V)
+
+for idx, i_val in enumerate(I_mallas, start=1):
+    mag = np.abs(i_val)
+    ang = np.rad2deg(np.angle(i_val))
+    print(f"I_malla_{idx} = {mag:.2f} ∠ {ang:.2f}° A  ({i_val.real:.2f} + j{i_val.imag:.2f} A)")
+```
+
+---
+
+# Navegación del Módulo
+
+<div class="d-flex flex-wrap gap-2 my-3">
+  <a href="analisis_nodal.qmd" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i> Análisis Nodal</a>
+  <a href="circuito_thevenin.qmd" class="btn btn-primary"><i class="bi bi-cpu me-1"></i> Siguiente: Teorema de Thévenin</a>
+  <a href="circuito_norton.qmd" class="btn btn-outline-primary"><i class="bi bi-bezier2 me-1"></i> Teorema de Norton</a>
+  <a href="delta_estrella.qmd" class="btn btn-outline-primary"><i class="bi bi-triangle me-1"></i> Transformación Δ–Y</a>
+  <a href="index.qmd" class="btn btn-outline-secondary"><i class="bi bi-house me-1"></i> Índice</a>
+</div>

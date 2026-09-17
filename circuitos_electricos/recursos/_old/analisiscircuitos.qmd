@@ -1,0 +1,180 @@
+---
+title: "Análisis de Circuitos en Corriente Alterna"
+subtitle: "Métodos Sistemáticos (Nodos y Mallas), Teoremas de Thévenin/Norton y Transformaciones Δ–Y"
+description: "Cálculo y resolución de circuitos de corriente alterna en régimen permanente sinusoidal: combinaciones serie-paralelo, análisis nodal, análisis de mallas, equivalentes de Thévenin y Norton, y transformaciones Delta-Estrella con impedancias complejas."
+author: "David Guerrero"
+date: "2026-09-16"
+categories: [Circuitos CA, Análisis Nodal, Análisis de Mallas, Thévenin, Norton, Delta-Estrella, Impedancia]
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+---
+
+::: {.hero-banner-modern}
+# Métodos Sistemáticos y Teoremas de Redes en CA {.unnumbered}
+**Resolución analítica y computacional de redes eléctricas sinusoidales en régimen permanente.**
+
+Abarca desde la reducción serie-paralelo y transformaciones de impedancias ($\Delta \leftrightarrow \text{Y}$) hasta el planteamiento matricial de Nodos, Mallas y modelos equivalentes Thévenin/Norton con fuentes independientes y dependientes.
+:::
+
+::: {.callout-note}
+### ⚡ Marco de Análisis Fasorial en CA
+En régimen permanente sinusoidal con frecuencia angular constante $\omega$, todas las tensiones y corrientes se expresan como fasores ($\mathbf{V}$, $\mathbf{I}$) y los elementos pasivos ($R, L, C$) se modelan como impedancias complejas:
+
+$$\mathbf{Z}_R = R, \quad \mathbf{Z}_L = j\omega L, \quad \mathbf{Z}_C = \frac{1}{j\omega C} = -j\frac{1}{\omega C}$$
+
+Las **Leyes de Kirchhoff (LCK y LVK)** y la **Ley de Ohm Fasorial** ($\mathbf{V} = \mathbf{Z} \mathbf{I}$) rigen exactamente igual que en corriente continua, sustituyendo escalares reales por números complejos en el plano de Gauss.
+:::
+
+---
+
+# Mapa General de Métodos de Solución
+
+::: {.grid style="margin: 1.5rem 0;"}
+
+::: {.g-col-12 .g-col-md-3}
+::: {.card-module style="border-top: 4px solid #0284c7;"}
+#### Reducción y $\Delta \leftrightarrow \text{Y}$
+- Simplificación serie-paralelo
+- Conversión Delta a Estrella
+- Conversión Estrella a Delta
+- Puentes no balanceados en CA
+:::
+:::
+
+::: {.g-col-12 .g-col-md-3}
+::: {.card-module style="border-top: 4px solid #10b981;"}
+#### Análisis Nodal
+- Ley de Corrientes de Kirchhoff (LCK)
+- Matriz de Admitancias $[\mathbf{Y}][\mathbf{V}] = [\mathbf{I}]$
+- Concepto de Supernodo
+- Fuentes dependientes en nodos
+:::
+:::
+
+::: {.g-col-12 .g-col-md-3}
+::: {.card-module style="border-top: 4px solid #f59e0b;"}
+#### Análisis de Mallas
+- Ley de Tensiones de Kirchhoff (LVK)
+- Matriz de Impedancias $[\mathbf{Z}][\mathbf{I}] = [\mathbf{V}]$
+- Concepto de Supermalla
+- Fuentes de corriente compartidas
+:::
+:::
+
+::: {.g-col-12 .g-col-md-3}
+::: {.card-module style="border-top: 4px solid #8b5cf6;"}
+#### Thévenin & Norton
+- Tensión a circuito abierto $\mathbf{V}_{th}$
+- Corriente de cortocircuito $\mathbf{I}_N$
+- Impedancia equivalente $\mathbf{Z}_{th}$
+- Máxima transferencia: $\mathbf{Z}_L = \mathbf{Z}_{th}^*$
+:::
+:::
+
+:::
+
+---
+
+# Transformación Delta – Estrella ($\Delta \leftrightarrow \text{Y}$) en CA
+
+Cuando una red de impedancias complejas no se puede reducir mediante combinaciones puras de serie o paralelo (por ejemplo, redes en puente o redes trifásicas equivalentes), se recurre a la transformación bidireccional entre la configuración **Delta ($\Delta$ o triángulo)** y la configuración **Estrella ($\text{Y}$ o $T$)**.
+
+{{< include recursos/generadores/genera_delta_estrella.md >}}
+
+{{< include recursos/generadores/topologia_puente_delta_estrella.md >}}
+
+{{< include recursos/generadores/topologia_doble_t_estrella_delta.md >}}
+
+{{< include recursos/generadores/topologia_estrella_delta.md >}}
+
+{{< include recursos/generadores/topologia-delta-estrella2.md >}}
+
+## Fórmulas de Transformación para Impedancias Complejas
+
+### De Delta a Estrella ($\Delta \to \text{Y}$)
+Dado un triángulo formado por las impedancias $\mathbf{Z}_A$ (opuesta al nodo 1), $\mathbf{Z}_B$ (opuesta al nodo 2) y $\mathbf{Z}_C$ (opuesta al nodo 3), las impedancias equivalentes en estrella conectadas a cada nodo son:
+
+$$\mathbf{Z}_\Sigma = \mathbf{Z}_A + \mathbf{Z}_B + \mathbf{Z}_C$$
+
+$$\mathbf{Z}_1 = \frac{\mathbf{Z}_B \mathbf{Z}_C}{\mathbf{Z}_\Sigma}, \qquad \mathbf{Z}_2 = \frac{\mathbf{Z}_A \mathbf{Z}_C}{\mathbf{Z}_\Sigma}, \qquad \mathbf{Z}_3 = \frac{\mathbf{Z}_A \mathbf{Z}_B}{\mathbf{Z}_\Sigma}$$
+
+> **Regla nemotécnica ($\Delta \to \text{Y}$):** Cada rama de la estrella es igual al *producto de las dos impedancias adyacentes del delta* dividido por la *suma total de las tres impedancias del delta*.
+
+### De Estrella a Delta ($\text{Y} \to \Delta$)
+Dada una estrella con ramas $\mathbf{Z}_1, \mathbf{Z}_2, \mathbf{Z}_3$ conectadas al nodo común neutro $O$:
+
+$$\Sigma_2 = \mathbf{Z}_1 \mathbf{Z}_2 + \mathbf{Z}_2 \mathbf{Z}_3 + \mathbf{Z}_3 \mathbf{Z}_1$$
+
+$$\mathbf{Z}_A = \frac{\Sigma_2}{\mathbf{Z}_1}, \qquad \mathbf{Z}_B = \frac{\Sigma_2}{\mathbf{Z}_2}, \qquad \mathbf{Z}_C = \frac{\Sigma_2}{\mathbf{Z}_3}$$
+
+> **Regla nemotécnica ($\text{Y} \to \Delta$):** Cada impedancia del delta es igual a la *suma de los productos dos a dos de las impedancias de la estrella* dividida entre la *impedancia opuesta de la estrella*.
+
+### Errores más comunes y a tomar en cuenta
+
+Los errores más comunes al realizar la conversión delta-estrella suelen estar relacionados con la comprensión incorrecta de las relaciones entre corrientes, tensiones, o la mala aplicación de las fórmulas. Aquí hemos detallado las más frecuentes:
+
+1. **Confusión entre tensiones y corrientes de fase y de línea**
+
+    Error: Confundir las tensiones y corrientes de fase con las de línea al realizar las conversiones.
+
+    Explicación: **En la configuración estrella, la tensión de fase es menor que la tensión de línea por un factor de √3,** mientras que **en delta la tensión de fase y la tensión de línea son iguales.** _Lo mismo sucede con las corrientes,_ pero al revés: **en estrella las corrientes de línea son iguales a las de fase**, mientras que **en delta las corrientes de línea son √3 veces mayores que las de fase**. No tener en cuenta esta diferencia al realizar cálculos puede llevar a errores graves en la selección de componentes o dimensionamiento del sistema.
+
+    | Magnitud | Estrella ($\text{Y}$) | Triángulo ($\Delta$) | Relación |
+    | :--- | :---: | :---: | :---: |
+    | **Tensión ($V$)** | $V_L > V_F$ | $V_L = V_F$ | $V_L = \sqrt{3} \cdot V_F$ |
+    | **Corriente ($I$)** | $I_L = I_F$ | $I_L > I_F$ | $I_L = \sqrt{3} \cdot I_F$ |
+    | **Potencia ($P$)** | Menor ($1/3$) | Mayor (Nominal) | $P_{\Delta} =3 \cdot P_{\text{Y}}$ |
+    | **Puentes en bornas** | Horizontales | Verticales | — |
+ 
+
+2. **Uso incorrecto de las fórmulas de conversión**
+
+    Error: Aplicar incorrectamente las fórmulas para convertir entre delta y estrella.
+    Explicación: Las fórmulas para la conversión de delta a estrella y de estrella a delta son diferentes. No tener claro qué configuración estás manejando o usar las fórmulas en el orden incorrecto puede llevar a cálculos erróneos. Recordar que:
+
+    - Para convertir de delta a estrella: $R_{\text{Y}} = \frac{R_{\Delta}}{3}$
+
+    - Para convertir de estrella a delta: $R_Δ = 3 \times R_y$
+
+3. **Desbalance en las impedancias**
+
+    Error: No tomar en cuenta el balance entre impedancias en las tres fases.
+    Explicación: En un sistema trifásico equilibrado, las tres impedancias (resistencias o reactancias) deben ser iguales. Si al convertir entre delta y estrella las impedancias no se mantienen equilibradas, se puede producir un desbalance en el sistema, generando sobrecalentamiento o funcionamiento ineficiente. Este error es común cuando se utilizan componentes de diferente valor para cada fase.
+
+4. **Ignorar el efecto del punto neutro en estrella**
+
+    Error: No tener en cuenta que la configuración estrella tiene un punto neutro que puede ser necesario conectar a tierra.
+    Explicación: En estrella, el punto neutro es crucial para estabilizar el sistema y proporcionar un camino de retorno para las corrientes de desequilibrio. Si este punto neutro no está correctamente conectado, el sistema puede sufrir desequilibrios de tensión y sobrecargas en las fases.
+
+5. **Incorrecta interpretación del diagrama de conexiones**
+
+    Error: Conectar mal los componentes al no entender adecuadamente los diagramas de las configuraciones delta y estrella.
+    Explicación: Un error muy común es conectar erróneamente las fases en la configuración delta, donde cada componente debe estar conectado entre dos fases, o en la configuración estrella, donde cada componente debe estar conectado entre una fase y el neutro. Conexiones incorrectas pueden resultar en cortocircuitos o en que el sistema no funcione como se espera.
+
+6. **No considerar la potencia total del sistema**
+
+    Error: Suponer que la potencia total cambia al convertir entre configuraciones.
+    Explicación: La potencia total en un sistema trifásico no cambia al convertir entre delta y estrella. Lo que cambia es cómo se distribuyen las corrientes y tensiones, pero la potencia debe permanecer constante. Algunos errores ocurren cuando se recalculan los valores de potencia sin tener esto en cuenta.
+
+7. **Selección inadecuada de componentes**
+
+    Error: No seleccionar correctamente las resistencias, inductancias o capacitancias necesarias para cada configuración.
+    Explicación: Los componentes que son adecuados para una configuración delta pueden no serlo para una configuración estrella, debido a las diferencias en tensiones y corrientes. Esto puede llevar a sobrecalentamientos o fallos en los equipos si los componentes no están dimensionados correctamente para la nueva configuración.
+
+8. **No tener en cuenta las diferencias en protección**
+
+    Error: No ajustar los sistemas de protección (fusibles, disyuntores) al cambiar de una configuración a otra.
+    Explicación: Las configuraciones delta y estrella pueden requerir diferentes valores de protección debido a las diferencias en las corrientes de línea y de fase. No realizar los ajustes necesarios en los sistemas de protección puede llevar a que estos no funcionen correctamente o que se dañen los equipos.
+
+---
+
+## Módulo Interactivo de Cálculo $\Delta \leftrightarrow \text{Y}$
+
+## 🧮 Solver Nodal & Esquema del Circuito en CA
+
+{{< include recursos/modulos/analisiscircuitos/delta-estrellaV2.md >}}
+
+---

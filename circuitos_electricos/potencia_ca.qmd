@@ -152,8 +152,12 @@ Ajuste las amplitudes eficaces de tensión y corriente junto a sus respectivos �
 
 ---
 
-## 6. Recursos Computacionales & Descargas
+## 6. Recursos Computacionales & Navegación
 
-- [📥 Descargar Script Standalone en Python (`calculo_fasores.py`)](../descargas/calculo_fasores.py){.btn .btn-primary role="button"}
-- [📑 Ver Guía Práctica de Análisis Fasorial](teoria_fasores.qmd){.btn .btn-outline-primary role="button"}
-- [📊 Acceder al Centro de Descargas y Datasets](../descargas.qmd){.btn .btn-outline-secondary role="button"}
+<div class="d-flex flex-wrap gap-2 my-3">
+  <a href="teoria_fasores.qmd" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i> Análisis Fasorial</a>
+  <a href="circuito_thevenin.qmd" class="btn btn-outline-primary"><i class="bi bi-cpu me-1"></i> Teorema de Thévenin</a>
+  <a href="circuito_norton.qmd" class="btn btn-outline-primary"><i class="bi bi-bezier2 me-1"></i> Teorema de Norton</a>
+  <a href="../descargas.qmd" class="btn btn-outline-secondary"><i class="bi bi-download me-1"></i> Descargas & CSVs</a>
+  <a href="index.qmd" class="btn btn-outline-secondary"><i class="bi bi-house me-1"></i> Índice Circuitos</a>
+</div>

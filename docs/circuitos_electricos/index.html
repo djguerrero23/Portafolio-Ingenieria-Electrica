@@ -86,7 +86,7 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-description','listing-categories','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-title','listing-subtitle','listing-description','listing-categories','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
       searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
     };
@@ -187,13 +187,36 @@ window.Quarto = {
     <a class="dropdown-item" href="../circuitos_electricos/index.html">
  <span class="dropdown-text">⚡ Ver Todo (Módulo Circuitos)</span></a>
   </li>  
+        <li><hr class="dropdown-divider"></li>
         <li>
-    <a class="dropdown-item" href="../circuitos_electricos/teoria_fasores_V3.html">
+    <a class="dropdown-item" href="../circuitos_electricos/teoria_fasores.html">
  <span class="dropdown-text">Guía Práctica de Análisis Fasorial</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../circuitos_electricos/potencia_ca.html">
- <span class="dropdown-text">Potencia en CA y Triángulo de Potencias</span></a>
+ <span class="dropdown-text">Potencia en CA &amp; Triángulo de Potencias</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">MÉTODOS Y TEOREMAS DE REDES</li>
+        <li>
+    <a class="dropdown-item" href="../circuitos_electricos/delta_estrella.html">
+ <span class="dropdown-text">Transformación Delta–Estrella (Δ ↔︎ Y)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../circuitos_electricos/analisis_nodal.html">
+ <span class="dropdown-text">Análisis Nodal en CA (Admitancias)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../circuitos_electricos/analisis_mallas.html">
+ <span class="dropdown-text">Análisis de Mallas en CA (Impedancias)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../circuitos_electricos/circuito_thevenin.html">
+ <span class="dropdown-text">Teorema de Thévenin en CA</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../circuitos_electricos/circuito_norton.html">
+ <span class="dropdown-text">Teorema de Norton en CA</span></a>
   </li>  
     </ul>
   </li>
@@ -289,14 +312,14 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(4)</span></div><div class="category" data-category="Q0E=">CA <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Q2FycmlsJTIwVCVDMyVBMWN0aWw=">Carril Táctil <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Q2lyY3VpdG9zJTIwRWwlQzMlQTljdHJpY29z">Circuitos Eléctricos <span class="quarto-category-count">(3)</span></div><div class="category" data-category="RmFjdG9yJTIwZGUlMjBQb3RlbmNpYQ==">Factor de Potencia <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RmFzb3Jlcw==">Fasores <span class="quarto-category-count">(3)</span></div><div class="category" data-category="SW1wZWRhbmNpYQ==">Impedancia <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TiVDMyVCQW1lcm9zJTIwQ29tcGxlam9z">Números Complejos <span class="quarto-category-count">(3)</span></div><div class="category" data-category="UG90ZW5jaWElMjBDQQ==">Potencia CA <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UG90ZW5jaWElMjBDb21wbGVqYQ==">Potencia Compleja <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UiVDMyVBOWdpbWVuJTIwUGVybWFuZW50ZQ==">Régimen Permanente <span class="quarto-category-count">(2)</span></div><div class="category" data-category="U2ltdWxhY2klQzMlQjNu">Simulación <span class="quarto-category-count">(1)</span></div><div class="category" data-category="U3RyZWFtbGl0">Streamlit <span class="quarto-category-count">(1)</span></div><div class="category" data-category="VHJpJUMzJUExbmd1bG8lMjBkZSUyMFBvdGVuY2lhcw==">Triángulo de Potencias <span class="quarto-category-count">(1)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(7)</span></div><div class="category" data-category="QWRtaXRhbmNpYXM=">Admitancias <span class="quarto-category-count">(1)</span></div><div class="category" data-category="QW4lQzMlQTFsaXNpcyUyMGRlJTIwTWFsbGFz">Análisis de Mallas <span class="quarto-category-count">(1)</span></div><div class="category" data-category="QW4lQzMlQTFsaXNpcyUyME5vZGFs">Análisis Nodal <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Q0E=">CA <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Q2FsY3VsYWRvcmE=">Calculadora <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Q2lyY3VpdG9zJTIwQ0E=">Circuitos CA <span class="quarto-category-count">(5)</span></div><div class="category" data-category="Q2lyY3VpdG9zJTIwRWwlQzMlQTljdHJpY29z">Circuitos Eléctricos <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Q2lyY3VpdG9zJTIwRXF1aXZhbGVudGVz">Circuitos Equivalentes <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RGVsdGEtRXN0cmVsbGE=">Delta-Estrella <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RmFjdG9yJTIwZGUlMjBQb3RlbmNpYQ==">Factor de Potencia <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RmFzb3Jlcw==">Fasores <span class="quarto-category-count">(1)</span></div><div class="category" data-category="SW1wZWRhbmNpYQ==">Impedancia <span class="quarto-category-count">(1)</span></div><div class="category" data-category="SW1wZWRhbmNpYSUyMENvbXBsZWph">Impedancia Compleja <span class="quarto-category-count">(2)</span></div><div class="category" data-category="SW1wZWRhbmNpYXM=">Impedancias <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TENL">LCK <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TFZL">LVK <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TSVDMyVBMXhpbWElMjBUcmFuc2ZlcmVuY2lh">Máxima Transferencia <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TSVDMyVBOXRvZG9zJTIwZGUlMjBSZWRlcw==">Métodos de Redes <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Tm9ydG9u">Norton <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TiVDMyVCQW1lcm9zJTIwQ29tcGxlam9z">Números Complejos <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UG90ZW5jaWElMjBDQQ==">Potencia CA <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UG90ZW5jaWElMjBDb21wbGVqYQ==">Potencia Compleja <span class="quarto-category-count">(1)</span></div><div class="category" data-category="U2ltdWxhY2klQzMlQjNu">Simulación <span class="quarto-category-count">(1)</span></div><div class="category" data-category="U3RyZWFtbGl0">Streamlit <span class="quarto-category-count">(1)</span></div><div class="category" data-category="VGVvcmVtYXMlMjBkZSUyMFJlZGVz">Teoremas de Redes <span class="quarto-category-count">(2)</span></div><div class="category" data-category="VGglQzMlQTl2ZW5pbg==">Thévenin <span class="quarto-category-count">(1)</span></div><div class="category" data-category="VHJhbnNmb3JtYWNpJUMzJUIzbiUyMGRlJTIwRnVlbnRlcw==">Transformación de Fuentes <span class="quarto-category-count">(1)</span></div><div class="category" data-category="VHJpJUMzJUExbmd1bG8lMjBkZSUyMFBvdGVuY2lhcw==">Triángulo de Potencias <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content column-page-left" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">⚡ Circuitos Eléctricos</h1>
-<p class="subtitle lead">Análisis en régimen permanente, teoremas fundamentales, fasores y respuesta en frecuencia</p>
+<p class="subtitle lead">Análisis en régimen permanente, métodos sistemáticos de redes, teoremas fundamentales, fasores y potencia compleja</p>
 </div>
 
 
@@ -313,7 +336,16 @@ window.Quarto = {
 </header>
 
 
-<p>Bienvenido al módulo de <strong>Circuitos Eléctricos</strong>. Aquí encontrarás memorias de cálculo, análisis fasorial, métodos de solución sistemática (mallas y nodos) y aplicaciones teóricas con verificación computacional.</p>
+<div class="hero-banner-modern">
+<div class="hero-pill">
+<p>⚡ MÓDULO TÉCNICO · CIRCUITOS ELÉCTRICOS EN CA</p>
+</div>
+<section id="análisis-en-régimen-permanente-sinusoidal-métodos-y-teoremas" class="level1 unnumbered">
+<h1 class="unnumbered">Análisis en Régimen Permanente Sinusoidal, Métodos y Teoremas</h1>
+<p>Colección estructurada de memorias de cálculo, análisis fasorial riguroso, formulación matricial por admitancias e impedancias, y teoremas de simplificación de redes en corriente alterna con soporte computacional en Python y simuladores interactivos.</p>
+</section>
+</div>
+<p>Utiliza las categorías o el buscador para filtrar entre <strong>Fasores</strong>, <strong>Métodos de Redes</strong> (Delta-Estrella, Nodos, Mallas), <strong>Teoremas Fundamentales</strong> (Thévenin, Norton) y <strong>Potencia en CA</strong>.</p>
 
 
 
@@ -328,12 +360,6 @@ window.Quarto = {
       <option value="listing-title" data-direction="asc">
         Title
       </option>
-      <option value="listing-date-sort" data-direction="asc">
-        Date - Oldest
-      </option>
-      <option value="listing-date-sort" data-direction="desc">
-        Date - Newest
-      </option>
     </select>
   </div>
     <div class="input-group input-group-sm quarto-listing-filter">
@@ -342,14 +368,77 @@ window.Quarto = {
     </div>
 </div>
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="RmFzb3JlcyUyQ04lQzMlQkFtZXJvcyUyMENvbXBsZWpvcyUyQ0NpcmN1aXRvcyUyMEVsJUMzJUE5Y3RyaWNvcyUyQ0NBJTJDSW1wZWRhbmNpYQ==" data-listing-date-sort="1789106400000" data-listing-file-modified-sort="1789362962373" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="49" data-listing-word-count-sort="9750">
-<a href="../circuitos_electricos/teoria_fasores_V3.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="0" data-categories="TSVDMyVBOXRvZG9zJTIwZGUlMjBSZWRlcyUyQ0FuJUMzJUExbGlzaXMlMjBOb2RhbCUyQ0FkbWl0YW5jaWFzJTJDTENLJTJDQ2lyY3VpdG9zJTIwQ0E=" data-listing-date-sort="1789538400000" data-listing-file-modified-sort="1789681799301" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="778">
+<a href="../circuitos_electricos/analisis_nodal.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Análisis Nodal en Corriente Alterna
+</h5>
+<div class="card-subtitle listing-subtitle">
+Formulación sistemática por Ley de Corrientes de Kirchhoff (LCK) y Matriz de Admitancias Complejas
+</div>
+<div class="listing-reading-time card-text text-muted">4 min</div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('TSVDMyVBOXRvZG9zJTIwZGUlMjBSZWRlcw=='); return false;">Métodos de Redes</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('QW4lQzMlQTFsaXNpcyUyME5vZGFs'); return false;">Análisis Nodal</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('QWRtaXRhbmNpYXM='); return false;">Admitancias</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('TENL'); return false;">LCK</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Q2lyY3VpdG9zJTIwQ0E='); return false;">Circuitos CA</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>Resolución sistemática de redes eléctricas sinusoidales en régimen permanente mediante potenciales de nodo: planteamiento matricial [Y][V] = [I], supernodos y fuentes…</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="1" data-categories="TSVDMyVBOXRvZG9zJTIwZGUlMjBSZWRlcyUyQ0FuJUMzJUExbGlzaXMlMjBkZSUyME1hbGxhcyUyQ0ltcGVkYW5jaWFzJTJDTFZLJTJDQ2lyY3VpdG9zJTIwQ0E=" data-listing-date-sort="1789538400000" data-listing-file-modified-sort="1789681819289" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="792">
+<a href="../circuitos_electricos/analisis_mallas.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Análisis de Mallas en Corriente Alterna
+</h5>
+<div class="card-subtitle listing-subtitle">
+Formulación sistemática por Ley de Tensiones de Kirchhoff (LVK) y Matriz de Impedancias Complejas
+</div>
+<div class="listing-reading-time card-text text-muted">4 min</div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('TSVDMyVBOXRvZG9zJTIwZGUlMjBSZWRlcw=='); return false;">Métodos de Redes</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('QW4lQzMlQTFsaXNpcyUyMGRlJTIwTWFsbGFz'); return false;">Análisis de Mallas</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('SW1wZWRhbmNpYXM='); return false;">Impedancias</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('TFZL'); return false;">LVK</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Q2lyY3VpdG9zJTIwQ0E='); return false;">Circuitos CA</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>Resolución de circuitos planos de corriente alterna en régimen permanente mediante corrientes ficticias de lazo: matriz de impedancias de malla [Z][I] = [V], supermallas y…</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="2" data-categories="RmFzb3JlcyUyQ04lQzMlQkFtZXJvcyUyMENvbXBsZWpvcyUyQ0NpcmN1aXRvcyUyMEVsJUMzJUE5Y3RyaWNvcyUyQ0NBJTJDSW1wZWRhbmNpYQ==" data-listing-date-sort="1789106400000" data-listing-file-modified-sort="1789681756301" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="26" data-listing-word-count-sort="5166">
+<a href="../circuitos_electricos/teoria_fasores.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Fasores y Análisis de Circuitos en CA
 </h5>
-<div class="listing-reading-time card-text text-muted">49 min</div>
+<div class="card-subtitle listing-subtitle">
+De la señal sinusoidal al circuito: representación, álgebra compleja e interpretación física
+</div>
+<div class="listing-reading-time card-text text-muted">26 min</div>
 <div class="listing-categories">
 
 <div class="listing-category" onclick="window.quartoListingCategory('RmFzb3Jlcw=='); return false;">Fasores</div>
@@ -366,22 +455,52 @@ Fasores y Análisis de Circuitos en CA
 <div class="card-text listing-description delink">
 <p>Guía progresiva de fasores, números complejos, impedancias RLC y resolución de circuitos en régimen sinusoidal permanente.</p>
 </div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Sep 11, 2026
 </div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="3" data-categories="VGVvcmVtYXMlMjBkZSUyMFJlZGVzJTJDVGglQzMlQTl2ZW5pbiUyQ00lQzMlQTF4aW1hJTIwVHJhbnNmZXJlbmNpYSUyQ0ltcGVkYW5jaWElMjBDb21wbGVqYSUyQ0NpcmN1aXRvcyUyMENBJTJDQ2FsY3VsYWRvcmE=" data-listing-date-sort="1789538400000" data-listing-file-modified-sort="1789681835913" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="657">
+<a href="../circuitos_electricos/circuito_thevenin.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Laboratorio Interactivo: Teorema de Thévenin en CA
+</h5>
+<div class="card-subtitle listing-subtitle">
+Circuito equivalente unifilar, cálculo de Vth y Zth, máxima transferencia de potencia compleja y laboratorio interactivo
+</div>
+<div class="listing-reading-time card-text text-muted">4 min</div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('VGVvcmVtYXMlMjBkZSUyMFJlZGVz'); return false;">Teoremas de Redes</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('VGglQzMlQTl2ZW5pbg=='); return false;">Thévenin</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('TSVDMyVBMXhpbWElMjBUcmFuc2ZlcmVuY2lh'); return false;">Máxima Transferencia</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('SW1wZWRhbmNpYSUyMENvbXBsZWph'); return false;">Impedancia Compleja</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Q2lyY3VpdG9zJTIwQ0E='); return false;">Circuitos CA</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Q2FsY3VsYWRvcmE='); return false;">Calculadora</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>Reducción de redes lineales activas de CA a un modelo equivalente serie: cálculo riguroso de tensión de circuito abierto, impedancia Thévenin, adaptación conjugada y…</p>
 </div>
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="UG90ZW5jaWElMjBDQSUyQ1BvdGVuY2lhJTIwQ29tcGxlamElMkNGYWN0b3IlMjBkZSUyMFBvdGVuY2lhJTJDVHJpJUMzJUExbmd1bG8lMjBkZSUyMFBvdGVuY2lhcyUyQ1N0cmVhbWxpdCUyQ1NpbXVsYWNpJUMzJUIzbg==" data-listing-date-sort="1789020000000" data-listing-file-modified-sort="1789074482490" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="575">
+<div class="g-col-1" data-index="4" data-categories="UG90ZW5jaWElMjBDQSUyQ1BvdGVuY2lhJTIwQ29tcGxlamElMkNGYWN0b3IlMjBkZSUyMFBvdGVuY2lhJTJDVHJpJUMzJUExbmd1bG8lMjBkZSUyMFBvdGVuY2lhcyUyQ1N0cmVhbWxpdCUyQ1NpbXVsYWNpJUMzJUIzbg==" data-listing-date-sort="1789020000000" data-listing-file-modified-sort="1789681873157" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="604">
 <a href="../circuitos_electricos/potencia_ca.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Potencia en Corriente Alterna y Triángulo de Potencias
 </h5>
-<div class="listing-reading-time card-text text-muted">3 min</div>
+<div class="card-subtitle listing-subtitle">
+Modelado analítico de potencia instantánea, activa, reactiva, aparente y compensación del factor de potencia
+</div>
+<div class="listing-reading-time card-text text-muted">4 min</div>
 <div class="listing-categories">
 
 <div class="listing-category" onclick="window.quartoListingCategory('UG90ZW5jaWElMjBDQQ=='); return false;">Potencia CA</div>
@@ -400,74 +519,63 @@ Potencia en Corriente Alterna y Triángulo de Potencias
 <div class="card-text listing-description delink">
 <p>Formulación de potencia compleja, deducción del triángulo de potencias, análisis de cargas en atraso/adelanto y simulador interactivo en Streamlit.</p>
 </div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Sep 10, 2026
 </div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="5" data-categories="VGVvcmVtYXMlMjBkZSUyMFJlZGVzJTJDTm9ydG9uJTJDVHJhbnNmb3JtYWNpJUMzJUIzbiUyMGRlJTIwRnVlbnRlcyUyQ0NpcmN1aXRvcyUyMEVxdWl2YWxlbnRlcyUyQ0NpcmN1aXRvcyUyMENB" data-listing-date-sort="1789538400000" data-listing-file-modified-sort="1789681845197" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="521">
+<a href="../circuitos_electricos/circuito_norton.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Teorema de Norton en Corriente Alterna
+</h5>
+<div class="card-subtitle listing-subtitle">
+Circuito equivalente dual de corriente, corriente de cortocircuito y transformación de fuentes en CA
+</div>
+<div class="listing-reading-time card-text text-muted">3 min</div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('VGVvcmVtYXMlMjBkZSUyMFJlZGVz'); return false;">Teoremas de Redes</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Tm9ydG9u'); return false;">Norton</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('VHJhbnNmb3JtYWNpJUMzJUIzbiUyMGRlJTIwRnVlbnRlcw=='); return false;">Transformación de Fuentes</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Q2lyY3VpdG9zJTIwRXF1aXZhbGVudGVz'); return false;">Circuitos Equivalentes</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Q2lyY3VpdG9zJTIwQ0E='); return false;">Circuitos CA</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>Modelado y simplificación de circuitos de corriente alterna mediante el equivalente Norton: determinación de IN, impedancia y admitancia de Norton, y equivalencia recíproca…</p>
 </div>
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="2" data-categories="RmFzb3JlcyUyQ04lQzMlQkFtZXJvcyUyMENvbXBsZWpvcyUyQ0NpcmN1aXRvcyUyMEVsJUMzJUE5Y3RyaWNvcyUyQ0NhcnJpbCUyMFQlQzMlQTFjdGlsJTJDUiVDMyVBOWdpbWVuJTIwUGVybWFuZW50ZQ==" data-listing-date-sort="1789020000000" data-listing-file-modified-sort="1789155646796" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2716">
-<a href="../circuitos_electricos/teoria_fasores.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="6" data-categories="TSVDMyVBOXRvZG9zJTIwZGUlMjBSZWRlcyUyQ0RlbHRhLUVzdHJlbGxhJTJDSW1wZWRhbmNpYSUyMENvbXBsZWphJTJDQ2lyY3VpdG9zJTIwQ0E=" data-listing-date-sort="1789538400000" data-listing-file-modified-sort="1789681950365" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="698">
+<a href="../circuitos_electricos/delta_estrella.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
-Guía Práctica de Análisis Fasorial y Álgebra de Números Complejos
+Transformación Delta – Estrella (Δ ↔︎ Y) en Corriente Alterna
 </h5>
-<div class="listing-reading-time card-text text-muted">14 min</div>
+<div class="card-subtitle listing-subtitle">
+Conversión de impedancias complejas, topologías en puente, doble T y calculadora interactiva
+</div>
+<div class="listing-reading-time card-text text-muted">4 min</div>
 <div class="listing-categories">
 
-<div class="listing-category" onclick="window.quartoListingCategory('RmFzb3Jlcw=='); return false;">Fasores</div>
+<div class="listing-category" onclick="window.quartoListingCategory('TSVDMyVBOXRvZG9zJTIwZGUlMjBSZWRlcw=='); return false;">Métodos de Redes</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('TiVDMyVCQW1lcm9zJTIwQ29tcGxlam9z'); return false;">Números Complejos</div>
+<div class="listing-category" onclick="window.quartoListingCategory('RGVsdGEtRXN0cmVsbGE='); return false;">Delta-Estrella</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('Q2lyY3VpdG9zJTIwRWwlQzMlQTljdHJpY29z'); return false;">Circuitos Eléctricos</div>
+<div class="listing-category" onclick="window.quartoListingCategory('SW1wZWRhbmNpYSUyMENvbXBsZWph'); return false;">Impedancia Compleja</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('Q2FycmlsJTIwVCVDMyVBMWN0aWw='); return false;">Carril Táctil</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UiVDMyVBOWdpbWVuJTIwUGVybWFuZW50ZQ=='); return false;">Régimen Permanente</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Q2lyY3VpdG9zJTIwQ0E='); return false;">Circuitos CA</div>
 
 </div>
 <div class="card-text listing-description delink">
-<p>Fundamentos de la notación fasorial, conversión seno-coseno, álgebra de números complejos por cuadrantes e impedancias pasivas en régimen permanente.</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Sep 10, 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="3" data-categories="RmFzb3JlcyUyQ04lQzMlQkFtZXJvcyUyMENvbXBsZWpvcyUyQ0NpcmN1aXRvcyUyMEVsJUMzJUE5Y3RyaWNvcyUyQ0NhcnJpbCUyMFQlQzMlQTFjdGlsJTJDUiVDMyVBOWdpbWVuJTIwUGVybWFuZW50ZQ==" data-listing-date-sort="1789020000000" data-listing-file-modified-sort="1789155623876" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2716">
-<a href="../circuitos_electricos/teoria_fasores2.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Guía Práctica de Análisis Fasorial y Álgebra de Números Complejos
-</h5>
-<div class="listing-reading-time card-text text-muted">14 min</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('RmFzb3Jlcw=='); return false;">Fasores</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('TiVDMyVCQW1lcm9zJTIwQ29tcGxlam9z'); return false;">Números Complejos</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Q2lyY3VpdG9zJTIwRWwlQzMlQTljdHJpY29z'); return false;">Circuitos Eléctricos</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Q2FycmlsJTIwVCVDMyVBMWN0aWw='); return false;">Carril Táctil</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UiVDMyVBOWdpbWVuJTIwUGVybWFuZW50ZQ=='); return false;">Régimen Permanente</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Fundamentos de la notación fasorial, conversión seno-coseno, álgebra de números complejos por cuadrantes e impedancias pasivas en régimen permanente.</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Sep 10, 2026
-</div>
+<p>Formulación analítica rigurosa y herramienta de cálculo para la conversión bidireccional Delta-Estrella con impedancias complejas en régimen permanente sinusoidal.</p>
 </div>
 </div>
 </div></a>

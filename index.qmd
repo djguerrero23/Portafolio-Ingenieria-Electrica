@@ -15,7 +15,7 @@ Plataforma técnica desarrollada por **David Guerrero** para la difusión acadé
 
 ::: {.hero-actions}
 [Explorar Informes Técnicos](informes/caida_tension.qmd){.btn .btn-white}
-[Calculadoras Interactivas](teoria_fasores.qmd){.btn .btn-outline-white}
+[Calculadoras Interactivas](circuitos_electricos/teoria_fasores.qmd){.btn .btn-outline-white}
 [Repositorio de Datos & Scripts](descargas.qmd){.btn .btn-outline-white}
 :::
 
@@ -39,14 +39,19 @@ Plataforma técnica desarrollada por **David Guerrero** para la difusión acadé
 ⚡
 :::
 ### Circuitos Eléctricos
-Análisis en régimen permanente, leyes de Kirchhoff, teoremas de redes, álgebra fasorial y potencia compleja.
+Análisis en régimen permanente, leyes de Kirchhoff, métodos sistemáticos, teoremas de redes y potencia compleja.
 
-- **Análisis Fasorial:** Método del Carril Táctil, reglas de cuadrantes y conversión canónica seno $\to$ coseno.
-- **Potencia en CA:** Potencia activa $P$, reactiva $Q$, aparente $S$, factor de potencia y simulador en tiempo real.
+- **Análisis Fasorial & Impedancia:** Método del Carril Táctil, reglas de cuadrantes y circuitos RLC.
+- **Métodos y Teoremas:** Transformación Δ–Y, formulación matricial de Nodos y Mallas, Thévenin y Norton.
+- **Potencia en CA:** Potencia activa $P$, reactiva $Q$, aparente $S$, factor de potencia y simulador interactivo.
 
-<div style="display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: auto; padding-top: 0.5rem;">
-  <a href="circuitos_electricos/teoria_fasores_V3.qmd" class="btn btn-outline-primary" style="font-size: 0.82rem; padding: 0.4rem 0.8rem;">Guía de Fasores →</a>
-  <a href="circuitos_electricos/potencia_ca.qmd" class="btn btn-outline-primary" style="font-size: 0.82rem; padding: 0.4rem 0.8rem;">Potencia en CA →</a>
+<div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: auto; padding-top: 0.5rem;">
+  <a href="circuitos_electricos/index.qmd" class="btn btn-primary" style="font-size: 0.82rem; padding: 0.4rem 0.8rem;">⚡ Ver Todo el Módulo →</a>
+  <a href="circuitos_electricos/teoria_fasores.qmd" class="btn btn-outline-primary" style="font-size: 0.82rem; padding: 0.4rem 0.8rem;">Fasores</a>
+  <a href="circuitos_electricos/delta_estrella.qmd" class="btn btn-outline-primary" style="font-size: 0.82rem; padding: 0.4rem 0.8rem;">Δ–Y</a>
+  <a href="circuitos_electricos/analisis_nodal.qmd" class="btn btn-outline-primary" style="font-size: 0.82rem; padding: 0.4rem 0.8rem;">Nodos & Mallas</a>
+  <a href="circuitos_electricos/circuito_thevenin.qmd" class="btn btn-outline-primary" style="font-size: 0.82rem; padding: 0.4rem 0.8rem;">Thévenin & Norton</a>
+  <a href="circuitos_electricos/potencia_ca.qmd" class="btn btn-outline-primary" style="font-size: 0.82rem; padding: 0.4rem 0.8rem;">Potencia CA</a>
 </div>
 :::
 :::

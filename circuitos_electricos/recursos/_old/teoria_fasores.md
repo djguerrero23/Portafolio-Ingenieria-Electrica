@@ -1,4 +1,3 @@
----
 title: "Guía Práctica de Análisis Fasorial y Álgebra de Números Complejos"
 subtitle: "Método del Carril Táctil, transformación temporal-frecuencial y operaciones en el plano complejo"
 description: "Fundamentos de la notación fasorial, conversión seno-coseno, álgebra de números complejos por cuadrantes e impedancias pasivas en régimen permanente."

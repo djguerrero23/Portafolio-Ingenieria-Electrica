@@ -1,395 +1,94 @@
 [
   {
-    "objectID": "teoria_fasores.html",
-    "href": "teoria_fasores.html",
-    "title": "Análisis Fasorial y Potencia en Corriente Alterna",
+    "objectID": "sistemas_potencia/index.html",
+    "href": "sistemas_potencia/index.html",
+    "title": "⚡ Sistemas de Potencia & Distribución",
     "section": "",
-    "text": "Note⚡ Interfaz Computacional\n\n\n\nEsta memoria integra formulación teórica rigurosa con una aplicación de cálculo numérico interactivo ejecutada con Python en Streamlit Cloud. La herramienta permite ajustar amplitudes, ángulos de desfase y visualizar el triángulo de potencias en tiempo real."
+    "text": "Bienvenido al módulo de Sistemas de Potencia & Distribución. En este espacio se publican memorias de cálculo aplicadas a instalaciones industriales y comerciales, análisis de pérdidas, regulación de alimentadores y cumplimiento de estándares internacionales.\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\nCálculo de Caída de Tensión y Dimensionamiento de Alimentadores\n\n4 min\n\n\nSistemas de Potencia\n\nCaída de Tensión\n\nNEC / NTC 2050\n\nConductores\n\nIEEE\n\n\n\nMetodología analítica para regulación de tensión en alimentadores trifásicos y monofásicos de baja tensión, con criterios de pérdidas Joule y selección óptima.\n\n\n\nSep 10, 2026\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "teoria_fasores.html#fundamentos-teóricos-de-régimen-sinusoidal",
-    "href": "teoria_fasores.html#fundamentos-teóricos-de-régimen-sinusoidal",
-    "title": "Análisis Fasorial y Potencia en Corriente Alterna",
-    "section": "1 1. Fundamentos Teóricos de Régimen Sinusoidal",
-    "text": "1 1. Fundamentos Teóricos de Régimen Sinusoidal\nEn el análisis de circuitos eléctricos excitados por fuentes sinusoidales de frecuencia angular constante \\omega = 2\\pi f, las variables temporales de tensión v(t) y corriente i(t) se transforman al dominio de la frecuencia mediante la notación fasorial.\nSea la tensión instantánea y la corriente instantánea:\n\nv(t) = V_{max} \\cos(\\omega t + \\theta_v) \\quad \\Longrightarrow \\quad \\mathbf{V} = V_{rms} e^{j\\theta_v} = V_{rms} \\angle \\theta_v\n\n\ni(t) = I_{max} \\cos(\\omega t + \\theta_i) \\quad \\Longrightarrow \\quad \\mathbf{I} = I_{rms} e^{j\\theta_i} = I_{rms} \\angle \\theta_i\n\nDonde los valores eficaces (V_{rms}, I_{rms}) corresponden a los valores de cresta divididos por \\sqrt{2}."
+    "objectID": "mediciones_electricas/puentes_medicion.html",
+    "href": "mediciones_electricas/puentes_medicion.html",
+    "title": "Puentes de Medición de Parámetros Pasivos (R, L, C)",
+    "section": "",
+    "text": "Note🎯 Precisión Metrológica\n\n\n\nLos métodos de puente utilizan la técnica de balance nulo (detección de corriente cero en el galvanómetro), lo que elimina los errores introducidos por la resistencia interna de los instrumentos indicadores convencionales."
   },
   {
-    "objectID": "teoria_fasores.html#potencia-compleja-y-triángulo-de-potencias",
-    "href": "teoria_fasores.html#potencia-compleja-y-triángulo-de-potencias",
-    "title": "Análisis Fasorial y Potencia en Corriente Alterna",
-    "section": "2 2. Potencia Compleja y Triángulo de Potencias",
-    "text": "2 2. Potencia Compleja y Triángulo de Potencias\nLa potencia compleja aparente \\mathbf{S} transferida hacia un dipolo pasivo o una carga se expresa como el producto del fasor de tensión por el complejo conjugado del fasor de corriente:\n\n\\mathbf{S} = \\mathbf{V} \\cdot \\mathbf{I}^* = \\left( V_{rms} e^{j\\theta_v} \\right) \\left( I_{rms} e^{-j\\theta_i} \\right) = V_{rms} I_{rms} e^{j(\\theta_v - \\theta_i)}\n\nDescomponiendo en forma rectangular mediante la identidad de Euler:\n\n\\mathbf{S} = P + jQ\n\n\n2.1 Componentes de Potencia\n\nPotencia Activa (P): Potencia útil transformada en trabajo mecánico, luz o calor. \nP = |\\mathbf{V}| |\\mathbf{I}| \\cos(\\theta_v - \\theta_i) \\quad [\\text{W}, \\text{kW}, \\text{MW}]\n\nPotencia Reactiva (Q): Potencia oscilante requerida para establecer los campos magnéticos en inductancias o eléctricos en condensadores. \nQ = |\\mathbf{V}| |\\mathbf{I}| \\sin(\\theta_v - \\theta_i) \\quad [\\text{VAR}, \\text{kVAR}]\n\nPotencia Aparente (|\\mathbf{S}|): Capacidad total de transporte requerida en transformadores, generadores y conductores. \n|\\mathbf{S}| = \\sqrt{P^2 + Q^2} \\quad [\\text{VA}, \\text{kVA}]\n\nFactor de Potencia (\\text{FP}): Eficiencia de utilización de la energía. \n\\text{FP} = \\cos(\\theta_v - \\theta_i) = \\frac{P}{|\\mathbf{S}|}"
+    "objectID": "mediciones_electricas/puentes_medicion.html#puente-de-wheatstone-medición-de-resistencias-medias",
+    "href": "mediciones_electricas/puentes_medicion.html#puente-de-wheatstone-medición-de-resistencias-medias",
+    "title": "Puentes de Medición de Parámetros Pasivos (R, L, C)",
+    "section": "1 1. Puente de Wheatstone (Medición de Resistencias Medias)",
+    "text": "1 1. Puente de Wheatstone (Medición de Resistencias Medias)\nEl puente de Wheatstone es la estructura fundamental para la medición de resistencias en el rango de 1 \\ \\Omega a 1 \\ \\text{M}\\Omega.\n\n1.1 Condición de Equilibrio\nCuando el detector de cero no registra circulación de corriente (I_G = 0):\n\n\\frac{R_1}{R_2} = \\frac{R_3}{R_x} \\quad \\Longrightarrow \\quad R_x = \\frac{R_2 \\cdot R_3}{R_1}"
   },
   {
-    "objectID": "teoria_fasores.html#simulador-interactivo-de-potencia-en-tiempo-real",
-    "href": "teoria_fasores.html#simulador-interactivo-de-potencia-en-tiempo-real",
-    "title": "Análisis Fasorial y Potencia en Corriente Alterna",
-    "section": "3 3. Simulador Interactivo de Potencia en Tiempo Real",
-    "text": "3 3. Simulador Interactivo de Potencia en Tiempo Real\nUtilice el siguiente simulador computacional para variar la amplitud eficaz de tensión, corriente y sus respectivos ángulos de fase. El motor calculará automáticamente la potencia activa, reactiva y graficará el plano fasorial en tiempo real:\n\n\n   ⚡ engine_fasores.py — Streamlit Interactive Engine (Python 3.12)"
+    "objectID": "mediciones_electricas/puentes_medicion.html#puente-doble-de-kelvin-medición-de-bajas-resistencias",
+    "href": "mediciones_electricas/puentes_medicion.html#puente-doble-de-kelvin-medición-de-bajas-resistencias",
+    "title": "Puentes de Medición de Parámetros Pasivos (R, L, C)",
+    "section": "2 2. Puente Doble de Kelvin (Medición de Bajas Resistencias)",
+    "text": "2 2. Puente Doble de Kelvin (Medición de Bajas Resistencias)\nPara resistencias inferiores a 1 \\ \\Omega, los efectos de los terminales y cables de conexión introducen errores inaceptables. El puente de Kelvin compensa estas resistencias residuales mediante una doble rama divisoria proporcional:\n\nR_x = R_s \\frac{R_1}{R_2} + \\frac{R_y \\cdot r_2}{r_1 + r_2 + R_y} \\left( \\frac{R_1}{R_2} - \\frac{r_1}{r_2} \\right)\n\nSi se mantiene la relación \\frac{R_1}{R_2} = \\frac{r_1}{r_2}, la influencia de la resistencia de contacto R_y se anula exactamente:\n\nR_x = R_s \\frac{R_1}{R_2}"
   },
   {
-    "objectID": "teoria_fasores.html#recursos-computacionales-y-descargas",
-    "href": "teoria_fasores.html#recursos-computacionales-y-descargas",
-    "title": "Análisis Fasorial y Potencia en Corriente Alterna",
-    "section": "4 4. Recursos Computacionales y Descargas",
-    "text": "4 4. Recursos Computacionales y Descargas\n\n📥 Descargar Script Standalone de Fasores (calculo_fasores.py)\n📊 Consultar Tabla de Conductores y Parámetros"
+    "objectID": "maquinas_electricas/index.html",
+    "href": "maquinas_electricas/index.html",
+    "title": "⚙️ Máquinas Eléctricas",
+    "section": "",
+    "text": "Bienvenido al módulo de Máquinas Eléctricas. En esta sección se abordan los principios físicos de los circuitos magnéticos, saturación en materiales ferromagnéticos, modelado y pruebas de transformadores, y dinámica de máquinas de corriente alterna y continua.\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\nCircuitos Magnéticos y Curva de Magnetización B-H\n\n2 min\n\n\nCircuitos Magnéticos\n\nCurva B-H\n\nSaturación\n\nFMM\n\nMáquinas\n\n\n\nModelado de circuitos magnéticos en serie y paralelo, cálculo de fuerza magnetomotriz (FMM) y métodos numéricos con curvas B-H no lineales.\n\n\n\nSep 10, 2026\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "sistemas_potencia/caida_tension.html",
-    "href": "sistemas_potencia/caida_tension.html",
+    "objectID": "informes/caida_tension.html",
+    "href": "informes/caida_tension.html",
     "title": "Cálculo de Caída de Tensión y Dimensionamiento de Alimentadores",
     "section": "",
     "text": "Note📌 Resumen Ejecutivo\n\n\n\nEste informe técnico establece el marco metodológico para el cálculo analítico y la verificación de la caída de tensión porcentual (\\Delta V\\%) en alimentadores trifásicos y monofásicos de baja tensión. Se evalúa el impacto de la impedancia en corriente alterna (resistencia efectiva R y reactancia inductiva X) sobre la regulación de tensión, asegurando el cumplimiento de los límites normativos del 3\\% en el alimentador y 5\\% total acumulado hasta la carga más crítica."
   },
   {
-    "objectID": "sistemas_potencia/caida_tension.html#justificación-técnica-y-criterios-normativos",
-    "href": "sistemas_potencia/caida_tension.html#justificación-técnica-y-criterios-normativos",
+    "objectID": "informes/caida_tension.html#justificación-técnica-y-criterios-normativos",
+    "href": "informes/caida_tension.html#justificación-técnica-y-criterios-normativos",
     "title": "Cálculo de Caída de Tensión y Dimensionamiento de Alimentadores",
     "section": "1 1. Justificación Técnica y Criterios Normativos",
     "text": "1 1. Justificación Técnica y Criterios Normativos\nEl dimensionamiento de alimentadores en sistemas de distribución de energía no solo debe satisfacer el criterio de capacidad de corriente (ampacidad) por temperatura, sino también el criterio de regulación de tensión. Una caída excesiva produce:\n\nSobrecalentamiento y reducción de eficiencia: Aumento no deseado de pérdidas Joule en los conductores (P_{loss} = 3 I^2 R).\nDegradación del par en motores eléctricos: El par electromagnético de un motor de inducción disminuye proporcionalmente al cuadrado de la tensión aplicada (T \\propto V^2).\nInestabilidad en equipos electrónicos sensibles: Variaciones de tensión fuera del estándar ANSI C84.1 (+5\\%, -10\\%) generan disparos erráticos y desconexión de cargas críticas.\n\n\n1.1 Límites de Regulación Normativa\n\n\n\nTable 1: Criterios normativos de regulación de tensión.\n\n\n\n\n\n\n\n\n\n\nSegmento del Sistema Eléctrico\nCaída Máxima Recomendada (\\Delta V\\%)\nReferencia\n\n\n\n\nAlimentador Principal (Tablero General a Subtablero)\n\\le 3.0\\%\nNEC Art. 215.2(A)(1) / NTC 2050\n\n\nCircuito Ramal (Subtablero a Carga Final)\n\\le 3.0\\%\nNEC Art. 210.19(A)\n\n\nCaída Total Combinada (Fuente a Carga Final)\n\\le 5.0\\%\nEstándar de Calidad IEEE Std 141"
   },
   {
-    "objectID": "sistemas_potencia/caida_tension.html#formulación-matemática-de-impedancia-compleja",
-    "href": "sistemas_potencia/caida_tension.html#formulación-matemática-de-impedancia-compleja",
+    "objectID": "informes/caida_tension.html#formulación-matemática-de-impedancia-compleja",
+    "href": "informes/caida_tension.html#formulación-matemática-de-impedancia-compleja",
     "title": "Cálculo de Caída de Tensión y Dimensionamiento de Alimentadores",
     "section": "2 2. Formulación Matemática de Impedancia Compleja",
     "text": "2 2. Formulación Matemática de Impedancia Compleja\nLa caída de tensión fasorial en un alimentador con impedancia \\mathbf{Z} = R + jX alimentando una carga con factor de potencia \\cos\\theta se modela analíticamente considerando la proyección del fasor de caída sobre la tensión de referencia.\n\n2.1 Sistema Trifásico Equilibrado (3 Hilos / 4 Hilos)\nPara un sistema trifásico con tensión nominal línea a línea V_{LL}:\n\n\\Delta V_{3\\phi} = \\sqrt{3} \\cdot I \\cdot L \\cdot \\left( R_{CA} \\cos\\theta + X_L \\sin\\theta \\right)\n\nDonde:\n\nI: Corriente nominal de diseño en amperios (\\text{A}).\nL: Longitud del alimentador en kilómetros (\\text{km}).\nR_{CA}: Resistencia efectiva en CA a la temperatura de operación (75^\\circ\\text{C}) en \\Omega/\\text{km}.\nX_L: Reactancia inductiva del conductor en ducto en \\Omega/\\text{km}.\n\\cos\\theta: Factor de potencia en atraso de la carga instalada.\n\\sin\\theta = \\sqrt{1 - \\cos^2\\theta}: Factor de reactancia.\n\nLa caída de tensión porcentual normalizada se calcula como:\n\n\\Delta V\\% = \\left( \\frac{\\Delta V_{3\\phi}}{V_{LL}} \\right) \\times 100\\%"
   },
   {
-    "objectID": "sistemas_potencia/caida_tension.html#caso-de-estudio-práctico",
-    "href": "sistemas_potencia/caida_tension.html#caso-de-estudio-práctico",
+    "objectID": "informes/caida_tension.html#caso-de-estudio-práctico",
+    "href": "informes/caida_tension.html#caso-de-estudio-práctico",
     "title": "Cálculo de Caída de Tensión y Dimensionamiento de Alimentadores",
     "section": "3 3. Caso de Estudio Práctico",
     "text": "3 3. Caso de Estudio Práctico\nSe diseña un alimentador trifásico con las siguientes condiciones de servicio:\n\nTensión nominal de línea: V_{LL} = 480\\text{ V} (3\\phi, 60\\text{ Hz}).\nCorriente de carga máxima: I = 85\\text{ A}.\nLongitud de trayectoria: L = 120\\text{ m} = 0.12\\text{ km}.\nFactor de potencia: \\cos\\theta = 0.88 en atraso (\\sin\\theta = 0.4749).\nTipo de conductor: Cobre electrolítico clase B, aislamiento THHN/THWN-2 (75^\\circ\\text{C}), canalización en tubería conduit de PVC.\n\n\n3.1 Análisis Comparativo de Calibres\nA continuación se evalúa la respuesta técnica para calibres comerciales estándar utilizando los parámetros de la Tabla 9 del NEC:\n\n\n\nTable 2: Comparación de regulación de tensión para alimentador trifásico de 480 V, 85 A y 120 m.\n\n\n\n\n\n\n\n\n\n\n\n\n\nCalibre AWG / kcmil\nR_{CA} (\\Omega/\\text{km})\nX_L (\\Omega/\\text{km})\nCaída \\Delta V (\\text{V})\nRegulación \\Delta V\\%\nCumplimiento Normativo\n\n\n\n\n#4 AWG\n1.050\n0.177\n17.84\\text{ V}\n3.72\\%\n✕ No Cumple (&gt; 3%)\n\n\n#2 AWG\n0.656\n0.167\n11.60\\text{ V}\n2.42\\%\n✓ Cumple (≤ 3%)\n\n\n#1/0 AWG\n0.413\n0.161\n7.74\\text{ V}\n1.61\\%\n✓ Cumple (Óptimo)\n\n\n#2/0 AWG\n0.328\n0.157\n6.42\\text{ V}\n1.34\\%\n✓ Cumple (Baja Pérdida)"
   },
   {
-    "objectID": "sistemas_potencia/caida_tension.html#dictamen-técnico-y-recomendaciones",
-    "href": "sistemas_potencia/caida_tension.html#dictamen-técnico-y-recomendaciones",
+    "objectID": "informes/caida_tension.html#dictamen-técnico-y-recomendaciones",
+    "href": "informes/caida_tension.html#dictamen-técnico-y-recomendaciones",
     "title": "Cálculo de Caída de Tensión y Dimensionamiento de Alimentadores",
     "section": "4 4. Dictamen Técnico y Recomendaciones",
     "text": "4 4. Dictamen Técnico y Recomendaciones\n\nSelección por Criterio Técnico: El calibre mínimo aceptable es #2 AWG THHN, el cual garantiza una regulación del 2.42\\%, encontrándose dentro del umbral normativo del 3.0\\%.\nEvaluación de Eficiencia Energética: Para régimen de carga continua (\\ge 16\\text{ h/día}), el calibre #1/0 AWG reduce las pérdidas térmicas en los conductores en más de un 33\\%, compensando el costo marginal del conductor de cobre en menos de 14 meses de operación.\n\n\n\n\n\n\n\nTip📥 Recursos Disponibles para este Informe\n\n\n\n\nDescargar Dataset de Parámetros de Conductores (CSV)\nScript de Automatización en Python"
   },
   {
-    "objectID": "mediciones_electricas/index.html",
-    "href": "mediciones_electricas/index.html",
-    "title": "📊 Mediciones Eléctricas",
+    "objectID": "descargas.html",
+    "href": "descargas.html",
+    "title": "Centro de Recursos, Datasets & Scripts",
     "section": "",
-    "text": "Bienvenido al módulo de Mediciones Eléctricas. Aquí se recopilan análisis metrológicos, calibración de instrumentos, diseño de puentes de corriente continua y alterna, y métodos de reducción de incertidumbre experimental.\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\nPuentes de Medición de Parámetros Pasivos (R, L, C)\n\n1 min\n\n\nMediciones\n\nPuentes de Medición\n\nWheatstone\n\nKelvin\n\nMetrología\n\n\n\nTeoría de puentes de medición en corriente continua y alterna, condición de equilibrio fasorial y análisis de sensibilidad de detección.\n\n\n\nSep 10, 2026\n\n\n\n\n\n\nNo matching items"
+    "text": "Note💾 Acceso a Recursos de Ingeniería\n\n\n\nEn este centro de descargas se encuentran disponibles los archivos de datos, tablas de conductores y scripts de cálculo numérico utilizados en los informes técnicos de la plataforma. Todos los recursos están optimizados para integración directa con Python, Pandas, NumPy y herramientas CAD/CAE."
   },
   {
-    "objectID": "maquinas_electricas/circuitos_magneticos.html",
-    "href": "maquinas_electricas/circuitos_magneticos.html",
-    "title": "Circuitos Magnéticos y Curva de Magnetización B-H",
-    "section": "",
-    "text": "Note🧲 Enfoque Físico & Computacional\n\n\n\nEl cálculo preciso de la fuerza magnetomotriz (\\mathcal{F}) o del flujo magnético (\\Phi) en núcleos de acero al silicio requiere considerar la no-linealidad de la permeabilidad \\mu(B). Esta memoria resume las ecuaciones fundamentales y la analogía con circuitos eléctricos."
+    "objectID": "descargas.html#catálogo-de-archivos-disponibles",
+    "href": "descargas.html#catálogo-de-archivos-disponibles",
+    "title": "Centro de Recursos, Datasets & Scripts",
+    "section": "📁 Catálogo de Archivos Disponibles",
+    "text": "📁 Catálogo de Archivos Disponibles\n\n\n\n\n📊\n\n\nParámetros de Conductores AWG / kcmil\nMatriz de impedancia en corriente alterna (R_{CA} a 75^\\circ\\text{C} y reactancia X_L) para conductores de cobre con aislamiento THHN/THWN en canalizaciones de PVC y acero, según la Tabla 9 del Código Eléctrico Nacional (NEC).\n\nFormato: Archivo tabular .csv (codificación UTF-8)\nCampos: calibre, area_mm2, resistencia_pvc_ohm_km, reactancia_pvc_ohm_km\nUso: Algoritmos de caída de tensión y optimización de alimentadores\n\n\n 📥 Descargar Dataset (CSV) \n\n\n\n\n\n\n\n🐍\n\n\nScript de Análisis Fasorial & Potencia\nMódulo ejecutable en Python puro que implementa las funciones vectoriales de números complejos, descomposición de potencia activa, reactiva y generación de diagramas fasoriales con Matplotlib.\n\nFormato: Código fuente .py\nDependencias: Python 3.9+, NumPy, Matplotlib\nUso: Ejecución en terminal, importación en scripts propios o Jupyter Notebooks\n\n\n 📥 Descargar Script (.py)"
   },
   {
-    "objectID": "maquinas_electricas/circuitos_magneticos.html#analogía-entre-circuitos-eléctricos-y-magnéticos",
-    "href": "maquinas_electricas/circuitos_magneticos.html#analogía-entre-circuitos-eléctricos-y-magnéticos",
-    "title": "Circuitos Magnéticos y Curva de Magnetización B-H",
-    "section": "1 1. Analogía entre Circuitos Eléctricos y Magnéticos",
-    "text": "1 1. Analogía entre Circuitos Eléctricos y Magnéticos\nLa Ley de Hopkinson establece una correspondencia formal entre las magnitudes de un circuito eléctrico y las de un circuito magnético:\n\n\n\n\n\n\n\n\nParámetro\nCircuito Eléctrico\nCircuito Magnético\n\n\n\n\nFuerza impulsora\nTensión / FEM: E [\\text{V}]\nFuerza Magnetomotriz: \\mathcal{F} = N I [\\text{A-v}]\n\n\nFlujo de campo\nCorriente eléctrica: I [\\text{A}]\nFlujo magnético: \\Phi [\\text{Wb}]\n\n\nOposición al paso\nResistencia: R = \\frac{\\ell}{\\sigma A} [\\Omega]\nReluctancia: \\mathcal{R} = \\frac{\\ell}{\\mu A} [\\text{A-v/Wb}]\n\n\nDensidad de flujo\nDensidad de corriente: J = \\frac{I}{A}\nDensidad de flujo: B = \\frac{\\Phi}{A} [\\text{T}]\n\n\nIntensidad de campo\nCampo eléctrico: E = \\frac{V}{\\ell}\nCampo magnético: H = \\frac{\\mathcal{F}}{\\ell} [\\text{A/m}]\n\n\nLey constitutiva\nLey de Ohm: J = \\sigma E\nRelación magnética: B = \\mu H = \\mu_0 \\mu_r H"
-  },
-  {
-    "objectID": "maquinas_electricas/circuitos_magneticos.html#ley-de-ampère-y-conservación-de-fmm",
-    "href": "maquinas_electricas/circuitos_magneticos.html#ley-de-ampère-y-conservación-de-fmm",
-    "title": "Circuitos Magnéticos y Curva de Magnetización B-H",
-    "section": "2 2. Ley de Ampère y Conservación de FMM",
-    "text": "2 2. Ley de Ampère y Conservación de FMM\nPara una trayectoria cerrada media \\ell_c que atraviesa diferentes tramos de material y un entrehierro (\\ell_g):\n\n\\oint \\mathbf{H} \\cdot d\\mathbf{\\ell} = \\sum N I = \\mathcal{F}_{\\text{total}}\n\n\n\\mathcal{F}_{\\text{total}} = \\sum_{k=1}^{n} H_k \\ell_k + H_g \\ell_g\n\nDonde en el entrehierro de aire (\\mu_r = 1): \nH_g = \\frac{B_g}{\\mu_0}, \\quad \\mu_0 = 4\\pi \\times 10^{-7} \\ \\text{H/m}"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Maquinas Eléctricas, Circuitos Eléctricos, Mediciones Eléctricas, Sistemas de Potencia, Modelado & Computación Aplicada",
-    "section": "",
-    "text": "⚡ PORTAL ACADÉMICO SOBRE INGENIERÍA ELÉCTRICA & CÁLCULO CIENTÍFICO\n\n\n\nPlataforma técnica desarrollada por David Guerrero para la difusión académica de artículos, información técnica, conceptos, modelado, memorias de cálculo, análisis de sistemas eléctricos bajo normativas internacionales (IEEE / NEC / NTC 2050), visualización fasorial interactiva y desarrollo de algoritmos en Python.\n\nExplorar Informes Técnicos Calculadoras Interactivas Repositorio de Datos & Scripts\n\n\nPython 3.12 NumPy & Matplotlib Streamlit Cloud LaTeX & Quarto Normas IEEE / NEC"
-  },
-  {
-    "objectID": "index.html#módulos-materias-de-estudio",
-    "href": "index.html#módulos-materias-de-estudio",
-    "title": "Maquinas Eléctricas, Circuitos Eléctricos, Mediciones Eléctricas, Sistemas de Potencia, Modelado & Computación Aplicada",
-    "section": "📚 Módulos & Materias de Estudio",
-    "text": "📚 Módulos & Materias de Estudio\n\n\n\n\n⚡\n\n\nCircuitos Eléctricos\nAnálisis en régimen permanente, leyes de Kirchhoff, teoremas de redes, álgebra fasorial y potencia compleja.\n\nAnálisis Fasorial: Método del Carril Táctil, reglas de cuadrantes y conversión canónica seno \\to coseno.\nPotencia en CA: Potencia activa P, reactiva Q, aparente S, factor de potencia y simulador en tiempo real.\n\n\nGuía de Fasores → Potencia en CA →\n\n\n\n\n\n\n\n⚙️\n\n\nMáquinas Eléctricas\nConversión electromecánica, análisis no lineal de materiales magnéticos, transformadores y máquinas rotativas.\n\nCircuitos Magnéticos: Reluctancia, permeabilidad y resolución con curvas de saturación B-H.\nTransformadores: Circuitos equivalentes, pruebas en vacío y cortocircuito.\n\nExplorar Módulo de Máquinas →\n\n\n\n\n\n\n📊\n\n\nMediciones Eléctricas\nMetrología aplicada, instrumentación, diseño de puentes de medición y evaluación de incertidumbre.\n\nPuentes de Medición: Métodos de deflexión y balance nulo (Wheatstone, Kelvin, Maxwell).\nInstrumentación Digital: Transductores, acondicionamiento de señal y calibración.\n\nExplorar Módulo de Mediciones →\n\n\n\n\n\n\n🏗️\n\n\nSistemas de Potencia & Normativas\nDimensionamiento de alimentadores, regulación de tensión, flujo de carga y normativas internacionales.\n\nCaída de Tensión: Dimensionamiento según criterios de impedancia del NEC / NTC 2050.\nAnálisis de Pérdidas: Eficiencia térmica I^2 R y límites regulatorios IEEE Std 141.\n\nExplorar Módulo de Potencia →\n\n\n\n\n\n\n🐍\n\n\nAplicaciones Python & Centro de Recursos\nSimuladores en tiempo real desarrollados con NumPy, Matplotlib y Streamlit, junto a tablas normalizadas de conductores para descarga.\n\nSimulador Fasorial: Visualización instantánea del triángulo de potencias.\nDatasets Tabulares: Tablas de resistencia R y reactancia X en formato CSV y scripts standalone.\n\n\nAbrir Simulador Fasorial → Ir a Descargas & CSVs →"
-  },
-  {
-    "objectID": "circuitos_electricos/teoria_fasores_V3.html",
-    "href": "circuitos_electricos/teoria_fasores_V3.html",
-    "title": "Fasores y Análisis de Circuitos en CA",
-    "section": "",
-    "text": "Recursos Rápidos\n  \n\n  \n    \n      Sistema Resistivo, Inductivo y Capacitivo, referencia Angulo de desfase entre Tensión y Corriente.\n      \n         @CANALELECTRICO1\n      \n    \n\n    \n      Inductor y capacitor en corriente alterna\n      \n         @ingenierosenserie\n      \n    \n\n    \n      Tutorial Polar ↔ Rectangular (Casio fx-9750GIII)\n      \n         Tutorial Casio fx-9750GIII\n      \n    \n\n    \n      Tutorial Polar ↔ Rectangular (Casio fx-991ES PLUS)\n      \n         Tutorial Casio fx-991ES PLUS\n      \n    \n\n    \n      Tutorial Polar ↔ Rectangular (Casio fx-82MS)\n      \n         Tutorial Casio fx-82MS\n      \n    \n\n    \n      Tutorial Polar ↔ Rectangular (Calculadora Genérica / China)\n      \n         Tutorial Calc. Universal / China\n      \n    \n\n    \n      Documento Offline\n      \n         Descargar Guía en PDF\n      \n    \n\n    \n      Siguiente Módulo\n      \n         Módulo Potencia CA\n      \n    \n\n    \n      Código Fuente\n      \n         Script Python\n      \n    \n\n    \n      Navegación\n      \n         Índice Circuitos"
-  },
-  {
-    "objectID": "circuitos_electricos/teoria_fasores_V3.html#el-sinor-y-la-proyección-temporal",
-    "href": "circuitos_electricos/teoria_fasores_V3.html#el-sinor-y-la-proyección-temporal",
-    "title": "Fasores y Análisis de Circuitos en CA",
-    "section": "3.1 El sinor y la proyección temporal",
-    "text": "3.1 El sinor y la proyección temporal\nEl concepto geométrico puede visualizarse como un vector rotatorio cuya proyección sobre el eje real produce la sinusoidal.\n\n\n\nCorrespondencia entre vector rotatorio y señal sinusoidal.\n\n\nLa imagen debe interpretarse como una representación geométrica, no como la definición matemática completa del fasor."
-  },
-  {
-    "objectID": "circuitos_electricos/teoria_fasores_V3.html#identidades-esenciales",
-    "href": "circuitos_electricos/teoria_fasores_V3.html#identidades-esenciales",
-    "title": "Fasores y Análisis de Circuitos en CA",
-    "section": "4.1 Identidades esenciales",
-    "text": "4.1 Identidades esenciales\n\n\\boxed{\\sin(\\theta)=\\cos(\\theta-90^\\circ)}\n\n\n\\boxed{-\\sin(\\theta)=\\cos(\\theta+90^\\circ)}\n\n\n\\boxed{-\\cos(\\theta)=\\cos(\\theta\\pm180^\\circ)}\n\n\n4.1.1 Tabla de conversión\n\n\n\n\n\n\n\n\nSeñal original\nForma coseno\nCambio de fase\n\n\n\n\n+\\sin(\\omega t+\\theta)\n\\cos(\\omega t+\\theta-90^\\circ)\n-90^\\circ\n\n\n-\\sin(\\omega t+\\theta)\n\\cos(\\omega t+\\theta+90^\\circ)\n+90^\\circ\n\n\n+\\cos(\\omega t+\\theta)\nya está normalizada\n0^\\circ\n\n\n-\\cos(\\omega t+\\theta)\n\\cos(\\omega t+\\theta+180^\\circ)\n+180^\\circ\n\n\n\n\n\n\n\n\n\nTipRegla práctica\n\n\n\nPrimero normaliza la función. Después extrae el fasor.\nNo intentes memorizar directamente un fasor para cada combinación de seno, coseno y signo."
-  },
-  {
-    "objectID": "circuitos_electricos/teoria_fasores_V3.html#ejemplo",
-    "href": "circuitos_electricos/teoria_fasores_V3.html#ejemplo",
-    "title": "Fasores y Análisis de Circuitos en CA",
-    "section": "4.2 Ejemplo",
-    "text": "4.2 Ejemplo\nSea: \\qquad \\qquad \\qquad i(t)=-4\\sin(10t+15^\\circ)\\ \\mathrm A\nNormalizamos: \\qquad -4\\sin(10t+15^\\circ) = 4\\cos(10t+15^\\circ+90^\\circ)\nEntonces: \\qquad \\qquad i(t)=4\\cos(10t+105^\\circ)\n\\qquad \\qquad \\qquad \\qquad \\boxed{\\mathbf I=4\\angle105^\\circ\\ \\mathrm A}"
-  },
-  {
-    "objectID": "circuitos_electricos/teoria_fasores_V3.html#ejemplo-1",
-    "href": "circuitos_electricos/teoria_fasores_V3.html#ejemplo-1",
-    "title": "Fasores y Análisis de Circuitos en CA",
-    "section": "5.1 Ejemplo",
-    "text": "5.1 Ejemplo\n\nv(t)=120\\cos(\\omega t+30^\\circ)\\ \\mathrm V\n\nFasor pico:\n\n\\mathbf V_p=120\\angle30^\\circ\\ \\mathrm V\n\nFasor RMS:\n\n\\mathbf V_{\\mathrm{rms}}\n=\n\\frac{120}{\\sqrt2}\\angle30^\\circ\n=\n84.85\\angle30^\\circ\\ \\mathrm V\n\n\n\n\n\n\n\nImportant⚠️ Regla crítica\n\n\n\nEn una misma ecuación fasorial, utiliza todos los valores en pico o todos en RMS.\nNunca mezcles:\n\nV_{\\mathrm{rms}}\n\\quad\\text{con}\\quad\nI_{\\mathrm{pico}}\n\nsin realizar antes la conversión correspondiente."
-  },
-  {
-    "objectID": "circuitos_electricos/teoria_fasores_V3.html#conversión-rectangular-polar",
-    "href": "circuitos_electricos/teoria_fasores_V3.html#conversión-rectangular-polar",
-    "title": "Fasores y Análisis de Circuitos en CA",
-    "section": "7.1 Conversión rectangular → polar",
-    "text": "7.1 Conversión rectangular → polar\nPara obtener la magnitud r y el ángulo \\theta a partir de las coordenadas cartesianas (x, y):\n\n\\boxed{r=\\sqrt{x^2+y^2}}\n\ny el ángulo \\theta debe calcularse considerando estrictamente el signo de x y de y (ajuste de cuadrante):\n\n\\boxed{\\theta=\\operatorname{atan2}(y,x)}\n\n\n\n\n\n\n\nNote🧭 ¿Por qué atan2 y no solo \\arctan(y/x)?\n\n\n\nLa función arco tangente estándar \\arctan(y/x) de las matemáticas continuas únicamente devuelve valores en el rango (-90^\\circ, +90^\\circ) (Cuadrantes I y IV).\nSi un número complejo tiene x &lt; 0 (Cuadrantes II y III), la división y/x arroja un signo ambiguo: - \\frac{4}{-3} = -1.33 \\implies \\arctan(-1.33) = -53.13^\\circ (¡Falso! El punto (-3, 4) está en el Cuadrante II a 126.87^\\circ).\nLa función matemática \\operatorname{atan2}(y,x) analiza ambos signos independientemente para entregar el ángulo geométrico verdadero en (-180^\\circ, +180^\\circ].\n\n\n\n\n\n\n\n\nTip📟 ¿Cómo calcularlo en tu calculadora científica física? (Casio / Sharp / TI)\n\n\n\nEn tu calculadora física no existe una tecla llamada atan2 ni atan. Tienes 3 formas prácticas de calcularlo en exámenes y laboratorio:\n\n7.1.0.1 🥇 Método 1: La función directa Pol( (El atan2 de la calculadora)\nLas calculadoras científicas estándar (Casio fx-570, fx-991, fx-82, etc.) incluyen la función de conversión automática de coordenadas con ajuste de cuadrante incluido:\n\nDe Rectangular a Polar:\n\nPresiona SHIFT + + \\longrightarrow Aparece en pantalla Pol(.\nDigita la parte real x, luego la coma con SHIFT + ) y la parte imaginaria y.\nEjemplo: Pol(-3, 4) y presiona =.\nResultado instantáneo: r = 5, θ = 126.87° (el ángulo ya viene con el cuadrante exacto).\n\nDe Polar a Rectangular:\n\nPresiona SHIFT + - \\longrightarrow Aparece Rec(.\nDigita Rec(r, θ). Ejemplo: Rec(5, 126.87) = \\longrightarrow Entrega X = -3, Y = 4.\n\n\n\n\n\n7.1.0.2 🥈 Método 2: Con la tecla tan⁻¹ y ajuste manual de cuadrante\nSi calculas por partes mediante r = \\sqrt{x^2+y^2} y la tecla tan⁻¹ (SHIFT + tan):\n\nCalcula el ángulo base con valores absolutos: \\alpha = \\tan^{-1}\\left(\\left|\\frac{y}{x}\\right|\\right).\nAplica la regla según los signos de (x, y):\n\n\n\n\n\n\n\n\n\n\nCuadrante\nSignos (x, y)\nFórmula de Corrección en Calculadora\nEjemplo con |x|=3, |y|=4 (\\alpha = 53.13^\\circ)\n\n\n\n\nI\n(+x, +y)\n\\theta = \\alpha\n\\mathbf{Z} = 3 + j4 \\implies \\theta = \\mathbf{+53.13^\\circ}\n\n\nII\n(-x, +y)\n\\theta = 180^\\circ - \\alpha\n\\mathbf{Z} = -3 + j4 \\implies \\theta = 180^\\circ - 53.13^\\circ = \\mathbf{+126.87^\\circ}\n\n\nIII\n(-x, -y)\n\\theta = -180^\\circ + \\alpha\n\\mathbf{Z} = -3 - j4 \\implies \\theta = -180^\\circ + 53.13^\\circ = \\mathbf{-126.87^\\circ}\n\n\nIV\n(+x, -y)\n\\theta = -\\alpha\n\\mathbf{Z} = 3 - j4 \\implies \\theta = \\mathbf{-53.13^\\circ}\n\n\n\n\n\n\n7.1.0.3 🥉 Método 3: Modo Números Complejos (MODE 2: CMPLX)\nEl método más rápido para resolver circuitos completos:\n\nActivar modo complejo: Presiona MODE \\longrightarrow 2: CMPLX.\nVerifica que tu calculadora esté en grados sexagesimales (indicador D o Deg en la parte superior).\nEscribe el número directamente en pantalla:\nDigita -3 + 4 e inserta la unidad imaginaria j presionando la tecla ENG (aparece la i).\nConvertir a Polar:\n\nEn Casio clásica: Presiona SHIFT + 2 (menú CMPLX) \\longrightarrow selecciona 3: ▶r∠θ \\longrightarrow =.\nEn Casio ClassWiz: Presiona OPTN \\longrightarrow flecha abajo \\longrightarrow 1: ▶r∠θ \\longrightarrow =.\n\nLa pantalla mostrará directamente: 5 ∠ 126.87°.\n\n\n\n7.1.0.3.1 🎬 Videotutoriales paso a paso según tu modelo de calculadora:\n\n📺 Casio fx-9750GIII (Gráfica): Ver tutorial paso a paso\n📺 Casio fx-991ES PLUS / fx-570ES: Ver tutorial paso a paso\n📺 Casio fx-82MS / fx-350MS: Ver tutorial paso a paso\n📺 Calculadora Científica Universal / Genérica China: Ver tutorial paso a paso"
-  },
-  {
-    "objectID": "circuitos_electricos/teoria_fasores_V3.html#conversión-polar-rectangular",
-    "href": "circuitos_electricos/teoria_fasores_V3.html#conversión-polar-rectangular",
-    "title": "Fasores y Análisis de Circuitos en CA",
-    "section": "7.2 Conversión polar → rectangular",
-    "text": "7.2 Conversión polar → rectangular\n\n\\boxed{x=r\\cos\\theta}\n\n\n\\boxed{y=r\\sin\\theta}\n\npor tanto:\n\n\\boxed{\nr\\angle\\theta\n=\nr\\cos\\theta+jr\\sin\\theta\n}"
-  },
-  {
-    "objectID": "circuitos_electricos/teoria_fasores_V3.html#ciclo-de-potencias",
-    "href": "circuitos_electricos/teoria_fasores_V3.html#ciclo-de-potencias",
-    "title": "Fasores y Análisis de Circuitos en CA",
-    "section": "9.1 Ciclo de potencias",
-    "text": "9.1 Ciclo de potencias\n\nj^0=1\n\n\nj^1=j\n\n\nj^2=-1\n\n\nj^3=-j\n\n\nj^4=1\n\nEl ciclo se repite cada cuatro potencias.\nTambién:\n\n\\boxed{\\frac1j=-j}\n\n\n\n\n\n\n\nNote🧠 Interpretación física\n\n\n\nEn fasores, j no es simplemente una letra algebraica.\nEs un operador que representa un desplazamiento angular de +90^\\circ."
-  },
-  {
-    "objectID": "circuitos_electricos/teoria_fasores_V3.html#suma-y-resta",
-    "href": "circuitos_electricos/teoria_fasores_V3.html#suma-y-resta",
-    "title": "Fasores y Análisis de Circuitos en CA",
-    "section": "10.1 Suma y resta",
-    "text": "10.1 Suma y resta\nLa forma rectangular es la más conveniente:\n\n(a+jb)+(c+jd)\n=\n(a+c)+j(b+d)"
-  },
-  {
-    "objectID": "circuitos_electricos/teoria_fasores_V3.html#multiplicación",
-    "href": "circuitos_electricos/teoria_fasores_V3.html#multiplicación",
-    "title": "Fasores y Análisis de Circuitos en CA",
-    "section": "10.2 Multiplicación",
-    "text": "10.2 Multiplicación\nLa forma polar es especialmente conveniente:\n\n(r_1\\angle\\theta_1)(r_2\\angle\\theta_2)\n=\nr_1r_2\\angle(\\theta_1+\\theta_2)"
-  },
-  {
-    "objectID": "circuitos_electricos/teoria_fasores_V3.html#división",
-    "href": "circuitos_electricos/teoria_fasores_V3.html#división",
-    "title": "Fasores y Análisis de Circuitos en CA",
-    "section": "10.3 División",
-    "text": "10.3 División\n\n\\frac{r_1\\angle\\theta_1}{r_2\\angle\\theta_2}\n=\n\\frac{r_1}{r_2}\\angle(\\theta_1-\\theta_2)"
-  },
-  {
-    "objectID": "circuitos_electricos/teoria_fasores_V3.html#conjugado",
-    "href": "circuitos_electricos/teoria_fasores_V3.html#conjugado",
-    "title": "Fasores y Análisis de Circuitos en CA",
-    "section": "10.4 Conjugado",
-    "text": "10.4 Conjugado\n\n\\boxed{\n(a+jb)^*=a-jb\n}\n\ny:\n\n\\boxed{\n(r\\angle\\theta)^*=r\\angle(-\\theta)\n}"
-  },
-  {
-    "objectID": "circuitos_electricos/teoria_fasores_V3.html#división-rectangular",
-    "href": "circuitos_electricos/teoria_fasores_V3.html#división-rectangular",
-    "title": "Fasores y Análisis de Circuitos en CA",
-    "section": "10.5 División rectangular",
-    "text": "10.5 División rectangular\n\n\\frac{a+jb}{c+jd}\n=\n\\frac{(a+jb)(c-jd)}{c^2+d^2}\n\npor tanto:\n\n\\boxed{\n\\frac{a+jb}{c+jd}\n=\n\\frac{ac+bd}{c^2+d^2}\n+\nj\\frac{bc-ad}{c^2+d^2}\n}"
-  },
-  {
-    "objectID": "circuitos_electricos/teoria_fasores_V3.html#resistor",
-    "href": "circuitos_electricos/teoria_fasores_V3.html#resistor",
-    "title": "Fasores y Análisis de Circuitos en CA",
-    "section": "12.1 Resistor",
-    "text": "12.1 Resistor\n\n\\boxed{\\mathbf Z_R=R=R\\angle0^\\circ}\n\nTensión y corriente están en fase."
-  },
-  {
-    "objectID": "circuitos_electricos/teoria_fasores_V3.html#inductor",
-    "href": "circuitos_electricos/teoria_fasores_V3.html#inductor",
-    "title": "Fasores y Análisis de Circuitos en CA",
-    "section": "12.2 Inductor",
-    "text": "12.2 Inductor\n\n\\boxed{\\mathbf Z_L=j\\omega L=\\omega L\\angle90^\\circ}\n\nPor tanto:\n\n\\boxed{\\mathbf V_L=j\\omega L\\mathbf I}\n\nLa tensión adelanta a la corriente 90^\\circ.\n\n12.2.1 🧠 ELI\nE antes que I → en el inductor:\n\nV_L\\text{ adelanta a }I"
-  },
-  {
-    "objectID": "circuitos_electricos/teoria_fasores_V3.html#capacitor",
-    "href": "circuitos_electricos/teoria_fasores_V3.html#capacitor",
-    "title": "Fasores y Análisis de Circuitos en CA",
-    "section": "12.3 Capacitor",
-    "text": "12.3 Capacitor\n\n\\boxed{\n\\mathbf Z_C=\n\\frac1{j\\omega C}\n=\n-j\\frac1{\\omega C}\n}\n\nPor tanto:\n\n\\boxed{\n\\mathbf V_C=-j\\frac1{\\omega C}\\mathbf I\n}\n\nLa tensión atrasa a la corriente 90^\\circ.\n\n12.3.1 🧠 ICE\nI antes que E → en el capacitor:\n\nI\\text{ adelanta a }V_C\n\n\n\n\n\n\n\nTipELI e ICE son memoria, no demostración\n\n\n\nLa comprensión profunda está en:\n\n+j\\Rightarrow+90^\\circ\n\n\n-j\\Rightarrow-90^\\circ\n\nLas reglas ELI/ICE sirven para recordar rápidamente el resultado."
-  },
-  {
-    "objectID": "circuitos_electricos/teoria_fasores_V3.html#paso-1-frecuencia",
-    "href": "circuitos_electricos/teoria_fasores_V3.html#paso-1-frecuencia",
-    "title": "Fasores y Análisis de Circuitos en CA",
-    "section": "13.1 Paso 1 — Frecuencia",
-    "text": "13.1 Paso 1 — Frecuencia\n\n\\omega=1000\\ \\mathrm{rad/s}"
-  },
-  {
-    "objectID": "circuitos_electricos/teoria_fasores_V3.html#paso-2-impedancias",
-    "href": "circuitos_electricos/teoria_fasores_V3.html#paso-2-impedancias",
-    "title": "Fasores y Análisis de Circuitos en CA",
-    "section": "13.2 Paso 2 — Impedancias",
-    "text": "13.2 Paso 2 — Impedancias\nInductor:\n\nX_L=\\omega L\n=\n1000(0.050)\n=\n50\\ \\Omega\n\n\n\\mathbf Z_L=j50\\ \\Omega\n\nCapacitor:\n\nX_C=\\frac1{\\omega C}\n=\n\\frac1{1000(25\\times10^{-6})}\n=\n40\\ \\Omega\n\n\n\\mathbf Z_C=-j40\\ \\Omega"
-  },
-  {
-    "objectID": "circuitos_electricos/teoria_fasores_V3.html#paso-3-impedancia-equivalente",
-    "href": "circuitos_electricos/teoria_fasores_V3.html#paso-3-impedancia-equivalente",
-    "title": "Fasores y Análisis de Circuitos en CA",
-    "section": "13.3 Paso 3 — Impedancia equivalente",
-    "text": "13.3 Paso 3 — Impedancia equivalente\nAl ser un circuito serie:\n\n\\mathbf Z_T\n=\nR+\\mathbf Z_L+\\mathbf Z_C\n\n\n\\mathbf Z_T\n=\n30+j50-j40\n\n\n\\boxed{\\mathbf Z_T=30+j10\\ \\Omega}\n\nEn polar:\n\n|\\mathbf Z_T|\n=\n\\sqrt{30^2+10^2}\n=\n31.62\\ \\Omega\n\n\n\\theta_Z\n=\n\\arctan\\left(\\frac{10}{30}\\right)\n=\n18.43^\\circ\n\npor tanto:\n\n\\boxed{\\mathbf Z_T=31.62\\angle18.43^\\circ\\ \\Omega}"
-  },
-  {
-    "objectID": "circuitos_electricos/teoria_fasores_V3.html#paso-4-corriente",
-    "href": "circuitos_electricos/teoria_fasores_V3.html#paso-4-corriente",
-    "title": "Fasores y Análisis de Circuitos en CA",
-    "section": "13.4 Paso 4 — Corriente",
-    "text": "13.4 Paso 4 — Corriente\nUsando fasores pico:\n\n\\mathbf V=120\\angle30^\\circ\\ \\mathrm V\n\nentonces:\n\n\\mathbf I\n=\n\\frac{\\mathbf V}{\\mathbf Z_T}\n\n\n\\mathbf I\n=\n\\frac{120\\angle30^\\circ}\n{31.62\\angle18.43^\\circ}\n\n\n\\boxed{\n\\mathbf I\n=\n3.80\\angle11.57^\\circ\\ \\mathrm A\n}\n\nLa señal temporal:\n\n\\boxed{\ni(t)=3.80\\cos(1000t+11.57^\\circ)\\ \\mathrm A\n}"
-  },
-  {
-    "objectID": "circuitos_electricos/teoria_fasores_V3.html#paso-5-tensiones-individuales",
-    "href": "circuitos_electricos/teoria_fasores_V3.html#paso-5-tensiones-individuales",
-    "title": "Fasores y Análisis de Circuitos en CA",
-    "section": "13.5 Paso 5 — Tensiones individuales",
-    "text": "13.5 Paso 5 — Tensiones individuales\nResistor:\n\n\\mathbf V_R\n=\n\\mathbf I R\n=\n114.0\\angle11.57^\\circ\\ \\mathrm V\n\nInductor:\n\n\\mathbf V_L\n=\n\\mathbf I(j50)\n=\n190.0\\angle101.57^\\circ\\ \\mathrm V\n\nCapacitor:\n\n\\mathbf V_C\n=\n\\mathbf I(-j40)\n=\n152.0\\angle-78.43^\\circ\\ \\mathrm V\n\nFinalmente:\n\n\\boxed{\n\\mathbf V_R+\\mathbf V_L+\\mathbf V_C\n=\n\\mathbf V\n}\n\nEsta es la conexión fundamental:\n\n\\boxed{\nv(t)\n\\rightarrow\n\\mathbf V\n\\rightarrow\n\\mathbf Z\n\\rightarrow\n\\mathbf I\n\\rightarrow\ni(t)\n}"
-  },
-  {
-    "objectID": "circuitos_electricos/teoria_fasores_V3.html#nivel-1-fundamentos-y-transformaciones",
-    "href": "circuitos_electricos/teoria_fasores_V3.html#nivel-1-fundamentos-y-transformaciones",
-    "title": "Fasores y Análisis de Circuitos en CA",
-    "section": "15.1 🟢 Nivel 1: Fundamentos y Transformaciones",
-    "text": "15.1 🟢 Nivel 1: Fundamentos y Transformaciones\n\n15.1.1 Ejercicio 1 — Conversión de señales temporales a fasores\n\n\n\n15.1.1.0.1 📋 Enunciado\nDadas las siguientes señales temporales de corriente y tensión:\n\nv(t) = 120\\sqrt{2}\\cos(377t - 45^\\circ)\\ \\mathrm V\n\n\ni(t) = -10\\sin(377t + 30^\\circ)\\ \\mathrm A\n\nDeterminar:\n\nEl fasor en valor pico (\\mathbf V_p, \\mathbf I_p).\nEl fasor en valor eficaz o RMS (\\mathbf V_{\\mathrm{rms}}, \\mathbf I_{\\mathrm{rms}}).\n\n\n\n\n\n15.1.1.0.2 💡 Desarrollo y Solución\n1. Para la tensión v(t): - Ya está en forma coseno positiva canónica: \n  \\boxed{\\mathbf V_p = 120\\sqrt{2}\\angle -45^\\circ \\approx 169.71\\angle -45^\\circ\\ \\mathrm V}\n   - Para el valor eficaz RMS: \n  V_{\\mathrm{rms}} = \\frac{120\\sqrt{2}}{\\sqrt{2}} = 120\\ \\mathrm V \\implies \\boxed{\\mathbf V_{\\mathrm{rms}} = 120\\angle -45^\\circ\\ \\mathrm V}\n  \n2. Para la corriente i(t): - Normalizamos usando -\\sin(\\alpha) = \\cos(\\alpha + 90^\\circ): \n  i(t) = 10\\cos(377t + 30^\\circ + 90^\\circ) = 10\\cos(377t + 120^\\circ)\\ \\mathrm A\n   - Fasor pico: \n  \\boxed{\\mathbf I_p = 10\\angle 120^\\circ\\ \\mathrm A}\n   - Fasor RMS: \n  I_{\\mathrm{rms}} = \\frac{10}{\\sqrt{2}} \\approx 7.07\\ \\mathrm A \\implies \\boxed{\\mathbf I_{\\mathrm{rms}} = 7.07\\angle 120^\\circ\\ \\mathrm A}\n  \n\n\n\n\n\n\n15.1.2 Ejercicio 2 — Conversión entre formas rectangular y polar\n\n\n\n15.1.2.0.1 📋 Enunciado\nRealizar las siguientes conversiones entre dominios complejos considerando el cuadrante correspondiente:\n\nConvertir a forma polar: \n\\mathbf Z_1 = 6 + j8\\ \\Omega\n \n\\mathbf Z_2 = -5 + j5\\ \\Omega\n\nConvertir a forma rectangular: \n\\mathbf I = 10\\angle -60^\\circ\\ \\mathrm A\n\n\n\n\n\n\n15.1.2.0.2 💡 Desarrollo y Solución\n1. Para \\mathbf Z_1 = 6 + j8\\ \\Omega (Cuadrante I, x&gt;0, y&gt;0): - Módulo: |\\mathbf Z_1| = \\sqrt{6^2 + 8^2} = \\sqrt{36 + 64} = \\sqrt{100} = 10\\ \\Omega - Ángulo: \\theta_1 = \\arctan\\left(\\frac{8}{6}\\right) \\approx 53.13^\\circ \n\\boxed{\\mathbf Z_1 = 10\\angle 53.13^\\circ\\ \\Omega}\n\n2. Para \\mathbf Z_2 = -5 + j5\\ \\Omega (Cuadrante II, x&lt;0, y&gt;0): - Módulo: |\\mathbf Z_2| = \\sqrt{(-5)^2 + 5^2} = \\sqrt{50} = 5\\sqrt{2} \\approx 7.07\\ \\Omega - Ángulo: \\theta_2 = 180^\\circ - \\arctan\\left(\\frac{5}{5}\\right) = 180^\\circ - 45^\\circ = 135^\\circ \n\\boxed{\\mathbf Z_2 = 5\\sqrt{2}\\angle 135^\\circ \\approx 7.07\\angle 135^\\circ\\ \\Omega}\n\n3. Para \\mathbf I = 10\\angle -60^\\circ\\ \\mathrm A: - Parte real: I_x = 10\\cos(-60^\\circ) = 10(0.5) = 5\\ \\mathrm A - Parte imaginaria: I_y = 10\\sin(-60^\\circ) = 10\\left(-\\frac{\\sqrt{3}}{2}\\right) \\approx -8.66\\ \\mathrm A \n\\boxed{\\mathbf I = 5 - j8.66\\ \\mathrm A}"
-  },
-  {
-    "objectID": "circuitos_electricos/teoria_fasores_V3.html#nivel-2-operaciones-complejas-e-impedancias",
-    "href": "circuitos_electricos/teoria_fasores_V3.html#nivel-2-operaciones-complejas-e-impedancias",
-    "title": "Fasores y Análisis de Circuitos en CA",
-    "section": "15.2 🟡 Nivel 2: Operaciones Complejas e Impedancias",
-    "text": "15.2 🟡 Nivel 2: Operaciones Complejas e Impedancias\n\n15.2.1 Ejercicio 3 — Suma fasorial en un nodo (Ley de Kirchhoff de Corrientes)\n\n\n\n15.2.1.0.1 📋 Enunciado\nEn un nodo de un circuito de corriente alterna convergen dos corrientes:\n\ni_1(t) = 4\\cos(\\omega t + 30^\\circ)\\ \\mathrm A\n\n\ni_2(t) = 6\\sin(\\omega t + 60^\\circ)\\ \\mathrm A\n\nDeterminar:\nLa corriente total i_T(t) = i_1(t) + i_2(t) en el dominio del tiempo.\n\n\n\n\n15.2.1.0.2 💡 Desarrollo y Solución\nPaso 1: Convertir a fasores en forma coseno canónica:\n\n\\mathbf I_1 = 4\\angle 30^\\circ\\ \\mathrm A\ni_2(t) = 6\\cos(\\omega t + 60^\\circ - 90^\\circ) = 6\\cos(\\omega t - 30^\\circ)\n\\implies \\mathbf I_2 = 6\\angle -30^\\circ\\ \\mathrm A\n\nPaso 2: Descomponer a forma rectangular para sumar: \n\\mathbf I_1 = 4\\cos(30^\\circ) + j4\\sin(30^\\circ) = 2\\sqrt{3} + j2 \\approx 3.4641 + j2.0000\\ \\mathrm A\n \n\\mathbf I_2 = 6\\cos(-30^\\circ) + j6\\sin(-30^\\circ) = 3\\sqrt{3} - j3 \\approx 5.1962 - j3.0000\\ \\mathrm A\n\nPaso 3: Suma fasorial \\mathbf I_T = \\mathbf I_1 + \\mathbf I_2: \n\\mathbf I_T = (3.4641 + 5.1962) + j(2.0000 - 3.0000)\n \n\\mathbf I_T = 8.6603 - j1.0000\\ \\mathrm A\n\nPaso 4: Conversión a polar y retorno al tiempo:\n\nMódulo: |\\mathbf I_T| = \\sqrt{8.6603^2 + (-1)^2} = \\sqrt{76} \\approx 8.72\\ \\mathrm A\nÁngulo (Cuadrante IV): \\theta = \\arctan\\left(\\frac{-1}{8.6603}\\right) \\approx -6.59^\\circ\n\n\n\\mathbf I_T \\approx 8.72\\angle -6.59^\\circ\\ \\mathrm A\n \n\\boxed{i_T(t) = 8.72\\cos(\\omega t - 6.59^\\circ)\\ \\mathrm A}\n\n\n\n\n\n\n\n15.2.2 Ejercicio 4 — Evaluación de expresión compleja con conjugado\n\n\n\n15.2.2.0.1 📋 Enunciado\nCalcular el valor del número complejo \\mathbf X:\n\n\\mathbf X = \\left[ \\frac{(4 + j3)(2 - j4)}{-1 + j2} + 5\\angle -45^\\circ \\right]^*\n\nExpresar el resultado en forma rectangular y polar.\n\n\n\n\n15.2.2.0.2 💡 Desarrollo y Solución\nPaso 1: Multiplicación del numerador (j^2 = -1): \n(4+j3)(2-j4) = 8 - j16 + j6 - j^2(12) = 20 - j10\n\nPaso 2: División multiplicando por el conjugado (-1 - j2): \n\\frac{20 - j10}{-1 + j2} \\cdot \\frac{-1 - j2}{-1 - j2} = \\frac{-20 - j40 + j10 + j^2(20)}{1 + 4} = \\frac{-40 - j30}{5} = -8 - j6\n\nPaso 3: Convertir 5\\angle -45^\\circ a rectangular y sumar: \n5\\angle -45^\\circ = 5\\cos(-45^\\circ) + j5\\sin(-45^\\circ) \\approx 3.5355 - j3.5355\n \n\\mathbf Z_{\\text{interior}} = (-8 - j6) + (3.5355 - j3.5355) = -4.4645 - j9.5355\n\nPaso 4: Aplicar el operador conjugado (\\ )^*:\nCambiamos el signo de la parte imaginaria: \n\\boxed{\\mathbf X = -4.4645 + j9.5355}\n\nPaso 5: Conversión a forma polar (Cuadrante II, x&lt;0, y&gt;0):\n\nMódulo: |\\mathbf X| = \\sqrt{(-4.4645)^2 + (9.5355)^2} \\approx 10.529\nÁngulo: \\theta = 180^\\circ - \\arctan\\left(\\frac{9.5355}{4.4645}\\right) \\approx +115.09^\\circ\n\n\n\\boxed{\\mathbf X \\approx 10.529\\angle 115.09^\\circ}\n\n\n\n\n\n\n\n15.2.3 Ejercicio 5 — Impedancias en paralelo (Z_1 \\parallel Z_2)\n\n\n\n15.2.3.0.1 📋 Enunciado\nDos impedancias pasivas se conectan en paralelo:\n\nZ_1 = 10 + j15\\ \\Omega\n\n\nZ_2 = 20 - j10\\ \\Omega\n\nDeterminar:\n\nLa impedancia equivalente Z_{eq} = \\frac{Z_1 Z_2}{Z_1 + Z_2}.\nIndicar si el conjunto resultante tiene comportamiento global inductivo o capacitivo.\n\n\n\n\n\n15.2.3.0.2 💡 Desarrollo y Solución\nPaso 1: Suma en el denominador (Z_1 + Z_2): \nZ_1 + Z_2 = (10 + 20) + j(15 - 10) = 30 + j5\\ \\Omega\n\nPaso 2: Producto en el numerador (Z_1 \\cdot Z_2): \nZ_1 \\cdot Z_2 = (10 + j15)(20 - j10) = 200 - j100 + j300 + 150 = 350 + j200\\ \\Omega^2\n\nPaso 3: División por el conjugado (30 - j5): \nZ_{eq} = \\frac{350 + j200}{30 + j5} \\cdot \\frac{30 - j5}{30 - j5} = \\frac{11500 + j4250}{900 + 25}\n \nZ_{eq} = \\frac{11500 + j4250}{925}\n \n\\boxed{Z_{eq} \\approx 12.43 + j4.59\\ \\Omega}\n\nPaso 4: Conversión a forma polar:\n\nMódulo: |Z_{eq}| = \\sqrt{12.43^2 + 4.59^2} \\approx 13.25\\ \\Omega\nÁngulo: \\theta = \\arctan\\left(\\frac{4.59}{12.43}\\right) \\approx +20.28^\\circ\n\n\n\\boxed{Z_{eq} \\approx 13.25\\angle 20.28^\\circ\\ \\Omega}\n\nConclusión física:\nComo la reactancia equivalente es positiva (X_{eq} = +4.59\\ \\Omega) y \\theta &gt; 0, el circuito se comporta de forma globalmente inductiva (la tensión adelanta a la corriente)."
-  },
-  {
-    "objectID": "circuitos_electricos/teoria_fasores_V3.html#nivel-3-circuitos-rlc-en-régimen-permanente",
-    "href": "circuitos_electricos/teoria_fasores_V3.html#nivel-3-circuitos-rlc-en-régimen-permanente",
-    "title": "Fasores y Análisis de Circuitos en CA",
-    "section": "15.3 🔴 Nivel 3: Circuitos RLC en Régimen Permanente",
-    "text": "15.3 🔴 Nivel 3: Circuitos RLC en Régimen Permanente\n\n15.3.1 Ejercicio 6 — Análisis completo de un circuito RLC serie\n\n\n\n15.3.1.0.1 📋 Enunciado\nUn circuito RLC serie está alimentado por una fuente de tensión sinusoidal:\n\nv(t) = 100\\cos(200t + 10^\\circ)\\ \\mathrm V\n\nLos componentes pasivos son: - Resistencia: R = 4\\ \\Omega - Inductancia: L = 25\\ \\mathrm{mH} - Capacitancia: C = 500\\ \\mu\\mathrm{F}\nCalcular: 1. Las impedancias complejas \\mathbf Z_R, \\mathbf Z_L, \\mathbf Z_C y la total \\mathbf Z_{eq}. 2. La corriente fasorial \\mathbf I en el circuito. 3. Las caídas de tensión fasoriales \\mathbf V_L y \\mathbf V_C. 4. Determinar si el circuito está en adelanto o atraso.\n\n\n\n\n15.3.1.0.2 💡 Desarrollo y Solución\nPaso 1: Frecuencia angular e impedancias:\nDe la fuente, \\omega = 200\\ \\mathrm{rad/s} y \\mathbf V = 100\\angle 10^\\circ\\ \\mathrm V.\n\n\\mathbf Z_R = 4\\ \\Omega\n\\mathbf Z_L = j\\omega L = j(200)(0.025) = j5\\ \\Omega\n\\mathbf Z_C = \\frac{1}{j\\omega C} = \\frac{-j}{(200)(500\\times 10^{-6})} = -j10\\ \\Omega\n\nImpedancia equivalente total: \n\\mathbf Z_{eq} = 4 + j5 - j10 = 4 - j5\\ \\Omega\n\nEn forma polar: - |\\mathbf Z_{eq}| = \\sqrt{4^2 + (-5)^2} = \\sqrt{41} \\approx 6.403\\ \\Omega - \\theta_Z = \\arctan\\left(\\frac{-5}{4}\\right) \\approx -51.34^\\circ\n\n\\boxed{\\mathbf Z_{eq} = 6.403\\angle -51.34^\\circ\\ \\Omega}\n\nPaso 2: Corriente en el circuito (Ley de Ohm fasorial): \n\\mathbf I = \\frac{\\mathbf V}{\\mathbf Z_{eq}} = \\frac{100\\angle 10^\\circ}{6.403\\angle -51.34^\\circ} = \\boxed{15.62\\angle 61.34^\\circ\\ \\mathrm A}\n\nPaso 3: Caídas de tensión en L y C:\n\nTensión en el inductor: \n\\mathbf V_L = \\mathbf I \\cdot \\mathbf Z_L = (15.62\\angle 61.34^\\circ)(5\\angle 90^\\circ) = \\boxed{78.10\\angle 151.34^\\circ\\ \\mathrm V}\n\nTensión en el capacitor: \n\\mathbf V_C = \\mathbf I \\cdot \\mathbf Z_C = (15.62\\angle 61.34^\\circ)(10\\angle -90^\\circ) = \\boxed{156.20\\angle -28.66^\\circ\\ \\mathrm V}\n\n\nConclusión física:\nComo X_C &gt; X_L (10\\ \\Omega &gt; 5\\ \\Omega), el ángulo de la impedancia es negativo (\\theta_Z = -51.34^\\circ). El circuito es capacitivo y la corriente adelanta a la tensión en 51.34^\\circ.\n\n\n\n\n\n\n15.3.2 Ejercicio 7 — Divisor de corriente y tensión común en paralelo\n\n\n\n15.3.2.0.1 📋 Enunciado\nUna fuente de corriente sinusoidal \\mathbf I_s = 5\\angle 0^\\circ\\ \\mathrm A alimenta dos ramas en paralelo: - Rama A: \\mathbf Z_A = 6 + j8\\ \\Omega (Carga Inductiva) - Rama B: \\mathbf Z_B = 12 - j16\\ \\Omega (Carga Capacitiva)\nCalcular: 1. La corriente \\mathbf I_A que fluye por la rama A mediante la fórmula del divisor de corriente: \n   \\mathbf I_A = \\mathbf I_s \\cdot \\frac{\\mathbf Z_B}{\\mathbf Z_A + \\mathbf Z_B}\n    2. La tensión común \\mathbf V en bornes del circuito en paralelo.\n\n\n\n\n15.3.2.0.2 💡 Desarrollo y Solución\nPaso 1: Suma de impedancias en el denominador: \n\\mathbf Z_A + \\mathbf Z_B = (6 + 12) + j(8 - 16) = 18 - j8\\ \\Omega\n\nEn forma polar: - |\\mathbf Z_A + \\mathbf Z_B| = \\sqrt{18^2 + (-8)^2} = \\sqrt{388} \\approx 19.70\\ \\Omega - \\theta_{\\text{suma}} = \\arctan\\left(\\frac{-8}{18}\\right) \\approx -23.96^\\circ \\implies \\mathbf Z_A + \\mathbf Z_B \\approx 19.70\\angle -23.96^\\circ\\ \\Omega\nPaso 2: Formas polares del numerador:\n\n\\mathbf I_s = 5\\angle 0^\\circ\\ \\mathrm A\n\\mathbf Z_B = 12 - j16\\ \\Omega = 20\\angle -53.13^\\circ\\ \\Omega\n\nPaso 3: Aplicación del divisor de corriente: \n\\mathbf I_A = \\frac{(5\\angle 0^\\circ)(20\\angle -53.13^\\circ)}{19.70\\angle -23.96^\\circ} = \\frac{100\\angle -53.13^\\circ}{19.70\\angle -23.96^\\circ}\n \n\\mathbf I_A = \\left(\\frac{100}{19.70}\\right)\\angle [-53.13^\\circ - (-23.96^\\circ)]\n \n\\boxed{\\mathbf I_A \\approx 5.08\\angle -29.17^\\circ\\ \\mathrm A}\n\nPaso 4: Tensión común en bornes \\mathbf V: Calculamos \\mathbf V = \\mathbf I_A \\cdot \\mathbf Z_A con \\mathbf Z_A = 6 + j8\\ \\Omega = 10\\angle 53.13^\\circ\\ \\Omega: \n\\mathbf V = (5.08\\angle -29.17^\\circ)(10\\angle 53.13^\\circ) = \\boxed{50.80\\angle 23.96^\\circ\\ \\mathrm V}"
-  },
-  {
-    "objectID": "circuitos_electricos/teoria_fasores_V3.html#recursos-y-enlaces-rápidos",
-    "href": "circuitos_electricos/teoria_fasores_V3.html#recursos-y-enlaces-rápidos",
-    "title": "Fasores y Análisis de Circuitos en CA",
-    "section": "21.1 Recursos y Enlaces Rápidos",
-    "text": "21.1 Recursos y Enlaces Rápidos\n\n⚡ Continuar al módulo de Potencia en CA\n📥 Descargar script Python de cálculo fasorial (calculo_fasores.py)\n📖 Volver al índice de Circuitos Eléctricos"
-  },
-  {
-    "objectID": "circuitos_electricos/teoria_fasores.html",
-    "href": "circuitos_electricos/teoria_fasores.html",
-    "title": "Guía Práctica de Análisis Fasorial y Álgebra de Números Complejos",
-    "section": "",
-    "text": "Note⚡ Marco Teórico & Metodología\n\n\n\nEn el análisis de circuitos en Corriente Alterna (CA) bajo régimen sinusoidal permanente, la notación fasorial permite transformar ecuaciones íntegro-diferenciales en el dominio del tiempo a simples ecuaciones algebraicas lineales en el dominio de la frecuencia."
-  },
-  {
-    "objectID": "circuitos_electricos/teoria_fasores.html#el-mapa-de-razonamiento-ampliado-el-carril-táctil",
-    "href": "circuitos_electricos/teoria_fasores.html#el-mapa-de-razonamiento-ampliado-el-carril-táctil",
-    "title": "Guía Práctica de Análisis Fasorial y Álgebra de Números Complejos",
-    "section": "1 El Mapa de Razonamiento Ampliado: El “Carril Táctil”",
-    "text": "1 El Mapa de Razonamiento Ampliado: El “Carril Táctil”\nPara resolver circuitos de corriente alterna sin cometer errores algebraicos o de desfase, se establece la secuencia causal obligatoria del Carril Táctil:\n\n\n\n① Señal v(t) Identificar la amplitud, frecuencia angular \\omega y desfase inicial \\phi.\n\n\n\n\n② Forma Coseno Convertir la señal a la forma canónica +V_m \\cos(\\omega t + \\phi).\n\n\n\n\n③ Fasor \\mathbf{V} Extraer la magnitud (pico o RMS) y el ángulo: \\mathbf{V} = V \\angle \\phi.\n\n\n\n\n④ Operaciones Conmutar entre forma rectangular (sumas) y polar (productos/divisiones).\n\n\n\n\nCadena Causal: Dominio del Tiempo v(t) \\longrightarrow Forma Coseno Canónica \\longrightarrow Fasor Polar \\mathbf{V} = V_m \\angle \\phi \\longrightarrow Operaciones en el Plano Complejo."
-  },
-  {
-    "objectID": "circuitos_electricos/teoria_fasores.html#conceptos-fundamentales",
-    "href": "circuitos_electricos/teoria_fasores.html#conceptos-fundamentales",
-    "title": "Guía Práctica de Análisis Fasorial y Álgebra de Números Complejos",
-    "section": "2 Conceptos Fundamentales",
-    "text": "2 Conceptos Fundamentales\n\n2.1 ¿Qué es realmente un fasor? (La foto instantánea en t = 0\\text{ s})\nUn fasor no es un vector estático ordinario. Representa un vector radial en rotación constante (sinor) que gira en sentido antihorario con velocidad angular constante \\omega (\\text{rad/s}).\nEl diagrama fasorial es la “foto instantánea” tomada exactamente en t = 0\\text{ s}:\nEcuación Base: \n\\mathbf{V} = V_m \\angle \\phi \\quad \\Longleftrightarrow \\quad v(t) = \\text{Re}\\left\\{ \\mathbf{V} e^{j\\omega t} \\right\\} = V_m \\cos(\\omega t + \\phi)\n\n\n\n\n\nCorrespondencia geométrica entre el vector rotatorio fasorial (sinor) en el plano complejo y su proyección senoidal en el dominio del tiempo v(t).\n\n\n\n\n\n\n\n\n\nNote⚡ REGLA ELI (Para Inductores)\n\n\n\nEsta regla se aplica a los circuitos puramente inductivos (bobinas).\n\nE: Representa la fuerza electromotriz o Voltaje (V).\nL: Representa la Inducción o Inductor.\nI: Representa la Corriente.\n\nSignificado: En un inductor, la E (Voltaje) va antes que la I (Corriente). Por lo tanto, el voltaje adelanta a la corriente por 90^\\circ (o la corriente atrasa al voltaje por 90^\\circ).\nEn diagramas fasoriales: - Si la corriente es tu referencia: \\mathbf{I} = I \\angle 0^\\circ - El voltaje será: \\mathbf{V}_L = V_L \\angle 90^\\circ\nMatemáticamente: V_L = j \\cdot X_L \\cdot I (el operador imaginario +j rota el fasor 90^\\circ hacia arriba / en sentido antihorario).\n\n\n\n\n\n\n\n\nTip⚡ REGLA ICE (Para Capacitores)\n\n\n\nEsta regla se aplica a los circuitos puramente capacitivos (condensadores).\n\nI: Representa la Corriente.\nC: Representa el Capacitor.\nE: Representa la fuerza electromotriz o Voltaje (V).\n\nSignificado: En un capacitor, la I (Corriente) va antes que la E (Voltaje). Por lo tanto, la corriente adelanta al voltaje por 90^\\circ (o el voltaje atrasa a la corriente por 90^\\circ).\nEn diagramas fasoriales: - Si la corriente es tu referencia: \\mathbf{I} = I \\angle 0^\\circ - El voltaje será: \\mathbf{V}_C = V_C \\angle -90^\\circ\nMatemáticamente: V_C = -j \\cdot X_C \\cdot I (el operador -j rota el fasor 90^\\circ hacia abajo / en sentido horario).\n\n\n\n\n\n\nDiagramas Fasoriales para Elementos Pasivos R, L y C (Reglas ELI e ICE)\n\n\n\nDado que todas las fuentes en un circuito lineal en estado estable operan a la misma frecuencia angular \\omega, congelar la referencia temporal en t = 0 elimina la variable temporal t y permite resolver redes eléctricas mediante álgebra compleja.\n\n\n\n2.2 Valor Pico (V_m) frente a Valor Eficaz (V_{rms})\nEn el análisis teórico de circuitos se utiliza comúnmente el valor pico (V_m). Sin embargo, los instrumentos de medición reales (multímetros, osciloscopios en modo AC, vatímetros) registran valores eficaces (RMS):\n\n\\mathbf{V}_{rms} = V_{rms} \\angle \\phi = \\left( \\frac{V_m}{\\sqrt{2}} \\right) \\angle \\phi \\approx 0.7071 \\, V_m \\angle \\phi\n\n\n2.2.1 Ejemplo de conversión:\n\nv(t) = 120 \\cos(\\omega t + 30^\\circ) \\text{ V}\n - Fasor en valor pico: \\mathbf{V}_{pico} = 120 \\angle 30^\\circ \\text{ V} - Fasor en valor eficaz (RMS): \\mathbf{V}_{rms} = 84.85 \\angle 30^\\circ \\text{ V}\n\n\n\n\n2.3 Conversión Seno \\to Coseno (Regla de los 90^\\circ)\nLa referencia canónica del fasor se basa estrictamente en la función coseno positivo. Cuando una señal temporal se presenta en función seno o con signo negativo, se traslada mediante las siguientes identidades:\n\n\n\n\n\n\n\n\nFunción Temporal Original\nEquivalencia Canónica en Coseno\nRegla de Ajuste de Fase\n\n\n\n\n\\sin(\\omega t + \\theta)\n\\cos(\\omega t + \\theta - 90^\\circ)\nRestar 90^\\circ\n\n\n-\\sin(\\omega t + \\theta)\n\\cos(\\omega t + \\theta + 90^\\circ)\nSumar +90^\\circ\n\n\n-\\cos(\\omega t + \\theta)\n\\cos(\\omega t + \\theta \\pm 180^\\circ)\nSumar o restar 180^\\circ\n\n\n\n\n2.3.1 Ejemplo práctico:\nSea la corriente i(t) = -4 \\sin(10t + 15^\\circ)\\text{A}:\n1. Aplicamos la regla: -4\\sin(\\theta) = 4\\cos(\\theta + 90^\\circ).\n2. i(t) = 4 \\cos(10t + 15^\\circ + 90^\\circ) = 4 \\cos(10t + 105^\\circ)\\text{ A}.\n3. Fasor resultante: \\mathbf{I} = 4 \\angle 105^\\circ\\text{A}. ✅"
-  },
-  {
-    "objectID": "circuitos_electricos/teoria_fasores.html#álgebra-de-números-complejos-y-ajuste-de-cuadrantes",
-    "href": "circuitos_electricos/teoria_fasores.html#álgebra-de-números-complejos-y-ajuste-de-cuadrantes",
-    "title": "Guía Práctica de Análisis Fasorial y Álgebra de Números Complejos",
-    "section": "3 Álgebra de Números Complejos y Ajuste de Cuadrantes",
-    "text": "3 Álgebra de Números Complejos y Ajuste de Cuadrantes\nUn número complejo en el plano de Gauss se representa en tres formas interconvertibles:\n\nForma Rectangular: \\mathbf{z} = x + j y (ideal para sumas y restas)\nForma Polar: \\mathbf{z} = r \\angle \\theta (ideal para multiplicaciones, divisiones y potencias)\nForma Exponencial: \\mathbf{z} = r e^{j\\theta}\n\n\nr = \\sqrt{x^2 + y^2}, \\quad \\theta = \\arctan\\left(\\frac{y}{x}\\right)\n\n\nx = r \\cos\\theta, \\quad y = r \\sin\\theta\n\n\n3.1 Reglas Rigurosas de Ajuste Angular por Cuadrante\nLa función \\arctan estándar de las calculadoras únicamente devuelve valores en el rango [-90^\\circ, +90^\\circ]. Para determinar el ángulo correcto según la posición del punto (x, y):\n\n\n\n\n\n\n\n\n\nCuadrante\nSignos (x, y)\nIntervalo Angular\nFórmula de Ajuste\n\n\n\n\nI\n(+x, +y)\n0^\\circ &lt; \\theta &lt; 90^\\circ\n\\theta = \\arctan\\left(\\frac{y}{x}\\right)\n\n\nII\n(-x, +y)\n90^\\circ &lt; \\theta &lt; 180^\\circ\n\\theta = 180^\\circ - \\arctan\\left(\\left|\\frac{y}{x}\\right|\\right)\n\n\nIII\n(-x, -y)\n-180^\\circ &lt; \\theta &lt; -90^\\circ\n\\theta = -180^\\circ + \\arctan\\left(\\left|\\frac{y}{x}\\right|\\right)\n\n\nIV\n(+x, -y)\n-90^\\circ &lt; \\theta &lt; 0^\\circ\n\\theta = -\\arctan\\left(\\left|\\frac{y}{x}\\right|\\right)\n\n\n\n\n\n\nCuadrantes Fasoriales"
-  },
-  {
-    "objectID": "circuitos_electricos/teoria_fasores.html#operaciones-fundamentales-en-el-plano-complejo",
-    "href": "circuitos_electricos/teoria_fasores.html#operaciones-fundamentales-en-el-plano-complejo",
-    "title": "Guía Práctica de Análisis Fasorial y Álgebra de Números Complejos",
-    "section": "4 Operaciones Fundamentales en el Plano Complejo",
-    "text": "4 Operaciones Fundamentales en el Plano Complejo\n\n4.1 Racionalización y el Inverso de j\nEn el cálculo de impedancias capacitivas, la unidad imaginaria j = \\sqrt{-1} aparece con frecuencia en el denominador. Racionalizamos multiplicando por j/j:\n\n\\frac{1}{j} = \\frac{1 \\cdot j}{j \\cdot j} = \\frac{j}{j^2} = \\frac{j}{-1} = -j\n\n\n\\frac{1}{j \\omega C} = -j \\frac{1}{\\omega C}\n\n\n\n4.2 División por el Complejo Conjugado\nPara dividir en forma rectangular, se multiplica por el conjugado del denominador \\mathbf{z}^* = c - jd:\n\n\\frac{a + jb}{c + jd} = \\frac{(a + jb)(c - jd)}{(c + jd)(c - jd)} = \\frac{(ac + bd) + j(bc - ad)}{c^2 + d^2}"
-  },
-  {
-    "objectID": "circuitos_electricos/teoria_fasores.html#impedancias-complejas-de-elementos-pasivos-r-l-c",
-    "href": "circuitos_electricos/teoria_fasores.html#impedancias-complejas-de-elementos-pasivos-r-l-c",
-    "title": "Guía Práctica de Análisis Fasorial y Álgebra de Números Complejos",
-    "section": "5 Impedancias Complejas de Elementos Pasivos (R, L, C)",
-    "text": "5 Impedancias Complejas de Elementos Pasivos (R, L, C)\nLa relación entre tensión fasorial y corriente fasorial en elementos lineales se expresa mediante la Ley de Ohm Generalizada:\n\n\\mathbf{V} = \\mathbf{I} \\cdot \\mathbf{Z}\n\n\n\n\n\n\n\n\n\n\nElemento Pasivo\nEcuación Temporal\nImpedancia Fasorial \\mathbf{Z}\nÁngulo de Desfase (\\theta_v - \\theta_i)\n\n\n\n\nResistor (R)\nv(t) = R \\, i(t)\n\\mathbf{Z}_R = R = R \\angle 0^\\circ\n0^\\circ (Tensión y corriente en fase)\n\n\nInductor (L)\nv(t) = L \\frac{di(t)}{dt}\n\\mathbf{Z}_L = j\\omega L = \\omega L \\angle 90^\\circ\n+90^\\circ (Tensión adelanta a la corriente 90^\\circ)\n\n\nCapacitor (C)\ni(t) = C \\frac{dv(t)}{dt}\n\\mathbf{Z}_C = \\frac{1}{j\\omega C} = \\frac{1}{\\omega C} \\angle -90^\\circ\n-90^\\circ (Tensión atrasa a la corriente 90^\\circ)"
-  },
-  {
-    "objectID": "circuitos_electricos/teoria_fasores.html#resumen-de-reglas-mnemotécnicas-y-propiedades-de-j",
-    "href": "circuitos_electricos/teoria_fasores.html#resumen-de-reglas-mnemotécnicas-y-propiedades-de-j",
-    "title": "Guía Práctica de Análisis Fasorial y Álgebra de Números Complejos",
-    "section": "6 Resumen de Reglas Mnemotécnicas y Propiedades de j",
-    "text": "6 Resumen de Reglas Mnemotécnicas y Propiedades de j\n\n\n\n\n\n\nNote💡 TABLA MAESTRA DE IDENTIDADES FASORIALES Y OPERADOR j\n\n\n\n\n\n\n6.0.1 Ciclo y Potencias de j (Operador de Giro):\n\nj^0 = 1 = 1 \\angle 0^\\circ (Eje Real +, referencia).\nj^1 = j = 1 \\angle 90^\\circ (Giro antihorario +90^\\circ).\nj^2 = -1 = 1 \\angle 180^\\circ (Inversión de fase / signo menos).\nj^3 = j^2 \\cdot j = -j = 1 \\angle -90^\\circ (Giro horario -90^\\circ).\nj^4 = (j^2)^2 = 1 = 1 \\angle 0^\\circ (Ciclo cerrado cada 4 potencias).\n\\frac{1}{j} = -j = 1 \\angle -90^\\circ (Inverso de j).\n-\\frac{1}{j} = \\frac{1}{-j} = j = 1 \\angle 90^\\circ.\n\n\n\n6.0.2 Reglas Mnemotécnicas en Circuitos:\n\nELI (Inductor L): La Tensión (E) adelanta a la Corriente (I) en +90^\\circ.\n\\mathbf{Z}_L = +j\\omega L = \\omega L \\angle +90^\\circ.\nICE (Capacitor C): La Corriente (I) adelanta a la Tensión (E) en +90^\\circ (el voltaje atrasa -90^\\circ).\n\\mathbf{Z}_C = \\frac{1}{j\\omega C} = -j \\frac{1}{\\omega C} = \\frac{1}{\\omega C} \\angle -90^\\circ.\n\n\n\n\n\n6.0.3 Operaciones Algebraicas Fundamentales:\n\nSuma / Resta: Exclusivamente en coordenadas rectangulares (a + jb).\nMultiplicación: r_1 \\angle \\theta_1 \\cdot r_2 \\angle \\theta_2 = (r_1 r_2) \\angle (\\theta_1 + \\theta_2).\nDivisión: \\frac{r_1 \\angle \\theta_1}{r_2 \\angle \\theta_2} = \\left(\\frac{r_1}{r_2}\\right) \\angle (\\theta_1 - \\theta_2).\nConjugado: (a + jb)^* = a - jb \\Longleftrightarrow (r \\angle \\theta)^* = r \\angle (-\\theta).\nRacionalización directa: \\frac{1}{a + jb} = \\frac{a - jb}{a^2 + b^2}.\n\n\n\n6.0.4 Conversión Trigonométrica Inmediata:\n\n+\\sin(\\omega t + \\phi) \\longrightarrow \\cos(\\omega t + \\phi - 90^\\circ) (\\mathbf{V} = V_m \\angle (\\phi - 90^\\circ)).\n-\\sin(\\omega t + \\phi) \\longrightarrow \\cos(\\omega t + \\phi + 90^\\circ) (\\mathbf{V} = V_m \\angle (\\phi + 90^\\circ)).\n-\\cos(\\omega t + \\phi) \\longrightarrow \\cos(\\omega t + \\phi \\pm 180^\\circ) (\\mathbf{V} = V_m \\angle (\\phi \\pm 180^\\circ)).\n-r \\angle \\theta = r \\angle (\\theta \\pm 180^\\circ) (Amplitud r &gt; 0 siempre)."
-  },
-  {
-    "objectID": "circuitos_electricos/teoria_fasores.html#ejercicios-resueltos-paso-a-paso",
-    "href": "circuitos_electricos/teoria_fasores.html#ejercicios-resueltos-paso-a-paso",
-    "title": "Guía Práctica de Análisis Fasorial y Álgebra de Números Complejos",
-    "section": "7 Ejercicios Resueltos Paso a Paso",
-    "text": "7 Ejercicios Resueltos Paso a Paso\n\n\n\n\n\n\nNote📝 Ejercicio Resuelto 1: Transformación Temporal \\longleftrightarrow Fasorial\n\n\n\n\n\nEnunciado: a) Transformar al dominio fasorial (valor pico y valor eficaz RMS): v(t) = 7\\cos(2t + 40^\\circ)\\text{ V}, \\qquad i(t) = -4\\sin(10t + 10^\\circ)\\text{ A} b) Obtener la función temporal v_2(t) e i_2(t) a partir de los fasores (\\omega = 50\\text{ rad/s}): \\mathbf{V}_2 = -25\\angle 40^\\circ\\text{ V}, \\qquad \\mathbf{I}_2 = j(12 - j5)\\text{ A}\n\n\n\n\n\n\nTip🔍 Ver Solución Detallada\n\n\n\n\n\nParte (a): 1. Voltaje v(t): Ya se encuentra en forma canónica coseno positivo: - Amplitud pico: V_m = 7\\text{ V}, Fase: \\phi = 40^\\circ, Frecuencia: \\omega = 2\\text{ rad/s}. - Fasor pico: \\mathbf{V} = 7\\angle 40^\\circ\\text{ V}. - Fasor RMS: \\mathbf{V}_{rms} = \\frac{7}{\\sqrt{2}}\\angle 40^\\circ \\approx 4.95\\angle 40^\\circ\\text{ V}.\n\nCorriente i(t): Aplicamos la regla -\\sin(\\theta) = \\cos(\\theta + 90^\\circ): i(t) = 4\\cos(10t + 10^\\circ + 90^\\circ) = 4\\cos(10t + 100^\\circ)\\text{ A}\n\nFasor pico: \\mathbf{I} = 4\\angle 100^\\circ\\text{ A}.\nFasor RMS: \\mathbf{I}_{rms} = \\frac{4}{\\sqrt{2}}\\angle 100^\\circ \\approx 2.83\\angle 100^\\circ\\text{ A}.\n\n\nParte (b): 1. Fasor \\mathbf{V}_2 = -25\\angle 40^\\circ\\text{ V}: Como la amplitud debe ser estrictamente positiva (r &gt; 0), invertimos fase sumando o restando 180^\\circ: \\mathbf{V}_2 = 25\\angle(40^\\circ - 180^\\circ) = 25\\angle -140^\\circ\\text{ V} v_2(t) = 25\\cos(50t - 140^\\circ)\\text{ V}\n\nFasor \\mathbf{I}_2 = j(12 - j5)\\text{ A}: Multiplicamos el operador j (j^2 = -1): \\mathbf{I}_2 = j12 - j^2(5) = 5 + j12\\text{ A}\n\nMagnitud: I_m = \\sqrt{5^2 + 12^2} = 13\\text{ A}.\nÁngulo (Cuadrante I): \\theta = \\arctan(12/5) = 67.38^\\circ. \\mathbf{I}_2 = 13\\angle 67.38^\\circ\\text{ A} \\quad \\Longrightarrow \\quad i_2(t) = 13\\cos(50t + 67.38^\\circ)\\text{ A}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote📝 Ejercicio Resuelto 2: Operaciones Complejas Combinadas y Cuadrantes\n\n\n\n\n\nEnunciado: Evaluar y expresar en forma rectangular y polar la siguiente expresión fasorial: \\mathbf{X} = \\left[ (5 + j2)(-1 + j4) - 5\\angle 60^\\circ \\right]^*\n\n\n\n\n\n\nTip🔍 Ver Solución Detallada\n\n\n\n\n\n\nMultiplicación de binomios rectangulares: (5 + j2)(-1 + j4) = 5(-1) + 5(j4) + (j2)(-1) + j^2(8) = -5 + j20 - j2 - 8 = -13 + j18\nConversión polar a rectangular de 5\\angle 60^\\circ: 5\\angle 60^\\circ = 5\\cos(60^\\circ) + j5\\sin(60^\\circ) = 2.5 + j4.330\nResta de números complejos (real con real, imaginario con imaginario): (-13 + j18) - (2.5 + j4.330) = (-13 - 2.5) + j(18 - 4.330) = -15.5 + j13.670\nAplicar conjugado complejo (*): \\mathbf{X} = (-15.5 + j13.670)^* = -15.5 - j13.670\nConversión final a forma polar (Ajuste de Cuadrante III: x &lt; 0, y &lt; 0):\n\nMódulo: r = \\sqrt{(-15.5)^2 + (-13.670)^2} = \\sqrt{240.25 + 186.87} \\approx 20.67\nÁngulo: \\theta = -180^\\circ + \\arctan\\left(\\left|\\frac{-13.670}{-15.5}\\right|\\right) = -180^\\circ + 41.41^\\circ = -138.59^\\circ\n\n\n\\mathbf{X} = -15.5 - j13.67 = 20.67\\angle -138.59^\\circ\n\n\n\n\n\n\n\n\n\n\n\n\nNote📝 Ejercicio Resuelto 3: Circuito RLC Serie en Régimen Permanente\n\n\n\n\n\nEnunciado: Un circuito serie compuesto por una resistencia R = 30\\,\\Omega, un inductor L = 50\\text{ mH} y un capacitor C = 25\\,\\mu\\text{F} se alimenta con una fuente de tensión: v(t) = 120\\cos(1000t + 30^\\circ)\\text{ V} Calcular: 1. La impedancia equivalente total \\mathbf{Z}_{total}. 2. La corriente en estado estable \\mathbf{I} e i(t). 3. Las tensiones fasoriales en cada elemento pasivo (\\mathbf{V}_R, \\mathbf{V}_L, \\mathbf{V}_C).\n\n\n\n\n\n\nTip🔍 Ver Solución Detallada\n\n\n\n\n\n\nCálculo de reactancias e impedancias (\\omega = 1000\\text{ rad/s}):\n\nReactancia inductiva: X_L = \\omega L = 1000 \\cdot 0.050 = 50\\,\\Omega \\quad \\Longrightarrow \\quad \\mathbf{Z}_L = +j50\\,\\Omega.\nReactancia capacitiva: X_C = \\frac{1}{\\omega C} = \\frac{1}{1000 \\cdot 25 \\times 10^{-6}} = 40\\,\\Omega \\quad \\Longrightarrow \\quad \\mathbf{Z}_C = -j40\\,\\Omega.\nImpedancia total serie: \\mathbf{Z}_{total} = R + j(X_L - X_C) = 30 + j(50 - 40) = 30 + j10\\,\\Omega \\mathbf{Z}_{total} = \\sqrt{30^2 + 10^2}\\angle \\arctan(10/30) = 31.62\\angle 18.43^\\circ\\,\\Omega\n\nCálculo de la corriente fasorial \\mathbf{I} (Ley de Ohm):\n\nFasor de tensión: \\mathbf{V} = 120\\angle 30^\\circ\\text{ V}. \\mathbf{I} = \\frac{\\mathbf{V}}{\\mathbf{Z}_{total}} = \\frac{120\\angle 30^\\circ}{31.62\\angle 18.43^\\circ} = \\left(\\frac{120}{31.62}\\right)\\angle (30^\\circ - 18.43^\\circ) = 3.80\\angle 11.57^\\circ\\text{ A} i(t) = 3.80\\cos(1000t + 11.57^\\circ)\\text{ A}\n\nCaídas de tensión individuales:\n\n\\mathbf{V}_R = \\mathbf{I} \\cdot R = (3.80\\angle 11.57^\\circ)(30\\angle 0^\\circ) = 114.0\\angle 11.57^\\circ\\text{ V}.\n\\mathbf{V}_L = \\mathbf{I} \\cdot \\mathbf{Z}_L = (3.80\\angle 11.57^\\circ)(50\\angle 90^\\circ) = 190.0\\angle 101.57^\\circ\\text{ V} (Adelanta 90^\\circ a \\mathbf{I}).\n\\mathbf{V}_C = \\mathbf{I} \\cdot \\mathbf{Z}_C = (3.80\\angle 11.57^\\circ)(40\\angle -90^\\circ) = 152.0\\angle -78.43^\\circ\\text{ V} (Atrasa 90^\\circ a \\mathbf{I}).\n\n\n(Verificación LVK: \\mathbf{V}_R + \\mathbf{V}_L + \\mathbf{V}_C = 114.0\\angle 11.57^\\circ + 190.0\\angle 101.57^\\circ + 152.0\\angle -78.43^\\circ = 120\\angle 30^\\circ\\text{ V})."
-  },
-  {
-    "objectID": "circuitos_electricos/teoria_fasores.html#banco-de-ejercicios-propuestos-para-práctica",
-    "href": "circuitos_electricos/teoria_fasores.html#banco-de-ejercicios-propuestos-para-práctica",
-    "title": "Guía Práctica de Análisis Fasorial y Álgebra de Números Complejos",
-    "section": "8 Banco de Ejercicios Propuestos para Práctica",
-    "text": "8 Banco de Ejercicios Propuestos para Práctica\nPon a prueba tu comprensión resolviendo los siguientes ejercicios. Haz clic en Ver Respuesta para comprobar tu resultado:\n\n\n\n8.1 📌 Problema 1: Conversión de Señales\nDeterminar la forma fasorial en valor pico y valor eficaz (V_{rms}) de las siguientes señales: 1. v(t) = -15\\sin(377t - 30^\\circ)\\text{ V} 2. i(t) = -8\\cos(377t + 45^\\circ)\\text{ A}\n\n\n\n\n\n\nTip💡 Ver Respuesta\n\n\n\n\n\n\n\\mathbf{V}_{pico} = 15\\angle 60^\\circ\\text{ V}, \\quad \\mathbf{V}_{rms} = 10.61\\angle 60^\\circ\\text{ V}.\n\\mathbf{I}_{pico} = 8\\angle -135^\\circ\\text{ A}, \\quad \\mathbf{I}_{rms} = 5.66\\angle -135^\\circ\\text{ A}.\n\n\n\n\n\n\n\n\n8.2 📌 Problema 2: División y Álgebra Compleja\nEvaluar numéricamente la siguiente expresión en coordenadas rectangulares y polares: \\mathbf{Z} = \\frac{(4 + j3)(2 - j4)}{-1 + j2} + 5\\angle -45^\\circ\n\n\n\n\n\n\nTip💡 Ver Respuesta\n\n\n\n\n\n\nForma Rectangular: \\mathbf{Z} = 7.18 - j6.34\\,\\Omega\nForma Polar: \\mathbf{Z} = 9.58\\angle -41.4^\\circ\\,\\Omega\n\n\n\n\n\n\n\n\n8.3 📌 Problema 3: Suma Fasorial en un Nodo\nDos corrientes sinusoidales concurrentes entran a un nodo: i_1(t) = 4\\cos(\\omega t + 30^\\circ)\\text{ A}, \\quad i_2(t) = 6\\sin(\\omega t + 60^\\circ)\\text{ A} Determinar la corriente resultante i_T(t) = i_1(t) + i_2(t).\n\n\n\n\n\n\nTip💡 Ver Respuesta\n\n\n\n\n\n\nTrasladando i_2(t): \\mathbf{I}_2 = 6\\angle (60^\\circ - 90^\\circ) = 6\\angle -30^\\circ\\text{ A}.\n\\mathbf{I}_T = (3.464 + j2) + (5.196 - j3) = 8.66 - j1.0\\text{ A}.\nResultado: i_T(t) = 8.72\\cos(\\omega t - 6.59^\\circ)\\text{ A}.\n\n\n\n\n\n\n\n\n8.4 📌 Problema 4: Impedancia Paralelo RL-RC\nUna rama con \\mathbf{Z}_1 = 10 + j15\\,\\Omega se conecta en paralelo con otra rama \\mathbf{Z}_2 = 20 - j10\\,\\Omega. Calcular la impedancia equivalente total \\mathbf{Z}_{eq}.\n\n\n\n\n\n\nTip💡 Ver Respuesta\n\n\n\n\n\n\n\\mathbf{Z}_{eq} = \\frac{\\mathbf{Z}_1 \\cdot \\mathbf{Z}_2}{\\mathbf{Z}_1 + \\mathbf{Z}_2} = \\frac{(10 + j15)(20 - j10)}{30 + j5}\n\\mathbf{Z}_{eq} = 11.23 + j2.92\\,\\Omega = 11.60\\angle 14.6^\\circ\\,\\Omega."
-  },
-  {
-    "objectID": "circuitos_electricos/teoria_fasores.html#recursos-enlaces-relacionados",
-    "href": "circuitos_electricos/teoria_fasores.html#recursos-enlaces-relacionados",
-    "title": "Guía Práctica de Análisis Fasorial y Álgebra de Números Complejos",
-    "section": "9 Recursos & Enlaces Relacionados",
-    "text": "9 Recursos & Enlaces Relacionados\n\n  Ver clase en YouTube \n⚡ Continuar al Módulo de Potencia en CA & Triángulo de Potencias\n📥 Descargar Script Python de Cálculo Fasorial (calculo_fasores.py)\n📖 Volver al Índice de Circuitos Eléctricos"
-  },
-  {
-    "objectID": "circuitos_electricos/index.html",
-    "href": "circuitos_electricos/index.html",
-    "title": "⚡ Circuitos Eléctricos",
-    "section": "",
-    "text": "Bienvenido al módulo de Circuitos Eléctricos. Aquí encontrarás memorias de cálculo, análisis fasorial, métodos de solución sistemática (mallas y nodos) y aplicaciones teóricas con verificación computacional.\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\nFasores y Análisis de Circuitos en CA\n\n49 min\n\n\nFasores\n\nNúmeros Complejos\n\nCircuitos Eléctricos\n\nCA\n\nImpedancia\n\n\n\nGuía progresiva de fasores, números complejos, impedancias RLC y resolución de circuitos en régimen sinusoidal permanente.\n\n\n\nSep 11, 2026\n\n\n\n\n\n\n\n\n\n\nPotencia en Corriente Alterna y Triángulo de Potencias\n\n3 min\n\n\nPotencia CA\n\nPotencia Compleja\n\nFactor de Potencia\n\nTriángulo de Potencias\n\nStreamlit\n\nSimulación\n\n\n\nFormulación de potencia compleja, deducción del triángulo de potencias, análisis de cargas en atraso/adelanto y simulador interactivo en Streamlit.\n\n\n\nSep 10, 2026\n\n\n\n\n\n\n\n\n\n\nGuía Práctica de Análisis Fasorial y Álgebra de Números Complejos\n\n14 min\n\n\nFasores\n\nNúmeros Complejos\n\nCircuitos Eléctricos\n\nCarril Táctil\n\nRégimen Permanente\n\n\n\nFundamentos de la notación fasorial, conversión seno-coseno, álgebra de números complejos por cuadrantes e impedancias pasivas en régimen permanente.\n\n\n\nSep 10, 2026\n\n\n\n\n\n\n\n\n\n\nGuía Práctica de Análisis Fasorial y Álgebra de Números Complejos\n\n14 min\n\n\nFasores\n\nNúmeros Complejos\n\nCircuitos Eléctricos\n\nCarril Táctil\n\nRégimen Permanente\n\n\n\nFundamentos de la notación fasorial, conversión seno-coseno, álgebra de números complejos por cuadrantes e impedancias pasivas en régimen permanente.\n\n\n\nSep 10, 2026\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "aplicaciones_python/index.html",
-    "href": "aplicaciones_python/index.html",
-    "title": "🐍 Aplicaciones Python & Computación Científica",
-    "section": "",
-    "text": "Bienvenido al módulo de Aplicaciones Python. Aquí encontrarás herramientas computacionales interactivas desarrolladas en Python (NumPy, SciPy, Matplotlib, Streamlit) diseñadas para agilizar cálculos de ingeniería eléctrica, modelado no lineal y análisis gráfico instantáneo.\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\nSimulador Fasorial y Análisis de Potencia Compleja\n\n1 min\n\n\nPython\n\nStreamlit\n\nSimulación\n\nFasores\n\nNumPy\n\n\n\nSimulación en tiempo real de amplitudes y ángulos de fase, cálculo numérico instantáneo de potencia activa, reactiva y factor de potencia.\n\n\n\nSep 10, 2026\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "aplicaciones_python/simulador_fasores.html",
-    "href": "aplicaciones_python/simulador_fasores.html",
-    "title": "Simulador Fasorial y Análisis de Potencia Compleja",
-    "section": "",
-    "text": "Note🐍 Motor Computacional Streamlit\n\n\n\nEsta aplicación interactiva corre sobre Python 3.12 y utiliza Streamlit Cloud para el renderizado vectorial de ondas y fasores en el plano complejo."
-  },
-  {
-    "objectID": "aplicaciones_python/simulador_fasores.html#interfaz-interactiva-en-tiempo-real",
-    "href": "aplicaciones_python/simulador_fasores.html#interfaz-interactiva-en-tiempo-real",
-    "title": "Simulador Fasorial y Análisis de Potencia Compleja",
-    "section": "Interfaz Interactiva en Tiempo Real",
-    "text": "Interfaz Interactiva en Tiempo Real\n\n\n   ⚡ engine_fasores.py — Streamlit Interactive Engine"
-  },
-  {
-    "objectID": "aplicaciones_python/simulador_fasores.html#descargas-código-fuente",
-    "href": "aplicaciones_python/simulador_fasores.html#descargas-código-fuente",
-    "title": "Simulador Fasorial y Análisis de Potencia Compleja",
-    "section": "Descargas & Código Fuente",
-    "text": "Descargas & Código Fuente\n\n📥 Descargar Script Standalone (calculo_fasores.py)\n📊 Tabla de Parámetros de Conductores (CSV)"
+    "objectID": "descargas.html#integración-directa-en-python",
+    "href": "descargas.html#integración-directa-en-python",
+    "title": "Centro de Recursos, Datasets & Scripts",
+    "section": "⚡ Integración Directa en Python",
+    "text": "⚡ Integración Directa en Python\nPuede consumir los datasets técnicos directamente en sus scripts de análisis utilizando la librería pandas:\nimport pandas as pd\n\n# Carga del dataset de calibres y parámetros eléctricos\ndf_conductores = pd.read_csv(\"descargas/tabla_calibres_awg.csv\")\n\n# Inspección de conductores con resistencia menor a 1.0 Ohm/km\nconductores_optimos = df_conductores[df_conductores[\"resistencia_pvc_ohm_km\"] &lt; 1.0]\nprint(conductores_optimos[[\"calibre\", \"resistencia_pvc_ohm_km\", \"reactancia_pvc_ohm_km\"]])"
   },
   {
     "objectID": "circuitos_electricos/potencia_ca.html",
@@ -434,171 +133,402 @@
     "text": "5 5. Simulador Interactivo de Potencia en Tiempo Real\nAjuste las amplitudes eficaces de tensión y corriente junto a sus respectivos ángulos de fase para visualizar la potencia compleja y el triángulo fasorial de potencias en tiempo real:\n\n\n   ⚡ engine_fasores.py — Streamlit Interactive Power Engine (Python 3.12)"
   },
   {
-    "objectID": "circuitos_electricos/potencia_ca.html#recursos-computacionales-descargas",
-    "href": "circuitos_electricos/potencia_ca.html#recursos-computacionales-descargas",
+    "objectID": "circuitos_electricos/potencia_ca.html#recursos-computacionales-navegación",
+    "href": "circuitos_electricos/potencia_ca.html#recursos-computacionales-navegación",
     "title": "Potencia en Corriente Alterna y Triángulo de Potencias",
-    "section": "6 6. Recursos Computacionales & Descargas",
-    "text": "6 6. Recursos Computacionales & Descargas\n\n📥 Descargar Script Standalone en Python (calculo_fasores.py)\n📑 Ver Guía Práctica de Análisis Fasorial\n📊 Acceder al Centro de Descargas y Datasets"
+    "section": "6 6. Recursos Computacionales & Navegación",
+    "text": "6 6. Recursos Computacionales & Navegación\n\n Análisis Fasorial  Teorema de Thévenin  Teorema de Norton  Descargas & CSVs  Índice Circuitos"
   },
   {
-    "objectID": "circuitos_electricos/teoria_fasores2.html",
-    "href": "circuitos_electricos/teoria_fasores2.html",
-    "title": "Guía Práctica de Análisis Fasorial y Álgebra de Números Complejos",
+    "objectID": "circuitos_electricos/delta_estrella.html",
+    "href": "circuitos_electricos/delta_estrella.html",
+    "title": "Transformación Delta – Estrella (Δ ↔︎ Y) en Corriente Alterna",
     "section": "",
-    "text": "Note⚡ Marco Teórico & Metodología\n\n\n\nEn el análisis de circuitos en Corriente Alterna (CA) bajo régimen sinusoidal permanente, la notación fasorial permite transformar ecuaciones íntegro-diferenciales en el dominio del tiempo a simples ecuaciones algebraicas lineales en el dominio de la frecuencia."
+    "text": "Simplificación de redes complejas mediante equivalencia de impedancias en terminales.\nPermite reducir topologías que no admiten simplificación directa serie o paralelo, tales como redes en puente no equilibradas, filtros doble T y circuitos polifásicos equivalentes."
   },
   {
-    "objectID": "circuitos_electricos/teoria_fasores2.html#el-mapa-de-razonamiento-ampliado-el-carril-táctil",
-    "href": "circuitos_electricos/teoria_fasores2.html#el-mapa-de-razonamiento-ampliado-el-carril-táctil",
-    "title": "Guía Práctica de Análisis Fasorial y Álgebra de Números Complejos",
-    "section": "1 El Mapa de Razonamiento Ampliado: El “Carril Táctil”",
-    "text": "1 El Mapa de Razonamiento Ampliado: El “Carril Táctil”\nPara resolver circuitos de corriente alterna sin cometer errores algebraicos o de desfase, se establece la secuencia causal obligatoria del Carril Táctil:\n\n\n\n① Señal v(t) Identificar la amplitud, frecuencia angular \\omega y desfase inicial \\phi.\n\n\n\n\n② Forma Coseno Convertir la señal a la forma canónica +V_m \\cos(\\omega t + \\phi).\n\n\n\n\n③ Fasor \\mathbf{V} Extraer la magnitud (pico o RMS) y el ángulo: \\mathbf{V} = V \\angle \\phi.\n\n\n\n\n④ Operaciones Conmutar entre forma rectangular (sumas) y polar (productos/divisiones).\n\n\n\n\nCadena Causal: Dominio del Tiempo v(t) \\longrightarrow Forma Coseno Canónica \\longrightarrow Fasor Polar \\mathbf{V} = V_m \\angle \\phi \\longrightarrow Operaciones en el Plano Complejo."
+    "objectID": "circuitos_electricos/delta_estrella.html#de-delta-a-estrella-delta-to-texty",
+    "href": "circuitos_electricos/delta_estrella.html#de-delta-a-estrella-delta-to-texty",
+    "title": "Transformación Delta – Estrella (Δ ↔︎ Y) en Corriente Alterna",
+    "section": "2.1 De Delta a Estrella (\\Delta \\to \\text{Y})",
+    "text": "2.1 De Delta a Estrella (\\Delta \\to \\text{Y})\nDado un triángulo formado por las impedancias complejas \\mathbf{Z}_A (opuesta al nodo 1), \\mathbf{Z}_B (opuesta al nodo 2) y \\mathbf{Z}_C (opuesta al nodo 3), definimos la suma de impedancias del delta:\n\\mathbf{Z}_\\Sigma = \\mathbf{Z}_A + \\mathbf{Z}_B + \\mathbf{Z}_C\nLas impedancias equivalentes en estrella conectadas a cada nodo (1, 2, 3) hacia el neutro común O son:\n\\mathbf{Z}_1 = \\frac{\\mathbf{Z}_B \\mathbf{Z}_C}{\\mathbf{Z}_\\Sigma}, \\qquad \\mathbf{Z}_2 = \\frac{\\mathbf{Z}_A \\mathbf{Z}_C}{\\mathbf{Z}_\\Sigma}, \\qquad \\mathbf{Z}_3 = \\frac{\\mathbf{Z}_A \\mathbf{Z}_B}{\\mathbf{Z}_\\Sigma}\n\nRegla mnemotécnica (\\Delta \\to \\text{Y}): Cada rama de la estrella es igual al producto de las dos impedancias adyacentes del delta dividido por la suma total de las tres impedancias del delta."
   },
   {
-    "objectID": "circuitos_electricos/teoria_fasores2.html#conceptos-fundamentales",
-    "href": "circuitos_electricos/teoria_fasores2.html#conceptos-fundamentales",
-    "title": "Guía Práctica de Análisis Fasorial y Álgebra de Números Complejos",
-    "section": "2 Conceptos Fundamentales",
-    "text": "2 Conceptos Fundamentales\n\n2.1 ¿Qué es realmente un fasor? (La foto instantánea en t = 0\\text{ s})\nUn fasor no es un vector estático ordinario. Representa un vector radial en rotación constante (sinor) que gira en sentido antihorario con velocidad angular constante \\omega (\\text{rad/s}).\nEl diagrama fasorial es la “foto instantánea” tomada exactamente en t = 0\\text{ s}:\nEcuación Base: \n\\mathbf{V} = V_m \\angle \\phi \\quad \\Longleftrightarrow \\quad v(t) = \\text{Re}\\left\\{ \\mathbf{V} e^{j\\omega t} \\right\\} = V_m \\cos(\\omega t + \\phi)\n\n\n\n\n\nCorrespondencia geométrica entre el vector rotatorio fasorial (sinor) en el plano complejo y su proyección senoidal en el dominio del tiempo v(t).\n\n\n\n\n\n\n\n\n\nNote⚡ REGLA ELI (Para Inductores)\n\n\n\nEsta regla se aplica a los circuitos puramente inductivos (bobinas).\n\nE: Representa la fuerza electromotriz o Voltaje (V).\nL: Representa la Inducción o Inductor.\nI: Representa la Corriente.\n\nSignificado: En un inductor, la E (Voltaje) va antes que la I (Corriente). Por lo tanto, el voltaje adelanta a la corriente por 90^\\circ (o la corriente atrasa al voltaje por 90^\\circ).\nEn diagramas fasoriales: - Si la corriente es tu referencia: \\mathbf{I} = I \\angle 0^\\circ - El voltaje será: \\mathbf{V}_L = V_L \\angle 90^\\circ\nMatemáticamente: V_L = j \\cdot X_L \\cdot I (el operador imaginario +j rota el fasor 90^\\circ hacia arriba / en sentido antihorario).\n\n\n\n\n\n\n\n\nTip⚡ REGLA ICE (Para Capacitores)\n\n\n\nEsta regla se aplica a los circuitos puramente capacitivos (condensadores).\n\nI: Representa la Corriente.\nC: Representa el Capacitor.\nE: Representa la fuerza electromotriz o Voltaje (V).\n\nSignificado: En un capacitor, la I (Corriente) va antes que la E (Voltaje). Por lo tanto, la corriente adelanta al voltaje por 90^\\circ (o el voltaje atrasa a la corriente por 90^\\circ).\nEn diagramas fasoriales: - Si la corriente es tu referencia: \\mathbf{I} = I \\angle 0^\\circ - El voltaje será: \\mathbf{V}_C = V_C \\angle -90^\\circ\nMatemáticamente: V_C = -j \\cdot X_C \\cdot I (el operador -j rota el fasor 90^\\circ hacia abajo / en sentido horario).\n\n\n\n\n\n\nDiagramas Fasoriales para Elementos Pasivos R, L y C (Reglas ELI e ICE)\n\n\n\nDado que todas las fuentes en un circuito lineal en estado estable operan a la misma frecuencia angular \\omega, congelar la referencia temporal en t = 0 elimina la variable temporal t y permite resolver redes eléctricas mediante álgebra compleja.\n\n\n\n2.2 Valor Pico (V_m) frente a Valor Eficaz (V_{rms})\nEn el análisis teórico de circuitos se utiliza comúnmente el valor pico (V_m). Sin embargo, los instrumentos de medición reales (multímetros, osciloscopios en modo AC, vatímetros) registran valores eficaces (RMS):\n\n\\mathbf{V}_{rms} = V_{rms} \\angle \\phi = \\left( \\frac{V_m}{\\sqrt{2}} \\right) \\angle \\phi \\approx 0.7071 \\, V_m \\angle \\phi\n\n\n2.2.1 Ejemplo de conversión:\n\nv(t) = 120 \\cos(\\omega t + 30^\\circ) \\text{ V}\n - Fasor en valor pico: \\mathbf{V}_{pico} = 120 \\angle 30^\\circ \\text{ V} - Fasor en valor eficaz (RMS): \\mathbf{V}_{rms} = 84.85 \\angle 30^\\circ \\text{ V}\n\n\n\n\n2.3 Conversión Seno \\to Coseno (Regla de los 90^\\circ)\nLa referencia canónica del fasor se basa estrictamente en la función coseno positivo. Cuando una señal temporal se presenta en función seno o con signo negativo, se traslada mediante las siguientes identidades:\n\n\n\n\n\n\n\n\nFunción Temporal Original\nEquivalencia Canónica en Coseno\nRegla de Ajuste de Fase\n\n\n\n\n\\sin(\\omega t + \\theta)\n\\cos(\\omega t + \\theta - 90^\\circ)\nRestar 90^\\circ\n\n\n-\\sin(\\omega t + \\theta)\n\\cos(\\omega t + \\theta + 90^\\circ)\nSumar +90^\\circ\n\n\n-\\cos(\\omega t + \\theta)\n\\cos(\\omega t + \\theta \\pm 180^\\circ)\nSumar o restar 180^\\circ\n\n\n\n\n2.3.1 Ejemplo práctico:\nSea la corriente i(t) = -4 \\sin(10t + 15^\\circ)\\text{A}:\n1. Aplicamos la regla: -4\\sin(\\theta) = 4\\cos(\\theta + 90^\\circ).\n2. i(t) = 4 \\cos(10t + 15^\\circ + 90^\\circ) = 4 \\cos(10t + 105^\\circ)\\text{ A}.\n3. Fasor resultante: \\mathbf{I} = 4 \\angle 105^\\circ\\text{A}. ✅"
+    "objectID": "circuitos_electricos/delta_estrella.html#de-estrella-a-delta-texty-to-delta",
+    "href": "circuitos_electricos/delta_estrella.html#de-estrella-a-delta-texty-to-delta",
+    "title": "Transformación Delta – Estrella (Δ ↔︎ Y) en Corriente Alterna",
+    "section": "2.2 De Estrella a Delta (\\text{Y} \\to \\Delta)",
+    "text": "2.2 De Estrella a Delta (\\text{Y} \\to \\Delta)\nDada una estrella con ramas \\mathbf{Z}_1, \\mathbf{Z}_2, \\mathbf{Z}_3 conectadas al nodo común neutro O, definimos la suma de productos dos a dos:\n\\Sigma_2 = \\mathbf{Z}_1 \\mathbf{Z}_2 + \\mathbf{Z}_2 \\mathbf{Z}_3 + \\mathbf{Z}_3 \\mathbf{Z}_1\nLas impedancias correspondientes del triángulo delta equivalentes son:\n\\mathbf{Z}_A = \\frac{\\Sigma_2}{\\mathbf{Z}_1}, \\qquad \\mathbf{Z}_B = \\frac{\\Sigma_2}{\\mathbf{Z}_2}, \\qquad \\mathbf{Z}_C = \\frac{\\Sigma_2}{\\mathbf{Z}_3}\n\nRegla mnemotécnica (\\text{Y} \\to \\Delta): Cada impedancia del delta es igual a la suma de los productos dos a dos de las impedancias de la estrella dividida entre la impedancia opuesta de la estrella."
   },
   {
-    "objectID": "circuitos_electricos/teoria_fasores2.html#álgebra-de-números-complejos-y-ajuste-de-cuadrantes",
-    "href": "circuitos_electricos/teoria_fasores2.html#álgebra-de-números-complejos-y-ajuste-de-cuadrantes",
-    "title": "Guía Práctica de Análisis Fasorial y Álgebra de Números Complejos",
-    "section": "3 Álgebra de Números Complejos y Ajuste de Cuadrantes",
-    "text": "3 Álgebra de Números Complejos y Ajuste de Cuadrantes\nUn número complejo en el plano de Gauss se representa en tres formas interconvertibles:\n\nForma Rectangular: \\mathbf{z} = x + j y (ideal para sumas y restas)\nForma Polar: \\mathbf{z} = r \\angle \\theta (ideal para multiplicaciones, divisiones y potencias)\nForma Exponencial: \\mathbf{z} = r e^{j\\theta}\n\n\nr = \\sqrt{x^2 + y^2}, \\quad \\theta = \\arctan\\left(\\frac{y}{x}\\right)\n\n\nx = r \\cos\\theta, \\quad y = r \\sin\\theta\n\n\n3.1 Reglas Rigurosas de Ajuste Angular por Cuadrante\nLa función \\arctan estándar de las calculadoras únicamente devuelve valores en el rango [-90^\\circ, +90^\\circ]. Para determinar el ángulo correcto según la posición del punto (x, y):\n\n\n\n\n\n\n\n\n\nCuadrante\nSignos (x, y)\nIntervalo Angular\nFórmula de Ajuste\n\n\n\n\nI\n(+x, +y)\n0^\\circ &lt; \\theta &lt; 90^\\circ\n\\theta = \\arctan\\left(\\frac{y}{x}\\right)\n\n\nII\n(-x, +y)\n90^\\circ &lt; \\theta &lt; 180^\\circ\n\\theta = 180^\\circ - \\arctan\\left(\\left|\\frac{y}{x}\\right|\\right)\n\n\nIII\n(-x, -y)\n-180^\\circ &lt; \\theta &lt; -90^\\circ\n\\theta = -180^\\circ + \\arctan\\left(\\left|\\frac{y}{x}\\right|\\right)\n\n\nIV\n(+x, -y)\n-90^\\circ &lt; \\theta &lt; 0^\\circ\n\\theta = -\\arctan\\left(\\left|\\frac{y}{x}\\right|\\right)\n\n\n\n\n\n\nCuadrantes Fasoriales"
-  },
-  {
-    "objectID": "circuitos_electricos/teoria_fasores2.html#operaciones-fundamentales-en-el-plano-complejo",
-    "href": "circuitos_electricos/teoria_fasores2.html#operaciones-fundamentales-en-el-plano-complejo",
-    "title": "Guía Práctica de Análisis Fasorial y Álgebra de Números Complejos",
-    "section": "4 Operaciones Fundamentales en el Plano Complejo",
-    "text": "4 Operaciones Fundamentales en el Plano Complejo\n\n4.1 Racionalización y el Inverso de j\nEn el cálculo de impedancias capacitivas, la unidad imaginaria j = \\sqrt{-1} aparece con frecuencia en el denominador. Racionalizamos multiplicando por j/j:\n\n\\frac{1}{j} = \\frac{1 \\cdot j}{j \\cdot j} = \\frac{j}{j^2} = \\frac{j}{-1} = -j\n\n\n\\frac{1}{j \\omega C} = -j \\frac{1}{\\omega C}\n\n\n\n4.2 División por el Complejo Conjugado\nPara dividir en forma rectangular, se multiplica por el conjugado del denominador \\mathbf{z}^* = c - jd:\n\n\\frac{a + jb}{c + jd} = \\frac{(a + jb)(c - jd)}{(c + jd)(c - jd)} = \\frac{(ac + bd) + j(bc - ad)}{c^2 + d^2}"
-  },
-  {
-    "objectID": "circuitos_electricos/teoria_fasores2.html#impedancias-complejas-de-elementos-pasivos-r-l-c",
-    "href": "circuitos_electricos/teoria_fasores2.html#impedancias-complejas-de-elementos-pasivos-r-l-c",
-    "title": "Guía Práctica de Análisis Fasorial y Álgebra de Números Complejos",
-    "section": "5 Impedancias Complejas de Elementos Pasivos (R, L, C)",
-    "text": "5 Impedancias Complejas de Elementos Pasivos (R, L, C)\nLa relación entre tensión fasorial y corriente fasorial en elementos lineales se expresa mediante la Ley de Ohm Generalizada:\n\n\\mathbf{V} = \\mathbf{I} \\cdot \\mathbf{Z}\n\n\n\n\n\n\n\n\n\n\nElemento Pasivo\nEcuación Temporal\nImpedancia Fasorial \\mathbf{Z}\nÁngulo de Desfase (\\theta_v - \\theta_i)\n\n\n\n\nResistor (R)\nv(t) = R \\, i(t)\n\\mathbf{Z}_R = R = R \\angle 0^\\circ\n0^\\circ (Tensión y corriente en fase)\n\n\nInductor (L)\nv(t) = L \\frac{di(t)}{dt}\n\\mathbf{Z}_L = j\\omega L = \\omega L \\angle 90^\\circ\n+90^\\circ (Tensión adelanta a la corriente 90^\\circ)\n\n\nCapacitor (C)\ni(t) = C \\frac{dv(t)}{dt}\n\\mathbf{Z}_C = \\frac{1}{j\\omega C} = \\frac{1}{\\omega C} \\angle -90^\\circ\n-90^\\circ (Tensión atrasa a la corriente 90^\\circ)"
-  },
-  {
-    "objectID": "circuitos_electricos/teoria_fasores2.html#resumen-de-reglas-mnemotécnicas-y-propiedades-de-j",
-    "href": "circuitos_electricos/teoria_fasores2.html#resumen-de-reglas-mnemotécnicas-y-propiedades-de-j",
-    "title": "Guía Práctica de Análisis Fasorial y Álgebra de Números Complejos",
-    "section": "6 Resumen de Reglas Mnemotécnicas y Propiedades de j",
-    "text": "6 Resumen de Reglas Mnemotécnicas y Propiedades de j\n\n\n\n\n\n\nNote💡 TABLA MAESTRA DE IDENTIDADES FASORIALES Y OPERADOR j\n\n\n\n\n\n\n6.0.1 Ciclo y Potencias de j (Operador de Giro):\n\nj^0 = 1 = 1 \\angle 0^\\circ (Eje Real +, referencia).\nj^1 = j = 1 \\angle 90^\\circ (Giro antihorario +90^\\circ).\nj^2 = -1 = 1 \\angle 180^\\circ (Inversión de fase / signo menos).\nj^3 = j^2 \\cdot j = -j = 1 \\angle -90^\\circ (Giro horario -90^\\circ).\nj^4 = (j^2)^2 = 1 = 1 \\angle 0^\\circ (Ciclo cerrado cada 4 potencias).\n\\frac{1}{j} = -j = 1 \\angle -90^\\circ (Inverso de j).\n-\\frac{1}{j} = \\frac{1}{-j} = j = 1 \\angle 90^\\circ.\n\n\n\n6.0.2 Reglas Mnemotécnicas en Circuitos:\n\nELI (Inductor L): La Tensión (E) adelanta a la Corriente (I) en +90^\\circ.\n\\mathbf{Z}_L = +j\\omega L = \\omega L \\angle +90^\\circ.\nICE (Capacitor C): La Corriente (I) adelanta a la Tensión (E) en +90^\\circ (el voltaje atrasa -90^\\circ).\n\\mathbf{Z}_C = \\frac{1}{j\\omega C} = -j \\frac{1}{\\omega C} = \\frac{1}{\\omega C} \\angle -90^\\circ.\n\n\n\n\n\n6.0.3 Operaciones Algebraicas Fundamentales:\n\nSuma / Resta: Exclusivamente en coordenadas rectangulares (a + jb).\nMultiplicación: r_1 \\angle \\theta_1 \\cdot r_2 \\angle \\theta_2 = (r_1 r_2) \\angle (\\theta_1 + \\theta_2).\nDivisión: \\frac{r_1 \\angle \\theta_1}{r_2 \\angle \\theta_2} = \\left(\\frac{r_1}{r_2}\\right) \\angle (\\theta_1 - \\theta_2).\nConjugado: (a + jb)^* = a - jb \\Longleftrightarrow (r \\angle \\theta)^* = r \\angle (-\\theta).\nRacionalización directa: \\frac{1}{a + jb} = \\frac{a - jb}{a^2 + b^2}.\n\n\n\n6.0.4 Conversión Trigonométrica Inmediata:\n\n+\\sin(\\omega t + \\phi) \\longrightarrow \\cos(\\omega t + \\phi - 90^\\circ) (\\mathbf{V} = V_m \\angle (\\phi - 90^\\circ)).\n-\\sin(\\omega t + \\phi) \\longrightarrow \\cos(\\omega t + \\phi + 90^\\circ) (\\mathbf{V} = V_m \\angle (\\phi + 90^\\circ)).\n-\\cos(\\omega t + \\phi) \\longrightarrow \\cos(\\omega t + \\phi \\pm 180^\\circ) (\\mathbf{V} = V_m \\angle (\\phi \\pm 180^\\circ)).\n-r \\angle \\theta = r \\angle (\\theta \\pm 180^\\circ) (Amplitud r &gt; 0 siempre)."
-  },
-  {
-    "objectID": "circuitos_electricos/teoria_fasores2.html#ejercicios-resueltos-paso-a-paso",
-    "href": "circuitos_electricos/teoria_fasores2.html#ejercicios-resueltos-paso-a-paso",
-    "title": "Guía Práctica de Análisis Fasorial y Álgebra de Números Complejos",
-    "section": "7 Ejercicios Resueltos Paso a Paso",
-    "text": "7 Ejercicios Resueltos Paso a Paso\n\n\n\n\n\n\nNote📝 Ejercicio Resuelto 1: Transformación Temporal \\longleftrightarrow Fasorial\n\n\n\n\n\nEnunciado: a) Transformar al dominio fasorial (valor pico y valor eficaz RMS): v(t) = 7\\cos(2t + 40^\\circ)\\text{ V}, \\qquad i(t) = -4\\sin(10t + 10^\\circ)\\text{ A} b) Obtener la función temporal v_2(t) e i_2(t) a partir de los fasores (\\omega = 50\\text{ rad/s}): \\mathbf{V}_2 = -25\\angle 40^\\circ\\text{ V}, \\qquad \\mathbf{I}_2 = j(12 - j5)\\text{ A}\n\n\n\n\n\n\nTip🔍 Ver Solución Detallada\n\n\n\n\n\nParte (a): 1. Voltaje v(t): Ya se encuentra en forma canónica coseno positivo: - Amplitud pico: V_m = 7\\text{ V}, Fase: \\phi = 40^\\circ, Frecuencia: \\omega = 2\\text{ rad/s}. - Fasor pico: \\mathbf{V} = 7\\angle 40^\\circ\\text{ V}. - Fasor RMS: \\mathbf{V}_{rms} = \\frac{7}{\\sqrt{2}}\\angle 40^\\circ \\approx 4.95\\angle 40^\\circ\\text{ V}.\n\nCorriente i(t): Aplicamos la regla -\\sin(\\theta) = \\cos(\\theta + 90^\\circ): i(t) = 4\\cos(10t + 10^\\circ + 90^\\circ) = 4\\cos(10t + 100^\\circ)\\text{ A}\n\nFasor pico: \\mathbf{I} = 4\\angle 100^\\circ\\text{ A}.\nFasor RMS: \\mathbf{I}_{rms} = \\frac{4}{\\sqrt{2}}\\angle 100^\\circ \\approx 2.83\\angle 100^\\circ\\text{ A}.\n\n\nParte (b): 1. Fasor \\mathbf{V}_2 = -25\\angle 40^\\circ\\text{ V}: Como la amplitud debe ser estrictamente positiva (r &gt; 0), invertimos fase sumando o restando 180^\\circ: \\mathbf{V}_2 = 25\\angle(40^\\circ - 180^\\circ) = 25\\angle -140^\\circ\\text{ V} v_2(t) = 25\\cos(50t - 140^\\circ)\\text{ V}\n\nFasor \\mathbf{I}_2 = j(12 - j5)\\text{ A}: Multiplicamos el operador j (j^2 = -1): \\mathbf{I}_2 = j12 - j^2(5) = 5 + j12\\text{ A}\n\nMagnitud: I_m = \\sqrt{5^2 + 12^2} = 13\\text{ A}.\nÁngulo (Cuadrante I): \\theta = \\arctan(12/5) = 67.38^\\circ. \\mathbf{I}_2 = 13\\angle 67.38^\\circ\\text{ A} \\quad \\Longrightarrow \\quad i_2(t) = 13\\cos(50t + 67.38^\\circ)\\text{ A}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote📝 Ejercicio Resuelto 2: Operaciones Complejas Combinadas y Cuadrantes\n\n\n\n\n\nEnunciado: Evaluar y expresar en forma rectangular y polar la siguiente expresión fasorial: \\mathbf{X} = \\left[ (5 + j2)(-1 + j4) - 5\\angle 60^\\circ \\right]^*\n\n\n\n\n\n\nTip🔍 Ver Solución Detallada\n\n\n\n\n\n\nMultiplicación de binomios rectangulares: (5 + j2)(-1 + j4) = 5(-1) + 5(j4) + (j2)(-1) + j^2(8) = -5 + j20 - j2 - 8 = -13 + j18\nConversión polar a rectangular de 5\\angle 60^\\circ: 5\\angle 60^\\circ = 5\\cos(60^\\circ) + j5\\sin(60^\\circ) = 2.5 + j4.330\nResta de números complejos (real con real, imaginario con imaginario): (-13 + j18) - (2.5 + j4.330) = (-13 - 2.5) + j(18 - 4.330) = -15.5 + j13.670\nAplicar conjugado complejo (*): \\mathbf{X} = (-15.5 + j13.670)^* = -15.5 - j13.670\nConversión final a forma polar (Ajuste de Cuadrante III: x &lt; 0, y &lt; 0):\n\nMódulo: r = \\sqrt{(-15.5)^2 + (-13.670)^2} = \\sqrt{240.25 + 186.87} \\approx 20.67\nÁngulo: \\theta = -180^\\circ + \\arctan\\left(\\left|\\frac{-13.670}{-15.5}\\right|\\right) = -180^\\circ + 41.41^\\circ = -138.59^\\circ\n\n\n\\mathbf{X} = -15.5 - j13.67 = 20.67\\angle -138.59^\\circ\n\n\n\n\n\n\n\n\n\n\n\n\nNote📝 Ejercicio Resuelto 3: Circuito RLC Serie en Régimen Permanente\n\n\n\n\n\nEnunciado: Un circuito serie compuesto por una resistencia R = 30\\,\\Omega, un inductor L = 50\\text{ mH} y un capacitor C = 25\\,\\mu\\text{F} se alimenta con una fuente de tensión: v(t) = 120\\cos(1000t + 30^\\circ)\\text{ V} Calcular: 1. La impedancia equivalente total \\mathbf{Z}_{total}. 2. La corriente en estado estable \\mathbf{I} e i(t). 3. Las tensiones fasoriales en cada elemento pasivo (\\mathbf{V}_R, \\mathbf{V}_L, \\mathbf{V}_C).\n\n\n\n\n\n\nTip🔍 Ver Solución Detallada\n\n\n\n\n\n\nCálculo de reactancias e impedancias (\\omega = 1000\\text{ rad/s}):\n\nReactancia inductiva: X_L = \\omega L = 1000 \\cdot 0.050 = 50\\,\\Omega \\quad \\Longrightarrow \\quad \\mathbf{Z}_L = +j50\\,\\Omega.\nReactancia capacitiva: X_C = \\frac{1}{\\omega C} = \\frac{1}{1000 \\cdot 25 \\times 10^{-6}} = 40\\,\\Omega \\quad \\Longrightarrow \\quad \\mathbf{Z}_C = -j40\\,\\Omega.\nImpedancia total serie: \\mathbf{Z}_{total} = R + j(X_L - X_C) = 30 + j(50 - 40) = 30 + j10\\,\\Omega \\mathbf{Z}_{total} = \\sqrt{30^2 + 10^2}\\angle \\arctan(10/30) = 31.62\\angle 18.43^\\circ\\,\\Omega\n\nCálculo de la corriente fasorial \\mathbf{I} (Ley de Ohm):\n\nFasor de tensión: \\mathbf{V} = 120\\angle 30^\\circ\\text{ V}. \\mathbf{I} = \\frac{\\mathbf{V}}{\\mathbf{Z}_{total}} = \\frac{120\\angle 30^\\circ}{31.62\\angle 18.43^\\circ} = \\left(\\frac{120}{31.62}\\right)\\angle (30^\\circ - 18.43^\\circ) = 3.80\\angle 11.57^\\circ\\text{ A} i(t) = 3.80\\cos(1000t + 11.57^\\circ)\\text{ A}\n\nCaídas de tensión individuales:\n\n\\mathbf{V}_R = \\mathbf{I} \\cdot R = (3.80\\angle 11.57^\\circ)(30\\angle 0^\\circ) = 114.0\\angle 11.57^\\circ\\text{ V}.\n\\mathbf{V}_L = \\mathbf{I} \\cdot \\mathbf{Z}_L = (3.80\\angle 11.57^\\circ)(50\\angle 90^\\circ) = 190.0\\angle 101.57^\\circ\\text{ V} (Adelanta 90^\\circ a \\mathbf{I}).\n\\mathbf{V}_C = \\mathbf{I} \\cdot \\mathbf{Z}_C = (3.80\\angle 11.57^\\circ)(40\\angle -90^\\circ) = 152.0\\angle -78.43^\\circ\\text{ V} (Atrasa 90^\\circ a \\mathbf{I}).\n\n\n(Verificación LVK: \\mathbf{V}_R + \\mathbf{V}_L + \\mathbf{V}_C = 114.0\\angle 11.57^\\circ + 190.0\\angle 101.57^\\circ + 152.0\\angle -78.43^\\circ = 120\\angle 30^\\circ\\text{ V})."
-  },
-  {
-    "objectID": "circuitos_electricos/teoria_fasores2.html#banco-de-ejercicios-propuestos-para-práctica",
-    "href": "circuitos_electricos/teoria_fasores2.html#banco-de-ejercicios-propuestos-para-práctica",
-    "title": "Guía Práctica de Análisis Fasorial y Álgebra de Números Complejos",
-    "section": "8 Banco de Ejercicios Propuestos para Práctica",
-    "text": "8 Banco de Ejercicios Propuestos para Práctica\nPon a prueba tu comprensión resolviendo los siguientes ejercicios. Haz clic en Ver Respuesta para comprobar tu resultado:\n\n\n\n8.1 📌 Problema 1: Conversión de Señales\nDeterminar la forma fasorial en valor pico y valor eficaz (V_{rms}) de las siguientes señales: 1. v(t) = -15\\sin(377t - 30^\\circ)\\text{ V} 2. i(t) = -8\\cos(377t + 45^\\circ)\\text{ A}\n\n\n\n\n\n\nTip💡 Ver Respuesta\n\n\n\n\n\n\n\\mathbf{V}_{pico} = 15\\angle 60^\\circ\\text{ V}, \\quad \\mathbf{V}_{rms} = 10.61\\angle 60^\\circ\\text{ V}.\n\\mathbf{I}_{pico} = 8\\angle -135^\\circ\\text{ A}, \\quad \\mathbf{I}_{rms} = 5.66\\angle -135^\\circ\\text{ A}.\n\n\n\n\n\n\n\n\n8.2 📌 Problema 2: División y Álgebra Compleja\nEvaluar numéricamente la siguiente expresión en coordenadas rectangulares y polares: \\mathbf{Z} = \\frac{(4 + j3)(2 - j4)}{-1 + j2} + 5\\angle -45^\\circ\n\n\n\n\n\n\nTip💡 Ver Respuesta\n\n\n\n\n\n\nForma Rectangular: \\mathbf{Z} = 7.18 - j6.34\\,\\Omega\nForma Polar: \\mathbf{Z} = 9.58\\angle -41.4^\\circ\\,\\Omega\n\n\n\n\n\n\n\n\n8.3 📌 Problema 3: Suma Fasorial en un Nodo\nDos corrientes sinusoidales concurrentes entran a un nodo: i_1(t) = 4\\cos(\\omega t + 30^\\circ)\\text{ A}, \\quad i_2(t) = 6\\sin(\\omega t + 60^\\circ)\\text{ A} Determinar la corriente resultante i_T(t) = i_1(t) + i_2(t).\n\n\n\n\n\n\nTip💡 Ver Respuesta\n\n\n\n\n\n\nTrasladando i_2(t): \\mathbf{I}_2 = 6\\angle (60^\\circ - 90^\\circ) = 6\\angle -30^\\circ\\text{ A}.\n\\mathbf{I}_T = (3.464 + j2) + (5.196 - j3) = 8.66 - j1.0\\text{ A}.\nResultado: i_T(t) = 8.72\\cos(\\omega t - 6.59^\\circ)\\text{ A}.\n\n\n\n\n\n\n\n\n8.4 📌 Problema 4: Impedancia Paralelo RL-RC\nUna rama con \\mathbf{Z}_1 = 10 + j15\\,\\Omega se conecta en paralelo con otra rama \\mathbf{Z}_2 = 20 - j10\\,\\Omega. Calcular la impedancia equivalente total \\mathbf{Z}_{eq}.\n\n\n\n\n\n\nTip💡 Ver Respuesta\n\n\n\n\n\n\n\\mathbf{Z}_{eq} = \\frac{\\mathbf{Z}_1 \\cdot \\mathbf{Z}_2}{\\mathbf{Z}_1 + \\mathbf{Z}_2} = \\frac{(10 + j15)(20 - j10)}{30 + j5}\n\\mathbf{Z}_{eq} = 11.23 + j2.92\\,\\Omega = 11.60\\angle 14.6^\\circ\\,\\Omega."
-  },
-  {
-    "objectID": "circuitos_electricos/teoria_fasores2.html#recursos-enlaces-relacionados",
-    "href": "circuitos_electricos/teoria_fasores2.html#recursos-enlaces-relacionados",
-    "title": "Guía Práctica de Análisis Fasorial y Álgebra de Números Complejos",
-    "section": "9 Recursos & Enlaces Relacionados",
-    "text": "9 Recursos & Enlaces Relacionados\n\n  Ver clase en YouTube \n⚡ Continuar al Módulo de Potencia en CA & Triángulo de Potencias\n📥 Descargar Script Python de Cálculo Fasorial (calculo_fasores.py)\n📖 Volver al Índice de Circuitos Eléctricos"
-  },
-  {
-    "objectID": "descargas.html",
-    "href": "descargas.html",
-    "title": "Centro de Recursos, Datasets & Scripts",
+    "objectID": "circuitos_electricos/circuito_norton.html",
+    "href": "circuitos_electricos/circuito_norton.html",
+    "title": "Teorema de Norton en Corriente Alterna",
     "section": "",
-    "text": "Note💾 Acceso a Recursos de Ingeniería\n\n\n\nEn este centro de descargas se encuentran disponibles los archivos de datos, tablas de conductores y scripts de cálculo numérico utilizados en los informes técnicos de la plataforma. Todos los recursos están optimizados para integración directa con Python, Pandas, NumPy y herramientas CAD/CAE."
+    "text": "El modelo dual de Thévenin: representación mediante fuente de corriente y admitancia en paralelo.\nEl teorema de Norton es la contraparte dual del teorema de Thévenin. Resulta especialmente ventajoso cuando se analizan circuitos con múltiples ramas conectadas en paralelo o alimentadas por fuentes de corriente."
   },
   {
-    "objectID": "descargas.html#catálogo-de-archivos-disponibles",
-    "href": "descargas.html#catálogo-de-archivos-disponibles",
-    "title": "Centro de Recursos, Datasets & Scripts",
-    "section": "📁 Catálogo de Archivos Disponibles",
-    "text": "📁 Catálogo de Archivos Disponibles\n\n\n\n\n📊\n\n\nParámetros de Conductores AWG / kcmil\nMatriz de impedancia en corriente alterna (R_{CA} a 75^\\circ\\text{C} y reactancia X_L) para conductores de cobre con aislamiento THHN/THWN en canalizaciones de PVC y acero, según la Tabla 9 del Código Eléctrico Nacional (NEC).\n\nFormato: Archivo tabular .csv (codificación UTF-8)\nCampos: calibre, area_mm2, resistencia_pvc_ohm_km, reactancia_pvc_ohm_km\nUso: Algoritmos de caída de tensión y optimización de alimentadores\n\n\n 📥 Descargar Dataset (CSV) \n\n\n\n\n\n\n\n🐍\n\n\nScript de Análisis Fasorial & Potencia\nMódulo ejecutable en Python puro que implementa las funciones vectoriales de números complejos, descomposición de potencia activa, reactiva y generación de diagramas fasoriales con Matplotlib.\n\nFormato: Código fuente .py\nDependencias: Python 3.9+, NumPy, Matplotlib\nUso: Ejecución en terminal, importación en scripts propios o Jupyter Notebooks\n\n\n 📥 Descargar Script (.py)"
+    "objectID": "circuitos_electricos/circuito_norton.html#corriente-de-norton-mathbfi_n",
+    "href": "circuitos_electricos/circuito_norton.html#corriente-de-norton-mathbfi_n",
+    "title": "Teorema de Norton en Corriente Alterna",
+    "section": "1.1 1. Corriente de Norton (\\mathbf{I}_N)",
+    "text": "1.1 1. Corriente de Norton (\\mathbf{I}_N)\nLa corriente de Norton corresponde a la corriente fasorial que circula a través de un cortocircuito ideal conectado directamente entre los terminales a y b:\n\\mathbf{I}_N = \\mathbf{I}_{sc} = \\mathbf{I}_{ab} \\Big|_{\\text{cortocircuito}}\nPara calcular \\mathbf{I}_N, se sustituye la carga \\mathbf{Z}_L por un conductor de resistencia nula entre los terminales a y b, y se calcula la corriente fasorial resultante utilizando análisis de mallas, análisis nodal o superposición."
   },
   {
-    "objectID": "descargas.html#integración-directa-en-python",
-    "href": "descargas.html#integración-directa-en-python",
-    "title": "Centro de Recursos, Datasets & Scripts",
-    "section": "⚡ Integración Directa en Python",
-    "text": "⚡ Integración Directa en Python\nPuede consumir los datasets técnicos directamente en sus scripts de análisis utilizando la librería pandas:\nimport pandas as pd\n\n# Carga del dataset de calibres y parámetros eléctricos\ndf_conductores = pd.read_csv(\"descargas/tabla_calibres_awg.csv\")\n\n# Inspección de conductores con resistencia menor a 1.0 Ohm/km\nconductores_optimos = df_conductores[df_conductores[\"resistencia_pvc_ohm_km\"] &lt; 1.0]\nprint(conductores_optimos[[\"calibre\", \"resistencia_pvc_ohm_km\", \"reactancia_pvc_ohm_km\"]])"
+    "objectID": "circuitos_electricos/circuito_norton.html#impedancia-y-admitancia-de-norton-mathbfz_n-mathbfy_n",
+    "href": "circuitos_electricos/circuito_norton.html#impedancia-y-admitancia-de-norton-mathbfz_n-mathbfy_n",
+    "title": "Teorema de Norton en Corriente Alterna",
+    "section": "1.2 2. Impedancia y Admitancia de Norton (\\mathbf{Z}_N, \\mathbf{Y}_N)",
+    "text": "1.2 2. Impedancia y Admitancia de Norton (\\mathbf{Z}_N, \\mathbf{Y}_N)\nLa impedancia de Norton es exactamente idéntica a la impedancia de Thévenin vista desde los mismos terminales:\n\\mathbf{Z}_N = \\mathbf{Z}_{th}\n\\mathbf{Y}_N = \\frac{1}{\\mathbf{Z}_N} = G_N + j B_N\nSe calcula anulando todas las fuentes independientes internas (fuentes de tensión en cortocircuito, fuentes de corriente en circuito abierto) y determinando la impedancia equivalente entre a y b."
   },
   {
-    "objectID": "informes/caida_tension.html",
-    "href": "informes/caida_tension.html",
+    "objectID": "circuitos_electricos/analisis_mallas.html",
+    "href": "circuitos_electricos/analisis_mallas.html",
+    "title": "Análisis de Mallas en Corriente Alterna",
+    "section": "",
+    "text": "Resolución sistemática de circuitos planos mediante corrientes de lazo e impedancias complejas.\nEl método de mallas aplica la Ley de Tensiones de Kirchhoff a lazos cerrados planos que no encierran otros lazos, reduciendo el problema a un sistema de ecuaciones donde las incógnitas son las corrientes ficticias de cada malla."
+  },
+  {
+    "objectID": "circuitos_electricos/analisis_mallas.html#elementos-de-la-matriz-de-impedancias-mathbfz",
+    "href": "circuitos_electricos/analisis_mallas.html#elementos-de-la-matriz-de-impedancias-mathbfz",
+    "title": "Análisis de Mallas en Corriente Alterna",
+    "section": "1.1 Elementos de la Matriz de Impedancias [\\mathbf{Z}]",
+    "text": "1.1 Elementos de la Matriz de Impedancias [\\mathbf{Z}]\n\nImpedancias Propias (\\mathbf{Z}_{kk}): Elementos de la diagonal principal.\n\\mathbf{Z}_{kk} = \\sum \\mathbf{Z}_{\\text{pertenecientes a la malla } k} Es la suma total de las impedancias complejas (R + j\\omega L - j/(\\omega C)) contenidas en el perímetro de la malla k.\nImpedancias Mutuas (\\mathbf{Z}_{km} con k \\neq m): Elementos fuera de la diagonal.\n\\mathbf{Z}_{km} = -\\sum \\mathbf{Z}_{\\text{compartidas entre la malla } k \\text{ y la malla } m} Si ambas corrientes de malla circulan en sentido horario, atraviesan la rama común en sentidos opuestos, por lo que este término lleva siempre signo negativo. Para circuitos pasivos bilaterales sin fuentes dependientes, la matriz es simétrica: \\mathbf{Z}_{km} = \\mathbf{Z}_{mk}.\nVector de Elevaciones de Tensión (\\mathbf{V}_{\\text{malla } k}):\n\\mathbf{V}_{\\text{malla } k} = \\sum \\mathbf{V}_{\\text{elevaciones en el sentido horario}} - \\sum \\mathbf{V}_{\\text{caídas en el sentido horario}} Es la suma algebraica fasorial de las fuentes de tensión independientes encontradas al recorrer la malla k."
+  },
+  {
+    "objectID": "aplicaciones_python/index.html",
+    "href": "aplicaciones_python/index.html",
+    "title": "🐍 Aplicaciones Python & Computación Científica",
+    "section": "",
+    "text": "Bienvenido al módulo de Aplicaciones Python. Aquí encontrarás herramientas computacionales interactivas desarrolladas en Python (NumPy, SciPy, Matplotlib, Streamlit) diseñadas para agilizar cálculos de ingeniería eléctrica, modelado no lineal y análisis gráfico instantáneo.\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\nSimulador Fasorial y Análisis de Potencia Compleja\n\n1 min\n\n\nPython\n\nStreamlit\n\nSimulación\n\nFasores\n\nNumPy\n\n\n\nSimulación en tiempo real de amplitudes y ángulos de fase, cálculo numérico instantáneo de potencia activa, reactiva y factor de potencia.\n\n\n\nSep 10, 2026\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "aplicaciones_python/simulador_fasores.html",
+    "href": "aplicaciones_python/simulador_fasores.html",
+    "title": "Simulador Fasorial y Análisis de Potencia Compleja",
+    "section": "",
+    "text": "Note🐍 Motor Computacional Streamlit\n\n\n\nEsta aplicación interactiva corre sobre Python 3.12 y utiliza Streamlit Cloud para el renderizado vectorial de ondas y fasores en el plano complejo."
+  },
+  {
+    "objectID": "aplicaciones_python/simulador_fasores.html#interfaz-interactiva-en-tiempo-real",
+    "href": "aplicaciones_python/simulador_fasores.html#interfaz-interactiva-en-tiempo-real",
+    "title": "Simulador Fasorial y Análisis de Potencia Compleja",
+    "section": "Interfaz Interactiva en Tiempo Real",
+    "text": "Interfaz Interactiva en Tiempo Real\n\n\n   ⚡ engine_fasores.py — Streamlit Interactive Engine"
+  },
+  {
+    "objectID": "aplicaciones_python/simulador_fasores.html#descargas-código-fuente",
+    "href": "aplicaciones_python/simulador_fasores.html#descargas-código-fuente",
+    "title": "Simulador Fasorial y Análisis de Potencia Compleja",
+    "section": "Descargas & Código Fuente",
+    "text": "Descargas & Código Fuente\n\n📥 Descargar Script Standalone (calculo_fasores.py)\n📊 Tabla de Parámetros de Conductores (CSV)"
+  },
+  {
+    "objectID": "circuitos_electricos/analisis_nodal.html",
+    "href": "circuitos_electricos/analisis_nodal.html",
+    "title": "Análisis Nodal en Corriente Alterna",
+    "section": "",
+    "text": "Resolución sistemática de circuitos mediante potenciales de nodo y leyes de corrientes.\nEl método de nodos reduce el sistema de ecuaciones de cualquier circuito lineal a un conjunto desacoplado o matricial de tensiones nodales respecto a un punto de referencia común."
+  },
+  {
+    "objectID": "circuitos_electricos/analisis_nodal.html#elementos-de-la-matriz-de-admitancias-mathbfy",
+    "href": "circuitos_electricos/analisis_nodal.html#elementos-de-la-matriz-de-admitancias-mathbfy",
+    "title": "Análisis Nodal en Corriente Alterna",
+    "section": "1.1 Elementos de la Matriz de Admitancias [\\mathbf{Y}]",
+    "text": "1.1 Elementos de la Matriz de Admitancias [\\mathbf{Y}]\n\nAdmitancias Propias (\\mathbf{Y}_{ii}): Elementos de la diagonal principal.\n\\mathbf{Y}_{ii} = \\sum \\mathbf{Y}_{\\text{conectadas directamente al nodo } i} Es la suma de todas las admitancias complejas incidentes en el nodo i. Siempre lleva signo positivo.\nAdmitancias Mutuas (\\mathbf{Y}_{ij} con i \\neq j): Elementos fuera de la diagonal.\n\\mathbf{Y}_{ij} = -\\sum \\mathbf{Y}_{\\text{conectadas directamente entre el nodo } i \\text{ y el nodo } j} Corresponde al negativo de la suma de admitancias de las ramas que unen directamente los nodos i y j. En circuitos pasivos recíprocos, la matriz es simétrica: \\mathbf{Y}_{ij} = \\mathbf{Y}_{ji}.\nVector de Inyección de Corrientes (\\mathbf{I}_i):\n\\mathbf{I}_i = \\sum \\mathbf{I}_{\\text{fuentes que entran al nodo } i} - \\sum \\mathbf{I}_{\\text{fuentes que salen del nodo } i} Es la suma fasorial de las fuentes de corriente independientes que inyectan carga al nodo i."
+  },
+  {
+    "objectID": "circuitos_electricos/circuito_thevenin.html",
+    "href": "circuitos_electricos/circuito_thevenin.html",
+    "title": "Laboratorio Interactivo: Teorema de Thévenin en CA",
+    "section": "",
+    "text": "Simplificación de redes complejas activas a una fuente fasorial ideal en serie con una impedancia.\nPermite analizar el comportamiento de una carga conectada a una red arbitrariamente compleja sin necesidad de resolver nuevamente todo el circuito cada vez que la impedancia de carga varía."
+  },
+  {
+    "objectID": "circuitos_electricos/circuito_thevenin.html#tensión-de-thévenin-mathbfv_th",
+    "href": "circuitos_electricos/circuito_thevenin.html#tensión-de-thévenin-mathbfv_th",
+    "title": "Laboratorio Interactivo: Teorema de Thévenin en CA",
+    "section": "1. Tensión de Thévenin (\\mathbf{V}_{th})",
+    "text": "1. Tensión de Thévenin (\\mathbf{V}_{th})\nLa tensión de Thévenin es la diferencia de potencial fasorial en circuito abierto entre los terminales a y b (desconectando la impedancia de carga \\mathbf{Z}_L):\n\\mathbf{V}_{th} = \\mathbf{V}_{ab} \\Big|_{\\text{circuito abierto}}\nSe calcula utilizando cualquier método sistemático (análisis nodal, análisis de mallas o divisores de tensión fasoriales) con los terminales a-b libres."
+  },
+  {
+    "objectID": "circuitos_electricos/circuito_thevenin.html#impedancia-de-thévenin-mathbfz_th",
+    "href": "circuitos_electricos/circuito_thevenin.html#impedancia-de-thévenin-mathbfz_th",
+    "title": "Laboratorio Interactivo: Teorema de Thévenin en CA",
+    "section": "2. Impedancia de Thévenin (\\mathbf{Z}_{th})",
+    "text": "2. Impedancia de Thévenin (\\mathbf{Z}_{th})\nLa impedancia de Thévenin \\mathbf{Z}_{th} = R_{th} + j X_{th} representa la oposición total vista desde los terminales a-b hacia el interior de la red. Su método de cálculo depende de la naturaleza de las fuentes:\n\n\n\nCaso A: Red con Solo Fuentes Independientes\n\nSe desactivan todas las fuentes independientes:\n\nFuentes de tensión: se reemplazan por cortocircuitos (\\mathbf{V}_s = 0\\text{ V}).\nFuentes de corriente: se reemplazan por circuitos abiertos (\\mathbf{I}_s = 0\\text{ A}).\n\nSe calcula la impedancia equivalente vista desde los terminales a-b mediante reducciones serie-paralelo o transformaciones \\Delta \\leftrightarrow \\text{Y}.\n\n\n\n\n\nCaso B: Red con Fuentes Dependientes\nLas fuentes dependientes nunca deben desactivarse, ya que son controladas por variables internas del circuito.\n\nSe desactivan únicamente las fuentes independientes.\nSe conecta entre los terminales a-b una fuente de prueba auxiliar de tensión fasorial \\mathbf{V}_o (o de corriente \\mathbf{I}_o).\nSe determina la corriente suministrada por la fuente de prueba \\mathbf{I}_o: \\mathbf{Z}_{th} = \\frac{\\mathbf{V}_o}{\\mathbf{I}_o}\n\n\n\n\n\n\n\n\n\n\nTipMétodo Alternativo: Relación de Cortocircuito\n\n\n\nSi la red contiene fuentes dependientes, un método sumamente práctico y directo consiste en calcular la corriente de cortocircuito \\mathbf{I}_{sc} = \\mathbf{I}_N entre los terminales a y b:\n\\mathbf{Z}_{th} = \\frac{\\mathbf{V}_{th}}{\\mathbf{I}_{sc}}"
+  },
+  {
+    "objectID": "circuitos_electricos/circuito_thevenin.html#condición-de-adaptación-conjugada",
+    "href": "circuitos_electricos/circuito_thevenin.html#condición-de-adaptación-conjugada",
+    "title": "Laboratorio Interactivo: Teorema de Thévenin en CA",
+    "section": "Condición de Adaptación Conjugada",
+    "text": "Condición de Adaptación Conjugada\nPara maximizar P_L: 1. Compensación de reactancias: El denominador se minimiza cuando la reactancia total es nula, es decir:\nX_L = -X_{th} (Si la red es inductiva con +jX_{th}, la carga debe ser capacitiva con -jX_{th} para entrar en resonancia serie). 2. Adaptación de resistencias: Derivando respecto a R_L con X_L = -X_{th}, se obtiene que la resistencia de carga debe igualar a la resistencia de Thévenin:\nR_L = R_{th}\nPor consiguiente, la condición de máxima transferencia de potencia activa es el complejo conjugado:\n\\boxed{\\mathbf{Z}_L = \\mathbf{Z}_{th}^* = R_{th} - j X_{th}}\nBajo esta condición óptima, la potencia activa máxima disipada en la carga es:\n\\boxed{P_{L,\\max} = \\frac{|\\mathbf{V}_{th}|^2}{4 R_{th}} \\quad \\text{[W]}}"
+  },
+  {
+    "objectID": "circuitos_electricos/index.html",
+    "href": "circuitos_electricos/index.html",
+    "title": "⚡ Circuitos Eléctricos",
+    "section": "",
+    "text": "⚡ MÓDULO TÉCNICO · CIRCUITOS ELÉCTRICOS EN CA\n\n\nAnálisis en Régimen Permanente Sinusoidal, Métodos y Teoremas\nColección estructurada de memorias de cálculo, análisis fasorial riguroso, formulación matricial por admitancias e impedancias, y teoremas de simplificación de redes en corriente alterna con soporte computacional en Python y simuladores interactivos.\n\n\nUtiliza las categorías o el buscador para filtrar entre Fasores, Métodos de Redes (Delta-Estrella, Nodos, Mallas), Teoremas Fundamentales (Thévenin, Norton) y Potencia en CA.\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\nAnálisis Nodal en Corriente Alterna\n\n\nFormulación sistemática por Ley de Corrientes de Kirchhoff (LCK) y Matriz de Admitancias Complejas\n\n4 min\n\n\nMétodos de Redes\n\nAnálisis Nodal\n\nAdmitancias\n\nLCK\n\nCircuitos CA\n\n\n\nResolución sistemática de redes eléctricas sinusoidales en régimen permanente mediante potenciales de nodo: planteamiento matricial [Y][V] = [I], supernodos y fuentes…\n\n\n\n\n\n\n\n\n\nAnálisis de Mallas en Corriente Alterna\n\n\nFormulación sistemática por Ley de Tensiones de Kirchhoff (LVK) y Matriz de Impedancias Complejas\n\n4 min\n\n\nMétodos de Redes\n\nAnálisis de Mallas\n\nImpedancias\n\nLVK\n\nCircuitos CA\n\n\n\nResolución de circuitos planos de corriente alterna en régimen permanente mediante corrientes ficticias de lazo: matriz de impedancias de malla [Z][I] = [V], supermallas y…\n\n\n\n\n\n\n\n\n\nFasores y Análisis de Circuitos en CA\n\n\nDe la señal sinusoidal al circuito: representación, álgebra compleja e interpretación física\n\n26 min\n\n\nFasores\n\nNúmeros Complejos\n\nCircuitos Eléctricos\n\nCA\n\nImpedancia\n\n\n\nGuía progresiva de fasores, números complejos, impedancias RLC y resolución de circuitos en régimen sinusoidal permanente.\n\n\n\n\n\n\n\n\n\nLaboratorio Interactivo: Teorema de Thévenin en CA\n\n\nCircuito equivalente unifilar, cálculo de Vth y Zth, máxima transferencia de potencia compleja y laboratorio interactivo\n\n4 min\n\n\nTeoremas de Redes\n\nThévenin\n\nMáxima Transferencia\n\nImpedancia Compleja\n\nCircuitos CA\n\nCalculadora\n\n\n\nReducción de redes lineales activas de CA a un modelo equivalente serie: cálculo riguroso de tensión de circuito abierto, impedancia Thévenin, adaptación conjugada y…\n\n\n\n\n\n\n\n\n\nPotencia en Corriente Alterna y Triángulo de Potencias\n\n\nModelado analítico de potencia instantánea, activa, reactiva, aparente y compensación del factor de potencia\n\n4 min\n\n\nPotencia CA\n\nPotencia Compleja\n\nFactor de Potencia\n\nTriángulo de Potencias\n\nStreamlit\n\nSimulación\n\n\n\nFormulación de potencia compleja, deducción del triángulo de potencias, análisis de cargas en atraso/adelanto y simulador interactivo en Streamlit.\n\n\n\n\n\n\n\n\n\nTeorema de Norton en Corriente Alterna\n\n\nCircuito equivalente dual de corriente, corriente de cortocircuito y transformación de fuentes en CA\n\n3 min\n\n\nTeoremas de Redes\n\nNorton\n\nTransformación de Fuentes\n\nCircuitos Equivalentes\n\nCircuitos CA\n\n\n\nModelado y simplificación de circuitos de corriente alterna mediante el equivalente Norton: determinación de IN, impedancia y admitancia de Norton, y equivalencia recíproca…\n\n\n\n\n\n\n\n\n\nTransformación Delta – Estrella (Δ ↔︎ Y) en Corriente Alterna\n\n\nConversión de impedancias complejas, topologías en puente, doble T y calculadora interactiva\n\n4 min\n\n\nMétodos de Redes\n\nDelta-Estrella\n\nImpedancia Compleja\n\nCircuitos CA\n\n\n\nFormulación analítica rigurosa y herramienta de cálculo para la conversión bidireccional Delta-Estrella con impedancias complejas en régimen permanente sinusoidal.\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "circuitos_electricos/teoria_fasores.html",
+    "href": "circuitos_electricos/teoria_fasores.html",
+    "title": "Fasores y Análisis de Circuitos en CA",
+    "section": "",
+    "text": "Recursos Rápidos\n  \n\n  \n    \n      Sistema Resistivo, Inductivo y Capacitivo, referencia Angulo de desfase entre Tensión y Corriente.\n      \n         @CANALELECTRICO1\n      \n    \n\n    \n      Inductor y capacitor en corriente alterna\n      \n         @ingenierosenserie\n      \n    \n\n    \n      Tutorial Polar ↔ Rectangular (Casio fx-9750GIII)\n      \n         Tutorial Casio fx-9750GIII\n      \n    \n\n    \n      Tutorial Polar ↔ Rectangular (Casio fx-991ES PLUS)\n      \n         Tutorial Casio fx-991ES PLUS\n      \n    \n\n    \n      Tutorial Polar ↔ Rectangular (Casio fx-82MS)\n      \n         Tutorial Casio fx-82MS\n      \n    \n\n    \n      Tutorial Polar ↔ Rectangular (Calculadora Genérica / China)\n      \n         Tutorial Calc. Universal / China\n      \n    \n\n    \n      Documento Offline\n      \n         Descargar Guía en PDF\n      \n    \n\n    \n      Siguientes Temas\n      \n         Transformación Δ–Y\n      \n      \n         Análisis Nodal\n      \n      \n         Análisis de Mallas\n      \n      \n         Teorema Thévenin\n      \n      \n         Teorema Norton\n      \n      \n         Módulo Potencia CA\n      \n    \n\n    \n      Código Fuente\n      \n         Script Python\n      \n    \n\n    \n      Navegación\n      \n         Índice Circuitos"
+  },
+  {
+    "objectID": "circuitos_electricos/teoria_fasores.html#el-sinor-y-la-proyección-temporal",
+    "href": "circuitos_electricos/teoria_fasores.html#el-sinor-y-la-proyección-temporal",
+    "title": "Fasores y Análisis de Circuitos en CA",
+    "section": "4.1 El sinor y la proyección temporal",
+    "text": "4.1 El sinor y la proyección temporal\nEl concepto geométrico puede visualizarse como un vector rotatorio cuya proyección sobre el eje real produce la sinusoidal.\n\n\n\nCorrespondencia entre vector rotatorio y señal sinusoidal.\n\n\nLa imagen debe interpretarse como una representación geométrica, no como la definición matemática completa del fasor."
+  },
+  {
+    "objectID": "circuitos_electricos/teoria_fasores.html#identidades-esenciales",
+    "href": "circuitos_electricos/teoria_fasores.html#identidades-esenciales",
+    "title": "Fasores y Análisis de Circuitos en CA",
+    "section": "5.1 Identidades esenciales",
+    "text": "5.1 Identidades esenciales\n\n\\boxed{\\sin(\\theta)=\\cos(\\theta-90^\\circ)}\n\n\n\\boxed{-\\sin(\\theta)=\\cos(\\theta+90^\\circ)}\n\n\n\\boxed{-\\cos(\\theta)=\\cos(\\theta\\pm180^\\circ)}\n\n\n5.1.1 Tabla de conversión\n\n\n\n\n\n\n\n\nSeñal original\nForma coseno\nCambio de fase\n\n\n\n\n+\\sin(\\omega t+\\theta)\n\\cos(\\omega t+\\theta-90^\\circ)\n-90^\\circ\n\n\n-\\sin(\\omega t+\\theta)\n\\cos(\\omega t+\\theta+90^\\circ)\n+90^\\circ\n\n\n+\\cos(\\omega t+\\theta)\nya está normalizada\n0^\\circ\n\n\n-\\cos(\\omega t+\\theta)\n\\cos(\\omega t+\\theta+180^\\circ)\n+180^\\circ\n\n\n\n\n\n\n\n\n\nTipRegla práctica\n\n\n\nPrimero normaliza la función. Después extrae el fasor.\nNo intentes memorizar directamente un fasor para cada combinación de seno, coseno y signo."
+  },
+  {
+    "objectID": "circuitos_electricos/teoria_fasores.html#ejemplo",
+    "href": "circuitos_electricos/teoria_fasores.html#ejemplo",
+    "title": "Fasores y Análisis de Circuitos en CA",
+    "section": "5.2 Ejemplo",
+    "text": "5.2 Ejemplo\nSea: \\qquad \\qquad \\qquad i(t)=-4\\sin(10t+15^\\circ)\\ \\mathrm A\nNormalizamos: \\qquad -4\\sin(10t+15^\\circ) = 4\\cos(10t+15^\\circ+90^\\circ)\nEntonces: \\qquad \\qquad i(t)=4\\cos(10t+105^\\circ)\n\\qquad \\qquad \\qquad \\qquad \\boxed{\\mathbf I=4\\angle105^\\circ\\ \\mathrm A}"
+  },
+  {
+    "objectID": "circuitos_electricos/teoria_fasores.html#ejemplo-1",
+    "href": "circuitos_electricos/teoria_fasores.html#ejemplo-1",
+    "title": "Fasores y Análisis de Circuitos en CA",
+    "section": "6.1 Ejemplo",
+    "text": "6.1 Ejemplo\n\nv(t)=120\\cos(\\omega t+30^\\circ)\\ \\mathrm V\n\nFasor pico:\n\n\\mathbf V_p=120\\angle30^\\circ\\ \\mathrm V\n\nFasor RMS:\n\n\\mathbf V_{\\mathrm{rms}}\n=\n\\frac{120}{\\sqrt2}\\angle30^\\circ\n=\n84.85\\angle30^\\circ\\ \\mathrm V\n\n\n\n\n\n\n\nImportant⚠️ Regla crítica\n\n\n\nEn una misma ecuación fasorial, utiliza todos los valores en pico o todos en RMS.\nNunca mezcles:\n\nV_{\\mathrm{rms}}\n\\quad\\text{con}\\quad\nI_{\\mathrm{pico}}\n\nsin realizar antes la conversión correspondiente."
+  },
+  {
+    "objectID": "circuitos_electricos/teoria_fasores.html#conversión-rectangular-polar",
+    "href": "circuitos_electricos/teoria_fasores.html#conversión-rectangular-polar",
+    "title": "Fasores y Análisis de Circuitos en CA",
+    "section": "8.1 Conversión rectangular → polar",
+    "text": "8.1 Conversión rectangular → polar\nPara obtener la magnitud r y el ángulo \\theta a partir de las coordenadas cartesianas (x, y):\n\n\\boxed{r=\\sqrt{x^2+y^2}}\n\ny el ángulo \\theta debe calcularse considerando estrictamente el signo de x y de y (ajuste de cuadrante):\n\n\\boxed{\\theta=\\operatorname{atan2}(y,x)}\n\n\n\n\n\n\n\nNote🧭 ¿Por qué atan2 y no solo \\arctan(y/x)?\n\n\n\nLa función arco tangente estándar \\arctan(y/x) de las matemáticas continuas únicamente devuelve valores en el rango (-90^\\circ, +90^\\circ) (Cuadrantes I y IV).\nSi un número complejo tiene x &lt; 0 (Cuadrantes II y III), la división y/x arroja un signo ambiguo: - \\frac{4}{-3} = -1.33 \\implies \\arctan(-1.33) = -53.13^\\circ (¡Falso! El punto (-3, 4) está en el Cuadrante II a 126.87^\\circ).\nLa función matemática \\operatorname{atan2}(y,x) analiza ambos signos independientemente para entregar el ángulo geométrico verdadero en (-180^\\circ, +180^\\circ].\n\n\n\n\n\n\n\n\nTip📟 ¿Cómo calcularlo en tu calculadora científica física? (Casio / Sharp / TI)\n\n\n\nEn tu calculadora física no existe una tecla llamada atan2 ni atan. Tienes 3 formas prácticas de calcularlo en exámenes y laboratorio:\n\n8.1.0.1 🥇 Método 1: La función directa Pol( (El atan2 de la calculadora)\nLas calculadoras científicas estándar (Casio fx-570, fx-991, fx-82, etc.) incluyen la función de conversión automática de coordenadas con ajuste de cuadrante incluido:\n\nDe Rectangular a Polar:\n\nPresiona SHIFT + + \\longrightarrow Aparece en pantalla Pol(.\nDigita la parte real x, luego la coma con SHIFT + ) y la parte imaginaria y.\nEjemplo: Pol(-3, 4) y presiona =.\nResultado instantáneo: r = 5, θ = 126.87° (el ángulo ya viene con el cuadrante exacto).\n\nDe Polar a Rectangular:\n\nPresiona SHIFT + - \\longrightarrow Aparece Rec(.\nDigita Rec(r, θ). Ejemplo: Rec(5, 126.87) = \\longrightarrow Entrega X = -3, Y = 4.\n\n\n\n\n\n8.1.0.2 🥈 Método 2: Con la tecla tan⁻¹ y ajuste manual de cuadrante\nSi calculas por partes mediante r = \\sqrt{x^2+y^2} y la tecla tan⁻¹ (SHIFT + tan):\n\nCalcula el ángulo base con valores absolutos: \\alpha = \\tan^{-1}\\left(\\left|\\frac{y}{x}\\right|\\right).\nAplica la regla según los signos de (x, y):\n\n\n\n\n\n\n\n\n\n\nCuadrante\nSignos (x, y)\nFórmula de Corrección en Calculadora\nEjemplo con |x|=3, |y|=4 (\\alpha = 53.13^\\circ)\n\n\n\n\nI\n(+x, +y)\n\\theta = \\alpha\n\\mathbf{Z} = 3 + j4 \\implies \\theta = \\mathbf{+53.13^\\circ}\n\n\nII\n(-x, +y)\n\\theta = 180^\\circ - \\alpha\n\\mathbf{Z} = -3 + j4 \\implies \\theta = 180^\\circ - 53.13^\\circ = \\mathbf{+126.87^\\circ}\n\n\nIII\n(-x, -y)\n\\theta = -180^\\circ + \\alpha\n\\mathbf{Z} = -3 - j4 \\implies \\theta = -180^\\circ + 53.13^\\circ = \\mathbf{-126.87^\\circ}\n\n\nIV\n(+x, -y)\n\\theta = -\\alpha\n\\mathbf{Z} = 3 - j4 \\implies \\theta = \\mathbf{-53.13^\\circ}\n\n\n\n\n\n\n8.1.0.3 🥉 Método 3: Modo Números Complejos (MODE 2: CMPLX)\nEl método más rápido para resolver circuitos completos:\n\nActivar modo complejo: Presiona MODE \\longrightarrow 2: CMPLX.\nVerifica que tu calculadora esté en grados sexagesimales (indicador D o Deg en la parte superior).\nEscribe el número directamente en pantalla:\nDigita -3 + 4 e inserta la unidad imaginaria j presionando la tecla ENG (aparece la i).\nConvertir a Polar:\n\nEn Casio clásica: Presiona SHIFT + 2 (menú CMPLX) \\longrightarrow selecciona 3: ▶r∠θ \\longrightarrow =.\nEn Casio ClassWiz: Presiona OPTN \\longrightarrow flecha abajo \\longrightarrow 1: ▶r∠θ \\longrightarrow =.\n\nLa pantalla mostrará directamente: 5 ∠ 126.87°.\n\n\n\n8.1.0.3.1 🎬 Videotutoriales paso a paso según tu modelo de calculadora:\n\n📺 Casio fx-9750GIII (Gráfica): Ver tutorial paso a paso\n📺 Casio fx-991ES PLUS / fx-570ES: Ver tutorial paso a paso\n📺 Casio fx-82MS / fx-350MS: Ver tutorial paso a paso\n📺 Calculadora Científica Universal / Genérica China: Ver tutorial paso a paso"
+  },
+  {
+    "objectID": "circuitos_electricos/teoria_fasores.html#conversión-polar-rectangular",
+    "href": "circuitos_electricos/teoria_fasores.html#conversión-polar-rectangular",
+    "title": "Fasores y Análisis de Circuitos en CA",
+    "section": "8.2 Conversión polar → rectangular",
+    "text": "8.2 Conversión polar → rectangular\n\n\\boxed{x=r\\cos\\theta}\n\n\n\\boxed{y=r\\sin\\theta}\n\npor tanto:\n\n\\boxed{\nr\\angle\\theta\n=\nr\\cos\\theta+jr\\sin\\theta\n}"
+  },
+  {
+    "objectID": "circuitos_electricos/teoria_fasores.html#ciclo-de-potencias",
+    "href": "circuitos_electricos/teoria_fasores.html#ciclo-de-potencias",
+    "title": "Fasores y Análisis de Circuitos en CA",
+    "section": "10.1 Ciclo de potencias",
+    "text": "10.1 Ciclo de potencias\n\nj^0=1\n\n\nj^1=j\n\n\nj^2=-1\n\n\nj^3=-j\n\n\nj^4=1\n\n\n\n🔬 Laboratorio Interactivo — ¿Qué significa realmente multiplicar por j?\nEn el plano complejo, j no es solamente un símbolo algebraico.\nMultiplicar un número complejo por j produce una rotación de +90^\\circ sin cambiar su magnitud.\nPartiremos del número complejo: z=1\ny aplicaremos sucesivamente la operación: z \\rightarrow jz \\rightarrow j^2z \\rightarrow j^3z \\rightarrow j^4z\nObserva cómo una operación algebraica produce directamente un movimiento geométrico:\n\n\\boxed{\\text{multiplicar por } j \\;\\equiv\\; \\text{rotar } +90^\\circ}\n\n\n\n\n10.2 🎯 Objetivo\nConvertir el significado de j en una experiencia visual y algebraica.\nAl experimentar, debes descubrir que:\n\nj\\cdot 1 = j\n\n\nj\\cdot j = j^2 = -1\n\n\nj\\cdot(-1) = -j\n\n\nj\\cdot(-j) = -j^2 = 1\n\nPor tanto:\n\n\\boxed{j^4 = 1}\n\ny cada multiplicación por j corresponde a una rotación de 90^\\circ.\n\n\n\n\n  \n\n  \n\n    \n\n      \n        \n          Operador complejo\n        \n\n        \n          Multiplicar por j es rotar +90°\n        \n      \n\n      \n        \n          Regla geométrica\n        \n        \n          × j ⇔ +90°\n        \n      \n\n    \n\n  \n\n\n  \n\n  \n\n    \n\n      \n        \n          \n          Secuencia de rotación\n        \n\n        \n          Cada pulsación aplica nuevamente la operación × j.\n        \n      \n\n      \n        Paso 0\n      \n\n    \n\n\n    \n\n      \n        1\n        0°\n      \n\n      \n        × j\n        \n      \n\n      \n        j\n        +90°\n      \n\n      \n        × j\n        \n      \n\n      \n        -1\n        180°\n      \n\n      \n        × j\n        \n      \n\n      \n        -j\n        270°\n      \n\n      \n        × j\n        \n      \n\n      \n        1\n        360°\n      \n\n    \n\n  \n\n\n  \n\n  \n\n    \n\n      \n        Número complejo actual\n      \n\n      \n        1\n      \n\n    \n\n\n    \n\n      \n        Operación\n      \n\n      \n        Inicial\n      \n\n    \n\n\n    \n\n      \n        Ángulo\n      \n\n      \n        0°\n      \n\n    \n\n\n    \n\n      \n        Magnitud\n      \n\n      \n        1\n      \n\n    \n\n  \n\n\n  \n\n  \n\n    \n\n      \n\n        \n        Multiplicar por j\n      \n\n\n      \n\n        × (-j)\n      \n\n\n      \n\n        \n        Reiniciar\n      \n\n    \n\n  \n\n\n  \n\n  \n\n\n    \n\n    \n\n      \n\n        \n          \n          Plano complejo\n        \n\n        \n          0°\n        \n\n      \n\n      \n        \n        \n      \n\n      \n        El módulo permanece constante; la dirección cambia 90° por cada × j.\n      \n\n    \n\n\n    \n\n    \n\n      \n        Interpretación algebraica\n      \n\n      \n        Punto de partida\n      \n\n\n      \n\n        \n          Operación realizada\n        \n\n        \n          z = 1\n        \n\n      \n\n\n      \n\n        \n          Resultado\n        \n\n        \n          1\n        \n\n      \n\n\n      \n\n        \n          Parte real\n          1\n        \n\n        \n          Parte imaginaria\n          0\n        \n\n        \n          Forma polar\n          1 ∠ 0°\n        \n\n        \n          Módulo\n          1\n        \n\n      \n\n    \n\n  \n\n\n  \n\n  \n\n    \n\n      \n        \n      \n\n      \n\n        \n          Observa\n        \n\n        \n          Partimos de 1, ubicado sobre el eje real positivo.\n          Al multiplicar por j, el vector debe girar +90°.\n        \n\n      \n\n    \n\n  \n\n\n  \n\n  \n\n    \n      La regla general\n    \n\n    \n\n      z = x + jy\n      jz = j(x + jy) = jx + j2y\n      \n        jz = -y + jx\n      \n\n    \n\n    \n\n      \n        \n          \n            Parte real\n          \n          \n            x → -y\n          \n        \n      \n\n      \n        \n          \n            Parte imaginaria\n          \n          \n            y → x\n          \n        \n      \n\n      \n        \n          \n            Rotación\n          \n          \n            +90°\n          \n        \n      \n\n    \n\n  \n\n\n  \n\n  \n\n\n  \n\n  \n\n\n\n\nEl ciclo se repite cada cuatro potencias.\nTambién:\n\n\\boxed{\\frac1j=-j}\n\n\n\n\n\n\n\nNote🧠 Interpretación física\n\n\n\nEn fasores, j no es simplemente una letra algebraica.\nEs un operador que representa un desplazamiento angular de +90^\\circ."
+  },
+  {
+    "objectID": "circuitos_electricos/teoria_fasores.html#objetivo",
+    "href": "circuitos_electricos/teoria_fasores.html#objetivo",
+    "title": "Fasores y Análisis de Circuitos en CA",
+    "section": "10.2 🎯 Objetivo",
+    "text": "10.2 🎯 Objetivo\nConvertir el significado de j en una experiencia visual y algebraica.\nAl experimentar, debes descubrir que:\n\nj\\cdot 1 = j\n\n\nj\\cdot j = j^2 = -1\n\n\nj\\cdot(-1) = -j\n\n\nj\\cdot(-j) = -j^2 = 1\n\nPor tanto:\n\n\\boxed{j^4 = 1}\n\ny cada multiplicación por j corresponde a una rotación de 90^\\circ.\n\n\n\n\n  \n\n  \n\n    \n\n      \n        \n          Operador complejo\n        \n\n        \n          Multiplicar por j es rotar +90°\n        \n      \n\n      \n        \n          Regla geométrica\n        \n        \n          × j ⇔ +90°\n        \n      \n\n    \n\n  \n\n\n  \n\n  \n\n    \n\n      \n        \n          \n          Secuencia de rotación\n        \n\n        \n          Cada pulsación aplica nuevamente la operación × j.\n        \n      \n\n      \n        Paso 0\n      \n\n    \n\n\n    \n\n      \n        1\n        0°\n      \n\n      \n        × j\n        \n      \n\n      \n        j\n        +90°\n      \n\n      \n        × j\n        \n      \n\n      \n        -1\n        180°\n      \n\n      \n        × j\n        \n      \n\n      \n        -j\n        270°\n      \n\n      \n        × j\n        \n      \n\n      \n        1\n        360°\n      \n\n    \n\n  \n\n\n  \n\n  \n\n    \n\n      \n        Número complejo actual\n      \n\n      \n        1\n      \n\n    \n\n\n    \n\n      \n        Operación\n      \n\n      \n        Inicial\n      \n\n    \n\n\n    \n\n      \n        Ángulo\n      \n\n      \n        0°\n      \n\n    \n\n\n    \n\n      \n        Magnitud\n      \n\n      \n        1\n      \n\n    \n\n  \n\n\n  \n\n  \n\n    \n\n      \n\n        \n        Multiplicar por j\n      \n\n\n      \n\n        × (-j)\n      \n\n\n      \n\n        \n        Reiniciar\n      \n\n    \n\n  \n\n\n  \n\n  \n\n\n    \n\n    \n\n      \n\n        \n          \n          Plano complejo\n        \n\n        \n          0°\n        \n\n      \n\n      \n        \n        \n      \n\n      \n        El módulo permanece constante; la dirección cambia 90° por cada × j.\n      \n\n    \n\n\n    \n\n    \n\n      \n        Interpretación algebraica\n      \n\n      \n        Punto de partida\n      \n\n\n      \n\n        \n          Operación realizada\n        \n\n        \n          z = 1\n        \n\n      \n\n\n      \n\n        \n          Resultado\n        \n\n        \n          1\n        \n\n      \n\n\n      \n\n        \n          Parte real\n          1\n        \n\n        \n          Parte imaginaria\n          0\n        \n\n        \n          Forma polar\n          1 ∠ 0°\n        \n\n        \n          Módulo\n          1\n        \n\n      \n\n    \n\n  \n\n\n  \n\n  \n\n    \n\n      \n        \n      \n\n      \n\n        \n          Observa\n        \n\n        \n          Partimos de 1, ubicado sobre el eje real positivo.\n          Al multiplicar por j, el vector debe girar +90°.\n        \n\n      \n\n    \n\n  \n\n\n  \n\n  \n\n    \n      La regla general\n    \n\n    \n\n      z = x + jy\n      jz = j(x + jy) = jx + j2y\n      \n        jz = -y + jx\n      \n\n    \n\n    \n\n      \n        \n          \n            Parte real\n          \n          \n            x → -y\n          \n        \n      \n\n      \n        \n          \n            Parte imaginaria\n          \n          \n            y → x\n          \n        \n      \n\n      \n        \n          \n            Rotación\n          \n          \n            +90°"
+  },
+  {
+    "objectID": "circuitos_electricos/teoria_fasores.html#suma-y-resta",
+    "href": "circuitos_electricos/teoria_fasores.html#suma-y-resta",
+    "title": "Fasores y Análisis de Circuitos en CA",
+    "section": "11.1 Suma y resta",
+    "text": "11.1 Suma y resta\nLa forma rectangular es la más conveniente:\n\n(a+jb)+(c+jd)\n=\n(a+c)+j(b+d)"
+  },
+  {
+    "objectID": "circuitos_electricos/teoria_fasores.html#multiplicación",
+    "href": "circuitos_electricos/teoria_fasores.html#multiplicación",
+    "title": "Fasores y Análisis de Circuitos en CA",
+    "section": "11.2 Multiplicación",
+    "text": "11.2 Multiplicación\nLa forma polar es especialmente conveniente:\n\n(r_1\\angle\\theta_1)(r_2\\angle\\theta_2)\n=\nr_1r_2\\angle(\\theta_1+\\theta_2)"
+  },
+  {
+    "objectID": "circuitos_electricos/teoria_fasores.html#división",
+    "href": "circuitos_electricos/teoria_fasores.html#división",
+    "title": "Fasores y Análisis de Circuitos en CA",
+    "section": "11.3 División",
+    "text": "11.3 División\n\n\\frac{r_1\\angle\\theta_1}{r_2\\angle\\theta_2}\n=\n\\frac{r_1}{r_2}\\angle(\\theta_1-\\theta_2)"
+  },
+  {
+    "objectID": "circuitos_electricos/teoria_fasores.html#conjugado",
+    "href": "circuitos_electricos/teoria_fasores.html#conjugado",
+    "title": "Fasores y Análisis de Circuitos en CA",
+    "section": "11.4 Conjugado",
+    "text": "11.4 Conjugado\n\n\\boxed{\n(a+jb)^*=a-jb\n}\n\ny:\n\n\\boxed{\n(r\\angle\\theta)^*=r\\angle(-\\theta)\n}"
+  },
+  {
+    "objectID": "circuitos_electricos/teoria_fasores.html#división-rectangular",
+    "href": "circuitos_electricos/teoria_fasores.html#división-rectangular",
+    "title": "Fasores y Análisis de Circuitos en CA",
+    "section": "11.5 División rectangular",
+    "text": "11.5 División rectangular\n\n\\frac{a+jb}{c+jd}\n=\n\\frac{(a+jb)(c-jd)}{c^2+d^2}\n\npor tanto:\n\n\\boxed{\n\\frac{a+jb}{c+jd}\n=\n\\frac{ac+bd}{c^2+d^2}\n+\nj\\frac{bc-ad}{c^2+d^2}\n}\n\n\n🔬 Laboratorio 3 — Transformación Complejo ↔︎ Polar y Cuadrantes\nEn ingeniería eléctrica, la conversión fluida entre la forma rectangular (x + jy, ideal para sumar y restar fasores) y la forma polar (r\\angle\\theta, ideal para multiplicar, dividir y calcular potencias) es esencial.\n\n\\mathbf Z = x + jy = r\\angle\\theta = r\\mathrm{e}^{j\\theta}\n\ndonde: \nr = \\sqrt{x^2 + y^2}, \\qquad \\theta = \\operatorname{atan2}(y, x)\n\n\n\n\n  \n  \n    \n      \n         Rectangular ➔ Polar\n      \n    \n    \n      \n         Polar ➔ Rectangular\n      \n    \n  \n\n  \n  \n     Casos típicos:\n    3 + j4 (5 ∠ 53.1°)\n    6 − j8 (10 ∠ -53.1°)\n    −5 + j5 (C-II)\n    −4 − j3 (C-III)\n    10 ∠ 0° (Resistivo)\n    10 ∠ 90° (Inductivo)\n  \n\n  \n  \n    \n      Parte Real x (Resistencia R):\n      \n        Re (x)\n        \n      \n      \n    \n\n    \n      Parte Imaginaria y (Reactancia X):\n      \n        +j Im (y)\n        \n      \n      \n    \n  \n\n  \n  \n    \n      Magnitud o Módulo r (|Z| o |V|):\n      \n        |r|\n        \n      \n      \n    \n\n    \n      Ángulo de Fase θ (Grados °):\n      \n        ∠ θ\n        \n        °\n      \n      \n    \n  \n\n  \n  \n    \n    \n      \n        \n      \n    \n\n    \n    \n      \n        \n           Plano Complejo (Gauss)\n          Cuadrante I\n        \n        \n          \n        \n        \n          Vector fasorial en azul, proyecciones ortogonales punteadas y arco de fase en naranja."
+  },
+  {
+    "objectID": "circuitos_electricos/teoria_fasores.html#resistor",
+    "href": "circuitos_electricos/teoria_fasores.html#resistor",
+    "title": "Fasores y Análisis de Circuitos en CA",
+    "section": "13.1 Resistor",
+    "text": "13.1 Resistor\n\n\\boxed{\\mathbf Z_R=R=R\\angle0^\\circ}\n\nTensión y corriente están en fase."
+  },
+  {
+    "objectID": "circuitos_electricos/teoria_fasores.html#inductor",
+    "href": "circuitos_electricos/teoria_fasores.html#inductor",
+    "title": "Fasores y Análisis de Circuitos en CA",
+    "section": "13.2 Inductor",
+    "text": "13.2 Inductor\n\n\\boxed{\\mathbf Z_L=j\\omega L=\\omega L\\angle90^\\circ}\n\nPor tanto:\n\n\\boxed{\\mathbf V_L=j\\omega L\\mathbf I}\n\nLa tensión adelanta a la corriente 90^\\circ.\n\n13.2.1 🧠 ELI\nE antes que I → en el inductor:\n\nV_L\\text{ adelanta a }I"
+  },
+  {
+    "objectID": "circuitos_electricos/teoria_fasores.html#capacitor",
+    "href": "circuitos_electricos/teoria_fasores.html#capacitor",
+    "title": "Fasores y Análisis de Circuitos en CA",
+    "section": "13.3 Capacitor",
+    "text": "13.3 Capacitor\n\n\\boxed{\n\\mathbf Z_C=\n\\frac1{j\\omega C}\n=\n-j\\frac1{\\omega C}\n}\n\nPor tanto:\n\n\\boxed{\n\\mathbf V_C=-j\\frac1{\\omega C}\\mathbf I\n}\n\nLa tensión atrasa a la corriente 90^\\circ.\n\n13.3.1 🧠 ICE\nI antes que E → en el capacitor:\n\nI\\text{ adelanta a }V_C\n\n\n\n\n\n\n\nTipELI e ICE son memoria, no demostración\n\n\n\nLa comprensión profunda está en:\n\n+j\\Rightarrow+90^\\circ\n\n\n-j\\Rightarrow-90^\\circ\n\nLas reglas ELI/ICE sirven para recordar rápidamente el resultado."
+  },
+  {
+    "objectID": "circuitos_electricos/teoria_fasores.html#paso-1-frecuencia",
+    "href": "circuitos_electricos/teoria_fasores.html#paso-1-frecuencia",
+    "title": "Fasores y Análisis de Circuitos en CA",
+    "section": "14.1 Paso 1 — Frecuencia",
+    "text": "14.1 Paso 1 — Frecuencia\n\n\\omega=1000\\ \\mathrm{rad/s}"
+  },
+  {
+    "objectID": "circuitos_electricos/teoria_fasores.html#paso-2-impedancias",
+    "href": "circuitos_electricos/teoria_fasores.html#paso-2-impedancias",
+    "title": "Fasores y Análisis de Circuitos en CA",
+    "section": "14.2 Paso 2 — Impedancias",
+    "text": "14.2 Paso 2 — Impedancias\nInductor:\n\nX_L=\\omega L\n=\n1000(0.050)\n=\n50\\ \\Omega\n\n\n\\mathbf Z_L=j50\\ \\Omega\n\nCapacitor:\n\nX_C=\\frac1{\\omega C}\n=\n\\frac1{1000(25\\times10^{-6})}\n=\n40\\ \\Omega\n\n\n\\mathbf Z_C=-j40\\ \\Omega"
+  },
+  {
+    "objectID": "circuitos_electricos/teoria_fasores.html#paso-3-impedancia-equivalente",
+    "href": "circuitos_electricos/teoria_fasores.html#paso-3-impedancia-equivalente",
+    "title": "Fasores y Análisis de Circuitos en CA",
+    "section": "14.3 Paso 3 — Impedancia equivalente",
+    "text": "14.3 Paso 3 — Impedancia equivalente\nAl ser un circuito serie:\n\n\\mathbf Z_T\n=\nR+\\mathbf Z_L+\\mathbf Z_C\n\n\n\\mathbf Z_T\n=\n30+j50-j40\n\n\n\\boxed{\\mathbf Z_T=30+j10\\ \\Omega}\n\nEn polar:\n\n|\\mathbf Z_T|\n=\n\\sqrt{30^2+10^2}\n=\n31.62\\ \\Omega\n\n\n\\theta_Z\n=\n\\arctan\\left(\\frac{10}{30}\\right)\n=\n18.43^\\circ\n\npor tanto:\n\n\\boxed{\\mathbf Z_T=31.62\\angle18.43^\\circ\\ \\Omega}"
+  },
+  {
+    "objectID": "circuitos_electricos/teoria_fasores.html#paso-4-corriente",
+    "href": "circuitos_electricos/teoria_fasores.html#paso-4-corriente",
+    "title": "Fasores y Análisis de Circuitos en CA",
+    "section": "14.4 Paso 4 — Corriente",
+    "text": "14.4 Paso 4 — Corriente\nUsando fasores pico:\n\n\\mathbf V=120\\angle30^\\circ\\ \\mathrm V\n\nentonces:\n\n\\mathbf I\n=\n\\frac{\\mathbf V}{\\mathbf Z_T}\n\n\n\\mathbf I\n=\n\\frac{120\\angle30^\\circ}\n{31.62\\angle18.43^\\circ}\n\n\n\\boxed{\n\\mathbf I\n=\n3.80\\angle11.57^\\circ\\ \\mathrm A\n}\n\nLa señal temporal:\n\n\\boxed{\ni(t)=3.80\\cos(1000t+11.57^\\circ)\\ \\mathrm A\n}"
+  },
+  {
+    "objectID": "circuitos_electricos/teoria_fasores.html#paso-5-tensiones-individuales",
+    "href": "circuitos_electricos/teoria_fasores.html#paso-5-tensiones-individuales",
+    "title": "Fasores y Análisis de Circuitos en CA",
+    "section": "14.5 Paso 5 — Tensiones individuales",
+    "text": "14.5 Paso 5 — Tensiones individuales\nResistor:\n\n\\mathbf V_R\n=\n\\mathbf I R\n=\n114.0\\angle11.57^\\circ\\ \\mathrm V\n\nInductor:\n\n\\mathbf V_L\n=\n\\mathbf I(j50)\n=\n190.0\\angle101.57^\\circ\\ \\mathrm V\n\nCapacitor:\n\n\\mathbf V_C\n=\n\\mathbf I(-j40)\n=\n152.0\\angle-78.43^\\circ\\ \\mathrm V\n\nFinalmente:\n\n\\boxed{\n\\mathbf V_R+\\mathbf V_L+\\mathbf V_C\n=\n\\mathbf V\n}\n\nEsta es la conexión fundamental:\n\n\\boxed{\nv(t)\n\\rightarrow\n\\mathbf V\n\\rightarrow\n\\mathbf Z\n\\rightarrow\n\\mathbf I\n\\rightarrow\ni(t)\n}"
+  },
+  {
+    "objectID": "circuitos_electricos/teoria_fasores.html#nivel-1-fundamentos-y-transformaciones",
+    "href": "circuitos_electricos/teoria_fasores.html#nivel-1-fundamentos-y-transformaciones",
+    "title": "Fasores y Análisis de Circuitos en CA",
+    "section": "17.1 🟢 Nivel 1: Fundamentos y Transformaciones",
+    "text": "17.1 🟢 Nivel 1: Fundamentos y Transformaciones\n\nEjercicio 1 — Conversión de señales temporales a fasores\n\n17.1.0.0.1 📋 Enunciado\nDadas las siguientes señales temporales de tensión y corriente:\n\nv(t) = 120\\sqrt{2}\\cos(377t - 45^\\circ)\\ \\mathrm V\n\n\ni(t) = -10\\sin(377t + 30^\\circ)\\ \\mathrm A\n\nDeterminar:\n\nEl fasor en valor pico (\\mathbf V_p, \\mathbf I_p).\nEl fasor en valor eficaz o RMS (\\mathbf V_{\\mathrm{rms}}, \\mathbf I_{\\mathrm{rms}}).\n\n\n\n\n\n\n\n\nTip💡 Pista Conceptual\n\n\n\n\n\n\nLa forma estándar de referencia es la función coseno positiva: A\\cos(\\omega t + \\theta) \\longleftrightarrow A\\angle\\theta.\nPara convertir una función seno negativa a coseno positivo, utiliza la identidad trigonométrica: \n-\\sin(\\alpha) = \\cos(\\alpha + 90^\\circ)\n\nEn señales sinusoidales puras, la relación entre el valor pico y el valor eficaz es: \nX_{\\mathrm{rms}} = \\frac{X_p}{\\sqrt{2}}\n\n\n\n\n\n\n\n\n\n\n\nNote📝 Solución Paso a Paso\n\n\n\n\n\n1. Para la tensión v(t): - Como ya se encuentra en forma coseno positiva: \n  \\mathbf V_p = 120\\sqrt{2}\\angle -45^\\circ \\approx 169.71\\angle -45^\\circ\\ \\mathrm V\n   - Para el valor eficaz o RMS: \n  V_{\\mathrm{rms}} = \\frac{120\\sqrt{2}}{\\sqrt{2}} = 120\\ \\mathrm V \\implies \\mathbf V_{\\mathrm{rms}} = 120\\angle -45^\\circ\\ \\mathrm V\n  \n2. Para la corriente i(t): - Transformamos a la forma coseno canónica: \n  i(t) = -10\\sin(377t + 30^\\circ) = 10\\cos(377t + 30^\\circ + 90^\\circ) = 10\\cos(377t + 120^\\circ)\\ \\mathrm A\n   - Fasor pico: \n  \\mathbf I_p = 10\\angle 120^\\circ\\ \\mathrm A\n   - Fasor RMS: \n  I_{\\mathrm{rms}} = \\frac{10}{\\sqrt{2}} \\approx 7.07\\ \\mathrm A \\implies \\mathbf I_{\\mathrm{rms}} = 7.07\\angle 120^\\circ\\ \\mathrm A\n  \n\n\n\n\n\n\n\n\n\n🔍 Sentido Físico / Comprobación:\nLa pulsación \\omega = 377\\ \\mathrm{rad/s} corresponde a la frecuencia industrial estándar de f = \\frac{377}{2\\pi} \\approx 60\\ \\mathrm{Hz}. El ángulo de fase de la tensión es -45^\\circ mientras que el de la corriente es +120^\\circ; esto indica una diferencia de fase total de \\Delta\\phi = 120^\\circ - (-45^\\circ) = 165^\\circ entre ambas variables.\n\n\n\n\n\n\nEjercicio 2 — Conversión entre formas rectangular y polar\n\n17.1.0.0.2 📋 Enunciado\nRealizar las siguientes conversiones entre representaciones complejas:\n\nConvertir a forma polar: \n\\mathbf Z_1 = 6 + j8\\ \\Omega\n \n\\mathbf Z_2 = -5 + j5\\ \\Omega\n\nConvertir a forma rectangular: \n\\mathbf I = 10\\angle -60^\\circ\\ \\mathrm A\n\n\n\n\n\n\n\n\n\nTip💡 Pista Conceptual\n\n\n\n\n\n\nPara rectangular a polar (z = x + jy \\implies r\\angle\\theta):\n\nMódulo: r = \\sqrt{x^2 + y^2}.\nÁngulo: Identifica el cuadrante antes de usar la función arcotangente:\n\nCuadrante I (x&gt;0, y&gt;0): \\theta = \\arctan(y/x)\nCuadrante II (x&lt;0, y&gt;0): \\theta = 180^\\circ - \\arctan(|y/x|) o \\arctan(y/x) + 180^\\circ\nCuadrante IV (x&gt;0, y&lt;0): \\theta = -\\arctan(|y/x|)\n\n\nPara polar a rectangular (r\\angle\\theta \\implies x + jy):\n\nx = r\\cos\\theta, y = r\\sin\\theta.\n\n\n\n\n\n\n\n\n\n\n\nNote📝 Solución Paso a Paso\n\n\n\n\n\n1. Para \\mathbf Z_1 = 6 + j8\\ \\Omega (Cuadrante I): - Módulo: |\\mathbf Z_1| = \\sqrt{6^2 + 8^2} = \\sqrt{36 + 64} = \\sqrt{100} = 10\\ \\Omega - Ángulo: \\theta_1 = \\arctan\\left(\\frac{8}{6}\\right) \\approx 53.13^\\circ \n\\mathbf Z_1 = 10\\angle 53.13^\\circ\\ \\Omega\n\n2. Para \\mathbf Z_2 = -5 + j5\\ \\Omega (Cuadrante II): - Módulo: |\\mathbf Z_2| = \\sqrt{(-5)^2 + 5^2} = \\sqrt{50} = 5\\sqrt{2} \\approx 7.07\\ \\Omega - Ángulo: Al estar en el cuadrante II (x &lt; 0, y &gt; 0), \\theta_2 = 180^\\circ - \\arctan(5/5) = 180^\\circ - 45^\\circ = 135^\\circ \n\\mathbf Z_2 = 5\\sqrt{2}\\angle 135^\\circ \\approx 7.07\\angle 135^\\circ\\ \\Omega\n\n3. Para \\mathbf I = 10\\angle -60^\\circ\\ \\mathrm A (Cuadrante IV): - Parte real: I_x = 10\\cos(-60^\\circ) = 10(0.5) = 5\\ \\mathrm A - Parte imaginaria: I_y = 10\\sin(-60^\\circ) = 10\\left(-\\frac{\\sqrt{3}}{2}\\right) \\approx -8.66\\ \\mathrm A \n\\mathbf I = 5 - j8.66\\ \\mathrm A\n\n\n\n\n\n\n\n\n\n\n🔍 Sentido Físico / Comprobación:\n\\mathbf Z_1 = 6+j8 corresponde al triángulo rectángulo notable 3-4-5 escalado por un factor 2 (6, 8, 10). En \\mathbf I = 10\\angle -60^\\circ, la parte real positiva (5\\ \\mathrm A) y la parte imaginaria negativa (-8.66\\ \\mathrm A) confirman que el vector reside en el cuarto cuadrante."
+  },
+  {
+    "objectID": "circuitos_electricos/teoria_fasores.html#nivel-2-operaciones-complejas-e-impedancias",
+    "href": "circuitos_electricos/teoria_fasores.html#nivel-2-operaciones-complejas-e-impedancias",
+    "title": "Fasores y Análisis de Circuitos en CA",
+    "section": "17.2 🟡 Nivel 2: Operaciones Complejas e Impedancias",
+    "text": "17.2 🟡 Nivel 2: Operaciones Complejas e Impedancias\n\n\n\n\n\n\nImportant📌 Principio Físico: Impedancia en Circuitos Pasivos\n\n\n\nEn redes eléctricas pasivas (sin fuentes dependientes ni generadores internos), la parte resistiva es estrictamente no negativa (R \\ge 0). Esto confina la impedancia \\mathbf Z = R + jX exclusivamente a los cuadrantes I y IV del plano complejo (semiplano derecho, -90^\\circ \\le \\theta_Z \\le +90^\\circ).\n\nX &gt; 0 (\\theta_Z &gt; 0): Comportamiento globalmente inductivo (la tensión adelanta a la corriente).\nX &lt; 0 (\\theta_Z &lt; 0): Comportamiento globalmente capacitivo (la corriente adelanta a la tensión).\nX = 0 (\\theta_Z = 0^\\circ): Comportamiento resistivo puro (tensión y corriente en fase).\n\n\n\n\nEjercicio 3 — Suma fasorial en un nodo (Ley de Kirchhoff de Corrientes)\n\n17.2.0.0.1 📋 Enunciado\nEn un nodo de un circuito de corriente alterna convergen dos corrientes:\n\ni_1(t) = 4\\cos(\\omega t + 30^\\circ)\\ \\mathrm A\n\n\ni_2(t) = 6\\sin(\\omega t + 60^\\circ)\\ \\mathrm A\n\nDeterminar:\nLa corriente total i_T(t) = i_1(t) + i_2(t) en el dominio del tiempo.\n\n\n\n\n\n\n\nTip💡 Pista Conceptual\n\n\n\n\n\n\nRegla de oro: Nunca sumes directamente las amplitudes temporales (4 + 6 \\neq 10).\nHomogeneiza ambas señales a cosenos positivos mediante identidades trigonométricas: \\sin(\\alpha) = \\cos(\\alpha - 90^\\circ).\nConvierte a fasores en polar y luego a rectangular para sumar componentes reales con reales e imaginarias con imaginarias.\nConvierte el fasor resultante de rectangular a polar y regresa al dominio del tiempo.\n\n\n\n\n\n\n\n\n\n\nNote📝 Solución Paso a Paso\n\n\n\n\n\nPaso 1: Homogeneización y conversión a fasores: - \\mathbf I_1 = 4\\angle 30^\\circ\\ \\mathrm A - i_2(t) = 6\\sin(\\omega t + 60^\\circ) = 6\\cos(\\omega t + 60^\\circ - 90^\\circ) = 6\\cos(\\omega t - 30^\\circ)\\ \\mathrm A\n\\implies \\mathbf I_2 = 6\\angle -30^\\circ\\ \\mathrm A\nPaso 2: Conversión a componentes rectangulares: \n\\mathbf I_1 = 4\\cos(30^\\circ) + j4\\sin(30^\\circ) = 2\\sqrt{3} + j2 \\approx 3.4641 + j2.0000\\ \\mathrm A\n \n\\mathbf I_2 = 6\\cos(-30^\\circ) + j6\\sin(-30^\\circ) = 3\\sqrt{3} - j3 \\approx 5.1962 - j3.0000\\ \\mathrm A\n\nPaso 3: Suma fasorial algebraicamente: \n\\mathbf I_T = \\mathbf I_1 + \\mathbf I_2 = (3.4641 + 5.1962) + j(2.0000 - 3.0000) = 8.6603 - j1.0000\\ \\mathrm A\n\nPaso 4: Conversión a polar y retorno al dominio temporal: - Módulo: |\\mathbf I_T| = \\sqrt{8.6603^2 + (-1.0000)^2} = \\sqrt{75 + 1} = \\sqrt{76} \\approx 8.7178\\ \\mathrm A - Ángulo: \\theta = \\arctan\\left(\\frac{-1.0000}{8.6603}\\right) \\approx -6.59^\\circ\n\n\\mathbf I_T \\approx 8.72\\angle -6.59^\\circ\\ \\mathrm A\n \n\\boxed{i_T(t) = 8.72\\cos(\\omega t - 6.59^\\circ)\\ \\mathrm A}\n\n\n\n\n\n\n\n\n\n\n🔍 Sentido Físico / Comprobación:\nLa amplitud total resultante (8.72\\ \\mathrm A) es menor que la suma aritmética simple (4 + 6 = 10\\ \\mathrm A) debido al desfase de 60^\\circ existente entre ambas corrientes, lo que produce una interferencia destructiva parcial.\n\n\n\n\n\n\nEjercicio 4 — Evaluación de expresión compleja con conjugado\n\n17.2.0.0.2 📋 Enunciado\nCalcular el valor del número complejo \\mathbf X:\n\n\\mathbf X = \\left[ \\frac{(4 + j3)(2 - j4)}{-1 + j2} + 5\\angle -45^\\circ \\right]^*\n\nExprese el resultado en forma rectangular y polar.\n\n\n\n\n\n\n\nTip💡 Pista Conceptual\n\n\n\n\n\n\nDesarrolla primero el producto del numerador recordando que j^2 = -1.\nPara dividir por un número complejo en forma rectangular, multiplica el numerador y el denominador por el conjugado del denominador: (-1 - j2).\nPasa el término polar 5\\angle -45^\\circ a rectangular antes de sumarlo.\nFinalmente, aplica el operador de conjugación (\\ )^*, el cual invierte el signo de la parte imaginaria: (a + jb)^* = a - jb.\n\n\n\n\n\n\n\n\n\n\nNote📝 Solución Paso a Paso\n\n\n\n\n\nPaso 1: Multiplicación en el numerador (j^2 = -1): \n(4+j3)(2-j4) = 8 - j16 + j6 - j^2(12) = 8 - j10 + 12 = 20 - j10\n\nPaso 2: División multiplicando por el conjugado (-1 - j2): \n\\frac{20 - j10}{-1 + j2} \\cdot \\frac{-1 - j2}{-1 - j2} = \\frac{-20 - j40 + j10 + j^2(20)}{(-1)^2 + (2)^2} = \\frac{-40 - j30}{5} = -8 - j6\n\nPaso 3: Convertir 5\\angle -45^\\circ a rectangular y sumar: \n5\\angle -45^\\circ = 5\\cos(-45^\\circ) + j5\\sin(-45^\\circ) = \\frac{5\\sqrt{2}}{2} - j\\frac{5\\sqrt{2}}{2} \\approx 3.5355 - j3.5355\n \n\\mathbf Z_{\\text{interior}} = (-8 - j6) + (3.5355 - j3.5355) = -4.4645 - j9.5355\n\nPaso 4: Aplicación del operador conjugado (\\ )^*: \n\\mathbf X = (\\mathbf Z_{\\text{interior}})^* = (-4.4645 - j9.5355)^* = \\boxed{-4.4645 + j9.5355}\n\nPaso 5: Conversión a forma polar (Cuadrante II): - Módulo: |\\mathbf X| = \\sqrt{(-4.4645)^2 + (9.5355)^2} \\approx 10.529 - Ángulo: \\theta = 180^\\circ - \\arctan\\left(\\frac{9.5355}{4.4645}\\right) \\approx 180^\\circ - 64.91^\\circ = +115.09^\\circ\n\n\\boxed{\\mathbf X \\approx 10.529\\angle 115.09^\\circ}\n\n\n\n\n\n\n\n\n\n\n🔍 Sentido Físico / Comprobación:\nEl operador conjugado refleja el fasor respecto al eje real (mantiene constante la parte real y niega la parte imaginaria, o bien cambia el signo del ángulo de fase: \\theta \\to -\\theta).\n\n\n\n\n\n\nEjercicio 5 — Impedancias en paralelo (Z_1 \\parallel Z_2)\n\n17.2.0.0.3 📋 Enunciado\nDos impedancias pasivas se conectan en paralelo:\n\n\\mathbf Z_1 = 10 + j15\\ \\Omega\n\n\n\\mathbf Z_2 = 20 - j10\\ \\Omega\n\nDeterminar:\n\nLa impedancia equivalente \\mathbf Z_{eq} = \\dfrac{\\mathbf Z_1 \\mathbf Z_2}{\\mathbf Z_1 + \\mathbf Z_2}.\nIndicar si el conjunto resultante tiene comportamiento global inductivo o capacitivo.\n\n\n\n\n\n\n\n\nTip💡 Pista Conceptual\n\n\n\n\n\n\nPara la suma del denominador (\\mathbf Z_1 + \\mathbf Z_2), opera en forma rectangular: suma partes reales y partes imaginarias.\nPara el producto del numerador (\\mathbf Z_1 \\cdot \\mathbf Z_2), puedes multiplicar algebraicamente en rectangular o convertir ambos a polar.\nEl carácter del circuito equivalente lo determina el signo de la reactancia equivalente X_{eq}: si X_{eq} &gt; 0 es inductivo; si X_{eq} &lt; 0 es capacitivo.\n\n\n\n\n\n\n\n\n\n\nNote📝 Solución Paso a Paso\n\n\n\n\n\nPaso 1: Suma en el denominador (\\mathbf Z_1 + \\mathbf Z_2): \n\\mathbf Z_1 + \\mathbf Z_2 = (10 + 20) + j(15 - 10) = 30 + j5\\ \\Omega\n\nPaso 2: Producto en el numerador (\\mathbf Z_1 \\cdot \\mathbf Z_2): \n\\mathbf Z_1 \\cdot \\mathbf Z_2 = (10 + j15)(20 - j10) = 200 - j100 + j300 - j^2(150) = 350 + j200\\ \\Omega^2\n\nPaso 3: División multiplicando por el conjugado (30 - j5): \n\\mathbf Z_{eq} = \\frac{350 + j200}{30 + j5} \\cdot \\frac{30 - j5}{30 - j5} = \\frac{(350\\cdot 30 + 200\\cdot 5) + j(200\\cdot 30 - 350\\cdot 5)}{30^2 + 5^2}\n \n\\mathbf Z_{eq} = \\frac{11500 + j4250}{925} \\approx \\boxed{12.43 + j4.59\\ \\Omega}\n\nPaso 4: Conversión a forma polar: - Módulo: |\\mathbf Z_{eq}| = \\sqrt{12.4324^2 + 4.5946^2} \\approx 13.25\\ \\Omega - Ángulo: \\theta_{Z} = \\arctan\\left(\\frac{4.5946}{12.4324}\\right) \\approx +20.28^\\circ\n\n\\boxed{\\mathbf Z_{eq} \\approx 13.25\\angle 20.28^\\circ\\ \\Omega}\n\n\n\n\n\n\n\n\n\n\n🔍 Sentido Físico / Comprobación:\nComo la reactancia equivalente es positiva (X_{eq} = +4.59\\ \\Omega) y \\theta_Z = +20.28^\\circ &gt; 0, el circuito se comporta de forma globalmente inductiva (la tensión en bornes adelanta a la corriente total absorbida). Observa además que R_{eq} = 12.43\\ \\Omega &gt; 0, cumpliendo la condición de pasividad."
+  },
+  {
+    "objectID": "circuitos_electricos/teoria_fasores.html#nivel-3-circuitos-rlc-en-régimen-permanente",
+    "href": "circuitos_electricos/teoria_fasores.html#nivel-3-circuitos-rlc-en-régimen-permanente",
+    "title": "Fasores y Análisis de Circuitos en CA",
+    "section": "17.3 🔴 Nivel 3: Circuitos RLC en Régimen Permanente",
+    "text": "17.3 🔴 Nivel 3: Circuitos RLC en Régimen Permanente\n\nEjercicio 6 — Análisis completo de un circuito RLC serie\n\n17.3.0.0.1 📋 Enunciado\nUn circuito RLC serie está alimentado por una fuente de tensión sinusoidal:\n\nv(t) = 100\\cos(200t + 10^\\circ)\\ \\mathrm V\n\nLos componentes pasivos tienen los siguientes valores: - Resistencia: R = 4\\ \\Omega - Inductancia: L = 25\\ \\mathrm{mH} - Capacitancia: C = 500\\ \\mu\\mathrm{F}\nCalcular:\n\nLas impedancias complejas \\mathbf Z_R, \\mathbf Z_L, \\mathbf Z_C y la impedancia equivalente total \\mathbf Z_{eq}.\nLa corriente fasorial \\mathbf I en el circuito.\nLas caídas de tensión fasoriales en el inductor \\mathbf V_L y en el capacitor \\mathbf V_C.\nDeterminar si el circuito se encuentra en adelanto o en atraso.\n\n\n\n\n\n\n\n\nTip💡 Pista Conceptual\n\n\n\n\n\n\nIdentifica la pulsación angular \\omega y el fasor de tensión \\mathbf V directamente de la expresión de v(t).\nCalcula \\mathbf Z_L = j\\omega L y \\mathbf Z_C = \\frac{1}{j\\omega C} = -j\\frac{1}{\\omega C}.\nLa impedancia equivalente serie es la suma algebraica directa: \\mathbf Z_{eq} = \\mathbf Z_R + \\mathbf Z_L + \\mathbf Z_C.\nAplica la Ley de Ohm fasorial: \\mathbf I = \\frac{\\mathbf V}{\\mathbf Z_{eq}}.\nLas tensiones parciales resultan de \\mathbf V_L = \\mathbf I \\mathbf Z_L y \\mathbf V_C = \\mathbf I \\mathbf Z_C.\n\n\n\n\n\n\n\n\n\n\nNote📝 Solución Paso a Paso\n\n\n\n\n\nPaso 1: Parámetros de excitación e impedancias individuales:\nDe la fuente obtenemos \\omega = 200\\ \\mathrm{rad/s} y \\mathbf V = 100\\angle 10^\\circ\\ \\mathrm V.\n\n\\mathbf Z_R = 4\\ \\Omega\n\\mathbf Z_L = j\\omega L = j(200)(25 \\times 10^{-3}) = j5\\ \\Omega\n\\mathbf Z_C = \\frac{1}{j\\omega C} = \\frac{-j}{(200)(500 \\times 10^{-6})} = -j10\\ \\Omega\n\nImpedancia equivalente total: \n\\mathbf Z_{eq} = 4 + j5 - j10 = 4 - j5\\ \\Omega\n\nEn forma polar: - Módulo: |\\mathbf Z_{eq}| = \\sqrt{4^2 + (-5)^2} = \\sqrt{16 + 25} = \\sqrt{41} \\approx 6.403\\ \\Omega - Ángulo: \\theta_Z = \\arctan\\left(\\frac{-5}{4}\\right) \\approx -51.34^\\circ \n\\mathbf Z_{eq} \\approx 6.403\\angle -51.34^\\circ\\ \\Omega\n\nPaso 2: Corriente en el circuito (Ley de Ohm fasorial): \n\\mathbf I = \\frac{\\mathbf V}{\\mathbf Z_{eq}} = \\frac{100\\angle 10^\\circ}{6.403\\angle -51.34^\\circ} = \\left(\\frac{100}{6.403}\\right)\\angle [10^\\circ - (-51.34^\\circ)] = \\boxed{15.62\\angle 61.34^\\circ\\ \\mathrm A}\n\nPaso 3: Caídas de tensión en el inductor y en el capacitor: - Tensión en el inductor: \n  \\mathbf V_L = \\mathbf I \\cdot \\mathbf Z_L = (15.62\\angle 61.34^\\circ)(5\\angle 90^\\circ) = \\boxed{78.10\\angle 151.34^\\circ\\ \\mathrm V}\n   - Tensión en el capacitor: \n  \\mathbf V_C = \\mathbf I \\cdot \\mathbf Z_C = (15.62\\angle 61.34^\\circ)(10\\angle -90^\\circ) = \\boxed{156.20\\angle -28.66^\\circ\\ \\mathrm V}\n  \n\n\n\n\n\n\n\n\n\n🔍 Sentido Físico / Comprobación:\nComo la reactancia capacitiva predomina sobre la inductiva (X_C = 10\\ \\Omega &gt; X_L = 5\\ \\Omega), la impedancia total tiene ángulo negativo (\\theta_Z = -51.34^\\circ). Por tanto, el circuito es capacitivo y la corriente adelanta a la tensión de entrada en 51.34^\\circ.\nFenómeno notable: Observa que |\\mathbf V_C| = 156.20\\ \\mathrm V, valor superior a los 100\\ \\mathrm V de la fuente; este efecto de sobretensión es característico del intercambio resonante de energía reactiva en circuitos de CA.\n\n\n\n\n\n\nEjercicio 7 — Divisor de corriente y tensión común en paralelo\n\n17.3.0.0.2 📋 Enunciado\nUna fuente de corriente sinusoidal \\mathbf I_s = 5\\angle 0^\\circ\\ \\mathrm A alimenta dos ramas conectadas en paralelo: - Rama A: \\mathbf Z_A = 6 + j8\\ \\Omega (Carga Inductiva) - Rama B: \\mathbf Z_B = 12 - j16\\ \\Omega (Carga Capacitiva)\nCalcular:\n\nLa corriente \\mathbf I_A que fluye por la rama A utilizando la regla del divisor de corriente: \n\\mathbf I_A = \\mathbf I_s \\cdot \\frac{\\mathbf Z_B}{\\mathbf Z_A + \\mathbf Z_B}\n\nLa tensión común \\mathbf V en bornes del circuito en paralelo.\n\n\n\n\n\n\n\n\nTip💡 Pista Conceptual\n\n\n\n\n\n\nEn la fórmula del divisor de corriente, la corriente por una rama se calcula multiplicando la corriente total por la impedancia de la otra rama dividida entre la suma de ambas.\nPara el denominador \\mathbf Z_A + \\mathbf Z_B, suma primero en rectangular y luego convierte a polar para facilitar la división.\nLa tensión en bornes es común para ambas ramas: \\mathbf V = \\mathbf I_A \\mathbf Z_A = \\mathbf I_B \\mathbf Z_B.\n\n\n\n\n\n\n\n\n\n\nNote📝 Solución Paso a Paso\n\n\n\n\n\nPaso 1: Suma de impedancias en el denominador: \n\\mathbf Z_A + \\mathbf Z_B = (6 + 12) + j(8 - 16) = 18 - j8\\ \\Omega\n\nConvertimos a forma polar: - Módulo: |\\mathbf Z_A + \\mathbf Z_B| = \\sqrt{18^2 + (-8)^2} = \\sqrt{324 + 64} = \\sqrt{388} \\approx 19.70\\ \\Omega - Ángulo: \\theta_{\\text{suma}} = \\arctan\\left(\\frac{-8}{18}\\right) \\approx -23.96^\\circ \\implies \\mathbf Z_A + \\mathbf Z_B \\approx 19.70\\angle -23.96^\\circ\\ \\Omega\nPaso 2: Formas polares del numerador: - \\mathbf I_s = 5\\angle 0^\\circ\\ \\mathrm A - \\mathbf Z_B = 12 - j16\\ \\Omega = \\sqrt{12^2 + (-16)^2}\\angle\\arctan(-16/12) = 20\\angle -53.13^\\circ\\ \\Omega\nPaso 3: Aplicación del divisor de corriente: \n\\mathbf I_A = \\frac{(5\\angle 0^\\circ)(20\\angle -53.13^\\circ)}{19.70\\angle -23.96^\\circ} = \\frac{100\\angle -53.13^\\circ}{19.70\\angle -23.96^\\circ}\n \n\\mathbf I_A = \\left(\\frac{100}{19.70}\\right)\\angle [-53.13^\\circ - (-23.96^\\circ)] = \\boxed{5.08\\angle -29.17^\\circ\\ \\mathrm A}\n\nPaso 4: Tensión común en bornes \\mathbf V:\nCalculamos \\mathbf V = \\mathbf I_A \\cdot \\mathbf Z_A con \\mathbf Z_A = 6 + j8\\ \\Omega = 10\\angle 53.13^\\circ\\ \\Omega: \n\\mathbf V = (5.08\\angle -29.17^\\circ)(10\\angle 53.13^\\circ) = \\boxed{50.80\\angle 23.96^\\circ\\ \\mathrm V}\n\n\n\n\n\n\n\n\n\n\n🔍 Sentido Físico / Comprobación:\nObserva que la corriente por la rama A (5.08\\ \\mathrm A) resulta ligeramente superior a la corriente total de entrada suministrada por la fuente (5.00\\ \\mathrm A). Este fenómeno ocurre porque la rama inductiva y la rama capacitiva intercambian reactivos internamente (resonancia paralela parcial), lo cual eleva las corrientes en las ramas individuales."
+  },
+  {
+    "objectID": "circuitos_electricos/teoria_fasores.html#recursos-y-enlaces-rápidos",
+    "href": "circuitos_electricos/teoria_fasores.html#recursos-y-enlaces-rápidos",
+    "title": "Fasores y Análisis de Circuitos en CA",
+    "section": "22.1 Recursos y Enlaces Rápidos",
+    "text": "22.1 Recursos y Enlaces Rápidos\n\n Transformación Δ–Y  Análisis Nodal  Análisis de Mallas  Teorema de Thévenin  Teorema de Norton  Potencia en CA  Índice Circuitos"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Maquinas Eléctricas, Circuitos Eléctricos, Mediciones Eléctricas, Sistemas de Potencia, Modelado & Computación Aplicada",
+    "section": "",
+    "text": "⚡ PORTAL ACADÉMICO SOBRE INGENIERÍA ELÉCTRICA & CÁLCULO CIENTÍFICO\n\n\n\nPlataforma técnica desarrollada por David Guerrero para la difusión académica de artículos, información técnica, conceptos, modelado, memorias de cálculo, análisis de sistemas eléctricos bajo normativas internacionales (IEEE / NEC / NTC 2050), visualización fasorial interactiva y desarrollo de algoritmos en Python.\n\nExplorar Informes Técnicos Calculadoras Interactivas Repositorio de Datos & Scripts\n\n\nPython 3.12 NumPy & Matplotlib Streamlit Cloud LaTeX & Quarto Normas IEEE / NEC"
+  },
+  {
+    "objectID": "index.html#módulos-materias-de-estudio",
+    "href": "index.html#módulos-materias-de-estudio",
+    "title": "Maquinas Eléctricas, Circuitos Eléctricos, Mediciones Eléctricas, Sistemas de Potencia, Modelado & Computación Aplicada",
+    "section": "📚 Módulos & Materias de Estudio",
+    "text": "📚 Módulos & Materias de Estudio\n\n\n\n\n⚡\n\n\nCircuitos Eléctricos\nAnálisis en régimen permanente, leyes de Kirchhoff, métodos sistemáticos, teoremas de redes y potencia compleja.\n\nAnálisis Fasorial & Impedancia: Método del Carril Táctil, reglas de cuadrantes y circuitos RLC.\nMétodos y Teoremas: Transformación Δ–Y, formulación matricial de Nodos y Mallas, Thévenin y Norton.\nPotencia en CA: Potencia activa P, reactiva Q, aparente S, factor de potencia y simulador interactivo.\n\n\n⚡ Ver Todo el Módulo → Fasores Δ–Y Nodos & Mallas Thévenin & Norton Potencia CA\n\n\n\n\n\n\n\n⚙️\n\n\nMáquinas Eléctricas\nConversión electromecánica, análisis no lineal de materiales magnéticos, transformadores y máquinas rotativas.\n\nCircuitos Magnéticos: Reluctancia, permeabilidad y resolución con curvas de saturación B-H.\nTransformadores: Circuitos equivalentes, pruebas en vacío y cortocircuito.\n\nExplorar Módulo de Máquinas →\n\n\n\n\n\n\n📊\n\n\nMediciones Eléctricas\nMetrología aplicada, instrumentación, diseño de puentes de medición y evaluación de incertidumbre.\n\nPuentes de Medición: Métodos de deflexión y balance nulo (Wheatstone, Kelvin, Maxwell).\nInstrumentación Digital: Transductores, acondicionamiento de señal y calibración.\n\nExplorar Módulo de Mediciones →\n\n\n\n\n\n\n🏗️\n\n\nSistemas de Potencia & Normativas\nDimensionamiento de alimentadores, regulación de tensión, flujo de carga y normativas internacionales.\n\nCaída de Tensión: Dimensionamiento según criterios de impedancia del NEC / NTC 2050.\nAnálisis de Pérdidas: Eficiencia térmica I^2 R y límites regulatorios IEEE Std 141.\n\nExplorar Módulo de Potencia →\n\n\n\n\n\n\n🐍\n\n\nAplicaciones Python & Centro de Recursos\nSimuladores en tiempo real desarrollados con NumPy, Matplotlib y Streamlit, junto a tablas normalizadas de conductores para descarga.\n\nSimulador Fasorial: Visualización instantánea del triángulo de potencias.\nDatasets Tabulares: Tablas de resistencia R y reactancia X en formato CSV y scripts standalone.\n\n\nAbrir Simulador Fasorial → Ir a Descargas & CSVs →"
+  },
+  {
+    "objectID": "maquinas_electricas/circuitos_magneticos.html",
+    "href": "maquinas_electricas/circuitos_magneticos.html",
+    "title": "Circuitos Magnéticos y Curva de Magnetización B-H",
+    "section": "",
+    "text": "Note🧲 Enfoque Físico & Computacional\n\n\n\nEl cálculo preciso de la fuerza magnetomotriz (\\mathcal{F}) o del flujo magnético (\\Phi) en núcleos de acero al silicio requiere considerar la no-linealidad de la permeabilidad \\mu(B). Esta memoria resume las ecuaciones fundamentales y la analogía con circuitos eléctricos."
+  },
+  {
+    "objectID": "maquinas_electricas/circuitos_magneticos.html#analogía-entre-circuitos-eléctricos-y-magnéticos",
+    "href": "maquinas_electricas/circuitos_magneticos.html#analogía-entre-circuitos-eléctricos-y-magnéticos",
+    "title": "Circuitos Magnéticos y Curva de Magnetización B-H",
+    "section": "1 1. Analogía entre Circuitos Eléctricos y Magnéticos",
+    "text": "1 1. Analogía entre Circuitos Eléctricos y Magnéticos\nLa Ley de Hopkinson establece una correspondencia formal entre las magnitudes de un circuito eléctrico y las de un circuito magnético:\n\n\n\n\n\n\n\n\nParámetro\nCircuito Eléctrico\nCircuito Magnético\n\n\n\n\nFuerza impulsora\nTensión / FEM: E [\\text{V}]\nFuerza Magnetomotriz: \\mathcal{F} = N I [\\text{A-v}]\n\n\nFlujo de campo\nCorriente eléctrica: I [\\text{A}]\nFlujo magnético: \\Phi [\\text{Wb}]\n\n\nOposición al paso\nResistencia: R = \\frac{\\ell}{\\sigma A} [\\Omega]\nReluctancia: \\mathcal{R} = \\frac{\\ell}{\\mu A} [\\text{A-v/Wb}]\n\n\nDensidad de flujo\nDensidad de corriente: J = \\frac{I}{A}\nDensidad de flujo: B = \\frac{\\Phi}{A} [\\text{T}]\n\n\nIntensidad de campo\nCampo eléctrico: E = \\frac{V}{\\ell}\nCampo magnético: H = \\frac{\\mathcal{F}}{\\ell} [\\text{A/m}]\n\n\nLey constitutiva\nLey de Ohm: J = \\sigma E\nRelación magnética: B = \\mu H = \\mu_0 \\mu_r H"
+  },
+  {
+    "objectID": "maquinas_electricas/circuitos_magneticos.html#ley-de-ampère-y-conservación-de-fmm",
+    "href": "maquinas_electricas/circuitos_magneticos.html#ley-de-ampère-y-conservación-de-fmm",
+    "title": "Circuitos Magnéticos y Curva de Magnetización B-H",
+    "section": "2 2. Ley de Ampère y Conservación de FMM",
+    "text": "2 2. Ley de Ampère y Conservación de FMM\nPara una trayectoria cerrada media \\ell_c que atraviesa diferentes tramos de material y un entrehierro (\\ell_g):\n\n\\oint \\mathbf{H} \\cdot d\\mathbf{\\ell} = \\sum N I = \\mathcal{F}_{\\text{total}}\n\n\n\\mathcal{F}_{\\text{total}} = \\sum_{k=1}^{n} H_k \\ell_k + H_g \\ell_g\n\nDonde en el entrehierro de aire (\\mu_r = 1): \nH_g = \\frac{B_g}{\\mu_0}, \\quad \\mu_0 = 4\\pi \\times 10^{-7} \\ \\text{H/m}"
+  },
+  {
+    "objectID": "mediciones_electricas/index.html",
+    "href": "mediciones_electricas/index.html",
+    "title": "📊 Mediciones Eléctricas",
+    "section": "",
+    "text": "Bienvenido al módulo de Mediciones Eléctricas. Aquí se recopilan análisis metrológicos, calibración de instrumentos, diseño de puentes de corriente continua y alterna, y métodos de reducción de incertidumbre experimental.\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\nPuentes de Medición de Parámetros Pasivos (R, L, C)\n\n1 min\n\n\nMediciones\n\nPuentes de Medición\n\nWheatstone\n\nKelvin\n\nMetrología\n\n\n\nTeoría de puentes de medición en corriente continua y alterna, condición de equilibrio fasorial y análisis de sensibilidad de detección.\n\n\n\nSep 10, 2026\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "sistemas_potencia/caida_tension.html",
+    "href": "sistemas_potencia/caida_tension.html",
     "title": "Cálculo de Caída de Tensión y Dimensionamiento de Alimentadores",
     "section": "",
     "text": "Note📌 Resumen Ejecutivo\n\n\n\nEste informe técnico establece el marco metodológico para el cálculo analítico y la verificación de la caída de tensión porcentual (\\Delta V\\%) en alimentadores trifásicos y monofásicos de baja tensión. Se evalúa el impacto de la impedancia en corriente alterna (resistencia efectiva R y reactancia inductiva X) sobre la regulación de tensión, asegurando el cumplimiento de los límites normativos del 3\\% en el alimentador y 5\\% total acumulado hasta la carga más crítica."
   },
   {
-    "objectID": "informes/caida_tension.html#justificación-técnica-y-criterios-normativos",
-    "href": "informes/caida_tension.html#justificación-técnica-y-criterios-normativos",
+    "objectID": "sistemas_potencia/caida_tension.html#justificación-técnica-y-criterios-normativos",
+    "href": "sistemas_potencia/caida_tension.html#justificación-técnica-y-criterios-normativos",
     "title": "Cálculo de Caída de Tensión y Dimensionamiento de Alimentadores",
     "section": "1 1. Justificación Técnica y Criterios Normativos",
     "text": "1 1. Justificación Técnica y Criterios Normativos\nEl dimensionamiento de alimentadores en sistemas de distribución de energía no solo debe satisfacer el criterio de capacidad de corriente (ampacidad) por temperatura, sino también el criterio de regulación de tensión. Una caída excesiva produce:\n\nSobrecalentamiento y reducción de eficiencia: Aumento no deseado de pérdidas Joule en los conductores (P_{loss} = 3 I^2 R).\nDegradación del par en motores eléctricos: El par electromagnético de un motor de inducción disminuye proporcionalmente al cuadrado de la tensión aplicada (T \\propto V^2).\nInestabilidad en equipos electrónicos sensibles: Variaciones de tensión fuera del estándar ANSI C84.1 (+5\\%, -10\\%) generan disparos erráticos y desconexión de cargas críticas.\n\n\n1.1 Límites de Regulación Normativa\n\n\n\nTable 1: Criterios normativos de regulación de tensión.\n\n\n\n\n\n\n\n\n\n\nSegmento del Sistema Eléctrico\nCaída Máxima Recomendada (\\Delta V\\%)\nReferencia\n\n\n\n\nAlimentador Principal (Tablero General a Subtablero)\n\\le 3.0\\%\nNEC Art. 215.2(A)(1) / NTC 2050\n\n\nCircuito Ramal (Subtablero a Carga Final)\n\\le 3.0\\%\nNEC Art. 210.19(A)\n\n\nCaída Total Combinada (Fuente a Carga Final)\n\\le 5.0\\%\nEstándar de Calidad IEEE Std 141"
   },
   {
-    "objectID": "informes/caida_tension.html#formulación-matemática-de-impedancia-compleja",
-    "href": "informes/caida_tension.html#formulación-matemática-de-impedancia-compleja",
+    "objectID": "sistemas_potencia/caida_tension.html#formulación-matemática-de-impedancia-compleja",
+    "href": "sistemas_potencia/caida_tension.html#formulación-matemática-de-impedancia-compleja",
     "title": "Cálculo de Caída de Tensión y Dimensionamiento de Alimentadores",
     "section": "2 2. Formulación Matemática de Impedancia Compleja",
     "text": "2 2. Formulación Matemática de Impedancia Compleja\nLa caída de tensión fasorial en un alimentador con impedancia \\mathbf{Z} = R + jX alimentando una carga con factor de potencia \\cos\\theta se modela analíticamente considerando la proyección del fasor de caída sobre la tensión de referencia.\n\n2.1 Sistema Trifásico Equilibrado (3 Hilos / 4 Hilos)\nPara un sistema trifásico con tensión nominal línea a línea V_{LL}:\n\n\\Delta V_{3\\phi} = \\sqrt{3} \\cdot I \\cdot L \\cdot \\left( R_{CA} \\cos\\theta + X_L \\sin\\theta \\right)\n\nDonde:\n\nI: Corriente nominal de diseño en amperios (\\text{A}).\nL: Longitud del alimentador en kilómetros (\\text{km}).\nR_{CA}: Resistencia efectiva en CA a la temperatura de operación (75^\\circ\\text{C}) en \\Omega/\\text{km}.\nX_L: Reactancia inductiva del conductor en ducto en \\Omega/\\text{km}.\n\\cos\\theta: Factor de potencia en atraso de la carga instalada.\n\\sin\\theta = \\sqrt{1 - \\cos^2\\theta}: Factor de reactancia.\n\nLa caída de tensión porcentual normalizada se calcula como:\n\n\\Delta V\\% = \\left( \\frac{\\Delta V_{3\\phi}}{V_{LL}} \\right) \\times 100\\%"
   },
   {
-    "objectID": "informes/caida_tension.html#caso-de-estudio-práctico",
-    "href": "informes/caida_tension.html#caso-de-estudio-práctico",
+    "objectID": "sistemas_potencia/caida_tension.html#caso-de-estudio-práctico",
+    "href": "sistemas_potencia/caida_tension.html#caso-de-estudio-práctico",
     "title": "Cálculo de Caída de Tensión y Dimensionamiento de Alimentadores",
     "section": "3 3. Caso de Estudio Práctico",
     "text": "3 3. Caso de Estudio Práctico\nSe diseña un alimentador trifásico con las siguientes condiciones de servicio:\n\nTensión nominal de línea: V_{LL} = 480\\text{ V} (3\\phi, 60\\text{ Hz}).\nCorriente de carga máxima: I = 85\\text{ A}.\nLongitud de trayectoria: L = 120\\text{ m} = 0.12\\text{ km}.\nFactor de potencia: \\cos\\theta = 0.88 en atraso (\\sin\\theta = 0.4749).\nTipo de conductor: Cobre electrolítico clase B, aislamiento THHN/THWN-2 (75^\\circ\\text{C}), canalización en tubería conduit de PVC.\n\n\n3.1 Análisis Comparativo de Calibres\nA continuación se evalúa la respuesta técnica para calibres comerciales estándar utilizando los parámetros de la Tabla 9 del NEC:\n\n\n\nTable 2: Comparación de regulación de tensión para alimentador trifásico de 480 V, 85 A y 120 m.\n\n\n\n\n\n\n\n\n\n\n\n\n\nCalibre AWG / kcmil\nR_{CA} (\\Omega/\\text{km})\nX_L (\\Omega/\\text{km})\nCaída \\Delta V (\\text{V})\nRegulación \\Delta V\\%\nCumplimiento Normativo\n\n\n\n\n#4 AWG\n1.050\n0.177\n17.84\\text{ V}\n3.72\\%\n✕ No Cumple (&gt; 3%)\n\n\n#2 AWG\n0.656\n0.167\n11.60\\text{ V}\n2.42\\%\n✓ Cumple (≤ 3%)\n\n\n#1/0 AWG\n0.413\n0.161\n7.74\\text{ V}\n1.61\\%\n✓ Cumple (Óptimo)\n\n\n#2/0 AWG\n0.328\n0.157\n6.42\\text{ V}\n1.34\\%\n✓ Cumple (Baja Pérdida)"
   },
   {
-    "objectID": "informes/caida_tension.html#dictamen-técnico-y-recomendaciones",
-    "href": "informes/caida_tension.html#dictamen-técnico-y-recomendaciones",
+    "objectID": "sistemas_potencia/caida_tension.html#dictamen-técnico-y-recomendaciones",
+    "href": "sistemas_potencia/caida_tension.html#dictamen-técnico-y-recomendaciones",
     "title": "Cálculo de Caída de Tensión y Dimensionamiento de Alimentadores",
     "section": "4 4. Dictamen Técnico y Recomendaciones",
     "text": "4 4. Dictamen Técnico y Recomendaciones\n\nSelección por Criterio Técnico: El calibre mínimo aceptable es #2 AWG THHN, el cual garantiza una regulación del 2.42\\%, encontrándose dentro del umbral normativo del 3.0\\%.\nEvaluación de Eficiencia Energética: Para régimen de carga continua (\\ge 16\\text{ h/día}), el calibre #1/0 AWG reduce las pérdidas térmicas en los conductores en más de un 33\\%, compensando el costo marginal del conductor de cobre en menos de 14 meses de operación.\n\n\n\n\n\n\n\nTip📥 Recursos Disponibles para este Informe\n\n\n\n\nDescargar Dataset de Parámetros de Conductores (CSV)\nScript de Automatización en Python"
-  },
-  {
-    "objectID": "maquinas_electricas/index.html",
-    "href": "maquinas_electricas/index.html",
-    "title": "⚙️ Máquinas Eléctricas",
-    "section": "",
-    "text": "Bienvenido al módulo de Máquinas Eléctricas. En esta sección se abordan los principios físicos de los circuitos magnéticos, saturación en materiales ferromagnéticos, modelado y pruebas de transformadores, y dinámica de máquinas de corriente alterna y continua.\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\nCircuitos Magnéticos y Curva de Magnetización B-H\n\n2 min\n\n\nCircuitos Magnéticos\n\nCurva B-H\n\nSaturación\n\nFMM\n\nMáquinas\n\n\n\nModelado de circuitos magnéticos en serie y paralelo, cálculo de fuerza magnetomotriz (FMM) y métodos numéricos con curvas B-H no lineales.\n\n\n\nSep 10, 2026\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "mediciones_electricas/puentes_medicion.html",
-    "href": "mediciones_electricas/puentes_medicion.html",
-    "title": "Puentes de Medición de Parámetros Pasivos (R, L, C)",
-    "section": "",
-    "text": "Note🎯 Precisión Metrológica\n\n\n\nLos métodos de puente utilizan la técnica de balance nulo (detección de corriente cero en el galvanómetro), lo que elimina los errores introducidos por la resistencia interna de los instrumentos indicadores convencionales."
-  },
-  {
-    "objectID": "mediciones_electricas/puentes_medicion.html#puente-de-wheatstone-medición-de-resistencias-medias",
-    "href": "mediciones_electricas/puentes_medicion.html#puente-de-wheatstone-medición-de-resistencias-medias",
-    "title": "Puentes de Medición de Parámetros Pasivos (R, L, C)",
-    "section": "1 1. Puente de Wheatstone (Medición de Resistencias Medias)",
-    "text": "1 1. Puente de Wheatstone (Medición de Resistencias Medias)\nEl puente de Wheatstone es la estructura fundamental para la medición de resistencias en el rango de 1 \\ \\Omega a 1 \\ \\text{M}\\Omega.\n\n1.1 Condición de Equilibrio\nCuando el detector de cero no registra circulación de corriente (I_G = 0):\n\n\\frac{R_1}{R_2} = \\frac{R_3}{R_x} \\quad \\Longrightarrow \\quad R_x = \\frac{R_2 \\cdot R_3}{R_1}"
-  },
-  {
-    "objectID": "mediciones_electricas/puentes_medicion.html#puente-doble-de-kelvin-medición-de-bajas-resistencias",
-    "href": "mediciones_electricas/puentes_medicion.html#puente-doble-de-kelvin-medición-de-bajas-resistencias",
-    "title": "Puentes de Medición de Parámetros Pasivos (R, L, C)",
-    "section": "2 2. Puente Doble de Kelvin (Medición de Bajas Resistencias)",
-    "text": "2 2. Puente Doble de Kelvin (Medición de Bajas Resistencias)\nPara resistencias inferiores a 1 \\ \\Omega, los efectos de los terminales y cables de conexión introducen errores inaceptables. El puente de Kelvin compensa estas resistencias residuales mediante una doble rama divisoria proporcional:\n\nR_x = R_s \\frac{R_1}{R_2} + \\frac{R_y \\cdot r_2}{r_1 + r_2 + R_y} \\left( \\frac{R_1}{R_2} - \\frac{r_1}{r_2} \\right)\n\nSi se mantiene la relación \\frac{R_1}{R_2} = \\frac{r_1}{r_2}, la influencia de la resistencia de contacto R_y se anula exactamente:\n\nR_x = R_s \\frac{R_1}{R_2}"
-  },
-  {
-    "objectID": "sistemas_potencia/index.html",
-    "href": "sistemas_potencia/index.html",
-    "title": "⚡ Sistemas de Potencia & Distribución",
-    "section": "",
-    "text": "Bienvenido al módulo de Sistemas de Potencia & Distribución. En este espacio se publican memorias de cálculo aplicadas a instalaciones industriales y comerciales, análisis de pérdidas, regulación de alimentadores y cumplimiento de estándares internacionales.\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\nCálculo de Caída de Tensión y Dimensionamiento de Alimentadores\n\n4 min\n\n\nSistemas de Potencia\n\nCaída de Tensión\n\nNEC / NTC 2050\n\nConductores\n\nIEEE\n\n\n\nMetodología analítica para regulación de tensión en alimentadores trifásicos y monofásicos de baja tensión, con criterios de pérdidas Joule y selección óptima.\n\n\n\nSep 10, 2026\n\n\n\n\n\n\nNo matching items"
   }
 ]

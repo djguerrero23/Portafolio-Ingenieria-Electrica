@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="David Guerrero">
-<meta name="dcterms.date" content="2026-09-10">
-<meta name="description" content="Formulación de potencia compleja, deducción del triángulo de potencias, análisis de cargas en atraso/adelanto y simulador interactivo en Streamlit.">
+<meta name="dcterms.date" content="2026-09-16">
+<meta name="description" content="Modelado y simplificación de circuitos de corriente alterna mediante el equivalente Norton: determinación de IN, impedancia y admitancia de Norton, y equivalencia recíproca con Thévenin.">
 
-<title>Potencia en Corriente Alterna y Triángulo de Potencias – ⚡ Portafolio de Ingeniería Eléctrica</title>
+<title>Teorema de Norton en Corriente Alterna – ⚡ Portafolio de Ingeniería Eléctrica</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -287,12 +287,15 @@ window.Quarto = {
     <h2 id="toc-title">Índice de Contenido</h2>
    
   <ul>
-  <li><a href="#potencia-instantánea-y-descomposición-armónica" id="toc-potencia-instantánea-y-descomposición-armónica" class="nav-link active" data-scroll-target="#potencia-instantánea-y-descomposición-armónica"><span class="header-section-number">1</span> 1. Potencia Instantánea y Descomposición Armónica</a></li>
-  <li><a href="#potencia-compleja-mathbfs-y-triángulo-de-potencias" id="toc-potencia-compleja-mathbfs-y-triángulo-de-potencias" class="nav-link" data-scroll-target="#potencia-compleja-mathbfs-y-triángulo-de-potencias"><span class="header-section-number">2</span> 2. Potencia Compleja (<span class="math inline">\mathbf{S}</span>) y Triángulo de Potencias</a></li>
-  <li><a href="#factor-de-potencia-y-convención-de-cargas" id="toc-factor-de-potencia-y-convención-de-cargas" class="nav-link" data-scroll-target="#factor-de-potencia-y-convención-de-cargas"><span class="header-section-number">3</span> 3. Factor de Potencia y Convención de Cargas</a></li>
-  <li><a href="#corrección-del-factor-de-potencia" id="toc-corrección-del-factor-de-potencia" class="nav-link" data-scroll-target="#corrección-del-factor-de-potencia"><span class="header-section-number">4</span> 4. Corrección del Factor de Potencia</a></li>
-  <li><a href="#simulador-interactivo-de-potencia-en-tiempo-real" id="toc-simulador-interactivo-de-potencia-en-tiempo-real" class="nav-link" data-scroll-target="#simulador-interactivo-de-potencia-en-tiempo-real"><span class="header-section-number">5</span> 5. Simulador Interactivo de Potencia en Tiempo Real</a></li>
-  <li><a href="#recursos-computacionales-navegación" id="toc-recursos-computacionales-navegación" class="nav-link" data-scroll-target="#recursos-computacionales-navegación"><span class="header-section-number">6</span> 6. Recursos Computacionales &amp; Navegación</a></li>
+  <li><a href="#teorema-de-norton-en-régimen-sinusoidal-permanente" id="toc-teorema-de-norton-en-régimen-sinusoidal-permanente" class="nav-link active" data-scroll-target="#teorema-de-norton-en-régimen-sinusoidal-permanente">Teorema de Norton en Régimen Sinusoidal Permanente</a></li>
+  <li><a href="#determinación-de-los-parámetros-de-norton" id="toc-determinación-de-los-parámetros-de-norton" class="nav-link" data-scroll-target="#determinación-de-los-parámetros-de-norton"><span class="header-section-number">1</span> Determinación de los Parámetros de Norton</a>
+  <ul class="collapse">
+  <li><a href="#corriente-de-norton-mathbfi_n" id="toc-corriente-de-norton-mathbfi_n" class="nav-link" data-scroll-target="#corriente-de-norton-mathbfi_n"><span class="header-section-number">1.1</span> 1. Corriente de Norton (<span class="math inline">\mathbf{I}_N</span>)</a></li>
+  <li><a href="#impedancia-y-admitancia-de-norton-mathbfz_n-mathbfy_n" id="toc-impedancia-y-admitancia-de-norton-mathbfz_n-mathbfy_n" class="nav-link" data-scroll-target="#impedancia-y-admitancia-de-norton-mathbfz_n-mathbfy_n"><span class="header-section-number">1.2</span> 2. Impedancia y Admitancia de Norton (<span class="math inline">\mathbf{Z}_N, \mathbf{Y}_N</span>)</a></li>
+  </ul></li>
+  <li><a href="#transformación-de-fuentes-y-dualidad-thévenin-norton" id="toc-transformación-de-fuentes-y-dualidad-thévenin-norton" class="nav-link" data-scroll-target="#transformación-de-fuentes-y-dualidad-thévenin-norton"><span class="header-section-number">2</span> Transformación de Fuentes y Dualidad Thévenin – Norton</a></li>
+  <li><a href="#ejemplo-práctico-de-transformación-thévenin-norton" id="toc-ejemplo-práctico-de-transformación-thévenin-norton" class="nav-link" data-scroll-target="#ejemplo-práctico-de-transformación-thévenin-norton"><span class="header-section-number">3</span> Ejemplo Práctico de Transformación Thévenin ↔︎ Norton</a></li>
+  <li><a href="#navegación-del-módulo" id="toc-navegación-del-módulo" class="nav-link" data-scroll-target="#navegación-del-módulo"><span class="header-section-number">4</span> Navegación del Módulo</a></li>
   </ul>
 </nav>
     </div>
@@ -301,21 +304,20 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Potencia en Corriente Alterna y Triángulo de Potencias</h1>
-<p class="subtitle lead">Modelado analítico de potencia instantánea, activa, reactiva, aparente y compensación del factor de potencia</p>
+<h1 class="title">Teorema de Norton en Corriente Alterna</h1>
+<p class="subtitle lead">Circuito equivalente dual de corriente, corriente de cortocircuito y transformación de fuentes en CA</p>
   <div class="quarto-categories">
-    <div class="quarto-category">Potencia CA</div>
-    <div class="quarto-category">Potencia Compleja</div>
-    <div class="quarto-category">Factor de Potencia</div>
-    <div class="quarto-category">Triángulo de Potencias</div>
-    <div class="quarto-category">Streamlit</div>
-    <div class="quarto-category">Simulación</div>
+    <div class="quarto-category">Teoremas de Redes</div>
+    <div class="quarto-category">Norton</div>
+    <div class="quarto-category">Transformación de Fuentes</div>
+    <div class="quarto-category">Circuitos Equivalentes</div>
+    <div class="quarto-category">Circuitos CA</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    Formulación de potencia compleja, deducción del triángulo de potencias, análisis de cargas en atraso/adelanto y simulador interactivo en Streamlit.
+    Modelado y simplificación de circuitos de corriente alterna mediante el equivalente Norton: determinación de IN, impedancia y admitancia de Norton, y equivalencia recíproca con Thévenin.
   </div>
 </div>
 
@@ -332,7 +334,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 10, 2026</p>
+      <p class="date">September 16, 2026</p>
     </div>
   </div>
   
@@ -344,121 +346,96 @@ window.Quarto = {
 </header>
 
 
+<section id="teorema-de-norton-en-régimen-sinusoidal-permanente" class="level1 unnumbered hero-banner-modern">
+<h1 class="unnumbered">Teorema de Norton en Régimen Sinusoidal Permanente</h1>
+<p><strong>El modelo dual de Thévenin: representación mediante fuente de corriente y admitancia en paralelo.</strong></p>
+<p>El teorema de Norton es la contraparte dual del teorema de Thévenin. Resulta especialmente ventajoso cuando se analizan circuitos con múltiples ramas conectadas en paralelo o alimentadas por fuentes de corriente.</p>
+</section>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>⚡ Marco Teórico &amp; Interfaz Computacional
+<span class="screen-reader-only">Note</span>⚡ Enunciado del Teorema de Norton en CA
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>En sistemas eléctricos de corriente alterna, la transferencia de energía no se limita a disipación de calor útil, sino que involucra oscilaciones continuas de energía electromagnética entre la fuente y las reactancias. Esta memoria desglosa los fundamentos de la <strong>potencia compleja</strong> e incluye un simulador interactivo para visualización instantánea del triángulo de potencias.</p>
+<p>Cualquier red lineal activa de corriente alterna conectada a una carga a través de dos terminales accesibles <span class="math inline">(a, b)</span> es externamente equivalente a: 1. Una fuente de corriente fasorial ideal <span class="math inline">\mathbf{I}_N</span> (<strong>Corriente de Norton</strong>). 2. Conectada en paralelo con una impedancia pasiva <span class="math inline">\mathbf{Z}_N</span> (o admitancia <span class="math inline">\mathbf{Y}_N = 1/\mathbf{Z}_N</span>).</p>
 </div>
 </div>
 <hr>
-<section id="potencia-instantánea-y-descomposición-armónica" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="potencia-instantánea-y-descomposición-armónica"><span class="header-section-number">1</span> 1. Potencia Instantánea y Descomposición Armónica</h2>
-<p>Sea una fuente de tensión senoidal aplicada a una carga pasiva:</p>
-<p><span class="math display">
-v(t) = V_m \cos(\omega t + \theta_v)
-</span></p>
-<p><span class="math display">
-i(t) = I_m \cos(\omega t + \theta_i)
-</span></p>
-<p>La <strong>potencia instantánea</strong> absorbida por la red es el producto temporal <span class="math inline">p(t) = v(t) \cdot i(t)</span>:</p>
-<p><span class="math display">
-p(t) = V_m I_m \cos(\omega t + \theta_v) \cos(\omega t + \theta_i)
-</span></p>
-<p>Aplicando la identidad trigonométrica <span class="math inline">\cos A \cos B = \frac{1}{2} [\cos(A-B) + \cos(A+B)]</span>:</p>
-<p><span class="math display">
-p(t) = \underbrace{V_{rms} I_{rms} \cos(\theta_v - \theta_i) \left[ 1 + \cos(2\omega t + 2\theta_v) \right]}_{\text{Componente unidireccional y pulsante activa}} + \underbrace{V_{rms} I_{rms} \sin(\theta_v - \theta_i) \sin(2\omega t + 2\theta_v)}_{\text{Componente reactiva oscilante}}
-</span></p>
-<blockquote class="blockquote">
-<p>La potencia instantánea oscila al <strong>doble de la frecuencia de la red</strong> (<span class="math inline">2\omega = 120\text{ Hz}</span> en sistemas de <span class="math inline">60\text{ Hz}</span>).</p>
-</blockquote>
+<section id="determinación-de-los-parámetros-de-norton" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Determinación de los Parámetros de Norton</h1>
+<section id="corriente-de-norton-mathbfi_n" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="corriente-de-norton-mathbfi_n"><span class="header-section-number">1.1</span> 1. Corriente de Norton (<span class="math inline">\mathbf{I}_N</span>)</h2>
+<p>La corriente de Norton corresponde a la corriente fasorial que circula a través de un cortocircuito ideal conectado directamente entre los terminales <span class="math inline">a</span> y <span class="math inline">b</span>:</p>
+<p><span class="math display">\mathbf{I}_N = \mathbf{I}_{sc} = \mathbf{I}_{ab} \Big|_{\text{cortocircuito}}</span></p>
+<p>Para calcular <span class="math inline">\mathbf{I}_N</span>, se sustituye la carga <span class="math inline">\mathbf{Z}_L</span> por un conductor de resistencia nula entre los terminales <span class="math inline">a</span> y <span class="math inline">b</span>, y se calcula la corriente fasorial resultante utilizando análisis de mallas, análisis nodal o superposición.</p>
 <hr>
 </section>
-<section id="potencia-compleja-mathbfs-y-triángulo-de-potencias" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="potencia-compleja-mathbfs-y-triángulo-de-potencias"><span class="header-section-number">2</span> 2. Potencia Compleja (<span class="math inline">\mathbf{S}</span>) y Triángulo de Potencias</h2>
-<p>En el dominio fasorial, la <strong>potencia compleja</strong> <span class="math inline">\mathbf{S}</span> se define como el producto del fasor eficaz de tensión por el <strong>complejo conjugado</strong> del fasor eficaz de corriente:</p>
-<p><span class="math display">
-\mathbf{S} = \mathbf{V}_{rms} \cdot \mathbf{I}_{rms}^* = \left( V_{rms} e^{j\theta_v} \right) \left( I_{rms} e^{-j\theta_i} \right) = V_{rms} I_{rms} e^{j(\theta_v - \theta_i)}
-</span></p>
-<p>Expresada en forma rectangular:</p>
-<p><span class="math display">
-\mathbf{S} = P + jQ
-</span></p>
-<div class="grid" style="margin: 2rem 0;">
-<div class="g-col-12 g-col-md-4">
-<section id="potencia-activa-p" class="level3 card-module" data-number="2.1">
-<h3 data-number="2.1" class="anchored" data-anchor-id="potencia-activa-p"><span class="header-section-number">2.1</span> 💡 Potencia Activa (<span class="math inline">P</span>)</h3>
-<p>Potencia real que se transforma en trabajo útil (mecánico, lumínico o calor). <span class="math display">
-P = V_{rms} I_{rms} \cos\theta
-</span> <strong>Unidad:</strong> Vatio [<span class="math inline">\text{W}</span>], [<span class="math inline">\text{kW}</span>], [<span class="math inline">\text{MW}</span>]</p>
-</section>
-</div>
-<div class="g-col-12 g-col-md-4">
-<section id="potencia-reactiva-q" class="level3 card-module" data-number="2.2">
-<h3 data-number="2.2" class="anchored" data-anchor-id="potencia-reactiva-q"><span class="header-section-number">2.2</span> 🧲 Potencia Reactiva (<span class="math inline">Q</span>)</h3>
-<p>Potencia intercambiada para sostener los campos magnéticos y eléctricos. <span class="math display">
-Q = V_{rms} I_{rms} \sin\theta
-</span> <strong>Unidad:</strong> Volt-Amperio Reactivo [<span class="math inline">\text{VAR}</span>], [<span class="math inline">\text{kVAR}</span>]</p>
-</section>
-</div>
-<div class="g-col-12 g-col-md-4">
-<section id="potencia-aparente-mathbfs" class="level3 card-module" data-number="2.3">
-<h3 data-number="2.3" class="anchored" data-anchor-id="potencia-aparente-mathbfs"><span class="header-section-number">2.3</span> ⚡ Potencia Aparente (<span class="math inline">|\mathbf{S}|</span>)</h3>
-<p>Magnitud vectorial total que dimensiona conductores y transformadores. <span class="math display">
-|\mathbf{S}| = \sqrt{P^2 + Q^2}
-</span> <strong>Unidad:</strong> Volt-Amperio [<span class="math inline">\text{VA}</span>], [<span class="math inline">\text{kVA}</span>], [<span class="math inline">\text{MVA}</span>]</p>
-</section>
-</div>
-</div>
+<section id="impedancia-y-admitancia-de-norton-mathbfz_n-mathbfy_n" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="impedancia-y-admitancia-de-norton-mathbfz_n-mathbfy_n"><span class="header-section-number">1.2</span> 2. Impedancia y Admitancia de Norton (<span class="math inline">\mathbf{Z}_N, \mathbf{Y}_N</span>)</h2>
+<p>La impedancia de Norton es exactamente idéntica a la impedancia de Thévenin vista desde los mismos terminales:</p>
+<p><span class="math display">\mathbf{Z}_N = \mathbf{Z}_{th}</span></p>
+<p><span class="math display">\mathbf{Y}_N = \frac{1}{\mathbf{Z}_N} = G_N + j B_N</span></p>
+<p>Se calcula anulando todas las fuentes independientes internas (fuentes de tensión en cortocircuito, fuentes de corriente en circuito abierto) y determinando la impedancia equivalente entre <span class="math inline">a</span> y <span class="math inline">b</span>.</p>
 <hr>
 </section>
-<section id="factor-de-potencia-y-convención-de-cargas" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="factor-de-potencia-y-convención-de-cargas"><span class="header-section-number">3</span> 3. Factor de Potencia y Convención de Cargas</h2>
-<p>El <strong>Factor de Potencia (<span class="math inline">\text{FP}</span>)</strong> mide la eficiencia con la que la corriente entregada se aprovecha en potencia activa:</p>
+</section>
+<section id="transformación-de-fuentes-y-dualidad-thévenin-norton" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Transformación de Fuentes y Dualidad Thévenin – Norton</h1>
+<p>Ambos modelos son matemáticamente intercambiables en cualquier rama activa de corriente alterna:</p>
 <p><span class="math display">
-\text{FP} = \frac{P}{|\mathbf{S}|} = \cos(\theta_v - \theta_i) = \cos\theta
+\boxed{
+\begin{aligned}
+\mathbf{V}_{th} &amp;= \mathbf{I}_N \cdot \mathbf{Z}_{th} \\[8pt]
+\mathbf{I}_N &amp;= \frac{\mathbf{V}_{th}}{\mathbf{Z}_{th}} \\[8pt]
+\mathbf{Z}_N &amp;= \mathbf{Z}_{th}
+\end{aligned}
+}
 </span></p>
-<p>Donde <span class="math inline">\theta = \theta_v - \theta_i</span> es el <strong>ángulo de impedancia de la carga</strong>:</p>
+<div class="grid">
+<div class="g-col-12 g-col-md-6">
+<section id="equivalente-thévenin-serie" class="level4 card-module" style="border-top: 4px solid #0284c7;" data-number="2.0.0.1">
+<h4 data-number="2.0.0.1" class="anchored" data-anchor-id="equivalente-thévenin-serie"><span class="header-section-number">2.0.0.1</span> Equivalente Thévenin (Serie)</h4>
 <ul>
-<li><strong>Carga Inductiva (RL) — FP en Atraso (<em>Lagging</em>):</strong> La corriente atrasa a la tensión (<span class="math inline">\theta &gt; 0</span>). La carga absorbe potencia reactiva positiva (<span class="math inline">Q &gt; 0</span>). Representa motores, inductores y transformadores.</li>
-<li><strong>Carga Capacitiva (RC) — FP en Adelanto (<em>Leading</em>):</strong> La corriente adelanta a la tensión (<span class="math inline">\theta &lt; 0</span>). La carga suministra potencia reactiva (<span class="math inline">Q &lt; 0</span>). Representa bancos de condensadores.</li>
+<li><strong>Topología:</strong> Fuente de tensión <span class="math inline">\mathbf{V}_{th}</span> en serie con <span class="math inline">\mathbf{Z}_{th}</span>.</li>
+<li><strong>Tensión en bornes de carga <span class="math inline">\mathbf{Z}_L</span>:</strong> <span class="math display">\mathbf{V}_L = \mathbf{V}_{th} \left( \frac{\mathbf{Z}_L}{\mathbf{Z}_{th} + \mathbf{Z}_L} \right)</span></li>
+<li><strong>Ideal para:</strong> Cargas en serie, cálculo de caídas de tensión y regulación.</li>
 </ul>
-<hr>
 </section>
-<section id="corrección-del-factor-de-potencia" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="corrección-del-factor-de-potencia"><span class="header-section-number">4</span> 4. Corrección del Factor de Potencia</h2>
-<p>Para mejorar la eficiencia y evitar penalizaciones de la red eléctrica, se instalan condensadores en paralelo para elevar el factor de potencia desde <span class="math inline">\cos\theta_1</span> hasta un valor objetivo <span class="math inline">\cos\theta_2</span> (<span class="math inline">\text{FP} \ge 0.95</span>):</p>
-<p><span class="math display">
-Q_C = P \left( \tan\theta_1 - \tan\theta_2 \right)
-</span></p>
-<p>La capacitancia requerida por fase (en conexión en paralelo a tensión <span class="math inline">V_{rms}</span> y frecuencia angular <span class="math inline">\omega = 2\pi f</span>) es:</p>
-<p><span class="math display">
-C = \frac{Q_C}{\omega V_{rms}^2}
-</span></p>
-<hr>
-</section>
-<section id="simulador-interactivo-de-potencia-en-tiempo-real" class="level2" data-number="5">
-<h2 data-number="5" class="anchored" data-anchor-id="simulador-interactivo-de-potencia-en-tiempo-real"><span class="header-section-number">5</span> 5. Simulador Interactivo de Potencia en Tiempo Real</h2>
-<p>Ajuste las amplitudes eficaces de tensión y corriente junto a sus respectivos ángulos de fase para visualizar la potencia compleja y el triángulo fasorial de potencias en tiempo real:</p>
-<div class="mockup-browser">
-<div class="mockup-header">
-<p><span class="mockup-dot red"></span> <span class="mockup-dot yellow"></span> <span class="mockup-dot green"></span> <span class="mockup-title">⚡ engine_fasores.py — Streamlit Interactive Power Engine (Python 3.12)</span></p>
 </div>
-<iframe src="https://portafolio-ingenieria-electrica-3bz9smddyjo9zjkfwdqdsp.streamlit.app/?embed=true" title="Calculadora Fasorial Streamlit" allow="clipboard-write">
-</iframe>
+<div class="g-col-12 g-col-md-6">
+<section id="equivalente-norton-paralelo" class="level4 card-module" style="border-top: 4px solid #10b981;" data-number="2.0.0.2">
+<h4 data-number="2.0.0.2" class="anchored" data-anchor-id="equivalente-norton-paralelo"><span class="header-section-number">2.0.0.2</span> Equivalente Norton (Paralelo)</h4>
+<ul>
+<li><strong>Topología:</strong> Fuente de corriente <span class="math inline">\mathbf{I}_N</span> en paralelo con <span class="math inline">\mathbf{Y}_N</span>.</li>
+<li><strong>Corriente en la carga con admitancia <span class="math inline">\mathbf{Y}_L</span>:</strong> <span class="math display">\mathbf{I}_L = \mathbf{I}_N \left( \frac{\mathbf{Y}_L}{\mathbf{Y}_N + \mathbf{Y}_L} \right)</span></li>
+<li><strong>Ideal para:</strong> Cargas en paralelo, sistemas polifásicos y divisores de corriente.</li>
+</ul>
+</section>
+</div>
 </div>
 <hr>
 </section>
-<section id="recursos-computacionales-navegación" class="level2" data-number="6">
-<h2 data-number="6" class="anchored" data-anchor-id="recursos-computacionales-navegación"><span class="header-section-number">6</span> 6. Recursos Computacionales &amp; Navegación</h2>
+<section id="ejemplo-práctico-de-transformación-thévenin-norton" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Ejemplo Práctico de Transformación Thévenin ↔︎ Norton</h1>
+<p>Supóngase un circuito equivalente de Thévenin con:</p>
+<p><span class="math display">\mathbf{V}_{th} = 120\angle 30^\circ\text{ V}, \qquad \mathbf{Z}_{th} = 4 + j3\ \Omega = 5\angle 36.87^\circ\ \Omega</span></p>
+<p>Calculamos la corriente de Norton asociada:</p>
+<p><span class="math display">\mathbf{I}_N = \frac{\mathbf{V}_{th}}{\mathbf{Z}_{th}} = \frac{120\angle 30^\circ\text{ V}}{5\angle 36.87^\circ\ \Omega} = 24\angle (30^\circ - 36.87^\circ)\text{ A} = 24\angle -6.87^\circ\text{ A}</span></p>
+<p>En forma rectangular:</p>
+<p><span class="math display">\mathbf{I}_N = 24\cos(-6.87^\circ) + j 24\sin(-6.87^\circ) = 23.83 - j 2.87\text{ A}</span></p>
+<p>Y la admitancia de Norton en paralelo:</p>
+<p><span class="math display">\mathbf{Y}_N = \frac{1}{\mathbf{Z}_{th}} = \frac{1}{4 + j3} = \frac{4 - j3}{4^2 + 3^2} = 0.16 - j 0.12\text{ S}</span></p>
+<p>El circuito se puede representar indistintamente por cualquiera de las dos configuraciones produciendo exactamente los mismos efectos sobre cualquier carga conectada a sus bornes.</p>
+<hr>
+</section>
+<section id="navegación-del-módulo" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Navegación del Módulo</h1>
 <div class="d-flex flex-wrap gap-2 my-3">
-<p><a href="../circuitos_electricos/teoria_fasores.html" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i> Análisis Fasorial</a> <a href="../circuitos_electricos/circuito_thevenin.html" class="btn btn-outline-primary"><i class="bi bi-cpu me-1"></i> Teorema de Thévenin</a> <a href="../circuitos_electricos/circuito_norton.html" class="btn btn-outline-primary"><i class="bi bi-bezier2 me-1"></i> Teorema de Norton</a> <a href="../descargas.html" class="btn btn-outline-secondary"><i class="bi bi-download me-1"></i> Descargas &amp; CSVs</a> <a href="../circuitos_electricos/index.html" class="btn btn-outline-secondary"><i class="bi bi-house me-1"></i> Índice Circuitos</a></p>
+<p><a href="../circuitos_electricos/circuito_thevenin.html" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i> Teorema de Thévenin</a> <a href="../circuitos_electricos/potencia_ca.html" class="btn btn-primary"><i class="bi bi-lightning-charge me-1"></i> Siguiente: Potencia en CA</a> <a href="../circuitos_electricos/delta_estrella.html" class="btn btn-outline-primary"><i class="bi bi-triangle me-1"></i> Transformación Δ–Y</a> <a href="../circuitos_electricos/analisis_nodal.html" class="btn btn-outline-primary"><i class="bi bi-diagram-2 me-1"></i> Análisis Nodal</a> <a href="../circuitos_electricos/index.html" class="btn btn-outline-secondary"><i class="bi bi-house me-1"></i> Índice</a></p>
 </div>
 
 

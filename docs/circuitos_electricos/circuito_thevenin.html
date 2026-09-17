@@ -7,9 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="David Guerrero">
-<meta name="dcterms.date" content="2026-09-13">
+<meta name="dcterms.date" content="2026-09-16">
+<meta name="description" content="Reducción de redes lineales activas de CA a un modelo equivalente serie: cálculo riguroso de tensión de circuito abierto, impedancia Thévenin, adaptación conjugada y simulación interactiva.">
 
-<title>Análisis Fasorial y Potencia en Corriente Alterna – ⚡ Portafolio de Ingeniería Eléctrica</title>
+<title>Laboratorio Interactivo: Teorema de Thévenin en CA – ⚡ Portafolio de Ingeniería Eléctrica</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -31,24 +32,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./favicon.svg" rel="icon" type="image/svg+xml">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-bb62276ab45c84d9efd712f51ff97b5a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-c6d09101e572722342265c9c28ffdbd3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../favicon.svg" rel="icon" type="image/svg+xml">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bb62276ab45c84d9efd712f51ff97b5a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-c6d09101e572722342265c9c28ffdbd3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -122,7 +123,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -132,7 +133,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">⚡ Portafolio de Ingeniería Eléctrica</span>
     </a>
   </div>
@@ -143,7 +144,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> <i class="bi bi-house-door-fill" role="img">
+    <a class="nav-link" href="../index.html"> <i class="bi bi-house-door-fill" role="img">
 </i> 
 <span class="menu-text">Inicio</span></a>
   </li>  
@@ -155,16 +156,39 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-circuitos-eléctricos">    
         <li>
-    <a class="dropdown-item" href="./circuitos_electricos/index.html">
+    <a class="dropdown-item" href="../circuitos_electricos/index.html">
  <span class="dropdown-text">⚡ Ver Todo (Módulo Circuitos)</span></a>
   </li>  
+        <li><hr class="dropdown-divider"></li>
         <li>
-    <a class="dropdown-item" href="./circuitos_electricos/teoria_fasores_V3.html">
+    <a class="dropdown-item" href="../circuitos_electricos/teoria_fasores.html">
  <span class="dropdown-text">Guía Práctica de Análisis Fasorial</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./circuitos_electricos/potencia_ca.html">
- <span class="dropdown-text">Potencia en CA y Triángulo de Potencias</span></a>
+    <a class="dropdown-item" href="../circuitos_electricos/potencia_ca.html">
+ <span class="dropdown-text">Potencia en CA &amp; Triángulo de Potencias</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">MÉTODOS Y TEOREMAS DE REDES</li>
+        <li>
+    <a class="dropdown-item" href="../circuitos_electricos/delta_estrella.html">
+ <span class="dropdown-text">Transformación Delta–Estrella (Δ ↔︎ Y)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../circuitos_electricos/analisis_nodal.html">
+ <span class="dropdown-text">Análisis Nodal en CA (Admitancias)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../circuitos_electricos/analisis_mallas.html">
+ <span class="dropdown-text">Análisis de Mallas en CA (Impedancias)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../circuitos_electricos/circuito_thevenin.html">
+ <span class="dropdown-text">Teorema de Thévenin en CA</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../circuitos_electricos/circuito_norton.html">
+ <span class="dropdown-text">Teorema de Norton en CA</span></a>
   </li>  
     </ul>
   </li>
@@ -176,12 +200,12 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-máquinas-eléctricas">    
         <li>
-    <a class="dropdown-item" href="./maquinas_electricas/index.html">
+    <a class="dropdown-item" href="../maquinas_electricas/index.html">
  <span class="dropdown-text">⚙️ Ver Todo (Módulo Máquinas)</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li>
-    <a class="dropdown-item" href="./maquinas_electricas/circuitos_magneticos.html">
+    <a class="dropdown-item" href="../maquinas_electricas/circuitos_magneticos.html">
  <span class="dropdown-text">Circuitos Magnéticos y Curva B-H</span></a>
   </li>  
     </ul>
@@ -194,12 +218,12 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-mediciones-eléctricas">    
         <li>
-    <a class="dropdown-item" href="./mediciones_electricas/index.html">
+    <a class="dropdown-item" href="../mediciones_electricas/index.html">
  <span class="dropdown-text">📊 Ver Todo (Módulo Mediciones)</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li>
-    <a class="dropdown-item" href="./mediciones_electricas/puentes_medicion.html">
+    <a class="dropdown-item" href="../mediciones_electricas/puentes_medicion.html">
  <span class="dropdown-text">Puentes de Medición (R, L, C)</span></a>
   </li>  
     </ul>
@@ -212,12 +236,12 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-sistemas-de-potencia">    
         <li>
-    <a class="dropdown-item" href="./sistemas_potencia/index.html">
+    <a class="dropdown-item" href="../sistemas_potencia/index.html">
  <span class="dropdown-text">🏗️ Ver Todo (Módulo Potencia)</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li>
-    <a class="dropdown-item" href="./sistemas_potencia/caida_tension.html">
+    <a class="dropdown-item" href="../sistemas_potencia/caida_tension.html">
  <span class="dropdown-text">Caída de Tensión y Alimentadores (NEC)</span></a>
   </li>  
     </ul>
@@ -230,12 +254,12 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-aplicaciones-python">    
         <li>
-    <a class="dropdown-item" href="./aplicaciones_python/index.html">
+    <a class="dropdown-item" href="../aplicaciones_python/index.html">
  <span class="dropdown-text">🐍 Calculadoras &amp; Simuladores</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li>
-    <a class="dropdown-item" href="./descargas.html">
+    <a class="dropdown-item" href="../descargas.html">
  <span class="dropdown-text">Centro de Descargas &amp; CSVs</span></a>
   </li>  
     </ul>
@@ -263,13 +287,18 @@ window.Quarto = {
     <h2 id="toc-title">Índice de Contenido</h2>
    
   <ul>
-  <li><a href="#fundamentos-teóricos-de-régimen-sinusoidal" id="toc-fundamentos-teóricos-de-régimen-sinusoidal" class="nav-link active" data-scroll-target="#fundamentos-teóricos-de-régimen-sinusoidal"><span class="header-section-number">1</span> 1. Fundamentos Teóricos de Régimen Sinusoidal</a></li>
-  <li><a href="#potencia-compleja-y-triángulo-de-potencias" id="toc-potencia-compleja-y-triángulo-de-potencias" class="nav-link" data-scroll-target="#potencia-compleja-y-triángulo-de-potencias"><span class="header-section-number">2</span> 2. Potencia Compleja y Triángulo de Potencias</a>
+  <li><a href="#teorema-de-thévenin-en-régimen-sinusoidal-permanente" id="toc-teorema-de-thévenin-en-régimen-sinusoidal-permanente" class="nav-link active" data-scroll-target="#teorema-de-thévenin-en-régimen-sinusoidal-permanente">Teorema de Thévenin en Régimen Sinusoidal Permanente</a></li>
+  <li><a href="#determinación-de-los-parámetros-de-thévenin" id="toc-determinación-de-los-parámetros-de-thévenin" class="nav-link" data-scroll-target="#determinación-de-los-parámetros-de-thévenin">Determinación de los Parámetros de Thévenin</a>
   <ul class="collapse">
-  <li><a href="#componentes-de-potencia" id="toc-componentes-de-potencia" class="nav-link" data-scroll-target="#componentes-de-potencia"><span class="header-section-number">2.1</span> Componentes de Potencia</a></li>
+  <li><a href="#tensión-de-thévenin-mathbfv_th" id="toc-tensión-de-thévenin-mathbfv_th" class="nav-link" data-scroll-target="#tensión-de-thévenin-mathbfv_th">1. Tensión de Thévenin (<span class="math inline">\mathbf{V}_{th}</span>)</a></li>
+  <li><a href="#impedancia-de-thévenin-mathbfz_th" id="toc-impedancia-de-thévenin-mathbfz_th" class="nav-link" data-scroll-target="#impedancia-de-thévenin-mathbfz_th">2. Impedancia de Thévenin (<span class="math inline">\mathbf{Z}_{th}</span>)</a></li>
   </ul></li>
-  <li><a href="#simulador-interactivo-de-potencia-en-tiempo-real" id="toc-simulador-interactivo-de-potencia-en-tiempo-real" class="nav-link" data-scroll-target="#simulador-interactivo-de-potencia-en-tiempo-real"><span class="header-section-number">3</span> 3. Simulador Interactivo de Potencia en Tiempo Real</a></li>
-  <li><a href="#recursos-computacionales-y-descargas" id="toc-recursos-computacionales-y-descargas" class="nav-link" data-scroll-target="#recursos-computacionales-y-descargas"><span class="header-section-number">4</span> 4. Recursos Computacionales y Descargas</a></li>
+  <li><a href="#teorema-de-máxima-transferencia-de-potencia-compleja" id="toc-teorema-de-máxima-transferencia-de-potencia-compleja" class="nav-link" data-scroll-target="#teorema-de-máxima-transferencia-de-potencia-compleja">Teorema de Máxima Transferencia de Potencia Compleja</a>
+  <ul class="collapse">
+  <li><a href="#condición-de-adaptación-conjugada" id="toc-condición-de-adaptación-conjugada" class="nav-link" data-scroll-target="#condición-de-adaptación-conjugada">Condición de Adaptación Conjugada</a></li>
+  </ul></li>
+  <li><a href="#laboratorio-interactivo-cálculo-del-equivalente-thévenin" id="toc-laboratorio-interactivo-cálculo-del-equivalente-thévenin" class="nav-link" data-scroll-target="#laboratorio-interactivo-cálculo-del-equivalente-thévenin">Laboratorio Interactivo: Cálculo del Equivalente Thévenin</a></li>
+  <li><a href="#navegación-del-módulo" id="toc-navegación-del-módulo" class="nav-link" data-scroll-target="#navegación-del-módulo">Navegación del Módulo</a></li>
   </ul>
 </nav>
     </div>
@@ -278,10 +307,23 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Análisis Fasorial y Potencia en Corriente Alterna</h1>
-<p class="subtitle lead">Modelado matemático en régimen sinusoidal permanente y visualización interactiva de potencia compleja</p>
-</div>
+<h1 class="title">Laboratorio Interactivo: Teorema de Thévenin en CA</h1>
+<p class="subtitle lead">Circuito equivalente unifilar, cálculo de Vth y Zth, máxima transferencia de potencia compleja y laboratorio interactivo</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Teoremas de Redes</div>
+    <div class="quarto-category">Thévenin</div>
+    <div class="quarto-category">Máxima Transferencia</div>
+    <div class="quarto-category">Impedancia Compleja</div>
+    <div class="quarto-category">Circuitos CA</div>
+    <div class="quarto-category">Calculadora</div>
+  </div>
+  </div>
 
+<div>
+  <div class="description">
+    Reducción de redes lineales activas de CA a un modelo equivalente serie: cálculo riguroso de tensión de circuito abierto, impedancia Thévenin, adaptación conjugada y simulación interactiva.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta column-page-left">
@@ -296,7 +338,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 13, 2026</p>
+      <p class="date">September 16, 2026</p>
     </div>
   </div>
   
@@ -308,79 +350,254 @@ window.Quarto = {
 </header>
 
 
+<section id="teorema-de-thévenin-en-régimen-sinusoidal-permanente" class="level1 unnumbered hero-banner-modern">
+<h1 class="unnumbered">Teorema de Thévenin en Régimen Sinusoidal Permanente</h1>
+<p><strong>Simplificación de redes complejas activas a una fuente fasorial ideal en serie con una impedancia.</strong></p>
+<p>Permite analizar el comportamiento de una carga conectada a una red arbitrariamente compleja sin necesidad de resolver nuevamente todo el circuito cada vez que la impedancia de carga varía.</p>
+</section>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>⚡ Interfaz Computacional
+<span class="screen-reader-only">Note</span>⚡ Enunciado del Teorema de Thévenin en CA
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Esta memoria integra formulación teórica rigurosa con una aplicación de cálculo numérico interactivo ejecutada con Python en <strong>Streamlit Cloud</strong>. La herramienta permite ajustar amplitudes, ángulos de desfase y visualizar el triángulo de potencias en tiempo real.</p>
+<p>Cualquier red lineal activa de corriente alterna conectada a una carga a través de dos terminales accesibles <span class="math inline">(a, b)</span> puede sustituirse, en lo referente a las variables externas en dichos terminales, por un circuito equivalente compuesto por: 1. Una fuente de tensión fasorial ideal <span class="math inline">\mathbf{V}_{th}</span> (<strong>Tensión de Thévenin</strong>). 2. Conectada en serie con una impedancia compleja pasiva <span class="math inline">\mathbf{Z}_{th}</span> (<strong>Impedancia de Thévenin</strong>).</p>
 </div>
 </div>
-<section id="fundamentos-teóricos-de-régimen-sinusoidal" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="fundamentos-teóricos-de-régimen-sinusoidal"><span class="header-section-number">1</span> 1. Fundamentos Teóricos de Régimen Sinusoidal</h2>
-<p>En el análisis de circuitos eléctricos excitados por fuentes sinusoidales de frecuencia angular constante <span class="math inline">\omega = 2\pi f</span>, las variables temporales de tensión <span class="math inline">v(t)</span> y corriente <span class="math inline">i(t)</span> se transforman al dominio de la frecuencia mediante la <strong>notación fasorial</strong>.</p>
-<p>Sea la tensión instantánea y la corriente instantánea:</p>
-<p><span class="math display">
-v(t) = V_{max} \cos(\omega t + \theta_v) \quad \Longrightarrow \quad \mathbf{V} = V_{rms} e^{j\theta_v} = V_{rms} \angle \theta_v
-</span></p>
-<p><span class="math display">
-i(t) = I_{max} \cos(\omega t + \theta_i) \quad \Longrightarrow \quad \mathbf{I} = I_{rms} e^{j\theta_i} = I_{rms} \angle \theta_i
-</span></p>
-<p>Donde los valores eficaces (<span class="math inline">V_{rms}</span>, <span class="math inline">I_{rms}</span>) corresponden a los valores de cresta divididos por <span class="math inline">\sqrt{2}</span>.</p>
+<hr>
+<section id="determinación-de-los-parámetros-de-thévenin" class="level1">
+<h1>Determinación de los Parámetros de Thévenin</h1>
+<section id="tensión-de-thévenin-mathbfv_th" class="level2">
+<h2 class="anchored" data-anchor-id="tensión-de-thévenin-mathbfv_th">1. Tensión de Thévenin (<span class="math inline">\mathbf{V}_{th}</span>)</h2>
+<p>La tensión de Thévenin es la diferencia de potencial fasorial en circuito abierto entre los terminales <span class="math inline">a</span> y <span class="math inline">b</span> (desconectando la impedancia de carga <span class="math inline">\mathbf{Z}_L</span>):</p>
+<p><span class="math display">\mathbf{V}_{th} = \mathbf{V}_{ab} \Big|_{\text{circuito abierto}}</span></p>
+<p>Se calcula utilizando cualquier método sistemático (análisis nodal, análisis de mallas o divisores de tensión fasoriales) con los terminales <span class="math inline">a-b</span> libres.</p>
 <hr>
 </section>
-<section id="potencia-compleja-y-triángulo-de-potencias" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="potencia-compleja-y-triángulo-de-potencias"><span class="header-section-number">2</span> 2. Potencia Compleja y Triángulo de Potencias</h2>
-<p>La potencia compleja aparente <span class="math inline">\mathbf{S}</span> transferida hacia un dipolo pasivo o una carga se expresa como el producto del fasor de tensión por el <strong>complejo conjugado</strong> del fasor de corriente:</p>
-<p><span class="math display">
-\mathbf{S} = \mathbf{V} \cdot \mathbf{I}^* = \left( V_{rms} e^{j\theta_v} \right) \left( I_{rms} e^{-j\theta_i} \right) = V_{rms} I_{rms} e^{j(\theta_v - \theta_i)}
-</span></p>
-<p>Descomponiendo en forma rectangular mediante la identidad de Euler:</p>
-<p><span class="math display">
-\mathbf{S} = P + jQ
-</span></p>
-<section id="componentes-de-potencia" class="level3" data-number="2.1">
-<h3 data-number="2.1" class="anchored" data-anchor-id="componentes-de-potencia"><span class="header-section-number">2.1</span> Componentes de Potencia</h3>
+<section id="impedancia-de-thévenin-mathbfz_th" class="level2">
+<h2 class="anchored" data-anchor-id="impedancia-de-thévenin-mathbfz_th">2. Impedancia de Thévenin (<span class="math inline">\mathbf{Z}_{th}</span>)</h2>
+<p>La impedancia de Thévenin <span class="math inline">\mathbf{Z}_{th} = R_{th} + j X_{th}</span> representa la oposición total vista desde los terminales <span class="math inline">a-b</span> hacia el interior de la red. Su método de cálculo depende de la naturaleza de las fuentes:</p>
+<div class="grid">
+<div class="g-col-12 g-col-md-6">
+<section id="caso-a-red-con-solo-fuentes-independientes" class="level4 card-module" style="border-top: 4px solid #0284c7;">
+<h4 class="anchored" data-anchor-id="caso-a-red-con-solo-fuentes-independientes">Caso A: Red con Solo Fuentes Independientes</h4>
 <ol type="1">
-<li><p><strong>Potencia Activa (<span class="math inline">P</span>):</strong> Potencia útil transformada en trabajo mecánico, luz o calor. <span class="math display">
-P = |\mathbf{V}| |\mathbf{I}| \cos(\theta_v - \theta_i) \quad [\text{W}, \text{kW}, \text{MW}]
-</span></p></li>
-<li><p><strong>Potencia Reactiva (<span class="math inline">Q</span>):</strong> Potencia oscilante requerida para establecer los campos magnéticos en inductancias o eléctricos en condensadores. <span class="math display">
-Q = |\mathbf{V}| |\mathbf{I}| \sin(\theta_v - \theta_i) \quad [\text{VAR}, \text{kVAR}]
-</span></p></li>
-<li><p><strong>Potencia Aparente (<span class="math inline">|\mathbf{S}|</span>):</strong> Capacidad total de transporte requerida en transformadores, generadores y conductores. <span class="math display">
-|\mathbf{S}| = \sqrt{P^2 + Q^2} \quad [\text{VA}, \text{kVA}]
-</span></p></li>
-<li><p><strong>Factor de Potencia (<span class="math inline">\text{FP}</span>):</strong> Eficiencia de utilización de la energía. <span class="math display">
-\text{FP} = \cos(\theta_v - \theta_i) = \frac{P}{|\mathbf{S}|}
-</span></p></li>
-</ol>
-<hr>
-</section>
-</section>
-<section id="simulador-interactivo-de-potencia-en-tiempo-real" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="simulador-interactivo-de-potencia-en-tiempo-real"><span class="header-section-number">3</span> 3. Simulador Interactivo de Potencia en Tiempo Real</h2>
-<p>Utilice el siguiente simulador computacional para variar la amplitud eficaz de tensión, corriente y sus respectivos ángulos de fase. El motor calculará automáticamente la potencia activa, reactiva y graficará el plano fasorial en tiempo real:</p>
-<div class="mockup-browser">
-<div class="mockup-header">
-<p><span class="mockup-dot red"></span> <span class="mockup-dot yellow"></span> <span class="mockup-dot green"></span> <span class="mockup-title">⚡ engine_fasores.py — Streamlit Interactive Engine (Python 3.12)</span></p>
-</div>
-<iframe src="https://portafolio-ingenieria-electrica-3bz9smddyjo9zjkfwdqdsp.streamlit.app/?embed=true" title="Calculadora Fasorial Streamlit" allow="clipboard-write">
-</iframe>
-</div>
-<hr>
-</section>
-<section id="recursos-computacionales-y-descargas" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="recursos-computacionales-y-descargas"><span class="header-section-number">4</span> 4. Recursos Computacionales y Descargas</h2>
+<li>Se desactivan todas las fuentes independientes:
 <ul>
-<li><a href="descargas/calculo_fasores.py" class="btn btn-primary" role="button">📥 Descargar Script Standalone de Fasores (<code>calculo_fasores.py</code>)</a></li>
-<li><a href="./descargas.html" class="btn btn-outline-primary" role="button">📊 Consultar Tabla de Conductores y Parámetros</a></li>
-</ul>
+<li><strong>Fuentes de tensión:</strong> se reemplazan por cortocircuitos (<span class="math inline">\mathbf{V}_s = 0\text{ V}</span>).</li>
+<li><strong>Fuentes de corriente:</strong> se reemplazan por circuitos abiertos (<span class="math inline">\mathbf{I}_s = 0\text{ A}</span>).</li>
+</ul></li>
+<li>Se calcula la impedancia equivalente vista desde los terminales <span class="math inline">a-b</span> mediante reducciones serie-paralelo o transformaciones <span class="math inline">\Delta \leftrightarrow \text{Y}</span>.</li>
+</ol>
+</section>
+</div>
+<div class="g-col-12 g-col-md-6">
+<section id="caso-b-red-con-fuentes-dependientes" class="level4 card-module" style="border-top: 4px solid #f59e0b;">
+<h4 class="anchored" data-anchor-id="caso-b-red-con-fuentes-dependientes">Caso B: Red con Fuentes Dependientes</h4>
+<p>Las fuentes dependientes <strong>nunca deben desactivarse</strong>, ya que son controladas por variables internas del circuito.</p>
+<ol type="1">
+<li>Se desactivan únicamente las fuentes independientes.</li>
+<li>Se conecta entre los terminales <span class="math inline">a-b</span> una <strong>fuente de prueba auxiliar</strong> de tensión fasorial <span class="math inline">\mathbf{V}_o</span> (o de corriente <span class="math inline">\mathbf{I}_o</span>).</li>
+<li>Se determina la corriente suministrada por la fuente de prueba <span class="math inline">\mathbf{I}_o</span>: <span class="math display">\mathbf{Z}_{th} = \frac{\mathbf{V}_o}{\mathbf{I}_o}</span></li>
+</ol>
+</section>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Método Alternativo: Relación de Cortocircuito
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Si la red contiene fuentes dependientes, un método sumamente práctico y directo consiste en calcular la <strong>corriente de cortocircuito</strong> <span class="math inline">\mathbf{I}_{sc} = \mathbf{I}_N</span> entre los terminales <span class="math inline">a</span> y <span class="math inline">b</span>:</p>
+<p><span class="math display">\mathbf{Z}_{th} = \frac{\mathbf{V}_{th}}{\mathbf{I}_{sc}}</span></p>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="teorema-de-máxima-transferencia-de-potencia-compleja" class="level1">
+<h1>Teorema de Máxima Transferencia de Potencia Compleja</h1>
+<p>Dada una red lineal con equivalente Thévenin <span class="math inline">(\mathbf{V}_{th}, \mathbf{Z}_{th} = R_{th} + j X_{th})</span> conectada a una carga pasiva ajustable <span class="math inline">\mathbf{Z}_L = R_L + j X_L</span>:</p>
+<p><span class="math display">\mathbf{I}_L = \frac{\mathbf{V}_{th}}{\mathbf{Z}_{th} + \mathbf{Z}_L} = \frac{\mathbf{V}_{th}}{(R_{th} + R_L) + j(X_{th} + X_L)}</span></p>
+<p>La potencia activa media absorbida por la carga es:</p>
+<p><span class="math display">P_L = |\mathbf{I}_L|^2 R_L = \frac{|\mathbf{V}_{th}|^2 R_L}{(R_{th} + R_L)^2 + (X_{th} + X_L)^2}</span></p>
+<section id="condición-de-adaptación-conjugada" class="level2">
+<h2 class="anchored" data-anchor-id="condición-de-adaptación-conjugada">Condición de Adaptación Conjugada</h2>
+<p>Para maximizar <span class="math inline">P_L</span>: 1. <strong>Compensación de reactancias:</strong> El denominador se minimiza cuando la reactancia total es nula, es decir:<br>
+<span class="math display">X_L = -X_{th}</span> <em>(Si la red es inductiva con <span class="math inline">+jX_{th}</span>, la carga debe ser capacitiva con <span class="math inline">-jX_{th}</span> para entrar en resonancia serie).</em> 2. <strong>Adaptación de resistencias:</strong> Derivando respecto a <span class="math inline">R_L</span> con <span class="math inline">X_L = -X_{th}</span>, se obtiene que la resistencia de carga debe igualar a la resistencia de Thévenin:<br>
+<span class="math display">R_L = R_{th}</span></p>
+<p>Por consiguiente, la condición de máxima transferencia de potencia activa es el <strong>complejo conjugado</strong>:</p>
+<p><span class="math display">\boxed{\mathbf{Z}_L = \mathbf{Z}_{th}^* = R_{th} - j X_{th}}</span></p>
+<p>Bajo esta condición óptima, la potencia activa máxima disipada en la carga es:</p>
+<p><span class="math display">\boxed{P_{L,\max} = \frac{|\mathbf{V}_{th}|^2}{4 R_{th}} \quad \text{[W]}}</span></p>
+<hr>
+</section>
+</section>
+<section id="laboratorio-interactivo-cálculo-del-equivalente-thévenin" class="level1">
+<h1>Laboratorio Interactivo: Cálculo del Equivalente Thévenin</h1>
+<p>Utilice el siguiente simulador para definir los parámetros de una fuente de alimentación y dos ramas de impedancia en puente divisor. El motor calculará de forma instantánea el voltaje <span class="math inline">\mathbf{V}_{th}</span>, la impedancia <span class="math inline">\mathbf{Z}_{th}</span> y la corriente Norton asociada <span class="math inline">\mathbf{I}_N</span>:</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>⚡ <strong>Construye y Calcula</strong> Selecciona los valores del circuito. El cálculo se realiza en tiempo real en tu navegador, replicando la lógica de análisis fasorial.</p>
+</div>
+</div>
+
+<div class="card p-4 shadow-sm border-0 bg-light">
+  <div class="row">
+    <!-- Panel de Entrada -->
+    <div class="col-md-5">
+      <h6 class="text-primary fw-bold anchored" data-anchor-id="laboratorio-interactivo-cálculo-del-equivalente-thévenin"><i class="bi bi-sliders"></i> Parámetros del Circuito</h6>
+      
+      <div class="mb-3">
+        <label class="form-label small fw-bold">Fuente de Voltaje $\mathbf{E}$ (V)</label>
+        <div class="input-group input-group-sm">
+          <input type="number" id="th_E_mag" class="form-control" value="9" step="0.1">
+          <span class="input-group-text">∠</span>
+          <input type="number" id="th_E_ang" class="form-control" value="0" step="1">
+          <span class="input-group-text">°</span>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label small fw-bold">Impedancia $\mathbf{Z_1}$ ($\Omega$)</label>
+        <div class="input-group input-group-sm">
+          <input type="number" id="th_Z1_real" class="form-control" value="6" step="0.1">
+          <span class="input-group-text">+ j</span>
+          <input type="number" id="th_Z1_imag" class="form-control" value="-8" step="0.1">
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label small fw-bold">Impedancia $\mathbf{Z_2}$ ($\Omega$)</label>
+        <div class="input-group input-group-sm">
+          <input type="number" id="th_Z2_real" class="form-control" value="0" step="0.1">
+          <span class="input-group-text">+ j</span>
+          <input type="number" id="th_Z2_imag" class="form-control" value="8" step="0.1">
+        </div>
+      </div>
+      
+      <button class="btn btn-primary w-100 btn-sm" onclick="calcularThevenin()">
+        <i class="bi bi-calculator"></i> Calcular Equivalente Thévenin
+      </button>
+    </div>
+
+    <!-- Panel de Resultados -->
+    <div class="col-md-7">
+      <h6 class="text-success fw-bold anchored"><i class="bi bi-check-circle"></i> Resultados Fasoriales</h6>
+      <div id="resultado_thevenin" class="p-3 bg-white rounded border">
+        <p class="text-muted small text-center mt-4">Presiona "Calcular" para ver los resultados fasoriales.</p>
+      </div>
+      
+      <!-- Aquí podrías agregar un SVG dinámico que cambie de color según los valores -->
+      <div class="mt-3 text-center">
+        <small class="text-muted">Representación visual del circuito (Esquemático estático con valores dinámicos)</small>
+        <div class="p-2 border rounded bg-white mt-1 font-monospace small" id="esquema_texto">
+          E --- Z1 ---+--- Z2 ---|<br>
+                    |<br>
+                   Vth (Salida)
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Pequeña librería de Números Complejos en JS (reemplaza a numpy)
+const C = {
+  add: (a, b) => ({ r: a.r + b.r, i: a.i + b.i }),
+  sub: (a, b) => ({ r: a.r - b.r, i: a.i - b.i }),
+  mul: (a, b) => ({ r: a.r * b.r - a.i * b.i, i: a.r * b.i + a.i * b.r }),
+  div: (a, b) => {
+    const den = b.r * b.r + b.i * b.i;
+    return { r: (a.r * b.r + a.i * b.i) / den, i: (a.i * b.r - a.r * b.i) / den };
+  },
+  polar: (c) => {
+    const mag = Math.hypot(c.r, c.i);
+    const ang = Math.atan2(c.i, c.r) * (180 / Math.PI);
+    return { mag, ang };
+  },
+  fromPolar: (mag, angDeg) => {
+    const rad = angDeg * (Math.PI / 180);
+    return { r: mag * Math.cos(rad), i: mag * Math.sin(rad) };
+  },
+  fmt: (c, unit = "") => {
+    const p = C.polar(c);
+    const signo = c.i >= 0 ? "+" : "−";
+    return `${p.mag.toFixed(2)} ∠ ${p.ang.toFixed(1)}° ${unit} <br><span class="text-muted small">(${c.r.toFixed(2)} ${signo} j${Math.abs(c.i).toFixed(2)} ${unit})</span>`;
+  }
+};
+
+function calcularThevenin() {
+  // 1. Obtener valores
+  const E_mag = parseFloat(document.getElementById('th_E_mag').value) || 0;
+  const E_ang = parseFloat(document.getElementById('th_E_ang').value) || 0;
+  const E = C.fromPolar(E_mag, E_ang);
+
+  const Z1 = { r: parseFloat(document.getElementById('th_Z1_real').value) || 0, i: parseFloat(document.getElementById('th_Z1_imag').value) || 0 };
+  const Z2 = { r: parseFloat(document.getElementById('th_Z2_real').value) || 0, i: parseFloat(document.getElementById('th_Z2_imag').value) || 0 };
+
+  // 2. Cálculos (Lógica idéntica a tu verificacion_calculos.py)
+  const Z1_plus_Z2 = C.add(Z1, Z2);
+  const Zth = C.div(C.mul(Z1, Z2), Z1_plus_Z2);
+  const Vth = C.mul(E, C.div(Z2, Z1_plus_Z2));
+  const IN = C.div(Vth, Zth);
+
+  // 3. Mostrar resultados
+  const html = `
+    <div class="row">
+      <div class="col-6">
+        <div class="p-2 mb-2 bg-light rounded border-start border-4 border-primary">
+          <strong class="small text-primary">Voltaje Thévenin ($\mathbf{V_{th}}$)</strong><br>
+          ${C.fmt(Vth, "V")}
+        </div>
+        <div class="p-2 bg-light rounded border-start border-4 border-success">
+          <strong class="small text-success">Impedancia Thévenin ($\mathbf{Z_{th}}$)</strong><br>
+          ${C.fmt(Zth, "Ω")}
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="p-2 mb-2 bg-light rounded border-start border-4 border-warning">
+          <strong class="small text-warning">Corriente Norton ($\mathbf{I_N}$)</strong><br>
+          ${C.fmt(IN, "A")}
+        </div>
+        <div class="p-2 bg-light rounded border-start border-4 border-info">
+          <strong class="small text-info">Comportamiento de $\mathbf{Z_{th}}$</strong><br>
+          <span class="small">${Zth.i > 0.01 ? "Inductivo (Reactancia +)" : Zth.i < -0.01 ? "Capacitivo (Reactancia -)" : "Resistivo Puro"}</span>
+        </div>
+      </div>
+    </div>
+  `;
+  document.getElementById('resultado_thevenin').innerHTML = html;
+}
+
+// Calcular al cargar
+document.addEventListener("DOMContentLoaded", calcularThevenin);
+</script>
+
+<hr>
+</section>
+<section id="navegación-del-módulo" class="level1">
+<h1>Navegación del Módulo</h1>
+<div class="d-flex flex-wrap gap-2 my-3">
+<p><a href="../circuitos_electricos/analisis_mallas.html" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i> Análisis de Mallas</a> <a href="../circuitos_electricos/circuito_norton.html" class="btn btn-primary"><i class="bi bi-bezier2 me-1"></i> Siguiente: Teorema de Norton</a> <a href="../circuitos_electricos/potencia_ca.html" class="btn btn-outline-primary"><i class="bi bi-lightning-charge me-1"></i> Potencia en CA</a> <a href="../circuitos_electricos/index.html" class="btn btn-outline-secondary"><i class="bi bi-house me-1"></i> Índice</a></p>
+</div>
 
 
 </section>
@@ -811,5 +1028,5 @@ Q = |\mathbf{V}| |\mathbf{I}| \sin(\theta_v - \theta_i) \quad [\text{VAR}, \text
 
 
 
-<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

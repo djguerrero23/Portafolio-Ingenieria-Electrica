@@ -1,0 +1,126 @@
+---
+title: "Teorema de Thévenin en Corriente Alterna"
+subtitle: "Circuito equivalente unifilar, cálculo de Vth y Zth, máxima transferencia de potencia compleja y laboratorio interactivo"
+description: "Reducción de redes lineales activas de CA a un modelo equivalente serie: cálculo riguroso de tensión de circuito abierto, impedancia Thévenin, adaptación conjugada y simulación interactiva."
+author: "David Guerrero"
+date: "2026-09-16"
+categories: [Teoremas de Redes, Thévenin, Máxima Transferencia, Impedancia Compleja, Circuitos CA, Calculadora]
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+---
+
+::: {.hero-banner-modern}
+# Teorema de Thévenin en Régimen Sinusoidal Permanente {.unnumbered}
+**Simplificación de redes complejas activas a una fuente fasorial ideal en serie con una impedancia.**
+
+Permite analizar el comportamiento de una carga conectada a una red arbitrariamente compleja sin necesidad de resolver nuevamente todo el circuito cada vez que la impedancia de carga varía.
+:::
+
+::: {.callout-note}
+### ⚡ Enunciado del Teorema de Thévenin en CA
+Cualquier red lineal activa de corriente alterna conectada a una carga a través de dos terminales accesibles $(a, b)$ puede sustituirse, en lo referente a las variables externas en dichos terminales, por un circuito equivalente compuesto por:
+1. Una fuente de tensión fasorial ideal $\mathbf{V}_{th}$ (**Tensión de Thévenin**).
+2. Conectada en serie con una impedancia compleja pasiva $\mathbf{Z}_{th}$ (**Impedancia de Thévenin**).
+:::
+
+---
+
+# Determinación de los Parámetros de Thévenin
+
+## 1. Tensión de Thévenin ($\mathbf{V}_{th}$)
+
+La tensión de Thévenin es la diferencia de potencial fasorial en circuito abierto entre los terminales $a$ y $b$ (desconectando la impedancia de carga $\mathbf{Z}_L$):
+
+$$\mathbf{V}_{th} = \mathbf{V}_{ab} \Big|_{\text{circuito abierto}}$$
+
+Se calcula utilizando cualquier método sistemático (análisis nodal, análisis de mallas o divisores de tensión fasoriales) con los terminales $a-b$ libres.
+
+---
+
+## 2. Impedancia de Thévenin ($\mathbf{Z}_{th}$)
+
+La impedancia de Thévenin $\mathbf{Z}_{th} = R_{th} + j X_{th}$ representa la oposición total vista desde los terminales $a-b$ hacia el interior de la red. Su método de cálculo depende de la naturaleza de las fuentes:
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-6}
+::: {.card-module style="border-top: 4px solid #0284c7;"}
+#### Caso A: Red con Solo Fuentes Independientes
+1. Se desactivan todas las fuentes independientes:
+   - **Fuentes de tensión:** se reemplazan por cortocircuitos ($\mathbf{V}_s = 0\text{ V}$).
+   - **Fuentes de corriente:** se reemplazan por circuitos abiertos ($\mathbf{I}_s = 0\text{ A}$).
+2. Se calcula la impedancia equivalente vista desde los terminales $a-b$ mediante reducciones serie-paralelo o transformaciones $\Delta \leftrightarrow \text{Y}$.
+:::
+:::
+
+::: {.g-col-12 .g-col-md-6}
+::: {.card-module style="border-top: 4px solid #f59e0b;"}
+#### Caso B: Red con Fuentes Dependientes
+Las fuentes dependientes **nunca deben desactivarse**, ya que son controladas por variables internas del circuito.
+
+1. Se desactivan únicamente las fuentes independientes.
+2. Se conecta entre los terminales $a-b$ una **fuente de prueba auxiliar** de tensión fasorial $\mathbf{V}_o$ (o de corriente $\mathbf{I}_o$).
+3. Se determina la corriente suministrada por la fuente de prueba $\mathbf{I}_o$:
+$$\mathbf{Z}_{th} = \frac{\mathbf{V}_o}{\mathbf{I}_o}$$
+:::
+:::
+
+:::
+
+::: {.callout-tip}
+### Método Alternativo: Relación de Cortocircuito
+Si la red contiene fuentes dependientes, un método sumamente práctico y directo consiste en calcular la **corriente de cortocircuito** $\mathbf{I}_{sc} = \mathbf{I}_N$ entre los terminales $a$ y $b$:
+
+$$\mathbf{Z}_{th} = \frac{\mathbf{V}_{th}}{\mathbf{I}_{sc}}$$
+:::
+
+---
+
+# Teorema de Máxima Transferencia de Potencia Compleja
+
+Dada una red lineal con equivalente Thévenin $(\mathbf{V}_{th}, \mathbf{Z}_{th} = R_{th} + j X_{th})$ conectada a una carga pasiva ajustable $\mathbf{Z}_L = R_L + j X_L$:
+
+$$\mathbf{I}_L = \frac{\mathbf{V}_{th}}{\mathbf{Z}_{th} + \mathbf{Z}_L} = \frac{\mathbf{V}_{th}}{(R_{th} + R_L) + j(X_{th} + X_L)}$$
+
+La potencia activa media absorbida por la carga es:
+
+$$P_L = |\mathbf{I}_L|^2 R_L = \frac{|\mathbf{V}_{th}|^2 R_L}{(R_{th} + R_L)^2 + (X_{th} + X_L)^2}$$
+
+## Condición de Adaptación Conjugada
+
+Para maximizar $P_L$:
+1. **Compensación de reactancias:** El denominador se minimiza cuando la reactancia total es nula, es decir:  
+   $$X_L = -X_{th}$$
+   *(Si la red es inductiva con $+jX_{th}$, la carga debe ser capacitiva con $-jX_{th}$ para entrar en resonancia serie).*
+2. **Adaptación de resistencias:** Derivando respecto a $R_L$ con $X_L = -X_{th}$, se obtiene que la resistencia de carga debe igualar a la resistencia de Thévenin:  
+   $$R_L = R_{th}$$
+
+Por consiguiente, la condición de máxima transferencia de potencia activa es el **complejo conjugado**:
+
+$$\boxed{\mathbf{Z}_L = \mathbf{Z}_{th}^* = R_{th} - j X_{th}}$$
+
+Bajo esta condición óptima, la potencia activa máxima disipada en la carga es:
+
+$$\boxed{P_{L,\max} = \frac{|\mathbf{V}_{th}|^2}{4 R_{th}} \quad \text{[W]}}$$
+
+---
+
+# Laboratorio Interactivo: Cálculo del Equivalente Thévenin
+
+Utilice el siguiente simulador para definir los parámetros de una fuente de alimentación y dos ramas de impedancia en puente divisor. El motor calculará de forma instantánea el voltaje $\mathbf{V}_{th}$, la impedancia $\mathbf{Z}_{th}$ y la corriente Norton asociada $\mathbf{I}_N$:
+
+{{< include modulos/_laboratorio_thevenin.md >}}
+
+---
+
+# Navegación del Módulo
+
+<div class="d-flex flex-wrap gap-2 my-3">
+  <a href="analisis_mallas.qmd" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i> Análisis de Mallas</a>
+  <a href="circuito_norton.qmd" class="btn btn-primary"><i class="bi bi-bezier2 me-1"></i> Siguiente: Teorema de Norton</a>
+  <a href="potencia_ca.qmd" class="btn btn-outline-primary"><i class="bi bi-lightning-charge me-1"></i> Potencia en CA</a>
+  <a href="index.qmd" class="btn btn-outline-secondary"><i class="bi bi-house me-1"></i> Índice</a>
+</div>

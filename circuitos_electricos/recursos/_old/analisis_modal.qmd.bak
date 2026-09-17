@@ -1,0 +1,121 @@
+
+# Análisis Nodal en Corriente Alterna
+
+El análisis nodal se fundamenta en la **Ley de Corrientes de Kirchhoff (LCK)** aplicada a los nodos principales del circuito, adoptando un nodo de referencia (tierra, $0\text{ V}$).
+
+## Formulación Matricial por Admitancias
+
+Para un circuito con $N$ nodos independientes (excluyendo el nodo de referencia) sin fuentes de tensión independientes conectadas entre nodos flotantes:
+
+$$
+\begin{bmatrix}
+\mathbf{Y}_{11} & \mathbf{Y}_{12} & \cdots & \mathbf{Y}_{1N} \\
+\mathbf{Y}_{21} & \mathbf{Y}_{22} & \cdots & \mathbf{Y}_{2N} \\
+\vdots & \vdots & \ddots & \vdots \\
+\mathbf{Y}_{N1} & \mathbf{Y}_{N2} & \cdots & \mathbf{Y}_{NN}
+\end{bmatrix}
+\begin{bmatrix}
+\mathbf{V}_1 \\
+\mathbf{V}_2 \\
+\vdots \\
+\mathbf{V}_N
+\end{bmatrix}
+=
+\begin{bmatrix}
+\mathbf{I}_1 \\
+\mathbf{I}_2 \\
+\vdots \\
+\mathbf{I}_N
+\end{bmatrix}
+$$
+
+Donde:
+
+- $\mathbf{Y}_{ii} = \sum \mathbf{Y}_{\text{conectadas al nodo } i}$ (Admitancia propia del nodo $i$).
+- $\mathbf{Y}_{ij} = -\sum \mathbf{Y}_{\text{entre nodo } i \text{ y nodo } j}$ con $i \neq j$ (Admitancia mutua, con signo negativo).
+- $\mathbf{I}_i = \sum \mathbf{I}_{\text{fuentes entrantes}} - \sum \mathbf{I}_{\text{fuentes salientes}}$ en el nodo $i$.
+
+::: {.callout-tip}
+### Supernodo
+Cuando existe una fuente de tensión (independiente o dependiente) conectada directamente entre dos nodos esenciales $k$ y $m$ sin impedancia en serie a tierra:
+1. Se encierran ambos nodos en una superficie cerrada (**Supernodo**).
+2. Se aplica la LCK fasorial al supernodo completo.
+3. Se plantea la ecuación de restricción de tensión: $\mathbf{V}_k - \mathbf{V}_m = \mathbf{V}_{\text{fuente}}$.
+:::
+
+---
+
+# Análisis de Mallas en Corriente Alterna
+
+El análisis de mallas se fundamenta en la **Ley de Tensiones de Kirchhoff (LVK)** aplicada sobre lazos cerrados planos que no contienen otros lazos en su interior.
+
+## Formulación Matricial por Impedancias
+
+Para un circuito plano con $M$ mallas independientes:
+
+$$
+\begin{bmatrix}
+\mathbf{Z}_{11} & \mathbf{Z}_{12} & \cdots & \mathbf{Z}_{1M} \\
+\mathbf{Z}_{21} & \mathbf{Z}_{22} & \cdots & \mathbf{Z}_{2M} \\
+\vdots & \vdots & \ddots & \vdots \\
+\mathbf{Z}_{M1} & \mathbf{Z}_{M2} & \cdots & \mathbf{Z}_{MM}
+\end{bmatrix}
+\begin{bmatrix}
+\mathbf{I}_1 \\
+\mathbf{I}_2 \\
+\vdots \\
+\mathbf{I}_M
+\end{bmatrix}
+=
+\begin{bmatrix}
+\mathbf{V}_{\text{malla } 1} \\
+\mathbf{V}_{\text{malla } 2} \\
+\vdots \\
+\mathbf{V}_{\text{malla } M}
+\end{bmatrix}
+$$
+
+Donde:
+
+- $\mathbf{Z}_{kk} = \sum \mathbf{Z}_{\text{pertenecientes a la malla } k}$ (Impedancia propia de la malla $k$).
+- $\mathbf{Z}_{km} = -\sum \mathbf{Z}_{\text{compartidas entre malla } k \text{ y malla } m}$ (con corrientes de malla en el mismo sentido horario).
+- $\mathbf{V}_{\text{malla } k} = \sum \mathbf{V}_{\text{elevaciones de tensión}}$ en el sentido del recorrido de la malla.
+
+::: {.callout-tip}
+### Supermalla
+Cuando una fuente de corriente (independiente o dependiente) se encuentra compartida entre dos mallas $a$ y $b$:
+1. Se retira temporalmente la rama con la fuente de corriente creando una **Supermalla**.
+2. Se aplica la LVK fasorial a lo largo del perímetro de la supermalla.
+3. Se plantea la ecuación de ligadura de corriente: $\mathbf{I}_a - \mathbf{I}_b = \mathbf{I}_{\text{fuente}}$.
+:::
+
+---
+
+# Teoremas de Thévenin y Norton en Régimen Sinusoidal
+
+Los teoremas de Thévenin y Norton permiten simplificar cualquier circuito lineal de CA visto desde dos terminales accesibles $(a, b)$ a un circuito equivalente unifilar.
+
+
+
+
+
+$$\mathbf{I}_N = \mathbf{I}_{ab} \big|_{\text{cortocircuito}}, \qquad \mathbf{Z}_{th} = \frac{\mathbf{V}_{th}}{\mathbf{I}_N}$$
+
+## Máxima Transferencia de Potencia Compleja en CA
+
+Para una red dada con impedancia equivalente $\mathbf{Z}_{th} = R_{th} + j X_{th}$, la potencia activa media $P_L$ transferida a una carga pasiva $\mathbf{Z}_L = R_L + j X_L$ se maximiza cuando la impedancia de carga es el **complejo conjugado** de la impedancia de Thévenin:
+
+$$\mathbf{Z}_L = \mathbf{Z}_{th}^* = R_{th} - j X_{th}$$
+
+En esta condición de adaptación de impedancias:
+
+$$P_{L,\max} = \frac{|\mathbf{V}_{th}|^2}{4 R_{th}} \quad \text{[W]}$$
+
+---
+
+# Próximos Desarrollos y Ejercicios Resueltos
+
+Esta sección se irá ampliando con:
+1. Solucionarios paso a paso de circuitos puente en CA con cálculo matricial en Python.
+2. Resolución sistemática de sistemas con fuentes dependientes (VCCS, CCVS, VCVS, CCCS).
+3. Módulos interactivos dedicados para el cálculo matricial de Nodos y Mallas.

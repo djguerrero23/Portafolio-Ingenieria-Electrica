@@ -1,0 +1,125 @@
+---
+title: "Teorema de Norton en Corriente Alterna"
+subtitle: "Circuito equivalente dual de corriente, corriente de cortocircuito y transformación de fuentes en CA"
+description: "Modelado y simplificación de circuitos de corriente alterna mediante el equivalente Norton: determinación de IN, impedancia y admitancia de Norton, y equivalencia recíproca con Thévenin."
+author: "David Guerrero"
+date: "2026-09-16"
+categories: [Teoremas de Redes, Norton, Transformación de Fuentes, Circuitos Equivalentes, Circuitos CA]
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+---
+
+::: {.hero-banner-modern}
+# Teorema de Norton en Régimen Sinusoidal Permanente {.unnumbered}
+**El modelo dual de Thévenin: representación mediante fuente de corriente y admitancia en paralelo.**
+
+El teorema de Norton es la contraparte dual del teorema de Thévenin. Resulta especialmente ventajoso cuando se analizan circuitos con múltiples ramas conectadas en paralelo o alimentadas por fuentes de corriente.
+:::
+
+::: {.callout-note}
+### ⚡ Enunciado del Teorema de Norton en CA
+Cualquier red lineal activa de corriente alterna conectada a una carga a través de dos terminales accesibles $(a, b)$ es externamente equivalente a:
+1. Una fuente de corriente fasorial ideal $\mathbf{I}_N$ (**Corriente de Norton**).
+2. Conectada en paralelo con una impedancia pasiva $\mathbf{Z}_N$ (o admitancia $\mathbf{Y}_N = 1/\mathbf{Z}_N$).
+:::
+
+---
+
+# Determinación de los Parámetros de Norton
+
+## 1. Corriente de Norton ($\mathbf{I}_N$)
+
+La corriente de Norton corresponde a la corriente fasorial que circula a través de un cortocircuito ideal conectado directamente entre los terminales $a$ y $b$:
+
+$$\mathbf{I}_N = \mathbf{I}_{sc} = \mathbf{I}_{ab} \Big|_{\text{cortocircuito}}$$
+
+Para calcular $\mathbf{I}_N$, se sustituye la carga $\mathbf{Z}_L$ por un conductor de resistencia nula entre los terminales $a$ y $b$, y se calcula la corriente fasorial resultante utilizando análisis de mallas, análisis nodal o superposición.
+
+---
+
+## 2. Impedancia y Admitancia de Norton ($\mathbf{Z}_N, \mathbf{Y}_N$)
+
+La impedancia de Norton es exactamente idéntica a la impedancia de Thévenin vista desde los mismos terminales:
+
+$$\mathbf{Z}_N = \mathbf{Z}_{th}$$
+
+$$\mathbf{Y}_N = \frac{1}{\mathbf{Z}_N} = G_N + j B_N$$
+
+Se calcula anulando todas las fuentes independientes internas (fuentes de tensión en cortocircuito, fuentes de corriente en circuito abierto) y determinando la impedancia equivalente entre $a$ y $b$.
+
+---
+
+# Transformación de Fuentes y Dualidad Thévenin – Norton
+
+Ambos modelos son matemáticamente intercambiables en cualquier rama activa de corriente alterna:
+
+$$
+\boxed{
+\begin{aligned}
+\mathbf{V}_{th} &= \mathbf{I}_N \cdot \mathbf{Z}_{th} \\[8pt]
+\mathbf{I}_N &= \frac{\mathbf{V}_{th}}{\mathbf{Z}_{th}} \\[8pt]
+\mathbf{Z}_N &= \mathbf{Z}_{th}
+\end{aligned}
+}
+$$
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-6}
+::: {.card-module style="border-top: 4px solid #0284c7;"}
+#### Equivalente Thévenin (Serie)
+- **Topología:** Fuente de tensión $\mathbf{V}_{th}$ en serie con $\mathbf{Z}_{th}$.
+- **Tensión en bornes de carga $\mathbf{Z}_L$:**
+$$\mathbf{V}_L = \mathbf{V}_{th} \left( \frac{\mathbf{Z}_L}{\mathbf{Z}_{th} + \mathbf{Z}_L} \right)$$
+- **Ideal para:** Cargas en serie, cálculo de caídas de tensión y regulación.
+:::
+:::
+
+::: {.g-col-12 .g-col-md-6}
+::: {.card-module style="border-top: 4px solid #10b981;"}
+#### Equivalente Norton (Paralelo)
+- **Topología:** Fuente de corriente $\mathbf{I}_N$ en paralelo con $\mathbf{Y}_N$.
+- **Corriente en la carga con admitancia $\mathbf{Y}_L$:**
+$$\mathbf{I}_L = \mathbf{I}_N \left( \frac{\mathbf{Y}_L}{\mathbf{Y}_N + \mathbf{Y}_L} \right)$$
+- **Ideal para:** Cargas en paralelo, sistemas polifásicos y divisores de corriente.
+:::
+:::
+
+:::
+
+---
+
+# Ejemplo Práctico de Transformación Thévenin ↔ Norton
+
+Supóngase un circuito equivalente de Thévenin con:
+
+$$\mathbf{V}_{th} = 120\angle 30^\circ\text{ V}, \qquad \mathbf{Z}_{th} = 4 + j3\ \Omega = 5\angle 36.87^\circ\ \Omega$$
+
+Calculamos la corriente de Norton asociada:
+
+$$\mathbf{I}_N = \frac{\mathbf{V}_{th}}{\mathbf{Z}_{th}} = \frac{120\angle 30^\circ\text{ V}}{5\angle 36.87^\circ\ \Omega} = 24\angle (30^\circ - 36.87^\circ)\text{ A} = 24\angle -6.87^\circ\text{ A}$$
+
+En forma rectangular:
+
+$$\mathbf{I}_N = 24\cos(-6.87^\circ) + j 24\sin(-6.87^\circ) = 23.83 - j 2.87\text{ A}$$
+
+Y la admitancia de Norton en paralelo:
+
+$$\mathbf{Y}_N = \frac{1}{\mathbf{Z}_{th}} = \frac{1}{4 + j3} = \frac{4 - j3}{4^2 + 3^2} = 0.16 - j 0.12\text{ S}$$
+
+El circuito se puede representar indistintamente por cualquiera de las dos configuraciones produciendo exactamente los mismos efectos sobre cualquier carga conectada a sus bornes.
+
+---
+
+# Navegación del Módulo
+
+<div class="d-flex flex-wrap gap-2 my-3">
+  <a href="circuito_thevenin.qmd" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i> Teorema de Thévenin</a>
+  <a href="potencia_ca.qmd" class="btn btn-primary"><i class="bi bi-lightning-charge me-1"></i> Siguiente: Potencia en CA</a>
+  <a href="delta_estrella.qmd" class="btn btn-outline-primary"><i class="bi bi-triangle me-1"></i> Transformación Δ–Y</a>
+  <a href="analisis_nodal.qmd" class="btn btn-outline-primary"><i class="bi bi-diagram-2 me-1"></i> Análisis Nodal</a>
+  <a href="index.qmd" class="btn btn-outline-secondary"><i class="bi bi-house me-1"></i> Índice</a>
+</div>
