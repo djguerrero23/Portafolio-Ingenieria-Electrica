@@ -199,7 +199,7 @@ Por eso la transformación puede utilizarse sin alterar las magnitudes eléctric
 
 ---
 
-# 5. ¿Cuándo se requiere una transformación?
+# ¿Cuándo se requiere una transformación?
 
 La pregunta correcta no es:
 
@@ -243,7 +243,7 @@ Transforma cuando la nueva representación permita continuar el análisis de una
 
 ---
 
-# 6. ¿Cuándo conviene $\Delta \rightarrow \text{Y}$?
+# ¿Cuándo conviene $\Delta \rightarrow \text{Y}$?
 
 La transformación $\Delta \rightarrow \text{Y}$ puede ser conveniente cuando la estrella resultante permite crear combinaciones que antes no eran posibles y, especialmente, cuando facilita una reducción posterior en serie o paralelo.
 
@@ -263,7 +263,7 @@ No basta con reconocer la figura: hay que anticipar qué estructura tendrá la r
 
 ---
 
-# 7. ¿Cuándo conviene $\text{Y} \rightarrow \Delta$?
+# ¿Cuándo conviene $\text{Y} \rightarrow \Delta$?
 
 De manera análoga, $\text{Y} \rightarrow \Delta$ puede resultar conveniente cuando la nueva configuración permite establecer combinaciones que antes no eran posibles.
 
@@ -281,7 +281,7 @@ La dirección de transformación debe elegirse según la **topología completa d
 
 ---
 
-# 8. ¿Cómo se debe abordar un problema $\Delta \leftrightarrow \text{Y}$?
+# ¿Cómo se debe abordar un problema $\Delta \leftrightarrow \text{Y}$?
 
 Antes de escribir una sola ecuación, conviene seguir una secuencia de razonamiento.
 
@@ -379,15 +379,11 @@ La transformación no es el final del problema: es una herramienta dentro de una
 
 ---
 
-# 9. Topologías y Esquemas de Conexión
+# Topologías y Esquemas de Conexión
 
 La transformación se entiende mejor cuando se observa simultáneamente la estructura original y la estructura equivalente.
 
 {{< include imagenes/esquemas/_genera_delta_estrella.md >}}
-
-{{< include imagenes/esquemas/_topologia_puente_delta_estrella.md >}}
-
-{{< include imagenes/esquemas/_topologia_doble_t_estrella_delta.md >}}
 
 {{< include imagenes/esquemas/_topologia_estrella_delta.md >}}
 
@@ -395,7 +391,7 @@ La transformación se entiende mejor cuando se observa simultáneamente la estru
 
 ---
 
-# 10. Delta–Estrella con impedancias complejas
+# Delta–Estrella con impedancias complejas
 
 En corriente alterna, las ramas pueden contener resistencia, inductancia y capacitancia. Por ello, una impedancia puede expresarse como:
 
@@ -441,7 +437,7 @@ Así, Delta–Estrella se integra naturalmente dentro de la cadena de análisis 
 
 ---
 
-# 11. Fórmulas de Transformación para Impedancias Complejas
+# Fórmulas de Transformación para Impedancias Complejas
 
 ## De Delta a Estrella ($\Delta \to \text{Y}$)
 
@@ -483,7 +479,7 @@ $$
 
 ---
 
-# 12. Caso particular: redes equilibradas
+# Caso particular: redes equilibradas
 
 Cuando las tres impedancias de la red son iguales, las expresiones generales se simplifican.
 
@@ -509,7 +505,7 @@ En sistemas trifásicos equilibrados, esta propiedad permite establecer relacion
 
 ---
 
-# 13. Errores Frecuentes en la Conversión $\Delta \leftrightarrow \text{Y}$
+# Errores Frecuentes en la Conversión $\Delta \leftrightarrow \text{Y}$
 
 1. **Confusión entre la transformación de redes y las relaciones de línea/fase:** transformar una subred de impedancias $\Delta \leftrightarrow \text{Y}$ no equivale automáticamente a aplicar relaciones de tensión y corriente de un sistema trifásico.
 
@@ -523,7 +519,7 @@ En sistemas trifásicos equilibrados, esta propiedad permite establecer relacion
 
 ---
 
-# 14. Módulo Interactivo de Cálculo $\Delta \leftrightarrow \text{Y}$
+# Módulo Interactivo de Cálculo $\Delta \leftrightarrow \text{Y}$
 
 Utilice el siguiente simulador para ingresar las impedancias complejas en forma rectangular ($R + jX$) y obtener inmediatamente la transformación equivalente en ambas direcciones con verificación de fasores:
 
@@ -531,7 +527,7 @@ Utilice el siguiente simulador para ingresar las impedancias complejas en forma 
 
 ---
 
-# 15. Navegación del Módulo
+# Navegación del Módulo
 
 <div class="d-flex flex-wrap gap-2 my-3">
   <a href="teoria_fasores.qmd" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i> Análisis Fasorial</a>

@@ -1,8 +1,8 @@
 ```{=html}
 
 <div class="my-4 d-flex justify-content-center">
-<div class="border rounded-3 bg-white shadow-sm p-3 w-100" style="max-width: 100%;">
-      <svg viewBox="10 10 760 320" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" style="display:block; font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;">
+<div class="border rounded-3 bg-white shadow-sm p-3 w-100" style="max-width: 920px;">
+      <svg viewBox="0 0 950 320" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" style="display:block; font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;">
 
       <!-- ================= 1. RED EN PUENTE (IRREDUCIBLE) ================= -->
       <text x="200" y="28" font-size="16" font-weight="bold" fill="black" text-anchor="middle">Topología de Puente (Irreducible)</text>
