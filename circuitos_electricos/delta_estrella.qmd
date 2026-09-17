@@ -115,7 +115,7 @@ $$
 
 ---
 
-# 3. ¿Por qué son importantes estas transformaciones?
+# ¿Por qué son importantes estas transformaciones?
 
 La importancia de $\Delta \leftrightarrow \text{Y}$ aparece cuando una topología impide utilizar directamente una simplificación conveniente.
 
@@ -163,7 +163,7 @@ Es una técnica general de equivalencia para redes de **tres terminales** y pued
 
 ---
 
-# 4. ¿Qué significa que dos redes sean equivalentes?
+# ¿Qué significa que dos redes sean equivalentes?
 
 Esta es la idea conceptual más importante del método.
 
@@ -176,6 +176,8 @@ $$
 Una red puede tener forma $\Delta$ y la otra forma $\text{Y}$.
 
 Aunque su estructura interna sea diferente, podemos construir una red equivalente si ambas presentan el mismo comportamiento eléctrico visto desde esos terminales.
+
+{{< include imagenes/esquemas/_equivalencia_terminal.md >}}
 
 ::: {.callout-important}
 ### ⚡ Principio de Equivalencia Terminal
