@@ -703,7 +703,15 @@ A,\quad B,\quad C
       <circle cx="290" cy="250" r="15" fill="#bfdbfe" stroke="#0284c7" stroke-width="2.5" filter="url(#shadowEq)"></circle>
       <text x="290" y="254" font-size="13" font-weight="800" fill="#0f172a" text-anchor="middle">C</text>
 
-      <!-- ================= ZONA CENTRAL: EQUIVALENCIA ================= -->
+     
+
+      <!-- ================= CONTENEDOR 2: RED ESTRELLA ================= -->
+      <!-- Caja de frontera terminal (envolvente) -->
+      <rect x="445" y="20" width="310" height="295" rx="12" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.8" stroke-dasharray="6 4" opacity="0.95"></rect>
+      <rect x="460" y="30" width="135" height="22" rx="5" fill="#f3e8ff"></rect>
+      <text x="527" y="45" font-size="11" font-weight="800" fill="#6b21a8" text-anchor="middle">RED ESTRELLA (Y)</text>
+
+       <!-- ================= ZONA CENTRAL: EQUIVALENCIA ================= -->
       <line x1="390" y1="55" x2="390" y2="295" stroke="#e2e8f0" stroke-width="1.8" stroke-dasharray="4 4"></line>
       
       <!-- Badge de Equivalencia -->
@@ -712,14 +720,8 @@ A,\quad B,\quad C
         <text x="0" y="6" font-size="22" font-weight="900" fill="#0284c7" text-anchor="middle">⇄</text>
         <rect x="-65" y="36" width="130" height="26" rx="6" fill="#0f172a" filter="url(#shadowEq)"></rect>
         <text x="0" y="53" font-size="10.5" font-weight="700" fill="#f8fafc" text-anchor="middle">EQUIVALENCIA</text>
-        <text x="0" y="74" font-size="9.5" font-weight="600" fill="#64748b" text-anchor="middle">V y I terminales idénticos</text>
+        
       </g>
-
-      <!-- ================= CONTENEDOR 2: RED ESTRELLA ================= -->
-      <!-- Caja de frontera terminal (envolvente) -->
-      <rect x="445" y="20" width="310" height="295" rx="12" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.8" stroke-dasharray="6 4" opacity="0.95"></rect>
-      <rect x="460" y="30" width="135" height="22" rx="5" fill="#f3e8ff"></rect>
-      <text x="527" y="45" font-size="11" font-weight="800" fill="#6b21a8" text-anchor="middle">RED ESTRELLA (Y)</text>
 
       <!-- Ramas Estrella internas -->
       <line x1="600" y1="80" x2="600" y2="180" stroke="#1e293b" stroke-width="2.6" stroke-linecap="round"></line>
@@ -2269,7 +2271,7 @@ function resolverRed() {
           🔍 Ver distribución de tensiones nodales (Inyección de prueba I = 1&ang;0&deg; A)
         </summary>
         <div class="table-responsive mt-2">
-          <table class="table table-sm table-hover align-middle mb-0">
+          ${'<' + 'table class="table table-sm table-hover align-middle mb-0">'}
             <thead class="table-light">
               <tr><th>Nodo</th><th class="text-end">Tensión Fasorial (Rectangular)</th><th class="text-end">Tensión Fasorial (Polar)</th></tr>
             </thead>
