@@ -16,19 +16,378 @@ format:
 # Transformación Bidireccional $\Delta \leftrightarrow \text{Y}$ en CA {.unnumbered}
 **Simplificación de redes complejas mediante equivalencia de impedancias en terminales.**
 
-Permite reducir topologías que no admiten simplificación directa serie o paralelo, tales como redes en puente no equilibradas, filtros doble T y circuitos polifásicos equivalentes.
+Una red eléctrica puede contener conexiones que no admiten una reducción directa mediante combinaciones de serie y paralelo. Cuando una parte de la red presenta una topología **Delta ($\Delta$)** o **Estrella ($\text{Y}$)**, podemos transformar su representación para obtener una red equivalente que resulte más conveniente para el análisis.
 :::
 
 ::: {.callout-note}
-### ⚡ Principio de Equivalencia Terminal
-Dos redes conectadas a tres terminales accesibles $(1, 2, 3)$ son eléctricamente equivalentes en régimen sinusoidal si, para cualquier conjunto de tensiones aplicadas entre dichos terminales, las corrientes de línea resultantes son exactamente idénticas en magnitud y fase.
+### ⚡ Idea central
+
+**La transformación $\Delta \leftrightarrow \text{Y}$ no tiene como objetivo cambiar físicamente el circuito.**
+
+Su propósito es **cambiar la representación de una red manteniendo su comportamiento eléctrico visto desde sus terminales**.
+
+\[
+\boxed{
+\text{Red original}
+\;\longrightarrow\;
+\text{Transformación equivalente}
+\;\longrightarrow\;
+\text{Red más fácil de analizar}
+}
+\]
 :::
 
 ---
 
-# Topologías y Esquemas de Conexión
+# 1. ¿Qué problema resuelve la transformación $\Delta \leftrightarrow \text{Y}$?
 
-Cuando una red de impedancias complejas no se puede reducir mediante combinaciones puras de serie o paralelo, se recurre a la transformación bidireccional entre la configuración **Delta ($\Delta$ o triángulo)** y la configuración **Estrella ($\text{Y}$ o $T$)**.
+En el análisis de circuitos, muchas redes pueden simplificarse directamente mediante:
+
+\[
+\text{serie}
+\qquad\text{y}\qquad
+\text{paralelo}
+\]
+
+Sin embargo, existen configuraciones donde estas reglas no pueden aplicarse de manera inmediata. Un ejemplo típico aparece cuando tres impedancias forman una conexión entre tres nodos en forma de:
+
+\[
+\boxed{\Delta}
+\]
+
+o cuando tres impedancias convergen en un nodo común:
+
+\[
+\boxed{\text{Y}}
+\]
+
+En estos casos, una transformación apropiada puede convertir una topología difícil en otra que permita continuar el análisis mediante técnicas más sencillas.
+
+### La idea de fondo
+
+\[
+\boxed{
+\text{topología difícil}
+\;\rightarrow\;
+\text{topología equivalente}
+\;\rightarrow\;
+\text{simplificación}
+\;\rightarrow\;
+\text{análisis}
+}
+\]
+
+Por eso, **$\Delta \leftrightarrow \text{Y}$ es una herramienta de simplificación de redes**, no un procedimiento que deba aplicarse automáticamente cada vez que aparezca un triángulo o una estrella.
+
+---
+
+# 2. ¿Qué son las configuraciones $\Delta$ y $\text{Y}$?
+
+## 2.1 Configuración Delta ($\Delta$)
+
+En una red Delta, tres impedancias están conectadas entre tres pares de terminales:
+
+\[
+A-B,\qquad B-C,\qquad C-A
+\]
+
+La red forma un lazo cerrado entre tres nodos.
+
+## 2.2 Configuración Estrella ($\text{Y}$)
+
+En una red Estrella, tres impedancias se conectan a un nodo común:
+
+\[
+A-O,\qquad B-O,\qquad C-O
+\]
+
+donde $O$ representa el nodo central de la estrella.
+
+::: {.callout-tip}
+### No confundir topología con transformación
+
+Una carga puede estar **físicamente conectada** en $\Delta$ o en $\text{Y}$.
+
+Pero una transformación $\Delta \leftrightarrow \text{Y}$ puede utilizarse como **herramienta matemática de análisis**, aunque el circuito físico no se modifique.
+
+Por tanto:
+
+\[
+\boxed{
+\text{transformar la representación}
+\neq
+\text{reconstruir físicamente el circuito}
+}
+\]
+:::
+
+---
+
+# 3. ¿Por qué son importantes estas transformaciones?
+
+La importancia de $\Delta \leftrightarrow \text{Y}$ aparece cuando una topología impide utilizar directamente una simplificación conveniente.
+
+Una transformación bien elegida puede convertir:
+
+\[
+\boxed{
+\text{red que bloquea el análisis}
+\rightarrow
+\text{red equivalente}
+\rightarrow
+\text{serie/paralelo}
+}
+\]
+
+Esto permite continuar posteriormente con otros métodos de análisis, por ejemplo:
+
+- reducción serie-paralelo;
+- análisis de nodos;
+- análisis de mallas;
+- cálculo de impedancia equivalente;
+- determinación de corrientes y tensiones.
+
+### Aplicaciones típicas
+
+**Análisis de circuitos:** redes en puente, redes con lazos y otras conexiones de tres terminales que no se reducen directamente.
+
+**Circuitos de corriente alterna:** las ramas pueden tener impedancias complejas,
+
+\[
+\mathbf Z=R+jX
+\]
+
+por lo que la transformación debe realizarse utilizando álgebra compleja.
+
+**Sistemas trifásicos:** las cargas pueden representarse en $\Delta$ o en $\text{Y}$, y la transformación puede facilitar determinadas etapas del análisis.
+
+::: {.callout-note}
+### Idea importante
+
+**$\Delta \leftrightarrow \text{Y}$ no es exclusivamente una técnica de circuitos trifásicos.**
+
+Es una técnica general de equivalencia para redes de **tres terminales** y puede utilizarse tanto con resistencias como con impedancias complejas.
+:::
+
+---
+
+# 4. ¿Qué significa que dos redes sean equivalentes?
+
+Esta es la idea conceptual más importante del método.
+
+Consideremos dos redes diferentes conectadas a los mismos tres terminales:
+
+\[
+A,\quad B,\quad C
+\]
+
+Una red puede tener forma $\Delta$ y la otra forma $\text{Y}$.
+
+Aunque su estructura interna sea diferente, podemos construir una red equivalente si ambas presentan el mismo comportamiento eléctrico visto desde esos terminales.
+
+::: {.callout-important}
+### ⚡ Principio de Equivalencia Terminal
+
+Dos redes de tres terminales son equivalentes cuando, para las condiciones de excitación correspondientes aplicadas en sus terminales, presentan la misma relación entre tensiones y corrientes terminales.
+
+En otras palabras:
+
+\[
+\boxed{
+\text{misma respuesta externa}
+\neq
+\text{misma estructura interna}
+}
+\]
+:::
+
+Por eso la transformación puede utilizarse sin alterar las magnitudes eléctricas que interesan al análisis externo de la red.
+
+---
+
+# 5. ¿Cuándo se requiere una transformación?
+
+La pregunta correcta no es:
+
+> **¿Hay una $\Delta$ o una $\text{Y}$?**
+
+La pregunta correcta es:
+
+> **¿La transformación me permitirá analizar la red con mayor facilidad?**
+
+Una estrategia útil es:
+
+```text
+                    CIRCUITO
+                       │
+                       ▼
+             ¿Se puede simplificar
+             directamente en serie
+                o paralelo?
+                  /       \
+                SÍ         NO
+                │           │
+                ▼           ▼
+          Serie/paralelo   ¿Existe una
+                           red Δ o Y
+                           conveniente?
+                             /   \
+                           SÍ     NO
+                           │       │
+                           ▼       ▼
+                    Considerar    Aplicar
+                     Δ ↔ Y       otro método
+```
+
+::: {.callout-tip}
+### Regla de decisión
+
+**No transformes por transformar.**
+
+Transforma cuando la nueva representación permita continuar el análisis de una manera más sencilla, clara o directa.
+:::
+
+---
+
+# 6. ¿Cuándo conviene $\Delta \rightarrow \text{Y}$?
+
+La transformación $\Delta \rightarrow \text{Y}$ puede ser conveniente cuando la estrella resultante permite crear combinaciones que antes no eran posibles y, especialmente, cuando facilita una reducción posterior en serie o paralelo.
+
+\[
+\boxed{
+\Delta
+\;\rightarrow\;
+\text{Y}
+\;\rightarrow\;
+\text{serie/paralelo}
+}
+\]
+
+La elección debe hacerse observando **qué conexiones aparecerán después de la transformación**.
+
+No basta con reconocer la figura: hay que anticipar qué estructura tendrá la red resultante.
+
+---
+
+# 7. ¿Cuándo conviene $\text{Y} \rightarrow \Delta$?
+
+De manera análoga, $\text{Y} \rightarrow \Delta$ puede resultar conveniente cuando la nueva configuración permite establecer combinaciones que antes no eran posibles.
+
+\[
+\boxed{
+\text{Y}
+\;\rightarrow\;
+\Delta
+\;\rightarrow\;
+\text{serie/paralelo o reducción posterior}
+}
+\]
+
+La dirección de transformación debe elegirse según la **topología completa del circuito**, no únicamente según la forma local de la red.
+
+---
+
+# 8. ¿Cómo se debe abordar un problema $\Delta \leftrightarrow \text{Y}$?
+
+Antes de escribir una sola ecuación, conviene seguir una secuencia de razonamiento.
+
+### Paso 1 — Identificar la red
+
+Localiza los tres terminales y determina si la subred está conectada en:
+
+\[
+\Delta
+\qquad\text{o}\qquad
+\text{Y}
+\]
+
+### Paso 2 — Identificar el objetivo
+
+Pregunta qué necesitas encontrar:
+
+\[
+Z_{eq},\quad I,\quad V,\quad P,\quad \text{etc.}
+\]
+
+### Paso 3 — Buscar simplificaciones directas
+
+Comprueba primero si la red puede resolverse mediante:
+
+\[
+\text{serie}
+\qquad\text{o}\qquad
+\text{paralelo}
+\]
+
+sin transformar nada.
+
+### Paso 4 — Identificar la transformación útil
+
+Si la red no puede reducirse directamente, determina si conviene:
+
+\[
+\Delta\rightarrow\text{Y}
+\]
+
+o:
+
+\[
+\text{Y}\rightarrow\Delta
+\]
+
+### Paso 5 — Transformar
+
+Aplica la relación correspondiente a las tres impedancias.
+
+### Paso 6 — Continuar el análisis
+
+La transformación es un **paso intermedio**. Una vez obtenida la red equivalente, continúa con el método que resulte adecuado.
+
+### Paso 7 — Verificar
+
+Comprueba que los resultados sean coherentes con:
+
+- las unidades;
+- la magnitud de las impedancias;
+- el signo de la reactancia;
+- la topología resultante;
+- las condiciones originales del circuito.
+
+### Paso 8 — Interpretar
+
+Finalmente, pregunta:
+
+> **¿Qué simplificación conseguí y por qué esta representación es más conveniente?**
+
+::: {.callout-important}
+### Cadena de razonamiento
+
+\[
+\boxed{
+\text{Identificar}
+\rightarrow
+\text{Decidir}
+\rightarrow
+\text{Transformar}
+\rightarrow
+\text{Simplificar}
+\rightarrow
+\text{Calcular}
+\rightarrow
+\text{Verificar}
+\rightarrow
+\text{Interpretar}
+}
+\]
+
+La transformación no es el final del problema: es una herramienta dentro de una estrategia de análisis.
+:::
+
+---
+
+# 9. Topologías y Esquemas de Conexión
+
+La transformación se entiende mejor cuando se observa simultáneamente la estructura original y la estructura equivalente.
 
 {{< include imagenes/esquemas/_genera_delta_estrella.md >}}
 
@@ -42,17 +401,69 @@ Cuando una red de impedancias complejas no se puede reducir mediante combinacion
 
 ---
 
-# Fórmulas de Transformación para Impedancias Complejas
+# 10. Delta–Estrella con impedancias complejas
+
+En corriente alterna, las ramas pueden contener resistencia, inductancia y capacitancia. Por ello, una impedancia puede expresarse como:
+
+\[
+\boxed{\mathbf Z = R+jX}
+\]
+
+Por ejemplo:
+
+\[
+\mathbf Z_R=R
+\]
+
+\[
+\mathbf Z_L=j\omega L
+\]
+
+\[
+\mathbf Z_C=\frac{1}{j\omega C}
+\]
+
+Por tanto, la transformación $\Delta \leftrightarrow \text{Y}$ debe realizarse con **impedancias complejas**, respetando tanto su parte real como su parte imaginaria.
+
+::: {.callout-note}
+### Conexión con el análisis fasorial
+
+La transformación Delta–Estrella no constituye un método separado del análisis fasorial.
+
+Es una operación de redes que utiliza las impedancias obtenidas en el dominio fasorial:
+
+\[
+v(t),\,i(t)
+\;\longrightarrow\;
+\mathbf V,\,\mathbf I
+\;\longrightarrow\;
+\mathbf Z
+\;\longrightarrow\;
+\Delta\leftrightarrow\text{Y}
+\]
+
+Así, Delta–Estrella se integra naturalmente dentro de la cadena de análisis de circuitos de CA.
+:::
+
+---
+
+# 11. Fórmulas de Transformación para Impedancias Complejas
 
 ## De Delta a Estrella ($\Delta \to \text{Y}$)
 
 Dado un triángulo formado por las impedancias complejas $\mathbf{Z}_A$ (opuesta al nodo 1), $\mathbf{Z}_B$ (opuesta al nodo 2) y $\mathbf{Z}_C$ (opuesta al nodo 3), definimos la suma de impedancias del delta:
 
-$$\mathbf{Z}_\Sigma = \mathbf{Z}_A + \mathbf{Z}_B + \mathbf{Z}_C$$
+\[
+\mathbf{Z}_\Sigma = \mathbf{Z}_A + \mathbf{Z}_B + \mathbf{Z}_C
+\]
 
 Las impedancias equivalentes en estrella conectadas a cada nodo $(1, 2, 3)$ hacia el neutro común $O$ son:
 
-$$\mathbf{Z}_1 = \frac{\mathbf{Z}_B \mathbf{Z}_C}{\mathbf{Z}_\Sigma}, \qquad \mathbf{Z}_2 = \frac{\mathbf{Z}_A \mathbf{Z}_C}{\mathbf{Z}_\Sigma}, \qquad \mathbf{Z}_3 = \frac{\mathbf{Z}_A \mathbf{Z}_B}{\mathbf{Z}_\Sigma}$$
+\[
+\mathbf{Z}_1 = \frac{\mathbf{Z}_B \mathbf{Z}_C}{\mathbf{Z}_\Sigma}, \qquad
+\mathbf{Z}_2 = \frac{\mathbf{Z}_A \mathbf{Z}_C}{\mathbf{Z}_\Sigma}, \qquad
+\mathbf{Z}_3 = \frac{\mathbf{Z}_A \mathbf{Z}_B}{\mathbf{Z}_\Sigma}
+\]
 
 > **Regla mnemotécnica ($\Delta \to \text{Y}$):** Cada rama de la estrella es igual al *producto de las dos impedancias adyacentes del delta* dividido por la *suma total de las tres impedancias del delta*.
 
@@ -62,35 +473,63 @@ $$\mathbf{Z}_1 = \frac{\mathbf{Z}_B \mathbf{Z}_C}{\mathbf{Z}_\Sigma}, \qquad \ma
 
 Dada una estrella con ramas $\mathbf{Z}_1, \mathbf{Z}_2, \mathbf{Z}_3$ conectadas al nodo común neutro $O$, definimos la suma de productos dos a dos:
 
-$$\Sigma_2 = \mathbf{Z}_1 \mathbf{Z}_2 + \mathbf{Z}_2 \mathbf{Z}_3 + \mathbf{Z}_3 \mathbf{Z}_1$$
+\[
+\Sigma_2 = \mathbf{Z}_1 \mathbf{Z}_2 + \mathbf{Z}_2 \mathbf{Z}_3 + \mathbf{Z}_3 \mathbf{Z}_1
+\]
 
 Las impedancias correspondientes del triángulo delta equivalentes son:
 
-$$\mathbf{Z}_A = \frac{\Sigma_2}{\mathbf{Z}_1}, \qquad \mathbf{Z}_B = \frac{\Sigma_2}{\mathbf{Z}_2}, \qquad \mathbf{Z}_C = \frac{\Sigma_2}{\mathbf{Z}_3}$$
+\[
+\mathbf{Z}_A = \frac{\Sigma_2}{\mathbf{Z}_1}, \qquad
+\mathbf{Z}_B = \frac{\Sigma_2}{\mathbf{Z}_2}, \qquad
+\mathbf{Z}_C = \frac{\Sigma_2}{\mathbf{Z}_3}
+\]
 
 > **Regla mnemotécnica ($\text{Y} \to \Delta$):** Cada impedancia del delta es igual a la *suma de los productos dos a dos de las impedancias de la estrella* dividida entre la *impedancia opuesta de la estrella*.
 
 ---
 
-# Errores Frecuentes en la Conversión $\Delta \leftrightarrow \text{Y}$
+# 12. Caso particular: redes equilibradas
 
-1. **Confusión entre tensiones y corrientes de fase y de línea:**
-   - **En estrella:** La tensión de fase es menor que la tensión de línea por un factor de $\sqrt{3}$ ($V_L = \sqrt{3} V_F$), mientras que las corrientes son iguales ($I_L = I_F$).
-   - **En delta:** Las tensiones de fase y de línea son iguales ($V_L = V_F$), mientras que la corriente de línea es $\sqrt{3}$ veces mayor que la de fase ($I_L = \sqrt{3} I_F$).
+Cuando las tres impedancias de la red son iguales, las expresiones generales se simplifican.
 
-| Magnitud | Estrella ($\text{Y}$) | Triángulo ($\Delta$) | Relación |
-| :--- | :---: | :---: | :---: |
-| **Tensión ($V$)** | $V_L > V_F$ | $V_L = V_F$ | $V_L = \sqrt{3} \cdot V_F$ |
-| **Corriente ($I$)** | $I_L = I_F$ | $I_L > I_F$ | $I_L = \sqrt{3} \cdot I_F$ |
-| **Potencia ($P$)** | Menor ($1/3$) | Mayor (Nominal) | $P_{\Delta} = 3 \cdot P_{\text{Y}}$ |
+Para una red equilibrada:
 
-2. **Aplicación indiscriminada de fórmulas puramente resistivas:** En CA, todas las operaciones involucran **números complejos** $\mathbf{Z} = R + jX$. Sumar solo las partes reales u omitir los signos en reactancias inductivas ($+j$) o capacitivas ($-j$) produce resultados erróneos.
-3. **Desbalance de impedancias:** En sistemas equilibrados, $\mathbf{Z}_\Delta = 3 \mathbf{Z}_{\text{Y}}$ y $\mathbf{Z}_{\text{Y}} = \frac{\mathbf{Z}_\Delta}{3}$. Sin embargo, en redes asimétricas (puentes de medición no balanceados), debe aplicarse la fórmula general completa elemento por elemento.
-4. **Ignorar el nodo neutro ficticio en Estrella:** En la configuración $\text{Y}$ aparece un nodo central que no existía en el $\Delta$. Dicho nodo tiene un potencial eléctrico definido que no debe confundirse con la referencia de tierra salvo que esté expresamente conectado a ella.
+\[
+\mathbf Z_\Delta = 3\mathbf Z_Y
+\]
+
+y, equivalentemente,
+
+\[
+\mathbf Z_Y=\frac{\mathbf Z_\Delta}{3}
+\]
+
+::: {.callout-warning}
+### Atención al contexto
+
+Esta relación es un **caso particular de una red equilibrada**. No debe utilizarse como sustituto de las expresiones generales cuando las tres impedancias son diferentes.
+:::
+
+En sistemas trifásicos equilibrados, esta propiedad permite establecer relaciones muy útiles entre las configuraciones $\Delta$ y $\text{Y}$.
 
 ---
 
-# Módulo Interactivo de Cálculo $\Delta \leftrightarrow \text{Y}$
+# 13. Errores Frecuentes en la Conversión $\Delta \leftrightarrow \text{Y}$
+
+1. **Confusión entre la transformación de redes y las relaciones de línea/fase:** transformar una subred de impedancias $\Delta \leftrightarrow \text{Y}$ no equivale automáticamente a aplicar relaciones de tensión y corriente de un sistema trifásico.
+
+2. **Aplicación indiscriminada de fórmulas puramente resistivas:** en CA, todas las operaciones involucran **números complejos** $\mathbf{Z}=R+jX$. Sumar solo las partes reales u omitir los signos en reactancias inductivas ($+j$) o capacitivas ($-j$) produce resultados erróneos.
+
+3. **Desbalance de impedancias:** cuando las tres ramas no son iguales, deben utilizarse las relaciones generales de transformación elemento por elemento.
+
+4. **Ignorar el nodo neutro ficticio en Estrella:** en la configuración $\text{Y}$ aparece un nodo central que no existía en el $\Delta$. Dicho nodo tiene un potencial eléctrico definido y no debe confundirse con la referencia de tierra salvo que esté expresamente conectado a ella.
+
+5. **Elegir la transformación sin observar la red completa:** una transformación matemáticamente válida puede no ser la más conveniente para resolver el problema.
+
+---
+
+# 14. Módulo Interactivo de Cálculo $\Delta \leftrightarrow \text{Y}$
 
 Utilice el siguiente simulador para ingresar las impedancias complejas en forma rectangular ($R + jX$) y obtener inmediatamente la transformación equivalente en ambas direcciones con verificación de fasores:
 
@@ -98,7 +537,7 @@ Utilice el siguiente simulador para ingresar las impedancias complejas en forma 
 
 ---
 
-# Navegación del Módulo
+# 15. Navegación del Módulo
 
 <div class="d-flex flex-wrap gap-2 my-3">
   <a href="teoria_fasores.qmd" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i> Análisis Fasorial</a>

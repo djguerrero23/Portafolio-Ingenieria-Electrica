@@ -1,0 +1,109 @@
+---
+title: "Transformación Delta – Estrella (Δ ↔ Y) en Corriente Alterna"
+subtitle: "Conversión de impedancias complejas, topologías en puente, doble T y calculadora interactiva"
+description: "Formulación analítica rigurosa y herramienta de cálculo para la conversión bidireccional Delta-Estrella con impedancias complejas en régimen permanente sinusoidal."
+author: "David Guerrero"
+date: "2026-09-16"
+categories: [Métodos de Redes, Delta-Estrella, Impedancia Compleja, Circuitos CA]
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+---
+
+::: {.hero-banner-modern}
+# Transformación Bidireccional $\Delta \leftrightarrow \text{Y}$ en CA {.unnumbered}
+**Simplificación de redes complejas mediante equivalencia de impedancias en terminales.**
+
+Permite reducir topologías que no admiten simplificación directa serie o paralelo, tales como redes en puente no equilibradas, filtros doble T y circuitos polifásicos equivalentes.
+:::
+
+::: {.callout-note}
+### ⚡ Principio de Equivalencia Terminal
+Dos redes conectadas a tres terminales accesibles $(1, 2, 3)$ son eléctricamente equivalentes en régimen sinusoidal si, para cualquier conjunto de tensiones aplicadas entre dichos terminales, las corrientes de línea resultantes son exactamente idénticas en magnitud y fase.
+:::
+
+---
+
+# Topologías y Esquemas de Conexión
+
+Cuando una red de impedancias complejas no se puede reducir mediante combinaciones puras de serie o paralelo, se recurre a la transformación bidireccional entre la configuración **Delta ($\Delta$ o triángulo)** y la configuración **Estrella ($\text{Y}$ o $T$)**.
+
+{{< include imagenes/esquemas/_genera_delta_estrella.md >}}
+
+{{< include imagenes/esquemas/_topologia_puente_delta_estrella.md >}}
+
+{{< include imagenes/esquemas/_topologia_doble_t_estrella_delta.md >}}
+
+{{< include imagenes/esquemas/_topologia_estrella_delta.md >}}
+
+{{< include imagenes/esquemas/_topologia_delta_estrella2.md >}}
+
+---
+
+# Fórmulas de Transformación para Impedancias Complejas
+
+## De Delta a Estrella ($\Delta \to \text{Y}$)
+
+Dado un triángulo formado por las impedancias complejas $\mathbf{Z}_A$ (opuesta al nodo 1), $\mathbf{Z}_B$ (opuesta al nodo 2) y $\mathbf{Z}_C$ (opuesta al nodo 3), definimos la suma de impedancias del delta:
+
+$$\mathbf{Z}_\Sigma = \mathbf{Z}_A + \mathbf{Z}_B + \mathbf{Z}_C$$
+
+Las impedancias equivalentes en estrella conectadas a cada nodo $(1, 2, 3)$ hacia el neutro común $O$ son:
+
+$$\mathbf{Z}_1 = \frac{\mathbf{Z}_B \mathbf{Z}_C}{\mathbf{Z}_\Sigma}, \qquad \mathbf{Z}_2 = \frac{\mathbf{Z}_A \mathbf{Z}_C}{\mathbf{Z}_\Sigma}, \qquad \mathbf{Z}_3 = \frac{\mathbf{Z}_A \mathbf{Z}_B}{\mathbf{Z}_\Sigma}$$
+
+> **Regla mnemotécnica ($\Delta \to \text{Y}$):** Cada rama de la estrella es igual al *producto de las dos impedancias adyacentes del delta* dividido por la *suma total de las tres impedancias del delta*.
+
+---
+
+## De Estrella a Delta ($\text{Y} \to \Delta$)
+
+Dada una estrella con ramas $\mathbf{Z}_1, \mathbf{Z}_2, \mathbf{Z}_3$ conectadas al nodo común neutro $O$, definimos la suma de productos dos a dos:
+
+$$\Sigma_2 = \mathbf{Z}_1 \mathbf{Z}_2 + \mathbf{Z}_2 \mathbf{Z}_3 + \mathbf{Z}_3 \mathbf{Z}_1$$
+
+Las impedancias correspondientes del triángulo delta equivalentes son:
+
+$$\mathbf{Z}_A = \frac{\Sigma_2}{\mathbf{Z}_1}, \qquad \mathbf{Z}_B = \frac{\Sigma_2}{\mathbf{Z}_2}, \qquad \mathbf{Z}_C = \frac{\Sigma_2}{\mathbf{Z}_3}$$
+
+> **Regla mnemotécnica ($\text{Y} \to \Delta$):** Cada impedancia del delta es igual a la *suma de los productos dos a dos de las impedancias de la estrella* dividida entre la *impedancia opuesta de la estrella*.
+
+---
+
+# Errores Frecuentes en la Conversión $\Delta \leftrightarrow \text{Y}$
+
+1. **Confusión entre tensiones y corrientes de fase y de línea:**
+   - **En estrella:** La tensión de fase es menor que la tensión de línea por un factor de $\sqrt{3}$ ($V_L = \sqrt{3} V_F$), mientras que las corrientes son iguales ($I_L = I_F$).
+   - **En delta:** Las tensiones de fase y de línea son iguales ($V_L = V_F$), mientras que la corriente de línea es $\sqrt{3}$ veces mayor que la de fase ($I_L = \sqrt{3} I_F$).
+
+| Magnitud | Estrella ($\text{Y}$) | Triángulo ($\Delta$) | Relación |
+| :--- | :---: | :---: | :---: |
+| **Tensión ($V$)** | $V_L > V_F$ | $V_L = V_F$ | $V_L = \sqrt{3} \cdot V_F$ |
+| **Corriente ($I$)** | $I_L = I_F$ | $I_L > I_F$ | $I_L = \sqrt{3} \cdot I_F$ |
+| **Potencia ($P$)** | Menor ($1/3$) | Mayor (Nominal) | $P_{\Delta} = 3 \cdot P_{\text{Y}}$ |
+
+2. **Aplicación indiscriminada de fórmulas puramente resistivas:** En CA, todas las operaciones involucran **números complejos** $\mathbf{Z} = R + jX$. Sumar solo las partes reales u omitir los signos en reactancias inductivas ($+j$) o capacitivas ($-j$) produce resultados erróneos.
+3. **Desbalance de impedancias:** En sistemas equilibrados, $\mathbf{Z}_\Delta = 3 \mathbf{Z}_{\text{Y}}$ y $\mathbf{Z}_{\text{Y}} = \frac{\mathbf{Z}_\Delta}{3}$. Sin embargo, en redes asimétricas (puentes de medición no balanceados), debe aplicarse la fórmula general completa elemento por elemento.
+4. **Ignorar el nodo neutro ficticio en Estrella:** En la configuración $\text{Y}$ aparece un nodo central que no existía en el $\Delta$. Dicho nodo tiene un potencial eléctrico definido que no debe confundirse con la referencia de tierra salvo que esté expresamente conectado a ella.
+
+---
+
+# Módulo Interactivo de Cálculo $\Delta \leftrightarrow \text{Y}$
+
+Utilice el siguiente simulador para ingresar las impedancias complejas en forma rectangular ($R + jX$) y obtener inmediatamente la transformación equivalente en ambas direcciones con verificación de fasores:
+
+{{< include modulos/_delta_estrella_solver.md >}}
+
+---
+
+# Navegación del Módulo
+
+<div class="d-flex flex-wrap gap-2 my-3">
+  <a href="teoria_fasores.qmd" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i> Análisis Fasorial</a>
+  <a href="analisis_nodal.qmd" class="btn btn-primary"><i class="bi bi-diagram-2 me-1"></i> Siguiente: Análisis Nodal</a>
+  <a href="analisis_mallas.qmd" class="btn btn-outline-primary"><i class="bi bi-grid me-1"></i> Análisis de Mallas</a>
+  <a href="circuito_thevenin.qmd" class="btn btn-outline-primary"><i class="bi bi-cpu me-1"></i> Teorema de Thévenin</a>
+  <a href="index.qmd" class="btn btn-outline-secondary"><i class="bi bi-house me-1"></i> Índice</a>
+</div>
