@@ -336,7 +336,7 @@ function resolverRed() {
           🔍 Ver distribución de tensiones nodales (Inyección de prueba I = 1&ang;0&deg; A)
         </summary>
         <div class="table-responsive mt-2">
-          <table class="table table-sm table-hover align-middle mb-0">
+          ${'<' + 'table class="table table-sm table-hover align-middle mb-0">'}
             <thead class="table-light">
               <tr><th>Nodo</th><th class="text-end">Tensión Fasorial (Rectangular)</th><th class="text-end">Tensión Fasorial (Polar)</th></tr>
             </thead>
