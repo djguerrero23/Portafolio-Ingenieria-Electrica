@@ -147,18 +147,25 @@
     "text": "Simplificación de redes complejas mediante equivalencia de impedancias en terminales.\nUna red eléctrica puede contener conexiones que no admiten una reducción directa mediante combinaciones de serie y paralelo. Cuando una parte de la red presenta una topología Delta (\\Delta) o Estrella (\\text{Y}), podemos transformar su representación para obtener una red equivalente que resulte más conveniente para el análisis."
   },
   {
+    "objectID": "circuitos_electricos/delta_estrella.html#la-idea-de-fondo",
+    "href": "circuitos_electricos/delta_estrella.html#la-idea-de-fondo",
+    "title": "Transformación Delta – Estrella (Δ ↔︎ Y) en Corriente Alterna",
+    "section": "1.1 La idea de fondo",
+    "text": "1.1 La idea de fondo\n\n\\boxed{\n\\text{topología difícil}\n\\;\\rightarrow\\;\n\\text{topología equivalente}\n\\;\\rightarrow\\;\n\\text{simplificación}\n\\;\\rightarrow\\;\n\\text{análisis}\n}\n\nPor eso, \\Delta \\leftrightarrow \\text{Y} es una herramienta de simplificación de redes, no un procedimiento que deba aplicarse automáticamente cada vez que aparezca un triángulo o una estrella."
+  },
+  {
     "objectID": "circuitos_electricos/delta_estrella.html#configuración-delta-delta",
     "href": "circuitos_electricos/delta_estrella.html#configuración-delta-delta",
     "title": "Transformación Delta – Estrella (Δ ↔︎ Y) en Corriente Alterna",
-    "section": "2.1 2.1 Configuración Delta (\\Delta)",
-    "text": "2.1 2.1 Configuración Delta (\\Delta)\nEn una red Delta, tres impedancias están conectadas entre tres pares de terminales:\n\nA-B,\\qquad B-C,\\qquad C-A\n\nLa red forma un lazo cerrado entre tres nodos."
+    "section": "2.1 Configuración Delta (\\Delta)",
+    "text": "2.1 Configuración Delta (\\Delta)\nEn una red Delta, tres impedancias están conectadas entre tres pares de terminales:\n\nA-B,\\qquad B-C,\\qquad C-A\n\n\n  \n    \n      \n      \n        \n          \n        \n      \n\n      \n      Configuración Delta (Δ)\n      \n      \n      \n      \n      \n\n      \n      \n      \n      ZC\n\n      \n      \n      ZB\n\n      \n      \n      ZA\n\n      \n      \n      \n      \n      A\n\n      \n      \n      \n      B\n\n      \n      \n      \n      C\n    \n  \n\nLa red forma un lazo cerrado entre tres nodos."
   },
   {
     "objectID": "circuitos_electricos/delta_estrella.html#configuración-estrella-texty",
     "href": "circuitos_electricos/delta_estrella.html#configuración-estrella-texty",
     "title": "Transformación Delta – Estrella (Δ ↔︎ Y) en Corriente Alterna",
-    "section": "2.2 2.2 Configuración Estrella (\\text{Y})",
-    "text": "2.2 2.2 Configuración Estrella (\\text{Y})\nEn una red Estrella, tres impedancias se conectan a un nodo común:\n\nA-O,\\qquad B-O,\\qquad C-O\n\ndonde O representa el nodo central de la estrella.\n\n\n\n\n\n\nTipNo confundir topología con transformación\n\n\n\nUna carga puede estar físicamente conectada en \\Delta o en \\text{Y}.\nPero una transformación \\Delta \\leftrightarrow \\text{Y} puede utilizarse como herramienta matemática de análisis, aunque el circuito físico no se modifique.\nPor tanto:\n\n\\boxed{\n\\text{transformar la representación}\n\\neq\n\\text{reconstruir físicamente el circuito}\n}"
+    "section": "2.2 Configuración Estrella (\\text{Y})",
+    "text": "2.2 Configuración Estrella (\\text{Y})\nEn una red Estrella, tres impedancias se conectan a un nodo común:\n\nA-O,\\qquad B-O,\\qquad C-O\n\n\n  \n    \n      \n      \n        \n          \n        \n      \n\n      \n      Configuración Estrella (Y)\n\n      \n      \n      \n      \n\n      \n      \n      \n      Z1\n\n      \n      \n      Z2\n\n      \n      \n      Z3\n\n      \n      \n      \n      O\n\n      \n      \n      \n      \n      A\n\n      \n      \n      \n      B\n\n      \n      \n      \n      C\n    \n  \n\ndonde O representa el nodo central de la estrella.\n\n\n\n\n\n\nTipNo confundir topología con transformación\n\n\n\nUna carga puede estar físicamente conectada en \\Delta o en \\text{Y}.\nPero una transformación \\Delta \\leftrightarrow \\text{Y} puede utilizarse como herramienta matemática de análisis, aunque el circuito físico no se modifique.\nPor tanto:\n\n\\boxed{\n\\text{transformar la representación}\n\\neq\n\\text{reconstruir físicamente el circuito}\n}"
   },
   {
     "objectID": "circuitos_electricos/delta_estrella.html#de-delta-a-estrella-delta-to-texty",
