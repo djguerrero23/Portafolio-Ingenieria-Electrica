@@ -7,9 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="David Guerrero">
-<meta name="dcterms.date" content="2026-09-17">
+<meta name="dcterms.date" content="2026-09-16">
+<meta name="description" content="Resolución de circuitos planos de corriente alterna en régimen permanente mediante corrientes ficticias de lazo: matriz de impedancias de malla [Z][I] = [V], supermallas y fuentes controladas.">
 
-<title>Centro de Recursos, Datasets &amp; Scripts – ⚡ Portafolio de Ingeniería Eléctrica</title>
+<title>Análisis de Mallas en Corriente Alterna – ⚡ Portafolio de Ingeniería Eléctrica</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -66,24 +67,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./favicon.svg" rel="icon" type="image/svg+xml">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-bb62276ab45c84d9efd712f51ff97b5a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-1bb61e042ff145ec17923bc0da23b575.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../favicon.svg" rel="icon" type="image/svg+xml">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bb62276ab45c84d9efd712f51ff97b5a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-1bb61e042ff145ec17923bc0da23b575.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -157,7 +158,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -167,7 +168,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">⚡ Portafolio de Ingeniería Eléctrica</span>
     </a>
   </div>
@@ -178,7 +179,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> <i class="bi bi-house-door-fill" role="img">
+    <a class="nav-link" href="../index.html"> <i class="bi bi-house-door-fill" role="img">
 </i> 
 <span class="menu-text">Inicio</span></a>
   </li>  
@@ -190,38 +191,38 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-circuitos-eléctricos">    
         <li>
-    <a class="dropdown-item" href="./circuitos_electricos/index.html">
+    <a class="dropdown-item" href="../circuitos_electricos/index.html">
  <span class="dropdown-text">⚡ Ver Todo (Módulo Circuitos)</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li>
-    <a class="dropdown-item" href="./circuitos_electricos/teoria_fasores.html">
+    <a class="dropdown-item" href="../circuitos_electricos/teoria_fasores.html">
  <span class="dropdown-text">Guía Práctica de Análisis Fasorial</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./circuitos_electricos/potencia_ca.html">
+    <a class="dropdown-item" href="../circuitos_electricos/potencia_ca.html">
  <span class="dropdown-text">Potencia en CA &amp; Triángulo de Potencias</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">MÉTODOS Y TEOREMAS DE REDES</li>
         <li>
-    <a class="dropdown-item" href="./circuitos_electricos/delta_estrella.html">
+    <a class="dropdown-item" href="../circuitos_electricos/delta_estrella.html">
  <span class="dropdown-text">Transformación Delta–Estrella (Δ ↔︎ Y)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./circuitos_electricos/analisis_nodal.html">
+    <a class="dropdown-item" href="../circuitos_electricos/analisis_nodal.html">
  <span class="dropdown-text">Análisis Nodal en CA (Admitancias)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./circuitos_electricos/analisis_mallas.html">
+    <a class="dropdown-item" href="../circuitos_electricos/analisis_mallas.html">
  <span class="dropdown-text">Análisis de Mallas en CA (Impedancias)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./circuitos_electricos/circuito_thevenin.html">
+    <a class="dropdown-item" href="../circuitos_electricos/circuito_thevenin.html">
  <span class="dropdown-text">Teorema de Thévenin en CA</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./circuitos_electricos/circuito_norton.html">
+    <a class="dropdown-item" href="../circuitos_electricos/circuito_norton.html">
  <span class="dropdown-text">Teorema de Norton en CA</span></a>
   </li>  
     </ul>
@@ -234,12 +235,12 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-máquinas-eléctricas">    
         <li>
-    <a class="dropdown-item" href="./maquinas_electricas/index.html">
+    <a class="dropdown-item" href="../maquinas_electricas/index.html">
  <span class="dropdown-text">⚙️ Ver Todo (Módulo Máquinas)</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li>
-    <a class="dropdown-item" href="./maquinas_electricas/circuitos_magneticos.html">
+    <a class="dropdown-item" href="../maquinas_electricas/circuitos_magneticos.html">
  <span class="dropdown-text">Circuitos Magnéticos y Curva B-H</span></a>
   </li>  
     </ul>
@@ -252,12 +253,12 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-mediciones-eléctricas">    
         <li>
-    <a class="dropdown-item" href="./mediciones_electricas/index.html">
+    <a class="dropdown-item" href="../mediciones_electricas/index.html">
  <span class="dropdown-text">📊 Ver Todo (Módulo Mediciones)</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li>
-    <a class="dropdown-item" href="./mediciones_electricas/puentes_medicion.html">
+    <a class="dropdown-item" href="../mediciones_electricas/puentes_medicion.html">
  <span class="dropdown-text">Puentes de Medición (R, L, C)</span></a>
   </li>  
     </ul>
@@ -270,12 +271,12 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-sistemas-de-potencia">    
         <li>
-    <a class="dropdown-item" href="./sistemas_potencia/index.html">
+    <a class="dropdown-item" href="../sistemas_potencia/index.html">
  <span class="dropdown-text">🏗️ Ver Todo (Módulo Potencia)</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li>
-    <a class="dropdown-item" href="./sistemas_potencia/caida_tension.html">
+    <a class="dropdown-item" href="../sistemas_potencia/caida_tension.html">
  <span class="dropdown-text">Caída de Tensión y Alimentadores (NEC)</span></a>
   </li>  
     </ul>
@@ -288,12 +289,12 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-aplicaciones-python">    
         <li>
-    <a class="dropdown-item" href="./aplicaciones_python/index.html">
+    <a class="dropdown-item" href="../aplicaciones_python/index.html">
  <span class="dropdown-text">🐍 Calculadoras &amp; Simuladores</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li>
-    <a class="dropdown-item" href="./descargas.html">
+    <a class="dropdown-item" href="../descargas.html">
  <span class="dropdown-text">Centro de Descargas &amp; CSVs</span></a>
   </li>  
     </ul>
@@ -321,8 +322,14 @@ window.Quarto = {
     <h2 id="toc-title">Índice de Contenido</h2>
    
   <ul>
-  <li><a href="#catálogo-de-archivos-disponibles" id="toc-catálogo-de-archivos-disponibles" class="nav-link active" data-scroll-target="#catálogo-de-archivos-disponibles">📁 Catálogo de Archivos Disponibles</a></li>
-  <li><a href="#integración-directa-en-python" id="toc-integración-directa-en-python" class="nav-link" data-scroll-target="#integración-directa-en-python">⚡ Integración Directa en Python</a></li>
+  <li><a href="#análisis-de-mallas-en-régimen-sinusoidal-permanente" id="toc-análisis-de-mallas-en-régimen-sinusoidal-permanente" class="nav-link active" data-scroll-target="#análisis-de-mallas-en-régimen-sinusoidal-permanente">Análisis de Mallas en Régimen Sinusoidal Permanente</a></li>
+  <li><a href="#formulación-matricial-por-impedancias" id="toc-formulación-matricial-por-impedancias" class="nav-link" data-scroll-target="#formulación-matricial-por-impedancias"><span class="header-section-number">1</span> Formulación Matricial por Impedancias</a>
+  <ul class="collapse">
+  <li><a href="#elementos-de-la-matriz-de-impedancias-mathbfz" id="toc-elementos-de-la-matriz-de-impedancias-mathbfz" class="nav-link" data-scroll-target="#elementos-de-la-matriz-de-impedancias-mathbfz"><span class="header-section-number">1.1</span> Elementos de la Matriz de Impedancias <span class="math inline">[\mathbf{Z}]</span></a></li>
+  </ul></li>
+  <li><a href="#tratamiento-de-fuentes-de-corriente-la-supermalla" id="toc-tratamiento-de-fuentes-de-corriente-la-supermalla" class="nav-link" data-scroll-target="#tratamiento-de-fuentes-de-corriente-la-supermalla"><span class="header-section-number">2</span> Tratamiento de Fuentes de Corriente: La Supermalla</a></li>
+  <li><a href="#algoritmo-sistemático-de-resolución-paso-a-paso" id="toc-algoritmo-sistemático-de-resolución-paso-a-paso" class="nav-link" data-scroll-target="#algoritmo-sistemático-de-resolución-paso-a-paso"><span class="header-section-number">3</span> Algoritmo Sistemático de Resolución Paso a Paso</a></li>
+  <li><a href="#navegación-del-módulo" id="toc-navegación-del-módulo" class="nav-link" data-scroll-target="#navegación-del-módulo"><span class="header-section-number">4</span> Navegación del Módulo</a></li>
   </ul>
 </nav>
     </div>
@@ -331,10 +338,22 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Centro de Recursos, Datasets &amp; Scripts</h1>
-<p class="subtitle lead">Repositorio técnico de datos normativos, tablas de impedancia y módulos computacionales en Python</p>
-</div>
+<h1 class="title">Análisis de Mallas en Corriente Alterna</h1>
+<p class="subtitle lead">Formulación sistemática por Ley de Tensiones de Kirchhoff (LVK) y Matriz de Impedancias Complejas</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Métodos de Redes</div>
+    <div class="quarto-category">Análisis de Mallas</div>
+    <div class="quarto-category">Impedancias</div>
+    <div class="quarto-category">LVK</div>
+    <div class="quarto-category">Circuitos CA</div>
+  </div>
+  </div>
 
+<div>
+  <div class="description">
+    Resolución de circuitos planos de corriente alterna en régimen permanente mediante corrientes ficticias de lazo: matriz de impedancias de malla [Z][I] = [V], supermallas y fuentes controladas.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta column-page-left">
@@ -349,7 +368,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 17, 2026</p>
+      <p class="date">September 16, 2026</p>
     </div>
   </div>
   
@@ -361,74 +380,122 @@ window.Quarto = {
 </header>
 
 
+<section id="análisis-de-mallas-en-régimen-sinusoidal-permanente" class="level1 unnumbered hero-banner-modern">
+<h1 class="unnumbered">Análisis de Mallas en Régimen Sinusoidal Permanente</h1>
+<p><strong>Resolución sistemática de circuitos planos mediante corrientes de lazo e impedancias complejas.</strong></p>
+<p>El método de mallas aplica la Ley de Tensiones de Kirchhoff a lazos cerrados planos que no encierran otros lazos, reduciendo el problema a un sistema de ecuaciones donde las incógnitas son las corrientes ficticias de cada malla.</p>
+</section>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>💾 Acceso a Recursos de Ingeniería
+<span class="screen-reader-only">Note</span>⚡ Fundamento: Ley de Tensiones de Kirchhoff (LVK)
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>En este centro de descargas se encuentran disponibles los archivos de datos, tablas de conductores y scripts de cálculo numérico utilizados en los informes técnicos de la plataforma. Todos los recursos están optimizados para integración directa con Python, Pandas, NumPy y herramientas CAD/CAE.</p>
+<p>A lo largo de cualquier trayectoria cerrada (malla) en régimen sinusoidal permanente, la suma fasorial de las caídas y elevaciones de tensión es idénticamente nula:</p>
+<p><span class="math display">\sum_{k=1}^{m} \mathbf{V}_k = 0</span></p>
+<p>Al expresar cada caída de tensión como el producto de la impedancia de rama por la corriente neta que la atraviesa (<span class="math inline">\mathbf{V} = \mathbf{Z} \mathbf{I}_{\text{rama}}</span>), se establece el sistema matricial de mallas.</p>
 </div>
 </div>
-<section id="catálogo-de-archivos-disponibles" class="level2">
-<h2 class="anchored" data-anchor-id="catálogo-de-archivos-disponibles">📁 Catálogo de Archivos Disponibles</h2>
+<hr>
+<section id="formulación-matricial-por-impedancias" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Formulación Matricial por Impedancias</h1>
+<p>Para un circuito plano con <span class="math inline">M</span> mallas independientes y todas las corrientes de malla asignadas en el mismo sentido (usualmente horario), sin fuentes de corriente compartidas entre mallas:</p>
+<p><span class="math display">
+\begin{bmatrix}
+\mathbf{Z}_{11} &amp; \mathbf{Z}_{12} &amp; \cdots &amp; \mathbf{Z}_{1M} \\
+\mathbf{Z}_{21} &amp; \mathbf{Z}_{22} &amp; \cdots &amp; \mathbf{Z}_{2M} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+\mathbf{Z}_{M1} &amp; \mathbf{Z}_{M2} &amp; \cdots &amp; \mathbf{Z}_{MM}
+\end{bmatrix}
+\begin{bmatrix}
+\mathbf{I}_1 \\
+\mathbf{I}_2 \\
+\vdots \\
+\mathbf{I}_M
+\end{bmatrix}
+=
+\begin{bmatrix}
+\mathbf{V}_{\text{malla } 1} \\
+\mathbf{V}_{\text{malla } 2} \\
+\vdots \\
+\mathbf{V}_{\text{malla } M}
+\end{bmatrix}
+</span></p>
+<p>En notación matricial compacta:</p>
+<p><span class="math display">[\mathbf{Z}] [\mathbf{I}] = [\mathbf{V}]</span></p>
+<section id="elementos-de-la-matriz-de-impedancias-mathbfz" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="elementos-de-la-matriz-de-impedancias-mathbfz"><span class="header-section-number">1.1</span> Elementos de la Matriz de Impedancias <span class="math inline">[\mathbf{Z}]</span></h2>
+<ol type="1">
+<li><p><strong>Impedancias Propias (<span class="math inline">\mathbf{Z}_{kk}</span>):</strong> Elementos de la diagonal principal.<br>
+<span class="math display">\mathbf{Z}_{kk} = \sum \mathbf{Z}_{\text{pertenecientes a la malla } k}</span> Es la suma total de las impedancias complejas (<span class="math inline">R + j\omega L - j/(\omega C)</span>) contenidas en el perímetro de la malla <span class="math inline">k</span>.</p></li>
+<li><p><strong>Impedancias Mutuas (<span class="math inline">\mathbf{Z}_{km}</span> con <span class="math inline">k \neq m</span>):</strong> Elementos fuera de la diagonal.<br>
+<span class="math display">\mathbf{Z}_{km} = -\sum \mathbf{Z}_{\text{compartidas entre la malla } k \text{ y la malla } m}</span> Si ambas corrientes de malla circulan en sentido horario, atraviesan la rama común en sentidos opuestos, por lo que este término lleva siempre signo <strong>negativo</strong>. Para circuitos pasivos bilaterales sin fuentes dependientes, la matriz es simétrica: <span class="math inline">\mathbf{Z}_{km} = \mathbf{Z}_{mk}</span>.</p></li>
+<li><p><strong>Vector de Elevaciones de Tensión (<span class="math inline">\mathbf{V}_{\text{malla } k}</span>):</strong><br>
+<span class="math display">\mathbf{V}_{\text{malla } k} = \sum \mathbf{V}_{\text{elevaciones en el sentido horario}} - \sum \mathbf{V}_{\text{caídas en el sentido horario}}</span> Es la suma algebraica fasorial de las fuentes de tensión independientes encontradas al recorrer la malla <span class="math inline">k</span>.</p></li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="tratamiento-de-fuentes-de-corriente-la-supermalla" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Tratamiento de Fuentes de Corriente: La Supermalla</h1>
+<p>Cuando existe una <strong>fuente de corriente</strong> (independiente o dependiente) en el circuito, la caída de tensión en sus bornes es una incógnita adicional a priori. Dependiendo de su ubicación topológica:</p>
 <div class="grid">
 <div class="g-col-12 g-col-md-6">
-<div class="card-module">
-<div class="card-icon">
-<p>📊</p>
-</div>
-<section id="parámetros-de-conductores-awg-kcmil" class="level3">
-<h3 class="anchored" data-anchor-id="parámetros-de-conductores-awg-kcmil">Parámetros de Conductores AWG / kcmil</h3>
-<p>Matriz de impedancia en corriente alterna (<span class="math inline">R_{CA}</span> a <span class="math inline">75^\circ\text{C}</span> y reactancia <span class="math inline">X_L</span>) para conductores de cobre con aislamiento THHN/THWN en canalizaciones de PVC y acero, según la <strong>Tabla 9 del Código Eléctrico Nacional (NEC)</strong>.</p>
-<ul>
-<li><strong>Formato:</strong> Archivo tabular <code>.csv</code> (codificación UTF-8)</li>
-<li><strong>Campos:</strong> <code>calibre</code>, <code>area_mm2</code>, <code>resistencia_pvc_ohm_km</code>, <code>reactancia_pvc_ohm_km</code></li>
-<li><strong>Uso:</strong> Algoritmos de caída de tensión y optimización de alimentadores</li>
-</ul>
-<div class="mt-auto pt-3">
-<p><a href="descargas/tabla_calibres_awg.csv" class="btn btn-primary" download=""> 📥 Descargar Dataset (CSV) </a></p>
-</div>
+<section id="fuente-en-una-rama-no-compartida" class="level4 card-module" style="border-top: 4px solid #0284c7;" data-number="2.0.0.1">
+<h4 data-number="2.0.0.1" class="anchored" data-anchor-id="fuente-en-una-rama-no-compartida"><span class="header-section-number">2.0.0.1</span> 1. Fuente en una Rama No Compartida</h4>
+<p>Si la fuente de corriente <span class="math inline">\mathbf{I}_s</span> pertenece exclusivamente al perímetro exterior de una única malla <span class="math inline">k</span>: - La corriente de esa malla queda fijada directamente: <span class="math display">\mathbf{I}_k = \pm \mathbf{I}_s</span> - No se requiere plantear la LVK en esa malla; la dimensión del sistema se reduce de inmediato.</p>
 </section>
-</div>
 </div>
 <div class="g-col-12 g-col-md-6">
-<div class="card-module">
-<div class="card-icon">
-<p>🐍</p>
-</div>
-<section id="script-de-análisis-fasorial-potencia" class="level3">
-<h3 class="anchored" data-anchor-id="script-de-análisis-fasorial-potencia">Script de Análisis Fasorial &amp; Potencia</h3>
-<p>Módulo ejecutable en Python puro que implementa las funciones vectoriales de números complejos, descomposición de potencia activa, reactiva y generación de diagramas fasoriales con <strong>Matplotlib</strong>.</p>
-<ul>
-<li><strong>Formato:</strong> Código fuente <code>.py</code></li>
-<li><strong>Dependencias:</strong> Python 3.9+, NumPy, Matplotlib</li>
-<li><strong>Uso:</strong> Ejecución en terminal, importación en scripts propios o Jupyter Notebooks</li>
-</ul>
-<div class="mt-auto pt-3">
-<p><a href="descargas/calculo_fasores.py" class="btn btn-outline-primary" download=""> 📥 Descargar Script (.py) </a></p>
-</div>
+<section id="fuente-compartida-supermalla" class="level4 card-module" style="border-top: 4px solid #f59e0b;" data-number="2.0.0.2">
+<h4 data-number="2.0.0.2" class="anchored" data-anchor-id="fuente-compartida-supermalla"><span class="header-section-number">2.0.0.2</span> 2. Fuente Compartida: Supermalla</h4>
+<p>Si la fuente de corriente se encuentra en una rama compartida entre dos mallas contiguas <span class="math inline">a</span> y <span class="math inline">b</span>: 1. Se desconecta conceptualmente la rama que contiene la fuente de corriente, fusionando ambas mallas en un lazo mayor (<strong>Supermalla</strong>). 2. Se plantea la LVK a lo largo de todo el perímetro exterior de la supermalla. 3. Se agrega la <strong>ecuación de ligadura de corriente</strong>: <span class="math display">\mathbf{I}_a - \mathbf{I}_b = \mathbf{I}_s</span></p>
 </section>
-</div>
 </div>
 </div>
 <hr>
 </section>
-<section id="integración-directa-en-python" class="level2">
-<h2 class="anchored" data-anchor-id="integración-directa-en-python">⚡ Integración Directa en Python</h2>
-<p>Puede consumir los datasets técnicos directamente en sus scripts de análisis utilizando la librería <code>pandas</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<section id="algoritmo-sistemático-de-resolución-paso-a-paso" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Algoritmo Sistemático de Resolución Paso a Paso</h1>
+<ol type="1">
+<li><strong>Verificación de planaridad:</strong> Comprobar que el circuito puede dibujarse en un plano sin que las ramas se crucen entre sí (requisito estricto del método de mallas).</li>
+<li><strong>Transformación fasorial:</strong> Convertir todas las fuentes temporales a fasores y todos los resistores, inductores y capacitores a impedancias complejas <span class="math inline">\mathbf{Z}</span>.</li>
+<li><strong>Definición de corrientes de malla:</strong> Asignar una corriente ficticia <span class="math inline">\mathbf{I}_1, \mathbf{I}_2, \dots, \mathbf{I}_M</span> a cada malla interior, todas en sentido horario.</li>
+<li><strong>Identificación de supermallas:</strong> Aislar ramas con fuentes de corriente compartidas y formular sus ecuaciones de restricción.</li>
+<li><strong>Ensamblaje y resolución matricial:</strong> Construir <span class="math inline">[\mathbf{Z}]</span> y <span class="math inline">[\mathbf{V}]</span>, y resolver <span class="math inline">[\mathbf{I}] = [\mathbf{Z}]^{-1} [\mathbf{V}]</span> en Python:</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Carga del dataset de calibres y parámetros eléctricos</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>df_conductores <span class="op">=</span> pd.read_csv(<span class="st">"descargas/tabla_calibres_awg.csv"</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspección de conductores con resistencia menor a 1.0 Ohm/km</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>conductores_optimos <span class="op">=</span> df_conductores[df_conductores[<span class="st">"resistencia_pvc_ohm_km"</span>] <span class="op">&lt;</span> <span class="fl">1.0</span>]</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(conductores_optimos[[<span class="st">"calibre"</span>, <span class="st">"resistencia_pvc_ohm_km"</span>, <span class="st">"reactancia_pvc_ohm_km"</span>]])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Matriz de impedancias complejas (Ohmios)</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>Z <span class="op">=</span> np.array([</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">10</span> <span class="op">+</span> <span class="ot">20j</span>, <span class="op">-</span><span class="dv">5</span> <span class="op">-</span> <span class="ot">10j</span>],</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    [<span class="op">-</span><span class="dv">5</span> <span class="op">-</span> <span class="ot">10j</span>, <span class="dv">15</span> <span class="op">-</span> <span class="ot">5j</span>]</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>], dtype<span class="op">=</span><span class="bu">complex</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Vector de tensiones aplicadas fasoriales (Voltios)</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> np.array([</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="fl">120.0</span> <span class="op">*</span> np.exp(<span class="ot">1j</span> <span class="op">*</span> np.deg2rad(<span class="dv">0</span>)),</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span><span class="fl">50.0</span> <span class="op">*</span> np.exp(<span class="ot">1j</span> <span class="op">*</span> np.deg2rad(<span class="dv">30</span>))</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>], dtype<span class="op">=</span><span class="bu">complex</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Resolución de corrientes de malla</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>I_mallas <span class="op">=</span> np.linalg.solve(Z, V)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> idx, i_val <span class="kw">in</span> <span class="bu">enumerate</span>(I_mallas, start<span class="op">=</span><span class="dv">1</span>):</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    mag <span class="op">=</span> np.<span class="bu">abs</span>(i_val)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    ang <span class="op">=</span> np.rad2deg(np.angle(i_val))</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"I_malla_</span><span class="sc">{</span>idx<span class="sc">}</span><span class="ss"> = </span><span class="sc">{</span>mag<span class="sc">:.2f}</span><span class="ss"> ∠ </span><span class="sc">{</span>ang<span class="sc">:.2f}</span><span class="ss">° A  (</span><span class="sc">{</span>i_val<span class="sc">.</span>real<span class="sc">:.2f}</span><span class="ss"> + j</span><span class="sc">{</span>i_val<span class="sc">.</span>imag<span class="sc">:.2f}</span><span class="ss"> A)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="navegación-del-módulo" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Navegación del Módulo</h1>
+<div class="d-flex flex-wrap gap-2 my-3">
+<p><a href="../circuitos_electricos/analisis_nodal.html" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i> Análisis Nodal</a> <a href="../circuitos_electricos/circuito_thevenin.html" class="btn btn-primary"><i class="bi bi-cpu me-1"></i> Siguiente: Teorema de Thévenin</a> <a href="../circuitos_electricos/circuito_norton.html" class="btn btn-outline-primary"><i class="bi bi-bezier2 me-1"></i> Teorema de Norton</a> <a href="../circuitos_electricos/delta_estrella.html" class="btn btn-outline-primary"><i class="bi bi-triangle me-1"></i> Transformación Δ–Y</a> <a href="../circuitos_electricos/index.html" class="btn btn-outline-secondary"><i class="bi bi-house me-1"></i> Índice</a></p>
+</div>
 
 
 </section>
@@ -859,5 +926,5 @@ window.Quarto = {
 
 
 
-<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

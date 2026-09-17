@@ -156,13 +156,36 @@ window.Quarto = {
     <a class="dropdown-item" href="./circuitos_electricos/index.html">
  <span class="dropdown-text">⚡ Ver Todo (Módulo Circuitos)</span></a>
   </li>  
+        <li><hr class="dropdown-divider"></li>
         <li>
-    <a class="dropdown-item" href="./circuitos_electricos/teoria_fasores_V3.html">
+    <a class="dropdown-item" href="./circuitos_electricos/teoria_fasores.html">
  <span class="dropdown-text">Guía Práctica de Análisis Fasorial</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./circuitos_electricos/potencia_ca.html">
- <span class="dropdown-text">Potencia en CA y Triángulo de Potencias</span></a>
+ <span class="dropdown-text">Potencia en CA &amp; Triángulo de Potencias</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">MÉTODOS Y TEOREMAS DE REDES</li>
+        <li>
+    <a class="dropdown-item" href="./circuitos_electricos/delta_estrella.html">
+ <span class="dropdown-text">Transformación Delta–Estrella (Δ ↔︎ Y)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./circuitos_electricos/analisis_nodal.html">
+ <span class="dropdown-text">Análisis Nodal en CA (Admitancias)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./circuitos_electricos/analisis_mallas.html">
+ <span class="dropdown-text">Análisis de Mallas en CA (Impedancias)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./circuitos_electricos/circuito_thevenin.html">
+ <span class="dropdown-text">Teorema de Thévenin en CA</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./circuitos_electricos/circuito_norton.html">
+ <span class="dropdown-text">Teorema de Norton en CA</span></a>
   </li>  
     </ul>
   </li>
@@ -271,7 +294,7 @@ window.Quarto = {
 <h1>Maquinas Eléctricas, Circuitos Eléctricos, Mediciones Eléctricas, Sistemas de Potencia, Modelado &amp; Computación Aplicada</h1>
 <p>Plataforma técnica desarrollada por <strong>David Guerrero</strong> para la difusión académica de artículos, información técnica, conceptos, modelado, memorias de cálculo, análisis de sistemas eléctricos bajo normativas internacionales (<strong>IEEE / NEC / NTC 2050</strong>), visualización fasorial interactiva y desarrollo de algoritmos en Python.</p>
 <div class="hero-actions">
-<p><a href="./informes/caida_tension.html" class="btn btn-white">Explorar Informes Técnicos</a> <a href="./teoria_fasores.html" class="btn btn-outline-white">Calculadoras Interactivas</a> <a href="./descargas.html" class="btn btn-outline-white">Repositorio de Datos &amp; Scripts</a></p>
+<p><a href="./informes/caida_tension.html" class="btn btn-white">Explorar Informes Técnicos</a> <a href="./circuitos_electricos/teoria_fasores.html" class="btn btn-outline-white">Calculadoras Interactivas</a> <a href="./descargas.html" class="btn btn-outline-white">Repositorio de Datos &amp; Scripts</a></p>
 </div>
 <div class="tech-pill-container">
 <p><span class="tech-pill">Python 3.12</span> <span class="tech-pill">NumPy &amp; Matplotlib</span> <span class="tech-pill">Streamlit Cloud</span> <span class="tech-pill">LaTeX &amp; Quarto</span> <span class="tech-pill">Normas IEEE / NEC</span></p>
@@ -288,13 +311,14 @@ window.Quarto = {
 </div>
 <section id="circuitos-eléctricos" class="level3">
 <h3 class="anchored" data-anchor-id="circuitos-eléctricos">Circuitos Eléctricos</h3>
-<p>Análisis en régimen permanente, leyes de Kirchhoff, teoremas de redes, álgebra fasorial y potencia compleja.</p>
+<p>Análisis en régimen permanente, leyes de Kirchhoff, métodos sistemáticos, teoremas de redes y potencia compleja.</p>
 <ul>
-<li><strong>Análisis Fasorial:</strong> Método del Carril Táctil, reglas de cuadrantes y conversión canónica seno <span class="math inline">\to</span> coseno.</li>
-<li><strong>Potencia en CA:</strong> Potencia activa <span class="math inline">P</span>, reactiva <span class="math inline">Q</span>, aparente <span class="math inline">S</span>, factor de potencia y simulador en tiempo real.</li>
+<li><strong>Análisis Fasorial &amp; Impedancia:</strong> Método del Carril Táctil, reglas de cuadrantes y circuitos RLC.</li>
+<li><strong>Métodos y Teoremas:</strong> Transformación Δ–Y, formulación matricial de Nodos y Mallas, Thévenin y Norton.</li>
+<li><strong>Potencia en CA:</strong> Potencia activa <span class="math inline">P</span>, reactiva <span class="math inline">Q</span>, aparente <span class="math inline">S</span>, factor de potencia y simulador interactivo.</li>
 </ul>
-<div style="display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: auto; padding-top: 0.5rem;">
-<p><a href="./circuitos_electricos/teoria_fasores_V3.html" class="btn btn-outline-primary" style="font-size: 0.82rem; padding: 0.4rem 0.8rem;">Guía de Fasores →</a> <a href="./circuitos_electricos/potencia_ca.html" class="btn btn-outline-primary" style="font-size: 0.82rem; padding: 0.4rem 0.8rem;">Potencia en CA →</a></p>
+<div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: auto; padding-top: 0.5rem;">
+<p><a href="./circuitos_electricos/index.html" class="btn btn-primary" style="font-size: 0.82rem; padding: 0.4rem 0.8rem;">⚡ Ver Todo el Módulo →</a> <a href="./circuitos_electricos/teoria_fasores.html" class="btn btn-outline-primary" style="font-size: 0.82rem; padding: 0.4rem 0.8rem;">Fasores</a> <a href="./circuitos_electricos/delta_estrella.html" class="btn btn-outline-primary" style="font-size: 0.82rem; padding: 0.4rem 0.8rem;">Δ–Y</a> <a href="./circuitos_electricos/analisis_nodal.html" class="btn btn-outline-primary" style="font-size: 0.82rem; padding: 0.4rem 0.8rem;">Nodos &amp; Mallas</a> <a href="./circuitos_electricos/circuito_thevenin.html" class="btn btn-outline-primary" style="font-size: 0.82rem; padding: 0.4rem 0.8rem;">Thévenin &amp; Norton</a> <a href="./circuitos_electricos/potencia_ca.html" class="btn btn-outline-primary" style="font-size: 0.82rem; padding: 0.4rem 0.8rem;">Potencia CA</a></p>
 </div>
 </section>
 </div>

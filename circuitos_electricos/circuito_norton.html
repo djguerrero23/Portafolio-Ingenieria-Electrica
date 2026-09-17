@@ -7,9 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="David Guerrero">
-<meta name="dcterms.date" content="2026-09-17">
+<meta name="dcterms.date" content="2026-09-16">
+<meta name="description" content="Modelado y simplificación de circuitos de corriente alterna mediante el equivalente Norton: determinación de IN, impedancia y admitancia de Norton, y equivalencia recíproca con Thévenin.">
 
-<title>Centro de Recursos, Datasets &amp; Scripts – ⚡ Portafolio de Ingeniería Eléctrica</title>
+<title>Teorema de Norton en Corriente Alterna – ⚡ Portafolio de Ingeniería Eléctrica</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -28,62 +29,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./favicon.svg" rel="icon" type="image/svg+xml">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-bb62276ab45c84d9efd712f51ff97b5a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-1bb61e042ff145ec17923bc0da23b575.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../favicon.svg" rel="icon" type="image/svg+xml">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bb62276ab45c84d9efd712f51ff97b5a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-1bb61e042ff145ec17923bc0da23b575.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -157,7 +123,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -167,7 +133,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">⚡ Portafolio de Ingeniería Eléctrica</span>
     </a>
   </div>
@@ -178,7 +144,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> <i class="bi bi-house-door-fill" role="img">
+    <a class="nav-link" href="../index.html"> <i class="bi bi-house-door-fill" role="img">
 </i> 
 <span class="menu-text">Inicio</span></a>
   </li>  
@@ -190,38 +156,38 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-circuitos-eléctricos">    
         <li>
-    <a class="dropdown-item" href="./circuitos_electricos/index.html">
+    <a class="dropdown-item" href="../circuitos_electricos/index.html">
  <span class="dropdown-text">⚡ Ver Todo (Módulo Circuitos)</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li>
-    <a class="dropdown-item" href="./circuitos_electricos/teoria_fasores.html">
+    <a class="dropdown-item" href="../circuitos_electricos/teoria_fasores.html">
  <span class="dropdown-text">Guía Práctica de Análisis Fasorial</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./circuitos_electricos/potencia_ca.html">
+    <a class="dropdown-item" href="../circuitos_electricos/potencia_ca.html">
  <span class="dropdown-text">Potencia en CA &amp; Triángulo de Potencias</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">MÉTODOS Y TEOREMAS DE REDES</li>
         <li>
-    <a class="dropdown-item" href="./circuitos_electricos/delta_estrella.html">
+    <a class="dropdown-item" href="../circuitos_electricos/delta_estrella.html">
  <span class="dropdown-text">Transformación Delta–Estrella (Δ ↔︎ Y)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./circuitos_electricos/analisis_nodal.html">
+    <a class="dropdown-item" href="../circuitos_electricos/analisis_nodal.html">
  <span class="dropdown-text">Análisis Nodal en CA (Admitancias)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./circuitos_electricos/analisis_mallas.html">
+    <a class="dropdown-item" href="../circuitos_electricos/analisis_mallas.html">
  <span class="dropdown-text">Análisis de Mallas en CA (Impedancias)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./circuitos_electricos/circuito_thevenin.html">
+    <a class="dropdown-item" href="../circuitos_electricos/circuito_thevenin.html">
  <span class="dropdown-text">Teorema de Thévenin en CA</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./circuitos_electricos/circuito_norton.html">
+    <a class="dropdown-item" href="../circuitos_electricos/circuito_norton.html">
  <span class="dropdown-text">Teorema de Norton en CA</span></a>
   </li>  
     </ul>
@@ -234,12 +200,12 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-máquinas-eléctricas">    
         <li>
-    <a class="dropdown-item" href="./maquinas_electricas/index.html">
+    <a class="dropdown-item" href="../maquinas_electricas/index.html">
  <span class="dropdown-text">⚙️ Ver Todo (Módulo Máquinas)</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li>
-    <a class="dropdown-item" href="./maquinas_electricas/circuitos_magneticos.html">
+    <a class="dropdown-item" href="../maquinas_electricas/circuitos_magneticos.html">
  <span class="dropdown-text">Circuitos Magnéticos y Curva B-H</span></a>
   </li>  
     </ul>
@@ -252,12 +218,12 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-mediciones-eléctricas">    
         <li>
-    <a class="dropdown-item" href="./mediciones_electricas/index.html">
+    <a class="dropdown-item" href="../mediciones_electricas/index.html">
  <span class="dropdown-text">📊 Ver Todo (Módulo Mediciones)</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li>
-    <a class="dropdown-item" href="./mediciones_electricas/puentes_medicion.html">
+    <a class="dropdown-item" href="../mediciones_electricas/puentes_medicion.html">
  <span class="dropdown-text">Puentes de Medición (R, L, C)</span></a>
   </li>  
     </ul>
@@ -270,12 +236,12 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-sistemas-de-potencia">    
         <li>
-    <a class="dropdown-item" href="./sistemas_potencia/index.html">
+    <a class="dropdown-item" href="../sistemas_potencia/index.html">
  <span class="dropdown-text">🏗️ Ver Todo (Módulo Potencia)</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li>
-    <a class="dropdown-item" href="./sistemas_potencia/caida_tension.html">
+    <a class="dropdown-item" href="../sistemas_potencia/caida_tension.html">
  <span class="dropdown-text">Caída de Tensión y Alimentadores (NEC)</span></a>
   </li>  
     </ul>
@@ -288,12 +254,12 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-aplicaciones-python">    
         <li>
-    <a class="dropdown-item" href="./aplicaciones_python/index.html">
+    <a class="dropdown-item" href="../aplicaciones_python/index.html">
  <span class="dropdown-text">🐍 Calculadoras &amp; Simuladores</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li>
-    <a class="dropdown-item" href="./descargas.html">
+    <a class="dropdown-item" href="../descargas.html">
  <span class="dropdown-text">Centro de Descargas &amp; CSVs</span></a>
   </li>  
     </ul>
@@ -321,8 +287,15 @@ window.Quarto = {
     <h2 id="toc-title">Índice de Contenido</h2>
    
   <ul>
-  <li><a href="#catálogo-de-archivos-disponibles" id="toc-catálogo-de-archivos-disponibles" class="nav-link active" data-scroll-target="#catálogo-de-archivos-disponibles">📁 Catálogo de Archivos Disponibles</a></li>
-  <li><a href="#integración-directa-en-python" id="toc-integración-directa-en-python" class="nav-link" data-scroll-target="#integración-directa-en-python">⚡ Integración Directa en Python</a></li>
+  <li><a href="#teorema-de-norton-en-régimen-sinusoidal-permanente" id="toc-teorema-de-norton-en-régimen-sinusoidal-permanente" class="nav-link active" data-scroll-target="#teorema-de-norton-en-régimen-sinusoidal-permanente">Teorema de Norton en Régimen Sinusoidal Permanente</a></li>
+  <li><a href="#determinación-de-los-parámetros-de-norton" id="toc-determinación-de-los-parámetros-de-norton" class="nav-link" data-scroll-target="#determinación-de-los-parámetros-de-norton"><span class="header-section-number">1</span> Determinación de los Parámetros de Norton</a>
+  <ul class="collapse">
+  <li><a href="#corriente-de-norton-mathbfi_n" id="toc-corriente-de-norton-mathbfi_n" class="nav-link" data-scroll-target="#corriente-de-norton-mathbfi_n"><span class="header-section-number">1.1</span> 1. Corriente de Norton (<span class="math inline">\mathbf{I}_N</span>)</a></li>
+  <li><a href="#impedancia-y-admitancia-de-norton-mathbfz_n-mathbfy_n" id="toc-impedancia-y-admitancia-de-norton-mathbfz_n-mathbfy_n" class="nav-link" data-scroll-target="#impedancia-y-admitancia-de-norton-mathbfz_n-mathbfy_n"><span class="header-section-number">1.2</span> 2. Impedancia y Admitancia de Norton (<span class="math inline">\mathbf{Z}_N, \mathbf{Y}_N</span>)</a></li>
+  </ul></li>
+  <li><a href="#transformación-de-fuentes-y-dualidad-thévenin-norton" id="toc-transformación-de-fuentes-y-dualidad-thévenin-norton" class="nav-link" data-scroll-target="#transformación-de-fuentes-y-dualidad-thévenin-norton"><span class="header-section-number">2</span> Transformación de Fuentes y Dualidad Thévenin – Norton</a></li>
+  <li><a href="#ejemplo-práctico-de-transformación-thévenin-norton" id="toc-ejemplo-práctico-de-transformación-thévenin-norton" class="nav-link" data-scroll-target="#ejemplo-práctico-de-transformación-thévenin-norton"><span class="header-section-number">3</span> Ejemplo Práctico de Transformación Thévenin ↔︎ Norton</a></li>
+  <li><a href="#navegación-del-módulo" id="toc-navegación-del-módulo" class="nav-link" data-scroll-target="#navegación-del-módulo"><span class="header-section-number">4</span> Navegación del Módulo</a></li>
   </ul>
 </nav>
     </div>
@@ -331,10 +304,22 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Centro de Recursos, Datasets &amp; Scripts</h1>
-<p class="subtitle lead">Repositorio técnico de datos normativos, tablas de impedancia y módulos computacionales en Python</p>
-</div>
+<h1 class="title">Teorema de Norton en Corriente Alterna</h1>
+<p class="subtitle lead">Circuito equivalente dual de corriente, corriente de cortocircuito y transformación de fuentes en CA</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Teoremas de Redes</div>
+    <div class="quarto-category">Norton</div>
+    <div class="quarto-category">Transformación de Fuentes</div>
+    <div class="quarto-category">Circuitos Equivalentes</div>
+    <div class="quarto-category">Circuitos CA</div>
+  </div>
+  </div>
 
+<div>
+  <div class="description">
+    Modelado y simplificación de circuitos de corriente alterna mediante el equivalente Norton: determinación de IN, impedancia y admitancia de Norton, y equivalencia recíproca con Thévenin.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta column-page-left">
@@ -349,7 +334,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 17, 2026</p>
+      <p class="date">September 16, 2026</p>
     </div>
   </div>
   
@@ -361,74 +346,97 @@ window.Quarto = {
 </header>
 
 
+<section id="teorema-de-norton-en-régimen-sinusoidal-permanente" class="level1 unnumbered hero-banner-modern">
+<h1 class="unnumbered">Teorema de Norton en Régimen Sinusoidal Permanente</h1>
+<p><strong>El modelo dual de Thévenin: representación mediante fuente de corriente y admitancia en paralelo.</strong></p>
+<p>El teorema de Norton es la contraparte dual del teorema de Thévenin. Resulta especialmente ventajoso cuando se analizan circuitos con múltiples ramas conectadas en paralelo o alimentadas por fuentes de corriente.</p>
+</section>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>💾 Acceso a Recursos de Ingeniería
+<span class="screen-reader-only">Note</span>⚡ Enunciado del Teorema de Norton en CA
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>En este centro de descargas se encuentran disponibles los archivos de datos, tablas de conductores y scripts de cálculo numérico utilizados en los informes técnicos de la plataforma. Todos los recursos están optimizados para integración directa con Python, Pandas, NumPy y herramientas CAD/CAE.</p>
+<p>Cualquier red lineal activa de corriente alterna conectada a una carga a través de dos terminales accesibles <span class="math inline">(a, b)</span> es externamente equivalente a: 1. Una fuente de corriente fasorial ideal <span class="math inline">\mathbf{I}_N</span> (<strong>Corriente de Norton</strong>). 2. Conectada en paralelo con una impedancia pasiva <span class="math inline">\mathbf{Z}_N</span> (o admitancia <span class="math inline">\mathbf{Y}_N = 1/\mathbf{Z}_N</span>).</p>
 </div>
 </div>
-<section id="catálogo-de-archivos-disponibles" class="level2">
-<h2 class="anchored" data-anchor-id="catálogo-de-archivos-disponibles">📁 Catálogo de Archivos Disponibles</h2>
+<hr>
+<section id="determinación-de-los-parámetros-de-norton" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Determinación de los Parámetros de Norton</h1>
+<section id="corriente-de-norton-mathbfi_n" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="corriente-de-norton-mathbfi_n"><span class="header-section-number">1.1</span> 1. Corriente de Norton (<span class="math inline">\mathbf{I}_N</span>)</h2>
+<p>La corriente de Norton corresponde a la corriente fasorial que circula a través de un cortocircuito ideal conectado directamente entre los terminales <span class="math inline">a</span> y <span class="math inline">b</span>:</p>
+<p><span class="math display">\mathbf{I}_N = \mathbf{I}_{sc} = \mathbf{I}_{ab} \Big|_{\text{cortocircuito}}</span></p>
+<p>Para calcular <span class="math inline">\mathbf{I}_N</span>, se sustituye la carga <span class="math inline">\mathbf{Z}_L</span> por un conductor de resistencia nula entre los terminales <span class="math inline">a</span> y <span class="math inline">b</span>, y se calcula la corriente fasorial resultante utilizando análisis de mallas, análisis nodal o superposición.</p>
+<hr>
+</section>
+<section id="impedancia-y-admitancia-de-norton-mathbfz_n-mathbfy_n" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="impedancia-y-admitancia-de-norton-mathbfz_n-mathbfy_n"><span class="header-section-number">1.2</span> 2. Impedancia y Admitancia de Norton (<span class="math inline">\mathbf{Z}_N, \mathbf{Y}_N</span>)</h2>
+<p>La impedancia de Norton es exactamente idéntica a la impedancia de Thévenin vista desde los mismos terminales:</p>
+<p><span class="math display">\mathbf{Z}_N = \mathbf{Z}_{th}</span></p>
+<p><span class="math display">\mathbf{Y}_N = \frac{1}{\mathbf{Z}_N} = G_N + j B_N</span></p>
+<p>Se calcula anulando todas las fuentes independientes internas (fuentes de tensión en cortocircuito, fuentes de corriente en circuito abierto) y determinando la impedancia equivalente entre <span class="math inline">a</span> y <span class="math inline">b</span>.</p>
+<hr>
+</section>
+</section>
+<section id="transformación-de-fuentes-y-dualidad-thévenin-norton" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Transformación de Fuentes y Dualidad Thévenin – Norton</h1>
+<p>Ambos modelos son matemáticamente intercambiables en cualquier rama activa de corriente alterna:</p>
+<p><span class="math display">
+\boxed{
+\begin{aligned}
+\mathbf{V}_{th} &amp;= \mathbf{I}_N \cdot \mathbf{Z}_{th} \\[8pt]
+\mathbf{I}_N &amp;= \frac{\mathbf{V}_{th}}{\mathbf{Z}_{th}} \\[8pt]
+\mathbf{Z}_N &amp;= \mathbf{Z}_{th}
+\end{aligned}
+}
+</span></p>
 <div class="grid">
 <div class="g-col-12 g-col-md-6">
-<div class="card-module">
-<div class="card-icon">
-<p>📊</p>
-</div>
-<section id="parámetros-de-conductores-awg-kcmil" class="level3">
-<h3 class="anchored" data-anchor-id="parámetros-de-conductores-awg-kcmil">Parámetros de Conductores AWG / kcmil</h3>
-<p>Matriz de impedancia en corriente alterna (<span class="math inline">R_{CA}</span> a <span class="math inline">75^\circ\text{C}</span> y reactancia <span class="math inline">X_L</span>) para conductores de cobre con aislamiento THHN/THWN en canalizaciones de PVC y acero, según la <strong>Tabla 9 del Código Eléctrico Nacional (NEC)</strong>.</p>
+<section id="equivalente-thévenin-serie" class="level4 card-module" style="border-top: 4px solid #0284c7;" data-number="2.0.0.1">
+<h4 data-number="2.0.0.1" class="anchored" data-anchor-id="equivalente-thévenin-serie"><span class="header-section-number">2.0.0.1</span> Equivalente Thévenin (Serie)</h4>
 <ul>
-<li><strong>Formato:</strong> Archivo tabular <code>.csv</code> (codificación UTF-8)</li>
-<li><strong>Campos:</strong> <code>calibre</code>, <code>area_mm2</code>, <code>resistencia_pvc_ohm_km</code>, <code>reactancia_pvc_ohm_km</code></li>
-<li><strong>Uso:</strong> Algoritmos de caída de tensión y optimización de alimentadores</li>
+<li><strong>Topología:</strong> Fuente de tensión <span class="math inline">\mathbf{V}_{th}</span> en serie con <span class="math inline">\mathbf{Z}_{th}</span>.</li>
+<li><strong>Tensión en bornes de carga <span class="math inline">\mathbf{Z}_L</span>:</strong> <span class="math display">\mathbf{V}_L = \mathbf{V}_{th} \left( \frac{\mathbf{Z}_L}{\mathbf{Z}_{th} + \mathbf{Z}_L} \right)</span></li>
+<li><strong>Ideal para:</strong> Cargas en serie, cálculo de caídas de tensión y regulación.</li>
 </ul>
-<div class="mt-auto pt-3">
-<p><a href="descargas/tabla_calibres_awg.csv" class="btn btn-primary" download=""> 📥 Descargar Dataset (CSV) </a></p>
-</div>
 </section>
-</div>
 </div>
 <div class="g-col-12 g-col-md-6">
-<div class="card-module">
-<div class="card-icon">
-<p>🐍</p>
-</div>
-<section id="script-de-análisis-fasorial-potencia" class="level3">
-<h3 class="anchored" data-anchor-id="script-de-análisis-fasorial-potencia">Script de Análisis Fasorial &amp; Potencia</h3>
-<p>Módulo ejecutable en Python puro que implementa las funciones vectoriales de números complejos, descomposición de potencia activa, reactiva y generación de diagramas fasoriales con <strong>Matplotlib</strong>.</p>
+<section id="equivalente-norton-paralelo" class="level4 card-module" style="border-top: 4px solid #10b981;" data-number="2.0.0.2">
+<h4 data-number="2.0.0.2" class="anchored" data-anchor-id="equivalente-norton-paralelo"><span class="header-section-number">2.0.0.2</span> Equivalente Norton (Paralelo)</h4>
 <ul>
-<li><strong>Formato:</strong> Código fuente <code>.py</code></li>
-<li><strong>Dependencias:</strong> Python 3.9+, NumPy, Matplotlib</li>
-<li><strong>Uso:</strong> Ejecución en terminal, importación en scripts propios o Jupyter Notebooks</li>
+<li><strong>Topología:</strong> Fuente de corriente <span class="math inline">\mathbf{I}_N</span> en paralelo con <span class="math inline">\mathbf{Y}_N</span>.</li>
+<li><strong>Corriente en la carga con admitancia <span class="math inline">\mathbf{Y}_L</span>:</strong> <span class="math display">\mathbf{I}_L = \mathbf{I}_N \left( \frac{\mathbf{Y}_L}{\mathbf{Y}_N + \mathbf{Y}_L} \right)</span></li>
+<li><strong>Ideal para:</strong> Cargas en paralelo, sistemas polifásicos y divisores de corriente.</li>
 </ul>
-<div class="mt-auto pt-3">
-<p><a href="descargas/calculo_fasores.py" class="btn btn-outline-primary" download=""> 📥 Descargar Script (.py) </a></p>
-</div>
 </section>
-</div>
 </div>
 </div>
 <hr>
 </section>
-<section id="integración-directa-en-python" class="level2">
-<h2 class="anchored" data-anchor-id="integración-directa-en-python">⚡ Integración Directa en Python</h2>
-<p>Puede consumir los datasets técnicos directamente en sus scripts de análisis utilizando la librería <code>pandas</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Carga del dataset de calibres y parámetros eléctricos</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>df_conductores <span class="op">=</span> pd.read_csv(<span class="st">"descargas/tabla_calibres_awg.csv"</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspección de conductores con resistencia menor a 1.0 Ohm/km</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>conductores_optimos <span class="op">=</span> df_conductores[df_conductores[<span class="st">"resistencia_pvc_ohm_km"</span>] <span class="op">&lt;</span> <span class="fl">1.0</span>]</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(conductores_optimos[[<span class="st">"calibre"</span>, <span class="st">"resistencia_pvc_ohm_km"</span>, <span class="st">"reactancia_pvc_ohm_km"</span>]])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="ejemplo-práctico-de-transformación-thévenin-norton" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Ejemplo Práctico de Transformación Thévenin ↔︎ Norton</h1>
+<p>Supóngase un circuito equivalente de Thévenin con:</p>
+<p><span class="math display">\mathbf{V}_{th} = 120\angle 30^\circ\text{ V}, \qquad \mathbf{Z}_{th} = 4 + j3\ \Omega = 5\angle 36.87^\circ\ \Omega</span></p>
+<p>Calculamos la corriente de Norton asociada:</p>
+<p><span class="math display">\mathbf{I}_N = \frac{\mathbf{V}_{th}}{\mathbf{Z}_{th}} = \frac{120\angle 30^\circ\text{ V}}{5\angle 36.87^\circ\ \Omega} = 24\angle (30^\circ - 36.87^\circ)\text{ A} = 24\angle -6.87^\circ\text{ A}</span></p>
+<p>En forma rectangular:</p>
+<p><span class="math display">\mathbf{I}_N = 24\cos(-6.87^\circ) + j 24\sin(-6.87^\circ) = 23.83 - j 2.87\text{ A}</span></p>
+<p>Y la admitancia de Norton en paralelo:</p>
+<p><span class="math display">\mathbf{Y}_N = \frac{1}{\mathbf{Z}_{th}} = \frac{1}{4 + j3} = \frac{4 - j3}{4^2 + 3^2} = 0.16 - j 0.12\text{ S}</span></p>
+<p>El circuito se puede representar indistintamente por cualquiera de las dos configuraciones produciendo exactamente los mismos efectos sobre cualquier carga conectada a sus bornes.</p>
+<hr>
+</section>
+<section id="navegación-del-módulo" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Navegación del Módulo</h1>
+<div class="d-flex flex-wrap gap-2 my-3">
+<p><a href="../circuitos_electricos/circuito_thevenin.html" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i> Teorema de Thévenin</a> <a href="../circuitos_electricos/potencia_ca.html" class="btn btn-primary"><i class="bi bi-lightning-charge me-1"></i> Siguiente: Potencia en CA</a> <a href="../circuitos_electricos/delta_estrella.html" class="btn btn-outline-primary"><i class="bi bi-triangle me-1"></i> Transformación Δ–Y</a> <a href="../circuitos_electricos/analisis_nodal.html" class="btn btn-outline-primary"><i class="bi bi-diagram-2 me-1"></i> Análisis Nodal</a> <a href="../circuitos_electricos/index.html" class="btn btn-outline-secondary"><i class="bi bi-house me-1"></i> Índice</a></p>
+</div>
 
 
 </section>
@@ -859,5 +867,5 @@ window.Quarto = {
 
 
 
-<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
