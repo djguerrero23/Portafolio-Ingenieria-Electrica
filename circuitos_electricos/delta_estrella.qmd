@@ -26,7 +26,7 @@ Una red eléctrica puede contener conexiones que no admiten una reducción direc
 
 Su propósito es **cambiar la representación de una red manteniendo su comportamiento eléctrico visto desde sus terminales**.
 
-\[
+$$
 \boxed{
 \text{Red original}
 \;\longrightarrow\;
@@ -34,7 +34,7 @@ Su propósito es **cambiar la representación de una red manteniendo su comporta
 \;\longrightarrow\;
 \text{Red más fácil de analizar}
 }
-\]
+$$
 :::
 
 ---
@@ -43,29 +43,29 @@ Su propósito es **cambiar la representación de una red manteniendo su comporta
 
 En el análisis de circuitos, muchas redes pueden simplificarse directamente mediante:
 
-\[
+$$
 \text{serie}
 \qquad\text{y}\qquad
 \text{paralelo}
-\]
+$$
 
 Sin embargo, existen configuraciones donde estas reglas no pueden aplicarse de manera inmediata. Un ejemplo típico aparece cuando tres impedancias forman una conexión entre tres nodos en forma de:
 
-\[
+$$
 \boxed{\Delta}
-\]
+$$
 
 o cuando tres impedancias convergen en un nodo común:
 
-\[
+$$
 \boxed{\text{Y}}
-\]
+$$
 
 En estos casos, una transformación apropiada puede convertir una topología difícil en otra que permita continuar el análisis mediante técnicas más sencillas.
 
 ### La idea de fondo
 
-\[
+$$
 \boxed{
 \text{topología difícil}
 \;\rightarrow\;
@@ -75,7 +75,7 @@ En estos casos, una transformación apropiada puede convertir una topología dif
 \;\rightarrow\;
 \text{análisis}
 }
-\]
+$$
 
 Por eso, **$\Delta \leftrightarrow \text{Y}$ es una herramienta de simplificación de redes**, no un procedimiento que deba aplicarse automáticamente cada vez que aparezca un triángulo o una estrella.
 
@@ -87,9 +87,9 @@ Por eso, **$\Delta \leftrightarrow \text{Y}$ es una herramienta de simplificaci�
 
 En una red Delta, tres impedancias están conectadas entre tres pares de terminales:
 
-\[
+$$
 A-B,\qquad B-C,\qquad C-A
-\]
+$$
 
 La red forma un lazo cerrado entre tres nodos.
 
@@ -97,9 +97,9 @@ La red forma un lazo cerrado entre tres nodos.
 
 En una red Estrella, tres impedancias se conectan a un nodo común:
 
-\[
+$$
 A-O,\qquad B-O,\qquad C-O
-\]
+$$
 
 donde $O$ representa el nodo central de la estrella.
 
@@ -112,13 +112,13 @@ Pero una transformación $\Delta \leftrightarrow \text{Y}$ puede utilizarse como
 
 Por tanto:
 
-\[
+$$
 \boxed{
 \text{transformar la representación}
 \neq
 \text{reconstruir físicamente el circuito}
 }
-\]
+$$
 :::
 
 ---
@@ -129,7 +129,7 @@ La importancia de $\Delta \leftrightarrow \text{Y}$ aparece cuando una topologí
 
 Una transformación bien elegida puede convertir:
 
-\[
+$$
 \boxed{
 \text{red que bloquea el análisis}
 \rightarrow
@@ -137,7 +137,7 @@ Una transformación bien elegida puede convertir:
 \rightarrow
 \text{serie/paralelo}
 }
-\]
+$$
 
 Esto permite continuar posteriormente con otros métodos de análisis, por ejemplo:
 
@@ -153,9 +153,9 @@ Esto permite continuar posteriormente con otros métodos de análisis, por ejemp
 
 **Circuitos de corriente alterna:** las ramas pueden tener impedancias complejas,
 
-\[
+$$
 \mathbf Z=R+jX
-\]
+$$
 
 por lo que la transformación debe realizarse utilizando álgebra compleja.
 
@@ -177,9 +177,9 @@ Esta es la idea conceptual más importante del método.
 
 Consideremos dos redes diferentes conectadas a los mismos tres terminales:
 
-\[
+$$
 A,\quad B,\quad C
-\]
+$$
 
 Una red puede tener forma $\Delta$ y la otra forma $\text{Y}$.
 
@@ -192,13 +192,13 @@ Dos redes de tres terminales son equivalentes cuando, para las condiciones de ex
 
 En otras palabras:
 
-\[
+$$
 \boxed{
 \text{misma respuesta externa}
 \neq
 \text{misma estructura interna}
 }
-\]
+$$
 :::
 
 Por eso la transformación puede utilizarse sin alterar las magnitudes eléctricas que interesan al análisis externo de la red.
@@ -253,7 +253,7 @@ Transforma cuando la nueva representación permita continuar el análisis de una
 
 La transformación $\Delta \rightarrow \text{Y}$ puede ser conveniente cuando la estrella resultante permite crear combinaciones que antes no eran posibles y, especialmente, cuando facilita una reducción posterior en serie o paralelo.
 
-\[
+$$
 \boxed{
 \Delta
 \;\rightarrow\;
@@ -261,7 +261,7 @@ La transformación $\Delta \rightarrow \text{Y}$ puede ser conveniente cuando la
 \;\rightarrow\;
 \text{serie/paralelo}
 }
-\]
+$$
 
 La elección debe hacerse observando **qué conexiones aparecerán después de la transformación**.
 
@@ -273,7 +273,7 @@ No basta con reconocer la figura: hay que anticipar qué estructura tendrá la r
 
 De manera análoga, $\text{Y} \rightarrow \Delta$ puede resultar conveniente cuando la nueva configuración permite establecer combinaciones que antes no eran posibles.
 
-\[
+$$
 \boxed{
 \text{Y}
 \;\rightarrow\;
@@ -281,7 +281,7 @@ De manera análoga, $\text{Y} \rightarrow \Delta$ puede resultar conveniente cua
 \;\rightarrow\;
 \text{serie/paralelo o reducción posterior}
 }
-\]
+$$
 
 La dirección de transformación debe elegirse según la **topología completa del circuito**, no únicamente según la forma local de la red.
 
@@ -295,29 +295,29 @@ Antes de escribir una sola ecuación, conviene seguir una secuencia de razonamie
 
 Localiza los tres terminales y determina si la subred está conectada en:
 
-\[
+$$
 \Delta
 \qquad\text{o}\qquad
 \text{Y}
-\]
+$$
 
 ### Paso 2 — Identificar el objetivo
 
 Pregunta qué necesitas encontrar:
 
-\[
+$$
 Z_{eq},\quad I,\quad V,\quad P,\quad \text{etc.}
-\]
+$$
 
 ### Paso 3 — Buscar simplificaciones directas
 
 Comprueba primero si la red puede resolverse mediante:
 
-\[
+$$
 \text{serie}
 \qquad\text{o}\qquad
 \text{paralelo}
-\]
+$$
 
 sin transformar nada.
 
@@ -325,15 +325,15 @@ sin transformar nada.
 
 Si la red no puede reducirse directamente, determina si conviene:
 
-\[
+$$
 \Delta\rightarrow\text{Y}
-\]
+$$
 
 o:
 
-\[
+$$
 \text{Y}\rightarrow\Delta
-\]
+$$
 
 ### Paso 5 — Transformar
 
@@ -362,7 +362,7 @@ Finalmente, pregunta:
 ::: {.callout-important}
 ### Cadena de razonamiento
 
-\[
+$$
 \boxed{
 \text{Identificar}
 \rightarrow
@@ -378,7 +378,7 @@ Finalmente, pregunta:
 \rightarrow
 \text{Interpretar}
 }
-\]
+$$
 
 La transformación no es el final del problema: es una herramienta dentro de una estrategia de análisis.
 :::
@@ -405,23 +405,23 @@ La transformación se entiende mejor cuando se observa simultáneamente la estru
 
 En corriente alterna, las ramas pueden contener resistencia, inductancia y capacitancia. Por ello, una impedancia puede expresarse como:
 
-\[
+$$
 \boxed{\mathbf Z = R+jX}
-\]
+$$
 
 Por ejemplo:
 
-\[
+$$
 \mathbf Z_R=R
-\]
+$$
 
-\[
+$$
 \mathbf Z_L=j\omega L
-\]
+$$
 
-\[
+$$
 \mathbf Z_C=\frac{1}{j\omega C}
-\]
+$$
 
 Por tanto, la transformación $\Delta \leftrightarrow \text{Y}$ debe realizarse con **impedancias complejas**, respetando tanto su parte real como su parte imaginaria.
 
@@ -432,7 +432,7 @@ La transformación Delta–Estrella no constituye un método separado del análi
 
 Es una operación de redes que utiliza las impedancias obtenidas en el dominio fasorial:
 
-\[
+$$
 v(t),\,i(t)
 \;\longrightarrow\;
 \mathbf V,\,\mathbf I
@@ -440,7 +440,7 @@ v(t),\,i(t)
 \mathbf Z
 \;\longrightarrow\;
 \Delta\leftrightarrow\text{Y}
-\]
+$$
 
 Así, Delta–Estrella se integra naturalmente dentro de la cadena de análisis de circuitos de CA.
 :::
@@ -453,17 +453,17 @@ Así, Delta–Estrella se integra naturalmente dentro de la cadena de análisis 
 
 Dado un triángulo formado por las impedancias complejas $\mathbf{Z}_A$ (opuesta al nodo 1), $\mathbf{Z}_B$ (opuesta al nodo 2) y $\mathbf{Z}_C$ (opuesta al nodo 3), definimos la suma de impedancias del delta:
 
-\[
+$$
 \mathbf{Z}_\Sigma = \mathbf{Z}_A + \mathbf{Z}_B + \mathbf{Z}_C
-\]
+$$
 
 Las impedancias equivalentes en estrella conectadas a cada nodo $(1, 2, 3)$ hacia el neutro común $O$ son:
 
-\[
+$$
 \mathbf{Z}_1 = \frac{\mathbf{Z}_B \mathbf{Z}_C}{\mathbf{Z}_\Sigma}, \qquad
 \mathbf{Z}_2 = \frac{\mathbf{Z}_A \mathbf{Z}_C}{\mathbf{Z}_\Sigma}, \qquad
 \mathbf{Z}_3 = \frac{\mathbf{Z}_A \mathbf{Z}_B}{\mathbf{Z}_\Sigma}
-\]
+$$
 
 > **Regla mnemotécnica ($\Delta \to \text{Y}$):** Cada rama de la estrella es igual al *producto de las dos impedancias adyacentes del delta* dividido por la *suma total de las tres impedancias del delta*.
 
@@ -473,17 +473,17 @@ Las impedancias equivalentes en estrella conectadas a cada nodo $(1, 2, 3)$ haci
 
 Dada una estrella con ramas $\mathbf{Z}_1, \mathbf{Z}_2, \mathbf{Z}_3$ conectadas al nodo común neutro $O$, definimos la suma de productos dos a dos:
 
-\[
+$$
 \Sigma_2 = \mathbf{Z}_1 \mathbf{Z}_2 + \mathbf{Z}_2 \mathbf{Z}_3 + \mathbf{Z}_3 \mathbf{Z}_1
-\]
+$$
 
 Las impedancias correspondientes del triángulo delta equivalentes son:
 
-\[
+$$
 \mathbf{Z}_A = \frac{\Sigma_2}{\mathbf{Z}_1}, \qquad
 \mathbf{Z}_B = \frac{\Sigma_2}{\mathbf{Z}_2}, \qquad
 \mathbf{Z}_C = \frac{\Sigma_2}{\mathbf{Z}_3}
-\]
+$$
 
 > **Regla mnemotécnica ($\text{Y} \to \Delta$):** Cada impedancia del delta es igual a la *suma de los productos dos a dos de las impedancias de la estrella* dividida entre la *impedancia opuesta de la estrella*.
 
@@ -495,15 +495,15 @@ Cuando las tres impedancias de la red son iguales, las expresiones generales se 
 
 Para una red equilibrada:
 
-\[
+$$
 \mathbf Z_\Delta = 3\mathbf Z_Y
-\]
+$$
 
 y, equivalentemente,
 
-\[
+$$
 \mathbf Z_Y=\frac{\mathbf Z_\Delta}{3}
-\]
+$$
 
 ::: {.callout-warning}
 ### Atención al contexto

@@ -401,22 +401,48 @@ window.Quarto = {
 <div class="callout-body-container callout-body">
 <p><strong>La transformación <span class="math inline">\Delta \leftrightarrow \text{Y}</span> no tiene como objetivo cambiar físicamente el circuito.</strong></p>
 <p>Su propósito es <strong>cambiar la representación de una red manteniendo su comportamiento eléctrico visto desde sus terminales</strong>.</p>
-<p>[ ]</p>
+<p><span class="math display">
+\boxed{
+\text{Red original}
+\;\longrightarrow\;
+\text{Transformación equivalente}
+\;\longrightarrow\;
+\text{Red más fácil de analizar}
+}
+</span></p>
 </div>
 </div>
 <hr>
 <section id="qué-problema-resuelve-la-transformación-delta-leftrightarrow-texty" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> 1. ¿Qué problema resuelve la transformación <span class="math inline">\Delta \leftrightarrow \text{Y}</span>?</h1>
 <p>En el análisis de circuitos, muchas redes pueden simplificarse directamente mediante:</p>
-<p>[ ]</p>
+<p><span class="math display">
+\text{serie}
+\qquad\text{y}\qquad
+\text{paralelo}
+</span></p>
 <p>Sin embargo, existen configuraciones donde estas reglas no pueden aplicarse de manera inmediata. Un ejemplo típico aparece cuando tres impedancias forman una conexión entre tres nodos en forma de:</p>
-<p>[ ]</p>
+<p><span class="math display">
+\boxed{\Delta}
+</span></p>
 <p>o cuando tres impedancias convergen en un nodo común:</p>
-<p>[ ]</p>
+<p><span class="math display">
+\boxed{\text{Y}}
+</span></p>
 <p>En estos casos, una transformación apropiada puede convertir una topología difícil en otra que permita continuar el análisis mediante técnicas más sencillas.</p>
 <section id="la-idea-de-fondo" class="level3" data-number="1.0.1">
 <h3 data-number="1.0.1" class="anchored" data-anchor-id="la-idea-de-fondo"><span class="header-section-number">1.0.1</span> La idea de fondo</h3>
-<p>[ ]</p>
+<p><span class="math display">
+\boxed{
+\text{topología difícil}
+\;\rightarrow\;
+\text{topología equivalente}
+\;\rightarrow\;
+\text{simplificación}
+\;\rightarrow\;
+\text{análisis}
+}
+</span></p>
 <p>Por eso, <strong><span class="math inline">\Delta \leftrightarrow \text{Y}</span> es una herramienta de simplificación de redes</strong>, no un procedimiento que deba aplicarse automáticamente cada vez que aparezca un triángulo o una estrella.</p>
 <hr>
 </section>
@@ -426,13 +452,17 @@ window.Quarto = {
 <section id="configuración-delta-delta" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="configuración-delta-delta"><span class="header-section-number">2.1</span> 2.1 Configuración Delta (<span class="math inline">\Delta</span>)</h2>
 <p>En una red Delta, tres impedancias están conectadas entre tres pares de terminales:</p>
-<p>[ A-B,B-C,C-A ]</p>
+<p><span class="math display">
+A-B,\qquad B-C,\qquad C-A
+</span></p>
 <p>La red forma un lazo cerrado entre tres nodos.</p>
 </section>
 <section id="configuración-estrella-texty" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="configuración-estrella-texty"><span class="header-section-number">2.2</span> 2.2 Configuración Estrella (<span class="math inline">\text{Y}</span>)</h2>
 <p>En una red Estrella, tres impedancias se conectan a un nodo común:</p>
-<p>[ A-O,B-O,C-O ]</p>
+<p><span class="math display">
+A-O,\qquad B-O,\qquad C-O
+</span></p>
 <p>donde <span class="math inline">O</span> representa el nodo central de la estrella.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -447,7 +477,13 @@ window.Quarto = {
 <p>Una carga puede estar <strong>físicamente conectada</strong> en <span class="math inline">\Delta</span> o en <span class="math inline">\text{Y}</span>.</p>
 <p>Pero una transformación <span class="math inline">\Delta \leftrightarrow \text{Y}</span> puede utilizarse como <strong>herramienta matemática de análisis</strong>, aunque el circuito físico no se modifique.</p>
 <p>Por tanto:</p>
-<p>[ ]</p>
+<p><span class="math display">
+\boxed{
+\text{transformar la representación}
+\neq
+\text{reconstruir físicamente el circuito}
+}
+</span></p>
 </div>
 </div>
 <hr>
@@ -457,7 +493,15 @@ window.Quarto = {
 <h1 data-number="3"><span class="header-section-number">3</span> 3. ¿Por qué son importantes estas transformaciones?</h1>
 <p>La importancia de <span class="math inline">\Delta \leftrightarrow \text{Y}</span> aparece cuando una topología impide utilizar directamente una simplificación conveniente.</p>
 <p>Una transformación bien elegida puede convertir:</p>
-<p>[ ]</p>
+<p><span class="math display">
+\boxed{
+\text{red que bloquea el análisis}
+\rightarrow
+\text{red equivalente}
+\rightarrow
+\text{serie/paralelo}
+}
+</span></p>
 <p>Esto permite continuar posteriormente con otros métodos de análisis, por ejemplo:</p>
 <ul>
 <li>reducción serie-paralelo;</li>
@@ -470,7 +514,9 @@ window.Quarto = {
 <h3 data-number="3.0.1" class="anchored" data-anchor-id="aplicaciones-típicas"><span class="header-section-number">3.0.1</span> Aplicaciones típicas</h3>
 <p><strong>Análisis de circuitos:</strong> redes en puente, redes con lazos y otras conexiones de tres terminales que no se reducen directamente.</p>
 <p><strong>Circuitos de corriente alterna:</strong> las ramas pueden tener impedancias complejas,</p>
-<p>[ Z=R+jX ]</p>
+<p><span class="math display">
+\mathbf Z=R+jX
+</span></p>
 <p>por lo que la transformación debe realizarse utilizando álgebra compleja.</p>
 <p><strong>Sistemas trifásicos:</strong> las cargas pueden representarse en <span class="math inline">\Delta</span> o en <span class="math inline">\text{Y}</span>, y la transformación puede facilitar determinadas etapas del análisis.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -494,7 +540,9 @@ window.Quarto = {
 <h1 data-number="4"><span class="header-section-number">4</span> 4. ¿Qué significa que dos redes sean equivalentes?</h1>
 <p>Esta es la idea conceptual más importante del método.</p>
 <p>Consideremos dos redes diferentes conectadas a los mismos tres terminales:</p>
-<p>[ A,B,C ]</p>
+<p><span class="math display">
+A,\quad B,\quad C
+</span></p>
 <p>Una red puede tener forma <span class="math inline">\Delta</span> y la otra forma <span class="math inline">\text{Y}</span>.</p>
 <p>Aunque su estructura interna sea diferente, podemos construir una red equivalente si ambas presentan el mismo comportamiento eléctrico visto desde esos terminales.</p>
 <div class="callout callout-style-default callout-important callout-titled">
@@ -509,7 +557,13 @@ window.Quarto = {
 <div class="callout-body-container callout-body">
 <p>Dos redes de tres terminales son equivalentes cuando, para las condiciones de excitación correspondientes aplicadas en sus terminales, presentan la misma relación entre tensiones y corrientes terminales.</p>
 <p>En otras palabras:</p>
-<p>[ ]</p>
+<p><span class="math display">
+\boxed{
+\text{misma respuesta externa}
+\neq
+\text{misma estructura interna}
+}
+</span></p>
 </div>
 </div>
 <p>Por eso la transformación puede utilizarse sin alterar las magnitudes eléctricas que interesan al análisis externo de la red.</p>
@@ -564,7 +618,15 @@ window.Quarto = {
 <section id="cuándo-conviene-delta-rightarrow-texty" class="level1" data-number="6">
 <h1 data-number="6"><span class="header-section-number">6</span> 6. ¿Cuándo conviene <span class="math inline">\Delta \rightarrow \text{Y}</span>?</h1>
 <p>La transformación <span class="math inline">\Delta \rightarrow \text{Y}</span> puede ser conveniente cuando la estrella resultante permite crear combinaciones que antes no eran posibles y, especialmente, cuando facilita una reducción posterior en serie o paralelo.</p>
-<p>[ ]</p>
+<p><span class="math display">
+\boxed{
+\Delta
+\;\rightarrow\;
+\text{Y}
+\;\rightarrow\;
+\text{serie/paralelo}
+}
+</span></p>
 <p>La elección debe hacerse observando <strong>qué conexiones aparecerán después de la transformación</strong>.</p>
 <p>No basta con reconocer la figura: hay que anticipar qué estructura tendrá la red resultante.</p>
 <hr>
@@ -572,7 +634,15 @@ window.Quarto = {
 <section id="cuándo-conviene-texty-rightarrow-delta" class="level1" data-number="7">
 <h1 data-number="7"><span class="header-section-number">7</span> 7. ¿Cuándo conviene <span class="math inline">\text{Y} \rightarrow \Delta</span>?</h1>
 <p>De manera análoga, <span class="math inline">\text{Y} \rightarrow \Delta</span> puede resultar conveniente cuando la nueva configuración permite establecer combinaciones que antes no eran posibles.</p>
-<p>[ ]</p>
+<p><span class="math display">
+\boxed{
+\text{Y}
+\;\rightarrow\;
+\Delta
+\;\rightarrow\;
+\text{serie/paralelo o reducción posterior}
+}
+</span></p>
 <p>La dirección de transformación debe elegirse según la <strong>topología completa del circuito</strong>, no únicamente según la forma local de la red.</p>
 <hr>
 </section>
@@ -582,25 +652,39 @@ window.Quarto = {
 <section id="paso-1-identificar-la-red" class="level3" data-number="8.0.1">
 <h3 data-number="8.0.1" class="anchored" data-anchor-id="paso-1-identificar-la-red"><span class="header-section-number">8.0.1</span> Paso 1 — Identificar la red</h3>
 <p>Localiza los tres terminales y determina si la subred está conectada en:</p>
-<p>[ ]</p>
+<p><span class="math display">
+\Delta
+\qquad\text{o}\qquad
+\text{Y}
+</span></p>
 </section>
 <section id="paso-2-identificar-el-objetivo" class="level3" data-number="8.0.2">
 <h3 data-number="8.0.2" class="anchored" data-anchor-id="paso-2-identificar-el-objetivo"><span class="header-section-number">8.0.2</span> Paso 2 — Identificar el objetivo</h3>
 <p>Pregunta qué necesitas encontrar:</p>
-<p>[ Z_{eq},I,V,P, ]</p>
+<p><span class="math display">
+Z_{eq},\quad I,\quad V,\quad P,\quad \text{etc.}
+</span></p>
 </section>
 <section id="paso-3-buscar-simplificaciones-directas" class="level3" data-number="8.0.3">
 <h3 data-number="8.0.3" class="anchored" data-anchor-id="paso-3-buscar-simplificaciones-directas"><span class="header-section-number">8.0.3</span> Paso 3 — Buscar simplificaciones directas</h3>
 <p>Comprueba primero si la red puede resolverse mediante:</p>
-<p>[ ]</p>
+<p><span class="math display">
+\text{serie}
+\qquad\text{o}\qquad
+\text{paralelo}
+</span></p>
 <p>sin transformar nada.</p>
 </section>
 <section id="paso-4-identificar-la-transformación-útil" class="level3" data-number="8.0.4">
 <h3 data-number="8.0.4" class="anchored" data-anchor-id="paso-4-identificar-la-transformación-útil"><span class="header-section-number">8.0.4</span> Paso 4 — Identificar la transformación útil</h3>
 <p>Si la red no puede reducirse directamente, determina si conviene:</p>
-<p>[ ]</p>
+<p><span class="math display">
+\Delta\rightarrow\text{Y}
+</span></p>
 <p>o:</p>
-<p>[ ]</p>
+<p><span class="math display">
+\text{Y}\rightarrow\Delta
+</span></p>
 </section>
 <section id="paso-5-transformar" class="level3" data-number="8.0.5">
 <h3 data-number="8.0.5" class="anchored" data-anchor-id="paso-5-transformar"><span class="header-section-number">8.0.5</span> Paso 5 — Transformar</h3>
@@ -637,7 +721,23 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>[ ]</p>
+<p><span class="math display">
+\boxed{
+\text{Identificar}
+\rightarrow
+\text{Decidir}
+\rightarrow
+\text{Transformar}
+\rightarrow
+\text{Simplificar}
+\rightarrow
+\text{Calcular}
+\rightarrow
+\text{Verificar}
+\rightarrow
+\text{Interpretar}
+}
+</span></p>
 <p>La transformación no es el final del problema: es una herramienta dentro de una estrategia de análisis.</p>
 </div>
 </div>
@@ -1492,11 +1592,19 @@ window.Quarto = {
 <section id="deltaestrella-con-impedancias-complejas" class="level1" data-number="10">
 <h1 data-number="10"><span class="header-section-number">10</span> 10. Delta–Estrella con impedancias complejas</h1>
 <p>En corriente alterna, las ramas pueden contener resistencia, inductancia y capacitancia. Por ello, una impedancia puede expresarse como:</p>
-<p>[ ]</p>
+<p><span class="math display">
+\boxed{\mathbf Z = R+jX}
+</span></p>
 <p>Por ejemplo:</p>
-<p>[ Z_R=R ]</p>
-<p>[ Z_L=jL ]</p>
-<p>[ Z_C= ]</p>
+<p><span class="math display">
+\mathbf Z_R=R
+</span></p>
+<p><span class="math display">
+\mathbf Z_L=j\omega L
+</span></p>
+<p><span class="math display">
+\mathbf Z_C=\frac{1}{j\omega C}
+</span></p>
 <p>Por tanto, la transformación <span class="math inline">\Delta \leftrightarrow \text{Y}</span> debe realizarse con <strong>impedancias complejas</strong>, respetando tanto su parte real como su parte imaginaria.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1510,7 +1618,15 @@ window.Quarto = {
 <div class="callout-body-container callout-body">
 <p>La transformación Delta–Estrella no constituye un método separado del análisis fasorial.</p>
 <p>Es una operación de redes que utiliza las impedancias obtenidas en el dominio fasorial:</p>
-<p>[ v(t),,i(t) ;; V,,I ;; Z ;; ]</p>
+<p><span class="math display">
+v(t),\,i(t)
+\;\longrightarrow\;
+\mathbf V,\,\mathbf I
+\;\longrightarrow\;
+\mathbf Z
+\;\longrightarrow\;
+\Delta\leftrightarrow\text{Y}
+</span></p>
 <p>Así, Delta–Estrella se integra naturalmente dentro de la cadena de análisis de circuitos de CA.</p>
 </div>
 </div>
@@ -1521,9 +1637,15 @@ window.Quarto = {
 <section id="de-delta-a-estrella-delta-to-texty" class="level2" data-number="11.1">
 <h2 data-number="11.1" class="anchored" data-anchor-id="de-delta-a-estrella-delta-to-texty"><span class="header-section-number">11.1</span> De Delta a Estrella (<span class="math inline">\Delta \to \text{Y}</span>)</h2>
 <p>Dado un triángulo formado por las impedancias complejas <span class="math inline">\mathbf{Z}_A</span> (opuesta al nodo 1), <span class="math inline">\mathbf{Z}_B</span> (opuesta al nodo 2) y <span class="math inline">\mathbf{Z}_C</span> (opuesta al nodo 3), definimos la suma de impedancias del delta:</p>
-<p>[ _= _A + _B + _C ]</p>
+<p><span class="math display">
+\mathbf{Z}_\Sigma = \mathbf{Z}_A + \mathbf{Z}_B + \mathbf{Z}_C
+</span></p>
 <p>Las impedancias equivalentes en estrella conectadas a cada nodo <span class="math inline">(1, 2, 3)</span> hacia el neutro común <span class="math inline">O</span> son:</p>
-<p>[ _1 = , _2 = , _3 = ]</p>
+<p><span class="math display">
+\mathbf{Z}_1 = \frac{\mathbf{Z}_B \mathbf{Z}_C}{\mathbf{Z}_\Sigma}, \qquad
+\mathbf{Z}_2 = \frac{\mathbf{Z}_A \mathbf{Z}_C}{\mathbf{Z}_\Sigma}, \qquad
+\mathbf{Z}_3 = \frac{\mathbf{Z}_A \mathbf{Z}_B}{\mathbf{Z}_\Sigma}
+</span></p>
 <blockquote class="blockquote">
 <p><strong>Regla mnemotécnica (<span class="math inline">\Delta \to \text{Y}</span>):</strong> Cada rama de la estrella es igual al <em>producto de las dos impedancias adyacentes del delta</em> dividido por la <em>suma total de las tres impedancias del delta</em>.</p>
 </blockquote>
@@ -1532,9 +1654,15 @@ window.Quarto = {
 <section id="de-estrella-a-delta-texty-to-delta" class="level2" data-number="11.2">
 <h2 data-number="11.2" class="anchored" data-anchor-id="de-estrella-a-delta-texty-to-delta"><span class="header-section-number">11.2</span> De Estrella a Delta (<span class="math inline">\text{Y} \to \Delta</span>)</h2>
 <p>Dada una estrella con ramas <span class="math inline">\mathbf{Z}_1, \mathbf{Z}_2, \mathbf{Z}_3</span> conectadas al nodo común neutro <span class="math inline">O</span>, definimos la suma de productos dos a dos:</p>
-<p>[ _2 = _1 _2 + _2 _3 + _3 _1 ]</p>
+<p><span class="math display">
+\Sigma_2 = \mathbf{Z}_1 \mathbf{Z}_2 + \mathbf{Z}_2 \mathbf{Z}_3 + \mathbf{Z}_3 \mathbf{Z}_1
+</span></p>
 <p>Las impedancias correspondientes del triángulo delta equivalentes son:</p>
-<p>[ _A = , _B = , _C = ]</p>
+<p><span class="math display">
+\mathbf{Z}_A = \frac{\Sigma_2}{\mathbf{Z}_1}, \qquad
+\mathbf{Z}_B = \frac{\Sigma_2}{\mathbf{Z}_2}, \qquad
+\mathbf{Z}_C = \frac{\Sigma_2}{\mathbf{Z}_3}
+</span></p>
 <blockquote class="blockquote">
 <p><strong>Regla mnemotécnica (<span class="math inline">\text{Y} \to \Delta</span>):</strong> Cada impedancia del delta es igual a la <em>suma de los productos dos a dos de las impedancias de la estrella</em> dividida entre la <em>impedancia opuesta de la estrella</em>.</p>
 </blockquote>
@@ -1545,9 +1673,13 @@ window.Quarto = {
 <h1 data-number="12"><span class="header-section-number">12</span> 12. Caso particular: redes equilibradas</h1>
 <p>Cuando las tres impedancias de la red son iguales, las expresiones generales se simplifican.</p>
 <p>Para una red equilibrada:</p>
-<p>[ Z_= 3Z_Y ]</p>
+<p><span class="math display">
+\mathbf Z_\Delta = 3\mathbf Z_Y
+</span></p>
 <p>y, equivalentemente,</p>
-<p>[ Z_Y= ]</p>
+<p><span class="math display">
+\mathbf Z_Y=\frac{\mathbf Z_\Delta}{3}
+</span></p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
