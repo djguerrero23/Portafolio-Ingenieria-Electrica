@@ -603,28 +603,28 @@ function renderTablaEquivalentes(grupos) {
         📊 Ver impedancia equivalente por par de nodos
       </summary>
       <div class="table-responsive mt-2">
-        <` + `table class="table table-sm table-hover align-middle mb-0">
-          <` + `thead class="table-light">
+        <table class="table table-sm table-hover align-middle mb-0">
+          <thead class="table-light">
             <tr><th>Par de nodos</th><th class="text-center"># ramas</th><th class="text-end">Z equivalente</th></tr>
-          </` + `thead>
-          <` + `tbody>${filas}</` + `tbody>
-        </` + `table>
+          </thead>
+          <tbody>${filas}</tbody>
+        </table>
       </div>
     </details>`;
 }
 
 function renderSistemaNodal(Y, I, inc, B) {
   const n = inc.length;
-  let html = '<div class="table-responsive"><' + 'table class="table table-sm table-bordered mb-0 font-monospace" style="font-size:0.78rem;">';
-  html += '<' + 'thead class="table-light"><tr><th></th>';
+  let html = '<div class="table-responsive"><table class="table table-sm table-bordered mb-0 font-monospace" style="font-size:0.78rem;">';
+  html += '<thead class="table-light"><tr><th></th>';
   inc.forEach(nm => html += `<th class="text-center">V<sub>${nm}</sub></th>`);
-  html += '<th class="text-center bg-warning bg-opacity-25">I</th></tr></' + 'thead><' + 'tbody>';
+  html += '<th class="text-center bg-warning bg-opacity-25">I</th></tr></thead><tbody>';
   for (let i = 0; i < n; i++) {
     html += `<tr><th class="table-light" style="white-space:nowrap;">Nodo ${inc[i]}</th>`;
     for (let j = 0; j < n; j++) html += `<td class="text-end">${fmtCorto(Y[i][j])}</td>`;
     html += `<td class="text-end bg-warning bg-opacity-10">${fmtCorto(I[i])}</td></tr>`;
   }
-  html += '</' + 'tbody></' + 'table></div>';
+  html += '</tbody></table></div>';
   return `
     <details class="mt-2">
       <summary class="small fw-bold text-primary" style="cursor:pointer;">
@@ -750,12 +750,12 @@ function resolverRed() {
           🔍 Ver tensiones nodales (Inyección de prueba I = 1&ang;0&deg; A)
         </summary>
         <div class="table-responsive mt-2">
-          <` + `table class="table table-sm table-hover align-middle mb-0">
-            <` + `thead class="table-light">
+          <table class="table table-sm table-hover align-middle mb-0">
+            <thead class="table-light">
               <tr><th>Nodo</th><th class="text-end">Tensión fasorial (rect.)</th><th class="text-end">Tensión fasorial (polar)</th></tr>
-            </` + `thead>
-            <` + `tbody>${filas}</` + `tbody>
-          </` + `table>
+            </thead>
+            <tbody>${filas}</tbody>
+          </table>
         </div>
       </details>
     </div>`;

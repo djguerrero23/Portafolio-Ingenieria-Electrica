@@ -538,7 +538,7 @@ En sistemas trifásicos equilibrados, esta propiedad permite establecer relacion
 
 Utilice el siguiente simulador para ingresar las impedancias complejas en forma rectangular ($R + jX$) y obtener inmediatamente la transformación equivalente en ambas direcciones con verificación de fasores:
 
-{{< include modulos/_delta_estrella_solver.md >}}
+{{< include modulos/_modulo_delta-estrella_solver.md >}}
 
 ---
 

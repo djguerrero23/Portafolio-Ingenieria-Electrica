@@ -454,7 +454,7 @@ El método más rápido para resolver circuitos completos:
 - 📺 **Casio fx-9750GIII (Gráfica):** [Ver tutorial paso a paso](https://www.youtube.com/watch?v=-QkvEE_9P4M&t=17s){target="_blank"}
 - 📺 **Casio fx-991ES PLUS / fx-570ES:** [Ver tutorial paso a paso](https://www.youtube.com/watch?v=mrMpLfHkxRk){target="_blank"}
 - 📺 **Casio fx-82MS / fx-350MS:** [Ver tutorial paso a paso](https://www.youtube.com/watch?v=Em3XkHxGPn4){target="_blank"}
-- 📺 **Calculadora Científica Universal / Genérica China:** [Ver tutorial paso a paso](https://www.youtube.com/watch?v=_OXVmNMPaKY){target="_blank"}
+- 📺 **Calculadora Científica Universal / Genérica:** [Ver tutorial paso a paso](https://www.youtube.com/watch?v=_OXVmNMPaKY){target="_blank"}
 :::
 
 ## Conversión polar → rectangular

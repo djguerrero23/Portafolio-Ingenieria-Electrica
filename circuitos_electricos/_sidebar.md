@@ -41,9 +41,9 @@
     </div>
 
     <div>
-      <div class="text-muted fw-bold mb-1" style="font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.4px;">Tutorial Polar ↔ Rectangular (Calculadora Genérica / China)</div>
-      <a href="https://www.youtube.com/watch?v=_OXVmNMPaKY" target="_blank" class="btn btn-danger btn-sm text-start w-100" title="Tutorial Polar a Rectangular Calculadora China Universal">
-        <i class="bi bi-youtube me-1"></i> Tutorial Calc. Universal / China
+      <div class="text-muted fw-bold mb-1" style="font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.4px;">Tutorial Polar ↔ Rectangular (Calculadora Genérica)</div>
+      <a href="https://www.youtube.com/watch?v=_OXVmNMPaKY" target="_blank" class="btn btn-danger btn-sm text-start w-100" title="Tutorial Polar a Rectangular Calculadora Universal">
+        <i class="bi bi-youtube me-1"></i> Tutorial Calc. Universal
       </a>
     </div>
 
