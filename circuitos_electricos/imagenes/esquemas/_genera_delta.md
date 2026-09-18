@@ -1,50 +1,47 @@
 ```{=html}
 <div class="my-4 d-flex justify-content-center">
   <div class="border rounded-3 bg-white shadow-sm p-3 w-100" style="max-width: 440px;">
-    <svg viewBox="0 0 380 320" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" style="display:block; font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;">
-      <!-- Fondo y defs -->
-      <defs>
-        <filter id="shadowFilterDelta" x="-10%" y="-10%" width="120%" height="120%">
-          <feDropShadow dx="0" dy="1" stdDeviation="2" flood-opacity="0.08"/>
-        </filter>
-      </defs>
+    <svg viewBox="0 0 380 300" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" style="display:block; font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;">
 
-      <!-- ================= DELTA (Δ) ================= -->
-      <text x="190" y="30" font-size="16" font-weight="800" fill="#0369a1" text-anchor="middle">Configuración Delta (Δ)</text>
+      <text x="190" y="26" font-size="16" font-weight="bold" fill="black" text-anchor="middle">Configuración Delta (Δ)</text>
       
+      <!-- Polígono sombreado interior -->
+      <polygon points="190,65 315,225 65,225" fill="#3b82f6" opacity="0.10" stroke="none"/>
+
       <!-- Ramas Delta -->
-      <line x1="190" y1="70" x2="70" y2="250" stroke="#1e293b" stroke-width="2.8" stroke-linecap="round"/>
-      <line x1="190" y1="70" x2="310" y2="250" stroke="#1e293b" stroke-width="2.8" stroke-linecap="round"/>
-      <line x1="70" y1="250" x2="310" y2="250" stroke="#1e293b" stroke-width="2.8" stroke-linecap="round"/>
+      <!-- Rama A - B -->
+      <line x1="190" y1="65" x2="315" y2="225" stroke="black" stroke-width="1.5"/>
+      <g transform="translate(252, 145) rotate(52)">
+        <rect x="-22" y="-11" width="44" height="22" fill="white" stroke="black" stroke-width="1.5"/>
+        <text x="0" y="4" font-size="13" font-style="italic" fill="black" text-anchor="middle">Z<tspan baseline-shift="sub" font-size="0.7em">AB</tspan></text>
+      </g>
 
-      <!-- Etiquetas de Impedancia Delta -->
-      <!-- Z_C (Rama A-B / 1-2) -->
-      <rect x="84" y="145" width="50" height="26" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" filter="url(#shadowFilterDelta)"/>
-      <text x="109" y="163" font-size="14" font-weight="700" fill="#0f172a" text-anchor="middle">Z<tspan font-size="10" dy="3">C</tspan></text>
+      <!-- Rama A - C -->
+      <line x1="190" y1="65" x2="65" y2="225" stroke="black" stroke-width="1.5"/>
+      <g transform="translate(128, 145) rotate(-52)">
+        <rect x="-22" y="-11" width="44" height="22" fill="white" stroke="black" stroke-width="1.5"/>
+        <text x="0" y="4" font-size="13" font-style="italic" fill="black" text-anchor="middle">Z<tspan baseline-shift="sub" font-size="0.7em">CA</tspan></text>
+      </g>
 
-      <!-- Z_B (Rama A-C / 1-3) -->
-      <rect x="246" y="145" width="50" height="26" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" filter="url(#shadowFilterDelta)"/>
-      <text x="271" y="163" font-size="14" font-weight="700" fill="#0f172a" text-anchor="middle">Z<tspan font-size="10" dy="3">B</tspan></text>
+      <!-- Rama B - C -->
+      <line x1="315" y1="225" x2="65" y2="225" stroke="black" stroke-width="1.5"/>
+      <rect x="168" y="214" width="44" height="22" fill="white" stroke="black" stroke-width="1.5"/>
+      <text x="190" y="229" font-size="13" font-style="italic" fill="black" text-anchor="middle">Z<tspan baseline-shift="sub" font-size="0.7em">BC</tspan></text>
 
-      <!-- Z_A (Rama B-C / 2-3) -->
-      <rect x="165" y="260" width="50" height="26" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" filter="url(#shadowFilterDelta)"/>
-      <text x="190" y="278" font-size="14" font-weight="700" fill="#0f172a" text-anchor="middle">Z<tspan font-size="10" dy="3">A</tspan></text>
-
-      <!-- Nodos Delta -->
+      <!-- Terminales y Nodos -->
       <!-- Nodo A -->
-      <circle cx="190" cy="70" r="18" fill="#0284c7" opacity="0.18"/>
-      <circle cx="190" cy="70" r="14" fill="#bfdbfe" stroke="#0284c7" stroke-width="2.8"/>
-      <text x="190" y="75" font-size="15" font-weight="bold" fill="#0f172a" text-anchor="middle">A</text>
+      <circle cx="190" cy="65"  r="4" fill="white" stroke="black" stroke-width="1.5"/>
+      <text x="190" y="48" font-size="14" font-weight="bold" font-style="italic" fill="black" text-anchor="middle">A</text>
 
       <!-- Nodo B -->
-      <circle cx="70" cy="250" r="18" fill="#0284c7" opacity="0.18"/>
-      <circle cx="70" cy="250" r="14" fill="#bfdbfe" stroke="#0284c7" stroke-width="2.8"/>
-      <text x="70" y="255" font-size="15" font-weight="bold" fill="#0f172a" text-anchor="middle">B</text>
+      <circle cx="315" cy="225" r="4" fill="white" stroke="black" stroke-width="1.5"/>
+      <text x="330" y="230" font-size="14" font-weight="bold" font-style="italic" fill="black" text-anchor="start">B</text>
 
       <!-- Nodo C -->
-      <circle cx="310" cy="250" r="18" fill="#0284c7" opacity="0.18"/>
-      <circle cx="310" cy="250" r="14" fill="#bfdbfe" stroke="#0284c7" stroke-width="2.8"/>
-      <text x="310" y="255" font-size="15" font-weight="bold" fill="#0f172a" text-anchor="middle">C</text>
+      <circle cx="65"  cy="225" r="4" fill="white" stroke="black" stroke-width="1.5"/>
+      <text x="50"  y="230" font-size="14" font-weight="bold" font-style="italic" fill="black" text-anchor="end">C</text>
+
+      <text x="190" y="275" font-size="12" fill="#475569" text-anchor="middle">Ramas entre pares de nodos: Z<tspan baseline-shift="sub" font-size="0.75em">AB</tspan>, Z<tspan baseline-shift="sub" font-size="0.75em">BC</tspan>, Z<tspan baseline-shift="sub" font-size="0.75em">CA</tspan></text>
     </svg>
   </div>
 </div>

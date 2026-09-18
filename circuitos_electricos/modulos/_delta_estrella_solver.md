@@ -3,21 +3,25 @@
 
 ```{=html}
 <p class="small text-muted mb-2">
-Escribe cada elemento como <code>nodoA nodoB R X</code>, donde la impedancia serie entre ambos nodos es
+Escribe cada elemento como <code>nodo1 nodo2 R X</code>, donde la impedancia serie entre ambos nodos es
 <em>Z = R + jX</em> (&Omega;). Una línea por elemento. Los símbolos <code>#</code> inician comentarios y los nodos
-pueden nombrarse con números o letras.
+pueden nombrarse con números o letras.Ejemplo: Si la rama 1-2 tiene una resistencia de 2 y una reactancia inductiva de 3, se escribe:
+`1 2 2 3`. Si tiene una resistencia de 2 y una reactancia capacitiva de 3, se escribe: `1 2 2 -3`. Si una rama tiene elementos en parelelo se escribe la misma rama 1 2 pero los valores de R y X.
 </p>
 
 <div style="display:flex; flex-wrap:wrap; gap:1.25rem; margin-bottom:1rem; align-items:stretch;">
 <div style="flex:0 0 240px; min-width:210px; max-width:270px;">
 <label class="small fw-bold">Netlist de ramas (R + jX):</label>
-<textarea id="netlist" class="form-control form-control-sm font-monospace" rows="14" spellcheck="false" oninput="resolverRed()"># Red en delta de la imagen
+<textarea id="netlist" class="form-control form-control-sm font-monospace" rows="14" spellcheck="false" oninput="resolverRed()"># Ejemplo Red en delta 
+#Rama 1-2
 1 2 3 6
-1 2 3 6
+1 2 2 3.5
+#Rama 2-3
 2 3 3 6
-2 3 6 6
+2 3 4 1
+#Rama 3-1
 1 3 3 6
-1 3 6 6</textarea>
+1 3 1 2</textarea>
 </div>
 <div style="flex:1 1 440px;">
 <label class="small fw-bold">Esquema del circuito:</label>

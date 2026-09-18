@@ -1,133 +1,174 @@
 ```{=html}
 <div class="my-4 d-flex justify-content-center">
-  <div class="border rounded-3 bg-white shadow-sm p-3 w-100" style="max-width: 1100px;">
-    <svg viewBox="10 10 760 320" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" style="display:block; font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;">
-      <!-- Defs para filtros de sombra -->
-      <defs>
-        <filter id="shadowFilterDobleT" x="-10%" y="-10%" width="120%" height="120%">
-          <feDropShadow dx="0" dy="1" stdDeviation="2" flood-opacity="0.08"/>
-        </filter>
-      </defs>
+<div class="border rounded-3 bg-white shadow-sm p-3 w-100" style="max-width: 920px;">
+<svg viewBox="0 0 950 380" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" style="display:block; font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;">
 
-      <!-- ================= 1. RED EN DOBLE T (ESTRELLAS INTERCONECTADAS) ================= -->
-      <text x="185" y="24" font-size="15" font-weight="800" fill="#7c3aed" text-anchor="middle">Red en Doble T / Dos Estrellas (Y) en Paralelo</text>
-      <text x="185" y="42" font-size="12" font-weight="600" fill="#64748b" text-anchor="middle">Irreducible por serie/paralelo (nodos O₁ y O₂ internos)</text>
+  <text x="220" y="30" font-size="16" font-weight="bold" fill="black" text-anchor="middle">Red en Doble T (Estrellas en Paralelo)</text>
+  <text x="715" y="30" font-size="16" font-weight="bold" fill="black" text-anchor="middle">Red Equivalente en Doble Π (Deltas en Paralelo)</text>
 
-      <!-- Bus de Entrada (1), Salida (2) y Referencia (0) -->
-      <!-- Bus Entrada -->
-      <line x1="40" y1="160" x2="80" y2="160" stroke="#1e293b" stroke-width="2.8" stroke-linecap="round"/>
-      <line x1="80" y1="95" x2="80" y2="225" stroke="#1e293b" stroke-width="2.8" stroke-linecap="round"/>
+  <!-- ============ DOBLE T (izquierda) ============ -->
+  <!-- Buses de Entrada (1), Salida (2) y Tierra (0) -->
+  <!-- Terminal Entrada A -->
+  <line x1="40" y1="160" x2="90" y2="160" stroke="black" stroke-width="1.5"/>
+  <circle cx="40" cy="160" r="4" fill="white" stroke="black" stroke-width="1.5"/>
+  <text x="28" y="164" font-size="14" font-weight="bold" font-style="italic" fill="black" text-anchor="end">A</text>
 
-      <!-- Bus Salida -->
-      <line x1="290" y1="160" x2="330" y2="160" stroke="#1e293b" stroke-width="2.8" stroke-linecap="round"/>
-      <line x1="290" y1="95" x2="290" y2="225" stroke="#1e293b" stroke-width="2.8" stroke-linecap="round"/>
+  <!-- Bus vertical nodo 1 -->
+  <line x1="90" y1="95" x2="90" y2="225" stroke="black" stroke-width="1.5"/>
 
-      <!-- Bus Tierra/Referencia -->
-      <line x1="70" y1="295" x2="300" y2="295" stroke="#64748b" stroke-width="2" stroke-linecap="round"/>
-      <line x1="185" y1="295" x2="185" y2="310" stroke="#64748b" stroke-width="2"/>
-      <line x1="175" y1="310" x2="195" y2="310" stroke="#64748b" stroke-width="2"/>
-      <line x1="179" y1="315" x2="191" y2="315" stroke="#64748b" stroke-width="2"/>
+  <!-- Terminal Salida B -->
+  <line x1="340" y1="160" x2="390" y2="160" stroke="black" stroke-width="1.5"/>
+  <circle cx="390" cy="160" r="4" fill="white" stroke="black" stroke-width="1.5"/>
+  <text x="402" y="164" font-size="14" font-weight="bold" font-style="italic" fill="black" text-anchor="start">B</text>
 
-      <!-- T Superior (Estrella 1: Z1, Z2, Z3) -->
-      <line x1="80" y1="95" x2="185" y2="95" stroke="#7c3aed" stroke-width="2.6" stroke-linecap="round"/>
-      <line x1="185" y1="95" x2="290" y2="95" stroke="#7c3aed" stroke-width="2.6" stroke-linecap="round"/>
-      <line x1="185" y1="95" x2="185" y2="295" stroke="#7c3aed" stroke-width="2.4" stroke-dasharray="3 3"/>
+  <!-- Bus vertical nodo 2 -->
+  <line x1="340" y1="95" x2="340" y2="225" stroke="black" stroke-width="1.5"/>
 
-      <!-- T Inferior (Estrella 2: Z4, Z5, Z6) -->
-      <line x1="80" y1="225" x2="185" y2="225" stroke="#0284c7" stroke-width="2.6" stroke-linecap="round"/>
-      <line x1="185" y1="225" x2="290" y2="225" stroke="#0284c7" stroke-width="2.6" stroke-linecap="round"/>
-      <line x1="185" y1="225" x2="185" y2="295" stroke="#0284c7" stroke-width="2.6" stroke-linecap="round"/>
+  <!-- Bus de Tierra 0 -->
+  <line x1="80" y1="290" x2="350" y2="290" stroke="black" stroke-width="1.5"/>
+  <!-- Símbolo de Tierra -->
+  <line x1="215" y1="290" x2="215" y2="305" stroke="black" stroke-width="1.5"/>
+  <line x1="205" y1="305" x2="225" y2="305" stroke="black" stroke-width="1.5"/>
+  <line x1="209" y1="310" x2="221" y2="310" stroke="black" stroke-width="1.5"/>
+  <line x1="213" y1="315" x2="217" y2="315" stroke="black" stroke-width="1.5"/>
 
-      <!-- Etiquetas Estrella 1 (Superior) -->
-      <rect x="110" y="75" width="42" height="22" rx="5" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.3" filter="url(#shadowFilterDobleT)"/>
-      <text x="131" y="90" font-size="12" font-weight="700" fill="#6d28d9" text-anchor="middle">Z<tspan font-size="8" dy="2">1</tspan></text>
+  <!-- T Superior (Estrella 1: Z1, Z2, Z3) -->
+  <!-- Rama 1 -> O1: Z1 -->
+  <line x1="90" y1="95" x2="215" y2="95" stroke="black" stroke-width="1.5"/>
+  <rect x="132" y="85" width="40" height="20" fill="white" stroke="black" stroke-width="1.5"/>
+  <text x="152" y="99" font-size="13" font-style="italic" fill="black" text-anchor="middle">Z<tspan baseline-shift="sub" font-size="0.7em">1</tspan></text>
 
-      <rect x="215" y="75" width="42" height="22" rx="5" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.3" filter="url(#shadowFilterDobleT)"/>
-      <text x="236" y="90" font-size="12" font-weight="700" fill="#6d28d9" text-anchor="middle">Z<tspan font-size="8" dy="2">2</tspan></text>
+  <!-- Rama O1 -> 2: Z2 -->
+  <line x1="215" y1="95" x2="340" y2="95" stroke="black" stroke-width="1.5"/>
+  <rect x="258" y="85" width="40" height="20" fill="white" stroke="black" stroke-width="1.5"/>
+  <text x="278" y="99" font-size="13" font-style="italic" fill="black" text-anchor="middle">Z<tspan baseline-shift="sub" font-size="0.7em">2</tspan></text>
 
-      <rect x="195" y="130" width="42" height="22" rx="5" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.3" filter="url(#shadowFilterDobleT)"/>
-      <text x="216" y="145" font-size="12" font-weight="700" fill="#6d28d9" text-anchor="middle">Z<tspan font-size="8" dy="2">3</tspan></text>
+  <!-- Rama O1 -> 0: Z3 -->
+  <line x1="215" y1="95" x2="215" y2="290" stroke="black" stroke-width="1.5"/>
+  <rect x="205" y="145" width="20" height="40" fill="white" stroke="black" stroke-width="1.5"/>
+  <text x="238" y="170" font-size="13" font-style="italic" fill="black" text-anchor="start">Z<tspan baseline-shift="sub" font-size="0.7em">3</tspan></text>
 
-      <!-- Etiquetas Estrella 2 (Inferior) -->
-      <rect x="110" y="205" width="42" height="22" rx="5" fill="#f0f9ff" stroke="#0284c7" stroke-width="1.3" filter="url(#shadowFilterDobleT)"/>
-      <text x="131" y="220" font-size="12" font-weight="700" fill="#0369a1" text-anchor="middle">Z<tspan font-size="8" dy="2">4</tspan></text>
+  <!-- T Inferior (Estrella 2: Z4, Z5, Z6) -->
+  <!-- Rama 1 -> O2: Z4 -->
+  <line x1="90" y1="225" x2="215" y2="225" stroke="black" stroke-width="1.5"/>
+  <rect x="132" y="215" width="40" height="20" fill="white" stroke="black" stroke-width="1.5"/>
+  <text x="152" y="229" font-size="13" font-style="italic" fill="black" text-anchor="middle">Z<tspan baseline-shift="sub" font-size="0.7em">4</tspan></text>
 
-      <rect x="215" y="205" width="42" height="22" rx="5" fill="#f0f9ff" stroke="#0284c7" stroke-width="1.3" filter="url(#shadowFilterDobleT)"/>
-      <text x="236" y="220" font-size="12" font-weight="700" fill="#0369a1" text-anchor="middle">Z<tspan font-size="8" dy="2">5</tspan></text>
+  <!-- Rama O2 -> 2: Z5 -->
+  <line x1="215" y1="225" x2="340" y2="225" stroke="black" stroke-width="1.5"/>
+  <rect x="258" y="215" width="40" height="20" fill="white" stroke="black" stroke-width="1.5"/>
+  <text x="278" y="229" font-size="13" font-style="italic" fill="black" text-anchor="middle">Z<tspan baseline-shift="sub" font-size="0.7em">5</tspan></text>
 
-      <rect x="195" y="248" width="42" height="22" rx="5" fill="#f0f9ff" stroke="#0284c7" stroke-width="1.3" filter="url(#shadowFilterDobleT)"/>
-      <text x="216" y="263" font-size="12" font-weight="700" fill="#0369a1" text-anchor="middle">Z<tspan font-size="8" dy="2">6</tspan></text>
+  <!-- Rama O2 -> 0: Z6 -->
+  <rect x="205" y="245" width="20" height="35" fill="white" stroke="black" stroke-width="1.5"/>
+  <text x="238" y="267" font-size="13" font-style="italic" fill="black" text-anchor="start">Z<tspan baseline-shift="sub" font-size="0.7em">6</tspan></text>
 
-      <!-- Nodos Izquierda -->
-      <circle cx="80" cy="160" r="11" fill="#bfdbfe" stroke="#0284c7" stroke-width="2"/>
-      <text x="80" y="164" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">1</text>
-      <text x="30" y="164" font-size="12" font-weight="800" fill="#0f172a" text-anchor="end">In</text>
+  <!-- Nodos Izquierda -->
+  <circle cx="90" cy="160" r="4" fill="white" stroke="black" stroke-width="1.5"/>
+  <text x="78" y="155" font-size="12" font-weight="bold" fill="black" text-anchor="end">1</text>
 
-      <circle cx="290" cy="160" r="11" fill="#bfdbfe" stroke="#0284c7" stroke-width="2"/>
-      <text x="290" y="164" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">2</text>
-      <text x="340" y="164" font-size="12" font-weight="800" fill="#0f172a" text-anchor="start">Out</text>
+  <circle cx="340" cy="160" r="4" fill="white" stroke="black" stroke-width="1.5"/>
+  <text x="352" y="155" font-size="12" font-weight="bold" fill="black" text-anchor="start">2</text>
 
-      <!-- Nodos Neutros Internos -->
-      <circle cx="185" cy="95" r="9" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
-      <text x="185" y="80" font-size="10" font-weight="800" fill="#6d28d9" text-anchor="middle">O₁</text>
+  <circle cx="215" cy="95" r="3" fill="black"/>
+  <text x="215" y="80" font-size="12" font-weight="bold" font-style="italic" fill="black" text-anchor="middle">O₁</text>
 
-      <circle cx="185" cy="225" r="9" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
-      <text x="185" y="212" font-size="10" font-weight="800" fill="#0369a1" text-anchor="middle">O₂</text>
+  <circle cx="215" cy="225" r="3" fill="black"/>
+  <text x="215" y="212" font-size="12" font-weight="bold" font-style="italic" fill="black" text-anchor="middle">O₂</text>
 
-      <!-- ================= TRANSICIÓN CENTRAL (Y → Δ) ================= -->
-      <line x1="385" y1="45" x2="385" y2="295" stroke="#e2e8f0" stroke-width="1.8" stroke-dasharray="6 6"/>
-      <circle cx="385" cy="160" r="24" fill="#faf5ff" stroke="#7c3aed" stroke-width="2" filter="url(#shadowFilterDobleT)"/>
-      <text x="385" y="155" font-size="11" font-weight="800" fill="#7c3aed" text-anchor="middle">Y → Δ</text>
-      <text x="385" y="170" font-size="14" font-weight="800" fill="#7c3aed" text-anchor="middle">→</text>
+  <circle cx="215" cy="290" r="4" fill="white" stroke="black" stroke-width="1.5"/>
+  <text x="200" y="285" font-size="12" font-weight="bold" fill="black" text-anchor="end">0</text>
 
-      <!-- ================= 2. RED EQUIVALENTE EN DOBLE PI (DELTAS EN PARALELO) ================= -->
-      <text x="585" y="24" font-size="15" font-weight="800" fill="#0369a1" text-anchor="middle">Red en Doble Π (Deltas en Paralelo)</text>
-      <text x="585" y="42" font-size="12" font-weight="600" fill="#64748b" text-anchor="middle">Todas las ramas quedan en paralelo directo entre (1), (2) y (0)</text>
+  <!-- ============ BADGE Y → Δ ============ -->
+  <line x1="475" y1="50" x2="475" y2="330" stroke="#94a3b8" stroke-width="1" stroke-dasharray="6 6"/>
+  <rect x="453" y="163" width="44" height="34" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1"/>
+  <text x="475" y="177" font-size="12" font-weight="bold" fill="black" text-anchor="middle">Y → Δ</text>
+  <text x="475" y="190" font-size="13" font-weight="bold" fill="black" text-anchor="middle">→</text>
 
-      <!-- Líneas de In y Out Derecha -->
-      <line x1="435" y1="120" x2="480" y2="120" stroke="#1e293b" stroke-width="2.8" stroke-linecap="round"/>
-      <line x1="690" y1="120" x2="735" y2="120" stroke="#1e293b" stroke-width="2.8" stroke-linecap="round"/>
+  <!-- ============ RED TRANSFORMADA (derecha) ============ -->
+  <!-- Zona sombreada del Delta resultante -->
+  <polygon points="590,130 840,130 715,270" fill="#3b82f6" opacity="0.10" stroke="none"/>
 
-      <!-- Triángulo Delta equivalente -->
-      <!-- Rama Superior In-Out (1)-(2) -->
-      <line x1="480" y1="120" x2="690" y2="120" stroke="#1e293b" stroke-width="3.2" stroke-linecap="round"/>
-      
-      <!-- Rama In-GND (1)-(0) -->
-      <line x1="480" y1="120" x2="585" y2="275" stroke="#1e293b" stroke-width="2.8" stroke-linecap="round"/>
+  <!-- Terminales In / Out Derecha -->
+  <line x1="530" y1="130" x2="590" y2="130" stroke="black" stroke-width="1.5"/>
+  <circle cx="530" cy="130" r="4" fill="white" stroke="black" stroke-width="1.5"/>
+  <text x="518" y="134" font-size="14" font-weight="bold" font-style="italic" fill="black" text-anchor="end">A</text>
 
-      <!-- Rama Out-GND (2)-(0) -->
-      <line x1="690" y1="120" x2="585" y2="275" stroke="#1e293b" stroke-width="2.8" stroke-linecap="round"/>
+  <line x1="840" y1="130" x2="900" y2="130" stroke="black" stroke-width="1.5"/>
+  <circle cx="900" cy="130" r="4" fill="white" stroke="black" stroke-width="1.5"/>
+  <text x="912" y="134" font-size="14" font-weight="bold" font-style="italic" fill="black" text-anchor="start">B</text>
 
-      <!-- Conexión a Tierra Derecha -->
-      <line x1="585" y1="275" x2="585" y2="295" stroke="#64748b" stroke-width="2"/>
-      <line x1="575" y1="295" x2="595" y2="295" stroke="#64748b" stroke-width="2"/>
-      <line x1="579" y1="300" x2="591" y2="300" stroke="#64748b" stroke-width="2"/>
+  <!-- Lados de la Delta Equivalente -->
+  <!-- Rama 1 - 2 (In - Out superior) -->
+  <line x1="590" y1="130" x2="840" y2="130" stroke="black" stroke-width="1.5"/>
+  <rect x="665" y="118" width="100" height="24" fill="white" stroke="black" stroke-width="1.5"/>
+  <text x="715" y="134" font-size="12" font-style="italic" fill="black" text-anchor="middle">Z<tspan baseline-shift="sub" font-size="0.75em">A1</tspan> ∥ Z<tspan baseline-shift="sub" font-size="0.75em">A2</tspan></text>
 
-      <!-- Etiquetas en Paralelo de la Delta -->
-      <!-- Rama 1-2 (In-Out) -->
-      <rect x="540" y="85" width="90" height="28" rx="6" fill="#f8fafc" stroke="#0284c7" stroke-width="1.6" filter="url(#shadowFilterDobleT)"/>
-      <text x="585" y="103" font-size="12" font-weight="800" fill="#0f172a" text-anchor="middle">Z<tspan font-size="9" dy="2">A1</tspan> || Z<tspan font-size="9" dy="2">A2</tspan></text>
+  <!-- Rama 1 - 0 (In - Tierra) -->
+  <line x1="590" y1="130" x2="715" y2="270" stroke="black" stroke-width="1.5"/>
+  <g transform="translate(642, 205) rotate(48)">
+    <rect x="-48" y="-12" width="96" height="24" fill="white" stroke="black" stroke-width="1.5"/>
+    <text x="0" y="4" font-size="12" font-style="italic" fill="black" text-anchor="middle">Z<tspan baseline-shift="sub" font-size="0.75em">B1</tspan> ∥ Z<tspan baseline-shift="sub" font-size="0.75em">B2</tspan></text>
+  </g>
 
-      <!-- Rama 1-0 (In-Gnd) -->
-      <rect x="475" y="200" width="90" height="28" rx="6" fill="#f8fafc" stroke="#0284c7" stroke-width="1.6" filter="url(#shadowFilterDobleT)"/>
-      <text x="520" y="218" font-size="12" font-weight="800" fill="#0f172a" text-anchor="middle">Z<tspan font-size="9" dy="2">B1</tspan> || Z<tspan font-size="9" dy="2">B2</tspan></text>
+  <!-- Rama 2 - 0 (Out - Tierra) -->
+  <line x1="840" y1="130" x2="715" y2="270" stroke="black" stroke-width="1.5"/>
+  <g transform="translate(788, 205) rotate(-48)">
+    <rect x="-48" y="-12" width="96" height="24" fill="white" stroke="black" stroke-width="1.5"/>
+    <text x="0" y="4" font-size="12" font-style="italic" fill="black" text-anchor="middle">Z<tspan baseline-shift="sub" font-size="0.75em">C1</tspan> ∥ Z<tspan baseline-shift="sub" font-size="0.75em">C2</tspan></text>
+  </g>
 
-      <!-- Rama 2-0 (Out-Gnd) -->
-      <rect x="610" y="200" width="90" height="28" rx="6" fill="#f8fafc" stroke="#0284c7" stroke-width="1.6" filter="url(#shadowFilterDobleT)"/>
-      <text x="655" y="218" font-size="12" font-weight="800" fill="#0f172a" text-anchor="middle">Z<tspan font-size="9" dy="2">C1</tspan> || Z<tspan font-size="9" dy="2">C2</tspan></text>
+  <!-- Conexión a Tierra Derecha -->
+  <line x1="715" y1="270" x2="715" y2="295" stroke="black" stroke-width="1.5"/>
+  <line x1="705" y1="295" x2="725" y2="295" stroke="black" stroke-width="1.5"/>
+  <line x1="709" y1="300" x2="721" y2="300" stroke="black" stroke-width="1.5"/>
+  <line x1="713" y1="305" x2="717" y2="305" stroke="black" stroke-width="1.5"/>
 
-      <!-- Nodos Derecha -->
-      <circle cx="480" cy="120" r="13" fill="#bfdbfe" stroke="#0284c7" stroke-width="2.5"/>
-      <text x="480" y="124" font-size="12" font-weight="bold" fill="#0f172a" text-anchor="middle">1</text>
-      <text x="425" y="124" font-size="12" font-weight="800" fill="#0f172a" text-anchor="end">In</text>
+  <!-- Nodos Derecha -->
+  <circle cx="590" cy="130" r="4" fill="white" stroke="black" stroke-width="1.5"/>
+  <text x="580" y="122" font-size="12" font-weight="bold" fill="black" text-anchor="end">1</text>
 
-      <circle cx="690" cy="120" r="13" fill="#bfdbfe" stroke="#0284c7" stroke-width="2.5"/>
-      <text x="690" y="124" font-size="12" font-weight="bold" fill="#0f172a" text-anchor="middle">2</text>
-      <text x="745" y="124" font-size="12" font-weight="800" fill="#0f172a" text-anchor="start">Out</text>
+  <circle cx="840" cy="130" r="4" fill="white" stroke="black" stroke-width="1.5"/>
+  <text x="850" y="122" font-size="12" font-weight="bold" fill="black" text-anchor="start">2</text>
 
-      <circle cx="585" cy="275" r="11" fill="#cbd5e1" stroke="#475569" stroke-width="2"/>
-      <text x="585" y="279" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">0</text>
-    </svg>
-  </div>
+  <circle cx="715" cy="270" r="4" fill="white" stroke="black" stroke-width="1.5"/>
+  <text x="730" y="274" font-size="12" font-weight="bold" fill="black" text-anchor="start">0</text>
+
+</svg>
+</div>
 </div>
 ```
+
+La red en **Doble T** (muy empleada en filtros de muesca o notch) está compuesta por dos redes en Estrella conectadas en paralelo compartiendo los nodos externos $(1)$, $(2)$ y la referencia $(0)$, pero con neutros aislados $O_1$ y $O_2$.
+
+Para resolverla, se transforma cada red en $\text{Y}$ a su equivalente $\Delta$:
+
+### 1. Transformación individual $\text{Y} \to \Delta$
+- **Estrella 1** ($\mathbf{Z}_1, \mathbf{Z}_2, \mathbf{Z}_3$ con neutro $O_1$):
+  $$
+  \Sigma_{2,1} = \mathbf{Z}_1\mathbf{Z}_2 + \mathbf{Z}_2\mathbf{Z}_3 + \mathbf{Z}_3\mathbf{Z}_1
+  $$
+  $$
+  \mathbf{Z}_{A1} = \frac{\Sigma_{2,1}}{\mathbf{Z}_3}, \qquad
+  \mathbf{Z}_{B1} = \frac{\Sigma_{2,1}}{\mathbf{Z}_2}, \qquad
+  \mathbf{Z}_{C1} = \frac{\Sigma_{2,1}}{\mathbf{Z}_1}
+  $$
+
+- **Estrella 2** ($\mathbf{Z}_4, \mathbf{Z}_5, \mathbf{Z}_6$ con neutro $O_2$):
+  $$
+  \Sigma_{2,2} = \mathbf{Z}_4\mathbf{Z}_5 + \mathbf{Z}_5\mathbf{Z}_6 + \mathbf{Z}_6\mathbf{Z}_4
+  $$
+  $$
+  \mathbf{Z}_{A2} = \frac{\Sigma_{2,2}}{\mathbf{Z}_6}, \qquad
+  \mathbf{Z}_{B2} = \frac{\Sigma_{2,2}}{\mathbf{Z}_5}, \qquad
+  \mathbf{Z}_{C2} = \frac{\Sigma_{2,2}}{\mathbf{Z}_4}
+  $$
+
+### 2. Asociación en paralelo directo
+Al estar ambas Deltas conectadas exactamente a los mismos tres nodos $(1, 2, 0)$, sus ramas homólogas quedan directamente en paralelo:
+
+$$
+\boxed{\mathbf{Z}_{12} = \mathbf{Z}_{A1} \parallel \mathbf{Z}_{A2}}, \qquad
+\boxed{\mathbf{Z}_{10} = \mathbf{Z}_{B1} \parallel \mathbf{Z}_{B2}}, \qquad
+\boxed{\mathbf{Z}_{20} = \mathbf{Z}_{C1} \parallel \mathbf{Z}_{C2}}
+$$

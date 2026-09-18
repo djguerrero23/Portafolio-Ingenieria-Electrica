@@ -211,27 +211,30 @@ La pregunta correcta es:
 
 Una estrategia útil es:
 
-```text
-                    CIRCUITO
-                       │
-                       ▼
-             ¿Se puede simplificar
-             directamente en serie
-                o paralelo?
-                  /       \
-                SÍ         NO
-                │           │
-                ▼           ▼
-          Serie/paralelo   ¿Existe una
-                           red Δ o Y
-                           conveniente?
-                             /   \
-                           SÍ     NO
-                           │       │
-                           ▼       ▼
-                    Considerar    Aplicar
-                     Δ ↔ Y       otro método
+::: {style="max-width: 460px; margin: 1.5rem auto;"}
+```{mermaid}
+%%| fig-align: center
+%%{init: {'theme': 'base', 'themeVariables': { 'fontSize': '30px', 'fontFamily': 'Inter, system-ui, sans-serif' }}}%%
+flowchart TD
+    A["🔌 Circuito a analizar"] --> B{"¿Admite reducción directa\nen serie o paralelo?"}
+    
+    B -- Sí --> C["✅ Reducción Serie / Paralelo"]
+    B -- No --> D{"¿Existe red Δ o Y conveniente?"}
+    
+    D -- Sí --> E["🔄 Transformación Δ ↔ Y"]
+    D -- No --> F["📑 Método general (Mallas / Nodos)"]
+
+    E --> G["⚡ Continuar simplificación"]
+
+    style A fill:#eef2ff,stroke:#6366f1,stroke-width:1.5px,color:#1e1b4b,rx:4px,ry:4px
+    style B fill:#fef3c7,stroke:#f59e0b,stroke-width:1.5px,color:#78350f,rx:4px,ry:4px
+    style D fill:#fef3c7,stroke:#f59e0b,stroke-width:1.5px,color:#78350f,rx:4px,ry:4px
+    style C fill:#dcfce7,stroke:#16a34a,stroke-width:1.5px,color:#14532d,rx:4px,ry:4px
+    style E fill:#dbeafe,stroke:#2563eb,stroke-width:1.5px,color:#1e3a8a,rx:4px,ry:4px
+    style F fill:#f1f5f9,stroke:#64748b,stroke-width:1.5px,color:#334155,rx:4px,ry:4px
+    style G fill:#dcfce7,stroke:#16a34a,stroke-width:1.5px,color:#14532d,stroke-dasharray: 3 3,rx:4px,ry:4px
 ```
+:::
 
 ::: {.callout-tip}
 ### Regla de decisión
@@ -383,11 +386,23 @@ La transformación no es el final del problema: es una herramienta dentro de una
 
 La transformación se entiende mejor cuando se observa simultáneamente la estructura original y la estructura equivalente.
 
-{{< include imagenes/esquemas/_genera_delta_estrella.md >}}
+## Topología Delta a Estrella (△ → Y)
+{{< include imagenes/esquemas/_topologia_delta_estrella_generica.md >}}
 
-{{< include imagenes/esquemas/_topologia_estrella_delta.md >}}
+## Topologia Estrella a Delta (Y → △)
+{{< include imagenes/esquemas/_topologia_estrella_delta_generica.md >}}
 
-{{< include imagenes/esquemas/_topologia_delta_estrella2.md >}}
+## Topología Puente (△–Y)
+{{< include imagenes/esquemas/_topologia_puente_delta_estrella.md >}}
+
+## Topología Doble T (Y–△)
+{{< include imagenes/esquemas/_topologia_doble_t_estrella_delta.md >}}
+
+## Topología Celosía
+{{< include imagenes/esquemas/_topologia_celosia_puente.md >}}
+
+## Topología Doble Transformación
+{{< include imagenes/esquemas/_topologia_doble_transformacion.md >}}
 
 ---
 
@@ -536,3 +551,5 @@ Utilice el siguiente simulador para ingresar las impedancias complejas en forma 
   <a href="circuito_thevenin.qmd" class="btn btn-outline-primary"><i class="bi bi-cpu me-1"></i> Teorema de Thévenin</a>
   <a href="index.qmd" class="btn btn-outline-secondary"><i class="bi bi-house me-1"></i> Índice</a>
 </div>
+
+

@@ -2530,20 +2530,22 @@ j\cdot(-j) = -j^2 = 1
 
     function lab2_multiplyJ() {
 
+      const prevStep = lab2_state.step;
+      let nextStep;
+
       if (lab2_state.step < 4) {
-
-        lab2_state.step++;
-
+        nextStep = lab2_state.step + 1;
       } else {
-
         /*
-         * Después de 360° volvemos a comenzar.
+         * Después de 360° volvemos a avanzar desde 90° (paso 1).
          */
-        lab2_state.step = 0;
-
+        nextStep = 1;
       }
 
-      lab2_state.operation = "Multiplicar por <i>j</i>";
+      lab2_state.prevStep = prevStep;
+      lab2_state.step = nextStep;
+      lab2_state.opType = "j";
+      lab2_state.operation = "Multiplicar por <i>j</i> (+90&deg;)";
 
       lab2_update();
 
@@ -2558,27 +2560,23 @@ j\cdot(-j) = -j^2 = 1
 
     function lab2_multiplyMinusJ() {
 
-      if (lab2_state.step === 0) {
-        lab2_state.step = 3;
+      const prevStep = lab2_state.step;
+      let nextStep;
+
+      if (prevStep === 0 || prevStep === 4) {
+        nextStep = 3;
+      } else if (prevStep === 1) {
+        nextStep = 0;
+      } else if (prevStep === 2) {
+        nextStep = 1;
+      } else if (prevStep === 3) {
+        nextStep = 2;
       }
 
-      else if (lab2_state.step === 1) {
-        lab2_state.step = 0;
-      }
-
-      else if (lab2_state.step === 2) {
-        lab2_state.step = 1;
-      }
-
-      else if (lab2_state.step === 3) {
-        lab2_state.step = 2;
-      }
-
-      else if (lab2_state.step === 4) {
-        lab2_state.step = 3;
-      }
-
-      lab2_state.operation = "Multiplicar por (-<i>j</i>)";
+      lab2_state.prevStep = prevStep;
+      lab2_state.step = nextStep;
+      lab2_state.opType = "minus_j";
+      lab2_state.operation = "Multiplicar por (-<i>j</i>) (-90&deg;)";
 
       lab2_update();
 
@@ -2593,7 +2591,9 @@ j\cdot(-j) = -j^2 = 1
 
     function lab2_reset() {
 
+      lab2_state.prevStep = null;
       lab2_state.step = 0;
+      lab2_state.opType = "init";
       lab2_state.operation = "Inicial";
 
       lab2_update();
@@ -2724,40 +2724,49 @@ j\cdot(-j) = -j^2 = 1
 
 
       /*
-       * Ecuación correspondiente a cada paso
+       * Ecuación construida dinámicamente según la operación y el estado de partida
        */
 
       if (equation) {
 
         let html = "";
 
-        if (lab2_state.step === 0) {
+        if (lab2_state.opType === "init" || lab2_state.prevStep === null) {
 
           html = "<i>z</i> = 1";
 
-        }
+        } else {
 
-        else if (lab2_state.step === 1) {
+          const fromItem = lab2_state.values[lab2_state.prevStep];
+          const fromLabel = fromItem.label;
+          const fromDisplay = (fromLabel === "j" ? "<i>j</i>" : (fromLabel === "-j" ? "(-<i>j</i>)" : (fromLabel === "-1" ? "(-1)" : fromLabel)));
+          const toDisplay = itemDisplay;
 
-          html = "1 &times; <i>j</i> = <i>j</i>";
+          if (lab2_state.opType === "j") {
 
-        }
+            if (fromLabel === "1") {
+              html = `${fromDisplay} &times; <i>j</i> = ${toDisplay}`;
+            } else if (fromLabel === "j") {
+              html = `${fromDisplay} &times; <i>j</i> = <i>j</i><sup>2</sup> = ${toDisplay}`;
+            } else if (fromLabel === "-1") {
+              html = `${fromDisplay} &times; <i>j</i> = ${toDisplay}`;
+            } else if (fromLabel === "-j") {
+              html = `${fromDisplay} &times; <i>j</i> = -<i>j</i><sup>2</sup> = 1`;
+            }
 
-        else if (lab2_state.step === 2) {
+          } else if (lab2_state.opType === "minus_j") {
 
-          html = "<i>j</i> &times; <i>j</i> = <i>j</i><sup>2</sup> = -1";
+            if (fromLabel === "1") {
+              html = `${fromDisplay} &times; (-<i>j</i>) = ${toDisplay}`;
+            } else if (fromLabel === "j") {
+              html = `${fromDisplay} &times; (-<i>j</i>) = -<i>j</i><sup>2</sup> = -(-1) = 1`;
+            } else if (fromLabel === "-1") {
+              html = `${fromDisplay} &times; (-<i>j</i>) = <i>j</i>`;
+            } else if (fromLabel === "-j") {
+              html = `${fromDisplay} &times; (-<i>j</i>) = <i>j</i><sup>2</sup> = -1`;
+            }
 
-        }
-
-        else if (lab2_state.step === 3) {
-
-          html = "(-1) &times; <i>j</i> = -<i>j</i>";
-
-        }
-
-        else if (lab2_state.step === 4) {
-
-          html = "(-<i>j</i>) &times; <i>j</i> = -<i>j</i><sup>2</sup> = 1";
+          }
 
         }
 
@@ -2767,7 +2776,7 @@ j\cdot(-j) = -j^2 = 1
 
 
       /*
-       * Título e interpretación
+       * Título e interpretación dinámica
        */
 
       const title =
@@ -2779,68 +2788,46 @@ j\cdot(-j) = -j^2 = 1
       const insightText =
         document.getElementById("lab2_insightText");
 
+      if (lab2_state.opType === "init" || lab2_state.prevStep === null) {
 
-      const messages = [
-
-        {
-          title: "Punto de partida",
-          insightTitle: "Observa",
-          text:
+        if (title) title.textContent = "Punto de partida";
+        if (insightTitle) insightTitle.textContent = "Observa";
+        if (insightText) {
+          insightText.innerHTML =
             "Partimos de 1, ubicado sobre el eje real positivo. " +
-            "Su magnitud es 1 y su ángulo es 0&deg;."
-        },
-
-        {
-          title: "Primera rotación",
-          insightTitle: "Observa",
-          text:
-            "Al multiplicar por <i>j</i>, el vector gira exactamente " +
-            "+90&deg;: 1 &rarr; <i>j</i>. " +
-            "La magnitud permanece igual."
-        },
-
-        {
-          title: "Segunda rotación",
-          insightTitle: "Observa",
-          text:
-            "Otra multiplicación por <i>j</i> produce otra rotación de " +
-            "+90&deg;: <i>j</i> &rarr; -1. " +
-            "Algebraicamente, esto es <i>j</i><sup>2</sup> = -1."
-        },
-
-        {
-          title: "Tercera rotación",
-          insightTitle: "Observa",
-          text:
-            "El vector vuelve a girar +90&deg;: " +
-            "-1 &rarr; -<i>j</i>. " +
-            "La dirección ha avanzado hasta 270&deg;."
-        },
-
-        {
-          title: "Una vuelta completa",
-          insightTitle: "Comprueba",
-          text:
-            "Después de cuatro multiplicaciones por <i>j</i>, " +
-            "el vector regresa a su posición inicial. " +
-            "Por eso <i>j</i><sup>4</sup> = 1: cuatro rotaciones de +90&deg; " +
-            "forman una vuelta completa de 360&deg;."
+            "Su magnitud es 1 y su ángulo es 0&deg;.";
         }
 
-      ];
+      } else {
 
+        const fromItem = lab2_state.values[lab2_state.prevStep];
+        const fromLabel = fromItem.label;
+        const fromDisp = (fromLabel === "j" ? "<i>j</i>" : (fromLabel === "-j" ? "-<i>j</i>" : fromLabel));
+        const toDisp = itemDisplay;
 
-      if (title)
-        title.textContent =
-          messages[lab2_state.step].title;
+        if (lab2_state.opType === "j") {
 
-      if (insightTitle)
-        insightTitle.textContent =
-          messages[lab2_state.step].insightTitle;
+          if (title) title.textContent = "Rotación antihoraria (+90°)";
+          if (insightTitle) insightTitle.textContent = "Multiplicación por j";
+          if (insightText) {
+            insightText.innerHTML =
+              `Al multiplicar por <i>j</i>, el fasor rota <strong>+90&deg;</strong> en sentido antihorario: ` +
+              `<strong>${fromDisp}</strong> &rarr; <strong>${toDisp}</strong>. La magnitud (|<i>z</i>| = 1) no cambia.`;
+          }
 
-      if (insightText)
-        insightText.innerHTML =
-          messages[lab2_state.step].text;
+        } else if (lab2_state.opType === "minus_j") {
+
+          if (title) title.textContent = "Rotación horaria (-90°)";
+          if (insightTitle) insightTitle.textContent = "Multiplicación por (-j)";
+          if (insightText) {
+            insightText.innerHTML =
+              `Al multiplicar por (-<i>j</i>), el fasor rota <strong>-90&deg;</strong> en sentido horario: ` +
+              `<strong>${fromDisp}</strong> &rarr; <strong>${toDisp}</strong>. La magnitud (|<i>z</i>| = 1) no cambia.`;
+          }
+
+        }
+
+      }
 
 
       /*
