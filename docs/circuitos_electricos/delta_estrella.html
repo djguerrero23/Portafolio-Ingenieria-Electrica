@@ -350,10 +350,10 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#ejercicio-1-delta-a-estrella-resistivo-equilibrado" id="toc-ejercicio-1-delta-a-estrella-resistivo-equilibrado" class="nav-link" data-scroll-target="#ejercicio-1-delta-a-estrella-resistivo-equilibrado"><span class="header-section-number">14.1</span> Ejercicio 1 — Delta a Estrella (resistivo equilibrado)</a></li>
   <li><a href="#ejercicio-2-estrella-a-delta-resistivo-equilibrado" id="toc-ejercicio-2-estrella-a-delta-resistivo-equilibrado" class="nav-link" data-scroll-target="#ejercicio-2-estrella-a-delta-resistivo-equilibrado"><span class="header-section-number">14.2</span> Ejercicio 2 — Estrella a Delta (resistivo equilibrado)</a></li>
-  <li><a href="#ejercicio-p3-delta-a-estrella-complejo" id="toc-ejercicio-p3-delta-a-estrella-complejo" class="nav-link" data-scroll-target="#ejercicio-p3-delta-a-estrella-complejo"><span class="header-section-number">14.3</span> Ejercicio P3 � Delta a Estrella complejo</a></li>
-  <li><a href="#ejercicio-p4-estrella-a-delta-complejo" id="toc-ejercicio-p4-estrella-a-delta-complejo" class="nav-link" data-scroll-target="#ejercicio-p4-estrella-a-delta-complejo"><span class="header-section-number">14.4</span> Ejercicio P4 � Estrella a Delta complejo</a></li>
-  <li><a href="#ejercicio-p5-puente-desequilibrado-con-reactancias" id="toc-ejercicio-p5-puente-desequilibrado-con-reactancias" class="nav-link" data-scroll-target="#ejercicio-p5-puente-desequilibrado-con-reactancias"><span class="header-section-number">14.5</span> Ejercicio P5 � Puente desequilibrado con reactancias</a></li>
-  <li><a href="#ejercicio-p6-aplicacin-adaptacin-de-carga-trifsica" id="toc-ejercicio-p6-aplicacin-adaptacin-de-carga-trifsica" class="nav-link" data-scroll-target="#ejercicio-p6-aplicacin-adaptacin-de-carga-trifsica"><span class="header-section-number">14.6</span> Ejercicio P6 � Aplicaci�n: adaptaci�n de carga trif�sica</a></li>
+  <li><a href="#ejercicio-3-delta-a-estrella-impedancias-complejas" id="toc-ejercicio-3-delta-a-estrella-impedancias-complejas" class="nav-link" data-scroll-target="#ejercicio-3-delta-a-estrella-impedancias-complejas"><span class="header-section-number">14.3</span> Ejercicio 3 — Delta a Estrella (impedancias complejas)</a></li>
+  <li><a href="#ejercicio-4-estrella-a-delta-impedancias-complejas" id="toc-ejercicio-4-estrella-a-delta-impedancias-complejas" class="nav-link" data-scroll-target="#ejercicio-4-estrella-a-delta-impedancias-complejas"><span class="header-section-number">14.4</span> Ejercicio 4 — Estrella a Delta (impedancias complejas)</a></li>
+  <li><a href="#ejercicio-5-red-en-puente-desbalanceada-con-reactancias" id="toc-ejercicio-5-red-en-puente-desbalanceada-con-reactancias" class="nav-link" data-scroll-target="#ejercicio-5-red-en-puente-desbalanceada-con-reactancias"><span class="header-section-number">14.5</span> Ejercicio 5 — Red en Puente desbalanceada con reactancias</a></li>
+  <li><a href="#ejercicio-6-aplicación-transformación-de-carga-trifásica-y-cálculo-de-línea" id="toc-ejercicio-6-aplicación-transformación-de-carga-trifásica-y-cálculo-de-línea" class="nav-link" data-scroll-target="#ejercicio-6-aplicación-transformación-de-carga-trifásica-y-cálculo-de-línea"><span class="header-section-number">14.6</span> Ejercicio 6 — Aplicación: Transformación de carga trifásica y cálculo de línea</a></li>
   </ul></li>
   <li><a href="#módulos-interactivos-de-simulación-y-análisis" id="toc-módulos-interactivos-de-simulación-y-análisis" class="nav-link" data-scroll-target="#módulos-interactivos-de-simulación-y-análisis"><span class="header-section-number">15</span> Módulos Interactivos de Simulación y Análisis</a>
   <ul class="collapse">
@@ -2080,7 +2080,7 @@ v(t),\,i(t)
 </section>
 <section id="ejercicios-resueltos" class="level1" data-number="14">
 <h1 data-number="14"><span class="header-section-number">14</span> Ejercicios Resueltos</h1>
-<p>Los siguientes ejercicios cubren los siete casos típicos que aparecen en un curso de Circuitos Eléctricos. Cada uno incluye el <strong>netlist equivalente</strong> para que puedas verificar el resultado en el módulo interactivo que aparece más adelante.</p>
+<p>Los siguientes ejercicios cubren los seis casos típicos que aparecen en un curso de Circuitos Eléctricos. Cada uno incluye el <strong>netlist equivalente</strong> para que puedas verificar el resultado en el módulo interactivo que aparece más adelante.</p>
 <section id="ejercicio-1-delta-a-estrella-resistivo-equilibrado" class="level2" data-number="14.1">
 <h2 data-number="14.1" class="anchored" data-anchor-id="ejercicio-1-delta-a-estrella-resistivo-equilibrado"><span class="header-section-number">14.1</span> Ejercicio 1 — Delta a Estrella (resistivo equilibrado)</h2>
 <div class="columns">
@@ -2186,162 +2186,261 @@ v(t),\,i(t)
 <p><em>(Configurar <strong>Terminal A = 1</strong> y <strong>Terminal B = 2</strong> para comprobar <span class="math inline">Z_T = 8\,\Omega</span>)</em>.</p>
 <hr>
 </section>
-<section id="ejercicio-p3-delta-a-estrella-complejo" class="level2" data-number="14.3">
-<h2 data-number="14.3" class="anchored" data-anchor-id="ejercicio-p3-delta-a-estrella-complejo"><span class="header-section-number">14.3</span> Ejercicio P3 � Delta a Estrella complejo</h2>
-<p><strong>Enunciado.</strong> Convertir el delta con <span class="math inline">\mathbf{Z}_A = 6 + j3\,\Omega</span>, <span class="math inline">\mathbf{Z}_B = 4 - j2\,\Omega</span>, <span class="math inline">\mathbf{Z}_C = 3 + j4\,\Omega</span> a su estrella equivalente.</p>
+<section id="ejercicio-3-delta-a-estrella-impedancias-complejas" class="level2" data-number="14.3">
+<h2 data-number="14.3" class="anchored" data-anchor-id="ejercicio-3-delta-a-estrella-impedancias-complejas"><span class="header-section-number">14.3</span> Ejercicio 3 — Delta a Estrella (impedancias complejas)</h2>
+<p><strong>Enunciado.</strong> Convertir una red en delta formada por tres impedancias complejas desequilibradas: <span class="math inline">\mathbf{Z}_A = 6 + j3\,\Omega</span> (entre terminales 2–3), <span class="math inline">\mathbf{Z}_B = 4 - j2\,\Omega</span> (entre terminales 1–3) y <span class="math inline">\mathbf{Z}_C = 3 + j4\,\Omega</span> (entre terminales 1–2), a su estrella equivalente (<span class="math inline">\mathbf{Z}_1, \mathbf{Z}_2, \mathbf{Z}_3</span>).</p>
+<p><strong>Solución.</strong> Calculamos primero la suma fasorial de las tres impedancias del delta <span class="math inline">\mathbf{Z}_\Sigma</span>:</p>
+<p><span class="math display">
+\mathbf{Z}_\Sigma = \mathbf{Z}_A + \mathbf{Z}_B + \mathbf{Z}_C = (6 + j3) + (4 - j2) + (3 + j4) = 13 + j5\,\Omega
+</span></p>
+<p>Aplicando la regla de transformación <span class="math inline">\Delta \to \text{Y}</span> (producto de las ramas adyacentes dividido entre la suma total <span class="math inline">\mathbf{Z}_\Sigma</span>):</p>
+<p><span class="math display">
+\mathbf{Z}_1 = \frac{\mathbf{Z}_B \cdot \mathbf{Z}_C}{\mathbf{Z}_\Sigma} = \frac{(4 - j2)(3 + j4)}{13 + j5} = \frac{20 + j10}{13 + j5} = \frac{(20 + j10)(13 - j5)}{194} \approx 1.598 + j0.155\,\Omega \approx 1.605\,\angle\,5.53^\circ\,\Omega
+</span></p>
+<p><span class="math display">
+\mathbf{Z}_2 = \frac{\mathbf{Z}_A \cdot \mathbf{Z}_C}{\mathbf{Z}_\Sigma} = \frac{(6 + j3)(3 + j4)}{13 + j5} = \frac{6 + j33}{13 + j5} = \frac{(6 + j33)(13 - j5)}{194} \approx 1.253 + j2.057\,\Omega \approx 2.408\,\angle\,58.66^\circ\,\Omega
+</span></p>
+<p><span class="math display">
+\mathbf{Z}_3 = \frac{\mathbf{Z}_A \cdot \mathbf{Z}_B}{\mathbf{Z}_\Sigma} = \frac{(6 + j3)(4 - j2)}{13 + j5} = \frac{30 + j0}{13 + j5} = \frac{30(13 - j5)}{194} \approx 2.010 - j0.773\,\Omega \approx 2.154\,\angle\,-21.04^\circ\,\Omega
+</span></p>
+<p><strong>Resultado.</strong> Estrella equivalente con ramas conectadas al nuevo neutro central <span class="math inline">N</span>: <span class="math inline">\mathbf{Z}_1 \approx 1.598 + j0.155\,\Omega</span>, <span class="math inline">\mathbf{Z}_2 \approx 1.253 + j2.057\,\Omega</span>, <span class="math inline">\mathbf{Z}_3 \approx 2.010 - j0.773\,\Omega</span>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Respuesta
+<span class="screen-reader-only">Note</span>💡 Interpretación de Resultados y Comparación con el Solver
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div id="callout-11" class="callout-11-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
-<p><span class="math inline">\mathbf{Z}_\Sigma = (6+j3) + (4-j2) + (3+j4) = 13 + j5\,\Omega</span></p>
-<p><span class="math display">
-\mathbf{Z}_1 = \frac{(4-j2)(3+j4)}{13+j5} = \frac{20 + j10}{13+j5} \approx 1.669 + j0.127\,\Omega
-</span></p>
-<p><span class="math display">
-\mathbf{Z}_2 = \frac{(6+j3)(3+j4)}{13+j5} = \frac{6 + j33}{13+j5} \approx 1.509 + j1.958\,\Omega
-</span></p>
-<p><span class="math display">
-\mathbf{Z}_3 = \frac{(6+j3)(4-j2)}{13+j5} = \frac{30 + j0}{13+j5} \approx 1.775 - j0.683\,\Omega
-</span></p>
-<p><strong>Netlist:</strong></p>
-<pre class="text"><code>1 2 6 3
-2 3 4 -2
-1 3 3 4</code></pre>
+<p>¿Qué relación existe entre las impedancias de rama calculadas y la impedancia terminal <span class="math inline">Z_T</span> que mide el solver entre los bornes 1 y 2?</p>
+<ul>
+<li><strong>Impedancias de rama (<span class="math inline">\mathbf{Z}_1, \mathbf{Z}_2, \mathbf{Z}_3</span>):</strong> Representan los brazos individuales conectados desde cada terminal exterior (1, 2 y 3) hacia el nodo neutro ficticio interior <span class="math inline">N</span>.</li>
+<li><strong>Impedancia Terminal del Solver (<span class="math inline">Z_T</span> entre bornes 1 y 2):</strong></li>
+</ul>
+<ol type="1">
+<li><p><strong>Visto desde la Estrella resultante:</strong> Al medir entre los terminales 1 y 2, la corriente fluye en serie a través de las ramas <span class="math inline">\mathbf{Z}_1</span> y <span class="math inline">\mathbf{Z}_2</span> (la rama <span class="math inline">\mathbf{Z}_3</span> queda en circuito abierto al no haber retorno por ella): <span class="math display">Z_T(1,2) = \mathbf{Z}_1 + \mathbf{Z}_2 = (1.598 + j0.155) + (1.253 + j2.057) = \mathbf{2.851 + j2.211\,\Omega} \approx 3.608\,\angle\,37.80^\circ\,\Omega</span></p></li>
+<li><p><strong>Visto desde el Delta original:</strong> La rama directa entre los terminales 1 y 2 (<span class="math inline">\mathbf{Z}_C = 3 + j4\,\Omega</span>) se encuentra en paralelo con la trayectoria serie formada por <span class="math inline">\mathbf{Z}_A</span> y <span class="math inline">\mathbf{Z}_B</span> (<span class="math inline">6+j3 + 4-j2 = 10+j1\,\Omega</span>): <span class="math display">Z_T(1,2) = \mathbf{Z}_C \parallel (\mathbf{Z}_A + \mathbf{Z}_B) = \frac{(3+j4)(10+j1)}{13+j5} = \frac{26+j43}{13+j5} = \mathbf{2.851 + j2.211\,\Omega}</span></p></li>
+</ol>
+<blockquote class="blockquote">
+<p><strong>Conclusión clave:</strong> Aunque las impedancias de rama contienen partes reactivas inductivas y capacitivas desbalanceadas, la impedancia terminal exterior es estrictamente invariable entre ambas topologías.</p>
+</blockquote>
 </div>
 </div>
 </div>
+<p><strong>Netlist para verificar en el solver:</strong></p>
+<pre class="text"><code># Delta original (Terminal A = 1, Terminal B = 2)
+1 2 3 4
+2 3 6 3
+1 3 4 -2</code></pre>
+<p><em>(Configurar <strong>Terminal A = 1</strong> y <strong>Terminal B = 2</strong> para comprobar <span class="math inline">Z_T \approx 2.851 + j2.211\,\Omega</span> | Módulo <span class="math inline">\approx 3.61\,\Omega</span>)</em>.</p>
 <hr>
 </section>
-<section id="ejercicio-p4-estrella-a-delta-complejo" class="level2" data-number="14.4">
-<h2 data-number="14.4" class="anchored" data-anchor-id="ejercicio-p4-estrella-a-delta-complejo"><span class="header-section-number">14.4</span> Ejercicio P4 � Estrella a Delta complejo</h2>
-<p><strong>Enunciado.</strong> Convertir la estrella con <span class="math inline">\mathbf{Z}_1 = 2 + j1\,\Omega</span>, <span class="math inline">\mathbf{Z}_2 = 1 - j3\,\Omega</span>, <span class="math inline">\mathbf{Z}_3 = 4 + j2\,\Omega</span> a su delta equivalente.</p>
+<section id="ejercicio-4-estrella-a-delta-impedancias-complejas" class="level2" data-number="14.4">
+<h2 data-number="14.4" class="anchored" data-anchor-id="ejercicio-4-estrella-a-delta-impedancias-complejas"><span class="header-section-number">14.4</span> Ejercicio 4 — Estrella a Delta (impedancias complejas)</h2>
+<p><strong>Enunciado.</strong> Convertir una red en estrella con impedancias por rama <span class="math inline">\mathbf{Z}_1 = 2 + j1\,\Omega</span>, <span class="math inline">\mathbf{Z}_2 = 1 - j3\,\Omega</span> y <span class="math inline">\mathbf{Z}_3 = 4 + j2\,\Omega</span> (unidas en el neutro central <span class="math inline">N</span>) a su delta equivalente (<span class="math inline">\mathbf{Z}_A, \mathbf{Z}_B, \mathbf{Z}_C</span>).</p>
+<p><strong>Solución.</strong> Calculamos primero los tres productos dos a dos y su suma fasorial <span class="math inline">\Sigma_2</span>:</p>
+<p><span class="math display">
+\mathbf{Z}_1\mathbf{Z}_2 = (2 + j1)(1 - j3) = 2 - j6 + j1 + 3 = 5 - j5\,\Omega^2
+</span></p>
+<p><span class="math display">
+\mathbf{Z}_2\mathbf{Z}_3 = (1 - j3)(4 + j2) = 4 + j2 - j12 + 6 = 10 - j10\,\Omega^2
+</span></p>
+<p><span class="math display">
+\mathbf{Z}_3\mathbf{Z}_1 = (4 + j2)(2 + j1) = 8 + j4 + j4 - 2 = 6 + j8\,\Omega^2
+</span></p>
+<p><span class="math display">
+\Sigma_2 = (5 - j5) + (10 - j10) + (6 + j8) = 21 - j7\,\Omega^2
+</span></p>
+<p>Aplicando la transformación <span class="math inline">\text{Y} \to \Delta</span> (suma de productos dos a dos dividida entre la impedancia opuesta):</p>
+<p><span class="math display">
+\mathbf{Z}_A = \frac{\Sigma_2}{\mathbf{Z}_1} = \frac{21 - j7}{2 + j1} = \frac{(21 - j7)(2 - j1)}{5} = \frac{35 - j35}{5} = 7 - j7\,\Omega \approx 9.899\,\angle\,-45.00^\circ\,\Omega
+</span></p>
+<p><span class="math display">
+\mathbf{Z}_B = \frac{\Sigma_2}{\mathbf{Z}_2} = \frac{21 - j7}{1 - j3} = \frac{(21 - j7)(1 + j3)}{10} = \frac{42 + j56}{10} = 4.2 + j5.6\,\Omega \approx 7.000\,\angle\,53.13^\circ\,\Omega
+</span></p>
+<p><span class="math display">
+\mathbf{Z}_C = \frac{\Sigma_2}{\mathbf{Z}_3} = \frac{21 - j7}{4 + j2} = \frac{(21 - j7)(4 - j2)}{20} = \frac{70 - j70}{20} = 3.5 - j3.5\,\Omega \approx 4.950\,\angle\,-45.00^\circ\,\Omega
+</span></p>
+<p><strong>Resultado.</strong> Delta equivalente con ramas: <span class="math inline">\mathbf{Z}_A = 7 - j7\,\Omega</span> (entre terminales 2–3), <span class="math inline">\mathbf{Z}_B = 4.2 + j5.6\,\Omega</span> (entre terminales 1–3), <span class="math inline">\mathbf{Z}_C = 3.5 - j3.5\,\Omega</span> (entre terminales 1–2).</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Respuesta
+<span class="screen-reader-only">Note</span>💡 Interpretación de Resultados y Comparación con el Solver
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div id="callout-12" class="callout-12-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
-<p>Calculando los productos dos a dos:</p>
-<p><span class="math display">
-\mathbf{Z}_1\mathbf{Z}_2 = (2+j1)(1-j3) = 5 - j5\,\Omega^2
-</span> <span class="math display">
-\mathbf{Z}_2\mathbf{Z}_3 = (1-j3)(4+j2) = 10 - j10\,\Omega^2
-</span> <span class="math display">
-\mathbf{Z}_3\mathbf{Z}_1 = (4+j2)(2+j1) = 6 + j8\,\Omega^2
-</span></p>
-<p><span class="math display">
-\Sigma_2 = (5-j5) + (10-j10) + (6+j8) = 21 - j7\,\Omega^2
-</span></p>
-<p><span class="math display">
-\mathbf{Z}_A = \frac{21-j7}{2+j1} \approx 7 - j7\,\Omega
-</span> <span class="math display">
-\mathbf{Z}_B = \frac{21-j7}{1-j3} \approx 6 + j4\,\Omega
-</span> <span class="math display">
-\mathbf{Z}_C = \frac{21-j7}{4+j2} \approx 4 - j3.5\,\Omega
-</span></p>
-<p><strong>Netlist:</strong></p>
-<pre class="text"><code>1 d 2 1
+<ul>
+<li><strong>Impedancia Terminal del Solver (<span class="math inline">Z_T</span> entre bornes 1 y 2):</strong>
+<ul>
+<li><strong>Desde la Estrella original:</strong> La corriente entra por el terminal 1 hacia el nodo neutro a través de <span class="math inline">\mathbf{Z}_1</span> y retorna por el terminal 2 a través de <span class="math inline">\mathbf{Z}_2</span> en <strong>serie</strong>: <span class="math display">Z_T(1,2) = \mathbf{Z}_1 + \mathbf{Z}_2 = (2 + j1) + (1 - j3) = \mathbf{3 - j2\,\Omega} \approx 3.606\,\angle\,-33.69^\circ\,\Omega</span></li>
+<li><strong>Desde el Delta equivalente:</strong> El lado directo entre 1 y 2 (<span class="math inline">\mathbf{Z}_C = 3.5 - j3.5\,\Omega</span>) queda en <strong>paralelo</strong> con la rama formada por <span class="math inline">\mathbf{Z}_A + \mathbf{Z}_B = (7-j7) + (4.2+j5.6) = 11.2 - j1.4\,\Omega</span>: <span class="math display">Z_T(1,2) = \mathbf{Z}_C \parallel (\mathbf{Z}_A + \mathbf{Z}_B) = \frac{(3.5 - j3.5)(11.2 - j1.4)}{(3.5 - j3.5) + (11.2 - j1.4)} = \frac{34.3 - j44.1}{14.7 - j4.9} = \mathbf{3 - j2\,\Omega}</span></li>
+</ul></li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>Conclusión clave:</strong> La reducción produce la misma impedancia fasorial exacta en ambos casos (<span class="math inline">3 - j2\,\Omega</span>, comportamiento capacitivo neto), ratificando la conservación de admitancias de transferencia entre nodos externos.</p>
+</blockquote>
+</div>
+</div>
+</div>
+<p><strong>Netlist para verificar en el solver:</strong></p>
+<pre class="text"><code># Estrella original (nodo central neutro = d)
+1 d 2 1
 2 d 1 -3
 3 d 4 2</code></pre>
-</div>
-</div>
-</div>
+<p><em>(Configurar <strong>Terminal A = 1</strong> y <strong>Terminal B = 2</strong> para comprobar <span class="math inline">Z_T = 3 - j2\,\Omega</span> | Módulo <span class="math inline">\approx 3.61\,\Omega</span>)</em>.</p>
 <hr>
 </section>
-<section id="ejercicio-p5-puente-desequilibrado-con-reactancias" class="level2" data-number="14.5">
-<h2 data-number="14.5" class="anchored" data-anchor-id="ejercicio-p5-puente-desequilibrado-con-reactancias"><span class="header-section-number">14.5</span> Ejercicio P5 � Puente desequilibrado con reactancias</h2>
-<p><strong>Enunciado.</strong> Un puente cu�druple tiene <span class="math inline">\mathbf{Z}_{AC} = 3+j4\,\text{k}\Omega</span>, <span class="math inline">\mathbf{Z}_{AD} = 6\,\text{k}\Omega</span>, <span class="math inline">\mathbf{Z}_{CB} = 4\,\text{k}\Omega</span>, <span class="math inline">\mathbf{Z}_{DB} = 2 - j2\,\text{k}\Omega</span>, <span class="math inline">\mathbf{Z}_{CD} = 3\,\text{k}\Omega</span>. Determinar <span class="math inline">\mathbf{Z}_{eq}</span> entre <span class="math inline">A</span> y <span class="math inline">B</span>.</p>
+<section id="ejercicio-5-red-en-puente-desbalanceada-con-reactancias" class="level2" data-number="14.5">
+<h2 data-number="14.5" class="anchored" data-anchor-id="ejercicio-5-red-en-puente-desbalanceada-con-reactancias"><span class="header-section-number">14.5</span> Ejercicio 5 — Red en Puente desbalanceada con reactancias</h2>
+<p><strong>Enunciado.</strong> Un circuito en puente de cinco impedancias tiene terminales exteriores <span class="math inline">A</span> y <span class="math inline">B</span>, y ramas internas: <span class="math inline">\mathbf{Z}_{AC} = 3 + j4\,\text{k}\Omega</span>, <span class="math inline">\mathbf{Z}_{AD} = 6\,\text{k}\Omega</span>, <span class="math inline">\mathbf{Z}_{CB} = 4\,\text{k}\Omega</span>, <span class="math inline">\mathbf{Z}_{DB} = 2 - j2\,\text{k}\Omega</span> y rama transversal central <span class="math inline">\mathbf{Z}_{CD} = 3\,\text{k}\Omega</span>. Determinar la impedancia equivalente total <span class="math inline">\mathbf{Z}_{eq}</span> vista entre los terminales <span class="math inline">A</span> y <span class="math inline">B</span>.</p>
+<p><strong>Solución.</strong> La presencia de la impedancia central <span class="math inline">\mathbf{Z}_{CD}</span> impide cualquier agrupación directa en serie o paralelo. Transformamos el lazo en delta formado por los nodos <span class="math inline">A-C-D</span> a una estrella equivalente con ramas <span class="math inline">\mathbf{Z}_A', \mathbf{Z}_C', \mathbf{Z}_D'</span> unidas en un nuevo nodo central <span class="math inline">N</span>.</p>
+<p>Suma de impedancias del lazo delta <span class="math inline">A-C-D</span>:</p>
+<p><span class="math display">
+\mathbf{Z}_\Sigma = \mathbf{Z}_{AC} + \mathbf{Z}_{AD} + \mathbf{Z}_{CD} = (3 + j4) + 6 + 3 = 12 + j4\,\text{k}\Omega
+</span></p>
+<p>Ramas de la estrella equivalente:</p>
+<p><span class="math display">
+\mathbf{Z}_A' = \frac{\mathbf{Z}_{AC} \cdot \mathbf{Z}_{AD}}{\mathbf{Z}_\Sigma} = \frac{(3 + j4)\cdot 6}{12 + j4} = \frac{18 + j24}{12 + j4} = \frac{(18 + j24)(12 - j4)}{160} = 1.950 + j1.350\,\text{k}\Omega
+</span></p>
+<p><span class="math display">
+\mathbf{Z}_C' = \frac{\mathbf{Z}_{AC} \cdot \mathbf{Z}_{CD}}{\mathbf{Z}_\Sigma} = \frac{(3 + j4)\cdot 3}{12 + j4} = \frac{9 + j12}{12 + j4} = \frac{(9 + j12)(12 - j4)}{160} = 0.975 + j0.675\,\text{k}\Omega
+</span></p>
+<p><span class="math display">
+\mathbf{Z}_D' = \frac{\mathbf{Z}_{AD} \cdot \mathbf{Z}_{CD}}{\mathbf{Z}_\Sigma} = \frac{6 \cdot 3}{12 + j4} = \frac{18}{12 + j4} = \frac{18(12 - j4)}{160} = 1.350 - j0.450\,\text{k}\Omega
+</span></p>
+<p>Una vez sustituido el delta por la estrella, la red se reduce a dos ramas en serie que se combinan en paralelo hacia el borne <span class="math inline">B</span>:</p>
+<ul>
+<li><strong>Rama superior (<span class="math inline">N \to C \to B</span>):</strong> <span class="math display">\mathbf{Z}_{NCB} = \mathbf{Z}_C' + \mathbf{Z}_{CB} = (0.975 + j0.675) + 4 = 4.975 + j0.675\,\text{k}\Omega</span></li>
+<li><strong>Rama inferior (<span class="math inline">N \to D \to B</span>):</strong> <span class="math display">\mathbf{Z}_{NDB} = \mathbf{Z}_D' + \mathbf{Z}_{DB} = (1.350 - j0.450) + (2 - j2) = 3.350 - j2.450\,\text{k}\Omega</span></li>
+</ul>
+<p>Combinación en paralelo de ambas trayectorias:</p>
+<p><span class="math display">
+\mathbf{Z}_{par} = \mathbf{Z}_{NCB} \parallel \mathbf{Z}_{NDB} = \frac{(4.975 + j0.675)(3.350 - j2.450)}{(4.975 + j0.675) + (3.350 - j2.450)} \approx 2.348 - j0.692\,\text{k}\Omega
+</span></p>
+<p>Impedancia total entre bornes <span class="math inline">A</span> y <span class="math inline">B</span> (sumando en serie <span class="math inline">\mathbf{Z}_A'</span>):</p>
+<p><span class="math display">
+\mathbf{Z}_{eq} = \mathbf{Z}_A' + \mathbf{Z}_{par} = (1.950 + j1.350) + (2.348 - j0.692) = \mathbf{4.298 + j0.658\,\text{k}\Omega}
+</span></p>
+<p>En forma polar:</p>
+<p><span class="math display">
+\boxed{\mathbf{Z}_{eq} \approx 4.348\,\angle\,8.71^\circ\,\text{k}\Omega}
+</span></p>
+<p><strong>Resultado.</strong> La impedancia equivalente entre los bornes de entrada del puente es <span class="math inline">\mathbf{Z}_{AB} \approx 4.298 + j0.658\,\text{k}\Omega</span> (<span class="math inline">\approx 4.348\,\angle\,8.71^\circ\,\text{k}\Omega</span>).</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Respuesta
+<span class="screen-reader-only">Note</span>💡 Interpretación de Resultados y Comparación con el Solver
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div id="callout-13" class="callout-13-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
-<p>Convertir el delta <span class="math inline">A</span>�<span class="math inline">C</span>�<span class="math inline">D</span> a estrella. Con <span class="math inline">\mathbf{Z}_\Sigma = (3+j4) + 6 + 3 = 12 + j4\,\text{k}\Omega</span>:</p>
-<p><span class="math display">
-\mathbf{Z}_A' = \frac{6\cdot 3}{12+j4} \approx 1.35 - j0.45\,\text{k}\Omega
-</span> <span class="math display">
-\mathbf{Z}_C' = \frac{(3+j4)\cdot 3}{12+j4} \approx 1.05 + j0.65\,\text{k}\Omega
-</span> <span class="math display">
-\mathbf{Z}_D' = \frac{6(3+j4)}{12+j4} \approx 2.10 + j1.30\,\text{k}\Omega
-</span></p>
-<p>Reduciendo:</p>
 <ul>
-<li>Rama <span class="math inline">N\!-\!C\!-\!B</span>: <span class="math inline">\mathbf{Z}_C' + \mathbf{Z}_{CB} \approx 5.05 + j0.65\,\text{k}\Omega</span></li>
-<li>Rama <span class="math inline">N\!-\!D\!-\!B</span>: <span class="math inline">\mathbf{Z}_D' + \mathbf{Z}_{DB} \approx 4.10 - j0.70\,\text{k}\Omega</span></li>
+<li><strong>Desbalance del puente:</strong> Debido a que los productos cruzados <span class="math inline">\mathbf{Z}_{AC}\mathbf{Z}_{DB} \neq \mathbf{Z}_{AD}\mathbf{Z}_{CB}</span>, el puente está desbalanceado y por la rama transversal central <span class="math inline">C-D</span> circula corriente neta.</li>
+<li><strong>Resolución mediante el Solver Nodal:</strong> El solver formula la matriz de admitancias nodales <span class="math inline">[\mathbf{Y}][\mathbf{V}] = [\mathbf{I}]</span> de la topología completa sin necesidad de simplificaciones topológicas manuales.</li>
+<li><strong>Coincidencia matemática:</strong>
+<ul>
+<li>Al ingresar el netlist completo de 5 elementos en el solver entre los terminales <strong>1 (<span class="math inline">A</span>)</strong> y <strong>2 (<span class="math inline">B</span>)</strong>, el solver reporta exactamente <span class="math inline">Z_T \approx 4.298 + j0.658\,\text{k}\Omega</span>, ratificando la exactitud de la transformación <span class="math inline">\Delta \to \text{Y}</span>.</li>
+</ul></li>
 </ul>
-<p>En paralelo:</p>
-<p><span class="math display">
-\mathbf{Z}_{par} \approx 2.24 - j0.02\,\text{k}\Omega
-</span></p>
-<p>En serie con <span class="math inline">\mathbf{Z}_A'</span>:</p>
-<p><span class="math display">
-\boxed{\mathbf{Z}_{eq} \approx 3.59 - j0.47\,\text{k}\Omega \approx 3.62\,\angle\,{-7.5^\circ}\,\text{k}\Omega}
-</span></p>
-<p><strong>Netlist:</strong></p>
-<pre class="text"><code>1 c 3 4
+</div>
+</div>
+</div>
+<p><strong>Netlist para verificar en el solver:</strong></p>
+<pre class="text"><code># Terminal A = 1, Terminal B = 2, Nodos internos = c, d
+1 c 3 4
 1 d 6 0
 c 2 4 0
 d 2 2 -2
 c d 3 0</code></pre>
-</div>
-</div>
-</div>
+<p><em>(Configurar <strong>Terminal A = 1</strong> y <strong>Terminal B = 2</strong> para comprobar <span class="math inline">Z_T \approx 4.298 + j0.658\,\text{k}\Omega</span> | Módulo <span class="math inline">\approx 4.35\,\text{k}\Omega</span>)</em>.</p>
 <hr>
 </section>
-<section id="ejercicio-p6-aplicacin-adaptacin-de-carga-trifsica" class="level2" data-number="14.6">
-<h2 data-number="14.6" class="anchored" data-anchor-id="ejercicio-p6-aplicacin-adaptacin-de-carga-trifsica"><span class="header-section-number">14.6</span> Ejercicio P6 � Aplicaci�n: adaptaci�n de carga trif�sica</h2>
-<p><strong>Enunciado.</strong> Una carga trif�sica equilibrada en delta tiene impedancia por fase <span class="math inline">\mathbf{Z}_\Delta = 30 + j40\,\Omega</span>. Se desea representarla como una estrella equivalente para conectarla a una red con neutro accesible. Determinar:</p>
+<section id="ejercicio-6-aplicación-transformación-de-carga-trifásica-y-cálculo-de-línea" class="level2" data-number="14.6">
+<h2 data-number="14.6" class="anchored" data-anchor-id="ejercicio-6-aplicación-transformación-de-carga-trifásica-y-cálculo-de-línea"><span class="header-section-number">14.6</span> Ejercicio 6 — Aplicación: Transformación de carga trifásica y cálculo de línea</h2>
+<p><strong>Enunciado.</strong> Una carga trifásica equilibrada conectada en delta presenta una impedancia por fase de <span class="math inline">\mathbf{Z}_\Delta = 30 + j40\,\Omega</span>. Se desea representarla como una estrella equivalente (<span class="math inline">\text{Y}</span>) para conectarla a una red trifásica equilibrada de <span class="math inline">V_L = 380\,\text{V}</span> (tensión de línea eficaz) a <span class="math inline">50\,\text{Hz}</span>.</p>
+<p>Determinar:</p>
 <ol type="a">
-<li>la impedancia de fase de la estrella equivalente;</li>
-<li>la corriente de l�nea si se conecta a una red trif�sica de <span class="math inline">380\,\text{V}</span> (l�nea-l�nea) a <span class="math inline">50\,\text{Hz}</span>.</li>
+<li>La impedancia por fase de la estrella equivalente (<span class="math inline">\mathbf{Z}_Y</span>).</li>
+<li>La tensión de fase (<span class="math inline">V_F</span>), la corriente de línea (<span class="math inline">I_L</span>) y el factor de potencia (<span class="math inline">\text{FP}</span>) de la carga.</li>
 </ol>
+<p><strong>Solución.</strong></p>
+<p><strong>(a) Impedancia de fase equivalente en estrella:</strong> Al ser una red trifásica equilibrada, aplicamos la relación simplificada <span class="math inline">\mathbf{Z}_Y = \mathbf{Z}_\Delta / 3</span>:</p>
+<p><span class="math display">
+\mathbf{Z}_Y = \frac{\mathbf{Z}_\Delta}{3} = \frac{30 + j40}{3} = 10 + j13.333\,\Omega
+</span></p>
+<p>En forma polar:</p>
+<p><span class="math display">
+|\mathbf{Z}_Y| = \sqrt{10^2 + (13.333)^2} \approx 16.667\,\Omega, \qquad \theta = \arctan\left(\frac{13.333}{10}\right) \approx 53.13^\circ
+</span></p>
+<p><span class="math display">
+\mathbf{Z}_Y \approx 16.667\,\angle\,53.13^\circ\,\Omega
+</span></p>
+<p><strong>(b) Tensión de fase, corriente de línea y factor de potencia:</strong> Para un sistema conectado en estrella con tensión de línea <span class="math inline">V_L = 380\,\text{V}</span>:</p>
+<p><span class="math display">
+V_F = \frac{V_L}{\sqrt{3}} = \frac{380}{\sqrt{3}} \approx 219.39\,\text{V}
+</span></p>
+<p>En la configuración en estrella, la corriente de línea es idéntica a la corriente de fase (<span class="math inline">I_L = I_F</span>):</p>
+<p><span class="math display">
+I_L = \frac{V_F}{|\mathbf{Z}_Y|} = \frac{219.39\,\text{V}}{16.667\,\Omega} \approx \mathbf{13.16\,\text{A}}
+</span></p>
+<p>El factor de potencia de la carga:</p>
+<p><span class="math display">
+\text{FP} = \cos\theta = \frac{R_Y}{|\mathbf{Z}_Y|} = \frac{10}{16.667} = \mathbf{0.60} \quad (\text{inductivo})
+</span></p>
+<p>Potencia activa total trifásica consumida:</p>
+<p><span class="math display">
+P_T = \sqrt{3} \cdot V_L \cdot I_L \cdot \cos\varphi = \sqrt{3} \cdot 380 \cdot 13.163 \cdot 0.60 \approx \mathbf{5198\,\text{W}} \approx 5.20\,\text{kW}
+</span></p>
+<p><strong>Resultado.</strong> Estrella equivalente equilibrada con ramas <span class="math inline">\mathbf{Z}_Y = 10 + j13.333\,\Omega</span>, corriente de línea <span class="math inline">I_L \approx 13.16\,\text{A}</span> y factor de potencia <span class="math inline">0.60</span> inductivo.</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Respuesta
+<span class="screen-reader-only">Note</span>💡 Interpretación de Resultados y Comparación con el Solver
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div id="callout-14" class="callout-14-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
-<p><strong>(a)</strong> Para red equilibrada:</p>
-<p><span class="math display">
-\mathbf{Z}_Y = \frac{\mathbf{Z}_\Delta}{3} = \frac{30+j40}{3} = 10 + j13.33\,\Omega
-</span></p>
-<p><strong>(b)</strong> En conexi�n Y, la tensi�n de fase es <span class="math inline">V_F = V_L/\sqrt{3} = 380/\sqrt{3} \approx 219.4\,\text{V}</span>. La corriente de l�nea es:</p>
-<p><span class="math display">
-I_L = \frac{V_F}{|\mathbf{Z}_Y|} = \frac{219.4}{\sqrt{10^2 + 13.33^2}} \approx \frac{219.4}{16.66} \approx 13.17\,\text{A}
-</span></p>
-<p>El factor de potencia es <span class="math inline">\cos\varphi = 10/16.66 \approx 0.60</span> (inductivo).</p>
-<p><strong>Netlist (por fase):</strong></p>
-<pre class="text"><code>1 n 10 13.33</code></pre>
+<p>¿Qué mide el solver si ingresamos la carga trifásica en delta completa entre dos terminales de fase (por ejemplo, entre fase 1 y fase 2)?</p>
+<ul>
+<li><strong>Impedancia Terminal entre dos fases (<span class="math inline">Z_T(1,2)</span>):</strong>
+<ul>
+<li><strong>Visto desde la Estrella equivalente:</strong> La corriente entra por la fase 1 hacia el neutro central <span class="math inline">N</span> y sale por la fase 2; ambas ramas <span class="math inline">\mathbf{Z}_Y</span> quedan en <strong>serie</strong>: <span class="math display">Z_T(1,2) = \mathbf{Z}_1 + \mathbf{Z}_2 = 2 \cdot \mathbf{Z}_Y = 2 \cdot (10 + j13.333) = \mathbf{20 + j26.67\,\Omega} \approx 33.33\,\angle\,53.13^\circ\,\Omega</span></li>
+<li><strong>Visto desde el Delta original:</strong> La rama directa entre 1 y 2 (<span class="math inline">30 + j40\,\Omega</span>) queda en <strong>paralelo</strong> con las otras dos ramas en serie (<span class="math inline">60 + j80\,\Omega</span>): <span class="math display">Z_T(1,2) = \frac{\mathbf{Z}_\Delta \cdot 2\mathbf{Z}_\Delta}{3\mathbf{Z}_\Delta} = \frac{2}{3}\mathbf{Z}_\Delta = \frac{2}{3}(30 + j40) = \mathbf{20 + j26.67\,\Omega}</span></li>
+</ul></li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>Conclusión clave:</strong> La transformación <span class="math inline">\Delta \to \text{Y}</span> preserva la potencia total activa y reactiva consumida por la instalación trifásica sin alterar las magnitudes de línea.</p>
+</blockquote>
 </div>
 </div>
 </div>
+<p><strong>Netlist para verificar en el solver:</strong></p>
+<pre class="text"><code># Carga trifásica completa en Delta (Fases 1, 2, 3)
+1 2 30 40
+2 3 30 40
+1 3 30 40</code></pre>
+<p><em>(Configurar <strong>Terminal A = 1</strong> y <strong>Terminal B = 2</strong> para comprobar <span class="math inline">Z_T = 20 + j26.67\,\Omega</span> | Módulo <span class="math inline">\approx 33.33\,\Omega</span>)</em>.</p>
+<p>O alternativamente, verificar <strong>una sola fase</strong> de la estrella equivalente:</p>
+<pre class="text"><code># Rama monofásica de fase a neutro
+1 n 10 13.33</code></pre>
+<p><em>(Configurar <strong>Terminal A = 1</strong> y <strong>Terminal B = n</strong> para comprobar <span class="math inline">Z_Y = 10 + j13.33\,\Omega</span> | Módulo <span class="math inline">\approx 16.67\,\Omega</span>)</em>.</p>
 <hr>
 </section>
 </section>
@@ -2968,22 +3067,14 @@ Este solver calcula y retorna la <b>Impedancia Equivalente Total (<i>Z</i><sub>T
 
 <div style="flex:1 1 500px; display:flex; flex-wrap:wrap; gap:0.75rem;">
   <div style="flex:1 1 300px; min-width:270px;">
-    <label class="small fw-bold">🔌 Esquema con componentes (R, L, C):</label>
-    <div class="border rounded-3 bg-white shadow-sm p-1">
-      <svg id="svgComponentes" width="100%" height="380" viewbox="0 0 560 430" preserveaspectratio="xMidYMid meet" style="background:#ffffff; border-radius:6px;"></svg>
+    <div class="border rounded-3 bg-white shadow-sm p-2 w-100">
+      <svg id="svgComponentes" width="100%" height="auto" viewbox="0 0 560 410" preserveaspectratio="xMidYMid meet" style="display:block; background:#ffffff; font-family:'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;"></svg>
     </div>
-    <p class="small text-muted mt-1 mb-0">
-      <b>R</b> = zigzag · <b>L</b> = bobina · <b>C</b> = placas paralelas.
-    </p>
   </div>
   <div style="flex:1 1 300px; min-width:270px;">
-    <label class="small fw-bold">📐 Esquema con impedancias equivalentes:</label>
-    <div class="border rounded-3 bg-white shadow-sm p-1">
-      <svg id="svgImpedancias" width="100%" height="380" viewbox="0 0 560 430" preserveaspectratio="xMidYMid meet" style="background:#ffffff; border-radius:6px;"></svg>
+    <div class="border rounded-3 bg-white shadow-sm p-2 w-100">
+      <svg id="svgImpedancias" width="100%" height="auto" viewbox="0 0 560 410" preserveaspectratio="xMidYMid meet" style="display:block; background:#ffffff; font-family:'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;"></svg>
     </div>
-    <p class="small text-muted mt-1 mb-0">
-      Cada rama muestra su Z = R + jX en forma compacta.
-    </p>
   </div>
 </div>
 </div>
@@ -3122,23 +3213,25 @@ function calcularPosiciones(nodos, elementos, W, H) {
   const pos = {};
 
   if (nSet.size === 3 && nSet.has('1') && nSet.has('2') && nSet.has('3')) {
-    pos['2'] = { x: W * 0.50, y: 50 };
-    pos['1'] = { x: W * 0.14, y: 335 };
-    pos['3'] = { x: W * 0.86, y: 335 };
+    pos['2'] = { x: W * 0.50, y: 70 };
+    pos['1'] = { x: W * 0.16, y: 325 };
+    pos['3'] = { x: W * 0.84, y: 325 };
     return pos;
   }
   if (nSet.size === 4 && nSet.has('1') && nSet.has('2') && nSet.has('3')) {
     const neutro = nodos.find(n => !['1', '2', '3'].includes(String(n)));
-    pos['2'] = { x: W * 0.50, y: 50 };
-    pos['1'] = { x: W * 0.14, y: 335 };
-    pos['3'] = { x: W * 0.86, y: 335 };
+    pos['2'] = { x: W * 0.50, y: 70 };
+    pos['1'] = { x: W * 0.16, y: 325 };
+    pos['3'] = { x: W * 0.84, y: 325 };
     pos[neutro] = { x: W * 0.50, y: 240 };
     return pos;
   }
   nodos.forEach((n, i) => {
     const ang = (2 * Math.PI * i) / nodos.length - Math.PI / 2;
-    pos[n] = { x: W / 2 + Math.min(W, H) * 0.40 * Math.cos(ang),
-               y: H / 2 + Math.min(W, H) * 0.40 * Math.sin(ang) };
+    pos[n] = {
+      x: W / 2 + Math.min(W, H) * 0.36 * Math.cos(ang),
+      y: H / 2 + Math.min(W, H) * 0.36 * Math.sin(ang) + 10
+    };
   });
   return pos;
 }
@@ -3147,7 +3240,7 @@ function calcularPosiciones(nodos, elementos, W, H) {
    6) Símbolos SVG de componentes (R, L, C)
    ===================================================================== */
 function svgResistor(cx, cy, deg, largo) {
-  const h = 7;
+  const h = 6.5;
   const n = 6;
   const seg = largo / n;
   const start = -largo / 2;
@@ -3159,7 +3252,7 @@ function svgResistor(cx, cy, deg, largo) {
   }
   pts.push(`${(largo / 2).toFixed(1)},0`);
   return `<g transform="translate(${cx.toFixed(1)},${cy.toFixed(1)}) rotate(${deg.toFixed(1)})">
-    <polyline points="${pts.join(' ')}" fill="none" stroke="#0f172a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="${pts.join(' ')}" fill="none" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
   </g>`;
 }
 
@@ -3171,7 +3264,7 @@ function svgInductor(cx, cy, deg, largo) {
     d += ` a ${r.toFixed(1)} ${r.toFixed(1)} 0 0 1 ${(2 * r).toFixed(1)} 0`;
   }
   return `<g transform="translate(${cx.toFixed(1)},${cy.toFixed(1)}) rotate(${deg.toFixed(1)})">
-    <path d="${d}" fill="none" stroke="#0f172a" stroke-width="2.2" stroke-linecap="round"/>
+    <path d="${d}" fill="none" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
   </g>`;
 }
 
@@ -3180,21 +3273,20 @@ function svgCapacitor(cx, cy, deg, largo) {
   const plateH = 16;
   const lead = Math.max(4, (largo / 2) - gap);
   return `<g transform="translate(${cx.toFixed(1)},${cy.toFixed(1)}) rotate(${deg.toFixed(1)})">
-    <line x1="${-lead.toFixed(1)}" y1="0" x2="${-gap.toFixed(1)}" y2="0" stroke="#0f172a" stroke-width="2.2"/>
-    <line x1="${gap.toFixed(1)}" y1="0" x2="${lead.toFixed(1)}" y2="0" stroke="#0f172a" stroke-width="2.2"/>
-    <line x1="${-gap.toFixed(1)}" y1="${(-plateH / 2).toFixed(1)}" x2="${-gap.toFixed(1)}" y2="${(plateH / 2).toFixed(1)}" stroke="#0f172a" stroke-width="2.6" stroke-linecap="round"/>
-    <line x1="${gap.toFixed(1)}" y1="${(-plateH / 2).toFixed(1)}" x2="${gap.toFixed(1)}" y2="${(plateH / 2).toFixed(1)}" stroke="#0f172a" stroke-width="2.6" stroke-linecap="round"/>
+    <line x1="${-lead.toFixed(1)}" y1="0" x2="${-gap.toFixed(1)}" y2="0" stroke="black" stroke-width="1.5"/>
+    <line x1="${gap.toFixed(1)}" y1="0" x2="${lead.toFixed(1)}" y2="0" stroke="black" stroke-width="1.5"/>
+    <line x1="${-gap.toFixed(1)}" y1="${(-plateH / 2).toFixed(1)}" x2="${-gap.toFixed(1)}" y2="${(plateH / 2).toFixed(1)}" stroke="black" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="${gap.toFixed(1)}" y1="${(-plateH / 2).toFixed(1)}" x2="${gap.toFixed(1)}" y2="${(plateH / 2).toFixed(1)}" stroke="black" stroke-width="1.8" stroke-linecap="round"/>
   </g>`;
 }
 
 function labelBox(x, y, texto) {
-  const clean = texto.replace(/&[^;]+;/g, 'x');
-  const w = Math.max(24, clean.length * 6.2 + 8);
+  const clean = texto.replace(/<[^>]+>/g, '').replace(/&[^;]+;/g, 'x');
+  const w = Math.max(26, clean.length * 6.5 + 8);
   return `<g transform="translate(${x.toFixed(1)},${y.toFixed(1)})">
-    <rect x="${(-w / 2).toFixed(1)}" y="-8.5" width="${w.toFixed(1)}" height="17" rx="3.5"
-          fill="#ffffff" stroke="#94a3b8" stroke-width="0.85" filter="drop-shadow(0 1px 2px rgba(0,0,0,0.06))"/>
-    <text x="0" y="3.5" font-size="9" font-family="'JetBrains Mono', monospace"
-          font-weight="700" fill="#0f172a" text-anchor="middle">${texto}</text>
+    <rect x="${(-w / 2).toFixed(1)}" y="-8.5" width="${w.toFixed(1)}" height="17" rx="3"
+          fill="#ffffff" stroke="#cbd5e1" stroke-width="0.8"/>
+    <text x="0" y="3.5" font-size="11" font-weight="600" fill="black" text-anchor="middle">${texto}</text>
   </g>`;
 }
 
@@ -3209,123 +3301,116 @@ function dibujarRamaSimbolos(p1, p2, Z, escala, labelSide, normalVec) {
   const L = Math.hypot(dx, dy) || 1;
   const ux = dx / L, uy = dy / L;
   
-  // Usar el vector normal exterior garantizado
   const nx = (normalVec && isFinite(normalVec.x)) ? normalVec.x : -uy;
   const ny = (normalVec && isFinite(normalVec.y)) ? normalVec.y : ux;
 
   let deg = Math.atan2(dy, dx) * 180 / Math.PI;
-  if (deg > 90 || deg < -90) deg += 180;
+  if (deg > 90) deg -= 180;
+  if (deg < -90) deg += 180;
 
   const R = Z.r, X = Z.i;
-  const tieneR = R !== 0, tieneX = X !== 0;
+  const tieneR = Math.abs(R) > 1e-6, tieneX = Math.abs(X) > 1e-6;
 
   if (!tieneR && !tieneX) {
-    return `<line x1="${p1.x.toFixed(1)}" y1="${p1.y.toFixed(1)}" x2="${p2.x.toFixed(1)}" y2="${p2.y.toFixed(1)}" stroke="#0f172a" stroke-width="2.2" stroke-linecap="round"/>`;
+    return `<line x1="${p1.x.toFixed(1)}" y1="${p1.y.toFixed(1)}" x2="${p2.x.toFixed(1)}" y2="${p2.y.toFixed(1)}" stroke="black" stroke-width="1.5" stroke-linecap="round"/>`;
   }
 
   const rLen = tieneR ? Math.min(38 * escala, L * 0.35) : 0;
-  const xLen = tieneX ? (Math.abs(X) > 0 && X < 0 ? Math.min(28 * escala, L * 0.30) : Math.min(34 * escala, L * 0.34)) : 0;
+  const xLen = tieneX ? (X < 0 ? Math.min(26 * escala, L * 0.28) : Math.min(34 * escala, L * 0.34)) : 0;
   const gapInter = (tieneR && tieneX) ? Math.max(16, 22 * escala) : 0;
   const totalSym = rLen + xLen + gapInter;
   const startD = Math.max(4, (L - totalSym) / 2);
 
   let html = '';
   // Cable inicial hasta el primer símbolo
-  html += `<line x1="${p1.x.toFixed(1)}" y1="${p1.y.toFixed(1)}" x2="${(p1.x + ux * startD).toFixed(1)}" y2="${(p1.y + uy * startD).toFixed(1)}" stroke="#0f172a" stroke-width="2.2" stroke-linecap="round"/>`;
+  html += `<line x1="${p1.x.toFixed(1)}" y1="${p1.y.toFixed(1)}" x2="${(p1.x + ux * startD).toFixed(1)}" y2="${(p1.y + uy * startD).toFixed(1)}" stroke="black" stroke-width="1.5" stroke-linecap="round"/>`;
 
   const nlx = nx * labelSide, nly = ny * labelSide;
-  const lblOffset = Math.max(15, 17 * escala);
+  const lblOffset = Math.max(16, 18 * escala);
 
   let cursor = startD;
   if (tieneR) {
     const cx = p1.x + ux * (cursor + rLen / 2);
     const cy = p1.y + uy * (cursor + rLen / 2);
     html += svgResistor(cx, cy, deg, rLen);
-    html += labelBox(cx + nlx * lblOffset, cy + nly * lblOffset, `${Number(R.toFixed(2))}&Omega;`);
+    const rVal = Number(R.toFixed(2));
+    html += labelBox(cx + nlx * lblOffset, cy + nly * lblOffset, `<tspan font-style="italic">R</tspan> = ${rVal}&thinsp;&Omega;`);
     cursor += rLen;
   }
   if (tieneR && tieneX) {
     // Tramo de cable intermedio entre R y X
-    html += `<line x1="${(p1.x + ux * cursor).toFixed(1)}" y1="${(p1.y + uy * cursor).toFixed(1)}" x2="${(p1.x + ux * (cursor + gapInter)).toFixed(1)}" y2="${(p1.y + uy * (cursor + gapInter)).toFixed(1)}" stroke="#0f172a" stroke-width="2.2" stroke-linecap="round"/>`;
+    html += `<line x1="${(p1.x + ux * cursor).toFixed(1)}" y1="${(p1.y + uy * cursor).toFixed(1)}" x2="${(p1.x + ux * (cursor + gapInter)).toFixed(1)}" y2="${(p1.y + uy * (cursor + gapInter)).toFixed(1)}" stroke="black" stroke-width="1.5" stroke-linecap="round"/>`;
     cursor += gapInter;
   }
   if (tieneX) {
     const cx = p1.x + ux * (cursor + xLen / 2);
     const cy = p1.y + uy * (cursor + xLen / 2);
-    if (X > 0) html += svgInductor(cx, cy, deg, xLen);
-    else html += svgCapacitor(cx, cy, deg, xLen);
-    const etiq = X > 0
-      ? `j${Number(X.toFixed(2))}&Omega;`
-      : `&minus;j${Math.abs(Number(X.toFixed(2)))}&Omega;`;
-    html += labelBox(cx + nlx * lblOffset, cy + nly * lblOffset, etiq);
+    if (X > 0) {
+      html += svgInductor(cx, cy, deg, xLen);
+      const xVal = Number(X.toFixed(2));
+      html += labelBox(cx + nlx * lblOffset, cy + nly * lblOffset, `<tspan font-style="italic">X</tspan><tspan baseline-shift="sub" font-size="0.75em">L</tspan> = ${xVal}&thinsp;&Omega;`);
+    } else {
+      html += svgCapacitor(cx, cy, deg, xLen);
+      const xVal = Math.abs(Number(X.toFixed(2)));
+      html += labelBox(cx + nlx * lblOffset, cy + nly * lblOffset, `<tspan font-style="italic">X</tspan><tspan baseline-shift="sub" font-size="0.75em">C</tspan> = ${xVal}&thinsp;&Omega;`);
+    }
     cursor += xLen;
   }
 
   // Cable final desde el último símbolo hasta p2
-  html += `<line x1="${(p1.x + ux * cursor).toFixed(1)}" y1="${(p1.y + uy * cursor).toFixed(1)}" x2="${p2.x.toFixed(1)}" y2="${p2.y.toFixed(1)}" stroke="#0f172a" stroke-width="2.2" stroke-linecap="round"/>`;
+  html += `<line x1="${(p1.x + ux * cursor).toFixed(1)}" y1="${(p1.y + uy * cursor).toFixed(1)}" x2="${p2.x.toFixed(1)}" y2="${p2.y.toFixed(1)}" stroke="black" stroke-width="1.5" stroke-linecap="round"/>`;
 
   return html;
 }
 
 /* =====================================================================
-   8) Etiquetas de impedancia
+   8) Formato y bloque de impedancia (estilo _genera_delta / IEEE)
    ===================================================================== */
-function etiquetaRama(Z) {
-  const r = Number(Z.r.toFixed(2));
-  const x = Number(Z.i.toFixed(2));
-  if (r !== 0 && x !== 0) {
-    const tag = x > 0 ? 'X_L' : 'X_C';
-    return `R: ${r}&Omega;  ${tag}: ${Math.abs(x)}&Omega;`;
+function fmtZbox(z) {
+  const r = Math.abs(z.r) < 1e-6 ? 0 : Number(z.r.toFixed(2));
+  const i = Math.abs(z.i) < 1e-6 ? 0 : Number(z.i.toFixed(2));
+  if (r === 0 && i === 0) return '0&thinsp;&Omega;';
+  if (i === 0) return `${r}&thinsp;&Omega;`;
+  if (r === 0) {
+    return i > 0 ? `j${i}&thinsp;&Omega;` : `&minus;j${Math.abs(i)}&thinsp;&Omega;`;
   }
-  if (r !== 0) return `R: ${r}&Omega;`;
-  if (x !== 0) return `${x > 0 ? 'X_L' : 'X_C'}: ${Math.abs(x)}&Omega;`;
-  return `0&Omega;`;
+  const s = i > 0 ? '+' : '&minus;';
+  return `${r} ${s} j${Math.abs(i)}&thinsp;&Omega;`;
 }
 
-function etiquetaRamaCorta(Z) {
-  const r = Number(Z.r.toFixed(1));
-  const x = Number(Z.i.toFixed(1));
-  if (r === 0 && x === 0) return '0&Omega;';
-  if (r === 0) return `j${x}&Omega;`;
-  if (x === 0) return `${r}&Omega;`;
-  return `${r}${x >= 0 ? '+' : '−'}j${Math.abs(x)}&Omega;`;
-}
-
-/* =====================================================================
-   9) Rama con etiqueta de impedancia (vista simbólica)
-   ===================================================================== */
-function dibujarRamaImpedancia(p1, p2, Z, compacta, labelSide, normalVec) {
-  if (labelSide === undefined || labelSide === 0) labelSide = 1;
-
+function dibujarRamaImpedancia(p1, p2, Z, branchLabel) {
   const dx = p2.x - p1.x, dy = p2.y - p1.y;
-  const L = Math.hypot(dx, dy) || 1;
-  const ux = dx / L, uy = dy / L;
-  const nx = (normalVec && isFinite(normalVec.x)) ? normalVec.x : -uy;
-  const ny = (normalVec && isFinite(normalVec.y)) ? normalVec.y : ux;
   const mx = (p1.x + p2.x) / 2, my = (p1.y + p2.y) / 2;
-
   let deg = Math.atan2(dy, dx) * 180 / Math.PI;
-  if (deg > 90 || deg < -90) deg += 180;
+  if (deg > 90) deg -= 180;
+  if (deg < -90) deg += 180;
 
-  const label = compacta ? etiquetaRamaCorta(Z) : etiquetaRama(Z);
-  const labelLen = Math.min(label.replace(/&[^;]+;/g, 'x').length, compacta ? 14 : 22);
-  const fs = compacta ? 10 : 11;
+  if (Math.abs(Z.r) < 1e-6 && Math.abs(Z.i) < 1e-6) {
+    return `<line x1="${p1.x.toFixed(1)}" y1="${p1.y.toFixed(1)}" x2="${p2.x.toFixed(1)}" y2="${p2.y.toFixed(1)}" stroke="black" stroke-width="1.5" stroke-linecap="round"/>`;
+  }
 
-  const lx = mx + nx * labelSide * 16;
-  const ly = my + ny * labelSide * 16;
+  const zText = fmtZbox(Z);
+  const fullText = branchLabel
+    ? `Z<tspan baseline-shift="sub" font-size="0.75em">${branchLabel}</tspan>: ${zText}`
+    : zText;
+  const cleanLen = (branchLabel ? 3 + branchLabel.length : 0) + zText.replace(/&[^;]+;/g, 'x').replace(/<[^>]+>/g, '').length;
+  const w = Math.max(56, cleanLen * 6.8 + 14);
+  const h = 24;
 
-  return `<line x1="${p1.x.toFixed(1)}" y1="${p1.y.toFixed(1)}" x2="${p2.x.toFixed(1)}" y2="${p2.y.toFixed(1)}" stroke="#0f172a" stroke-width="2.2" stroke-linecap="round"/>
-    <g transform="translate(${lx.toFixed(1)}, ${ly.toFixed(1)}) rotate(${deg.toFixed(1)})">
-      <rect x="${(-labelLen * 3.4 - 5).toFixed(1)}" y="-9" width="${(labelLen * 6.8 + 10).toFixed(1)}" height="18" rx="4" fill="white" stroke="#94a3b8" stroke-width="1" filter="drop-shadow(0 1px 2px rgba(0,0,0,0.06))"/>
-      <text x="0" y="3.5" font-size="${fs}" font-family="'JetBrains Mono', monospace" font-weight="700" fill="#0f172a" text-anchor="middle">${label}</text>
-    </g>`;
+  return `
+    <line x1="${p1.x.toFixed(1)}" y1="${p1.y.toFixed(1)}" x2="${p2.x.toFixed(1)}" y2="${p2.y.toFixed(1)}" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
+    <g transform="translate(${mx.toFixed(1)}, ${my.toFixed(1)}) rotate(${deg.toFixed(1)})">
+      <rect x="${(-w / 2).toFixed(1)}" y="${(-h / 2).toFixed(1)}" width="${w.toFixed(1)}" height="${h}" fill="white" stroke="black" stroke-width="1.5"/>
+      <text x="0" y="4.5" font-size="12" font-style="italic" fill="black" text-anchor="middle">${fullText}</text>
+    </g>
+  `;
 }
 
 /* =====================================================================
-   10) Dibujo completo con derivación ortogonal (90°) y nodos de unión
+   9) Dibujo completo con derivación ortogonal (90°) y formato editorial
    ===================================================================== */
 function dibujarCircuito(elementos, nodos, termA, termB, flotantes) {
-  const W = 560, H = 430;
+  const W = 560, H = 410;
   const svgComp = document.getElementById('svgComponentes');
   const svgImp = document.getElementById('svgImpedancias');
   if (svgComp) svgComp.setAttribute('viewBox', `0 0 ${W} ${H}`);
@@ -3346,6 +3431,19 @@ function dibujarCircuito(elementos, nodos, termA, termB, flotantes) {
   });
   const C_x = nTotal ? cxSum / nTotal : W / 2;
   const C_y = nTotal ? cySum / nTotal : H / 2;
+
+  // Encabezados editoriales tipo libro
+  const headerComp = `<text x="${W / 2}" y="26" font-size="15" font-weight="bold" fill="black" text-anchor="middle">Esquema con componentes (R, L, C)</text>`;
+  const headerImp = `<text x="${W / 2}" y="26" font-size="15" font-weight="bold" fill="black" text-anchor="middle">Esquema con impedancias equivalentes</text>`;
+  htmlComp += headerComp;
+  htmlImp += headerImp;
+
+  // Polígono sombreado interior para red Delta (consistencia con _genera_delta.md)
+  if (pos['1'] && pos['2'] && pos['3']) {
+    const bgDelta = `<polygon points="${pos['2'].x.toFixed(1)},${pos['2'].y.toFixed(1)} ${pos['3'].x.toFixed(1)},${pos['3'].y.toFixed(1)} ${pos['1'].x.toFixed(1)},${pos['1'].y.toFixed(1)}" fill="#3b82f6" opacity="0.10" stroke="none"/>`;
+    htmlComp += bgDelta;
+    htmlImp += bgDelta;
+  }
 
   Object.entries(grupos).forEach(([key, els]) => {
     const [n1, n2] = key.split('||');
@@ -3373,10 +3471,10 @@ function dibujarCircuito(elementos, nodos, termA, termB, flotantes) {
       // Rama simple directa sobre el eje
       const escala = Math.min(1.0, Math.max(0.60, len / 220));
       htmlComp += dibujarRamaSimbolos(p1, p2, els[0].Z, escala, 1, normVec);
-      htmlImp += dibujarRamaImpedancia(p1, p2, els[0].Z, false, 1, normVec);
+      htmlImp += dibujarRamaImpedancia(p1, p2, els[0].Z, `${n1}${n2}`);
     } else {
       // Línea recta central directa entre los dos nodos (troncal continua)
-      const lineaCentral = `<line x1="${p1.x.toFixed(1)}" y1="${p1.y.toFixed(1)}" x2="${p2.x.toFixed(1)}" y2="${p2.y.toFixed(1)}" stroke="#0f172a" stroke-width="2.2" stroke-linecap="round"/>`;
+      const lineaCentral = `<line x1="${p1.x.toFixed(1)}" y1="${p1.y.toFixed(1)}" x2="${p2.x.toFixed(1)}" y2="${p2.y.toFixed(1)}" stroke="black" stroke-width="1.5" stroke-linecap="round"/>`;
       htmlComp += lineaCentral;
       htmlImp += lineaCentral;
 
@@ -3386,8 +3484,8 @@ function dibujarCircuito(elementos, nodos, termA, termB, flotantes) {
 
       // Puntos de unión (nodos de derivación sobre la troncal)
       const puntosUnion = `
-        <circle cx="${J1.x.toFixed(1)}" cy="${J1.y.toFixed(1)}" r="3.2" fill="#0f172a"/>
-        <circle cx="${J2.x.toFixed(1)}" cy="${J2.y.toFixed(1)}" r="3.2" fill="#0f172a"/>
+        <circle cx="${J1.x.toFixed(1)}" cy="${J1.y.toFixed(1)}" r="3" fill="black"/>
+        <circle cx="${J2.x.toFixed(1)}" cy="${J2.y.toFixed(1)}" r="3" fill="black"/>
       `;
       htmlComp += puntosUnion;
       htmlImp += puntosUnion;
@@ -3395,8 +3493,6 @@ function dibujarCircuito(elementos, nodos, termA, termB, flotantes) {
       let offsets, sep, escala;
 
       if (isPerimeter) {
-        // En ramas perimetrales, todos los rieles paralelos se derivan hacia AFUERA (off > 0)
-        // para que el triángulo interior quede 100% despejado y nunca intersecte las ramas radiales
         sep = M === 2 ? 34 : 26;
         escala = Math.min(0.70, len / 300);
         if (M === 2) {
@@ -3405,12 +3501,10 @@ function dibujarCircuito(elementos, nodos, termA, termB, flotantes) {
           offsets = els.map((_, i) => (i + 1) * sep);
         }
       } else if (isInternal) {
-        // En ramas internas al neutro, usamos derivación compacta simétrica
         sep = M === 2 ? 24 : 20;
         escala = Math.min(0.55, len / 240);
         offsets = els.map((_, i) => (i - (M - 1) / 2) * sep);
       } else {
-        // Red estándar de 3 nodos (sin nodo central)
         sep = M === 2 ? 36 : (M === 3 ? 28 : 24);
         escala = Math.min(0.75, len / 280);
         offsets = els.map((_, i) => (i - (M - 1) / 2) * sep);
@@ -3426,8 +3520,8 @@ function dibujarCircuito(elementos, nodos, termA, termB, flotantes) {
       const barJ2_B = { x: J2.x + nx * maxOff, y: J2.y + ny * maxOff };
 
       const barrasTransversales = `
-        <line x1="${barJ1_A.x.toFixed(1)}" y1="${barJ1_A.y.toFixed(1)}" x2="${barJ1_B.x.toFixed(1)}" y2="${barJ1_B.y.toFixed(1)}" stroke="#0f172a" stroke-width="2.2" stroke-linecap="round"/>
-        <line x1="${barJ2_A.x.toFixed(1)}" y1="${barJ2_A.y.toFixed(1)}" x2="${barJ2_B.x.toFixed(1)}" y2="${barJ2_B.y.toFixed(1)}" stroke="#0f172a" stroke-width="2.2" stroke-linecap="round"/>
+        <line x1="${barJ1_A.x.toFixed(1)}" y1="${barJ1_A.y.toFixed(1)}" x2="${barJ1_B.x.toFixed(1)}" y2="${barJ1_B.y.toFixed(1)}" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="${barJ2_A.x.toFixed(1)}" y1="${barJ2_A.y.toFixed(1)}" x2="${barJ2_B.x.toFixed(1)}" y2="${barJ2_B.y.toFixed(1)}" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
       `;
       htmlComp += barrasTransversales;
       htmlImp += barrasTransversales;
@@ -3438,16 +3532,13 @@ function dibujarCircuito(elementos, nodos, termA, termB, flotantes) {
         const a = { x: J1.x + nx * off, y: J1.y + ny * off };
         const b = { x: J2.x + nx * off, y: J2.y + ny * off };
         
-        // En ramas perimetrales con 2 rieles:
-        // Riel 0 (i=0): etiqueta hacia el conductor central (labelSide = -1)
-        // Riel 1 (i=1): etiqueta hacia el exterior (labelSide = 1)
         const labelSide = isPerimeter ? (i === 0 ? -1 : 1) : (off >= 0 ? 1 : -1);
 
         // Vista Componentes (R, L, C)
         htmlComp += dibujarRamaSimbolos(a, b, el.Z, escala, labelSide, normVec);
 
         // Vista Impedancias (Z)
-        htmlImp += dibujarRamaImpedancia(a, b, el.Z, true, labelSide, normVec);
+        htmlImp += dibujarRamaImpedancia(a, b, el.Z, `${n1}${n2},${i + 1}`);
       });
     }
   });
@@ -3456,27 +3547,59 @@ function dibujarCircuito(elementos, nodos, termA, termB, flotantes) {
     const p = pos[n]; if (!p) return '';
     const isA = n === termA, isB = n === termB;
     const isFloat = flotantes && flotantes.includes(n);
+    const isNeutro = neutroId && n === neutroId;
 
-    let fillCircle = '#bfdbfe', strokeCircle = '#0284c7';
-    if (isA) { fillCircle = '#93c5fd'; strokeCircle = '#0284c7'; }
-    if (isB) { fillCircle = '#fecaca'; strokeCircle = '#dc2626'; }
-    if (isFloat) { fillCircle = '#e2e8f0'; strokeCircle = '#94a3b8'; }
+    if (isNeutro) {
+      return `
+        <circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="3" fill="black"/>
+        <text x="${(p.x - 14).toFixed(1)}" y="${(p.y + 4).toFixed(1)}" font-size="14" font-weight="bold" font-style="italic" fill="black" text-anchor="end">${n === '4' ? 'O' : n}</text>
+      `;
+    }
 
-    let s = '';
-    s += `<circle cx="${p.x}" cy="${p.y}" r="17" fill="${strokeCircle}" opacity="0.18"/>`;
-    s += `<circle cx="${p.x}" cy="${p.y}" r="14" fill="${fillCircle}" stroke="${strokeCircle}" stroke-width="2.8"/>`;
+    let tx = p.x, ty = p.y, anchor = 'middle';
+    if (n === '1') { tx = p.x - 14; ty = p.y + 18; anchor = 'end'; }
+    else if (n === '3') { tx = p.x + 14; ty = p.y + 18; anchor = 'start'; }
+    else if (n === '2') { tx = p.x; ty = p.y - 12; anchor = 'middle'; }
+    else {
+      const vx = p.x - C_x, vy = p.y - C_y;
+      const vlen = Math.hypot(vx, vy) || 1;
+      tx = p.x + (vx / vlen) * 16;
+      ty = p.y + (vy / vlen) * 16 + 4;
+      anchor = vx < -5 ? 'end' : (vx > 5 ? 'start' : 'middle');
+    }
 
-    let tx = p.x, ty = p.y + 5, anchor = 'middle';
-    if (n === '1') { tx = p.x - 24; }
-    else if (n === '3') { tx = p.x + 24; }
-    else if (n === '2') { ty = p.y - 22; }
-    s += `<text x="${tx}" y="${ty}" font-size="16" font-weight="bold" fill="#0f172a" text-anchor="${anchor}">${n}</text>`;
-    if (isFloat) s += `<text x="${p.x}" y="${p.y + 30}" font-size="10" fill="#94a3b8" text-anchor="middle" font-style="italic">flotante</text>`;
-    return s;
+    let strokeCol = 'black', strokeW = '1.5', fillCol = 'white', dash = '';
+    let badgeText = '';
+
+    if (isA) {
+      strokeCol = '#2563eb';
+      strokeW = '2';
+      badgeText = `<tspan font-style="normal" font-weight="bold" font-size="11" fill="#2563eb"> (A+)</tspan>`;
+    } else if (isB) {
+      strokeCol = '#dc2626';
+      strokeW = '2';
+      badgeText = `<tspan font-style="normal" font-weight="bold" font-size="11" fill="#dc2626"> (B−)</tspan>`;
+    } else if (isFloat) {
+      strokeCol = '#94a3b8';
+      fillCol = '#f8fafc';
+      dash = 'stroke-dasharray="2 2"';
+      badgeText = `<tspan font-style="italic" font-weight="normal" font-size="10" fill="#64748b"> (flotante)</tspan>`;
+    }
+
+    return `
+      <circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="4.5" fill="${fillCol}" stroke="${strokeCol}" stroke-width="${strokeW}" ${dash}/>
+      <text x="${tx.toFixed(1)}" y="${ty.toFixed(1)}" font-size="14" font-weight="bold" font-style="italic" fill="black" text-anchor="${anchor}">${n}${badgeText}</text>
+    `;
   }).join('');
 
   htmlComp += nodosHTML;
   htmlImp += nodosHTML;
+
+  // Leyendas explicativas al pie del esquema (consistencia con _genera_delta.md)
+  const footerComp = `<text x="${W / 2}" y="${H - 12}" font-size="11" fill="#475569" text-anchor="middle">R = resistencia (zigzag) · L = inductancia (bobina) · C = capacitancia (placas)</text>`;
+  const footerImp = `<text x="${W / 2}" y="${H - 12}" font-size="11" fill="#475569" text-anchor="middle">Ramas modeladas como bloques de impedancia Z = R + jX</text>`;
+  htmlComp += footerComp;
+  htmlImp += footerImp;
 
   if (svgComp) svgComp.innerHTML = htmlComp;
   if (svgImp) svgImp.innerHTML = htmlImp;
@@ -3538,9 +3661,9 @@ function renderSistemaNodal(Y, I, inc, B) {
 }
 
 /* =====================================================================
-   12) Detección automática de configuraciones Δ y Y
+   12) Detección automática y visualización editorial de transformaciones Δ y Y
    ===================================================================== */
-function renderTransformacionesDY(elementos, nodos) {
+function renderTransformacionesDY(elementos, nodos, termA, termB) {
   const grupos = agruparParalelos(elementos);
   const adj = {};
   nodos.forEach(n => { adj[n] = new Set(); });
@@ -3558,172 +3681,583 @@ function renderTransformacionesDY(elementos, nodos) {
   }
 
   function fmtZeq(z) {
+    if (!z) return '0 &Omega;';
     const p = CZ.polar(z);
     const sg = z.i >= 0 ? '+' : '−';
     return `<b>${p.mag.toFixed(4)}&ang;${p.ang.toFixed(2)}&deg; &Omega;</b> <span class="text-muted">(${z.r.toFixed(4)} ${sg} j${Math.abs(z.i).toFixed(4)})</span>`;
   }
 
-  /* Formato corto para SVG (sin HTML tags) */
-  function fmtSvg(z) {
+  function fmtZpolar(z) {
+    if (!z) return '0 &Omega;';
     const p = CZ.polar(z);
-    const sg = z.i >= 0 ? '+' : '−';
-    return `${z.r.toFixed(2)} ${sg} j${Math.abs(z.i).toFixed(2)}`;
-  }
-  function fmtSvgPolar(z) {
-    const p = CZ.polar(z);
-    return `${p.mag.toFixed(2)}∠${p.ang.toFixed(1)}°`;
+    return `${p.mag.toFixed(2)}∠${p.ang.toFixed(1)}° Ω`;
   }
 
-  /* ---- Generar SVG de Estrella ---- */
-  function svgEstrella(center, a, b, c, Z1, Z2, Z3) {
+  // Bloque de impedancia sobre rama en SVG panorámico
+  function svgRamaBloque(p1, p2, labelSym, zVal, color = '#1e293b', isDashed = false) {
+    const dx = p2.x - p1.x, dy = p2.y - p1.y;
+    const mx = (p1.x + p2.x) / 2, my = (p1.y + p2.y) / 2;
+    let deg = Math.atan2(dy, dx) * 180 / Math.PI;
+    if (deg > 90) deg -= 180;
+    if (deg < -90) deg += 180;
+
+    const rot = (Math.abs(deg) < 15 || Math.abs(Math.abs(deg) - 90) < 15) ? 0 : deg;
+    const zPol = zVal ? fmtZpolar(zVal) : '';
+    const w = Math.max(90, Math.max(labelSym.length * 8, zPol.length * 7.5) + 20);
+    const h = zPol ? 34 : 24;
+    const dash = isDashed ? 'stroke-dasharray="4 4"' : '';
+
     return `
-    <div style="flex:1 1 380px; max-width:420px; min-width:280px;">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280" width="100%" height="280" preserveAspectRatio="xMidYMid meet" style="display:block; font-family:'Plus Jakarta Sans',system-ui,sans-serif;">
-      <text x="200" y="18" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">⭐ Estrella original</text>
-      <line x1="200" y1="155" x2="200" y2="50" stroke="#334155" stroke-width="1.5"/>
-      <rect x="183" y="85" width="34" height="44" rx="3" fill="white" stroke="#334155" stroke-width="1.5"/>
-      <text x="200" y="104" font-size="9" font-style="italic" fill="#334155" text-anchor="middle">Z<tspan baseline-shift="sub" font-size="0.7em">${center}-${a}</tspan></text>
-      <text x="200" y="120" font-size="7.5" fill="#7c3aed" font-weight="bold" text-anchor="middle">${fmtSvg(Z1)}</text>
-      <line x1="200" y1="155" x2="320" y2="230" stroke="#334155" stroke-width="1.5"/>
-      <g transform="translate(260,193) rotate(28)">
-        <rect x="-28" y="-20" width="56" height="40" rx="3" fill="white" stroke="#334155" stroke-width="1.5"/>
-        <text x="0" y="-4" font-size="9" font-style="italic" fill="#334155" text-anchor="middle">Z<tspan baseline-shift="sub" font-size="0.7em">${center}-${b}</tspan></text>
-        <text x="0" y="12" font-size="7.5" fill="#7c3aed" font-weight="bold" text-anchor="middle">${fmtSvg(Z2)}</text>
+      <line x1="${p1.x.toFixed(1)}" y1="${p1.y.toFixed(1)}" x2="${p2.x.toFixed(1)}" y2="${p2.y.toFixed(1)}" stroke="${color}" stroke-width="1.5" stroke-linecap="round" ${dash}/>
+      <g transform="translate(${mx.toFixed(1)}, ${my.toFixed(1)}) rotate(${rot.toFixed(1)})">
+        <rect x="${(-w / 2).toFixed(1)}" y="${(-h / 2).toFixed(1)}" width="${w.toFixed(1)}" height="${h}" rx="5"
+              fill="#ffffff" stroke="${color}" stroke-width="1.4"/>
+        <text x="0" y="${zPol ? -3 : 4}" font-size="12" font-style="italic" font-weight="600" fill="black" text-anchor="middle">${labelSym}</text>
+        ${zPol ? `<text x="0" y="11.5" font-size="10.5" font-weight="bold" fill="${color}" text-anchor="middle">${zPol}</text>` : ''}
       </g>
-      <line x1="200" y1="155" x2="80" y2="230" stroke="#334155" stroke-width="1.5"/>
-      <g transform="translate(140,193) rotate(-28)">
-        <rect x="-28" y="-20" width="56" height="40" rx="3" fill="white" stroke="#334155" stroke-width="1.5"/>
-        <text x="0" y="-4" font-size="9" font-style="italic" fill="#334155" text-anchor="middle">Z<tspan baseline-shift="sub" font-size="0.7em">${center}-${c}</tspan></text>
-        <text x="0" y="12" font-size="7.5" fill="#7c3aed" font-weight="bold" text-anchor="middle">${fmtSvg(Z3)}</text>
-      </g>
-      <circle cx="200" cy="155" r="3.5" fill="#7c3aed"/>
-      <text x="200" y="175" font-size="11" font-weight="bold" fill="#7c3aed" text-anchor="middle">${center}</text>
-      <circle cx="200" cy="50"  r="4" fill="white" stroke="#334155" stroke-width="1.5"/>
-      <circle cx="320" cy="230" r="4" fill="white" stroke="#334155" stroke-width="1.5"/>
-      <circle cx="80"  cy="230" r="4" fill="white" stroke="#334155" stroke-width="1.5"/>
-      <text x="200" y="40" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">${a}</text>
-      <text x="334" y="235" font-size="12" font-weight="bold" fill="#334155" text-anchor="start">${b}</text>
-      <text x="66"  y="235" font-size="12" font-weight="bold" fill="#334155" text-anchor="end">${c}</text>
-      <text x="200" y="268" font-size="9" fill="#64748b" text-anchor="middle">Nodo central: ${center}</text>
-    </svg>
-    </div>`;
+    `;
   }
 
-  /* ---- Generar SVG de Delta ---- */
-  function svgDelta(a, b, c, ZAB, ZBC, ZAC, fillColor) {
-    const clr = fillColor || '#3b82f6';
+  function svgTerm(p, label, isA, isB, subtext = '') {
+    let stroke = 'black', fill = 'white', badge = '';
+    if (isA) { stroke = '#2563eb'; badge = `<tspan font-style="normal" font-weight="bold" font-size="11" fill="#2563eb"> (A+)</tspan>`; }
+    else if (isB) { stroke = '#dc2626'; badge = `<tspan font-style="normal" font-weight="bold" font-size="11" fill="#dc2626"> (B−)</tspan>`; }
+
+    let tx = p.x, ty = p.y - 14, anchor = 'middle';
+    if (p.align === 'top') { ty = p.y - 14; }
+    else if (p.align === 'bl') { tx = p.x - 14; ty = p.y + 18; anchor = 'end'; }
+    else if (p.align === 'br') { tx = p.x + 14; ty = p.y + 18; anchor = 'start'; }
+
     return `
-    <div style="flex:1 1 380px; max-width:420px; min-width:280px;">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280" width="100%" height="280" preserveAspectRatio="xMidYMid meet" style="display:block; font-family:'Plus Jakarta Sans',system-ui,sans-serif;">
-      <text x="200" y="18" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">🔺 Delta equivalente</text>
-      <polygon points="200,50 320,230 80,230" fill="${clr}" opacity="0.08" stroke="none"/>
-      <line x1="200" y1="50" x2="320" y2="230" stroke="#334155" stroke-width="1.5"/>
-      <g transform="translate(260,140) rotate(48)">
-        <rect x="-28" y="-20" width="56" height="40" rx="3" fill="white" stroke="#334155" stroke-width="1.5"/>
-        <text x="0" y="-4" font-size="9" font-style="italic" fill="#334155" text-anchor="middle">Z<tspan baseline-shift="sub" font-size="0.7em">${a}-${b}</tspan></text>
-        <text x="0" y="12" font-size="7.5" fill="${clr}" font-weight="bold" text-anchor="middle">${fmtSvg(ZAB)}</text>
-      </g>
-      <line x1="200" y1="50" x2="80" y2="230" stroke="#334155" stroke-width="1.5"/>
-      <g transform="translate(140,140) rotate(-48)">
-        <rect x="-28" y="-20" width="56" height="40" rx="3" fill="white" stroke="#334155" stroke-width="1.5"/>
-        <text x="0" y="-4" font-size="9" font-style="italic" fill="#334155" text-anchor="middle">Z<tspan baseline-shift="sub" font-size="0.7em">${a}-${c}</tspan></text>
-        <text x="0" y="12" font-size="7.5" fill="${clr}" font-weight="bold" text-anchor="middle">${fmtSvg(ZAC)}</text>
-      </g>
-      <line x1="320" y1="230" x2="80" y2="230" stroke="#334155" stroke-width="1.5"/>
-      <rect x="172" y="215" width="56" height="30" rx="3" fill="white" stroke="#334155" stroke-width="1.5"/>
-      <text x="200" y="228" font-size="9" font-style="italic" fill="#334155" text-anchor="middle">Z<tspan baseline-shift="sub" font-size="0.7em">${b}-${c}</tspan></text>
-      <text x="200" y="240" font-size="7.5" fill="${clr}" font-weight="bold" text-anchor="middle">${fmtSvg(ZBC)}</text>
-      <circle cx="200" cy="50"  r="4" fill="white" stroke="#334155" stroke-width="1.5"/>
-      <circle cx="320" cy="230" r="4" fill="white" stroke="#334155" stroke-width="1.5"/>
-      <circle cx="80"  cy="230" r="4" fill="white" stroke="#334155" stroke-width="1.5"/>
-      <text x="200" y="40" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">${a}</text>
-      <text x="334" y="235" font-size="12" font-weight="bold" fill="#334155" text-anchor="start">${b}</text>
-      <text x="66"  y="235" font-size="12" font-weight="bold" fill="#334155" text-anchor="end">${c}</text>
-      <text x="200" y="268" font-size="9" fill="#64748b" text-anchor="middle">Sin nodo central</text>
-    </svg>
-    </div>`;
+      <circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="4.5" fill="${fill}" stroke="${stroke}" stroke-width="2"/>
+      <text x="${tx.toFixed(1)}" y="${ty.toFixed(1)}" font-size="14" font-weight="bold" font-style="italic" fill="black" text-anchor="${anchor}">${label}${badge}</text>
+      ${subtext ? `<text x="${tx.toFixed(1)}" y="${(ty + 13).toFixed(1)}" font-size="10.5" fill="#64748b" text-anchor="${anchor}">${subtext}</text>` : ''}
+    `;
   }
 
-  /* ---- SVG de Estrella para resultado de Delta->Y ---- */
-  function svgEstrellaResult(a, b, c, Za, Zb, Zc) {
+  function svgNodoO(p, label) {
     return `
-    <div style="flex:1 1 380px; max-width:420px; min-width:280px;">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280" width="100%" height="280" preserveAspectRatio="xMidYMid meet" style="display:block; font-family:'Plus Jakarta Sans',system-ui,sans-serif;">
-      <text x="200" y="18" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">⭐ Estrella equivalente</text>
-      <line x1="200" y1="155" x2="200" y2="50" stroke="#334155" stroke-width="1.5"/>
-      <rect x="183" y="85" width="34" height="44" rx="3" fill="white" stroke="#334155" stroke-width="1.5"/>
-      <text x="200" y="104" font-size="9" font-style="italic" fill="#334155" text-anchor="middle">Z<tspan baseline-shift="sub" font-size="0.7em">N-${a}</tspan></text>
-      <text x="200" y="120" font-size="7.5" fill="#0891b2" font-weight="bold" text-anchor="middle">${fmtSvg(Za)}</text>
-      <line x1="200" y1="155" x2="320" y2="230" stroke="#334155" stroke-width="1.5"/>
-      <g transform="translate(260,193) rotate(28)">
-        <rect x="-28" y="-20" width="56" height="40" rx="3" fill="white" stroke="#334155" stroke-width="1.5"/>
-        <text x="0" y="-4" font-size="9" font-style="italic" fill="#334155" text-anchor="middle">Z<tspan baseline-shift="sub" font-size="0.7em">N-${b}</tspan></text>
-        <text x="0" y="12" font-size="7.5" fill="#0891b2" font-weight="bold" text-anchor="middle">${fmtSvg(Zb)}</text>
-      </g>
-      <line x1="200" y1="155" x2="80" y2="230" stroke="#334155" stroke-width="1.5"/>
-      <g transform="translate(140,193) rotate(-28)">
-        <rect x="-28" y="-20" width="56" height="40" rx="3" fill="white" stroke="#334155" stroke-width="1.5"/>
-        <text x="0" y="-4" font-size="9" font-style="italic" fill="#334155" text-anchor="middle">Z<tspan baseline-shift="sub" font-size="0.7em">N-${c}</tspan></text>
-        <text x="0" y="12" font-size="7.5" fill="#0891b2" font-weight="bold" text-anchor="middle">${fmtSvg(Zc)}</text>
-      </g>
-      <circle cx="200" cy="155" r="3.5" fill="#0891b2"/>
-      <text x="200" y="175" font-size="11" font-weight="bold" fill="#0891b2" text-anchor="middle">N</text>
-      <circle cx="200" cy="50"  r="4" fill="white" stroke="#334155" stroke-width="1.5"/>
-      <circle cx="320" cy="230" r="4" fill="white" stroke="#334155" stroke-width="1.5"/>
-      <circle cx="80"  cy="230" r="4" fill="white" stroke="#334155" stroke-width="1.5"/>
-      <text x="200" y="40" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">${a}</text>
-      <text x="334" y="235" font-size="12" font-weight="bold" fill="#334155" text-anchor="start">${b}</text>
-      <text x="66"  y="235" font-size="12" font-weight="bold" fill="#334155" text-anchor="end">${c}</text>
-      <text x="200" y="268" font-size="9" fill="#64748b" text-anchor="middle">Nuevo nodo neutro: N</text>
-    </svg>
-    </div>`;
+      <circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="3.5" fill="black"/>
+      <text x="${(p.x - 12).toFixed(1)}" y="${(p.y + 4).toFixed(1)}" font-size="13" font-weight="bold" font-style="italic" fill="black" text-anchor="end">${label}</text>
+    `;
   }
 
-  /* ---- SVG de Delta para resultado de Y->Delta (reutiliza svgDelta) ---- */
-
-  /* ---- Badge de transformación ---- */
-  function svgBadge(label) {
+  function svgBadgeTrans(label1, label2 = '') {
     return `
-    <div class="d-flex align-items-center justify-content-center" style="min-width:60px;">
-      <div class="text-center border rounded-2 px-2 py-1 bg-white shadow-sm">
-        <div style="font-size:0.7rem; font-weight:700; color:#334155;">${label}</div>
-        <div style="font-size:1.2rem; font-weight:700; color:#334155;">→</div>
-      </div>
-    </div>`;
+      <line x1="475" y1="45" x2="475" y2="265" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="6 6"/>
+      <g transform="translate(475, 145)">
+        <rect x="-44" y="-22" width="88" height="44" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+        <text x="0" y="${label2 ? -4 : 0}" font-size="12" font-weight="bold" fill="#1e293b" text-anchor="middle">${label1}</text>
+        ${label2 ? `<text x="0" y="11" font-size="9.5" fill="#64748b" text-anchor="middle">${label2}</text>` : ''}
+        <text x="0" y="${label2 ? 26 : 14}" font-size="15" font-weight="bold" fill="#334155" text-anchor="middle">→</text>
+      </g>
+    `;
+  }
+
+  // =========================================================================
+  // CLASIFICACIÓN TOPOLÓGICA INTELIGENTE
+  // =========================================================================
+
+  // 1) ¿Existe una Red Mixta? (Anillo Delta + Estrella Interna)
+  let mixedNet = null;
+  for (let i = 0; i < nodos.length; i++) {
+    for (let j = i + 1; j < nodos.length; j++) {
+      for (let k = j + 1; k < nodos.length; k++) {
+        const p1 = nodos[i], p2 = nodos[j], p3 = nodos[k];
+        if (getZeq(p1, p2) && getZeq(p2, p3) && getZeq(p1, p3)) {
+          const candidatosO = nodos.filter(n => n !== p1 && n !== p2 && n !== p3 && getZeq(n, p1) && getZeq(n, p2) && getZeq(n, p3));
+          if (candidatosO.length > 0) {
+            let O = candidatosO.find(n => n !== termA && n !== termB) || candidatosO[0];
+            mixedNet = { p1, p2, p3, O };
+            break;
+          }
+        }
+      }
+      if (mixedNet) break;
+    }
+    if (mixedNet) break;
+  }
+
+  // 2) ¿Es Red Puramente Delta? (3 nodos, sin nodo interno)
+  let pureDelta = null;
+  if (!mixedNet && nodos.length === 3) {
+    const [p1, p2, p3] = nodos;
+    if (getZeq(p1, p2) && getZeq(p2, p3) && getZeq(p1, p3)) {
+      pureDelta = { p1, p2, p3 };
+    }
+  }
+
+  // 3) ¿Es Red Puramente Estrella? (1 centro y 3 vecinos sin ramas perimetrales)
+  let pureStar = null;
+  if (!mixedNet && !pureDelta && nodos.length === 4) {
+    const center = nodos.find(n => adj[n] && adj[n].size === 3);
+    if (center) {
+      const vecinos = [...adj[center]];
+      const [v1, v2, v3] = vecinos;
+      if (!getZeq(v1, v2) && !getZeq(v2, v3) && !getZeq(v1, v3)) {
+        pureStar = { center, v1, v2, v3 };
+      }
+    }
   }
 
   let html = '';
 
-  // --- Detectar configuraciones Estrella (nodo central con exactamente 3 vecinos) ---
-  const starCenters = nodos.filter(n => adj[n] && adj[n].size === 3);
-  starCenters.forEach(center => {
-    const vecinos = [...adj[center]].sort();
-    const [a, b, c] = vecinos;
-    const Z1 = getZeq(center, a);
-    const Z2 = getZeq(center, b);
-    const Z3 = getZeq(center, c);
-    if (!Z1 || !Z2 || !Z3) return;
+  // -------------------------------------------------------------------------
+  // CASO A — RED MIXTA (DOBLE TRANSFORMACIÓN COMPLETA)
+  // -------------------------------------------------------------------------
+  if (mixedNet) {
+    const { p1, p2, p3, O } = mixedNet;
+    const perim = [p1, p2, p3];
+    let topNode = perim.find(n => n === '2') || perim.find(n => n === termB) || perim[1];
+    let rest = perim.filter(n => n !== topNode);
+    let blNode = rest.find(n => n === '1') || rest.find(n => n === termA) || rest[0];
+    let brNode = rest.find(n => n !== blNode);
 
-    const sigma2 = CZ.add(CZ.add(CZ.mul(Z1, Z2), CZ.mul(Z2, Z3)), CZ.mul(Z3, Z1));
-    if (CZ.polar(Z1).mag < 1e-12 || CZ.polar(Z2).mag < 1e-12 || CZ.polar(Z3).mag < 1e-12) return;
+    const n1 = blNode, n2 = topNode, n3 = brNode;
 
-    const ZAB = CZ.div(sigma2, Z3);
-    const ZBC = CZ.div(sigma2, Z1);
-    const ZAC = CZ.div(sigma2, Z2);
+    const Z12 = getZeq(n1, n2);
+    const Z23 = getZeq(n2, n3);
+    const Z13 = getZeq(n1, n3);
+
+    const ZO1 = getZeq(O, n1);
+    const ZO2 = getZeq(O, n2);
+    const ZO3 = getZeq(O, n3);
+
+    if (Z12 && Z23 && Z13 && ZO1 && ZO2 && ZO3) {
+      // ETAPA 1: Y interna -> Delta
+      const sigma2 = CZ.add(CZ.add(CZ.mul(ZO1, ZO2), CZ.mul(ZO2, ZO3)), CZ.mul(ZO3, ZO1));
+      const Zprime12 = CZ.div(sigma2, ZO3);
+      const Zprime23 = CZ.div(sigma2, ZO1);
+      const Zprime13 = CZ.div(sigma2, ZO2);
+
+      const Zp1 = CZ.div(CZ.mul(Z12, Zprime12), CZ.add(Z12, Zprime12));
+      const Zp2 = CZ.div(CZ.mul(Z23, Zprime23), CZ.add(Z23, Zprime23));
+      const Zp3 = CZ.div(CZ.mul(Z13, Zprime13), CZ.add(Z13, Zprime13));
+
+      const ptTop_L = { x: 225, y: 65, align: 'top' };
+      const ptBL_L  = { x: 80,  y: 225, align: 'bl' };
+      const ptBR_L  = { x: 370, y: 225, align: 'br' };
+      const ptO_L   = { x: 225, y: 170 };
+
+      const ptTop_R = { x: 725, y: 65, align: 'top' };
+      const ptBL_R  = { x: 580, y: 225, align: 'bl' };
+      const ptBR_R  = { x: 870, y: 225, align: 'br' };
+
+      const svgEtapa1 = `
+      <div class="border rounded-3 bg-white shadow-sm p-3 w-100 my-2" style="overflow-x:auto;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 300" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" style="display:block; min-width:620px; font-family:'Plus Jakarta Sans',system-ui,sans-serif;">
+          <text x="225" y="24" font-size="15" font-weight="bold" fill="black" text-anchor="middle">1. Anillo Δ + Estrella Interna (Y)</text>
+          <text x="725" y="24" font-size="15" font-weight="bold" fill="black" text-anchor="middle">2. Transformación Y → Δ: Ramas en Paralelo</text>
+
+          <polygon points="225,65 370,225 80,225" fill="#3b82f6" opacity="0.08" stroke="none"/>
+          ${svgRamaBloque(ptTop_L, ptBL_L, 'Z' + n1 + n2, Z12, '#1e293b')}
+          ${svgRamaBloque(ptTop_L, ptBR_L, 'Z' + n2 + n3, Z23, '#1e293b')}
+          ${svgRamaBloque(ptBL_L, ptBR_L, 'Z' + n1 + n3, Z13, '#1e293b')}
+          ${svgRamaBloque(ptO_L, ptTop_L, 'Z' + O + n2, ZO2, '#7c3aed')}
+          ${svgRamaBloque(ptO_L, ptBL_L, 'Z' + O + n1, ZO1, '#7c3aed')}
+          ${svgRamaBloque(ptO_L, ptBR_L, 'Z' + O + n3, ZO3, '#7c3aed')}
+          ${svgNodoO(ptO_L, O === '4' ? 'O' : O)}
+          ${svgTerm(ptTop_L, n2, n2 === termA, n2 === termB)}
+          ${svgTerm(ptBL_L, n1, n1 === termA, n1 === termB)}
+          ${svgTerm(ptBR_L, n3, n3 === termA, n3 === termB)}
+          <text x="225" y="280" font-size="11.5" fill="#475569" text-anchor="middle">Red original ingresada en el Netlist (anillo exterior + estrella interna)</text>
+
+          ${svgBadgeTrans('Y → Δ', 'Estrella Interna')}
+
+          <polygon points="725,65 870,225 580,225" fill="#3b82f6" opacity="0.08" stroke="none"/>
+          ${svgRamaBloque(ptTop_R, ptBL_R, 'Zp1 = Z' + n1 + n2 + ' ∥ Z′' + n1 + n2, Zp1, '#2563eb')}
+          ${svgRamaBloque(ptTop_R, ptBR_R, 'Zp2 = Z' + n2 + n3 + ' ∥ Z′' + n2 + n3, Zp2, '#2563eb')}
+          ${svgRamaBloque(ptBL_R, ptBR_R, 'Zp3 = Z' + n1 + n3 + ' ∥ Z′' + n1 + n3, Zp3, '#2563eb')}
+          ${svgTerm(ptTop_R, n2, n2 === termA, n2 === termB)}
+          ${svgTerm(ptBL_R, n1, n1 === termA, n1 === termB)}
+          ${svgTerm(ptBR_R, n3, n3 === termA, n3 === termB)}
+          <text x="725" y="280" font-size="11.5" fill="#475569" text-anchor="middle">El nodo ${O === '4' ? 'O' : O} desaparece y las ramas homólogas quedan en paralelo directo</text>
+        </svg>
+      </div>`;
+
+      // ETAPA 2: Delta Consolidada -> Estrella Final
+      const sigmaP = CZ.add(CZ.add(Zp1, Zp2), Zp3);
+      const Zstar1 = CZ.div(CZ.mul(Zp1, Zp3), sigmaP);
+      const Zstar2 = CZ.div(CZ.mul(Zp1, Zp2), sigmaP);
+      const Zstar3 = CZ.div(CZ.mul(Zp2, Zp3), sigmaP);
+
+      const ptNeutro_R = { x: 725, y: 175 };
+      const isN3Open = (n3 !== termA && n3 !== termB);
+      const isN1Open = (n1 !== termA && n1 !== termB);
+      const isN2Open = (n2 !== termA && n2 !== termB);
+
+      const ptN_Top = { x: 725, y: 60, align: 'top' };
+      const ptN_BL  = { x: 595, y: 245, align: 'bl' };
+      const ptN_BR  = { x: 855, y: 245, align: 'br' };
+
+      const zFinalVal = CZ.add(n1 === termA ? Zstar1 : (n2 === termA ? Zstar2 : Zstar3), n1 === termB ? Zstar1 : (n2 === termB ? Zstar2 : Zstar3));
+
+      const svgEtapa2 = `
+      <div class="border rounded-3 bg-white shadow-sm p-3 w-100 my-2" style="overflow-x:auto;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 300" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" style="display:block; min-width:620px; font-family:'Plus Jakarta Sans',system-ui,sans-serif;">
+          <text x="225" y="24" font-size="15" font-weight="bold" fill="black" text-anchor="middle">2. Delta Consolidada (Zp1, Zp2, Zp3)</text>
+          <text x="725" y="24" font-size="15" font-weight="bold" fill="black" text-anchor="middle">3. Estrella Final con Reducción Serie</text>
+
+          <polygon points="225,65 370,225 80,225" fill="#3b82f6" opacity="0.08" stroke="none"/>
+          ${svgRamaBloque(ptTop_L, ptBL_L, 'Zp1', Zp1, '#2563eb')}
+          ${svgRamaBloque(ptTop_L, ptBR_L, 'Zp2', Zp2, '#2563eb')}
+          ${svgRamaBloque(ptBL_L, ptBR_L, 'Zp3', Zp3, '#2563eb')}
+          ${svgTerm(ptTop_L, n2, n2 === termA, n2 === termB)}
+          ${svgTerm(ptBL_L, n1, n1 === termA, n1 === termB)}
+          ${svgTerm(ptBR_L, n3, n3 === termA, n3 === termB)}
+          <text x="225" y="280" font-size="11.5" fill="#475569" text-anchor="middle">Delta simplificada equivalente antes de la segunda transformación</text>
+
+          ${svgBadgeTrans('Δ → Y', 'Consolidada')}
+
+          ${svgRamaBloque(ptNeutro_R, ptN_Top, 'Z' + n2, Zstar2, isN2Open ? '#94a3b8' : '#0891b2', isN2Open)}
+          ${svgRamaBloque(ptNeutro_R, ptN_BL, 'Z' + n1, Zstar1, isN1Open ? '#94a3b8' : '#0891b2', isN1Open)}
+          ${svgRamaBloque(ptNeutro_R, ptN_BR, 'Z' + n3, Zstar3, isN3Open ? '#94a3b8' : '#0891b2', isN3Open)}
+          ${svgNodoO(ptNeutro_R, 'N')}
+          ${svgTerm(ptN_Top, n2, n2 === termA, n2 === termB, isN2Open ? '(abierto)' : '')}
+          ${svgTerm(ptN_BL, n1, n1 === termA, n1 === termB, isN1Open ? '(abierto)' : '')}
+          ${svgTerm(ptN_BR, n3, n3 === termA, n3 === termB, isN3Open ? '(abierto)' : '')}
+          <text x="725" y="280" font-size="12" font-weight="bold" fill="black" text-anchor="middle">
+            Zeq (${termA}–${termB}) = Z${termA} + Z${termB} = ${fmtZpolar(zFinalVal)}
+          </text>
+        </svg>
+      </div>`;
+
+      html += `
+        <details class="mt-2" open>
+          <summary class="small fw-bold text-primary" style="cursor:pointer; font-size:0.92rem;">
+            🔄 Topología Detectada: Red Mixta — Anillo Delta (${n1}-${n2}-${n3}) con Estrella Interna (${O === '4' ? 'O/4' : O})
+          </summary>
+          <div class="mt-2">
+            <!-- ETAPA 1 -->
+            <div class="p-3 mb-3 border rounded bg-white shadow-sm">
+              <h6 class="fw-bold mb-2" style="color:#7c3aed;">
+                📌 Etapa 1 — Transformación Y → Δ de la Estrella Interna (${O === '4' ? 'O' : O}) y Ramas en Paralelo
+              </h6>
+              <p class="small text-muted mb-2">
+                Se elimina el nodo interno central <b>${O === '4' ? 'O' : O}</b> transformando sus 3 rayos a una Delta equivalente (Z′). Las ramas resultantes se asocian en paralelo con las ramas del anillo Delta exterior original.
+              </p>
+              ${svgEtapa1}
+              <div class="row g-2 mt-2">
+                <div class="col-md-6">
+                  
+<table class="table table-sm table-bordered mb-0 bg-white caption-top" data-quarto-postprocess="true" style="font-size:0.78rem;">
+<thead style="background:#7c3aed15;">
+<tr class="header">
+<th colspan="2" class="text-center" data-quarto-table-cell-role="th" style="color: #7c3aed">1. Estrella Interna Original (Centro ${O === '4' ? 'O' : O})</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td class="fw-bold">Z<sub>${O}-${n1}</sub></td>
+<td class="text-end font-monospace">${fmtZeq(ZO1)}</td>
+</tr>
+<tr class="even">
+<td class="fw-bold">Z<sub>${O}-${n2}</sub></td>
+<td class="text-end font-monospace">${fmtZeq(ZO2)}</td>
+</tr>
+<tr class="odd">
+<td class="fw-bold">Z<sub>${O}-${n3}</sub></td>
+<td class="text-end font-monospace">${fmtZeq(ZO3)}</td>
+</tr>
+<tr class="table-light even">
+<td class="fw-bold">Σ<sub>2</sub></td>
+<td class="text-end font-monospace">${fmtZeq(sigma2)}</td>
+</tr>
+</tbody>
+</table>
+
+                </div>
+                <div class="col-md-6">
+                  
+<table class="table table-sm table-bordered mb-0 bg-white caption-top" data-quarto-postprocess="true" style="font-size:0.78rem;">
+<thead style="background:#2563eb15;">
+<tr class="header">
+<th colspan="2" class="text-center" data-quarto-table-cell-role="th" style="color: #2563eb">2. Delta Equivalente &amp; Ramas en Paralelo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td class="fw-bold">Z′<sub>${n1}-${n2}</sub> = Σ<sub>2</sub> / Z<sub>${O}-${n3}</sub></td>
+<td class="text-end font-monospace">${fmtZeq(Zprime12)}</td>
+</tr>
+<tr class="even">
+<td class="fw-bold">Z′<sub>${n2}-${n3}</sub> = Σ<sub>2</sub> / Z<sub>${O}-${n1}</sub></td>
+<td class="text-end font-monospace">${fmtZeq(Zprime23)}</td>
+</tr>
+<tr class="odd">
+<td class="fw-bold">Z′<sub>${n1}-${n3}</sub> = Σ<sub>2</sub> / Z<sub>${O}-${n2}</sub></td>
+<td class="text-end font-monospace">${fmtZeq(Zprime13)}</td>
+</tr>
+<tr class="table-light even">
+<td class="fw-bold text-primary">Z<sub>p1</sub> = Z<sub>${n1}${n2}</sub> ∥ Z′<sub>${n1}${n2}</sub></td>
+<td class="text-end font-monospace fw-bold text-primary">${fmtZeq(Zp1)}</td>
+</tr>
+<tr class="table-light odd">
+<td class="fw-bold text-primary">Z<sub>p2</sub> = Z<sub>${n2}${n3}</sub> ∥ Z′<sub>${n2}${n3}</sub></td>
+<td class="text-end font-monospace fw-bold text-primary">${fmtZeq(Zp2)}</td>
+</tr>
+<tr class="table-light even">
+<td class="fw-bold text-primary">Z<sub>p3</sub> = Z<sub>${n1}${n3}</sub> ∥ Z′<sub>${n1}${n3}</sub></td>
+<td class="text-end font-monospace fw-bold text-primary">${fmtZeq(Zp3)}</td>
+</tr>
+</tbody>
+</table>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- ETAPA 2 -->
+            <div class="p-3 mb-2 border rounded bg-white shadow-sm">
+              <h6 class="fw-bold mb-2" style="color:#0891b2;">
+                📌 Etapa 2 — Transformación Δ → Y de la Delta Consolidada y Reducción Serie Final
+              </h6>
+              <p class="small text-muted mb-2">
+                La red reducida Z<sub>p</sub> forma un único anillo Delta. Al aplicar la transformación $\Delta \to \text{Y}$, se obtiene una Estrella con centro en el nodo neutro <b>N</b>. El terminal en circuito abierto no transporta corriente, dejando una conexión serie directa.
+              </p>
+              ${svgEtapa2}
+              <div class="row g-2 mt-2">
+                <div class="col-md-6">
+                  
+<table class="table table-sm table-bordered mb-0 bg-white caption-top" data-quarto-postprocess="true" style="font-size:0.78rem;">
+<thead style="background:#2563eb15;">
+<tr class="header">
+<th colspan="2" class="text-center" data-quarto-table-cell-role="th" style="color: #2563eb">Delta Consolidada (Z<sub>p</sub>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td class="fw-bold">Z<sub>p1</sub> (Rama ${n1}-${n2})</td>
+<td class="text-end font-monospace">${fmtZeq(Zp1)}</td>
+</tr>
+<tr class="even">
+<td class="fw-bold">Z<sub>p2</sub> (Rama ${n2}-${n3})</td>
+<td class="text-end font-monospace">${fmtZeq(Zp2)}</td>
+</tr>
+<tr class="odd">
+<td class="fw-bold">Z<sub>p3</sub> (Rama ${n1}-${n3})</td>
+<td class="text-end font-monospace">${fmtZeq(Zp3)}</td>
+</tr>
+<tr class="table-light even">
+<td class="fw-bold">Σ<sub>p</sub> = Z<sub>p1</sub> + Z<sub>p2</sub> + Z<sub>p3</sub></td>
+<td class="text-end font-monospace">${fmtZeq(sigmaP)}</td>
+</tr>
+</tbody>
+</table>
+
+                </div>
+                <div class="col-md-6">
+                  
+<table class="table table-sm table-bordered mb-0 bg-white caption-top" data-quarto-postprocess="true" style="font-size:0.78rem;">
+<thead style="background:#0891b215;">
+<tr class="header">
+<th colspan="2" class="text-center" data-quarto-table-cell-role="th" style="color: #0891b2">Estrella Final (Centro Neutro N)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td class="fw-bold">Z<sub>${n1}</sub> = (Z<sub>p1</sub> · Z<sub>p3</sub>) / Σ<sub>p</sub></td>
+<td class="text-end font-monospace">${fmtZeq(Zstar1)}</td>
+</tr>
+<tr class="even">
+<td class="fw-bold">Z<sub>${n2}</sub> = (Z<sub>p1</sub> · Z<sub>p2</sub>) / Σ<sub>p</sub></td>
+<td class="text-end font-monospace">${fmtZeq(Zstar2)}</td>
+</tr>
+<tr class="odd">
+<td class="fw-bold">Z<sub>${n3}</sub> = (Z<sub>p2</sub> · Z<sub>p3</sub>) / Σ<sub>p</sub></td>
+<td class="text-end font-monospace">${fmtZeq(Zstar3)}</td>
+</tr>
+<tr class="table-success table-opacity-25 even">
+<td class="fw-bold text-success">Z<sub>eq</sub> (${termA}–${termB}) = Z<sub>${termA}</sub> + Z<sub>${termB}</sub></td>
+<td class="text-end font-monospace fw-bold text-success">${fmtZeq(zFinalVal)}</td>
+</tr>
+</tbody>
+</table>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </details>`;
+    }
+  }
+
+  // -------------------------------------------------------------------------
+  // CASO B — RED PURAMENTE DELTA (3 NODOS)
+  // -------------------------------------------------------------------------
+  else if (pureDelta) {
+    const { p1, p2, p3 } = pureDelta;
+    const Z12 = getZeq(p1, p2);
+    const Z23 = getZeq(p2, p3);
+    const Z13 = getZeq(p1, p3);
+
+    const Zsum = CZ.add(CZ.add(Z12, Z23), Z13);
+    const Za = CZ.div(CZ.mul(Z12, Z13), Zsum);
+    const Zb = CZ.div(CZ.mul(Z12, Z23), Zsum);
+    const Zc = CZ.div(CZ.mul(Z13, Z23), Zsum);
+
+    const ptTop_L = { x: 225, y: 65, align: 'top' };
+    const ptBL_L  = { x: 80,  y: 225, align: 'bl' };
+    const ptBR_L  = { x: 370, y: 225, align: 'br' };
+
+    const ptNeutro_R = { x: 725, y: 175 };
+    const ptN_Top = { x: 725, y: 60, align: 'top' };
+    const ptN_BL  = { x: 595, y: 245, align: 'bl' };
+    const ptN_BR  = { x: 855, y: 245, align: 'br' };
+
+    const isP3Open = (p3 !== termA && p3 !== termB);
+    const isP1Open = (p1 !== termA && p1 !== termB);
+    const isP2Open = (p2 !== termA && p2 !== termB);
+
+    const svgDeltaSolo = `
+    <div class="border rounded-3 bg-white shadow-sm p-3 w-100 my-2" style="overflow-x:auto;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 300" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" style="display:block; min-width:620px; font-family:'Plus Jakarta Sans',system-ui,sans-serif;">
+        <text x="225" y="24" font-size="15" font-weight="bold" fill="black" text-anchor="middle">Delta Original (${p1}-${p2}-${p3})</text>
+        <text x="725" y="24" font-size="15" font-weight="bold" fill="black" text-anchor="middle">Estrella Equivalente (Centro N)</text>
+
+        <polygon points="225,65 370,225 80,225" fill="#3b82f6" opacity="0.08" stroke="none"/>
+        ${svgRamaBloque(ptTop_L, ptBL_L, 'Z' + p1 + p2, Z12, '#1e293b')}
+        ${svgRamaBloque(ptTop_L, ptBR_L, 'Z' + p2 + p3, Z23, '#1e293b')}
+        ${svgRamaBloque(ptBL_L, ptBR_L, 'Z' + p1 + p3, Z13, '#1e293b')}
+        ${svgTerm(ptTop_L, p2, p2 === termA, p2 === termB)}
+        ${svgTerm(ptBL_L, p1, p1 === termA, p1 === termB)}
+        ${svgTerm(ptBR_L, p3, p3 === termA, p3 === termB)}
+
+        ${svgBadgeTrans('Δ → Y')}
+
+        ${svgRamaBloque(ptNeutro_R, ptN_Top, 'Z' + p2, Zb, isP2Open ? '#94a3b8' : '#0891b2', isP2Open)}
+        ${svgRamaBloque(ptNeutro_R, ptN_BL, 'Z' + p1, Za, isP1Open ? '#94a3b8' : '#0891b2', isP1Open)}
+        ${svgRamaBloque(ptNeutro_R, ptN_BR, 'Z' + p3, Zc, isP3Open ? '#94a3b8' : '#0891b2', isP3Open)}
+        ${svgNodoO(ptNeutro_R, 'N')}
+        ${svgTerm(ptN_Top, p2, p2 === termA, p2 === termB, isP2Open ? '(abierto)' : '')}
+        ${svgTerm(ptN_BL, p1, p1 === termA, p1 === termB, isP1Open ? '(abierto)' : '')}
+        ${svgTerm(ptN_BR, p3, p3 === termA, p3 === termB, isP3Open ? '(abierto)' : '')}
+      </svg>
+    </div>`;
 
     html += `
       <details class="mt-2" open>
-        <summary class="small fw-bold" style="cursor:pointer; color:#7c3aed;">
-          🔄 Transformación Y → Δ detectada — Estrella con centro en <b>${center}</b> (terminales ${a}, ${b}, ${c})
+        <summary class="small fw-bold" style="cursor:pointer; color:#0891b2; font-size:0.92rem;">
+          🔄 Transformación Δ → Y detectada — Triángulo ${p1}-${p2}-${p3}
         </summary>
-        <div class="p-2 mt-2 border rounded bg-white shadow-sm">
-          <!-- Diagrama SVG lado a lado -->
-          <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:8px;">
-            ${svgEstrella(center, a, b, c, Z1, Z2, Z3)}
-            ${svgBadge('Y → Δ')}
-            ${svgDelta(a, b, c, ZAB, ZBC, ZAC, '#7c3aed')}
+        <div class="p-3 mt-2 border rounded bg-white shadow-sm">
+          ${svgDeltaSolo}
+          <div class="row g-2 mt-2">
+            <div class="col-md-6">
+              
+<table class="table table-sm table-bordered mb-0 bg-white caption-top" data-quarto-postprocess="true" style="font-size:0.78rem;">
+<thead style="background:#3b82f622;">
+<tr class="header">
+<th colspan="2" class="text-center" data-quarto-table-cell-role="th" style="color: #3b82f6">Delta original</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td class="fw-bold">Z<sub>${p1}-${p2}</sub></td>
+<td class="text-end font-monospace">${fmtZeq(Z12)}</td>
+</tr>
+<tr class="even">
+<td class="fw-bold">Z<sub>${p2}-${p3}</sub></td>
+<td class="text-end font-monospace">${fmtZeq(Z23)}</td>
+</tr>
+<tr class="odd">
+<td class="fw-bold">Z<sub>${p1}-${p3}</sub></td>
+<td class="text-end font-monospace">${fmtZeq(Z13)}</td>
+</tr>
+<tr class="table-light even">
+<td class="fw-bold">Σ Z<sub>Δ</sub></td>
+<td class="text-end font-monospace">${fmtZeq(Zsum)}</td>
+</tr>
+</tbody>
+</table>
+
+            </div>
+            <div class="col-md-6">
+              
+<table class="table table-sm table-bordered mb-0 bg-white caption-top" data-quarto-postprocess="true" style="font-size:0.78rem;">
+<thead style="background:#0891b222;">
+<tr class="header">
+<th colspan="2" class="text-center" data-quarto-table-cell-role="th" style="color: #0891b2">Estrella equivalente (Centro N)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td class="fw-bold">Z<sub>N-${p1}</sub></td>
+<td class="text-end font-monospace">${fmtZeq(Za)}</td>
+</tr>
+<tr class="even">
+<td class="fw-bold">Z<sub>N-${p2}</sub></td>
+<td class="text-end font-monospace">${fmtZeq(Zb)}</td>
+</tr>
+<tr class="odd">
+<td class="fw-bold">Z<sub>N-${p3}</sub></td>
+<td class="text-end font-monospace">${fmtZeq(Zc)}</td>
+</tr>
+</tbody>
+</table>
+
+            </div>
           </div>
-          <!-- Tabla de valores numéricos -->
+        </div>
+      </details>`;
+  }
+
+  // -------------------------------------------------------------------------
+  // CASO C — RED PURAMENTE ESTRELLA (4 NODOS)
+  // -------------------------------------------------------------------------
+  else if (pureStar) {
+    const { center, v1, v2, v3 } = pureStar;
+    const Z1 = getZeq(center, v1);
+    const Z2 = getZeq(center, v2);
+    const Z3 = getZeq(center, v3);
+
+    const sigma2 = CZ.add(CZ.add(CZ.mul(Z1, Z2), CZ.mul(Z2, Z3)), CZ.mul(Z3, Z1));
+    const Z12 = CZ.div(sigma2, Z3);
+    const Z23 = CZ.div(sigma2, Z1);
+    const Z13 = CZ.div(sigma2, Z2);
+
+    const ptNeutro_L = { x: 225, y: 175 };
+    const ptN_Top_L  = { x: 225, y: 60, align: 'top' };
+    const ptN_BL_L   = { x: 95,  y: 245, align: 'bl' };
+    const ptN_BR_L   = { x: 355, y: 245, align: 'br' };
+
+    const ptTop_R = { x: 725, y: 65, align: 'top' };
+    const ptBL_R  = { x: 580, y: 225, align: 'bl' };
+    const ptBR_R  = { x: 870, y: 225, align: 'br' };
+
+    const svgStarSolo = `
+    <div class="border rounded-3 bg-white shadow-sm p-3 w-100 my-2" style="overflow-x:auto;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 300" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" style="display:block; min-width:620px; font-family:'Plus Jakarta Sans',system-ui,sans-serif;">
+        <text x="225" y="24" font-size="15" font-weight="bold" fill="black" text-anchor="middle">Estrella Original (Centro ${center})</text>
+        <text x="725" y="24" font-size="15" font-weight="bold" fill="black" text-anchor="middle">Delta Equivalente (${v1}-${v2}-${v3})</text>
+
+        ${svgRamaBloque(ptNeutro_L, ptN_Top_L, 'Z' + center + v2, Z2, '#7c3aed')}
+        ${svgRamaBloque(ptNeutro_L, ptN_BL_L, 'Z' + center + v1, Z1, '#7c3aed')}
+        ${svgRamaBloque(ptNeutro_L, ptN_BR_L, 'Z' + center + v3, Z3, '#7c3aed')}
+        ${svgNodoO(ptNeutro_L, center)}
+        ${svgTerm(ptN_Top_L, v2, v2 === termA, v2 === termB)}
+        ${svgTerm(ptN_BL_L, v1, v1 === termA, v1 === termB)}
+        ${svgTerm(ptN_BR_L, v3, v3 === termA, v3 === termB)}
+
+        ${svgBadgeTrans('Y → Δ')}
+
+        <polygon points="725,65 870,225 580,225" fill="#7c3aed" opacity="0.08" stroke="none"/>
+        ${svgRamaBloque(ptTop_R, ptBL_R, 'Z' + v1 + v2, Z12, '#7c3aed')}
+        ${svgRamaBloque(ptTop_R, ptBR_R, 'Z' + v2 + v3, Z23, '#7c3aed')}
+        ${svgRamaBloque(ptBL_R, ptBR_R, 'Z' + v1 + v3, Z13, '#7c3aed')}
+        ${svgTerm(ptTop_R, v2, v2 === termA, v2 === termB)}
+        ${svgTerm(ptBL_R, v1, v1 === termA, v1 === termB)}
+        ${svgTerm(ptBR_R, v3, v3 === termA, v3 === termB)}
+      </svg>
+    </div>`;
+
+    html += `
+      <details class="mt-2" open>
+        <summary class="small fw-bold" style="cursor:pointer; color:#7c3aed; font-size:0.92rem;">
+          🔄 Transformación Y → Δ detectada — Estrella con centro en ${center}
+        </summary>
+        <div class="p-3 mt-2 border rounded bg-white shadow-sm">
+          ${svgStarSolo}
           <div class="row g-2 mt-2">
             <div class="col-md-6">
               
@@ -3735,16 +4269,20 @@ function renderTransformacionesDY(elementos, nodos) {
 </thead>
 <tbody>
 <tr class="odd">
-<td class="fw-bold">Z<sub>${center}-${a}</sub></td>
+<td class="fw-bold">Z<sub>${center}-${v1}</sub></td>
 <td class="text-end font-monospace">${fmtZeq(Z1)}</td>
 </tr>
 <tr class="even">
-<td class="fw-bold">Z<sub>${center}-${b}</sub></td>
+<td class="fw-bold">Z<sub>${center}-${v2}</sub></td>
 <td class="text-end font-monospace">${fmtZeq(Z2)}</td>
 </tr>
 <tr class="odd">
-<td class="fw-bold">Z<sub>${center}-${c}</sub></td>
+<td class="fw-bold">Z<sub>${center}-${v3}</sub></td>
 <td class="text-end font-monospace">${fmtZeq(Z3)}</td>
+</tr>
+<tr class="table-light even">
+<td class="fw-bold">Σ<sub>2</sub></td>
+<td class="text-end font-monospace">${fmtZeq(sigma2)}</td>
 </tr>
 </tbody>
 </table>
@@ -3760,129 +4298,33 @@ function renderTransformacionesDY(elementos, nodos) {
 </thead>
 <tbody>
 <tr class="odd">
-<td class="fw-bold">Z<sub>${a}-${b}</sub></td>
-<td class="text-end font-monospace">${fmtZeq(ZAB)}</td>
+<td class="fw-bold">Z<sub>${v1}-${v2}</sub></td>
+<td class="text-end font-monospace">${fmtZeq(Z12)}</td>
 </tr>
 <tr class="even">
-<td class="fw-bold">Z<sub>${b}-${c}</sub></td>
-<td class="text-end font-monospace">${fmtZeq(ZBC)}</td>
+<td class="fw-bold">Z<sub>${v2}-${v3}</sub></td>
+<td class="text-end font-monospace">${fmtZeq(Z23)}</td>
 </tr>
 <tr class="odd">
-<td class="fw-bold">Z<sub>${a}-${c}</sub></td>
-<td class="text-end font-monospace">${fmtZeq(ZAC)}</td>
+<td class="fw-bold">Z<sub>${v1}-${v3}</sub></td>
+<td class="text-end font-monospace">${fmtZeq(Z13)}</td>
 </tr>
 </tbody>
 </table>
 
             </div>
-          </div>
-          <div class="small text-muted mt-1" style="font-size:0.72rem;">
-            &Sigma;<sub>2</sub> = Z<sub>${center}-${a}</sub>&middot;Z<sub>${center}-${b}</sub> + Z<sub>${center}-${b}</sub>&middot;Z<sub>${center}-${c}</sub> + Z<sub>${center}-${c}</sub>&middot;Z<sub>${center}-${a}</sub> = ${fmtZeq(sigma2)}
           </div>
         </div>
       </details>`;
-  });
-
-  // --- Detectar configuraciones Delta (triángulos: 3 nodos mutuamente conectados) ---
-  for (let i = 0; i < nodos.length; i++) {
-    for (let j = i + 1; j < nodos.length; j++) {
-      for (let k = j + 1; k < nodos.length; k++) {
-        const a = nodos[i], b = nodos[j], c = nodos[k];
-        const ZAB = getZeq(a, b);
-        const ZBC = getZeq(b, c);
-        const ZAC = getZeq(a, c);
-        if (!ZAB || !ZBC || !ZAC) continue;
-
-        const Zsum = CZ.add(CZ.add(ZAB, ZBC), ZAC);
-        if (CZ.polar(Zsum).mag < 1e-12) continue;
-
-        const Za = CZ.div(CZ.mul(ZAB, ZAC), Zsum);
-        const Zb = CZ.div(CZ.mul(ZAB, ZBC), Zsum);
-        const Zc = CZ.div(CZ.mul(ZAC, ZBC), Zsum);
-
-        html += `
-          <details class="mt-2" open>
-            <summary class="small fw-bold" style="cursor:pointer; color:#0891b2;">
-              🔄 Transformación Δ → Y detectada — Triángulo ${a}-${b}-${c}
-            </summary>
-            <div class="p-2 mt-2 border rounded bg-white shadow-sm">
-              <!-- Diagrama SVG lado a lado -->
-              <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:8px;">
-                ${svgDelta(a, b, c, ZAB, ZBC, ZAC, '#3b82f6')}
-                ${svgBadge('Δ → Y')}
-                ${svgEstrellaResult(a, b, c, Za, Zb, Zc)}
-              </div>
-              <!-- Tabla de valores numéricos -->
-              <div class="row g-2 mt-2">
-                <div class="col-md-6">
-                  
-<table class="table table-sm table-bordered mb-0 bg-white caption-top" data-quarto-postprocess="true" style="font-size:0.78rem;">
-<thead style="background:#3b82f622;">
-<tr class="header">
-<th colspan="2" class="text-center" data-quarto-table-cell-role="th" style="color: #3b82f6">Delta original</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td class="fw-bold">Z<sub>${a}-${b}</sub></td>
-<td class="text-end font-monospace">${fmtZeq(ZAB)}</td>
-</tr>
-<tr class="even">
-<td class="fw-bold">Z<sub>${b}-${c}</sub></td>
-<td class="text-end font-monospace">${fmtZeq(ZBC)}</td>
-</tr>
-<tr class="odd">
-<td class="fw-bold">Z<sub>${a}-${c}</sub></td>
-<td class="text-end font-monospace">${fmtZeq(ZAC)}</td>
-</tr>
-</tbody>
-</table>
-
-                </div>
-                <div class="col-md-6">
-                  
-<table class="table table-sm table-bordered mb-0 bg-white caption-top" data-quarto-postprocess="true" style="font-size:0.78rem;">
-<thead style="background:#0891b222;">
-<tr class="header">
-<th colspan="2" class="text-center" data-quarto-table-cell-role="th" style="color: #0891b2">Estrella equivalente</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td class="fw-bold">Z<sub>N-${a}</sub></td>
-<td class="text-end font-monospace">${fmtZeq(Za)}</td>
-</tr>
-<tr class="even">
-<td class="fw-bold">Z<sub>N-${b}</sub></td>
-<td class="text-end font-monospace">${fmtZeq(Zb)}</td>
-</tr>
-<tr class="odd">
-<td class="fw-bold">Z<sub>N-${c}</sub></td>
-<td class="text-end font-monospace">${fmtZeq(Zc)}</td>
-</tr>
-</tbody>
-</table>
-
-                </div>
-              </div>
-              <div class="small text-muted mt-1" style="font-size:0.72rem;">
-                &Sigma; Z<sub>&Delta;</sub> = Z<sub>${a}-${b}</sub> + Z<sub>${b}-${c}</sub> + Z<sub>${a}-${c}</sub> = ${fmtZeq(Zsum)}
-              </div>
-            </div>
-          </details>`;
-      }
-    }
   }
 
   if (!html) return '';
   return `
-    <details class="mt-2" open>
-      <summary class="small fw-bold text-primary" style="cursor:pointer;">
-        🔄 Transformaciones Δ ↔ Y detectadas en la red
-      </summary>
+    <div class="mt-3">
       ${html}
-    </details>`;
+    </div>`;
 }
+
 
 /* =====================================================================
    13) Resolver red (función principal)
@@ -3990,7 +4432,7 @@ function resolverRed() {
         <span class="text-muted ms-2 fs-5">(${ZT.r.toFixed(4)} ${signo} j${Math.abs(ZT.i).toFixed(4)} &Omega;)</span>
       </div>
       ${renderTablaEquivalentes(grupos)}
-      ${renderTransformacionesDY(elementos, nodos)}
+      ${renderTransformacionesDY(elementos, nodos, A, B)}
       ${renderSistemaNodal(Y, I, inc, B)}
       <details class="mt-2">
         <summary class="small fw-bold text-primary" style="cursor:pointer;">
