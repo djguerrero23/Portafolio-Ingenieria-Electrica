@@ -214,45 +214,27 @@ Una estrategia útil es:
 ::: {style="max-width: 460px; margin: 1.5rem auto;"}
 ```{mermaid}
 %%| fig-align: center
-%%{init: {
-  'theme': 'base',
-  'themeVariables': {
-    'primaryColor': '#ffffff',
-    'primaryTextColor': '#1e293b',
-    'primaryBorderColor': '#94a3b8',
-    'lineColor': '#64748b',
-    'fontSize': '45px',
-    'nodePadding': '20px',
-    'fontFamily': 'system-ui, -apple-system, sans-serif'
-  }
-}}%%
+%%{init: {'theme': 'base', 'themeVariables': { 'fontSize': '30px', 'fontFamily': 'Inter, system-ui, sans-serif' }}}%%
 flowchart TD
-     IN["<div style='padding: 10px 20px;'>⚡ Circuito de estudio</div>"] --> Q1{"¿Admite reducción directa<br>en serie o paralelo?"}
+    A["🔌 Circuito a analizar"] --> B{"¿Admite reducción directa\nen serie o paralelo?"}
     
-    Q1 -- Sí --> T_DY_1[["Reducción Serie / Paralelo"]]
-    Q1 -- No --> Q2{"¿Presenta configuración Δ o Y?"}
+    B -- Sí --> C["✅ Reducción Serie / Paralelo"]
+    B -- No --> D{"¿Existe red Δ o Y conveniente?"}
     
-    Q2 -- Sí --> T_DY[["Transformación Δ ↔ Y"]]
-    Q2 -- No --> M_GEN["Análisis Sistemático (Mallas o Nodos)"]
-    
-    T_DY --> CONT(["Continuar simplificación"])
-    T_DY_1 --> CONT
+    D -- Sí --> E["🔄 Transformación Δ ↔ Y"]
+    D -- No --> F["📑 Método general (Mallas / Nodos)"]
 
-    %% Estilos elegantes
-    style IN fill:#e9c5f4ff,stroke:#0f17d2a,color:#f8fafc,stroke-width:1px
-    style CONT fill:#f0fdf4,stroke:#16a34a,color:#14532d,stroke-width:1.5px
-    style Q1 fill:#f8fafc,stroke:#64748b,color:#0f172a,stroke-width:1.5px
-    style Q2 fill:#f8fafc,stroke:#64748b,color:#0f172a,stroke-width:1.5px
-    style T_DY fill:#eff6ff,stroke:#2563eb,color:#1e40af,stroke-width:1.5px
-    style T_DY_1 fill:#eff6ff,stroke:#2563eb,color:#1e40af,stroke-width:1.5px
-    
-    style M_GEN fill:#f8fafc,stroke:#cbd5e1,color:#64748b,stroke-width:1px
+    E --> G["⚡ Continuar simplificación"]
+
+    style A fill:#eef2ff,stroke:#6366f1,stroke-width:1.5px,color:#1e1b4b,rx:4px,ry:4px
+    style B fill:#fef3c7,stroke:#f59e0b,stroke-width:1.5px,color:#78350f,rx:4px,ry:4px
+    style D fill:#fef3c7,stroke:#f59e0b,stroke-width:1.5px,color:#78350f,rx:4px,ry:4px
+    style C fill:#dcfce7,stroke:#16a34a,stroke-width:1.5px,color:#14532d,rx:4px,ry:4px
+    style E fill:#dbeafe,stroke:#2563eb,stroke-width:1.5px,color:#1e3a8a,rx:4px,ry:4px
+    style F fill:#f1f5f9,stroke:#64748b,stroke-width:1.5px,color:#334155,rx:4px,ry:4px
+    style G fill:#dcfce7,stroke:#16a34a,stroke-width:1.5px,color:#14532d,stroke-dasharray: 3 3,rx:4px,ry:4px
 ```
-
 :::
-
-
-
 
 ::: {.callout-tip}
 ### Regla de decisión
@@ -552,294 +534,11 @@ En sistemas trifásicos equilibrados, esta propiedad permite establecer relacion
 
 ---
 
-# Ejercicios Resueltos
+# Módulo Interactivo de Cálculo $\Delta \leftrightarrow \text{Y}$
 
-Los siguientes ejercicios cubren los siete casos típicos que aparecen en un curso de Circuitos Eléctricos. Cada uno incluye el **netlist equivalente** para que puedas verificar el resultado en el módulo interactivo que aparece más adelante.
-
-## Ejercicio 1 — Delta a Estrella (resistivo equilibrado)
-
-:::: {.columns}
-
-::: {.column width="50%"}
-**Enunciado.** Una red Delta está formada por tres resistencias iguales $\mathbf{Z}_A=\mathbf{Z}_B=\mathbf{Z}_C=6\,\Omega$. Determinar la estrella equivalente.
-:::
-
-::: {.column width="50%"}
-![](imagenes/Eje1.png){width=60% fig-align="center"}
-:::
-
-::::
-
-
-**Solución.** Como es equilibrado, $\mathbf{Z}_\Sigma = 18\,\Omega$:
-
-$$
-\mathbf{Z}_1 = \mathbf{Z}_2 = \mathbf{Z}_3 = \frac{6 \cdot 6}{18} = 2\,\Omega
-$$
-
-**Resultado.** Estrella equivalente equilibrada con ramas $\mathbf{Z}_1 = \mathbf{Z}_2 = \mathbf{Z}_3 = 2\,\Omega$.
-
-**Verificación con la regla del caso equilibrado.** $\mathbf{Z}_Y = \frac{\mathbf{Z}_\Delta}{3} = \frac{6}{3} = 2\,\Omega$. ✓
-
-::: {.callout-note collapse="false"}
-### 💡 Interpretación de Resultados y Comparación con el Solver
-
-¿Por qué la respuesta analítica es **$2\,\Omega$** pero el solver reporta **$Z_T = 4\,\Omega$**?
-
-* **Impedancia por Rama ($\mathbf{Z}_Y = 2\,\Omega$):** Corresponde al valor interno de cada uno de los tres brazos individuales de la estrella ($\mathbf{Z}_1, \mathbf{Z}_2, \mathbf{Z}_3$) que convergen en el nuevo nodo neutro central $N$.
-* **Impedancia Terminal del Solver ($Z_T = 4\,\Omega$):** El solver siempre mide la **Impedancia Equivalente Total entre dos bornes externos específicos** (Terminal **A = 1** y Terminal **B = 2**).
-
-**Comprobación de la equivalencia física exterior:**
-
-1. **Visto desde la Estrella resultante:** Al medir entre los terminales 1 y 2, la corriente entra por la rama $\mathbf{Z}_1$ ($2\,\Omega$) hacia el neutro y sale por $\mathbf{Z}_2$ ($2\,\Omega$). Como la rama $\mathbf{Z}_3$ queda en circuito abierto, ambas ramas quedan en **serie**:
-   $$Z_T(1,2) = \mathbf{Z}_1 + \mathbf{Z}_2 = 2\,\Omega + 2\,\Omega = \mathbf{4\,\Omega}$$
-2. **Visto desde el Delta original:** Entre los terminales 1 y 2 existe una resistencia directa de $6\,\Omega$ en **paralelo** con la trayectoria formada por los lados 1–3 y 3–2 ($6\,\Omega + 6\,\Omega = 12\,\Omega$):
-   $$Z_T(1,2) = 6\,\Omega \parallel (6\,\Omega + 6\,\Omega) = \frac{6 \cdot 12}{6 + 12} = \frac{72}{18} = \mathbf{4\,\Omega}$$
-
-> **Conclusión clave:** La transformación $\Delta \leftrightarrow \text{Y}$ **no altera la impedancia global que percibe una fuente exterior**, sino que reorganiza la topología interna para permitir reducciones en serie y paralelo directas.
-:::
-
-**Netlist para verificar en el solver:**
-
-```text
-1 2 6 0
-2 3 6 0
-1 3 6 0
-```
-*(Configurar **Terminal A = 1** y **Terminal B = 2** para comprobar $Z_T = 4\,\Omega$)*.
-
-
-## Ejercicio 2 — Estrella a Delta (resistivo equilibrado)
-
-
-
-:::: {.columns}
-
-::: {.column width="50%"}
-**Enunciado.** Una estrella tiene $\mathbf{Z}_1 = \mathbf{Z}_2 = \mathbf{Z}_3 = 4\,\Omega$. Encontrar el delta equivalente.
-:::
-
-::: {.column width="50%"}
-![](imagenes/Eje2.png){width=60% fig-align="center"}
-:::
-
-::::
-
-**Solución.**
-
-$$
-\Sigma_2 = 4\cdot 4 + 4\cdot 4 + 4\cdot 4 = 48\,\Omega^2
-$$
-
-$$
-\mathbf{Z}_A = \mathbf{Z}_B = \mathbf{Z}_C = \frac{48}{4} = 12\,\Omega
-$$
-
-**Resultado.** Delta equivalente con ramas $\mathbf{Z}_A = \mathbf{Z}_B = \mathbf{Z}_C = 12\,\Omega$.
-
-**Verificación con la regla del caso equilibrado.** $\mathbf{Z}_\Delta = 3 \cdot \mathbf{Z}_Y = 3 \cdot 4 = 12\,\Omega$. ✓
-
-::: {.callout-note collapse="false"}
-### 💡 Interpretación de Resultados y Comparación con el Solver
-
-* **Impedancia de cada rama del Delta resultante:** $\mathbf{Z}_\Delta = 12\,\Omega$.
-* **Impedancia Terminal del Solver ($Z_T$ entre bornes 1 y 2):**
-  * **Desde la Estrella original ($4\,\Omega$ por rama):** La corriente recorre en serie $\mathbf{Z}_1$ y $\mathbf{Z}_2$, dando $Z_T(1,2) = 4\,\Omega + 4\,\Omega = \mathbf{8\,\Omega}$.
-  * **Desde el Delta equivalente ($12\,\Omega$ por lado):** El lado directo 1–2 ($12\,\Omega$) queda en paralelo con los otros dos lados en serie ($12 + 12 = 24\,\Omega$):
-    $$Z_T(1,2) = 12\,\Omega \parallel 24\,\Omega = \frac{12 \cdot 24}{12 + 24} = \frac{288}{36} = \mathbf{8\,\Omega}$$
-:::
-
-**Netlist para verificar en el solver:**
-
-```text
-1 d 4 0
-2 d 4 0
-3 d 4 0
-```
-*(Configurar **Terminal A = 1** y **Terminal B = 2** para comprobar $Z_T = 8\,\Omega$)*.
-
----
-
-## Ejercicio P3 � Delta a Estrella complejo
-
-**Enunciado.** Convertir el delta con $\mathbf{Z}_A = 6 + j3\,\Omega$, $\mathbf{Z}_B = 4 - j2\,\Omega$, $\mathbf{Z}_C = 3 + j4\,\Omega$ a su estrella equivalente.
-
-::: {.callout-note collapse="true"}
-### Respuesta
-
-$\mathbf{Z}_\Sigma = (6+j3) + (4-j2) + (3+j4) = 13 + j5\,\Omega$
-
-$$
-\mathbf{Z}_1 = \frac{(4-j2)(3+j4)}{13+j5} = \frac{20 + j10}{13+j5} \approx 1.669 + j0.127\,\Omega
-$$
-
-$$
-\mathbf{Z}_2 = \frac{(6+j3)(3+j4)}{13+j5} = \frac{6 + j33}{13+j5} \approx 1.509 + j1.958\,\Omega
-$$
-
-$$
-\mathbf{Z}_3 = \frac{(6+j3)(4-j2)}{13+j5} = \frac{30 + j0}{13+j5} \approx 1.775 - j0.683\,\Omega
-$$
-
-**Netlist:**
-```text
-1 2 6 3
-2 3 4 -2
-1 3 3 4
-```
-:::
-
----
-
-## Ejercicio P4 � Estrella a Delta complejo
-
-**Enunciado.** Convertir la estrella con $\mathbf{Z}_1 = 2 + j1\,\Omega$, $\mathbf{Z}_2 = 1 - j3\,\Omega$, $\mathbf{Z}_3 = 4 + j2\,\Omega$ a su delta equivalente.
-
-::: {.callout-note collapse="true"}
-### Respuesta
-
-Calculando los productos dos a dos:
-
-$$
-\mathbf{Z}_1\mathbf{Z}_2 = (2+j1)(1-j3) = 5 - j5\,\Omega^2
-$$
-$$
-\mathbf{Z}_2\mathbf{Z}_3 = (1-j3)(4+j2) = 10 - j10\,\Omega^2
-$$
-$$
-\mathbf{Z}_3\mathbf{Z}_1 = (4+j2)(2+j1) = 6 + j8\,\Omega^2
-$$
-
-$$
-\Sigma_2 = (5-j5) + (10-j10) + (6+j8) = 21 - j7\,\Omega^2
-$$
-
-$$
-\mathbf{Z}_A = \frac{21-j7}{2+j1} \approx 7 - j7\,\Omega
-$$
-$$
-\mathbf{Z}_B = \frac{21-j7}{1-j3} \approx 6 + j4\,\Omega
-$$
-$$
-\mathbf{Z}_C = \frac{21-j7}{4+j2} \approx 4 - j3.5\,\Omega
-$$
-
-**Netlist:**
-```text
-1 d 2 1
-2 d 1 -3
-3 d 4 2
-```
-:::
-
----
-
-## Ejercicio P5 � Puente desequilibrado con reactancias
-
-**Enunciado.** Un puente cu�druple tiene $\mathbf{Z}_{AC} = 3+j4\,\text{k}\Omega$, $\mathbf{Z}_{AD} = 6\,\text{k}\Omega$, $\mathbf{Z}_{CB} = 4\,\text{k}\Omega$, $\mathbf{Z}_{DB} = 2 - j2\,\text{k}\Omega$, $\mathbf{Z}_{CD} = 3\,\text{k}\Omega$. Determinar $\mathbf{Z}_{eq}$ entre $A$ y $B$.
-
-::: {.callout-note collapse="true"}
-### Respuesta
-
-Convertir el delta $A$�$C$�$D$ a estrella. Con $\mathbf{Z}_\Sigma = (3+j4) + 6 + 3 = 12 + j4\,\text{k}\Omega$:
-
-$$
-\mathbf{Z}_A' = \frac{6\cdot 3}{12+j4} \approx 1.35 - j0.45\,\text{k}\Omega
-$$
-$$
-\mathbf{Z}_C' = \frac{(3+j4)\cdot 3}{12+j4} \approx 1.05 + j0.65\,\text{k}\Omega
-$$
-$$
-\mathbf{Z}_D' = \frac{6(3+j4)}{12+j4} \approx 2.10 + j1.30\,\text{k}\Omega
-$$
-
-Reduciendo:
-
-- Rama $N\!-\!C\!-\!B$: $\mathbf{Z}_C' + \mathbf{Z}_{CB} \approx 5.05 + j0.65\,\text{k}\Omega$
-- Rama $N\!-\!D\!-\!B$: $\mathbf{Z}_D' + \mathbf{Z}_{DB} \approx 4.10 - j0.70\,\text{k}\Omega$
-
-En paralelo:
-
-$$
-\mathbf{Z}_{par} \approx 2.24 - j0.02\,\text{k}\Omega
-$$
-
-En serie con $\mathbf{Z}_A'$:
-
-$$
-\boxed{\mathbf{Z}_{eq} \approx 3.59 - j0.47\,\text{k}\Omega \approx 3.62\,\angle\,{-7.5^\circ}\,\text{k}\Omega}
-$$
-
-**Netlist:**
-```text
-1 c 3 4
-1 d 6 0
-c 2 4 0
-d 2 2 -2
-c d 3 0
-```
-:::
-
----
-
-## Ejercicio P6 � Aplicaci�n: adaptaci�n de carga trif�sica
-
-**Enunciado.** Una carga trif�sica equilibrada en delta tiene impedancia por fase $\mathbf{Z}_\Delta = 30 + j40\,\Omega$. Se desea representarla como una estrella equivalente para conectarla a una red con neutro accesible. Determinar:
-
-(a) la impedancia de fase de la estrella equivalente;
-(b) la corriente de l�nea si se conecta a una red trif�sica de $380\,\text{V}$ (l�nea-l�nea) a $50\,\text{Hz}$.
-
-::: {.callout-note collapse="true"}
-### Respuesta
-
-**(a)** Para red equilibrada:
-
-$$
-\mathbf{Z}_Y = \frac{\mathbf{Z}_\Delta}{3} = \frac{30+j40}{3} = 10 + j13.33\,\Omega
-$$
-
-**(b)** En conexi�n Y, la tensi�n de fase es $V_F = V_L/\sqrt{3} = 380/\sqrt{3} \approx 219.4\,\text{V}$. La corriente de l�nea es:
-
-$$
-I_L = \frac{V_F}{|\mathbf{Z}_Y|} = \frac{219.4}{\sqrt{10^2 + 13.33^2}} \approx \frac{219.4}{16.66} \approx 13.17\,\text{A}
-$$
-
-El factor de potencia es $\cos\varphi = 10/16.66 \approx 0.60$ (inductivo).
-
-**Netlist (por fase):**
-```text
-1 n 10 13.33
-```
-:::
-
----
-
-
-# Módulos Interactivos de Simulación y Análisis
-
-A continuación tienes a tu disposición tres herramientas interactivas complementarias para el estudio y verificación de redes $\Delta \leftrightarrow \text{Y}$:
-
-## 1. Calculadora Directa de Transformación $\Delta \leftrightarrow \text{Y}$
-
-Ingresa las impedancias de rama para obtener la conversión analítica directa ($\mathbf{Z}_1, \mathbf{Z}_2, \mathbf{Z}_3 \leftrightarrow \mathbf{Z}_A, \mathbf{Z}_B, \mathbf{Z}_C$) y comprobar que $Z_T$ sea idéntica entre bornes:
-
-{{< include modulos/_calculadora_delta_estrella_directa.md >}}
-
----
-
-## 2. Solver Nodal de Impedancia Terminal Total ($Z_T$) en Redes Arbitrarias
-
-Para analizar redes con múltiples ramas en paralelo, puentes o topologías más complejas mediante netlist:
+Utilice el siguiente simulador para ingresar las impedancias complejas en forma rectangular ($R + jX$) y obtener inmediatamente la transformación equivalente en ambas direcciones con verificación de fasores:
 
 {{< include modulos/_modulo_delta-estrella_solver.md >}}
-
----
-
-## 3. Analizador de Corrientes de Rama y Potencias bajo Tensión de Excitación ($\mathbf{V}_s$)
-
-Determina la corriente total suministrada ($I_T$), las corrientes fasoriales individuales por cada elemento y el balance de potencia activa y reactiva:
-
-{{< include modulos/_modulo_corrientes_excitacion.md >}}
 
 ---
 

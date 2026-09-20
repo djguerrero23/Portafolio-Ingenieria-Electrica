@@ -9,7 +9,7 @@
       <!-- O-A vertical -->
       <line x1="190" y1="185" x2="190" y2="60" stroke="black" stroke-width="1.5"/>
       <rect x="179" y="105" width="22" height="44" fill="white" stroke="black" stroke-width="1.5"/>
-      <text x="216" y="132" font-size="14" font-style="italic" fill="black" text-anchor="start">Z<tspan baseline-shift="sub" font-size="0.7em">A</tspan></text>
+      <text x="182" y="132" font-size="14" font-style="italic" fill="black" text-anchor="start">Z<tspan baseline-shift="sub" font-size="0.7em">A</tspan></text>
 
       <!-- O-B -->
       <line x1="190" y1="185" x2="315" y2="255" stroke="black" stroke-width="1.5"/>

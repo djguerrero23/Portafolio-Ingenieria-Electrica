@@ -3,9 +3,7 @@
 
 ```{=html}
 <p class="small text-muted mb-2">
-Escribe cada elemento como <code>nodo1 nodo2 R X</code>, donde la impedancia serie entre ambos nodos es
-<em>Z = R + jX</em> (&Omega;). Una línea por elemento. Los símbolos <code>#</code> inician comentarios y los nodos
-pueden nombrarse con números o letras. Varias líneas con el mismo par de nodos se interpretan como <b>ramas en paralelo</b>.
+Este solver calcula y retorna la <b>Impedancia Equivalente Total (<i>Z</i><sub>T</sub>) entre los dos terminales externos seleccionados (A y B)</b> mediante análisis nodal complejo. Escribe cada elemento como <code>nodo1 nodo2 R X</code>, donde la impedancia serie entre ambos nodos es <em>Z = R + jX</em> (&Omega;). Una línea por elemento. Los símbolos <code>#</code> inician comentarios y los nodos pueden nombrarse con números o letras. Varias líneas con el mismo par de nodos se interpretan como <b>ramas en paralelo</b>.
 </p>
 
 <details class="mb-3">
@@ -639,7 +637,286 @@ function renderSistemaNodal(Y, I, inc, B) {
 }
 
 /* =====================================================================
-   12) Resolver red (función principal)
+   12) Detección automática de configuraciones Δ y Y
+   ===================================================================== */
+function renderTransformacionesDY(elementos, nodos) {
+  const grupos = agruparParalelos(elementos);
+  const adj = {};
+  nodos.forEach(n => { adj[n] = new Set(); });
+
+  const zeqPar = {};
+  Object.entries(grupos).forEach(([key, els]) => {
+    const [n1, n2] = key.split('||');
+    adj[n1].add(n2);
+    adj[n2].add(n1);
+    zeqPar[key] = equivalenteParalelo(els);
+  });
+
+  function getZeq(a, b) {
+    return zeqPar[[a, b].sort().join('||')] || null;
+  }
+
+  function fmtZeq(z) {
+    const p = CZ.polar(z);
+    const sg = z.i >= 0 ? '+' : '−';
+    return `<b>${p.mag.toFixed(4)}&ang;${p.ang.toFixed(2)}&deg; &Omega;</b> <span class="text-muted">(${z.r.toFixed(4)} ${sg} j${Math.abs(z.i).toFixed(4)})</span>`;
+  }
+
+  /* Formato corto para SVG (sin HTML tags) */
+  function fmtSvg(z) {
+    const p = CZ.polar(z);
+    const sg = z.i >= 0 ? '+' : '−';
+    return `${z.r.toFixed(2)} ${sg} j${Math.abs(z.i).toFixed(2)}`;
+  }
+  function fmtSvgPolar(z) {
+    const p = CZ.polar(z);
+    return `${p.mag.toFixed(2)}∠${p.ang.toFixed(1)}°`;
+  }
+
+  /* ---- Generar SVG de Estrella ---- */
+  function svgEstrella(center, a, b, c, Z1, Z2, Z3) {
+    return `
+    <div style="flex:1 1 380px; max-width:420px; min-width:280px;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280" width="100%" height="280" preserveAspectRatio="xMidYMid meet" style="display:block; font-family:'Plus Jakarta Sans',system-ui,sans-serif;">
+      <text x="200" y="18" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">⭐ Estrella original</text>
+      <line x1="200" y1="155" x2="200" y2="50" stroke="#334155" stroke-width="1.5"/>
+      <rect x="183" y="85" width="34" height="44" rx="3" fill="white" stroke="#334155" stroke-width="1.5"/>
+      <text x="200" y="104" font-size="9" font-style="italic" fill="#334155" text-anchor="middle">Z<tspan baseline-shift="sub" font-size="0.7em">${center}-${a}</tspan></text>
+      <text x="200" y="120" font-size="7.5" fill="#7c3aed" font-weight="bold" text-anchor="middle">${fmtSvg(Z1)}</text>
+      <line x1="200" y1="155" x2="320" y2="230" stroke="#334155" stroke-width="1.5"/>
+      <g transform="translate(260,193) rotate(28)">
+        <rect x="-28" y="-20" width="56" height="40" rx="3" fill="white" stroke="#334155" stroke-width="1.5"/>
+        <text x="0" y="-4" font-size="9" font-style="italic" fill="#334155" text-anchor="middle">Z<tspan baseline-shift="sub" font-size="0.7em">${center}-${b}</tspan></text>
+        <text x="0" y="12" font-size="7.5" fill="#7c3aed" font-weight="bold" text-anchor="middle">${fmtSvg(Z2)}</text>
+      </g>
+      <line x1="200" y1="155" x2="80" y2="230" stroke="#334155" stroke-width="1.5"/>
+      <g transform="translate(140,193) rotate(-28)">
+        <rect x="-28" y="-20" width="56" height="40" rx="3" fill="white" stroke="#334155" stroke-width="1.5"/>
+        <text x="0" y="-4" font-size="9" font-style="italic" fill="#334155" text-anchor="middle">Z<tspan baseline-shift="sub" font-size="0.7em">${center}-${c}</tspan></text>
+        <text x="0" y="12" font-size="7.5" fill="#7c3aed" font-weight="bold" text-anchor="middle">${fmtSvg(Z3)}</text>
+      </g>
+      <circle cx="200" cy="155" r="3.5" fill="#7c3aed"/>
+      <text x="200" y="175" font-size="11" font-weight="bold" fill="#7c3aed" text-anchor="middle">${center}</text>
+      <circle cx="200" cy="50"  r="4" fill="white" stroke="#334155" stroke-width="1.5"/>
+      <circle cx="320" cy="230" r="4" fill="white" stroke="#334155" stroke-width="1.5"/>
+      <circle cx="80"  cy="230" r="4" fill="white" stroke="#334155" stroke-width="1.5"/>
+      <text x="200" y="40" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">${a}</text>
+      <text x="334" y="235" font-size="12" font-weight="bold" fill="#334155" text-anchor="start">${b}</text>
+      <text x="66"  y="235" font-size="12" font-weight="bold" fill="#334155" text-anchor="end">${c}</text>
+      <text x="200" y="268" font-size="9" fill="#64748b" text-anchor="middle">Nodo central: ${center}</text>
+    </svg>
+    </div>`;
+  }
+
+  /* ---- Generar SVG de Delta ---- */
+  function svgDelta(a, b, c, ZAB, ZBC, ZAC, fillColor) {
+    const clr = fillColor || '#3b82f6';
+    return `
+    <div style="flex:1 1 380px; max-width:420px; min-width:280px;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280" width="100%" height="280" preserveAspectRatio="xMidYMid meet" style="display:block; font-family:'Plus Jakarta Sans',system-ui,sans-serif;">
+      <text x="200" y="18" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">🔺 Delta equivalente</text>
+      <polygon points="200,50 320,230 80,230" fill="${clr}" opacity="0.08" stroke="none"/>
+      <line x1="200" y1="50" x2="320" y2="230" stroke="#334155" stroke-width="1.5"/>
+      <g transform="translate(260,140) rotate(48)">
+        <rect x="-28" y="-20" width="56" height="40" rx="3" fill="white" stroke="#334155" stroke-width="1.5"/>
+        <text x="0" y="-4" font-size="9" font-style="italic" fill="#334155" text-anchor="middle">Z<tspan baseline-shift="sub" font-size="0.7em">${a}-${b}</tspan></text>
+        <text x="0" y="12" font-size="7.5" fill="${clr}" font-weight="bold" text-anchor="middle">${fmtSvg(ZAB)}</text>
+      </g>
+      <line x1="200" y1="50" x2="80" y2="230" stroke="#334155" stroke-width="1.5"/>
+      <g transform="translate(140,140) rotate(-48)">
+        <rect x="-28" y="-20" width="56" height="40" rx="3" fill="white" stroke="#334155" stroke-width="1.5"/>
+        <text x="0" y="-4" font-size="9" font-style="italic" fill="#334155" text-anchor="middle">Z<tspan baseline-shift="sub" font-size="0.7em">${a}-${c}</tspan></text>
+        <text x="0" y="12" font-size="7.5" fill="${clr}" font-weight="bold" text-anchor="middle">${fmtSvg(ZAC)}</text>
+      </g>
+      <line x1="320" y1="230" x2="80" y2="230" stroke="#334155" stroke-width="1.5"/>
+      <rect x="172" y="215" width="56" height="30" rx="3" fill="white" stroke="#334155" stroke-width="1.5"/>
+      <text x="200" y="228" font-size="9" font-style="italic" fill="#334155" text-anchor="middle">Z<tspan baseline-shift="sub" font-size="0.7em">${b}-${c}</tspan></text>
+      <text x="200" y="240" font-size="7.5" fill="${clr}" font-weight="bold" text-anchor="middle">${fmtSvg(ZBC)}</text>
+      <circle cx="200" cy="50"  r="4" fill="white" stroke="#334155" stroke-width="1.5"/>
+      <circle cx="320" cy="230" r="4" fill="white" stroke="#334155" stroke-width="1.5"/>
+      <circle cx="80"  cy="230" r="4" fill="white" stroke="#334155" stroke-width="1.5"/>
+      <text x="200" y="40" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">${a}</text>
+      <text x="334" y="235" font-size="12" font-weight="bold" fill="#334155" text-anchor="start">${b}</text>
+      <text x="66"  y="235" font-size="12" font-weight="bold" fill="#334155" text-anchor="end">${c}</text>
+      <text x="200" y="268" font-size="9" fill="#64748b" text-anchor="middle">Sin nodo central</text>
+    </svg>
+    </div>`;
+  }
+
+  /* ---- SVG de Estrella para resultado de Delta->Y ---- */
+  function svgEstrellaResult(a, b, c, Za, Zb, Zc) {
+    return `
+    <div style="flex:1 1 380px; max-width:420px; min-width:280px;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280" width="100%" height="280" preserveAspectRatio="xMidYMid meet" style="display:block; font-family:'Plus Jakarta Sans',system-ui,sans-serif;">
+      <text x="200" y="18" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">⭐ Estrella equivalente</text>
+      <line x1="200" y1="155" x2="200" y2="50" stroke="#334155" stroke-width="1.5"/>
+      <rect x="183" y="85" width="34" height="44" rx="3" fill="white" stroke="#334155" stroke-width="1.5"/>
+      <text x="200" y="104" font-size="9" font-style="italic" fill="#334155" text-anchor="middle">Z<tspan baseline-shift="sub" font-size="0.7em">N-${a}</tspan></text>
+      <text x="200" y="120" font-size="7.5" fill="#0891b2" font-weight="bold" text-anchor="middle">${fmtSvg(Za)}</text>
+      <line x1="200" y1="155" x2="320" y2="230" stroke="#334155" stroke-width="1.5"/>
+      <g transform="translate(260,193) rotate(28)">
+        <rect x="-28" y="-20" width="56" height="40" rx="3" fill="white" stroke="#334155" stroke-width="1.5"/>
+        <text x="0" y="-4" font-size="9" font-style="italic" fill="#334155" text-anchor="middle">Z<tspan baseline-shift="sub" font-size="0.7em">N-${b}</tspan></text>
+        <text x="0" y="12" font-size="7.5" fill="#0891b2" font-weight="bold" text-anchor="middle">${fmtSvg(Zb)}</text>
+      </g>
+      <line x1="200" y1="155" x2="80" y2="230" stroke="#334155" stroke-width="1.5"/>
+      <g transform="translate(140,193) rotate(-28)">
+        <rect x="-28" y="-20" width="56" height="40" rx="3" fill="white" stroke="#334155" stroke-width="1.5"/>
+        <text x="0" y="-4" font-size="9" font-style="italic" fill="#334155" text-anchor="middle">Z<tspan baseline-shift="sub" font-size="0.7em">N-${c}</tspan></text>
+        <text x="0" y="12" font-size="7.5" fill="#0891b2" font-weight="bold" text-anchor="middle">${fmtSvg(Zc)}</text>
+      </g>
+      <circle cx="200" cy="155" r="3.5" fill="#0891b2"/>
+      <text x="200" y="175" font-size="11" font-weight="bold" fill="#0891b2" text-anchor="middle">N</text>
+      <circle cx="200" cy="50"  r="4" fill="white" stroke="#334155" stroke-width="1.5"/>
+      <circle cx="320" cy="230" r="4" fill="white" stroke="#334155" stroke-width="1.5"/>
+      <circle cx="80"  cy="230" r="4" fill="white" stroke="#334155" stroke-width="1.5"/>
+      <text x="200" y="40" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">${a}</text>
+      <text x="334" y="235" font-size="12" font-weight="bold" fill="#334155" text-anchor="start">${b}</text>
+      <text x="66"  y="235" font-size="12" font-weight="bold" fill="#334155" text-anchor="end">${c}</text>
+      <text x="200" y="268" font-size="9" fill="#64748b" text-anchor="middle">Nuevo nodo neutro: N</text>
+    </svg>
+    </div>`;
+  }
+
+  /* ---- SVG de Delta para resultado de Y->Delta (reutiliza svgDelta) ---- */
+
+  /* ---- Badge de transformación ---- */
+  function svgBadge(label) {
+    return `
+    <div class="d-flex align-items-center justify-content-center" style="min-width:60px;">
+      <div class="text-center border rounded-2 px-2 py-1 bg-white shadow-sm">
+        <div style="font-size:0.7rem; font-weight:700; color:#334155;">${label}</div>
+        <div style="font-size:1.2rem; font-weight:700; color:#334155;">→</div>
+      </div>
+    </div>`;
+  }
+
+  let html = '';
+
+  // --- Detectar configuraciones Estrella (nodo central con exactamente 3 vecinos) ---
+  const starCenters = nodos.filter(n => adj[n] && adj[n].size === 3);
+  starCenters.forEach(center => {
+    const vecinos = [...adj[center]].sort();
+    const [a, b, c] = vecinos;
+    const Z1 = getZeq(center, a);
+    const Z2 = getZeq(center, b);
+    const Z3 = getZeq(center, c);
+    if (!Z1 || !Z2 || !Z3) return;
+
+    const sigma2 = CZ.add(CZ.add(CZ.mul(Z1, Z2), CZ.mul(Z2, Z3)), CZ.mul(Z3, Z1));
+    if (CZ.polar(Z1).mag < 1e-12 || CZ.polar(Z2).mag < 1e-12 || CZ.polar(Z3).mag < 1e-12) return;
+
+    const ZAB = CZ.div(sigma2, Z3);
+    const ZBC = CZ.div(sigma2, Z1);
+    const ZAC = CZ.div(sigma2, Z2);
+
+    html += `
+      <details class="mt-2" open>
+        <summary class="small fw-bold" style="cursor:pointer; color:#7c3aed;">
+          🔄 Transformación Y → Δ detectada — Estrella con centro en <b>${center}</b> (terminales ${a}, ${b}, ${c})
+        </summary>
+        <div class="p-2 mt-2 border rounded bg-white shadow-sm">
+          <!-- Diagrama SVG lado a lado -->
+          <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:8px;">
+            ${svgEstrella(center, a, b, c, Z1, Z2, Z3)}
+            ${svgBadge('Y → Δ')}
+            ${svgDelta(a, b, c, ZAB, ZBC, ZAC, '#7c3aed')}
+          </div>
+          <!-- Tabla de valores numéricos -->
+          <div class="row g-2 mt-2">
+            <div class="col-md-6">
+              <table class="table table-sm table-bordered mb-0 bg-white" style="font-size:0.78rem;">
+                <thead class="table-light"><tr><th colspan="2" class="text-center">Estrella original</th></tr></thead>
+                <tr><td class="fw-bold">Z<sub>${center}-${a}</sub></td><td class="text-end font-monospace">${fmtZeq(Z1)}</td></tr>
+                <tr><td class="fw-bold">Z<sub>${center}-${b}</sub></td><td class="text-end font-monospace">${fmtZeq(Z2)}</td></tr>
+                <tr><td class="fw-bold">Z<sub>${center}-${c}</sub></td><td class="text-end font-monospace">${fmtZeq(Z3)}</td></tr>
+              </table>
+            </div>
+            <div class="col-md-6">
+              <table class="table table-sm table-bordered mb-0 bg-white" style="font-size:0.78rem;">
+                <thead style="background:#7c3aed22;"><tr><th colspan="2" class="text-center" style="color:#7c3aed;">Delta equivalente</th></tr></thead>
+                <tr><td class="fw-bold">Z<sub>${a}-${b}</sub></td><td class="text-end font-monospace">${fmtZeq(ZAB)}</td></tr>
+                <tr><td class="fw-bold">Z<sub>${b}-${c}</sub></td><td class="text-end font-monospace">${fmtZeq(ZBC)}</td></tr>
+                <tr><td class="fw-bold">Z<sub>${a}-${c}</sub></td><td class="text-end font-monospace">${fmtZeq(ZAC)}</td></tr>
+              </table>
+            </div>
+          </div>
+          <div class="small text-muted mt-1" style="font-size:0.72rem;">
+            &Sigma;<sub>2</sub> = Z<sub>${center}-${a}</sub>&middot;Z<sub>${center}-${b}</sub> + Z<sub>${center}-${b}</sub>&middot;Z<sub>${center}-${c}</sub> + Z<sub>${center}-${c}</sub>&middot;Z<sub>${center}-${a}</sub> = ${fmtZeq(sigma2)}
+          </div>
+        </div>
+      </details>`;
+  });
+
+  // --- Detectar configuraciones Delta (triángulos: 3 nodos mutuamente conectados) ---
+  for (let i = 0; i < nodos.length; i++) {
+    for (let j = i + 1; j < nodos.length; j++) {
+      for (let k = j + 1; k < nodos.length; k++) {
+        const a = nodos[i], b = nodos[j], c = nodos[k];
+        const ZAB = getZeq(a, b);
+        const ZBC = getZeq(b, c);
+        const ZAC = getZeq(a, c);
+        if (!ZAB || !ZBC || !ZAC) continue;
+
+        const Zsum = CZ.add(CZ.add(ZAB, ZBC), ZAC);
+        if (CZ.polar(Zsum).mag < 1e-12) continue;
+
+        const Za = CZ.div(CZ.mul(ZAB, ZAC), Zsum);
+        const Zb = CZ.div(CZ.mul(ZAB, ZBC), Zsum);
+        const Zc = CZ.div(CZ.mul(ZAC, ZBC), Zsum);
+
+        html += `
+          <details class="mt-2" open>
+            <summary class="small fw-bold" style="cursor:pointer; color:#0891b2;">
+              🔄 Transformación Δ → Y detectada — Triángulo ${a}-${b}-${c}
+            </summary>
+            <div class="p-2 mt-2 border rounded bg-white shadow-sm">
+              <!-- Diagrama SVG lado a lado -->
+              <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:8px;">
+                ${svgDelta(a, b, c, ZAB, ZBC, ZAC, '#3b82f6')}
+                ${svgBadge('Δ → Y')}
+                ${svgEstrellaResult(a, b, c, Za, Zb, Zc)}
+              </div>
+              <!-- Tabla de valores numéricos -->
+              <div class="row g-2 mt-2">
+                <div class="col-md-6">
+                  <table class="table table-sm table-bordered mb-0 bg-white" style="font-size:0.78rem;">
+                    <thead style="background:#3b82f622;"><tr><th colspan="2" class="text-center" style="color:#3b82f6;">Delta original</th></tr></thead>
+                    <tr><td class="fw-bold">Z<sub>${a}-${b}</sub></td><td class="text-end font-monospace">${fmtZeq(ZAB)}</td></tr>
+                    <tr><td class="fw-bold">Z<sub>${b}-${c}</sub></td><td class="text-end font-monospace">${fmtZeq(ZBC)}</td></tr>
+                    <tr><td class="fw-bold">Z<sub>${a}-${c}</sub></td><td class="text-end font-monospace">${fmtZeq(ZAC)}</td></tr>
+                  </table>
+                </div>
+                <div class="col-md-6">
+                  <table class="table table-sm table-bordered mb-0 bg-white" style="font-size:0.78rem;">
+                    <thead style="background:#0891b222;"><tr><th colspan="2" class="text-center" style="color:#0891b2;">Estrella equivalente</th></tr></thead>
+                    <tr><td class="fw-bold">Z<sub>N-${a}</sub></td><td class="text-end font-monospace">${fmtZeq(Za)}</td></tr>
+                    <tr><td class="fw-bold">Z<sub>N-${b}</sub></td><td class="text-end font-monospace">${fmtZeq(Zb)}</td></tr>
+                    <tr><td class="fw-bold">Z<sub>N-${c}</sub></td><td class="text-end font-monospace">${fmtZeq(Zc)}</td></tr>
+                  </table>
+                </div>
+              </div>
+              <div class="small text-muted mt-1" style="font-size:0.72rem;">
+                &Sigma; Z<sub>&Delta;</sub> = Z<sub>${a}-${b}</sub> + Z<sub>${b}-${c}</sub> + Z<sub>${a}-${c}</sub> = ${fmtZeq(Zsum)}
+              </div>
+            </div>
+          </details>`;
+      }
+    }
+  }
+
+  if (!html) return '';
+  return `
+    <details class="mt-2" open>
+      <summary class="small fw-bold text-primary" style="cursor:pointer;">
+        🔄 Transformaciones Δ ↔ Y detectadas en la red
+      </summary>
+      ${html}
+    </details>`;
+}
+
+/* =====================================================================
+   13) Resolver red (función principal)
    ===================================================================== */
 function resolverRed() {
   const out = document.getElementById('resultadoRed');
@@ -744,6 +1021,7 @@ function resolverRed() {
         <span class="text-muted ms-2 fs-5">(${ZT.r.toFixed(4)} ${signo} j${Math.abs(ZT.i).toFixed(4)} &Omega;)</span>
       </div>
       ${renderTablaEquivalentes(grupos)}
+      ${renderTransformacionesDY(elementos, nodos)}
       ${renderSistemaNodal(Y, I, inc, B)}
       <details class="mt-2">
         <summary class="small fw-bold text-primary" style="cursor:pointer;">
@@ -768,13 +1046,13 @@ function cargarEjemploDeltaEstrella() {
   const nl = document.getElementById('netlist');
   if (nl) nl.value =
 `# Red en delta de ejemplo
-# Rama 1-2: (3+j6) || (3+j6)
+# Rama 1-2: 
 1 2 3 6
 1 2 3 6
-# Rama 2-3: (3+j6) || (6+j6)
+# Rama 2-3: 
 2 3 3 6
 2 3 6 6
-# Rama 1-3: (3+j6) || (6+j6)
+# Rama 1-3: 
 1 3 3 6
 1 3 6 6`;
   const tA = document.getElementById('termA');
