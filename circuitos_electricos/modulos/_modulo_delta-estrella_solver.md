@@ -91,6 +91,7 @@ Este solver calcula y retorna la <b>Impedancia Equivalente Total (<i>Z</i><sub>T
 <button class="btn btn-sm btn-primary fw-bold px-3" onclick="resolverRed()">⚡ Calcular Z<sub>T</sub></button>
 <button class="btn btn-sm btn-outline-secondary" onclick="cargarEjemploDeltaEstrella()">Red Delta (Ejemplo)</button>
 <button class="btn btn-sm btn-outline-secondary" onclick="cargarEjemploEstrellaDelta()">Red Estrella (Ejemplo)</button>
+<button class="btn btn-sm btn-outline-secondary" onclick="cargarEjemploDobleT()">Red Doble T (Ejercicio 8)</button>
 </div>
 
 <div id="resultadoRed"></div>
@@ -206,6 +207,52 @@ function detectarFlotantes(elementos, nodos, B) {
 }
 
 /* =====================================================================
+   4b) Detección de topología Doble T (Filtro notch en paralelo)
+   Patrón:
+     - 5 nodos en total, con '1' y '2' presentes (terminales)
+     - Dos centros internos (o1, o2) conectados cada uno a '1' y '2'
+     - Un quinto nodo (ground) conectado a ambos centros (o a uno en puente)
+   ===================================================================== */
+function detectarDobleT(elementos, nodos) {
+  if (nodos.length !== 5) return null;
+  const nStr = nodos.map(String);
+  if (!nStr.includes('1') || !nStr.includes('2')) return null;
+
+  const adj = {};
+  nodos.forEach(n => adj[n] = new Set());
+  elementos.forEach(el => { adj[el.a].add(el.b); adj[el.b].add(el.a); });
+
+  const candidatos = nodos.filter(n =>
+    n !== '1' && n !== '2' && adj[n].has('1') && adj[n].has('2')
+  );
+  if (candidatos.length !== 2) return null;
+
+  const [c1, c2] = candidatos;
+  const ground = nodos.find(n => n !== '1' && n !== '2' && n !== c1 && n !== c2);
+  if (!ground) return null;
+
+  const connC1 = adj[ground].has(c1);
+  const connC2 = adj[ground].has(c2);
+  const interCentros = adj[c1].has(c2);
+
+  if ((connC1 && connC2) || (interCentros && (connC1 || connC2))) {
+    let o1 = c1, o2 = c2;
+    if (interCentros) {
+      // El nodo conectado a tierra debe ser o2 (inferior, y=250); el libre de tierra debe ser o1 (superior, y=80)
+      if (connC1 && !connC2) { o1 = c2; o2 = c1; }
+    } else {
+      // Si ambos conectan a tierra (paralelo puro), preservar orden intuitivo o1/o2
+      if (String(c1).toLowerCase().includes('2') || String(c2).toLowerCase().includes('1')) {
+        o1 = c2; o2 = c1;
+      }
+    }
+    return { o1, o2, ground, esParaleloPuro: (connC1 && connC2) };
+  }
+
+  return null;
+}
+
+/* =====================================================================
    5) Layout de nodos
    ===================================================================== */
 function calcularPosiciones(nodos, elementos, W, H) {
@@ -226,6 +273,26 @@ function calcularPosiciones(nodos, elementos, W, H) {
     pos[neutro] = { x: W * 0.50, y: 240 };
     return pos;
   }
+
+  // --- Layout 3: Doble T (sin colisiones verticales) ---
+  const dt = detectarDobleT(elementos, nodos);
+  if (dt) {
+    const { o1, o2, ground, esParaleloPuro } = dt;
+    pos['1'] = { x: W * 0.12, y: 150 };
+    pos['2'] = { x: W * 0.88, y: 150 };
+
+    if (esParaleloPuro) {
+      pos[o1] = { x: W * 0.35, y: 65 };
+      pos[o2] = { x: W * 0.65, y: 240 };
+      pos[ground] = { x: W * 0.50, y: 375 };
+    } else {
+      pos[o1] = { x: W * 0.50, y: 80 };
+      pos[o2] = { x: W * 0.50, y: 250 };
+      pos[ground] = { x: W * 0.50, y: 370 };
+    }
+    return pos;
+  }
+
   nodos.forEach((n, i) => {
     const ang = (2 * Math.PI * i) / nodos.length - Math.PI / 2;
     pos[n] = {
@@ -421,7 +488,8 @@ function dibujarCircuito(elementos, nodos, termA, termB, flotantes) {
   let htmlComp = '', htmlImp = '';
 
   const nSet = new Set(nodos.map(String));
-  const hasNeutro = nSet.size >= 4 && (nSet.has('4') || nSet.has('D') || nSet.has('d') || nSet.has('0'));
+  const dtInfo = detectarDobleT(elementos, nodos);
+  const hasNeutro = !dtInfo && nSet.size >= 4 && (nSet.has('4') || nSet.has('D') || nSet.has('d') || nSet.has('0'));
   const neutroId = hasNeutro ? nodos.find(n => !['1', '2', '3'].includes(String(n))) : null;
 
   // Centro geométrico para orientar normales hacia afuera
@@ -470,7 +538,11 @@ function dibujarCircuito(elementos, nodos, termA, termB, flotantes) {
     if (M === 1) {
       // Rama simple directa sobre el eje
       const escala = Math.min(1.0, Math.max(0.60, len / 220));
-      htmlComp += dibujarRamaSimbolos(p1, p2, els[0].Z, escala, 1, normVec);
+      let lSide = 1;
+      if (dtInfo && ((n1 === dtInfo.o1 && n2 === dtInfo.ground) || (n2 === dtInfo.o1 && n1 === dtInfo.ground))) {
+        lSide = -1;
+      }
+      htmlComp += dibujarRamaSimbolos(p1, p2, els[0].Z, escala, lSide, normVec);
       htmlImp += dibujarRamaImpedancia(p1, p2, els[0].Z, `${n1}${n2}`);
     } else {
       // Línea recta central directa entre los dos nodos (troncal continua)
@@ -557,7 +629,13 @@ function dibujarCircuito(elementos, nodos, termA, termB, flotantes) {
     }
 
     let tx = p.x, ty = p.y, anchor = 'middle';
-    if (n === '1') { tx = p.x - 14; ty = p.y + 18; anchor = 'end'; }
+    if (dtInfo && n === dtInfo.o1) {
+      tx = p.x; ty = p.y - 14; anchor = 'middle';
+    } else if (dtInfo && n === dtInfo.o2) {
+      tx = p.x + 14; ty = p.y + 4; anchor = 'start';
+    } else if (dtInfo && n === dtInfo.ground) {
+      tx = p.x; ty = p.y + 18; anchor = 'middle';
+    } else if (n === '1') { tx = p.x - 14; ty = p.y + 18; anchor = 'end'; }
     else if (n === '3') { tx = p.x + 14; ty = p.y + 18; anchor = 'start'; }
     else if (n === '2') { tx = p.x; ty = p.y - 12; anchor = 'middle'; }
     else {
@@ -1335,6 +1413,25 @@ function cargarEjemploEstrellaDelta() {
 # Rama 3-d: (1+j2) || (1+j2)
 3 d 1 2
 3 d 1 2`;
+  const tA = document.getElementById('termA');
+  const tB = document.getElementById('termB');
+  if (tA) tA.value = '1';
+  if (tB) tB.value = '2';
+  resolverRed();
+}
+
+function cargarEjemploDobleT() {
+  const nl = document.getElementById('netlist');
+  if (nl) nl.value =
+`# Red Doble T (Ejercicio 8) — filtro notch
+# Estrella superior (centro o1)
+1 o1 2 0
+2 o1 2 0
+o1 0 0 -4
+# Estrella inferior (centro o2)
+1 o2 0 4
+2 o2 0 4
+o2 0 2 0`;
   const tA = document.getElementById('termA');
   const tB = document.getElementById('termB');
   if (tA) tA.value = '1';

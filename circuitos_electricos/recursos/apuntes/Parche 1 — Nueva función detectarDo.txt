@@ -1,0 +1,176 @@
+Parche 1 — Nueva función detectarDobleT
+
+Dónde: justo antes de la función calcularPosiciones.
+
+Busca esta línea:
+js
+
+/* =====================================================================
+   5) Layout de nodos
+   ===================================================================== */
+function calcularPosiciones(nodos, elementos, W, H) {
+
+Reemplázala por:
+js
+
+/* =====================================================================
+   4b) Detección de topología Doble T
+   Patrón buscado:
+     - 5 nodos en total
+     - Nodos '1' y '2' presentes (terminales)
+     - Dos "centros" (o1, o2), cada uno conectado a '1' y a '2'
+     - Ambos centros conectados entre sí
+     - Un quinto nodo conectado a exactamente uno de los centros (tierra)
+   Retorna { o1, o2, ground } o null si no coincide.
+   ===================================================================== */
+function detectarDobleT(elementos, nodos) {
+  if (nodos.length !== 5) return null;
+  const nStr = nodos.map(String);
+  if (!nStr.includes('1') || !nStr.includes('2')) return null;
+
+  const adj = {};
+  nodos.forEach(n => adj[n] = new Set());
+  elementos.forEach(el => { adj[el.a].add(el.b); adj[el.b].add(el.a); });
+
+  const candidatos = nodos.filter(n =>
+    n !== '1' && n !== '2' && adj[n].has('1') && adj[n].has('2')
+  );
+  if (candidatos.length !== 2) return null;
+
+  const [c1, c2] = candidatos;
+  if (!adj[c1].has(c2)) return null;
+
+  const quinto = nodos.find(n => n !== '1' && n !== '2' && n !== c1 && n !== c2);
+  if (!quinto) return null;
+
+  const connC1 = adj[quinto].has(c1);
+  const connC2 = adj[quinto].has(c2);
+  if (connC1 === connC2) return null;
+
+  const o2 = connC1 ? c1 : c2;
+  const o1 = o2 === c1 ? c2 : c1;
+  return { o1, o2, ground: quinto };
+}
+
+/* =====================================================================
+   5) Layout de nodos
+   ===================================================================== */
+function calcularPosiciones(nodos, elementos, W, H) {
+
+🩹 Parche 2 — Bloque del layout Doble T
+
+Dónde: dentro de calcularPosiciones, justo antes del nodos.forEach del fallback circular.
+
+Busca este bloque:
+js
+
+  // --- Layout 4: Círculo genérico (fallback) ---
+  nodos.forEach((n, i) => {
+
+Inserta justo ANTES estas líneas:
+js
+
+  // --- Layout 3: Doble T (diamante con 5 nodos) ---
+  const dt = detectarDobleT(elementos, nodos);
+  if (dt) {
+    const { o1, o2, ground } = dt;
+    pos['1'] = { x: W * 0.13, y: 200 };
+    pos['2'] = { x: W * 0.87, y: 200 };
+    pos[o1] = { x: W * 0.50, y: 85 };
+    pos[o2] = { x: W * 0.50, y: 280 };
+    pos[ground] = { x: W * 0.50, y: 380 };
+    return pos;
+  }
+
+🩹 Parche 3 — Ajuste de etiquetas para Doble T
+
+Dónde: dentro de dibujarCircuito, en el bloque const nodosHTML = nodos.map(n => { ... }).
+
+Busca estas líneas:
+js
+
+  const nSet = new Set(nodos.map(String));
+  const hasNeutro = nSet.size >= 4 && (nSet.has('4') || nSet.has('D') || nSet.has('d') || nSet.has('0'));
+  const neutroId = hasNeutro ? nodos.find(n => !['1', '2', '3'].includes(String(n))) : null;
+
+Reemplázalas por:
+js
+
+  const nSet = new Set(nodos.map(String));
+  const hasNeutro = nSet.size >= 4 && (nSet.has('4') || nSet.has('D') || nSet.has('d') || nSet.has('0'));
+  const neutroId = hasNeutro ? nodos.find(n => !['1', '2', '3'].includes(String(n))) : null;
+
+  // Detección Doble T (para posicionar etiquetas fuera del diamante)
+  const dtInfo = detectarDobleT(elementos, nodos);
+
+Ahora, dentro del mismo bloque nodosHTML, busca:
+js
+
+    let tx = p.x, ty = p.y, anchor = 'middle';
+    if (n === '1') { tx = p.x - 14; ty = p.y + 18; anchor = 'end'; }
+
+Reemplaza esas dos líneas por:
+js
+
+    let tx = p.x, ty = p.y, anchor = 'middle';
+    // Caso especial: layout Doble T → etiquetas de o1, o2, ground fuera del diamante
+    if (dtInfo && n === dtInfo.o1) {
+      tx = p.x; ty = p.y - 14; anchor = 'middle';
+    } else if (dtInfo && n === dtInfo.o2) {
+      tx = p.x - 14; ty = p.y + 4; anchor = 'end';
+    } else if (dtInfo && n === dtInfo.ground) {
+      tx = p.x + 14; ty = p.y + 4; anchor = 'start';
+    } else if (n === '1') { tx = p.x - 14; ty = p.y + 18; anchor = 'end'; }
+
+(el else if (n === '3') y los demás quedan igual, sin cambios.)
+🩹 Parche 4 — Botón y función de ejemplo Doble T
+
+Parte A — Añadir el botón.
+
+Dónde: en el bloque de botones (después del botón "Red Estrella (Ejemplo)").
+
+Busca:
+html
+
+<button class="btn btn-sm btn-outline-secondary" onclick="cargarEjemploEstrellaDelta()">Red Estrella (Ejemplo)</button>
+
+Reemplázalo por:
+html
+
+<button class="btn btn-sm btn-outline-secondary" onclick="cargarEjemploEstrellaDelta()">Red Estrella (Ejemplo)</button>
+<button class="btn btn-sm btn-outline-secondary" onclick="cargarEjemploDobleT()">Red Doble T (Ejercicio 8)</button>
+
+Parte B — Añadir la función.
+
+Dónde: al final del script, justo antes del bloque que arranca la app.
+
+Busca:
+js
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", cargarEjemploDeltaEstrella);
+} else {
+  setTimeout(cargarEjemploDeltaEstrella, 60);
+}
+
+Inserta justo ANTES estas líneas:
+js
+
+function cargarEjemploDobleT() {
+  const nl = document.getElementById('netlist');
+  if (nl) nl.value =
+`# Red Doble T (Ejercicio 8) — filtro notch
+# Estrella superior (centro o1)
+1 o1 2 0
+2 o1 2 0
+o1 o2 0 -4
+# Estrella inferior (centro o2)
+1 o2 0 4
+2 o2 0 4
+o2 0 2 0`;
+  const tA = document.getElementById('termA');
+  const tB = document.getElementById('termB');
+  if (tA) tA.value = '1';
+  if (tB) tB.value = '2';
+  resolverRed();
+}

@@ -34,25 +34,24 @@
   <circle cx="232" cy="100" r="3" fill="black"/>
   <text x="232" y="85" font-size="12" font-weight="bold" font-style="italic" fill="black" text-anchor="middle">O<tspan baseline-shift="sub" font-size="0.7em">1</tspan></text>
 
-  <!-- Z3: O1 -> O2 (serie, NO va directo a tierra) -->
-  <line x1="232" y1="100" x2="232" y2="160" stroke="black" stroke-width="1.5"/>
-  <rect x="221" y="112" width="22" height="40" fill="white" stroke="black" stroke-width="1.5"/>
-  <text x="252" y="136" font-size="13" font-style="italic" fill="black" text-anchor="start">Z<tspan baseline-shift="sub" font-size="0.7em">3</tspan> = &minus;j4 &Omega;</text>
-
-  <!-- O2 (centro de la T inferior, recibe Z3 desde arriba) -->
-  <circle cx="232" cy="160" r="3" fill="black"/>
-  <text x="248" y="163" font-size="12" font-weight="bold" font-style="italic" fill="black" text-anchor="start">O<tspan baseline-shift="sub" font-size="0.7em">2</tspan></text>
-  <line x1="232" y1="152" x2="232" y2="168" stroke="black" stroke-width="1.5"/>
+  <!-- Z3: O1 -> O2 (baja desde O1 hasta el nodo central O2 en la línea de Z4 y Z5) -->
+  <line x1="232" y1="100" x2="232" y2="135" stroke="black" stroke-width="1.5"/>
+  <rect x="221" y="135" width="22" height="40" fill="white" stroke="black" stroke-width="1.5"/>
+  <text x="252" y="159" font-size="13" font-style="italic" fill="black" text-anchor="start">Z<tspan baseline-shift="sub" font-size="0.7em">3</tspan> = &minus;j4 &Omega;</text>
+  <line x1="232" y1="175" x2="232" y2="220" stroke="black" stroke-width="1.5"/>
 
   <!-- T Inferior: Z4 (1->O2) y Z5 (O2->2) -->
   <line x1="85" y1="220" x2="232" y2="220" stroke="black" stroke-width="1.5"/>
-  <line x1="232" y1="168" x2="232" y2="220" stroke="black" stroke-width="1.5"/>
   <rect x="112" y="209" width="58" height="22" fill="white" stroke="black" stroke-width="1.5"/>
   <text x="141" y="224" font-size="13" font-style="italic" fill="black" text-anchor="middle">Z<tspan baseline-shift="sub" font-size="0.7em">4</tspan> = j4 &Omega;</text>
 
   <line x1="232" y1="220" x2="380" y2="220" stroke="black" stroke-width="1.5"/>
   <rect x="293" y="209" width="58" height="22" fill="white" stroke="black" stroke-width="1.5"/>
   <text x="322" y="224" font-size="13" font-style="italic" fill="black" text-anchor="middle">Z<tspan baseline-shift="sub" font-size="0.7em">5</tspan> = j4 &Omega;</text>
+
+  <!-- O2 (centro de la T inferior, ubicado en la intersección exacta con Z4 y Z5) -->
+  <circle cx="232" cy="220" r="3.5" fill="black"/>
+  <text x="246" y="214" font-size="12" font-weight="bold" font-style="italic" fill="black" text-anchor="start">O<tspan baseline-shift="sub" font-size="0.7em">2</tspan></text>
 
   <!-- Z6: O2 -> tierra (0) -->
   <line x1="232" y1="220" x2="232" y2="255" stroke="black" stroke-width="1.5"/>

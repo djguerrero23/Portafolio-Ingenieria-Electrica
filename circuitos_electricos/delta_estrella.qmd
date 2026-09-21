@@ -1124,12 +1124,12 @@ Determinar:
 :::
 
 ::: {.column width="50%"}
-![](imagenes/Eje8.png){width=85% fig-align="center"}
+{{< include imagenes/esquemas/_topologia_doble_t_ejercicio8.md >}}
 :::
 
 ::::
 
-{{< include imagenes/esquemas/_topologia_doble_t_ejercicio8.md >}}
+
 
 **Solución paso a paso:**
 
