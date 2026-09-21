@@ -8,7 +8,7 @@
 
 <meta name="author" content="David Guerrero">
 <meta name="dcterms.date" content="2026-09-16">
-<meta name="description" content="Resolución sistemática de redes eléctricas sinusoidales en régimen permanente mediante potenciales de nodo: planteamiento matricial [Y][V] = [I], supernodos y fuentes controladas.">
+<meta name="description" content="Guía maestra y rigurosa de análisis nodal en CA: criterios de decisión (Nodos vs Mallas), formulación matricial [Y][V] = [I], tratamiento de supernodos, fuentes controladas y resolución paso a paso.">
 
 <title>Análisis Nodal en Corriente Alterna – ⚡ Portafolio de Ingeniería Eléctrica</title>
 <style>
@@ -323,13 +323,38 @@ window.Quarto = {
    
   <ul>
   <li><a href="#análisis-nodal-en-régimen-sinusoidal-permanente" id="toc-análisis-nodal-en-régimen-sinusoidal-permanente" class="nav-link active" data-scroll-target="#análisis-nodal-en-régimen-sinusoidal-permanente">Análisis Nodal en Régimen Sinusoidal Permanente</a></li>
-  <li><a href="#formulación-matricial-por-admitancias" id="toc-formulación-matricial-por-admitancias" class="nav-link" data-scroll-target="#formulación-matricial-por-admitancias"><span class="header-section-number">1</span> Formulación Matricial por Admitancias</a>
+  <li><a href="#criterio-de-decisión-cuándo-utilizar-análisis-nodal" id="toc-criterio-de-decisión-cuándo-utilizar-análisis-nodal" class="nav-link" data-scroll-target="#criterio-de-decisión-cuándo-utilizar-análisis-nodal"><span class="header-section-number">1</span> Criterio de Decisión: ¿Cuándo utilizar Análisis Nodal?</a></li>
+  <li><a href="#fundamento-físico-y-matemático" id="toc-fundamento-físico-y-matemático" class="nav-link" data-scroll-target="#fundamento-físico-y-matemático"><span class="header-section-number">2</span> Fundamento Físico y Matemático</a>
   <ul class="collapse">
-  <li><a href="#elementos-de-la-matriz-de-admitancias-mathbfy" id="toc-elementos-de-la-matriz-de-admitancias-mathbfy" class="nav-link" data-scroll-target="#elementos-de-la-matriz-de-admitancias-mathbfy"><span class="header-section-number">1.1</span> Elementos de la Matriz de Admitancias <span class="math inline">[\mathbf{Y}]</span></a></li>
+  <li><a href="#relación-constitutiva-de-rama-en-el-dominio-fasorial" id="toc-relación-constitutiva-de-rama-en-el-dominio-fasorial" class="nav-link" data-scroll-target="#relación-constitutiva-de-rama-en-el-dominio-fasorial"><span class="header-section-number">2.0.1</span> Relación Constitutiva de Rama en el Dominio Fasorial</a></li>
   </ul></li>
-  <li><a href="#tratamiento-de-fuentes-de-tensión-el-supernodo" id="toc-tratamiento-de-fuentes-de-tensión-el-supernodo" class="nav-link" data-scroll-target="#tratamiento-de-fuentes-de-tensión-el-supernodo"><span class="header-section-number">2</span> Tratamiento de Fuentes de Tensión: El Supernodo</a></li>
-  <li><a href="#algoritmo-sistemático-de-resolución-paso-a-paso" id="toc-algoritmo-sistemático-de-resolución-paso-a-paso" class="nav-link" data-scroll-target="#algoritmo-sistemático-de-resolución-paso-a-paso"><span class="header-section-number">3</span> Algoritmo Sistemático de Resolución Paso a Paso</a></li>
-  <li><a href="#navegación-del-módulo" id="toc-navegación-del-módulo" class="nav-link" data-scroll-target="#navegación-del-módulo"><span class="header-section-number">4</span> Navegación del Módulo</a></li>
+  <li><a href="#formulación-matricial-por-inspección-mathbfymathbfv-mathbfi" id="toc-formulación-matricial-por-inspección-mathbfymathbfv-mathbfi" class="nav-link" data-scroll-target="#formulación-matricial-por-inspección-mathbfymathbfv-mathbfi"><span class="header-section-number">3</span> Formulación Matricial por Inspección: <span class="math inline">[\mathbf{Y}][\mathbf{V}] = [\mathbf{I}]</span></a>
+  <ul class="collapse">
+  <li><a href="#reglas-de-ensamblaje-directo-de-la-matriz-mathbfy" id="toc-reglas-de-ensamblaje-directo-de-la-matriz-mathbfy" class="nav-link" data-scroll-target="#reglas-de-ensamblaje-directo-de-la-matriz-mathbfy"><span class="header-section-number">3.0.1</span> Reglas de Ensamblaje Directo de la Matriz <span class="math inline">[\mathbf{Y}]</span></a></li>
+  </ul></li>
+  <li><a href="#tratamiento-de-casos-especiales" id="toc-tratamiento-de-casos-especiales" class="nav-link" data-scroll-target="#tratamiento-de-casos-especiales"><span class="header-section-number">4</span> Tratamiento de Casos Especiales</a>
+  <ul class="collapse">
+  <li><a href="#caso-1-fuente-de-tensión-conectada-a-referencia" id="toc-caso-1-fuente-de-tensión-conectada-a-referencia" class="nav-link" data-scroll-target="#caso-1-fuente-de-tensión-conectada-a-referencia"><span class="header-section-number">4.1</span> Caso 1: Fuente de Tensión Conectada a Referencia</a></li>
+  <li><a href="#caso-2-fuente-de-tensión-flotante-concepto-de-supernodo" id="toc-caso-2-fuente-de-tensión-flotante-concepto-de-supernodo" class="nav-link" data-scroll-target="#caso-2-fuente-de-tensión-flotante-concepto-de-supernodo"><span class="header-section-number">4.2</span> Caso 2: Fuente de Tensión Flotante — Concepto de Supernodo</a></li>
+  <li><a href="#caso-3-circuitos-con-fuentes-controladas-dependientes" id="toc-caso-3-circuitos-con-fuentes-controladas-dependientes" class="nav-link" data-scroll-target="#caso-3-circuitos-con-fuentes-controladas-dependientes"><span class="header-section-number">4.3</span> Caso 3: Circuitos con Fuentes Controladas (Dependientes)</a></li>
+  </ul></li>
+  <li><a href="#algoritmo-maestro-de-5-pasos-para-resolver-cualquier-red-nodal" id="toc-algoritmo-maestro-de-5-pasos-para-resolver-cualquier-red-nodal" class="nav-link" data-scroll-target="#algoritmo-maestro-de-5-pasos-para-resolver-cualquier-red-nodal"><span class="header-section-number">5</span> Algoritmo Maestro de 5 Pasos para Resolver Cualquier Red Nodal</a></li>
+  <li><a href="#ejemplos-prácticos-resueltos-con-rigor" id="toc-ejemplos-prácticos-resueltos-con-rigor" class="nav-link" data-scroll-target="#ejemplos-prácticos-resueltos-con-rigor"><span class="header-section-number">6</span> Ejemplos Prácticos Resueltos con Rigor</a>
+  <ul class="collapse">
+  <li><a href="#ejercicio-1-formulación-por-inspección-directa-3-nodos-fuentes-de-corriente" id="toc-ejercicio-1-formulación-por-inspección-directa-3-nodos-fuentes-de-corriente" class="nav-link" data-scroll-target="#ejercicio-1-formulación-por-inspección-directa-3-nodos-fuentes-de-corriente"><span class="header-section-number">6.1</span> Ejercicio 1 — Formulación por Inspección Directa (3 Nodos, Fuentes de Corriente)</a>
+  <ul class="collapse">
+  <li><a href="#enunciado" id="toc-enunciado" class="nav-link" data-scroll-target="#enunciado"><span class="header-section-number">6.1.1</span> Enunciado</a></li>
+  <li><a href="#solución-paso-a-paso" id="toc-solución-paso-a-paso" class="nav-link" data-scroll-target="#solución-paso-a-paso"><span class="header-section-number">6.1.2</span> Solución Paso a Paso</a></li>
+  </ul></li>
+  <li><a href="#ejercicio-2-circuito-con-supernodo-flotante" id="toc-ejercicio-2-circuito-con-supernodo-flotante" class="nav-link" data-scroll-target="#ejercicio-2-circuito-con-supernodo-flotante"><span class="header-section-number">6.2</span> Ejercicio 2 — Circuito con Supernodo Flotante</a>
+  <ul class="collapse">
+  <li><a href="#enunciado-1" id="toc-enunciado-1" class="nav-link" data-scroll-target="#enunciado-1"><span class="header-section-number">6.2.1</span> Enunciado</a></li>
+  <li><a href="#solución-paso-a-paso-1" id="toc-solución-paso-a-paso-1" class="nav-link" data-scroll-target="#solución-paso-a-paso-1"><span class="header-section-number">6.2.2</span> Solución Paso a Paso</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#verificación-computacional-en-python" id="toc-verificación-computacional-en-python" class="nav-link" data-scroll-target="#verificación-computacional-en-python"><span class="header-section-number">7</span> Verificación Computacional en Python</a></li>
+  <li><a href="#errores-frecuentes-y-consejos-prácticos" id="toc-errores-frecuentes-y-consejos-prácticos" class="nav-link" data-scroll-target="#errores-frecuentes-y-consejos-prácticos"><span class="header-section-number">8</span> Errores Frecuentes y Consejos Prácticos</a></li>
+  <li><a href="#navegación-del-módulo" id="toc-navegación-del-módulo" class="nav-link" data-scroll-target="#navegación-del-módulo"><span class="header-section-number">9</span> Navegación del Módulo</a></li>
   </ul>
 </nav>
     </div>
@@ -346,12 +371,13 @@ window.Quarto = {
     <div class="quarto-category">Admitancias</div>
     <div class="quarto-category">LCK</div>
     <div class="quarto-category">Circuitos CA</div>
+    <div class="quarto-category">Supernodos</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    Resolución sistemática de redes eléctricas sinusoidales en régimen permanente mediante potenciales de nodo: planteamiento matricial [Y][V] = [I], supernodos y fuentes controladas.
+    Guía maestra y rigurosa de análisis nodal en CA: criterios de decisión (Nodos vs Mallas), formulación matricial [Y][V] = [I], tratamiento de supernodos, fuentes controladas y resolución paso a paso.
   </div>
 </div>
 
@@ -382,28 +408,69 @@ window.Quarto = {
 
 <section id="análisis-nodal-en-régimen-sinusoidal-permanente" class="level1 unnumbered hero-banner-modern">
 <h1 class="unnumbered">Análisis Nodal en Régimen Sinusoidal Permanente</h1>
-<p><strong>Resolución sistemática de circuitos mediante potenciales de nodo y leyes de corrientes.</strong></p>
-<p>El método de nodos reduce el sistema de ecuaciones de cualquier circuito lineal a un conjunto desacoplado o matricial de tensiones nodales respecto a un punto de referencia común.</p>
+<p><strong>Formulación sistemática de redes eléctricas mediante potenciales de nodo y leyes de corrientes.</strong></p>
+<p>El método de análisis nodal es la herramienta fundamental más potente en la ingeniería eléctrica moderna. Constituye la base algorítmica de los simuladores computacionales (SPICE, EMTP) y del análisis de flujos de potencia en sistemas eléctricos, permitiendo resolver cualquier red lineal independientemente de su complejidad o topología.</p>
 </section>
+<hr>
+<section id="criterio-de-decisión-cuándo-utilizar-análisis-nodal" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Criterio de Decisión: ¿Cuándo utilizar Análisis Nodal?</h1>
+<p>Antes de plantear ecuaciones, un ingeniero debe seleccionar la técnica de análisis óptima evaluando la topología de la red:</p>
+<div class="grid">
+<div class="g-col-12 g-col-md-6">
+<section id="cuándo-es-preferible-el-análisis-nodal" class="level3 card-module" style="border-top: 4px solid #059669;" data-number="1.0.1">
+<h3 data-number="1.0.1" class="anchored" data-anchor-id="cuándo-es-preferible-el-análisis-nodal"><span class="header-section-number">1.0.1</span> ✅ ¿Cuándo es PREFERIBLE el Análisis Nodal?</h3>
+<ol type="1">
+<li><strong>Menor número de incógnitas:</strong> Cuando el número de nodos esenciales independientes <span class="math inline">(N_e - 1)</span> es menor que el número de mallas independientes <span class="math inline">(B - N_e + 1)</span>.</li>
+<li><strong>Abundancia de fuentes de corriente:</strong> Las fuentes de corriente independientes fijan directamente los términos del vector de inyección <span class="math inline">[\mathbf{I}]</span> sin añadir ecuaciones auxiliares.</li>
+<li><strong>Fuentes de tensión conectadas a referencia:</strong> Fijan directamente el potencial del nodo (<span class="math inline">\mathbf{V}_k = \mathbf{V}_s</span>), reduciendo la dimensión del sistema en una incógnita por cada fuente.</li>
+<li><strong>Redes No Planares (Cruces tridimensionales de ramas):</strong> El método de mallas <strong>no se puede aplicar</strong> en redes no planares (redes que no pueden dibujarse en un plano sin cruce de conductores). El análisis nodal es universal y funciona en cualquier topología.</li>
+<li><strong>Formulación computacional directa:</strong> La matriz de admitancias de barra <span class="math inline">[\mathbf{Y}]</span> se puede ensamblar por inspección directa mediante reglas topológicas simples.</li>
+</ol>
+</section>
+</div>
+<div class="g-col-12 g-col-md-6">
+<section id="cuándo-es-mejor-el-análisis-de-mallas" class="level3 card-module" style="border-top: 4px solid #dc2626;" data-number="1.0.2">
+<h3 data-number="1.0.2" class="anchored" data-anchor-id="cuándo-es-mejor-el-análisis-de-mallas"><span class="header-section-number">1.0.2</span> ❌ ¿Cuándo es MEJOR el Análisis de Mallas?</h3>
+<ol type="1">
+<li><strong>Muchas fuentes de tensión en serie con ramas:</strong> Las fuentes de tensión facilitan el planteamiento de tensiones de malla (LKT) sin requerir supernodos.</li>
+<li><strong>Menor número de mallas que de nodos:</strong> Redes en cascada o circuitos escalera (ladder networks) donde hay pocas mallas y muchos nodos.</li>
+<li><strong>Múltiples fuentes de tensión flotantes:</strong> Si hay demasiadas fuentes de tensión no conectadas a tierra, el análisis nodal requiere múltiples supernodos y ecuaciones de ligadura simultáneas.</li>
+<li><strong>Variables de interés en serie:</strong> Cuando el objetivo principal es calcular la corriente de una malla específica o rama en serie.</li>
+</ol>
+</section>
+</div>
+</div>
+<hr>
+</section>
+<section id="fundamento-físico-y-matemático" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Fundamento Físico y Matemático</h1>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>⚡ Fundamento: Ley de Corrientes de Kirchhoff (LCK)
+<span class="screen-reader-only">Note</span>⚡ Principio Físico: Conservación de la Carga (LCK)
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Para cualquier nodo esencial en régimen sinusoidal permanente, la suma algebraica de los fasores de corriente que convergen al nodo es idénticamente nula:</p>
-<p><span class="math display">\sum_{k=1}^{n} \mathbf{I}_k = 0</span></p>
-<p>Al expresar cada corriente de rama en función de las tensiones nodales y las admitancias complejas (<span class="math inline">\mathbf{I} = \mathbf{Y} \Delta \mathbf{V}</span>), se obtiene un sistema lineal directamente resoluble por álgebra matricial.</p>
+<p>En cualquier instante <span class="math inline">t</span> y en régimen permanente sinusoidal, la carga eléctrica no puede acumularse en un nodo ideal sin capacitancia parásita concentrada. Por tanto, la suma fasorial de las corrientes que abandonan cualquier nodo cerrado <span class="math inline">\mathcal{S}_k</span> es idénticamente nula:</p>
+<p><span class="math display">\sum_{m \in \text{adyacentes}} \mathbf{I}_{km} = \mathbf{I}_{s,k}</span></p>
+<p>Donde <span class="math inline">\mathbf{I}_{km}</span> es la corriente que fluye del nodo <span class="math inline">k</span> al nodo <span class="math inline">m</span>, e <span class="math inline">\mathbf{I}_{s,k}</span> es la corriente neta inyectada por fuentes externas conectadas al nodo <span class="math inline">k</span>.</p>
 </div>
 </div>
+<section id="relación-constitutiva-de-rama-en-el-dominio-fasorial" class="level3" data-number="2.0.1">
+<h3 data-number="2.0.1" class="anchored" data-anchor-id="relación-constitutiva-de-rama-en-el-dominio-fasorial"><span class="header-section-number">2.0.1</span> Relación Constitutiva de Rama en el Dominio Fasorial</h3>
+<p>Para una rama conectada entre el nodo <span class="math inline">i</span> (potencial <span class="math inline">\mathbf{V}_i</span>) y el nodo <span class="math inline">j</span> (potencial <span class="math inline">\mathbf{V}_j</span>) con impedancia <span class="math inline">\mathbf{Z}_{ij}</span> y admitancia <span class="math inline">\mathbf{Y}_{ij} = \dfrac{1}{\mathbf{Z}_{ij}}</span>:</p>
+<p><span class="math display">\mathbf{I}_{ij} = \frac{\mathbf{V}_i - \mathbf{V}_j}{\mathbf{Z}_{ij}} = \mathbf{Y}_{ij}(\mathbf{V}_i - \mathbf{V}_j)</span></p>
+<p>Al sustituir esta expresión en la LCK de cada nodo <span class="math inline">i</span>, agrupamos los términos asociados a cada potencial nodal:</p>
+<p><span class="math display">\mathbf{V}_i \underbrace{\left(\sum_{j} \mathbf{Y}_{ij}\right)}_{\mathbf{Y}_{ii}} - \sum_{j \neq i} \mathbf{V}_j \underbrace{\left(\mathbf{Y}_{ij}\right)}_{-\mathbf{Y}_{ij}} = \mathbf{I}_{\text{inyectada}, i}</span></p>
 <hr>
-<section id="formulación-matricial-por-admitancias" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Formulación Matricial por Admitancias</h1>
-<p>Para un circuito lineal con <span class="math inline">N</span> nodos esenciales independientes (excluyendo el nodo de referencia asignado como tierra, <span class="math inline">0\text{ V}</span>), sin fuentes de tensión entre nodos no referenciales:</p>
+</section>
+</section>
+<section id="formulación-matricial-por-inspección-mathbfymathbfv-mathbfi" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Formulación Matricial por Inspección: <span class="math inline">[\mathbf{Y}][\mathbf{V}] = [\mathbf{I}]</span></h1>
+<p>Para una red con <span class="math inline">N</span> nodos independientes (excluyendo el nodo de referencia asignado como tierra, <span class="math inline">\mathbf{V}_{\text{ref}} = 0\text{ V}</span>):</p>
 <p><span class="math display">
 \begin{bmatrix}
 \mathbf{Y}_{11} &amp; \mathbf{Y}_{12} &amp; \cdots &amp; \mathbf{Y}_{1N} \\
@@ -425,74 +492,224 @@ window.Quarto = {
 \mathbf{I}_N
 \end{bmatrix}
 </span></p>
-<p>En notación compacta:</p>
-<p><span class="math display">[\mathbf{Y}] [\mathbf{V}] = [\mathbf{I}]</span></p>
-<section id="elementos-de-la-matriz-de-admitancias-mathbfy" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="elementos-de-la-matriz-de-admitancias-mathbfy"><span class="header-section-number">1.1</span> Elementos de la Matriz de Admitancias <span class="math inline">[\mathbf{Y}]</span></h2>
+<section id="reglas-de-ensamblaje-directo-de-la-matriz-mathbfy" class="level3" data-number="3.0.1">
+<h3 data-number="3.0.1" class="anchored" data-anchor-id="reglas-de-ensamblaje-directo-de-la-matriz-mathbfy"><span class="header-section-number">3.0.1</span> Reglas de Ensamblaje Directo de la Matriz <span class="math inline">[\mathbf{Y}]</span></h3>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>📌 Reglas de Oro para la Matriz de Admitancias <span class="math inline">[\mathbf{Y}]</span>
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ol type="1">
-<li><p><strong>Admitancias Propias (<span class="math inline">\mathbf{Y}_{ii}</span>):</strong> Elementos de la diagonal principal.<br>
-<span class="math display">\mathbf{Y}_{ii} = \sum \mathbf{Y}_{\text{conectadas directamente al nodo } i}</span> Es la suma de todas las admitancias complejas incidentes en el nodo <span class="math inline">i</span>. Siempre lleva signo <strong>positivo</strong>.</p></li>
-<li><p><strong>Admitancias Mutuas (<span class="math inline">\mathbf{Y}_{ij}</span> con <span class="math inline">i \neq j</span>):</strong> Elementos fuera de la diagonal.<br>
-<span class="math display">\mathbf{Y}_{ij} = -\sum \mathbf{Y}_{\text{conectadas directamente entre el nodo } i \text{ y el nodo } j}</span> Corresponde al negativo de la suma de admitancias de las ramas que unen directamente los nodos <span class="math inline">i</span> y <span class="math inline">j</span>. En circuitos pasivos recíprocos, la matriz es simétrica: <span class="math inline">\mathbf{Y}_{ij} = \mathbf{Y}_{ji}</span>.</p></li>
-<li><p><strong>Vector de Inyección de Corrientes (<span class="math inline">\mathbf{I}_i</span>):</strong><br>
-<span class="math display">\mathbf{I}_i = \sum \mathbf{I}_{\text{fuentes que entran al nodo } i} - \sum \mathbf{I}_{\text{fuentes que salen del nodo } i}</span> Es la suma fasorial de las fuentes de corriente independientes que inyectan carga al nodo <span class="math inline">i</span>.</p></li>
+<li><strong>Admitancias Propias (Diagonal Principal <span class="math inline">\mathbf{Y}_{ii}</span>):</strong> <span class="math display">\mathbf{Y}_{ii} = \sum (\text{Admitancias complejas de todas las ramas conectadas directamente al nodo } i)</span>
+<ul>
+<li>Siempre lleva signo <strong>positivo</strong>.</li>
+<li>Su parte real representa la conductancia propia (<span class="math inline">G_{ii} \ge 0</span>) y su parte imaginaria la susceptancia propia (<span class="math inline">B_{ii}</span>).</li>
+</ul></li>
+<li><strong>Admitancias Mutuas (Elementos Fuera de la Diagonal <span class="math inline">\mathbf{Y}_{ij}</span> con <span class="math inline">i \neq j</span>):</strong> <span class="math display">\mathbf{Y}_{ij} = -\sum (\text{Admitancias complejas conectadas directamente entre el nodo } i \text{ y el nodo } j)</span>
+<ul>
+<li>Siempre lleva signo <strong>negativo</strong>.</li>
+<li>En circuitos pasivos recíprocos (sin fuentes controladas), la matriz es estrictamente simétrica: <span class="math inline">\mathbf{Y}_{ij} = \mathbf{Y}_{ji}</span>.</li>
+</ul></li>
+<li><strong>Vector de Inyección de Corrientes (<span class="math inline">\mathbf{I}_i</span>):</strong> <span class="math display">\mathbf{I}_i = \sum \mathbf{I}_{\text{fuentes independientes que ENTRAN al nodo } i} - \sum \mathbf{I}_{\text{fuentes independientes que SALEN del nodo } i}</span></li>
+</ol>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="tratamiento-de-casos-especiales" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Tratamiento de Casos Especiales</h1>
+<pre><code>                                  ¿Qué tipos de fuentes existen?
+                                                │
+                 ┌──────────────────────────────┴──────────────────────────────┐
+                 ▼                                                             ▼
+       Solo Fuentes de Corriente                                      Fuentes de Tensión
+                 │                                                             │
+        Inspección Directa                               ┌─────────────────────┴─────────────────────┐
+        [Y][V] = [I] pura                                ▼                                           ▼
+                                             Conectada a Referencia                         Flotante
+                                                         │                                           │
+                                            Fija potencial directo:                    Requiere SUPERNODO
+                                                V_k = V_fuente                       (LCK global + Ligadura)</code></pre>
+<section id="caso-1-fuente-de-tensión-conectada-a-referencia" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="caso-1-fuente-de-tensión-conectada-a-referencia"><span class="header-section-number">4.1</span> Caso 1: Fuente de Tensión Conectada a Referencia</h2>
+<p>Si una fuente ideal de tensión <span class="math inline">\mathbf{V}_s</span> se encuentra conectada entre el nodo <span class="math inline">k</span> y el nodo de referencia: * El potencial del nodo <span class="math inline">k</span> queda fijado de forma unívoca: <span class="math display">\mathbf{V}_k = \mathbf{V}_s</span> * El nodo <span class="math inline">k</span> deja de ser una incógnita. Se elimina su fila en el sistema o se transfiere como término conocido al vector independiente del lado derecho.</p>
+</section>
+<section id="caso-2-fuente-de-tensión-flotante-concepto-de-supernodo" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="caso-2-fuente-de-tensión-flotante-concepto-de-supernodo"><span class="header-section-number">4.2</span> Caso 2: Fuente de Tensión Flotante — Concepto de Supernodo</h2>
+<p>Cuando una fuente de tensión (independiente o controlada) une dos nodos no referenciales <span class="math inline">k</span> y <span class="math inline">m</span>, la corriente <span class="math inline">\mathbf{I}_{\text{fuente}}</span> que la atraviesa es una incógnita indeterminada a priori por la ley de Ohm (<span class="math inline">\Delta \mathbf{V} / 0</span>).</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>⚠️ Metodología del Supernodo
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><strong>Frontera del Supernodo:</strong> Se dibuja una superficie cerrada que engloba a la fuente de tensión y a los dos nodos <span class="math inline">k</span> y <span class="math inline">m</span> que conecta.</li>
+<li><strong>Ecuación de LCK Global:</strong> Se suma algebraicamente la corriente de todas las ramas externas que salen del supernodo: <span class="math display">\sum \mathbf{I}_{\text{salientes del nodo } k} + \sum \mathbf{I}_{\text{salientes del nodo } m} = \sum \mathbf{I}_{\text{fuentes inyectadas}}</span></li>
+<li><strong>Ecuación de Ligadura de Potencial (LKT interna):</strong> La diferencia de potencial entre los dos nodos está rígidamente fijada por la fuente: <span class="math display">\mathbf{V}_k - \mathbf{V}_m = \mathbf{V}_{\text{fuente}}</span> <em>(donde el nodo <span class="math inline">k</span> se conecta al terminal positivo de la fuente).</em></li>
+<li><strong>Elementos en Paralelo con la Fuente:</strong> Cualquier impedancia conectada en paralelo directo con la fuente de tensión queda dentro del supernodo y <strong>no altera las ecuaciones nodales externas</strong>.</li>
+</ol>
+</div>
+</div>
+</section>
+<section id="caso-3-circuitos-con-fuentes-controladas-dependientes" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="caso-3-circuitos-con-fuentes-controladas-dependientes"><span class="header-section-number">4.3</span> Caso 3: Circuitos con Fuentes Controladas (Dependientes)</h2>
+<p>Las fuentes dependientes introducen acoplamientos asimétricos en el circuito:</p>
+<ol type="1">
+<li>Trata la fuente controlada inicialmente como si fuera una fuente independiente ordinaria.</li>
+<li>Expresa la <strong>variable de control</strong> (sea una tensión <span class="math inline">\mathbf{V}_x</span> o una corriente <span class="math inline">\mathbf{I}_x</span>) en términos estrictos de las tensiones nodales del circuito:
+<ul>
+<li>Si depende de una tensión: <span class="math inline">\mathbf{V}_x = \mathbf{V}_a - \mathbf{V}_b</span>.</li>
+<li>Si depende de una corriente: <span class="math inline">\mathbf{I}_x = \mathbf{Y}_{ab}(\mathbf{V}_a - \mathbf{V}_b)</span>.</li>
+</ul></li>
+<li>Sustituye la variable de control y transfiere todos los coeficientes que involucren potenciales incógnitas al lado izquierdo de la ecuación matricial.</li>
+<li><strong>Consecuencia física:</strong> La matriz <span class="math inline">[\mathbf{Y}]</span> pierde la simetría (<span class="math inline">\mathbf{Y}_{ij} \neq \mathbf{Y}_{ji}</span>).</li>
 </ol>
 <hr>
 </section>
 </section>
-<section id="tratamiento-de-fuentes-de-tensión-el-supernodo" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Tratamiento de Fuentes de Tensión: El Supernodo</h1>
-<p>Cuando el circuito contiene <strong>fuentes de tensión</strong> (ideales o con impedancia interna nula), la corriente que circula a través de ellas no se puede determinar directamente por la Ley de Ohm (<span class="math inline">\mathbf{I} = \Delta \mathbf{V} / 0 \to \text{indefinido}</span>). Se presentan dos situaciones:</p>
-<div class="grid">
-<div class="g-col-12 g-col-md-6">
-<section id="fuente-conectada-a-referencia" class="level4 card-module" style="border-top: 4px solid #0284c7;" data-number="2.0.0.1">
-<h4 data-number="2.0.0.1" class="anchored" data-anchor-id="fuente-conectada-a-referencia"><span class="header-section-number">2.0.0.1</span> 1. Fuente conectada a Referencia</h4>
-<p>Si la fuente de tensión <span class="math inline">\mathbf{V}_s</span> está conectada entre el nodo <span class="math inline">k</span> y el nodo de tierra: - El potencial del nodo <span class="math inline">k</span> queda fijado inmediatamente: <span class="math display">\mathbf{V}_k = \mathbf{V}_s</span> - El número de incógnitas del sistema se reduce en 1. No es necesario plantear la LCK en el nodo <span class="math inline">k</span>.</p>
-</section>
+<section id="algoritmo-maestro-de-5-pasos-para-resolver-cualquier-red-nodal" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Algoritmo Maestro de 5 Pasos para Resolver Cualquier Red Nodal</h1>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<div class="g-col-12 g-col-md-6">
-<section id="fuente-flotante-supernodo" class="level4 card-module" style="border-top: 4px solid #f59e0b;" data-number="2.0.0.2">
-<h4 data-number="2.0.0.2" class="anchored" data-anchor-id="fuente-flotante-supernodo"><span class="header-section-number">2.0.0.2</span> 2. Fuente Flotante: Supernodo</h4>
-<p>Si la fuente de tensión está conectada entre dos nodos no referenciales <span class="math inline">k</span> y <span class="math inline">m</span>: 1. Se encierra la fuente de tensión y los dos nodos en una frontera cerrada (<strong>Supernodo</strong>). 2. Se plantea la LCK fasorial para la frontera del supernodo completo. 3. Se agrega la <strong>ecuación de ligadura de tensión</strong>: <span class="math display">\mathbf{V}_k - \mathbf{V}_m = \mathbf{V}_{\text{fuente}}</span></p>
-</section>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>📋 Protocolo de Ejecución Sistemática
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Paso 1 (Dominio Fasorial):</strong> Transforma todas las fuentes temporales a fasores (<span class="math inline">\mathbf{V}_s = V_m \angle \theta</span>, <span class="math inline">\mathbf{I}_s = I_m \angle \theta</span>) y calcula las impedancias (<span class="math inline">\mathbf{Z}_R = R</span>, <span class="math inline">\mathbf{Z}_L = j\omega L</span>, <span class="math inline">\mathbf{Z}_C = -j/(\omega C)</span>) y admitancias complejas (<span class="math inline">\mathbf{Y} = 1/\mathbf{Z}</span>).</li>
+<li><strong>Paso 2 (Elección Estratégica de Referencia):</strong> Identifica los <span class="math inline">N_e</span> nodos esenciales. Selecciona como nodo de referencia (<span class="math inline">0\text{ V}</span>) el nodo que conecte la mayor cantidad de ramas o el nodo común al mayor número de fuentes de tensión.</li>
+<li><strong>Paso 3 (Identificación de Nodos Fijos y Supernodos):</strong>
+<ul>
+<li>Asigna los valores de los nodos conectados a fuentes con referencia.</li>
+<li>Encierra cada fuente flotante en un supernodo y formula su ecuación de ligadura.</li>
+</ul></li>
+<li><strong>Paso 4 (Planteamiento de Ecuaciones LCK):</strong> Escribe la LCK para cada nodo libre y cada supernodo expresando las corrientes como <span class="math inline">\mathbf{Y}(\mathbf{V}_i - \mathbf{V}_j)</span>.</li>
+<li><strong>Paso 5 (Resolución Matricial y Variables Secundarias):</strong> Ensambla el sistema <span class="math inline">[\mathbf{Y}][\mathbf{V}] = [\mathbf{I}]</span>, resuelve mediante determinantes (Cramer) o inversión matricial y calcula las corrientes de rama deseadas <span class="math inline">\mathbf{I}_{ij} = \mathbf{Y}_{ij}(\mathbf{V}_i - \mathbf{V}_j)</span> o potencias complejas <span class="math inline">\mathbf{S} = \mathbf{V}\mathbf{I}^*</span>.</li>
+</ul>
 </div>
 </div>
 <hr>
 </section>
-<section id="algoritmo-sistemático-de-resolución-paso-a-paso" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Algoritmo Sistemático de Resolución Paso a Paso</h1>
+<section id="ejemplos-prácticos-resueltos-con-rigor" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Ejemplos Prácticos Resueltos con Rigor</h1>
+<section id="ejercicio-1-formulación-por-inspección-directa-3-nodos-fuentes-de-corriente" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="ejercicio-1-formulación-por-inspección-directa-3-nodos-fuentes-de-corriente"><span class="header-section-number">6.1</span> Ejercicio 1 — Formulación por Inspección Directa (3 Nodos, Fuentes de Corriente)</h2>
+<section id="enunciado" class="level3" data-number="6.1.1">
+<h3 data-number="6.1.1" class="anchored" data-anchor-id="enunciado"><span class="header-section-number">6.1.1</span> Enunciado</h3>
+<p>Dado el circuito de corriente alterna que opera a <span class="math inline">\omega = 1000\text{ rad/s}</span> con nodo de referencia seleccionado, dos nodos esenciales independientes (<span class="math inline">1</span> y <span class="math inline">2</span>), y los siguientes componentes: * Rama conectada entre nodo 1 y tierra: <span class="math inline">\mathbf{Z}_1 = 10 + j10\,\Omega \implies \mathbf{Y}_1 = \dfrac{1}{10+j10} = 0.05 - j0.05\,\text{S}</span>. * Rama de enlace entre nodo 1 y nodo 2: <span class="math inline">\mathbf{Z}_{12} = -j5\,\Omega \implies \mathbf{Y}_{12} = \dfrac{1}{-j5} = j0.2\,\text{S}</span>. * Rama conectada entre nodo 2 y tierra: <span class="math inline">\mathbf{Z}_2 = 20\,\Omega \implies \mathbf{Y}_2 = \dfrac{1}{20} = 0.05\,\text{S}</span>. * Fuente de corriente inyectando al nodo 1: <span class="math inline">\mathbf{I}_{s1} = 4\angle 0^\circ\,\text{A} = 4 + j0\,\text{A}</span>. * Fuente de corriente inyectando al nodo 2: <span class="math inline">\mathbf{I}_{s2} = 2\angle 90^\circ\,\text{A} = j2\,\text{A}</span>.</p>
+<p>Determinar las tensiones nodales complejas <span class="math inline">\mathbf{V}_1</span> y <span class="math inline">\mathbf{V}_2</span>.</p>
+</section>
+<section id="solución-paso-a-paso" class="level3" data-number="6.1.2">
+<h3 data-number="6.1.2" class="anchored" data-anchor-id="solución-paso-a-paso"><span class="header-section-number">6.1.2</span> Solución Paso a Paso</h3>
+<p><strong>Paso 1 — Construcción de los coeficientes de la Matriz de Admitancias <span class="math inline">[\mathbf{Y}]</span>:</strong> * <strong>Admitancia propia del nodo 1 (<span class="math inline">\mathbf{Y}_{11}</span>):</strong> <span class="math display">\mathbf{Y}_{11} = \mathbf{Y}_1 + \mathbf{Y}_{12} = (0.05 - j0.05) + j0.2 = \mathbf{0.05 + j0.15\,\text{S}}</span> * <strong>Admitancia propia del nodo 2 (<span class="math inline">\mathbf{Y}_{22}</span>):</strong> <span class="math display">\mathbf{Y}_{22} = \mathbf{Y}_2 + \mathbf{Y}_{12} = 0.05 + j0.2 = \mathbf{0.05 + j0.20\,\text{S}}</span> * <strong>Admitancia mutua entre nodos 1 y 2 (<span class="math inline">\mathbf{Y}_{12} = \mathbf{Y}_{21}</span>):</strong> <span class="math display">\mathbf{Y}_{12} = -\mathbf{Y}_{12,\text{rama}} = -(j0.2) = \mathbf{-j0.20\,\text{S}}</span></p>
+<p><strong>Paso 2 — Vector de corrientes inyectadas <span class="math inline">[\mathbf{I}]</span>:</strong> <span class="math display">\mathbf{I}_1 = 4 + j0\,\text{A}, \qquad \mathbf{I}_2 = 0 + j2\,\text{A}</span></p>
+<p><strong>Paso 3 — Sistema Matricial:</strong> <span class="math display">
+\begin{bmatrix}
+0.05 + j0.15 &amp; -j0.20 \\
+-j0.20 &amp; 0.05 + j0.20
+\end{bmatrix}
+\begin{bmatrix}
+\mathbf{V}_1 \\
+\mathbf{V}_2
+\end{bmatrix}
+=
+\begin{bmatrix}
+4 \\
+j2
+\end{bmatrix}
+</span></p>
+<p><strong>Paso 4 — Cálculo del Determinante <span class="math inline">\Delta_Y</span>:</strong> <span class="math display">\Delta_Y = (0.05 + j0.15)(0.05 + j0.20) - (-j0.20)^2</span> <span class="math display">\Delta_Y = (0.0025 + j0.01 + j0.0075 - 0.03) - (-0.04) = (-0.0275 + j0.0175) + 0.04 = \mathbf{0.0125 + j0.0175\,\text{S}^2}</span></p>
+<p><strong>Paso 5 — Aplicación de la Regla de Cramer:</strong> <span class="math display">\mathbf{V}_1 = \frac{\det\begin{bmatrix} 4 &amp; -j0.20 \\ j2 &amp; 0.05 + j0.20 \end{bmatrix}}{\Delta_Y} = \frac{4(0.05 + j0.20) - (j2)(-j0.20)}{0.0125 + j0.0175} = \frac{(0.20 + j0.80) - (0.40)}{0.0125 + j0.0175} = \frac{-0.20 + j0.80}{0.0125 + j0.0175}</span></p>
+<p>Multiplicando por el conjugado: <span class="math display">\mathbf{V}_1 = \frac{(-0.20 + j0.80)(0.0125 - j0.0175)}{0.0125^2 + 0.0175^2} = \frac{(-0.0025 + j0.0035 + j0.01 + 0.014)}{0.00015625 + 0.00030625} = \frac{0.0115 + j0.0135}{0.0004625} \approx \mathbf{24.86 + j29.19\,\text{V}}</span> <span class="math display">\boxed{\mathbf{V}_1 \approx 38.34\,\angle\,49.57^\circ\,\text{V}}</span></p>
+<p>De igual forma para <span class="math inline">\mathbf{V}_2</span>: <span class="math display">\mathbf{V}_2 = \frac{\det\begin{bmatrix} 0.05 + j0.15 &amp; 4 \\ -j0.20 &amp; j2 \end{bmatrix}}{\Delta_Y} = \frac{(0.05 + j0.15)(j2) - (-j0.20)(4)}{0.0125 + j0.0175} = \frac{(-0.30 + j0.10) + j0.80}{0.0125 + j0.0175} = \frac{-0.30 + j0.90}{0.0125 + j0.0175}</span> <span class="math display">\mathbf{V}_2 = \frac{(-0.30 + j0.90)(0.0125 - j0.0175)}{0.0004625} = \frac{0.0120 + j0.0165}{0.0004625} \approx \mathbf{25.95 + j35.68\,\text{V}}</span> <span class="math display">\boxed{\mathbf{V}_2 \approx 44.12\,\angle\,53.97^\circ\,\text{V}}</span></p>
+<hr>
+</section>
+</section>
+<section id="ejercicio-2-circuito-con-supernodo-flotante" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="ejercicio-2-circuito-con-supernodo-flotante"><span class="header-section-number">6.2</span> Ejercicio 2 — Circuito con Supernodo Flotante</h2>
+<section id="enunciado-1" class="level3" data-number="6.2.1">
+<h3 data-number="6.2.1" class="anchored" data-anchor-id="enunciado-1"><span class="header-section-number">6.2.1</span> Enunciado</h3>
+<p>En el circuito de la figura se tienen tres nodos esenciales (<span class="math inline">1, 2</span> y tierra <span class="math inline">0</span>): * Una fuente de tensión ideal flotante <span class="math inline">\mathbf{V}_s = 20\angle 0^\circ\,\text{V}</span> conecta el nodo 1 con el nodo 2, con terminal positivo en el nodo 1: <span class="math inline">\mathbf{V}_1 - \mathbf{V}_2 = 20\,\text{V}</span>. * Nodo 1 conectado a tierra mediante una resistencia <span class="math inline">R_1 = 5\,\Omega</span> (<span class="math inline">\mathbf{Y}_1 = 0.2\,\text{S}</span>). * Nodo 2 conectado a tierra mediante un condensador con reactancia <span class="math inline">\mathbf{Z}_C = -j10\,\Omega</span> (<span class="math inline">\mathbf{Y}_2 = j0.1\,\text{S}</span>). * Nodo 2 recibe una corriente inyectada por una fuente independiente <span class="math inline">\mathbf{I}_s = 3\angle 90^\circ\,\text{A} = j3\,\text{A}</span>.</p>
+<p>Determinar los potenciales <span class="math inline">\mathbf{V}_1</span> y <span class="math inline">\mathbf{V}_2</span> y la corriente entregada por la fuente de tensión flotante.</p>
+</section>
+<section id="solución-paso-a-paso-1" class="level3" data-number="6.2.2">
+<h3 data-number="6.2.2" class="anchored" data-anchor-id="solución-paso-a-paso-1"><span class="header-section-number">6.2.2</span> Solución Paso a Paso</h3>
+<p><strong>Paso 1 — Definición del Supernodo (1-2):</strong> Encerramos la fuente <span class="math inline">\mathbf{V}_s</span> y los nodos 1 y 2 en una sola frontera cerrada.</p>
+<p><strong>Paso 2 — Ecuación de LCK del Supernodo (1-2):</strong> La suma de corrientes salientes del supernodo hacia tierra debe ser igual a la corriente inyectada: <span class="math display">\mathbf{I}_{1 \to 0} + \mathbf{I}_{2 \to 0} = \mathbf{I}_s</span> <span class="math display">\mathbf{Y}_1 \mathbf{V}_1 + \mathbf{Y}_2 \mathbf{V}_2 = j3</span> <span class="math display">0.2 \mathbf{V}_1 + j0.1 \mathbf{V}_2 = j3 \qquad \text{[Ecuación 1]}</span></p>
+<p><strong>Paso 3 — Ecuación de Ligadura de la Fuente de Tensión:</strong> <span class="math display">\mathbf{V}_1 - \mathbf{V}_2 = 20 \implies \mathbf{V}_1 = \mathbf{V}_2 + 20 \qquad \text{[Ecuación 2]}</span></p>
+<p><strong>Paso 4 — Sustitución y Resolución:</strong> Sustituyendo la Ecuación 2 en la Ecuación 1: <span class="math display">0.2(\mathbf{V}_2 + 20) + j0.1 \mathbf{V}_2 = j3</span> <span class="math display">4 + (0.2 + j0.1)\mathbf{V}_2 = j3</span> <span class="math display">(0.2 + j0.1)\mathbf{V}_2 = -4 + j3</span></p>
+<p><span class="math display">\mathbf{V}_2 = \frac{-4 + j3}{0.2 + j0.1} = \frac{(-4 + j3)(0.2 - j0.1)}{0.2^2 + 0.1^2} = \frac{(-0.8 + j0.4 + j0.6 + 0.3)}{0.05} = \frac{-0.5 + j1.0}{0.05} = \mathbf{-10 + j20\,\text{V}}</span> <span class="math display">\boxed{\mathbf{V}_2 = -10 + j20\,\text{V} \approx 22.36\,\angle\,116.57^\circ\,\text{V}}</span></p>
+<p>Calculamos <span class="math inline">\mathbf{V}_1</span>: <span class="math display">\mathbf{V}_1 = \mathbf{V}_2 + 20 = (-10 + j20) + 20 = \mathbf{10 + j20\,\text{V}}</span> <span class="math display">\boxed{\mathbf{V}_1 = 10 + j20\,\text{V} \approx 22.36\,\angle\,63.43^\circ\,\text{V}}</span></p>
+<p><strong>Paso 5 — Corriente suministrada por la fuente flotante (<span class="math inline">\mathbf{I}_{\text{fuente}}</span>):</strong> Aplicando LCK exclusivamente en el nodo 1: <span class="math display">\mathbf{I}_{\text{fuente}} = \mathbf{I}_{1 \to 0} = \mathbf{Y}_1 \mathbf{V}_1 = 0.2(10 + j20) = \mathbf{2 + j4\,\text{A} \approx 4.47\,\angle\,63.43^\circ\,\text{A}}</span></p>
+<hr>
+</section>
+</section>
+</section>
+<section id="verificación-computacional-en-python" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Verificación Computacional en Python</h1>
+<p>Para verificar sistemas de cualquier orden de forma automatizada mediante álgebra matricial compleja:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Definición del sistema matricial [Y][V] = [I] para el Ejercicio 1</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> np.array([</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    [<span class="fl">0.05</span> <span class="op">+</span> <span class="ot">0.15j</span>,  <span class="fl">0.00</span> <span class="op">-</span> <span class="ot">0.20j</span>],</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    [<span class="fl">0.00</span> <span class="op">-</span> <span class="ot">0.20j</span>,  <span class="fl">0.05</span> <span class="op">+</span> <span class="ot">0.20j</span>]</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>], dtype<span class="op">=</span><span class="bu">complex</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>I <span class="op">=</span> np.array([</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="fl">4.0</span> <span class="op">+</span> <span class="ot">0.0j</span>,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="fl">0.0</span> <span class="op">+</span> <span class="ot">2.0j</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>], dtype<span class="op">=</span><span class="bu">complex</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Resolución del sistema lineal de ecuaciones</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> np.linalg.solve(Y, I)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"--- RESULTADOS NODALES EXACTOS ---"</span>)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, v <span class="kw">in</span> <span class="bu">enumerate</span>(V, start<span class="op">=</span><span class="dv">1</span>):</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    modulo <span class="op">=</span> np.<span class="bu">abs</span>(v)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    fase_deg <span class="op">=</span> np.rad2deg(np.angle(v))</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"V_</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss"> = </span><span class="sc">{</span>v<span class="sc">.</span>real<span class="sc">:8.4f}</span><span class="ss"> + j</span><span class="sc">{</span>v<span class="sc">.</span>imag<span class="sc">:8.4f}</span><span class="ss"> V  |  </span><span class="sc">{</span>modulo<span class="sc">:8.4f}</span><span class="ss"> ∠ </span><span class="sc">{</span>fase_deg<span class="sc">:6.2f}</span><span class="ss">° V"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="errores-frecuentes-y-consejos-prácticos" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Errores Frecuentes y Consejos Prácticos</h1>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>🧠 Errores Comunes en Exámenes y Diseños
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ol type="1">
-<li><strong>Transformación al dominio fasorial:</strong> Convertir todas las fuentes temporales a fasores eficaces o de cresta (<span class="math inline">\mathbf{V}_s, \mathbf{I}_s</span>) y todos los elementos pasivos a sus respectivas impedancias complejas (<span class="math inline">\mathbf{Z}_R = R</span>, <span class="math inline">\mathbf{Z}_L = j\omega L</span>, <span class="math inline">\mathbf{Z}_C = -j/(\omega C)</span>) o admitancias (<span class="math inline">\mathbf{Y} = 1/\mathbf{Z}</span>).</li>
-<li><strong>Selección del nodo de referencia:</strong> Elegir el nodo con mayor número de ramas conectadas o el terminal común de fuentes de tensión para simplificar el sistema (<span class="math inline">V_{\text{ref}} = 0\text{ V}</span>).</li>
-<li><strong>Identificación de supernodos:</strong> Encerrar las fuentes de tensión flotantes y escribir sus ecuaciones de ligadura de potencial.</li>
-<li><strong>Ensamblaje matricial:</strong> Construir la matriz de admitancias <span class="math inline">[\mathbf{Y}]</span> y el vector de corrientes inyectadas <span class="math inline">[\mathbf{I}]</span>.</li>
-<li><strong>Solución computacional:</strong> Resolver el sistema lineal <span class="math inline">[\mathbf{V}] = [\mathbf{Y}]^{-1} [\mathbf{I}]</span>. En Python:</li>
+<li><strong>Confusión entre Impedancias y Admitancias:</strong> El error más común al llenar <span class="math inline">[\mathbf{Y}]</span> es colocar <span class="math inline">\mathbf{Z}</span> en vez de su inverso <span class="math inline">\mathbf{Y} = 1/\mathbf{Z}</span>. ¡Recuerda que en una rama inductiva con <span class="math inline">\mathbf{Z} = j\omega L</span>, la admitancia es <span class="math inline">\mathbf{Y} = -j/(\omega L)</span> con signo negativo!</li>
+<li><strong>Signo de los elementos mutuos <span class="math inline">\mathbf{Y}_{ij}</span>:</strong> Los elementos fuera de la diagonal SIEMPRE deben llevar el signo menos exterior: <span class="math inline">-\mathbf{Y}_{\text{enlace}}</span>.</li>
+<li><strong>Intentar plantear LCK directa en una fuente ideal de tensión:</strong> Nunca apliques LCK en un nodo conectado a una fuente de tensión a menos que conozcas o aisles la corriente de la fuente mediante un supernodo.</li>
+<li><strong>Convenio de signos de corrientes inyectadas:</strong> Fuentes que entran al nodo suman positivo (<span class="math inline">+</span>), fuentes que salen restan (<span class="math inline">-</span>).</li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Matriz de admitancias complejas (Siemens)</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> np.array([</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    [<span class="fl">0.2</span> <span class="op">-</span> <span class="ot">0.1j</span>, <span class="op">-</span><span class="fl">0.1</span> <span class="op">+</span> <span class="ot">0.05j</span>],</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    [<span class="op">-</span><span class="fl">0.1</span> <span class="op">+</span> <span class="ot">0.05j</span>, <span class="fl">0.35</span> <span class="op">-</span> <span class="ot">0.15j</span>]</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>], dtype<span class="op">=</span><span class="bu">complex</span>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Vector de corrientes inyectadas fasoriales (Amperios)</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>I <span class="op">=</span> np.array([</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="fl">5.0</span> <span class="op">*</span> np.exp(<span class="ot">1j</span> <span class="op">*</span> np.deg2rad(<span class="dv">0</span>)),</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="fl">2.5</span> <span class="op">*</span> np.exp(<span class="ot">1j</span> <span class="op">*</span> np.deg2rad(<span class="dv">45</span>))</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>], dtype<span class="op">=</span><span class="bu">complex</span>)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Resolución de tensiones nodales</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> np.linalg.solve(Y, I)</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> idx, v <span class="kw">in</span> <span class="bu">enumerate</span>(V, start<span class="op">=</span><span class="dv">1</span>):</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    mag <span class="op">=</span> np.<span class="bu">abs</span>(v)</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    ang <span class="op">=</span> np.rad2deg(np.angle(v))</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"V_</span><span class="sc">{</span>idx<span class="sc">}</span><span class="ss"> = </span><span class="sc">{</span>mag<span class="sc">:.2f}</span><span class="ss"> ∠ </span><span class="sc">{</span>ang<span class="sc">:.2f}</span><span class="ss">° V  (</span><span class="sc">{</span>v<span class="sc">.</span>real<span class="sc">:.2f}</span><span class="ss"> + j</span><span class="sc">{</span>v<span class="sc">.</span>imag<span class="sc">:.2f}</span><span class="ss"> V)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
 <hr>
 </section>
-<section id="navegación-del-módulo" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Navegación del Módulo</h1>
+<section id="navegación-del-módulo" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Navegación del Módulo</h1>
 <div class="d-flex flex-wrap gap-2 my-3">
 <p><a href="../circuitos_electricos/delta_estrella.html" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i> Transformación Δ–Y</a> <a href="../circuitos_electricos/analisis_mallas.html" class="btn btn-primary"><i class="bi bi-grid me-1"></i> Siguiente: Análisis de Mallas</a> <a href="../circuitos_electricos/circuito_thevenin.html" class="btn btn-outline-primary"><i class="bi bi-cpu me-1"></i> Teorema de Thévenin</a> <a href="../circuitos_electricos/circuito_norton.html" class="btn btn-outline-primary"><i class="bi bi-bezier2 me-1"></i> Teorema de Norton</a> <a href="../circuitos_electricos/index.html" class="btn btn-outline-secondary"><i class="bi bi-house me-1"></i> Índice</a></p>
 </div>

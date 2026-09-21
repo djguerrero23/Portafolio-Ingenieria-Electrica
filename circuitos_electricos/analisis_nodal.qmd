@@ -1,10 +1,10 @@
 ---
 title: "Análisis Nodal en Corriente Alterna"
 subtitle: "Formulación sistemática por Ley de Corrientes de Kirchhoff (LCK) y Matriz de Admitancias Complejas"
-description: "Resolución sistemática de redes eléctricas sinusoidales en régimen permanente mediante potenciales de nodo: planteamiento matricial [Y][V] = [I], supernodos y fuentes controladas."
+description: "Guía maestra y rigurosa de análisis nodal en CA: criterios de decisión (Nodos vs Mallas), formulación matricial [Y][V] = [I], tratamiento de supernodos, fuentes controladas y resolución paso a paso."
 author: "David Guerrero"
 date: "2026-09-16"
-categories: [Métodos de Redes, Análisis Nodal, Admitancias, LCK, Circuitos CA]
+categories: [Métodos de Redes, Análisis Nodal, Admitancias, LCK, Circuitos CA, Supernodos]
 format:
   html:
     toc: true
@@ -14,25 +14,72 @@ format:
 
 ::: {.hero-banner-modern}
 # Análisis Nodal en Régimen Sinusoidal Permanente {.unnumbered}
-**Resolución sistemática de circuitos mediante potenciales de nodo y leyes de corrientes.**
+**Formulación sistemática de redes eléctricas mediante potenciales de nodo y leyes de corrientes.**
 
-El método de nodos reduce el sistema de ecuaciones de cualquier circuito lineal a un conjunto desacoplado o matricial de tensiones nodales respecto a un punto de referencia común.
-:::
-
-::: {.callout-note}
-### ⚡ Fundamento: Ley de Corrientes de Kirchhoff (LCK)
-Para cualquier nodo esencial en régimen sinusoidal permanente, la suma algebraica de los fasores de corriente que convergen al nodo es idénticamente nula:
-
-$$\sum_{k=1}^{n} \mathbf{I}_k = 0$$
-
-Al expresar cada corriente de rama en función de las tensiones nodales y las admitancias complejas ($\mathbf{I} = \mathbf{Y} \Delta \mathbf{V}$), se obtiene un sistema lineal directamente resoluble por álgebra matricial.
+El método de análisis nodal es la herramienta fundamental más potente en la ingeniería eléctrica moderna. Constituye la base algorítmica de los simuladores computacionales (SPICE, EMTP) y del análisis de flujos de potencia en sistemas eléctricos, permitiendo resolver cualquier red lineal independientemente de su complejidad o topología.
 :::
 
 ---
 
-# Formulación Matricial por Admitancias
+# Criterio de Decisión: ¿Cuándo utilizar Análisis Nodal?
 
-Para un circuito lineal con $N$ nodos esenciales independientes (excluyendo el nodo de referencia asignado como tierra, $0\text{ V}$), sin fuentes de tensión entre nodos no referenciales:
+Antes de plantear ecuaciones, un ingeniero debe seleccionar la técnica de análisis óptima evaluando la topología de la red:
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-6}
+::: {.card-module style="border-top: 4px solid #059669;"}
+### ✅ ¿Cuándo es PREFERIBLE el Análisis Nodal?
+
+1. **Menor número de incógnitas:** Cuando el número de nodos esenciales independientes $(N_e - 1)$ es menor que el número de mallas independientes $(B - N_e + 1)$.
+2. **Abundancia de fuentes de corriente:** Las fuentes de corriente independientes fijan directamente los términos del vector de inyección $[\mathbf{I}]$ sin añadir ecuaciones auxiliares.
+3. **Fuentes de tensión conectadas a referencia:** Fijan directamente el potencial del nodo ($\mathbf{V}_k = \mathbf{V}_s$), reduciendo la dimensión del sistema en una incógnita por cada fuente.
+4. **Redes No Planares (Cruces tridimensionales de ramas):** El método de mallas **no se puede aplicar** en redes no planares (redes que no pueden dibujarse en un plano sin cruce de conductores). El análisis nodal es universal y funciona en cualquier topología.
+5. **Formulación computacional directa:** La matriz de admitancias de barra $[\mathbf{Y}]$ se puede ensamblar por inspección directa mediante reglas topológicas simples.
+:::
+:::
+
+::: {.g-col-12 .g-col-md-6}
+::: {.card-module style="border-top: 4px solid #dc2626;"}
+### ❌ ¿Cuándo es MEJOR el Análisis de Mallas?
+
+1. **Muchas fuentes de tensión en serie con ramas:** Las fuentes de tensión facilitan el planteamiento de tensiones de malla (LKT) sin requerir supernodos.
+2. **Menor número de mallas que de nodos:** Redes en cascada o circuitos escalera (ladder networks) donde hay pocas mallas y muchos nodos.
+3. **Múltiples fuentes de tensión flotantes:** Si hay demasiadas fuentes de tensión no conectadas a tierra, el análisis nodal requiere múltiples supernodos y ecuaciones de ligadura simultáneas.
+4. **Variables de interés en serie:** Cuando el objetivo principal es calcular la corriente de una malla específica o rama en serie.
+:::
+:::
+
+:::
+
+---
+
+# Fundamento Físico y Matemático
+
+::: {.callout-note}
+### ⚡ Principio Físico: Conservación de la Carga (LCK)
+En cualquier instante $t$ y en régimen permanente sinusoidal, la carga eléctrica no puede acumularse en un nodo ideal sin capacitancia parásita concentrada. Por tanto, la suma fasorial de las corrientes que abandonan cualquier nodo cerrado $\mathcal{S}_k$ es idénticamente nula:
+
+$$\sum_{m \in \text{adyacentes}} \mathbf{I}_{km} = \mathbf{I}_{s,k}$$
+
+Donde $\mathbf{I}_{km}$ es la corriente que fluye del nodo $k$ al nodo $m$, e $\mathbf{I}_{s,k}$ es la corriente neta inyectada por fuentes externas conectadas al nodo $k$.
+:::
+
+### Relación Constitutiva de Rama en el Dominio Fasorial
+
+Para una rama conectada entre el nodo $i$ (potencial $\mathbf{V}_i$) y el nodo $j$ (potencial $\mathbf{V}_j$) con impedancia $\mathbf{Z}_{ij}$ y admitancia $\mathbf{Y}_{ij} = \dfrac{1}{\mathbf{Z}_{ij}}$:
+
+$$\mathbf{I}_{ij} = \frac{\mathbf{V}_i - \mathbf{V}_j}{\mathbf{Z}_{ij}} = \mathbf{Y}_{ij}(\mathbf{V}_i - \mathbf{V}_j)$$
+
+Al sustituir esta expresión en la LCK de cada nodo $i$, agrupamos los términos asociados a cada potencial nodal:
+
+$$\mathbf{V}_i \underbrace{\left(\sum_{j} \mathbf{Y}_{ij}\right)}_{\mathbf{Y}_{ii}} - \sum_{j \neq i} \mathbf{V}_j \underbrace{\left(\mathbf{Y}_{ij}\right)}_{-\mathbf{Y}_{ij}} = \mathbf{I}_{\text{inyectada}, i}$$
+
+---
+
+# Formulación Matricial por Inspección: $[\mathbf{Y}][\mathbf{V}] = [\mathbf{I}]$
+
+Para una red con $N$ nodos independientes (excluyendo el nodo de referencia asignado como tierra, $\mathbf{V}_{\text{ref}} = 0\text{ V}$):
 
 $$
 \begin{bmatrix}
@@ -56,88 +103,241 @@ $$
 \end{bmatrix}
 $$
 
-En notación compacta:
+### Reglas de Ensamblaje Directo de la Matriz $[\mathbf{Y}]$
 
-$$[\mathbf{Y}] [\mathbf{V}] = [\mathbf{I}]$$
+::: {.callout-important}
+### 📌 Reglas de Oro para la Matriz de Admitancias $[\mathbf{Y}]$
 
-## Elementos de la Matriz de Admitancias $[\mathbf{Y}]$
+1. **Admitancias Propias (Diagonal Principal $\mathbf{Y}_{ii}$):**
+   $$\mathbf{Y}_{ii} = \sum (\text{Admitancias complejas de todas las ramas conectadas directamente al nodo } i)$$
+   * Siempre lleva signo **positivo**.
+   * Su parte real representa la conductancia propia ($G_{ii} \ge 0$) y su parte imaginaria la susceptancia propia ($B_{ii}$).
 
-1. **Admitancias Propias ($\mathbf{Y}_{ii}$):** Elementos de la diagonal principal.  
-   $$\mathbf{Y}_{ii} = \sum \mathbf{Y}_{\text{conectadas directamente al nodo } i}$$
-   Es la suma de todas las admitancias complejas incidentes en el nodo $i$. Siempre lleva signo **positivo**.
+2. **Admitancias Mutuas (Elementos Fuera de la Diagonal $\mathbf{Y}_{ij}$ con $i \neq j$):**
+   $$\mathbf{Y}_{ij} = -\sum (\text{Admitancias complejas conectadas directamente entre el nodo } i \text{ y el nodo } j)$$
+   * Siempre lleva signo **negativo**.
+   * En circuitos pasivos recíprocos (sin fuentes controladas), la matriz es estrictamente simétrica: $\mathbf{Y}_{ij} = \mathbf{Y}_{ji}$.
 
-2. **Admitancias Mutuas ($\mathbf{Y}_{ij}$ con $i \neq j$):** Elementos fuera de la diagonal.  
-   $$\mathbf{Y}_{ij} = -\sum \mathbf{Y}_{\text{conectadas directamente entre el nodo } i \text{ y el nodo } j}$$
-   Corresponde al negativo de la suma de admitancias de las ramas que unen directamente los nodos $i$ y $j$. En circuitos pasivos recíprocos, la matriz es simétrica: $\mathbf{Y}_{ij} = \mathbf{Y}_{ji}$.
-
-3. **Vector de Inyección de Corrientes ($\mathbf{I}_i$):**  
-   $$\mathbf{I}_i = \sum \mathbf{I}_{\text{fuentes que entran al nodo } i} - \sum \mathbf{I}_{\text{fuentes que salen del nodo } i}$$
-   Es la suma fasorial de las fuentes de corriente independientes que inyectan carga al nodo $i$.
-
----
-
-# Tratamiento de Fuentes de Tensión: El Supernodo
-
-Cuando el circuito contiene **fuentes de tensión** (ideales o con impedancia interna nula), la corriente que circula a través de ellas no se puede determinar directamente por la Ley de Ohm ($\mathbf{I} = \Delta \mathbf{V} / 0 \to \text{indefinido}$). Se presentan dos situaciones:
-
-::: {.grid}
-
-::: {.g-col-12 .g-col-md-6}
-::: {.card-module style="border-top: 4px solid #0284c7;"}
-#### 1. Fuente conectada a Referencia
-Si la fuente de tensión $\mathbf{V}_s$ está conectada entre el nodo $k$ y el nodo de tierra:
-- El potencial del nodo $k$ queda fijado inmediatamente:
-$$\mathbf{V}_k = \mathbf{V}_s$$
-- El número de incógnitas del sistema se reduce en 1. No es necesario plantear la LCK en el nodo $k$.
-:::
-:::
-
-::: {.g-col-12 .g-col-md-6}
-::: {.card-module style="border-top: 4px solid #f59e0b;"}
-#### 2. Fuente Flotante: Supernodo
-Si la fuente de tensión está conectada entre dos nodos no referenciales $k$ y $m$:
-1. Se encierra la fuente de tensión y los dos nodos en una frontera cerrada (**Supernodo**).
-2. Se plantea la LCK fasorial para la frontera del supernodo completo.
-3. Se agrega la **ecuación de ligadura de tensión**:
-$$\mathbf{V}_k - \mathbf{V}_m = \mathbf{V}_{\text{fuente}}$$
-:::
-:::
-
+3. **Vector de Inyección de Corrientes ($\mathbf{I}_i$):**
+   $$\mathbf{I}_i = \sum \mathbf{I}_{\text{fuentes independientes que ENTRAN al nodo } i} - \sum \mathbf{I}_{\text{fuentes independientes que SALEN del nodo } i}$$
 :::
 
 ---
 
-# Algoritmo Sistemático de Resolución Paso a Paso
+# Tratamiento de Casos Especiales
 
-1. **Transformación al dominio fasorial:** Convertir todas las fuentes temporales a fasores eficaces o de cresta ($\mathbf{V}_s, \mathbf{I}_s$) y todos los elementos pasivos a sus respectivas impedancias complejas ($\mathbf{Z}_R = R$, $\mathbf{Z}_L = j\omega L$, $\mathbf{Z}_C = -j/(\omega C)$) o admitancias ($\mathbf{Y} = 1/\mathbf{Z}$).
-2. **Selección del nodo de referencia:** Elegir el nodo con mayor número de ramas conectadas o el terminal común de fuentes de tensión para simplificar el sistema ($V_{\text{ref}} = 0\text{ V}$).
-3. **Identificación de supernodos:** Encerrar las fuentes de tensión flotantes y escribir sus ecuaciones de ligadura de potencial.
-4. **Ensamblaje matricial:** Construir la matriz de admitancias $[\mathbf{Y}]$ y el vector de corrientes inyectadas $[\mathbf{I}]$.
-5. **Solución computacional:** Resolver el sistema lineal $[\mathbf{V}] = [\mathbf{Y}]^{-1} [\mathbf{I}]$. En Python:
+```
+                                  ¿Qué tipos de fuentes existen?
+                                                │
+                 ┌──────────────────────────────┴──────────────────────────────┐
+                 ▼                                                             ▼
+       Solo Fuentes de Corriente                                      Fuentes de Tensión
+                 │                                                             │
+        Inspección Directa                               ┌─────────────────────┴─────────────────────┐
+        [Y][V] = [I] pura                                ▼                                           ▼
+                                             Conectada a Referencia                         Flotante
+                                                         │                                           │
+                                            Fija potencial directo:                    Requiere SUPERNODO
+                                                V_k = V_fuente                       (LCK global + Ligadura)
+```
+
+## Caso 1: Fuente de Tensión Conectada a Referencia
+
+Si una fuente ideal de tensión $\mathbf{V}_s$ se encuentra conectada entre el nodo $k$ y el nodo de referencia:
+* El potencial del nodo $k$ queda fijado de forma unívoca:
+  $$\mathbf{V}_k = \mathbf{V}_s$$
+* El nodo $k$ deja de ser una incógnita. Se elimina su fila en el sistema o se transfiere como término conocido al vector independiente del lado derecho.
+
+## Caso 2: Fuente de Tensión Flotante — Concepto de Supernodo
+
+Cuando una fuente de tensión (independiente o controlada) une dos nodos no referenciales $k$ y $m$, la corriente $\mathbf{I}_{\text{fuente}}$ que la atraviesa es una incógnita indeterminada a priori por la ley de Ohm ($\Delta \mathbf{V} / 0$).
+
+::: {.callout-warning}
+### ⚠️ Metodología del Supernodo
+1. **Frontera del Supernodo:** Se dibuja una superficie cerrada que engloba a la fuente de tensión y a los dos nodos $k$ y $m$ que conecta.
+2. **Ecuación de LCK Global:** Se suma algebraicamente la corriente de todas las ramas externas que salen del supernodo:
+   $$\sum \mathbf{I}_{\text{salientes del nodo } k} + \sum \mathbf{I}_{\text{salientes del nodo } m} = \sum \mathbf{I}_{\text{fuentes inyectadas}}$$
+3. **Ecuación de Ligadura de Potencial (LKT interna):** La diferencia de potencial entre los dos nodos está rígidamente fijada por la fuente:
+   $$\mathbf{V}_k - \mathbf{V}_m = \mathbf{V}_{\text{fuente}}$$
+   *(donde el nodo $k$ se conecta al terminal positivo de la fuente).*
+4. **Elementos en Paralelo con la Fuente:** Cualquier impedancia conectada en paralelo directo con la fuente de tensión queda dentro del supernodo y **no altera las ecuaciones nodales externas**.
+:::
+
+## Caso 3: Circuitos con Fuentes Controladas (Dependientes)
+
+Las fuentes dependientes introducen acoplamientos asimétricos en el circuito:
+
+1. Trata la fuente controlada inicialmente como si fuera una fuente independiente ordinaria.
+2. Expresa la **variable de control** (sea una tensión $\mathbf{V}_x$ o una corriente $\mathbf{I}_x$) en términos estrictos de las tensiones nodales del circuito:
+   * Si depende de una tensión: $\mathbf{V}_x = \mathbf{V}_a - \mathbf{V}_b$.
+   * Si depende de una corriente: $\mathbf{I}_x = \mathbf{Y}_{ab}(\mathbf{V}_a - \mathbf{V}_b)$.
+3. Sustituye la variable de control y transfiere todos los coeficientes que involucren potenciales incógnitas al lado izquierdo de la ecuación matricial.
+4. **Consecuencia física:** La matriz $[\mathbf{Y}]$ pierde la simetría ($\mathbf{Y}_{ij} \neq \mathbf{Y}_{ji}$).
+
+---
+
+# Algoritmo Maestro de 5 Pasos para Resolver Cualquier Red Nodal
+
+::: {.callout-tip}
+### 📋 Protocolo de Ejecución Sistemática
+
+* **Paso 1 (Dominio Fasorial):** Transforma todas las fuentes temporales a fasores ($\mathbf{V}_s = V_m \angle \theta$, $\mathbf{I}_s = I_m \angle \theta$) y calcula las impedancias ($\mathbf{Z}_R = R$, $\mathbf{Z}_L = j\omega L$, $\mathbf{Z}_C = -j/(\omega C)$) y admitancias complejas ($\mathbf{Y} = 1/\mathbf{Z}$).
+* **Paso 2 (Elección Estratégica de Referencia):** Identifica los $N_e$ nodos esenciales. Selecciona como nodo de referencia ($0\text{ V}$) el nodo que conecte la mayor cantidad de ramas o el nodo común al mayor número de fuentes de tensión.
+* **Paso 3 (Identificación de Nodos Fijos y Supernodos):**
+  * Asigna los valores de los nodos conectados a fuentes con referencia.
+  * Encierra cada fuente flotante en un supernodo y formula su ecuación de ligadura.
+* **Paso 4 (Planteamiento de Ecuaciones LCK):** Escribe la LCK para cada nodo libre y cada supernodo expresando las corrientes como $\mathbf{Y}(\mathbf{V}_i - \mathbf{V}_j)$.
+* **Paso 5 (Resolución Matricial y Variables Secundarias):** Ensambla el sistema $[\mathbf{Y}][\mathbf{V}] = [\mathbf{I}]$, resuelve mediante determinantes (Cramer) o inversión matricial y calcula las corrientes de rama deseadas $\mathbf{I}_{ij} = \mathbf{Y}_{ij}(\mathbf{V}_i - \mathbf{V}_j)$ o potencias complejas $\mathbf{S} = \mathbf{V}\mathbf{I}^*$.
+:::
+
+---
+
+# Ejemplos Prácticos Resueltos con Rigor
+
+## Ejercicio 1 — Formulación por Inspección Directa (3 Nodos, Fuentes de Corriente)
+
+### Enunciado
+Dado el circuito de corriente alterna que opera a $\omega = 1000\text{ rad/s}$ con nodo de referencia seleccionado, dos nodos esenciales independientes ($1$ y $2$), y los siguientes componentes:
+* Rama conectada entre nodo 1 y tierra: $\mathbf{Z}_1 = 10 + j10\,\Omega \implies \mathbf{Y}_1 = \dfrac{1}{10+j10} = 0.05 - j0.05\,\text{S}$.
+* Rama de enlace entre nodo 1 y nodo 2: $\mathbf{Z}_{12} = -j5\,\Omega \implies \mathbf{Y}_{12} = \dfrac{1}{-j5} = j0.2\,\text{S}$.
+* Rama conectada entre nodo 2 y tierra: $\mathbf{Z}_2 = 20\,\Omega \implies \mathbf{Y}_2 = \dfrac{1}{20} = 0.05\,\text{S}$.
+* Fuente de corriente inyectando al nodo 1: $\mathbf{I}_{s1} = 4\angle 0^\circ\,\text{A} = 4 + j0\,\text{A}$.
+* Fuente de corriente inyectando al nodo 2: $\mathbf{I}_{s2} = 2\angle 90^\circ\,\text{A} = j2\,\text{A}$.
+
+Determinar las tensiones nodales complejas $\mathbf{V}_1$ y $\mathbf{V}_2$.
+
+### Solución Paso a Paso
+
+**Paso 1 — Construcción de los coeficientes de la Matriz de Admitancias $[\mathbf{Y}]$:**
+* **Admitancia propia del nodo 1 ($\mathbf{Y}_{11}$):**
+  $$\mathbf{Y}_{11} = \mathbf{Y}_1 + \mathbf{Y}_{12} = (0.05 - j0.05) + j0.2 = \mathbf{0.05 + j0.15\,\text{S}}$$
+* **Admitancia propia del nodo 2 ($\mathbf{Y}_{22}$):**
+  $$\mathbf{Y}_{22} = \mathbf{Y}_2 + \mathbf{Y}_{12} = 0.05 + j0.2 = \mathbf{0.05 + j0.20\,\text{S}}$$
+* **Admitancia mutua entre nodos 1 y 2 ($\mathbf{Y}_{12} = \mathbf{Y}_{21}$):**
+  $$\mathbf{Y}_{12} = -\mathbf{Y}_{12,\text{rama}} = -(j0.2) = \mathbf{-j0.20\,\text{S}}$$
+
+**Paso 2 — Vector de corrientes inyectadas $[\mathbf{I}]$:**
+$$\mathbf{I}_1 = 4 + j0\,\text{A}, \qquad \mathbf{I}_2 = 0 + j2\,\text{A}$$
+
+**Paso 3 — Sistema Matricial:**
+$$
+\begin{bmatrix}
+0.05 + j0.15 & -j0.20 \\
+-j0.20 & 0.05 + j0.20
+\end{bmatrix}
+\begin{bmatrix}
+\mathbf{V}_1 \\
+\mathbf{V}_2
+\end{bmatrix}
+=
+\begin{bmatrix}
+4 \\
+j2
+\end{bmatrix}
+$$
+
+**Paso 4 — Cálculo del Determinante $\Delta_Y$:**
+$$\Delta_Y = (0.05 + j0.15)(0.05 + j0.20) - (-j0.20)^2$$
+$$\Delta_Y = (0.0025 + j0.01 + j0.0075 - 0.03) - (-0.04) = (-0.0275 + j0.0175) + 0.04 = \mathbf{0.0125 + j0.0175\,\text{S}^2}$$
+
+**Paso 5 — Aplicación de la Regla de Cramer:**
+$$\mathbf{V}_1 = \frac{\det\begin{bmatrix} 4 & -j0.20 \\ j2 & 0.05 + j0.20 \end{bmatrix}}{\Delta_Y} = \frac{4(0.05 + j0.20) - (j2)(-j0.20)}{0.0125 + j0.0175} = \frac{(0.20 + j0.80) - (0.40)}{0.0125 + j0.0175} = \frac{-0.20 + j0.80}{0.0125 + j0.0175}$$
+
+Multiplicando por el conjugado:
+$$\mathbf{V}_1 = \frac{(-0.20 + j0.80)(0.0125 - j0.0175)}{0.0125^2 + 0.0175^2} = \frac{(-0.0025 + j0.0035 + j0.01 + 0.014)}{0.00015625 + 0.00030625} = \frac{0.0115 + j0.0135}{0.0004625} \approx \mathbf{24.86 + j29.19\,\text{V}}$$
+$$\boxed{\mathbf{V}_1 \approx 38.34\,\angle\,49.57^\circ\,\text{V}}$$
+
+De igual forma para $\mathbf{V}_2$:
+$$\mathbf{V}_2 = \frac{\det\begin{bmatrix} 0.05 + j0.15 & 4 \\ -j0.20 & j2 \end{bmatrix}}{\Delta_Y} = \frac{(0.05 + j0.15)(j2) - (-j0.20)(4)}{0.0125 + j0.0175} = \frac{(-0.30 + j0.10) + j0.80}{0.0125 + j0.0175} = \frac{-0.30 + j0.90}{0.0125 + j0.0175}$$
+$$\mathbf{V}_2 = \frac{(-0.30 + j0.90)(0.0125 - j0.0175)}{0.0004625} = \frac{0.0120 + j0.0165}{0.0004625} \approx \mathbf{25.95 + j35.68\,\text{V}}$$
+$$\boxed{\mathbf{V}_2 \approx 44.12\,\angle\,53.97^\circ\,\text{V}}$$
+
+---
+
+## Ejercicio 2 — Circuito con Supernodo Flotante
+
+### Enunciado
+En el circuito de la figura se tienen tres nodos esenciales ($1, 2$ y tierra $0$):
+* Una fuente de tensión ideal flotante $\mathbf{V}_s = 20\angle 0^\circ\,\text{V}$ conecta el nodo 1 con el nodo 2, con terminal positivo en el nodo 1: $\mathbf{V}_1 - \mathbf{V}_2 = 20\,\text{V}$.
+* Nodo 1 conectado a tierra mediante una resistencia $R_1 = 5\,\Omega$ ($\mathbf{Y}_1 = 0.2\,\text{S}$).
+* Nodo 2 conectado a tierra mediante un condensador con reactancia $\mathbf{Z}_C = -j10\,\Omega$ ($\mathbf{Y}_2 = j0.1\,\text{S}$).
+* Nodo 2 recibe una corriente inyectada por una fuente independiente $\mathbf{I}_s = 3\angle 90^\circ\,\text{A} = j3\,\text{A}$.
+
+Determinar los potenciales $\mathbf{V}_1$ y $\mathbf{V}_2$ y la corriente entregada por la fuente de tensión flotante.
+
+### Solución Paso a Paso
+
+**Paso 1 — Definición del Supernodo (1-2):**
+Encerramos la fuente $\mathbf{V}_s$ y los nodos 1 y 2 en una sola frontera cerrada.
+
+**Paso 2 — Ecuación de LCK del Supernodo (1-2):**
+La suma de corrientes salientes del supernodo hacia tierra debe ser igual a la corriente inyectada:
+$$\mathbf{I}_{1 \to 0} + \mathbf{I}_{2 \to 0} = \mathbf{I}_s$$
+$$\mathbf{Y}_1 \mathbf{V}_1 + \mathbf{Y}_2 \mathbf{V}_2 = j3$$
+$$0.2 \mathbf{V}_1 + j0.1 \mathbf{V}_2 = j3 \qquad \text{[Ecuación 1]}$$
+
+**Paso 3 — Ecuación de Ligadura de la Fuente de Tensión:**
+$$\mathbf{V}_1 - \mathbf{V}_2 = 20 \implies \mathbf{V}_1 = \mathbf{V}_2 + 20 \qquad \text{[Ecuación 2]}$$
+
+**Paso 4 — Sustitución y Resolución:**
+Sustituyendo la Ecuación 2 en la Ecuación 1:
+$$0.2(\mathbf{V}_2 + 20) + j0.1 \mathbf{V}_2 = j3$$
+$$4 + (0.2 + j0.1)\mathbf{V}_2 = j3$$
+$$(0.2 + j0.1)\mathbf{V}_2 = -4 + j3$$
+
+$$\mathbf{V}_2 = \frac{-4 + j3}{0.2 + j0.1} = \frac{(-4 + j3)(0.2 - j0.1)}{0.2^2 + 0.1^2} = \frac{(-0.8 + j0.4 + j0.6 + 0.3)}{0.05} = \frac{-0.5 + j1.0}{0.05} = \mathbf{-10 + j20\,\text{V}}$$
+$$\boxed{\mathbf{V}_2 = -10 + j20\,\text{V} \approx 22.36\,\angle\,116.57^\circ\,\text{V}}$$
+
+Calculamos $\mathbf{V}_1$:
+$$\mathbf{V}_1 = \mathbf{V}_2 + 20 = (-10 + j20) + 20 = \mathbf{10 + j20\,\text{V}}$$
+$$\boxed{\mathbf{V}_1 = 10 + j20\,\text{V} \approx 22.36\,\angle\,63.43^\circ\,\text{V}}$$
+
+**Paso 5 — Corriente suministrada por la fuente flotante ($\mathbf{I}_{\text{fuente}}$):**
+Aplicando LCK exclusivamente en el nodo 1:
+$$\mathbf{I}_{\text{fuente}} = \mathbf{I}_{1 \to 0} = \mathbf{Y}_1 \mathbf{V}_1 = 0.2(10 + j20) = \mathbf{2 + j4\,\text{A} \approx 4.47\,\angle\,63.43^\circ\,\text{A}}$$
+
+---
+
+# Verificación Computacional en Python
+
+Para verificar sistemas de cualquier orden de forma automatizada mediante álgebra matricial compleja:
 
 ```python
 import numpy as np
 
-# Matriz de admitancias complejas (Siemens)
+# Definición del sistema matricial [Y][V] = [I] para el Ejercicio 1
 Y = np.array([
-    [0.2 - 0.1j, -0.1 + 0.05j],
-    [-0.1 + 0.05j, 0.35 - 0.15j]
+    [0.05 + 0.15j,  0.00 - 0.20j],
+    [0.00 - 0.20j,  0.05 + 0.20j]
 ], dtype=complex)
 
-# Vector de corrientes inyectadas fasoriales (Amperios)
 I = np.array([
-    5.0 * np.exp(1j * np.deg2rad(0)),
-    2.5 * np.exp(1j * np.deg2rad(45))
+    4.0 + 0.0j,
+    0.0 + 2.0j
 ], dtype=complex)
 
-# Resolución de tensiones nodales
+# Resolución del sistema lineal de ecuaciones
 V = np.linalg.solve(Y, I)
 
-for idx, v in enumerate(V, start=1):
-    mag = np.abs(v)
-    ang = np.rad2deg(np.angle(v))
-    print(f"V_{idx} = {mag:.2f} ∠ {ang:.2f}° V  ({v.real:.2f} + j{v.imag:.2f} V)")
+print("--- RESULTADOS NODALES EXACTOS ---")
+for i, v in enumerate(V, start=1):
+    modulo = np.abs(v)
+    fase_deg = np.rad2deg(np.angle(v))
+    print(f"V_{i} = {v.real:8.4f} + j{v.imag:8.4f} V  |  {modulo:8.4f} ∠ {fase_deg:6.2f}° V")
 ```
+
+---
+
+# Errores Frecuentes y Consejos Prácticos
+
+::: {.callout-note}
+### 🧠 Errores Comunes en Exámenes y Diseños
+
+1. **Confusión entre Impedancias y Admitancias:** El error más común al llenar $[\mathbf{Y}]$ es colocar $\mathbf{Z}$ en vez de su inverso $\mathbf{Y} = 1/\mathbf{Z}$. ¡Recuerda que en una rama inductiva con $\mathbf{Z} = j\omega L$, la admitancia es $\mathbf{Y} = -j/(\omega L)$ con signo negativo!
+2. **Signo de los elementos mutuos $\mathbf{Y}_{ij}$:** Los elementos fuera de la diagonal SIEMPRE deben llevar el signo menos exterior: $-\mathbf{Y}_{\text{enlace}}$.
+3. **Intentar plantear LCK directa en una fuente ideal de tensión:** Nunca apliques LCK en un nodo conectado a una fuente de tensión a menos que conozcas o aisles la corriente de la fuente mediante un supernodo.
+4. **Convenio de signos de corrientes inyectadas:** Fuentes que entran al nodo suman positivo ($+$), fuentes que salen restan ($-$).
+:::
 
 ---
 

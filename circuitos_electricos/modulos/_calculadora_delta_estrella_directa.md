@@ -315,7 +315,7 @@ function calcularTransformacionDirecta() {
             🔍 Verificación de Impedancia Terminal Equivalente (Z<sub>T</sub> entre bornes externos):
           </div>
           <div class="table-responsive">
-            <table class="table table-sm table-bordered bg-white mb-0 text-center" style="font-size:0.83rem;">
+            <` + `table class="table table-sm table-bordered bg-white mb-0 text-center" style="font-size:0.83rem;">
               <thead class="table-light">
                 <tr>
                   <th>Par de bornes</th>
@@ -344,7 +344,7 @@ function calcularTransformacionDirecta() {
                   <td class="font-monospace fw-bold text-success">${pZT31.mag.toFixed(4)} &ang; ${pZT31.ang.toFixed(2)}&deg; &Omega;</td>
                 </tr>
               </tbody>
-            </table>
+            </` + `table>
           </div>
         </div>
 
@@ -424,7 +424,7 @@ function calcularTransformacionDirecta() {
             🔍 Verificación de Impedancia Terminal Equivalente (Z<sub>T</sub> entre bornes externos):
           </div>
           <div class="table-responsive">
-            <table class="table table-sm table-bordered bg-white mb-0 text-center" style="font-size:0.83rem;">
+            <` + `table class="table table-sm table-bordered bg-white mb-0 text-center" style="font-size:0.83rem;">
               <thead class="table-light">
                 <tr>
                   <th>Par de bornes</th>
@@ -453,7 +453,7 @@ function calcularTransformacionDirecta() {
                   <td class="font-monospace fw-bold text-primary">${pZT31.mag.toFixed(4)} &ang; ${pZT31.ang.toFixed(2)}&deg; &Omega;</td>
                 </tr>
               </tbody>
-            </table>
+            </` + `table>
           </div>
         </div>
 

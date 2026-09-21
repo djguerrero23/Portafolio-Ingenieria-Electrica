@@ -693,7 +693,7 @@ function renderTransformacionesDY(elementos, nodos, termA, termB) {
     return `${p.mag.toFixed(2)}∠${p.ang.toFixed(1)}° Ω`;
   }
 
-  // Bloque de impedancia sobre rama en SVG panorámico
+  // Helper para bloque de impedancia sobre rama en SVG vertical de alta resolución
   function svgRamaBloque(p1, p2, labelSym, zVal, color = '#1e293b', isDashed = false) {
     const dx = p2.x - p1.x, dy = p2.y - p1.y;
     const mx = (p1.x + p2.x) / 2, my = (p1.y + p2.y) / 2;
@@ -701,17 +701,17 @@ function renderTransformacionesDY(elementos, nodos, termA, termB) {
     if (deg > 90) deg -= 180;
     if (deg < -90) deg += 180;
 
-    const rot = (Math.abs(deg) < 15 || Math.abs(Math.abs(deg) - 90) < 15) ? 0 : deg;
+    const rot = (Math.abs(deg) < 20 || Math.abs(Math.abs(deg) - 90) < 20) ? 0 : deg;
     const zPol = zVal ? fmtZpolar(zVal) : '';
-    const w = Math.max(90, Math.max(labelSym.length * 8, zPol.length * 7.5) + 20);
+    const w = Math.max(96, Math.max(labelSym.length * 8, zPol.length * 7.5) + 22);
     const h = zPol ? 34 : 24;
-    const dash = isDashed ? 'stroke-dasharray="4 4"' : '';
+    const dash = isDashed ? 'stroke-dasharray="5 5"' : '';
 
     return `
-      <line x1="${p1.x.toFixed(1)}" y1="${p1.y.toFixed(1)}" x2="${p2.x.toFixed(1)}" y2="${p2.y.toFixed(1)}" stroke="${color}" stroke-width="1.5" stroke-linecap="round" ${dash}/>
+      <line x1="${p1.x.toFixed(1)}" y1="${p1.y.toFixed(1)}" x2="${p2.x.toFixed(1)}" y2="${p2.y.toFixed(1)}" stroke="${color}" stroke-width="1.6" stroke-linecap="round" ${dash}/>
       <g transform="translate(${mx.toFixed(1)}, ${my.toFixed(1)}) rotate(${rot.toFixed(1)})">
         <rect x="${(-w / 2).toFixed(1)}" y="${(-h / 2).toFixed(1)}" width="${w.toFixed(1)}" height="${h}" rx="5"
-              fill="#ffffff" stroke="${color}" stroke-width="1.4"/>
+              fill="#ffffff" stroke="${color}" stroke-width="1.5"/>
         <text x="0" y="${zPol ? -3 : 4}" font-size="12" font-style="italic" font-weight="600" fill="black" text-anchor="middle">${labelSym}</text>
         ${zPol ? `<text x="0" y="11.5" font-size="10.5" font-weight="bold" fill="${color}" text-anchor="middle">${zPol}</text>` : ''}
       </g>
@@ -729,7 +729,7 @@ function renderTransformacionesDY(elementos, nodos, termA, termB) {
     else if (p.align === 'br') { tx = p.x + 14; ty = p.y + 18; anchor = 'start'; }
 
     return `
-      <circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="4.5" fill="${fill}" stroke="${stroke}" stroke-width="2"/>
+      <circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="5" fill="${fill}" stroke="${stroke}" stroke-width="2"/>
       <text x="${tx.toFixed(1)}" y="${ty.toFixed(1)}" font-size="14" font-weight="bold" font-style="italic" fill="black" text-anchor="${anchor}">${label}${badge}</text>
       ${subtext ? `<text x="${tx.toFixed(1)}" y="${(ty + 13).toFixed(1)}" font-size="10.5" fill="#64748b" text-anchor="${anchor}">${subtext}</text>` : ''}
     `;
@@ -737,20 +737,21 @@ function renderTransformacionesDY(elementos, nodos, termA, termB) {
 
   function svgNodoO(p, label) {
     return `
-      <circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="3.5" fill="black"/>
+      <circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="4" fill="black"/>
       <text x="${(p.x - 12).toFixed(1)}" y="${(p.y + 4).toFixed(1)}" font-size="13" font-weight="bold" font-style="italic" fill="black" text-anchor="end">${label}</text>
     `;
   }
 
-  function svgBadgeTrans(label1, label2 = '') {
+  // Conector vertical con flecha hacia abajo ↓
+  function svgConectorVertical(badgeText, descText, color = '#2563eb') {
     return `
-      <line x1="475" y1="45" x2="475" y2="265" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="6 6"/>
-      <g transform="translate(475, 145)">
-        <rect x="-44" y="-22" width="88" height="44" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
-        <text x="0" y="${label2 ? -4 : 0}" font-size="12" font-weight="bold" fill="#1e293b" text-anchor="middle">${label1}</text>
-        ${label2 ? `<text x="0" y="11" font-size="9.5" fill="#64748b" text-anchor="middle">${label2}</text>` : ''}
-        <text x="0" y="${label2 ? 26 : 14}" font-size="15" font-weight="bold" fill="#334155" text-anchor="middle">→</text>
-      </g>
+      <div class="d-flex justify-content-center my-3">
+        <div class="d-flex align-items-center gap-2 px-3 py-1.5 border rounded-pill bg-white shadow-sm">
+          <span class="badge rounded-pill px-2.5 py-1 text-white fw-bold" style="background:${color};">${badgeText}</span>
+          <span class="small fw-semibold text-secondary">${descText}</span>
+          <span class="fs-5 fw-bold" style="color:${color};">↓</span>
+        </div>
+      </div>
     `;
   }
 
@@ -803,7 +804,7 @@ function renderTransformacionesDY(elementos, nodos, termA, termB) {
   let html = '';
 
   // -------------------------------------------------------------------------
-  // CASO A — RED MIXTA (DOBLE TRANSFORMACIÓN COMPLETA)
+  // CASO A — RED MIXTA (DOBLE TRANSFORMACIÓN COMPLETA VERTICAL)
   // -------------------------------------------------------------------------
   if (mixedNet) {
     const { p1, p2, p3, O } = mixedNet;
@@ -834,46 +835,47 @@ function renderTransformacionesDY(elementos, nodos, termA, termB) {
       const Zp2 = CZ.div(CZ.mul(Z23, Zprime23), CZ.add(Z23, Zprime23));
       const Zp3 = CZ.div(CZ.mul(Z13, Zprime13), CZ.add(Z13, Zprime13));
 
-      const ptTop_L = { x: 225, y: 65, align: 'top' };
-      const ptBL_L  = { x: 80,  y: 225, align: 'bl' };
-      const ptBR_L  = { x: 370, y: 225, align: 'br' };
-      const ptO_L   = { x: 225, y: 170 };
+      // Coordenadas para SVG vertical amplio (viewBox: 0 0 700 340)
+      const ptTop = { x: 350, y: 62, align: 'top' };
+      const ptBL  = { x: 110, y: 275, align: 'bl' };
+      const ptBR  = { x: 590, y: 275, align: 'br' };
+      const ptO   = { x: 350, y: 205 };
 
-      const ptTop_R = { x: 725, y: 65, align: 'top' };
-      const ptBL_R  = { x: 580, y: 225, align: 'bl' };
-      const ptBR_R  = { x: 870, y: 225, align: 'br' };
+      const svgEtapa1_Arriba = `
+        <div class="border rounded-3 bg-white shadow-sm p-2 w-100 my-1" style="max-width:740px; margin:0 auto;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 340" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" style="display:block; font-family:'Plus Jakarta Sans',system-ui,sans-serif;">
+            <text x="350" y="26" font-size="15" font-weight="bold" fill="black" text-anchor="middle">1. Red Original: Anillo Δ + Estrella Interna (Y)</text>
+            <polygon points="350,62 590,275 110,275" fill="#3b82f6" opacity="0.08" stroke="none"/>
+            ${svgRamaBloque(ptTop, ptBL, 'Z' + n1 + n2, Z12, '#1e293b')}
+            ${svgRamaBloque(ptTop, ptBR, 'Z' + n2 + n3, Z23, '#1e293b')}
+            ${svgRamaBloque(ptBL, ptBR, 'Z' + n1 + n3, Z13, '#1e293b')}
+            ${svgRamaBloque(ptO, ptTop, 'Z' + O + n2, ZO2, '#7c3aed')}
+            ${svgRamaBloque(ptO, ptBL, 'Z' + O + n1, ZO1, '#7c3aed')}
+            ${svgRamaBloque(ptO, ptBR, 'Z' + O + n3, ZO3, '#7c3aed')}
+            ${svgNodoO(ptO, O === '4' ? 'O' : O)}
+            ${svgTerm(ptTop, n2, n2 === termA, n2 === termB)}
+            ${svgTerm(ptBL, n1, n1 === termA, n1 === termB)}
+            ${svgTerm(ptBR, n3, n3 === termA, n3 === termB)}
+            <text x="350" y="325" font-size="12" fill="#475569" text-anchor="middle">Circuito completo ingresado en el Netlist (anillo exterior con estrella interna)</text>
+          </svg>
+        </div>
+      `;
 
-      const svgEtapa1 = `
-      <div class="border rounded-3 bg-white shadow-sm p-3 w-100 my-2" style="overflow-x:auto;">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 300" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" style="display:block; min-width:620px; font-family:'Plus Jakarta Sans',system-ui,sans-serif;">
-          <text x="225" y="24" font-size="15" font-weight="bold" fill="black" text-anchor="middle">1. Anillo Δ + Estrella Interna (Y)</text>
-          <text x="725" y="24" font-size="15" font-weight="bold" fill="black" text-anchor="middle">2. Transformación Y → Δ: Ramas en Paralelo</text>
-
-          <polygon points="225,65 370,225 80,225" fill="#3b82f6" opacity="0.08" stroke="none"/>
-          ${svgRamaBloque(ptTop_L, ptBL_L, 'Z' + n1 + n2, Z12, '#1e293b')}
-          ${svgRamaBloque(ptTop_L, ptBR_L, 'Z' + n2 + n3, Z23, '#1e293b')}
-          ${svgRamaBloque(ptBL_L, ptBR_L, 'Z' + n1 + n3, Z13, '#1e293b')}
-          ${svgRamaBloque(ptO_L, ptTop_L, 'Z' + O + n2, ZO2, '#7c3aed')}
-          ${svgRamaBloque(ptO_L, ptBL_L, 'Z' + O + n1, ZO1, '#7c3aed')}
-          ${svgRamaBloque(ptO_L, ptBR_L, 'Z' + O + n3, ZO3, '#7c3aed')}
-          ${svgNodoO(ptO_L, O === '4' ? 'O' : O)}
-          ${svgTerm(ptTop_L, n2, n2 === termA, n2 === termB)}
-          ${svgTerm(ptBL_L, n1, n1 === termA, n1 === termB)}
-          ${svgTerm(ptBR_L, n3, n3 === termA, n3 === termB)}
-          <text x="225" y="280" font-size="11.5" fill="#475569" text-anchor="middle">Red original ingresada en el Netlist (anillo exterior + estrella interna)</text>
-
-          ${svgBadgeTrans('Y → Δ', 'Estrella Interna')}
-
-          <polygon points="725,65 870,225 580,225" fill="#3b82f6" opacity="0.08" stroke="none"/>
-          ${svgRamaBloque(ptTop_R, ptBL_R, 'Zp1 = Z' + n1 + n2 + ' ∥ Z′' + n1 + n2, Zp1, '#2563eb')}
-          ${svgRamaBloque(ptTop_R, ptBR_R, 'Zp2 = Z' + n2 + n3 + ' ∥ Z′' + n2 + n3, Zp2, '#2563eb')}
-          ${svgRamaBloque(ptBL_R, ptBR_R, 'Zp3 = Z' + n1 + n3 + ' ∥ Z′' + n1 + n3, Zp3, '#2563eb')}
-          ${svgTerm(ptTop_R, n2, n2 === termA, n2 === termB)}
-          ${svgTerm(ptBL_R, n1, n1 === termA, n1 === termB)}
-          ${svgTerm(ptBR_R, n3, n3 === termA, n3 === termB)}
-          <text x="725" y="280" font-size="11.5" fill="#475569" text-anchor="middle">El nodo ${O === '4' ? 'O' : O} desaparece y las ramas homólogas quedan en paralelo directo</text>
-        </svg>
-      </div>`;
+      const svgEtapa1_Abajo = `
+        <div class="border rounded-3 bg-white shadow-sm p-2 w-100 my-1" style="max-width:740px; margin:0 auto;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 340" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" style="display:block; font-family:'Plus Jakarta Sans',system-ui,sans-serif;">
+            <text x="350" y="26" font-size="15" font-weight="bold" fill="black" text-anchor="middle">2. Transformación Y → Δ: Ramas Homólogas en Paralelo</text>
+            <polygon points="350,62 590,275 110,275" fill="#3b82f6" opacity="0.08" stroke="none"/>
+            ${svgRamaBloque(ptTop, ptBL, 'Zp1 = Z' + n1 + n2 + ' ∥ Z′' + n1 + n2, Zp1, '#2563eb')}
+            ${svgRamaBloque(ptTop, ptBR, 'Zp2 = Z' + n2 + n3 + ' ∥ Z′' + n2 + n3, Zp2, '#2563eb')}
+            ${svgRamaBloque(ptBL, ptBR, 'Zp3 = Z' + n1 + n3 + ' ∥ Z′' + n1 + n3, Zp3, '#2563eb')}
+            ${svgTerm(ptTop, n2, n2 === termA, n2 === termB)}
+            ${svgTerm(ptBL, n1, n1 === termA, n1 === termB)}
+            ${svgTerm(ptBR, n3, n3 === termA, n3 === termB)}
+            <text x="350" y="325" font-size="12" fill="#475569" text-anchor="middle">El nodo interno desaparece y las ramas homólogas quedan en paralelo directo</text>
+          </svg>
+        </div>
+      `;
 
       // ETAPA 2: Delta Consolidada -> Estrella Final
       const sigmaP = CZ.add(CZ.add(Zp1, Zp2), Zp3);
@@ -881,46 +883,46 @@ function renderTransformacionesDY(elementos, nodos, termA, termB) {
       const Zstar2 = CZ.div(CZ.mul(Zp1, Zp2), sigmaP);
       const Zstar3 = CZ.div(CZ.mul(Zp2, Zp3), sigmaP);
 
-      const ptNeutro_R = { x: 725, y: 175 };
+      const ptN = { x: 350, y: 190 };
       const isN3Open = (n3 !== termA && n3 !== termB);
       const isN1Open = (n1 !== termA && n1 !== termB);
       const isN2Open = (n2 !== termA && n2 !== termB);
 
-      const ptN_Top = { x: 725, y: 60, align: 'top' };
-      const ptN_BL  = { x: 595, y: 245, align: 'bl' };
-      const ptN_BR  = { x: 855, y: 245, align: 'br' };
-
       const zFinalVal = CZ.add(n1 === termA ? Zstar1 : (n2 === termA ? Zstar2 : Zstar3), n1 === termB ? Zstar1 : (n2 === termB ? Zstar2 : Zstar3));
 
-      const svgEtapa2 = `
-      <div class="border rounded-3 bg-white shadow-sm p-3 w-100 my-2" style="overflow-x:auto;">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 300" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" style="display:block; min-width:620px; font-family:'Plus Jakarta Sans',system-ui,sans-serif;">
-          <text x="225" y="24" font-size="15" font-weight="bold" fill="black" text-anchor="middle">2. Delta Consolidada (Zp1, Zp2, Zp3)</text>
-          <text x="725" y="24" font-size="15" font-weight="bold" fill="black" text-anchor="middle">3. Estrella Final con Reducción Serie</text>
+      const svgEtapa2_Arriba = `
+        <div class="border rounded-3 bg-white shadow-sm p-2 w-100 my-1" style="max-width:740px; margin:0 auto;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 340" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" style="display:block; font-family:'Plus Jakarta Sans',system-ui,sans-serif;">
+            <text x="350" y="26" font-size="15" font-weight="bold" fill="black" text-anchor="middle">1. Delta Consolidada Equivalente (Zp1, Zp2, Zp3)</text>
+            <polygon points="350,62 590,275 110,275" fill="#3b82f6" opacity="0.08" stroke="none"/>
+            ${svgRamaBloque(ptTop, ptBL, 'Zp1', Zp1, '#2563eb')}
+            ${svgRamaBloque(ptTop, ptBR, 'Zp2', Zp2, '#2563eb')}
+            ${svgRamaBloque(ptBL, ptBR, 'Zp3', Zp3, '#2563eb')}
+            ${svgTerm(ptTop, n2, n2 === termA, n2 === termB)}
+            ${svgTerm(ptBL, n1, n1 === termA, n1 === termB)}
+            ${svgTerm(ptBR, n3, n3 === termA, n3 === termB)}
+            <text x="350" y="325" font-size="12" fill="#475569" text-anchor="middle">Delta equivalente simplificada lista para transformar a Estrella</text>
+          </svg>
+        </div>
+      `;
 
-          <polygon points="225,65 370,225 80,225" fill="#3b82f6" opacity="0.08" stroke="none"/>
-          ${svgRamaBloque(ptTop_L, ptBL_L, 'Zp1', Zp1, '#2563eb')}
-          ${svgRamaBloque(ptTop_L, ptBR_L, 'Zp2', Zp2, '#2563eb')}
-          ${svgRamaBloque(ptBL_L, ptBR_L, 'Zp3', Zp3, '#2563eb')}
-          ${svgTerm(ptTop_L, n2, n2 === termA, n2 === termB)}
-          ${svgTerm(ptBL_L, n1, n1 === termA, n1 === termB)}
-          ${svgTerm(ptBR_L, n3, n3 === termA, n3 === termB)}
-          <text x="225" y="280" font-size="11.5" fill="#475569" text-anchor="middle">Delta simplificada equivalente antes de la segunda transformación</text>
-
-          ${svgBadgeTrans('Δ → Y', 'Consolidada')}
-
-          ${svgRamaBloque(ptNeutro_R, ptN_Top, 'Z' + n2, Zstar2, isN2Open ? '#94a3b8' : '#0891b2', isN2Open)}
-          ${svgRamaBloque(ptNeutro_R, ptN_BL, 'Z' + n1, Zstar1, isN1Open ? '#94a3b8' : '#0891b2', isN1Open)}
-          ${svgRamaBloque(ptNeutro_R, ptN_BR, 'Z' + n3, Zstar3, isN3Open ? '#94a3b8' : '#0891b2', isN3Open)}
-          ${svgNodoO(ptNeutro_R, 'N')}
-          ${svgTerm(ptN_Top, n2, n2 === termA, n2 === termB, isN2Open ? '(abierto)' : '')}
-          ${svgTerm(ptN_BL, n1, n1 === termA, n1 === termB, isN1Open ? '(abierto)' : '')}
-          ${svgTerm(ptN_BR, n3, n3 === termA, n3 === termB, isN3Open ? '(abierto)' : '')}
-          <text x="725" y="280" font-size="12" font-weight="bold" fill="black" text-anchor="middle">
-            Zeq (${termA}–${termB}) = Z${termA} + Z${termB} = ${fmtZpolar(zFinalVal)}
-          </text>
-        </svg>
-      </div>`;
+      const svgEtapa2_Abajo = `
+        <div class="border rounded-3 bg-white shadow-sm p-2 w-100 my-1" style="max-width:740px; margin:0 auto;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 340" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" style="display:block; font-family:'Plus Jakarta Sans',system-ui,sans-serif;">
+            <text x="350" y="26" font-size="15" font-weight="bold" fill="black" text-anchor="middle">2. Estrella Final con Reducción Serie Directa</text>
+            ${svgRamaBloque(ptN, ptTop, 'Z' + n2, Zstar2, isN2Open ? '#94a3b8' : '#0891b2', isN2Open)}
+            ${svgRamaBloque(ptN, ptBL, 'Z' + n1, Zstar1, isN1Open ? '#94a3b8' : '#0891b2', isN1Open)}
+            ${svgRamaBloque(ptN, ptBR, 'Z' + n3, Zstar3, isN3Open ? '#94a3b8' : '#0891b2', isN3Open)}
+            ${svgNodoO(ptN, 'N')}
+            ${svgTerm(ptTop, n2, n2 === termA, n2 === termB, isN2Open ? '(abierto)' : '')}
+            ${svgTerm(ptBL, n1, n1 === termA, n1 === termB, isN1Open ? '(abierto)' : '')}
+            ${svgTerm(ptBR, n3, n3 === termA, n3 === termB, isN3Open ? '(abierto)' : '')}
+            <text x="350" y="325" font-size="12.5" font-weight="bold" fill="black" text-anchor="middle">
+              Zeq (${termA}–${termB}) = Z${termA} + Z${termB} = ${fmtZpolar(zFinalVal)}
+            </text>
+          </svg>
+        </div>
+      `;
 
       html += `
         <details class="mt-2" open>
@@ -929,26 +931,28 @@ function renderTransformacionesDY(elementos, nodos, termA, termB) {
           </summary>
           <div class="mt-2">
             <!-- ETAPA 1 -->
-            <div class="p-3 mb-3 border rounded bg-white shadow-sm">
+            <div class="p-3 mb-3 border rounded-3 bg-white shadow-sm" style="max-width:780px; margin-left:auto; margin-right:auto;">
               <h6 class="fw-bold mb-2" style="color:#7c3aed;">
                 📌 Etapa 1 — Transformación Y → Δ de la Estrella Interna (${O === '4' ? 'O' : O}) y Ramas en Paralelo
               </h6>
               <p class="small text-muted mb-2">
                 Se elimina el nodo interno central <b>${O === '4' ? 'O' : O}</b> transformando sus 3 rayos a una Delta equivalente (Z′). Las ramas resultantes se asocian en paralelo con las ramas del anillo Delta exterior original.
               </p>
-              ${svgEtapa1}
-              <div class="row g-2 mt-2">
+              ${svgEtapa1_Arriba}
+              ${svgConectorVertical('Transformación Y → Δ', 'La estrella interna se convierte en delta equivalente', '#7c3aed')}
+              ${svgEtapa1_Abajo}
+              <div class="row g-2 mt-3">
                 <div class="col-md-6">
-                  <table class="table table-sm table-bordered mb-0 bg-white" style="font-size:0.78rem;">
+                  <` + `table class="table table-sm table-bordered mb-0 bg-white" style="font-size:0.78rem;">
                     <thead style="background:#7c3aed15;"><tr><th colspan="2" class="text-center" style="color:#7c3aed;">1. Estrella Interna Original (Centro ${O === '4' ? 'O' : O})</th></tr></thead>
                     <tr><td class="fw-bold">Z<sub>${O}-${n1}</sub></td><td class="text-end font-monospace">${fmtZeq(ZO1)}</td></tr>
                     <tr><td class="fw-bold">Z<sub>${O}-${n2}</sub></td><td class="text-end font-monospace">${fmtZeq(ZO2)}</td></tr>
                     <tr><td class="fw-bold">Z<sub>${O}-${n3}</sub></td><td class="text-end font-monospace">${fmtZeq(ZO3)}</td></tr>
                     <tr class="table-light"><td class="fw-bold">&Sigma;<sub>2</sub></td><td class="text-end font-monospace">${fmtZeq(sigma2)}</td></tr>
-                  </table>
+                  </` + `table>
                 </div>
                 <div class="col-md-6">
-                  <table class="table table-sm table-bordered mb-0 bg-white" style="font-size:0.78rem;">
+                  <` + `table class="table table-sm table-bordered mb-0 bg-white" style="font-size:0.78rem;">
                     <thead style="background:#2563eb15;"><tr><th colspan="2" class="text-center" style="color:#2563eb;">2. Delta Equivalente &amp; Ramas en Paralelo</th></tr></thead>
                     <tr><td class="fw-bold">Z′<sub>${n1}-${n2}</sub> = &Sigma;<sub>2</sub> / Z<sub>${O}-${n3}</sub></td><td class="text-end font-monospace">${fmtZeq(Zprime12)}</td></tr>
                     <tr><td class="fw-bold">Z′<sub>${n2}-${n3}</sub> = &Sigma;<sub>2</sub> / Z<sub>${O}-${n1}</sub></td><td class="text-end font-monospace">${fmtZeq(Zprime23)}</td></tr>
@@ -956,32 +960,34 @@ function renderTransformacionesDY(elementos, nodos, termA, termB) {
                     <tr class="table-light"><td class="fw-bold text-primary">Z<sub>p1</sub> = Z<sub>${n1}${n2}</sub> ∥ Z′<sub>${n1}${n2}</sub></td><td class="text-end font-monospace fw-bold text-primary">${fmtZeq(Zp1)}</td></tr>
                     <tr class="table-light"><td class="fw-bold text-primary">Z<sub>p2</sub> = Z<sub>${n2}${n3}</sub> ∥ Z′<sub>${n2}${n3}</sub></td><td class="text-end font-monospace fw-bold text-primary">${fmtZeq(Zp2)}</td></tr>
                     <tr class="table-light"><td class="fw-bold text-primary">Z<sub>p3</sub> = Z<sub>${n1}${n3}</sub> ∥ Z′<sub>${n1}${n3}</sub></td><td class="text-end font-monospace fw-bold text-primary">${fmtZeq(Zp3)}</td></tr>
-                  </table>
+                  </` + `table>
                 </div>
               </div>
             </div>
 
             <!-- ETAPA 2 -->
-            <div class="p-3 mb-2 border rounded bg-white shadow-sm">
+            <div class="p-3 mb-2 border rounded-3 bg-white shadow-sm" style="max-width:780px; margin-left:auto; margin-right:auto;">
               <h6 class="fw-bold mb-2" style="color:#0891b2;">
                 📌 Etapa 2 — Transformación Δ → Y de la Delta Consolidada y Reducción Serie Final
               </h6>
               <p class="small text-muted mb-2">
                 La red reducida Z<sub>p</sub> forma un único anillo Delta. Al aplicar la transformación $\Delta \to \text{Y}$, se obtiene una Estrella con centro en el nodo neutro <b>N</b>. El terminal en circuito abierto no transporta corriente, dejando una conexión serie directa.
               </p>
-              ${svgEtapa2}
-              <div class="row g-2 mt-2">
+              ${svgEtapa2_Arriba}
+              ${svgConectorVertical('Transformación Δ → Y', 'Delta consolidada se transforma a Estrella con neutro N', '#0891b2')}
+              ${svgEtapa2_Abajo}
+              <div class="row g-2 mt-3">
                 <div class="col-md-6">
-                  <table class="table table-sm table-bordered mb-0 bg-white" style="font-size:0.78rem;">
+                  <` + `table class="table table-sm table-bordered mb-0 bg-white" style="font-size:0.78rem;">
                     <thead style="background:#2563eb15;"><tr><th colspan="2" class="text-center" style="color:#2563eb;">Delta Consolidada (Z<sub>p</sub>)</th></tr></thead>
                     <tr><td class="fw-bold">Z<sub>p1</sub> (Rama ${n1}-${n2})</td><td class="text-end font-monospace">${fmtZeq(Zp1)}</td></tr>
                     <tr><td class="fw-bold">Z<sub>p2</sub> (Rama ${n2}-${n3})</td><td class="text-end font-monospace">${fmtZeq(Zp2)}</td></tr>
                     <tr><td class="fw-bold">Z<sub>p3</sub> (Rama ${n1}-${n3})</td><td class="text-end font-monospace">${fmtZeq(Zp3)}</td></tr>
                     <tr class="table-light"><td class="fw-bold">&Sigma;<sub>p</sub> = Z<sub>p1</sub> + Z<sub>p2</sub> + Z<sub>p3</sub></td><td class="text-end font-monospace">${fmtZeq(sigmaP)}</td></tr>
-                  </table>
+                  </` + `table>
                 </div>
                 <div class="col-md-6">
-                  <table class="table table-sm table-bordered mb-0 bg-white" style="font-size:0.78rem;">
+                  <` + `table class="table table-sm table-bordered mb-0 bg-white" style="font-size:0.78rem;">
                     <thead style="background:#0891b215;"><tr><th colspan="2" class="text-center" style="color:#0891b2;">Estrella Final (Centro Neutro N)</th></tr></thead>
                     <tr><td class="fw-bold">Z<sub>${n1}</sub> = (Z<sub>p1</sub> &middot; Z<sub>p3</sub>) / &Sigma;<sub>p</sub></td><td class="text-end font-monospace">${fmtZeq(Zstar1)}</td></tr>
                     <tr><td class="fw-bold">Z<sub>${n2}</sub> = (Z<sub>p1</sub> &middot; Z<sub>p2</sub>) / &Sigma;<sub>p</sub></td><td class="text-end font-monospace">${fmtZeq(Zstar2)}</td></tr>
@@ -1000,7 +1006,7 @@ function renderTransformacionesDY(elementos, nodos, termA, termB) {
   }
 
   // -------------------------------------------------------------------------
-  // CASO B — RED PURAMENTE DELTA (3 NODOS)
+  // CASO B — RED PURAMENTE DELTA (3 NODOS VERTICAL)
   // -------------------------------------------------------------------------
   else if (pureDelta) {
     const { p1, p2, p3 } = pureDelta;
@@ -1013,69 +1019,69 @@ function renderTransformacionesDY(elementos, nodos, termA, termB) {
     const Zb = CZ.div(CZ.mul(Z12, Z23), Zsum);
     const Zc = CZ.div(CZ.mul(Z13, Z23), Zsum);
 
-    const ptTop_L = { x: 225, y: 65, align: 'top' };
-    const ptBL_L  = { x: 80,  y: 225, align: 'bl' };
-    const ptBR_L  = { x: 370, y: 225, align: 'br' };
-
-    const ptNeutro_R = { x: 725, y: 175 };
-    const ptN_Top = { x: 725, y: 60, align: 'top' };
-    const ptN_BL  = { x: 595, y: 245, align: 'bl' };
-    const ptN_BR  = { x: 855, y: 245, align: 'br' };
+    const ptTop = { x: 350, y: 62, align: 'top' };
+    const ptBL  = { x: 110, y: 275, align: 'bl' };
+    const ptBR  = { x: 590, y: 275, align: 'br' };
+    const ptN   = { x: 350, y: 190 };
 
     const isP3Open = (p3 !== termA && p3 !== termB);
     const isP1Open = (p1 !== termA && p1 !== termB);
     const isP2Open = (p2 !== termA && p2 !== termB);
 
-    const svgDeltaSolo = `
-    <div class="border rounded-3 bg-white shadow-sm p-3 w-100 my-2" style="overflow-x:auto;">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 300" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" style="display:block; min-width:620px; font-family:'Plus Jakarta Sans',system-ui,sans-serif;">
-        <text x="225" y="24" font-size="15" font-weight="bold" fill="black" text-anchor="middle">Delta Original (${p1}-${p2}-${p3})</text>
-        <text x="725" y="24" font-size="15" font-weight="bold" fill="black" text-anchor="middle">Estrella Equivalente (Centro N)</text>
+    const svgDelta_Arriba = `
+      <div class="border rounded-3 bg-white shadow-sm p-2 w-100 my-1" style="max-width:740px; margin:0 auto;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 340" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" style="display:block; font-family:'Plus Jakarta Sans',system-ui,sans-serif;">
+          <text x="350" y="26" font-size="15" font-weight="bold" fill="black" text-anchor="middle">Delta Original (${p1}-${p2}-${p3})</text>
+          <polygon points="350,62 590,275 110,275" fill="#3b82f6" opacity="0.08" stroke="none"/>
+          ${svgRamaBloque(ptTop, ptBL, 'Z' + p1 + p2, Z12, '#1e293b')}
+          ${svgRamaBloque(ptTop, ptBR, 'Z' + p2 + p3, Z23, '#1e293b')}
+          ${svgRamaBloque(ptBL, ptBR, 'Z' + p1 + p3, Z13, '#1e293b')}
+          ${svgTerm(ptTop, p2, p2 === termA, p2 === termB)}
+          ${svgTerm(ptBL, p1, p1 === termA, p1 === termB)}
+          ${svgTerm(ptBR, p3, p3 === termA, p3 === termB)}
+        </svg>
+      </div>`;
 
-        <polygon points="225,65 370,225 80,225" fill="#3b82f6" opacity="0.08" stroke="none"/>
-        ${svgRamaBloque(ptTop_L, ptBL_L, 'Z' + p1 + p2, Z12, '#1e293b')}
-        ${svgRamaBloque(ptTop_L, ptBR_L, 'Z' + p2 + p3, Z23, '#1e293b')}
-        ${svgRamaBloque(ptBL_L, ptBR_L, 'Z' + p1 + p3, Z13, '#1e293b')}
-        ${svgTerm(ptTop_L, p2, p2 === termA, p2 === termB)}
-        ${svgTerm(ptBL_L, p1, p1 === termA, p1 === termB)}
-        ${svgTerm(ptBR_L, p3, p3 === termA, p3 === termB)}
-
-        ${svgBadgeTrans('Δ → Y')}
-
-        ${svgRamaBloque(ptNeutro_R, ptN_Top, 'Z' + p2, Zb, isP2Open ? '#94a3b8' : '#0891b2', isP2Open)}
-        ${svgRamaBloque(ptNeutro_R, ptN_BL, 'Z' + p1, Za, isP1Open ? '#94a3b8' : '#0891b2', isP1Open)}
-        ${svgRamaBloque(ptNeutro_R, ptN_BR, 'Z' + p3, Zc, isP3Open ? '#94a3b8' : '#0891b2', isP3Open)}
-        ${svgNodoO(ptNeutro_R, 'N')}
-        ${svgTerm(ptN_Top, p2, p2 === termA, p2 === termB, isP2Open ? '(abierto)' : '')}
-        ${svgTerm(ptN_BL, p1, p1 === termA, p1 === termB, isP1Open ? '(abierto)' : '')}
-        ${svgTerm(ptN_BR, p3, p3 === termA, p3 === termB, isP3Open ? '(abierto)' : '')}
-      </svg>
-    </div>`;
+    const svgDelta_Abajo = `
+      <div class="border rounded-3 bg-white shadow-sm p-2 w-100 my-1" style="max-width:740px; margin:0 auto;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 340" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" style="display:block; font-family:'Plus Jakarta Sans',system-ui,sans-serif;">
+          <text x="350" y="26" font-size="15" font-weight="bold" fill="black" text-anchor="middle">Estrella Equivalente (Centro N)</text>
+          ${svgRamaBloque(ptN, ptTop, 'Z' + p2, Zb, isP2Open ? '#94a3b8' : '#0891b2', isP2Open)}
+          ${svgRamaBloque(ptN, ptBL, 'Z' + p1, Za, isP1Open ? '#94a3b8' : '#0891b2', isP1Open)}
+          ${svgRamaBloque(ptN, ptBR, 'Z' + p3, Zc, isP3Open ? '#94a3b8' : '#0891b2', isP3Open)}
+          ${svgNodoO(ptN, 'N')}
+          ${svgTerm(ptTop, p2, p2 === termA, p2 === termB, isP2Open ? '(abierto)' : '')}
+          ${svgTerm(ptBL, p1, p1 === termA, p1 === termB, isP1Open ? '(abierto)' : '')}
+          ${svgTerm(ptBR, p3, p3 === termA, p3 === termB, isP3Open ? '(abierto)' : '')}
+        </svg>
+      </div>`;
 
     html += `
       <details class="mt-2" open>
         <summary class="small fw-bold" style="cursor:pointer; color:#0891b2; font-size:0.92rem;">
           🔄 Transformación Δ → Y detectada — Triángulo ${p1}-${p2}-${p3}
         </summary>
-        <div class="p-3 mt-2 border rounded bg-white shadow-sm">
-          ${svgDeltaSolo}
-          <div class="row g-2 mt-2">
+        <div class="p-3 mt-2 border rounded-3 bg-white shadow-sm" style="max-width:780px; margin:0 auto;">
+          ${svgDelta_Arriba}
+          ${svgConectorVertical('Transformación Δ → Y', 'Delta se convierte en Estrella equivalente con neutro N', '#0891b2')}
+          ${svgDelta_Abajo}
+          <div class="row g-2 mt-3">
             <div class="col-md-6">
-              <table class="table table-sm table-bordered mb-0 bg-white" style="font-size:0.78rem;">
+              <` + `table class="table table-sm table-bordered mb-0 bg-white" style="font-size:0.78rem;">
                 <thead style="background:#3b82f622;"><tr><th colspan="2" class="text-center" style="color:#3b82f6;">Delta original</th></tr></thead>
                 <tr><td class="fw-bold">Z<sub>${p1}-${p2}</sub></td><td class="text-end font-monospace">${fmtZeq(Z12)}</td></tr>
                 <tr><td class="fw-bold">Z<sub>${p2}-${p3}</sub></td><td class="text-end font-monospace">${fmtZeq(Z23)}</td></tr>
                 <tr><td class="fw-bold">Z<sub>${p1}-${p3}</sub></td><td class="text-end font-monospace">${fmtZeq(Z13)}</td></tr>
                 <tr class="table-light"><td class="fw-bold">&Sigma; Z<sub>&Delta;</sub></td><td class="text-end font-monospace">${fmtZeq(Zsum)}</td></tr>
-              </table>
+              </` + `table>
             </div>
             <div class="col-md-6">
-              <table class="table table-sm table-bordered mb-0 bg-white" style="font-size:0.78rem;">
+              <` + `table class="table table-sm table-bordered mb-0 bg-white" style="font-size:0.78rem;">
                 <thead style="background:#0891b222;"><tr><th colspan="2" class="text-center" style="color:#0891b2;">Estrella equivalente (Centro N)</th></tr></thead>
                 <tr><td class="fw-bold">Z<sub>N-${p1}</sub></td><td class="text-end font-monospace">${fmtZeq(Za)}</td></tr>
                 <tr><td class="fw-bold">Z<sub>N-${p2}</sub></td><td class="text-end font-monospace">${fmtZeq(Zb)}</td></tr>
                 <tr><td class="fw-bold">Z<sub>N-${p3}</sub></td><td class="text-end font-monospace">${fmtZeq(Zc)}</td></tr>
-              </table>
+              </` + `table>
             </div>
           </div>
         </div>
@@ -1083,7 +1089,7 @@ function renderTransformacionesDY(elementos, nodos, termA, termB) {
   }
 
   // -------------------------------------------------------------------------
-  // CASO C — RED PURAMENTE ESTRELLA (4 NODOS)
+  // CASO C — RED PURAMENTE ESTRELLA (4 NODOS VERTICAL)
   // -------------------------------------------------------------------------
   else if (pureStar) {
     const { center, v1, v2, v3 } = pureStar;
@@ -1096,65 +1102,65 @@ function renderTransformacionesDY(elementos, nodos, termA, termB) {
     const Z23 = CZ.div(sigma2, Z1);
     const Z13 = CZ.div(sigma2, Z2);
 
-    const ptNeutro_L = { x: 225, y: 175 };
-    const ptN_Top_L  = { x: 225, y: 60, align: 'top' };
-    const ptN_BL_L   = { x: 95,  y: 245, align: 'bl' };
-    const ptN_BR_L   = { x: 355, y: 245, align: 'br' };
+    const ptTop = { x: 350, y: 62, align: 'top' };
+    const ptBL  = { x: 110, y: 275, align: 'bl' };
+    const ptBR  = { x: 590, y: 275, align: 'br' };
+    const ptNeutro = { x: 350, y: 190 };
 
-    const ptTop_R = { x: 725, y: 65, align: 'top' };
-    const ptBL_R  = { x: 580, y: 225, align: 'bl' };
-    const ptBR_R  = { x: 870, y: 225, align: 'br' };
+    const svgStar_Arriba = `
+      <div class="border rounded-3 bg-white shadow-sm p-2 w-100 my-1" style="max-width:740px; margin:0 auto;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 340" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" style="display:block; font-family:'Plus Jakarta Sans',system-ui,sans-serif;">
+          <text x="350" y="26" font-size="15" font-weight="bold" fill="black" text-anchor="middle">Estrella Original (Centro ${center})</text>
+          ${svgRamaBloque(ptNeutro, ptTop, 'Z' + center + v2, Z2, '#7c3aed')}
+          ${svgRamaBloque(ptNeutro, ptBL, 'Z' + center + v1, Z1, '#7c3aed')}
+          ${svgRamaBloque(ptNeutro, ptBR, 'Z' + center + v3, Z3, '#7c3aed')}
+          ${svgNodoO(ptNeutro, center)}
+          ${svgTerm(ptTop, v2, v2 === termA, v2 === termB)}
+          ${svgTerm(ptBL, v1, v1 === termA, v1 === termB)}
+          ${svgTerm(ptBR, v3, v3 === termA, v3 === termB)}
+        </svg>
+      </div>`;
 
-    const svgStarSolo = `
-    <div class="border rounded-3 bg-white shadow-sm p-3 w-100 my-2" style="overflow-x:auto;">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 300" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" style="display:block; min-width:620px; font-family:'Plus Jakarta Sans',system-ui,sans-serif;">
-        <text x="225" y="24" font-size="15" font-weight="bold" fill="black" text-anchor="middle">Estrella Original (Centro ${center})</text>
-        <text x="725" y="24" font-size="15" font-weight="bold" fill="black" text-anchor="middle">Delta Equivalente (${v1}-${v2}-${v3})</text>
-
-        ${svgRamaBloque(ptNeutro_L, ptN_Top_L, 'Z' + center + v2, Z2, '#7c3aed')}
-        ${svgRamaBloque(ptNeutro_L, ptN_BL_L, 'Z' + center + v1, Z1, '#7c3aed')}
-        ${svgRamaBloque(ptNeutro_L, ptN_BR_L, 'Z' + center + v3, Z3, '#7c3aed')}
-        ${svgNodoO(ptNeutro_L, center)}
-        ${svgTerm(ptN_Top_L, v2, v2 === termA, v2 === termB)}
-        ${svgTerm(ptN_BL_L, v1, v1 === termA, v1 === termB)}
-        ${svgTerm(ptN_BR_L, v3, v3 === termA, v3 === termB)}
-
-        ${svgBadgeTrans('Y → Δ')}
-
-        <polygon points="725,65 870,225 580,225" fill="#7c3aed" opacity="0.08" stroke="none"/>
-        ${svgRamaBloque(ptTop_R, ptBL_R, 'Z' + v1 + v2, Z12, '#7c3aed')}
-        ${svgRamaBloque(ptTop_R, ptBR_R, 'Z' + v2 + v3, Z23, '#7c3aed')}
-        ${svgRamaBloque(ptBL_R, ptBR_R, 'Z' + v1 + v3, Z13, '#7c3aed')}
-        ${svgTerm(ptTop_R, v2, v2 === termA, v2 === termB)}
-        ${svgTerm(ptBL_R, v1, v1 === termA, v1 === termB)}
-        ${svgTerm(ptBR_R, v3, v3 === termA, v3 === termB)}
-      </svg>
-    </div>`;
+    const svgStar_Abajo = `
+      <div class="border rounded-3 bg-white shadow-sm p-2 w-100 my-1" style="max-width:740px; margin:0 auto;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 340" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" style="display:block; font-family:'Plus Jakarta Sans',system-ui,sans-serif;">
+          <text x="350" y="26" font-size="15" font-weight="bold" fill="black" text-anchor="middle">Delta Equivalente (${v1}-${v2}-${v3})</text>
+          <polygon points="350,62 590,275 110,275" fill="#7c3aed" opacity="0.08" stroke="none"/>
+          ${svgRamaBloque(ptTop, ptBL, 'Z' + v1 + v2, Z12, '#7c3aed')}
+          ${svgRamaBloque(ptTop, ptBR, 'Z' + v2 + v3, Z23, '#7c3aed')}
+          ${svgRamaBloque(ptBL, ptBR, 'Z' + v1 + v3, Z13, '#7c3aed')}
+          ${svgTerm(ptTop, v2, v2 === termA, v2 === termB)}
+          ${svgTerm(ptBL, v1, v1 === termA, v1 === termB)}
+          ${svgTerm(ptBR, v3, v3 === termA, v3 === termB)}
+        </svg>
+      </div>`;
 
     html += `
       <details class="mt-2" open>
         <summary class="small fw-bold" style="cursor:pointer; color:#7c3aed; font-size:0.92rem;">
           🔄 Transformación Y → Δ detectada — Estrella con centro en ${center}
         </summary>
-        <div class="p-3 mt-2 border rounded bg-white shadow-sm">
-          ${svgStarSolo}
-          <div class="row g-2 mt-2">
+        <div class="p-3 mt-2 border rounded-3 bg-white shadow-sm" style="max-width:780px; margin:0 auto;">
+          ${svgStar_Arriba}
+          ${svgConectorVertical('Transformación Y → Δ', 'Estrella se convierte en Delta equivalente', '#7c3aed')}
+          ${svgStar_Abajo}
+          <div class="row g-2 mt-3">
             <div class="col-md-6">
-              <table class="table table-sm table-bordered mb-0 bg-white" style="font-size:0.78rem;">
+              <` + `table class="table table-sm table-bordered mb-0 bg-white" style="font-size:0.78rem;">
                 <thead class="table-light"><tr><th colspan="2" class="text-center">Estrella original</th></tr></thead>
                 <tr><td class="fw-bold">Z<sub>${center}-${v1}</sub></td><td class="text-end font-monospace">${fmtZeq(Z1)}</td></tr>
                 <tr><td class="fw-bold">Z<sub>${center}-${v2}</sub></td><td class="text-end font-monospace">${fmtZeq(Z2)}</td></tr>
                 <tr><td class="fw-bold">Z<sub>${center}-${v3}</sub></td><td class="text-end font-monospace">${fmtZeq(Z3)}</td></tr>
                 <tr class="table-light"><td class="fw-bold">&Sigma;<sub>2</sub></td><td class="text-end font-monospace">${fmtZeq(sigma2)}</td></tr>
-              </table>
+              </` + `table>
             </div>
             <div class="col-md-6">
-              <table class="table table-sm table-bordered mb-0 bg-white" style="font-size:0.78rem;">
+              <` + `table class="table table-sm table-bordered mb-0 bg-white" style="font-size:0.78rem;">
                 <thead style="background:#7c3aed22;"><tr><th colspan="2" class="text-center" style="color:#7c3aed;">Delta equivalente</th></tr></thead>
                 <tr><td class="fw-bold">Z<sub>${v1}-${v2}</sub></td><td class="text-end font-monospace">${fmtZeq(Z12)}</td></tr>
                 <tr><td class="fw-bold">Z<sub>${v2}-${v3}</sub></td><td class="text-end font-monospace">${fmtZeq(Z23)}</td></tr>
                 <tr><td class="fw-bold">Z<sub>${v1}-${v3}</sub></td><td class="text-end font-monospace">${fmtZeq(Z13)}</td></tr>
-              </table>
+              </` + `table>
             </div>
           </div>
         </div>

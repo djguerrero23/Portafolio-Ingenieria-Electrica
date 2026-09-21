@@ -312,8 +312,10 @@ Localiza los tres terminales y determina si la subred está conectada en:
 
 $$
 \Delta
-\qquad\text{o}\qquad
+\qquad\text{ó}\qquad
 \text{Y}
+\qquad\text{ó}\qquad
+\text{Mixto ($\Delta$ - Y)}
 $$
 
 ### Paso 2 — Identificar el objetivo
@@ -349,6 +351,35 @@ o:
 $$
 \text{Y}\rightarrow\Delta
 $$
+
+## Criterios de Decisión en Circuitos Mixtos ($\Delta \text{ — } \text{Y}$)
+
+En problemas avanzados suelen coexistir estructuras $\Delta$ y $\text{Y}$ interactuando simultáneamente (como redes concéntricas o filtros en doble T). En estos casos, la elección de la dirección de transformación obedece a un principio fundamental de simplificación: **la eliminación de nodos interiores para posibilitar asociaciones en paralelo directo**.
+
+### 1. Redes Concéntricas (Delta Exterior con Estrella Interior Conectada al Neutro)
+
+Cuando una red posee una estrella interior cuyos tres terminales convergen en los mismos tres nodos periféricos ($1, 2, 3$) de una delta exterior:
+
+* **Estrategia óptima:** Convertir siempre la **estrella interior a delta ($\text{Y} \to \Delta$)**.
+* **Criterio físico y causal:** 
+  1. Al transformar la estrella interna ($1-d$, $2-d$, $3-d$), el nodo neutro interno $d$ desaparece del circuito.
+  2. Las tres nuevas impedancias resultantes del delta equivalente ($\mathbf{Z}'_{12}, \mathbf{Z}'_{23}, \mathbf{Z}'_{31}$) quedan conectadas exactamente entre los mismos pares de terminales perimétricos $(1-2)$, $(2-3)$ y $(3-1)$.
+  3. Cada rama transformada queda **en paralelo estricto** con la rama preexistente del delta original:
+     $$\mathbf{Z}_{12,\text{total}} = \mathbf{Z}_{12,\text{orig}} \parallel \mathbf{Z}'_{12,\text{transf}}, \qquad \mathbf{Z}_{23,\text{total}} = \mathbf{Z}_{23,\text{orig}} \parallel \mathbf{Z}'_{23,\text{transf}}, \qquad \mathbf{Z}_{31,\text{total}} = \mathbf{Z}_{31,\text{orig}} \parallel \mathbf{Z}'_{31,\text{transf}}$$
+  4. La red completa colapsa instantáneamente en un **único triángulo Delta equivalente** de 3 ramas simples, resoluble de inmediato por asociación serie-paralelo convencional.
+* **¿Por qué NO convertir el Delta exterior a Estrella ($\Delta \to \text{Y}$)?**
+  Si transformáramos el delta exterior a estrella, se crearía un nuevo nodo central ficticio $d'$, teniendo entonces dos estrellas unidas en los extremos $1, 2, 3$ pero con **dos neutros independientes ($d$ y $d'$)**. Dicha configuración no permite asociar las ramas directamente en paralelo y complica la topología en lugar de simplificarla.
+
+### 2. Redes en Doble T (Estrellas en Paralelo $\to$ Doble $\Pi$ en Paralelo)
+
+En redes de filtrado (como el filtro notch de doble T), dos subredes en T (que son topológicamente dos estrellas con centros neutros $O_1$ y $O_2$) están conectadas en paralelo entre los nodos de entrada ($1$), salida ($2$) y referencia de tierra ($0$):
+
+* **Estrategia óptima:** Transformar **ambas redes $\text{T}$ a su equivalente $\Pi$ ($\text{Y} \to \Delta$)**.
+* **Criterio causal:** Al eliminar los nodos intermedios $O_1$ y $O_2$, ambas configuraciones $\Pi$ comparten los mismos tres nodos de frontera exterior ($1, 2, 0$). Los tres brazos homólogos resultan en paralelo dos a dos:
+  $$\mathbf{Z}_{A,\text{eq}} = \mathbf{Z}_{A1} \parallel \mathbf{Z}_{A2} \quad (\text{entre 1 y 2})$$
+  $$\mathbf{Z}_{B,\text{eq}} = \mathbf{Z}_{B1} \parallel \mathbf{Z}_{B2} \quad (\text{entre 1 y 0})$$
+  $$\mathbf{Z}_{C,\text{eq}} = \mathbf{Z}_{C1} \parallel \mathbf{Z}_{C2} \quad (\text{entre 2 y 0})$$
+  obteniéndose un único $\Pi$ ($\Delta$) equivalente directamente resoluble.
 
 ### Paso 5 — Transformar
 
@@ -565,7 +596,7 @@ Los siguientes ejercicios cubren los seis casos típicos que aparecen en un curs
 :::
 
 ::: {.column width="50%"}
-![](imagenes/Eje1.png){width=60% fig-align="center"}
+![](imagenes/Eje1.png){width=100% fig-align="center"}
 :::
 
 ::::
@@ -620,7 +651,7 @@ $$
 :::
 
 ::: {.column width="50%"}
-![](imagenes/Eje2.png){width=60% fig-align="center"}
+![](imagenes/Eje2.png){width=100% fig-align="center"}
 :::
 
 ::::
@@ -662,7 +693,17 @@ $$
 
 ## Ejercicio 3 — Delta a Estrella (impedancias complejas)
 
+:::: {.columns}
+
+::: {.column width="50%"}
 **Enunciado.** Convertir una red en delta formada por tres impedancias complejas desequilibradas: $\mathbf{Z}_A = 6 + j3\,\Omega$ (entre terminales 2–3), $\mathbf{Z}_B = 4 - j2\,\Omega$ (entre terminales 1–3) y $\mathbf{Z}_C = 3 + j4\,\Omega$ (entre terminales 1–2), a su estrella equivalente ($\mathbf{Z}_1, \mathbf{Z}_2, \mathbf{Z}_3$).
+:::
+
+::: {.column width="50%"}
+![](imagenes/Eje3resuelto.png){width=100% fig-align="center"}
+:::
+
+::::
 
 **Solución.** Calculamos primero la suma fasorial de las tres impedancias del delta $\mathbf{Z}_\Sigma$:
 
@@ -718,7 +759,17 @@ $\mathbf{Z}_1 \approx 1.598 + j0.155\,\Omega$, $\mathbf{Z}_2 \approx 1.253 + j2.
 
 ## Ejercicio 4 — Estrella a Delta (impedancias complejas)
 
+:::: {.columns}
+
+::: {.column width="50%"}
 **Enunciado.** Convertir una red en estrella con impedancias por rama $\mathbf{Z}_1 = 2 + j1\,\Omega$, $\mathbf{Z}_2 = 1 - j3\,\Omega$ y $\mathbf{Z}_3 = 4 + j2\,\Omega$ (unidas en el neutro central $N$) a su delta equivalente ($\mathbf{Z}_A, \mathbf{Z}_B, \mathbf{Z}_C$).
+:::
+
+::: {.column width="50%"}
+![](imagenes/Eje4.png){width=100% fig-align="center"}
+:::
+
+::::
 
 **Solución.** Calculamos primero los tres productos dos a dos y su suma fasorial $\Sigma_2$:
 
@@ -781,9 +832,19 @@ $\mathbf{Z}_A = 7 - j7\,\Omega$ (entre terminales 2–3), $\mathbf{Z}_B = 4.2 + 
 
 ## Ejercicio 5 — Red en Puente desbalanceada con reactancias
 
+:::: {.columns}
+
+::: {.column width="50%"}
 **Enunciado.** Un circuito en puente de cinco impedancias tiene terminales exteriores $A$ y $B$, y ramas internas:
 $\mathbf{Z}_{AC} = 3 + j4\,\text{k}\Omega$, $\mathbf{Z}_{AD} = 6\,\text{k}\Omega$, $\mathbf{Z}_{CB} = 4\,\text{k}\Omega$, $\mathbf{Z}_{DB} = 2 - j2\,\text{k}\Omega$ y rama transversal central $\mathbf{Z}_{CD} = 3\,\text{k}\Omega$.
 Determinar la impedancia equivalente total $\mathbf{Z}_{eq}$ vista entre los terminales $A$ y $B$.
+:::
+
+::: {.column width="50%"}
+![](imagenes/Eje5.png){width=80% fig-align="center"}
+:::
+
+::::
 
 **Solución.** La presencia de la impedancia central $\mathbf{Z}_{CD}$ impide cualquier agrupación directa en serie o paralelo. Transformamos el lazo en delta formado por los nodos $A-C-D$ a una estrella equivalente con ramas $\mathbf{Z}_A', \mathbf{Z}_C', \mathbf{Z}_D'$ unidas en un nuevo nodo central $N$.
 
@@ -859,8 +920,17 @@ c d 3 0
 
 ## Ejercicio 6 — Aplicación: Transformación de carga trifásica y cálculo de línea
 
-**Enunciado.** Una carga trifásica equilibrada conectada en delta presenta una impedancia por fase de $\mathbf{Z}_\Delta = 30 + j40\,\Omega$. Se desea representarla como una estrella equivalente ($\text{Y}$) para conectarla a una red trifásica equilibrada de $V_L = 380\,\text{V}$ (tensión de línea eficaz) a $50\,\text{Hz}$.
+:::: {.columns}
 
+::: {.column width="50%"}
+**Enunciado.** Una carga trifásica equilibrada conectada en delta presenta una impedancia por fase de $\mathbf{Z}_\Delta = 30 + j40\,\Omega$. Se desea representarla como una estrella equivalente ($\text{Y}$) para conectarla a una red trifásica equilibrada de $V_L = 380\,\text{V}$ (tensión de línea eficaz) a $50\,\text{Hz}$.
+:::
+
+::: {.column width="50%"}
+![](imagenes/Eje6.png){width=100% fig-align="center"}
+:::
+
+::::
 Determinar:
 
 (a) La impedancia por fase de la estrella equivalente ($\mathbf{Z}_Y$).
@@ -945,6 +1015,213 @@ O alternativamente, verificar **una sola fase** de la estrella equivalente:
 
 ---
 
+## Ejercicio 7 — Red Mixta Concéntrica Delta–Estrella en Paralelo (Ejemplo 17.21)
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Enunciado.** Para la red mixta mostrada en la figura, compuesta por una red Delta exterior formada por los nodos $1, 2, 3$ con impedancias $\mathbf{Z}_\Delta = 3 + j6\,\Omega$ por rama ($R = 3\,\Omega, X_L = 6\,\Omega$), en paralelo con una red Estrella interior conectada al nodo neutro central $d$ con impedancias $\mathbf{Z}_Y = 1 + j2\,\Omega$ por rama ($R = 1\,\Omega, X_L = 2\,\Omega$):
+
+Determinar la impedancia total de entrada $\mathbf{Z}_T$ vista desde los terminales $1$ y $2$.
+:::
+
+::: {.column width="50%"}
+![](imagenes/Eje7.png){width=85% fig-align="center"}
+:::
+
+::::
+
+**Estrategia y Criterio de Selección:**
+
+1. **Identificación topológica:** La red posee dos subredes acopladas a los mismos tres nodos perimétricos ($1, 2, 3$): una delta exterior ($\mathbf{Z}_{12}, \mathbf{Z}_{23}, \mathbf{Z}_{31}$) y una estrella interior ($\mathbf{Z}_{1d}, \mathbf{Z}_{2d}, \mathbf{Z}_{3d}$).
+2. **Criterio de transformación ($\text{Y} \to \Delta$):** Si transformamos la estrella interior a delta, el nodo neutro interior $d$ desaparece del circuito. Los tres nuevos brazos equivalentes $\mathbf{Z}'_{12}, \mathbf{Z}'_{23}, \mathbf{Z}'_{31}$ conectan directamente entre los mismos pares de nodos perimétricos $(1-2, 2-3, 3-1)$, quedando en **estricto paralelo directo** con las ramas originales del delta exterior.
+
+**Solución paso a paso:**
+
+**Paso 1 — Transformación $\text{Y} \to \Delta$ de la estrella interior:**
+Al ser una estrella simétrica equilibrada con $\mathbf{Z}_Y = 1 + j2\,\Omega$, aplicamos la relación del caso equilibrado $\mathbf{Z}'_\Delta = 3\mathbf{Z}_Y$:
+
+$$
+\mathbf{Z}'_\Delta = 3(1 + j2) = 3 + j6\,\Omega
+$$
+
+*(O mediante la fórmula general $\Sigma_2 / \mathbf{Z}_Y$: $\Sigma_2 = 3(1+j2)^2 = 3(-3+j4) = -9+j12\,\Omega^2 \implies \mathbf{Z}'_\Delta = \frac{-9+j12}{1+j2} = 3+j6\,\Omega$)*.
+
+**Paso 2 — Fusión en paralelo con la delta exterior original:**
+Cada rama del delta transformado $\mathbf{Z}'_\Delta$ queda en paralelo con la rama correspondiente de la delta exterior $\mathbf{Z}_\Delta = 3 + j6\,\Omega$:
+
+$$
+\mathbf{Z}_{12,\text{eq}} = \mathbf{Z}_{12} \parallel \mathbf{Z}'_{12} = (3 + j6) \parallel (3 + j6) = \frac{3 + j6}{2} = 1.5 + j3\,\Omega
+$$
+
+$$
+\mathbf{Z}_{23,\text{eq}} = \mathbf{Z}_{23} \parallel \mathbf{Z}'_{23} = (3 + j6) \parallel (3 + j6) = 1.5 + j3\,\Omega
+$$
+
+$$
+\mathbf{Z}_{31,\text{eq}} = \mathbf{Z}_{31} \parallel \mathbf{Z}'_{31} = (3 + j6) \parallel (3 + j6) = 1.5 + j3\,\Omega
+$$
+
+La red completa se reduce a un **único triángulo Delta equivalente equilibrado** con ramas de $\mathbf{Z}_{\text{eq}} = 1.5 + j3\,\Omega$.
+
+**Paso 3 — Cálculo de la impedancia total $\mathbf{Z}_T$ entre los bornes 1 y 2:**
+Visto desde los terminales $1$ y $2$, la rama directa $1–2$ ($\mathbf{Z}_{12,\text{eq}} = 1.5 + j3\,\Omega$) queda en paralelo con la trayectoria en serie formada por los lados $1–3$ y $3–2$ ($\mathbf{Z}_{31,\text{eq}} + \mathbf{Z}_{23,\text{eq}} = (1.5+j3) + (1.5+j3) = 3 + j6\,\Omega$):
+
+$$
+\mathbf{Z}_T = \mathbf{Z}_{12,\text{eq}} \parallel (\mathbf{Z}_{31,\text{eq}} + \mathbf{Z}_{23,\text{eq}}) = (1.5 + j3) \parallel (3 + j6)
+$$
+
+$$
+\mathbf{Z}_T = \frac{(1.5 + j3)(3 + j6)}{(1.5 + j3) + (3 + j6)} = \frac{2}{3}(1.5 + j3) = \mathbf{1 + j2\,\Omega}
+$$
+
+En forma polar:
+
+$$
+\boxed{\mathbf{Z}_T = 1 + j2\,\Omega = \sqrt{1^2 + 2^2}\,\angle\,\arctan(2) \approx 2.236\,\angle\,63.43^\circ\,\Omega}
+$$
+
+**Resultado.** La impedancia equivalente total entre los terminales 1 y 2 es $\mathbf{Z}_T = 1 + j2\,\Omega$ ($2.236\,\angle\,63.43^\circ\,\Omega$).
+
+::: {.callout-note collapse="false"}
+### 💡 Interpretación de Resultados y Comparación con el Solver
+
+* **Por qué el resultado final es $1 + j2\,\Omega$:** Observe la notable simetría: dos redes idénticas en delta de $3 + j6\,\Omega$ en paralelo forman un delta equivalente de $1.5 + j3\,\Omega$. La impedancia terminal de cualquier delta equilibrado entre dos bornes es exactamente $\frac{2}{3}\mathbf{Z}_\Delta$:
+  $$Z_T = \frac{2}{3}(1.5 + j3\,\Omega) = 1 + j2\,\Omega$$
+* **Verificación en el Solver Nodal:** Al introducir las 6 ramas (3 del delta exterior y 3 de la estrella interior unidas en el nodo $d$), el solver calcula exactamente $Z_T = 1 + j2\,\Omega$ ($2.236\,\angle\,63.43^\circ\,\Omega$), confirmando la equivalencia topológica.
+:::
+
+**Netlist para verificar en el solver:**
+
+```text
+# Delta exterior (Ramas 1-2, 2-3, 3-1)
+1 2 3 6
+2 3 3 6
+1 3 3 6
+# Estrella interior conectada a d (Ramas 1-d, 2-d, 3-d)
+1 d 1 2
+2 d 1 2
+3 d 1 2
+```
+*(Configurar **Terminal A = 1** y **Terminal B = 2** para comprobar $Z_T = 1 + j2\,\Omega$ | Módulo $\approx 2.24\,\Omega$)*.
+
+---
+
+## Ejercicio 8 — Red en Doble T (Estrellas en Paralelo a Doble $\Pi$ Equivalente)
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Enunciado.** Para la red en doble T (filtro notch en paralelo) conectada entre los terminales de entrada $A$ (nodo 1), salida $B$ (nodo 2) y tierra (nodo 0), con los siguientes valores de impedancia en cada una de sus dos estrellas:
+
+* **T superior (Estrella 1 con centro en $O_1$):** $\mathbf{Z}_1 = 2\,\Omega$, $\mathbf{Z}_2 = 2\,\Omega$, $\mathbf{Z}_3 = -j4\,\Omega$ (capacitiva hacia tierra).
+* **T inferior (Estrella 2 con centro en $O_2$):** $\mathbf{Z}_4 = j4\,\Omega$, $\mathbf{Z}_5 = j4\,\Omega$, $\mathbf{Z}_6 = 2\,\Omega$ (resistiva hacia tierra).
+
+Determinar:
+(a) Las impedancias equivalentes en $\Pi$ ($\Delta$) de cada subred ($\mathbf{Z}_{A1}, \mathbf{Z}_{B1}, \mathbf{Z}_{C1}$ y $\mathbf{Z}_{A2}, \mathbf{Z}_{B2}, \mathbf{Z}_{C2}$).
+(b) La red $\Pi$ equivalente global resultante de la combinación en paralelo de ambas subredes ($\mathbf{Z}_{A,\text{eq}}, \mathbf{Z}_{B,\text{eq}}, \mathbf{Z}_{C,\text{eq}}$).
+(c) La impedancia terminal de transferencia de entrada-salida $\mathbf{Z}_T$ medida entre los bornes 1 y 2.
+:::
+
+::: {.column width="50%"}
+![](imagenes/Eje8.png){width=85% fig-align="center"}
+:::
+
+::::
+
+{{< include imagenes/esquemas/_topologia_doble_t_ejercicio8.md >}}
+
+**Solución paso a paso:**
+
+**Paso 1 — Transformación de la T superior ($Y_1 \to \Pi_1$):**
+Calculamos la suma de productos dos a dos $\Sigma_{2,1}$:
+
+$$
+\Sigma_{2,1} = \mathbf{Z}_1\mathbf{Z}_2 + \mathbf{Z}_2\mathbf{Z}_3 + \mathbf{Z}_3\mathbf{Z}_1 = (2)(2) + (2)(-j4) + (-j4)(2) = 4 - j16\,\Omega^2
+$$
+
+Las ramas de la red $\Pi_1$ equivalente son:
+
+$$
+\mathbf{Z}_{A1} = \frac{\Sigma_{2,1}}{\mathbf{Z}_3} = \frac{4 - j16}{-j4} = 4 + j1\,\Omega
+$$
+
+$$
+\mathbf{Z}_{B1} = \frac{\Sigma_{2,1}}{\mathbf{Z}_2} = \frac{4 - j16}{2} = 2 - j8\,\Omega
+$$
+
+$$
+\mathbf{Z}_{C1} = \frac{\Sigma_{2,1}}{\mathbf{Z}_1} = \frac{4 - j16}{2} = 2 - j8\,\Omega
+$$
+
+**Paso 2 — Transformación de la T inferior ($Y_2 \to \Pi_2$):**
+Calculamos la suma de productos dos a dos $\Sigma_{2,2}$:
+
+$$
+\Sigma_{2,2} = \mathbf{Z}_4\mathbf{Z}_5 + \mathbf{Z}_5\mathbf{Z}_6 + \mathbf{Z}_6\mathbf{Z}_4 = (j4)(j4) + (j4)(2) + (2)(j4) = -16 + j16\,\Omega^2
+$$
+
+Las ramas de la red $\Pi_2$ equivalente son:
+
+$$
+\mathbf{Z}_{A2} = \frac{\Sigma_{2,2}}{\mathbf{Z}_6} = \frac{-16 + j16}{2} = -8 + j8\,\Omega
+$$
+
+$$
+\mathbf{Z}_{B2} = \frac{\Sigma_{2,2}}{\mathbf{Z}_5} = \frac{-16 + j16}{j4} = 4 + j4\,\Omega
+$$
+
+$$
+\mathbf{Z}_{C2} = \frac{\Sigma_{2,2}}{\mathbf{Z}_4} = \frac{-16 + j16}{j4} = 4 + j4\,\Omega
+$$
+
+**Paso 3 — Fusión en paralelo de los brazos homólogos entre nodos $(1, 2, 0)$:**
+Como ambas configuraciones $\Pi$ comparten los mismos terminales exteriores $(1, 2, 0)$, sus ramas quedan en paralelo directo:
+
+* **Rama superior horizontal (entre 1 y 2):**
+  $$\mathbf{Z}_{A,\text{eq}} = \mathbf{Z}_{A1} \parallel \mathbf{Z}_{A2} = (4 + j1) \parallel (-8 + j8) = \frac{(4 + j1)(-8 + j8)}{(4 + j1) + (-8 + j8)} = \frac{376 + j264}{97} \approx 3.876 + j2.722\,\Omega$$
+* **Rama lateral izquierda (entre 1 y 0):**
+  $$\mathbf{Z}_{B,\text{eq}} = \mathbf{Z}_{B1} \parallel \mathbf{Z}_{B2} = (2 - j8) \parallel (4 + j4) = \frac{(2 - j8)(4 + j4)}{(2 - j8) + (4 + j4)} = \frac{336 + j16}{52} \approx 6.462 + j0.308\,\Omega$$
+* **Rama lateral derecha (entre 2 y 0):**
+  $$\mathbf{Z}_{C,\text{eq}} = \mathbf{Z}_{C1} \parallel \mathbf{Z}_{C2} = (2 - j8) \parallel (4 + j4) \approx 6.462 + j0.308\,\Omega$$
+
+**Paso 4 — Cálculo de la impedancia terminal $\mathbf{Z}_T$ entre bornes 1 y 2:**
+Visto entre el borne $1$ ($A$) y el borne $2$ ($B$), la rama horizontal $\mathbf{Z}_{A,\text{eq}}$ está en paralelo con la serie formada por las dos ramas de derivación a tierra $\mathbf{Z}_{B,\text{eq}} + \mathbf{Z}_{C,\text{eq}} = 2 \cdot (6.462 + j0.308) = 12.923 + j0.615\,\Omega$:
+
+$$
+\mathbf{Z}_T(1,2) = \mathbf{Z}_{A,\text{eq}} \parallel (\mathbf{Z}_{B,\text{eq}} + \mathbf{Z}_{C,\text{eq}}) = \mathbf{3.2 + j1.6\,\Omega}
+$$
+
+En forma polar:
+
+$$
+\boxed{\mathbf{Z}_T(1,2) = 3.2 + j1.6\,\Omega \approx 3.578\,\angle\,26.57^\circ\,\Omega}
+$$
+
+**Resultado.** Red $\Pi$ equivalente global con $\mathbf{Z}_{A,\text{eq}} \approx 3.876 + j2.722\,\Omega$, $\mathbf{Z}_{B,\text{eq}} = \mathbf{Z}_{C,\text{eq}} \approx 6.462 + j0.308\,\Omega$, e impedancia terminal entre bornes $\mathbf{Z}_T = 3.2 + j1.6\,\Omega$ ($3.578\,\angle\,26.57^\circ\,\Omega$).
+
+::: {.callout-note collapse="false"}
+### 💡 Interpretación de Resultados y Comparación con el Solver
+
+* **Eliminación de los nodos internos $O_1$ y $O_2$:** Transformar cada subred en T a su equivalente $\Pi$ permite prescindir del análisis de las corrientes internas de neutro y consolidar toda la respuesta del cuadripolo en una sola celda $\Pi$.
+* **Verificación en el Solver Nodal:** El netlist describe exactamente las dos ramas en T conectadas en paralelo a los nodos $1, 2, 0$ con neutros independientes `o1` y `o2`. Al medir entre los terminales **1** y **2**, el solver entrega exactamente $Z_T = 3.2 + j1.6\,\Omega$, confirmando la precisión del cálculo analítico.
+:::
+
+**Netlist para verificar en el solver:**
+
+```text
+# T superior (Estrella 1 con centro en o1)
+1 o1 2 0
+2 o1 2 0
+o1 0 0 -4
+# T inferior (Estrella 2 con centro en o2)
+1 o2 0 4
+2 o2 0 4
+o2 0 2 0
+```
+*(Configurar **Terminal A = 1** y **Terminal B = 2** para comprobar $Z_T = 3.2 + j1.6\,\Omega$ | Módulo $\approx 3.58\,\Omega$)*.
+
+---
 
 # Módulos Interactivos de Simulación y Análisis
 

@@ -251,7 +251,7 @@ function resolverCorrientesRed() {
       <div class="mt-3">
         <h6 class="small fw-bold text-dark mb-1">📋 Corrientes fasoriales y potencias en cada elemento de la red:</h6>
         <div class="table-responsive">
-          <table class="table table-sm table-hover align-middle mb-0" style="font-size:0.83rem;">
+          <` + `table class="table table-sm table-hover align-middle mb-0" style="font-size:0.83rem;">
             <thead class="table-light">
               <tr>
                 <th class="text-center">#</th>
@@ -274,7 +274,7 @@ function resolverCorrientesRed() {
                 <td class="text-end font-monospace text-primary">${sumQ >= 0 ? '+' : ''}${sumQ.toFixed(2)} var</td>
               </tr>
             </tfoot>
-          </table>
+          </` + `table>
         </div>
         <div class="small text-muted mt-1 text-end" style="font-size:0.75rem;">
           * Las corrientes se orientan según el sentido de definición nodo <i>a</i> &rarr; nodo <i>b</i>.
