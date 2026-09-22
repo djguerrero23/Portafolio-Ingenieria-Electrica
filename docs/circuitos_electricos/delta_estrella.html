@@ -49,7 +49,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-bb62276ab45c84d9efd712f51ff97b5a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-c6d09101e572722342265c9c28ffdbd3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-c649c9cb92e2992e0266536d434106cb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -2758,7 +2758,7 @@ P_T = \sqrt{3} \cdot V_L \cdot I_L \cdot \cos\varphi = \sqrt{3} \cdot 380 \cdot 
 <pre class="text"><code># T superior (Estrella 1 con centro en o1)
 1 o1 2 0
 2 o1 2 0
-o1 0 0 -4
+o1 o2 0 -4     
 # T inferior (Estrella 2 con centro en o2)
 1 o2 0 4
 2 o2 0 4
@@ -4744,10 +4744,11 @@ function cargarEjemploDobleT() {
   if (nl) nl.value =
 `# Red Doble T (Ejercicio 8) — filtro notch
 # Estrella superior (centro o1)
+# T superior (Estrella 1 con centro en o1)
 1 o1 2 0
 2 o1 2 0
-o1 0 0 -4
-# Estrella inferior (centro o2)
+o1 o2 0 -4     
+# T inferior (Estrella 2 con centro en o2)
 1 o2 0 4
 2 o2 0 4
 o2 0 2 0`;

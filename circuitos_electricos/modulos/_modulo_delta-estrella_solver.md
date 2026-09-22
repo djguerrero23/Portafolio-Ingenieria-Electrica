@@ -1425,10 +1425,11 @@ function cargarEjemploDobleT() {
   if (nl) nl.value =
 `# Red Doble T (Ejercicio 8) — filtro notch
 # Estrella superior (centro o1)
+# T superior (Estrella 1 con centro en o1)
 1 o1 2 0
 2 o1 2 0
-o1 0 0 -4
-# Estrella inferior (centro o2)
+o1 o2 0 -4     
+# T inferior (Estrella 2 con centro en o2)
 1 o2 0 4
 2 o2 0 4
 o2 0 2 0`;
