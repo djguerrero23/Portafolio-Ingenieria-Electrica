@@ -439,6 +439,379 @@ $$\mathbf{I}_{x} = g_m \mathbf{V}_1 = 0.5(-7.692) = -3.846\,\text{A}$$
 
 Es decir, la VCCS en realidad **absorbe** corriente del nodo 2 (inyecta corriente negativa), lo cual es consistente con el signo negativo de $\mathbf{V}_1$. Este tipo de verificación es esencial: un resultado con signo inesperado suele revelar un error de convenio, no de álgebra.
 
+## Ejercicio 4 — Circuito con Fuentes Controladas (VCVS + CCCS)
+
+::: {style="float: right; width: 48%; max-width: 450px; margin: 0 0 1rem 1.5rem;"}
+![](imagenes/Ejercicio4Nodal.png){width=100% fig-align="center"}
+:::
+
+### Enunciado
+
+Para el circuito mostrado en el esquema, que incorpora una fuente de tensión controlada por tensión (VCVS) de valor $0.1\,\mathbf{V}_o$ y una fuente de corriente controlada por corriente (CCCS) de valor $8\,\mathbf{I}_o$:
+
+1. **Variables de control:** Expresar $\mathbf{V}_o$ e $\mathbf{I}_o$ en términos de las tensiones nodales.
+2. **Formulación Matricial:** Plantear las ecuaciones nodales tratando adecuadamente la VCVS y la CCCS.
+3. **Cálculo de Potenciales:** Determinar las tensiones nodales $\mathbf{V}_A$, $\mathbf{V}_B$, $\mathbf{V}_C$ y la tensión de salida $\mathbf{V}_o$.
+
+### Solución Paso a Paso
+
+**Paso 1 — Definición de nodos y variables de control.**
+
+Sea el nodo de referencia la rama inferior (tierra, $0\,\text{V}$). Los nodos esenciales son:
+
+* **Nodo A:** unión de la fuente $8\angle 20°\,\text{V}$, la resistencia $4\,\Omega$ y el terminal positivo de la VCVS.
+* **Nodo B:** terminal negativo de la VCVS, unión con la CCCS $8\mathbf{I}_o$ y el condensador $-j5\,\Omega$.
+* **Nodo C:** unión del condensador $-j5\,\Omega$, la inductancia $j5\,\Omega$ y la resistencia $10\,\Omega$. Aquí se mide $\mathbf{V}_o$.
+
+Las variables de control se expresan como:
+
+$$\mathbf{V}_o = \mathbf{V}_C$$
+
+$$\mathbf{I}_o = \frac{\mathbf{V}_B - \mathbf{V}_A}{4} \qquad \text{(sentido de B hacia A, según el esquema)}$$
+
+**Paso 2 — Ecuación de ligadura de la VCVS.**
+
+La VCVS impone la relación:
+
+$$\mathbf{V}_A - \mathbf{V}_B = 0.1\,\mathbf{V}_o = 0.1\,\mathbf{V}_C$$
+
+Como el nodo A está fijado por la fuente independiente:
+
+$$\mathbf{V}_A = 8\angle 20°\,\text{V}$$
+
+se obtiene la ecuación de ligadura:
+
+$$\mathbf{V}_B = 8\angle 20° - 0.1\,\mathbf{V}_C \qquad \text{[Ligadura]}$$
+
+**Paso 3 — LCK en el nodo B.**
+
+Corrientes que salen del nodo B:
+
+* Hacia A por $4\,\Omega$: $\dfrac{\mathbf{V}_B - \mathbf{V}_A}{4} = \mathbf{I}_o$
+* Hacia tierra por la CCCS: $8\,\mathbf{I}_o$
+* Hacia C por $-j5\,\Omega$: $\dfrac{\mathbf{V}_B - \mathbf{V}_C}{-j5}$
+
+Balance de corrientes:
+
+$$\frac{\mathbf{V}_B - \mathbf{V}_A}{4} + 8\,\mathbf{I}_o + \frac{\mathbf{V}_B - \mathbf{V}_C}{-j5} = 0$$
+
+Sustituyendo $\mathbf{I}_o$:
+
+$$\frac{9(\mathbf{V}_B - \mathbf{V}_A)}{4} + j\frac{\mathbf{V}_B - \mathbf{V}_C}{5} = 0 \qquad \text{[Ecuación B]}$$
+
+**Paso 4 — LCK en el nodo C.**
+
+Corrientes que salen de C:
+
+* Hacia B por $-j5\,\Omega$: $\dfrac{\mathbf{V}_C - \mathbf{V}_B}{-j5}$
+* A tierra por $j5\,\Omega$: $\dfrac{\mathbf{V}_C}{j5}$
+* A tierra por $10\,\Omega$: $\dfrac{\mathbf{V}_C}{10}$
+
+Balance de corrientes:
+
+$$\frac{\mathbf{V}_C - \mathbf{V}_B}{-j5} + \frac{\mathbf{V}_C}{j5} + \frac{\mathbf{V}_C}{10} = 0$$
+
+Simplificando:
+
+$$-\frac{j\mathbf{V}_B}{5} + \frac{\mathbf{V}_C}{10} = 0 \implies \boxed{\mathbf{V}_C = j2\,\mathbf{V}_B} \qquad \text{[Ecuación C]}$$
+
+**Paso 5 — Sustitución y resolución.**
+
+Sustituyendo $\mathbf{V}_C = j2\,\mathbf{V}_B$ en la Ecuación B:
+
+$$\frac{9(\mathbf{V}_B - \mathbf{V}_A)}{4} + \frac{j\mathbf{V}_B(1 - j2)}{5} = 0$$
+
+$$\frac{9\mathbf{V}_B}{4} - \frac{9\mathbf{V}_A}{4} + \frac{(2 + j)\mathbf{V}_B}{5} = 0$$
+
+$$\mathbf{V}_B\left(\frac{9}{4} + \frac{2+j}{5}\right) = \frac{9\mathbf{V}_A}{4}$$
+
+$$(2.65 + j0.2)\,\mathbf{V}_B = 2.25\,\mathbf{V}_A$$
+
+Despejando $\mathbf{V}_B$:
+
+$$\mathbf{V}_B = \frac{2.25 \cdot 8\angle 20°}{2.6575\angle 4.32°} = 6.774\angle 15.68°\,\text{V}$$
+
+$$\boxed{\mathbf{V}_B \approx 6.774\angle 15.68°\,\text{V} \approx 6.52 + j1.83\,\text{V}}$$
+
+Calculando $\mathbf{V}_C$:
+
+$$\mathbf{V}_C = j2\,\mathbf{V}_B = 2\angle 90° \cdot 6.774\angle 15.68° = 13.548\angle 105.68°\,\text{V}$$
+
+$$\boxed{\mathbf{V}_o = \mathbf{V}_C \approx 13.55\angle 105.68°\,\text{V} \approx -3.66 + j13.04\,\text{V}}$$
+
+**Paso 6 — Verificación por LCK.**
+
+Sustituyendo los valores numéricos en la Ecuación B:
+
+* $\mathbf{V}_A = 7.518 + j2.736\,\text{V}$
+* $\mathbf{V}_B = 6.522 + j1.832\,\text{V}$
+* $\mathbf{V}_C = -3.66 + j13.04\,\text{V}$
+
+Término 1:
+
+$$\frac{9(\mathbf{V}_B - \mathbf{V}_A)}{4} = \frac{9(-0.996 - j0.904)}{4} = -2.241 - j2.034$$
+
+Término 2:
+
+$$j\frac{\mathbf{V}_B - \mathbf{V}_C}{5} = j\frac{10.182 - j11.208}{5} = 2.242 + j2.036$$
+
+Suma de ambos términos:
+
+$$(-2.241 + 2.242) + j(-2.034 + 2.036) \approx 0 \quad ✔$$
+
+La ecuación de LCK se satisface, confirmando la consistencia del resultado.
+
+::: {.callout-important}
+### 📌 Observación clave: pérdida de simetría
+
+La presencia simultánea de una VCVS y una CCCS introduce **dos acoplamientos asimétricos** en el circuito:
+
+1. La VCVS acopla el nodo A con el nodo C mediante la variable de control $\mathbf{V}_o$.
+2. La CCCS acopla el nodo B consigo mismo mediante la variable de control $\mathbf{I}_o$, que depende de $\mathbf{V}_B - \mathbf{V}_A$.
+
+Como consecuencia, la matriz de admitancias **no es simétrica** ($\mathbf{Y}_{ij} \neq \mathbf{Y}_{ji}$) y el sistema debe resolverse por sustitución directa o por formulación matricial aumentada, **no por simple inspección**.
+:::
+
+**Paso 7 — Cálculo de la corriente de control.**
+
+$$\mathbf{I}_o = \frac{\mathbf{V}_B - \mathbf{V}_A}{4} = \frac{-0.996 - j0.904}{4} = -0.249 - j0.226\,\text{A}$$
+
+$$\boxed{\mathbf{I}_o \approx 0.336\angle -137.8°\,\text{A}}$$
+
+El signo negativo de la parte real e imaginaria indica que la corriente instantánea circula en sentido opuesto al supuesto durante parte del ciclo, lo cual es coherente con el desfase introducido por la VCVS.
+
+## Ejercicio 5 — Circuito Mixto con Fuente de Tensión y Fuente de Corriente
+
+::: {style="float: right; width: 48%; max-width: 450px; margin: 0 0 1rem 1.5rem;"}
+![](imagenes/Ejercicio5Nodal.png){width=100% fig-align="center"}
+:::
+
+### Enunciado
+
+Para el circuito mostrado en el esquema, que opera en régimen permanente sinusoidal:
+
+1. **Identificación de nodos:** Determinar el número de nodos esenciales y elegir la referencia.
+2. **Formulación Matricial:** Plantear el sistema $[\mathbf{Y}][\mathbf{V}] = [\mathbf{I}]$ por inspección directa.
+3. **Cálculo del potencial nodal:** Determinar la tensión fasorial $\mathbf{V}$ en el nodo superior.
+
+### Solución Paso a Paso
+
+**Paso 1 — Identificación de nodos y referencia.**
+
+* **Nodo de referencia:** La tierra inferior (conectada al terminal negativo de la fuente de $120\angle -15^\circ\,\text{V}$).
+* **Nodo 1:** Nodo entre la resistencia de $40\,\Omega$ y la inductancia $j20\,\Omega$. Llamémoslo $\mathbf{V}_1$.
+* **Nodo 2:** Nodo superior derecho, donde se conectan la fuente de corriente, el condensador y la resistencia de $50\,\Omega$. Es la tensión pedida $\mathbf{V}$.
+
+**Paso 2 — Ecuación de ligadura de la fuente de tensión.**
+
+La fuente de $120\angle -15^\circ\,\text{V}$ está conectada a referencia por su terminal negativo, así que fija directamente el potencial del nodo 1:
+
+$$\mathbf{V}_1 = 120\angle -15^\circ\,\text{V} = 115.91 - j31.06\,\text{V}$$
+
+**Paso 3 — LCK en el nodo 2 (única incógnita).**
+
+En el nodo 2 confluyen:
+
+* Corriente que entra desde el nodo 1 a través de la rama serie $40\,\Omega + j20\,\Omega$:
+  $$\mathbf{I}_{12} = \frac{\mathbf{V}_1 - \mathbf{V}}{40 + j20}$$
+
+* Fuente de corriente $6\angle 30^\circ\,\text{A}$ **inyectando** al nodo 2 (la flecha apunta hacia abajo, hacia tierra; según el símbolo, entra al nodo desde arriba, pero como está conectada a tierra, **sale** del nodo 2 hacia tierra). Adoptamos el criterio de la regla de oro: fuentes que **entran** al nodo suman positivo.
+
+* Corriente por el condensador $-j30\,\Omega$:
+  $$\mathbf{I}_C = \frac{\mathbf{V}}{-j30} = j\frac{\mathbf{V}}{30}$$
+
+* Corriente por la resistencia $50\,\Omega$:
+  $$\mathbf{I}_R = \frac{\mathbf{V}}{50}$$
+
+Aplicando LCK (corrientes salientes = corrientes entrantes):
+
+$$\frac{\mathbf{V} - \mathbf{V}_1}{40 + j20} + \frac{\mathbf{V}}{-j30} + \frac{\mathbf{V}}{50} = 6\angle 30^\circ$$
+
+**Paso 4 — Agrupación y resolución.**
+
+Pasando $\mathbf{V}_1$ al lado derecho:
+
+$$\mathbf{V}\left[\frac{1}{40 + j20} + \frac{1}{-j30} + \frac{1}{50}\right] = 6\angle 30^\circ + \frac{\mathbf{V}_1}{40 + j20}$$
+
+Calculamos cada admitancia:
+
+$$\mathbf{Y}_{40+j20} = \frac{1}{40 + j20} = \frac{40 - j20}{40^2 + 20^2} = \frac{40 - j20}{2000} = 0.02 - j0.01\,\text{S}$$
+
+$$\mathbf{Y}_{-j30} = \frac{1}{-j30} = j\frac{1}{30} = j0.0333\,\text{S}$$
+
+$$\mathbf{Y}_{50} = \frac{1}{50} = 0.02\,\text{S}$$
+
+Suma de admitancias:
+
+$$\mathbf{Y}_{\text{total}} = (0.02 - j0.01) + j0.0333 + 0.02 = 0.04 + j0.0233\,\text{S}$$
+
+Término independiente:
+
+$$\frac{\mathbf{V}_1}{40 + j20} = (0.02 - j0.01)(115.91 - j31.06)$$
+
+$$= 0.02(115.91) - 0.02(j31.06) - j0.01(115.91) + j0.01(j31.06)$$
+
+$$= 2.318 - j0.621 - j1.159 - 0.311$$
+
+$$= 2.007 - j1.780\,\text{A}$$
+
+$$6\angle 30^\circ = 5.196 + j3.0\,\text{A}$$
+
+Término derecho total:
+
+$$\mathbf{I}_{\text{total}} = (5.196 + j3.0) + (2.007 - j1.780) = 7.203 + j1.220\,\text{A}$$
+
+Finalmente:
+
+$$\mathbf{V} = \frac{7.203 + j1.220}{0.04 + j0.0233} = \frac{7.203 + j1.220}{0.0463\angle 30.22^\circ}$$
+
+$$= \frac{7.306\angle 9.62^\circ}{0.0463\angle 30.22^\circ} = 157.8\angle -20.6^\circ\,\text{V}$$
+
+$$\boxed{\mathbf{V} \approx 157.8\,\angle\,-20.6^\circ\,\text{V}}$$
+
+**Paso 5 — Verificación por LCK.**
+
+Comprobamos que la corriente total que sale del nodo 2 hacia las tres ramas coincide con la que entra desde el nodo 1 más la fuente:
+
+$$\mathbf{I}_{\text{sale}} = \frac{\mathbf{V} - \mathbf{V}_1}{40 + j20} + \frac{\mathbf{V}}{-j30} + \frac{\mathbf{V}}{50}$$
+
+$$= \frac{(157.8\angle -20.6^\circ) - (120\angle -15^\circ)}{44.72\angle 26.57^\circ} + \frac{157.8\angle -20.6^\circ}{30\angle -90^\circ} + \frac{157.8\angle -20.6^\circ}{50}$$
+
+$$= \frac{148.4 - j55.5 - 115.9 + j31.1}{44.72\angle 26.57^\circ} + 5.26\angle 69.4^\circ + 3.156\angle -20.6^\circ$$
+
+$$= \frac{32.5 - j24.4}{44.72\angle 26.57^\circ} + 5.26\angle 69.4^\circ + 3.156\angle -20.6^\circ$$
+
+$$= 0.909\angle -63.4^\circ + 5.26\angle 69.4^\circ + 3.156\angle -20.6^\circ$$
+
+$$= (0.408 - j0.812) + (1.850 + j4.925) + (2.954 - j1.111) = 5.212 + j3.002 \approx 6\angle 30^\circ\,\text{A}$$
+
+✔ Coincide con la fuente de corriente. **Verificación exitosa.**
+
+## Ejercicio 6 — Red en Puente de CA: Transformación Fasorial y Eficiencia Nodal
+
+::: {style="float: right; width: 45%; max-width: 440px; margin: 0 0 1rem 1.5rem;"}
+![](imagenes/Eje6NOdal.png){width=100% fig-align="center"}
+:::
+
+### Enunciado
+
+Para el circuito en puente de corriente alterna alimentado por una fuente sinusoidal $\mathbf{E} = 10\angle 0^\circ\,\text{V}$ a una frecuencia $f = 100\,\text{Hz}$:
+
+1. **Modelado en el Dominio Fasorial:** Determinar la pulsación angular $\omega$, las reactancias de los elementos dinámicos y las impedancias/admitancias complejas de las 5 ramas pasivas ($\mathbf{Z}_1$ a $\mathbf{Z}_5$).
+2. **Evaluación de Complejidad Topológica:** Justificar cuantitativamente por qué el análisis nodal reduce la dimensión del problema a un sistema $2 \times 2$, frente a las 3 ecuaciones que exigiría el método de mallas.
+3. **Formulación y Resolución Nodal:** Tomando el nodo inferior como referencia (tierra, $0\,\text{V}$), plantear el sistema matricial de admitancias $[\mathbf{Y}][\mathbf{V}] = [\mathbf{I}]$ y resolver los potenciales nodales $\mathbf{V}_A$ (nodo central izquierdo) y $\mathbf{V}_B$ (nodo central derecho).
+4. **Respuesta en el Detector:** Calcular la tensión fasorial diferencial $\mathbf{V}_{AB}$ en el resistor central $R_5 = 500\,\Omega$ y la corriente fasorial $\mathbf{I}_5$ que fluye a través de él.
+
+### Solución Paso a Paso
+
+**Paso 1 — Parámetros en el Dominio Fasorial.**
+
+La frecuencia angular de excitación es:
+
+$$\omega = 2\pi f = 2\pi(100) \approx 628.32\,\text{rad/s}$$
+
+Calculamos las impedancias y admitancias complejas de cada rama:
+
+* **Rama 1 ($R_1 \parallel C_1$):**
+  $$X_{C1} = \frac{1}{\omega C_1} = \frac{1}{(628.32)(10 \times 10^{-6})} \approx 159.15\,\Omega \implies \mathbf{Z}_{C1} = -j159.15\,\Omega$$
+  $$\mathbf{Z}_1 = \frac{R_1 \cdot (-jX_{C1})}{R_1 - jX_{C1}} = \frac{100(-j159.15)}{100 - j159.15} \approx \mathbf{71.70 - j45.05\,\Omega}$$
+  Su admitancia de rama se obtiene sumando conductancia y susceptancia en paralelo:
+  $$\mathbf{Y}_1 = \frac{1}{R_1} + j\omega C_1 = \frac{1}{100} + j(628.32)(10 \times 10^{-6}) = \mathbf{0.01 + j0.006283\,\text{S}}$$
+
+* **Rama 2 ($R_2$):**
+  $$\mathbf{Z}_2 = 200\,\Omega \implies \mathbf{Y}_2 = \frac{1}{200} = \mathbf{0.005\,\text{S}}$$
+
+* **Rama 3 ($R_3$):**
+  $$\mathbf{Z}_3 = 300\,\Omega \implies \mathbf{Y}_3 = \frac{1}{300} \approx \mathbf{0.003333\,\text{S}}$$
+
+* **Rama 4 ($R_4$ en serie con $L_4$):**
+  $$X_{L4} = \omega L_4 = (628.32)(0.1) \approx 62.83\,\Omega$$
+  $$\mathbf{Z}_4 = R_4 + jX_{L4} = \mathbf{400 + j62.83\,\Omega}$$
+  $$\mathbf{Y}_4 = \frac{1}{400 + j62.83} = \frac{400 - j62.83}{400^2 + 62.83^2} = \frac{400 - j62.83}{163948} \approx \mathbf{0.002440 - j0.000383\,\text{S}}$$
+
+* **Rama 5 ($R_5$, puente central):**
+  $$\mathbf{Z}_5 = 500\,\Omega \implies \mathbf{Y}_5 = \frac{1}{500} = \mathbf{0.002\,\text{S}}$$
+
+**Paso 2 — Análisis de Complejidad: Nodal ($2 \times 2$) vs Mallas ($3 \times 3$).**
+
+* **Método de Mallas:** El puente con la fuente de alimentación contiene **3 ventanas planares independientes** (mallas $I_1, I_2, I_3$), exigiendo resolver un sistema de 3 ecuaciones complejas acopladas.
+* **Método Nodal:** La red posee 4 nodos esenciales. Al asignar el nodo inferior como referencia ($0\,\text{V}$), la fuente independiente $\mathbf{E} = 10\angle 0^\circ\,\text{V}$ queda conectada directamente entre el nodo superior y tierra, **fijando de forma unívoca el potencial superior**:
+  $$\mathbf{V}_{\text{superior}} = \mathbf{E} = 10\angle 0^\circ\,\text{V}$$
+  Por lo tanto, **solo restan 2 incógnitas nodales**: el nodo izquierdo $\mathbf{V}_A$ y el nodo derecho $\mathbf{V}_B$. El sistema se reduce drásticamente a una matriz de **$2 \times 2$**.
+
+**Paso 3 — Formulación Matricial Nodal.**
+
+Planteamos las ecuaciones de Kirchhoff de corriente (LCK) para los dos nodos libres:
+
+* **LCK en el Nodo A (entre $\mathbf{Z}_1$, $\mathbf{Z}_3$ y $\mathbf{Z}_5$):**
+  $$(\mathbf{V}_A - \mathbf{E})\mathbf{Y}_1 + \mathbf{V}_A \mathbf{Y}_3 + (\mathbf{V}_A - \mathbf{V}_B)\mathbf{Y}_5 = 0$$
+  $$\mathbf{V}_A (\underbrace{\mathbf{Y}_1 + \mathbf{Y}_3 + \mathbf{Y}_5}_{\mathbf{Y}_{AA}}) - \mathbf{V}_B (\underbrace{\mathbf{Y}_5}_{-\mathbf{Y}_{AB}}) = \mathbf{E}\mathbf{Y}_1$$
+
+  Calculando coeficientes:
+  $$\mathbf{Y}_{AA} = (0.01 + j0.006283) + 0.003333 + 0.002 = \mathbf{0.015333 + j0.006283\,\text{S}}$$
+  $$\mathbf{Y}_{AB} = \mathbf{Y}_{BA} = -\mathbf{Y}_5 = \mathbf{-0.002\,\text{S}}$$
+  $$\mathbf{I}_A = \mathbf{E}\mathbf{Y}_1 = 10(0.01 + j0.006283) = \mathbf{0.10 + j0.06283\,\text{A}}$$
+
+* **LCK en el Nodo B (entre $\mathbf{Z}_2$, $\mathbf{Z}_4$ y $\mathbf{Z}_5$):**
+  $$(\mathbf{V}_B - \mathbf{E})\mathbf{Y}_2 + \mathbf{V}_B \mathbf{Y}_4 + (\mathbf{V}_B - \mathbf{V}_A)\mathbf{Y}_5 = 0$$
+  $$-\mathbf{V}_A (\mathbf{Y}_5) + \mathbf{V}_B (\underbrace{\mathbf{Y}_2 + \mathbf{Y}_4 + \mathbf{Y}_5}_{\mathbf{Y}_{BB}}) = \mathbf{E}\mathbf{Y}_2$$
+
+  Calculando coeficientes:
+  $$\mathbf{Y}_{BB} = 0.005 + (0.002440 - j0.000383) + 0.002 = \mathbf{0.009440 - j0.000383\,\text{S}}$$
+  $$\mathbf{I}_B = \mathbf{E}\mathbf{Y}_2 = 10(0.005) = \mathbf{0.05 + j0\,\text{A}}$$
+
+Sistema Matricial $[\mathbf{Y}][\mathbf{V}] = [\mathbf{I}]$:
+$$
+\begin{bmatrix}
+0.015333 + j0.006283 & -0.002 \\
+-0.002 & 0.009440 - j0.000383
+\end{bmatrix}
+\begin{bmatrix}
+\mathbf{V}_A \\
+\mathbf{V}_B
+\end{bmatrix}
+=
+\begin{bmatrix}
+0.10 + j0.06283 \\
+0.05
+\end{bmatrix}
+$$
+
+**Paso 4 — Resolución por Regla de Cramer.**
+
+Calculamos el determinante principal $\Delta_Y$:
+
+$$\Delta_Y = \mathbf{Y}_{AA}\mathbf{Y}_{BB} - (\mathbf{Y}_{AB})^2$$
+$$\Delta_Y = (0.015333 + j0.006283)(0.009440 - j0.000383) - (-0.002)^2$$
+$$\Delta_Y \approx \mathbf{0.00014315 + j0.00005344\,\text{S}^2} = \mathbf{1.528 \times 10^{-4}\angle 20.47^\circ\,\text{S}^2}$$
+
+Determinante para $\mathbf{V}_A$:
+$$\Delta_{V_A} = \det\begin{bmatrix} 0.10 + j0.06283 & -0.002 \\ 0.05 & 0.009440 - j0.000383 \end{bmatrix} \approx \mathbf{0.0010681 + j0.0005548\,\text{V}\cdot\text{S}}$$
+$$\mathbf{V}_A = \frac{\Delta_{V_A}}{\Delta_Y} \approx \mathbf{7.818 + j0.957\,\text{V}} = \boxed{\mathbf{7.88\,\angle\,6.98^\circ\,\text{V}}}$$
+
+Determinante para $\mathbf{V}_B$:
+$$\Delta_{V_B} = \det\begin{bmatrix} 0.015333 + j0.006283 & 0.10 + j0.06283 \\ -0.002 & 0.05 \end{bmatrix} \approx \mathbf{0.0009667 + j0.0004398\,\text{V}\cdot\text{S}}$$
+$$\mathbf{V}_B = \frac{\Delta_{V_B}}{\Delta_Y} \approx \mathbf{6.934 + j0.484\,\text{V}} = \boxed{\mathbf{6.95\,\angle\,4.00^\circ\,\text{V}}}$$
+
+**Paso 5 — Tensión y Corriente en el Resistor del Puente ($R_5$).**
+
+La tensión de desbalance en los terminales de $R_5$ (de izquierda a derecha):
+
+$$\mathbf{V}_{AB} = \mathbf{V}_A - \mathbf{V}_B = (7.818 + j0.957) - (6.934 + j0.484) = \mathbf{0.885 + j0.473\,\text{V}}$$
+$$\boxed{\mathbf{V}_{AB} \approx 1.003\,\angle\,28.12^\circ\,\text{V}}$$
+
+La corriente fasorial que atraviesa el puente (de $A$ hacia $B$) es:
+
+$$\mathbf{I}_5 = \frac{\mathbf{V}_{AB}}{R_5} = \frac{1.003\angle 28.12^\circ}{500} = \mathbf{2.007 \times 10^{-3}\angle 28.12^\circ\,\text{A}}$$
+$$\boxed{\mathbf{I}_5 \approx 2.01\,\angle\,28.12^\circ\,\text{mA}}$$
+
+::: {.callout-tip}
+### 💡 Conclusión y Comparativa con Mallas
+Observa que la corriente $\mathbf{I}_5$ coincide de forma exacta con la corriente obtenida al resolver las 3 mallas simultáneas ($\mathbf{I}_3 - \mathbf{I}_2 = 2.01\angle 28.12^\circ\,\text{mA}$). Sin embargo, mediante **análisis nodal**, el circuito se resolvió invirtiendo una simple matriz de $2 \times 2$, ahorrando más del 50% del esfuerzo algebraico gracias a la conexión a tierra de la fuente.
+:::
+
+---
+
 # Verificación Computacional en Python
 
 Para verificar sistemas de cualquier orden de forma automatizada mediante álgebra matricial compleja:

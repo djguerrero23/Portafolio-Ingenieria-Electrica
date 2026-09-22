@@ -785,7 +785,7 @@ window.Quarto = {
 </section>
 <section id="caso-3-circuitos-con-fuentes-controladas-dependientes" class="level2" data-number="4.3">
 <h2 data-number="4.3" class="anchored" data-anchor-id="caso-3-circuitos-con-fuentes-controladas-dependientes"><span class="header-section-number">4.3</span> Caso 3: Circuitos con Fuentes Controladas (Dependientes)</h2>
-<p>Las fuentes dependientes introducen acoplamientos asimétricos en el circuito:</p>
+<p>Las fuentes dependientes pueden introducir acoplamientos asimétricos en el circuito:</p>
 <ol type="1">
 <li>Trata la fuente controlada inicialmente como si fuera una fuente independiente ordinaria.</li>
 <li>Expresa la <strong>variable de control</strong> (sea una tensión <span class="math inline">\mathbf{V}_x</span> o una corriente <span class="math inline">\mathbf{I}_x</span>) en términos estrictos de las tensiones nodales del circuito:
@@ -794,7 +794,7 @@ window.Quarto = {
 <li>Si depende de una corriente: <span class="math inline">\mathbf{I}_x = \mathbf{Y}_{ab}(\mathbf{V}_a - \mathbf{V}_b)</span>.</li>
 </ul></li>
 <li>Sustituye la variable de control y transfiere todos los coeficientes que involucren potenciales incógnitas al lado izquierdo de la ecuación matricial.</li>
-<li><strong>Consecuencia física:</strong> La matriz <span class="math inline">[\mathbf{Y}]</span> pierde la simetría (<span class="math inline">\mathbf{Y}_{ij} \neq \mathbf{Y}_{ji}</span>).</li>
+<li><strong>Consecuencia posible:</strong> La matriz <span class="math inline">[\mathbf{Y}]</span> puede perder la simetría (<span class="math inline">\mathbf{Y}_{ij} \neq \mathbf{Y}_{ji}</span>), dependiendo de cómo esté conectada y controlada la fuente dependiente.</li>
 </ol>
 <hr>
 </section>
@@ -848,7 +848,7 @@ window.Quarto = {
 </section>
 <section id="solución-paso-a-paso" class="level3" data-number="6.1.2">
 <h3 data-number="6.1.2" class="anchored" data-anchor-id="solución-paso-a-paso"><span class="header-section-number">6.1.2</span> Solución Paso a Paso</h3>
-<p><strong>Paso 1 — Construcción de los coeficientes de la Matriz de Admitancias <span class="math inline">[\mathbf{Y}]</span>:</strong> * <strong>Admitancia propia del nodo 1 (<span class="math inline">\mathbf{Y}_{11}</span>):</strong> <span class="math display">\mathbf{Y}_{11} = \mathbf{Y}_1 + \mathbf{Y}_{12} = (0.05 - j0.05) + j0.2 = \mathbf{0.05 + j0.15\,\text{S}}</span> * <strong>Admitancia propia del nodo 2 (<span class="math inline">\mathbf{Y}_{22}</span>):</strong> <span class="math display">\mathbf{Y}_{22} = \mathbf{Y}_2 + \mathbf{Y}_{12} = 0.05 + j0.2 = \mathbf{0.05 + j0.20\,\text{S}}</span> * <strong>Admitancia mutua entre nodos 1 y 2 (<span class="math inline">\mathbf{Y}_{12} = \mathbf{Y}_{21}</span>):</strong> <span class="math display">\mathbf{Y}_{12} = -\mathbf{Y}_{12,\text{rama}} = -(j0.2) = \mathbf{-j0.20\,\text{S}}</span></p>
+<p><strong>Paso 1 — Construcción de los coeficientes de la Matriz de Admitancias <span class="math inline">[\mathbf{Y}]</span>:</strong> * <strong>Admitancia de la rama entre nodos 1 y 2:</strong> <span class="math display">y_{12}=j0.20\,\text{S}</span> * <strong>Admitancia propia del nodo 1 (<span class="math inline">\mathbf{Y}_{11}</span>):</strong> <span class="math display">\mathbf{Y}_{11}=\mathbf{Y}_1+y_{12}=(0.05-j0.05)+j0.2=\mathbf{0.05+j0.15\,S}</span> * <strong>Admitancia propia del nodo 2 (<span class="math inline">\mathbf{Y}_{22}</span>):</strong> <span class="math display">\mathbf{Y}_{22}=\mathbf{Y}_2+y_{12}=0.05+j0.2=\mathbf{0.05+j0.20\,S}</span> * <strong>Elemento mutuo de la matriz (<span class="math inline">\mathbf{Y}_{12}=\mathbf{Y}_{21}</span>):</strong> <span class="math display">\mathbf{Y}_{12}=-y_{12}=-(j0.2)=\mathbf{-j0.20\,S}</span></p>
 <p><strong>Paso 2 — Vector de corrientes inyectadas <span class="math inline">[\mathbf{I}]</span>:</strong> <span class="math display">\mathbf{I}_1 = 4 + j0\,\text{A}, \qquad \mathbf{I}_2 = 0 + j2\,\text{A}</span></p>
 <p><strong>Paso 3 — Sistema Matricial:</strong> <span class="math display">
 \begin{bmatrix}
@@ -997,7 +997,7 @@ j2
 </span></p>
 <p><strong>Paso 6 — Verificación de la corriente controlada.</strong></p>
 <p><span class="math display">\mathbf{I}_{x} = g_m \mathbf{V}_1 = 0.5(-7.692) = -3.846\,\text{A}</span></p>
-<p>Es decir, la VCCS en realidad <strong>absorbe</strong> corriente del nodo 2 (inyecta corriente negativa), lo cual es consistente con el signo negativo de <span class="math inline">\mathbf{V}_1</span>. Este tipo de verificación es esencial: un resultado con signo inesperado suele revelar un error de convenio, no de álgebra.</p>
+<p>El valor negativo indica que la corriente real de la VCCS tiene sentido opuesto al sentido de referencia adoptado para <span class="math inline">\mathbf{I}_x</span>. En régimen sinusoidal, el signo de un fasor no debe interpretarse como que la corriente invierte su sentido durante una parte del ciclo; representa un desplazamiento de fase de <span class="math inline">180^\circ</span> respecto de la referencia.</p>
 </section>
 </section>
 <section id="ejercicio-4-circuito-con-fuentes-controladas-vcvs-cccs" class="level2" data-number="6.4">
@@ -1020,6 +1020,19 @@ j2
 </section>
 <section id="solución-paso-a-paso-3" class="level3" data-number="6.4.2">
 <h3 data-number="6.4.2" class="anchored" data-anchor-id="solución-paso-a-paso-3"><span class="header-section-number">6.4.2</span> Solución Paso a Paso</h3>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Convención de signos
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>En este ejercicio se adopta <span class="math inline">\mathbf{I}_o</span> con sentido <strong>de B hacia A</strong>, tal como se define en la ecuación siguiente. Todas las ecuaciones posteriores mantienen esta referencia.</p>
+</div>
+</div>
 <p><strong>Paso 1 — Definición de nodos y variables de control.</strong></p>
 <p>Sea el nodo de referencia la rama inferior (tierra, <span class="math inline">0\,\text{V}</span>). Los nodos esenciales son:</p>
 <ul>
@@ -1106,7 +1119,7 @@ j2
 <p><strong>Paso 7 — Cálculo de la corriente de control.</strong></p>
 <p><span class="math display">\mathbf{I}_o = \frac{\mathbf{V}_B - \mathbf{V}_A}{4} = \frac{-0.996 - j0.904}{4} = -0.249 - j0.226\,\text{A}</span></p>
 <p><span class="math display">\boxed{\mathbf{I}_o \approx 0.336\angle -137.8°\,\text{A}}</span></p>
-<p>El signo negativo de la parte real e imaginaria indica que la corriente instantánea circula en sentido opuesto al supuesto durante parte del ciclo, lo cual es coherente con el desfase introducido por la VCVS.</p>
+<p>El fasor tiene un ángulo de <span class="math inline">-137.8^\circ</span> respecto al sentido de referencia <span class="math inline">B\rightarrow A</span>. El signo de sus componentes rectangulares no significa que la corriente instantánea cambie de sentido durante una parte del ciclo; describe su fase respecto de la referencia elegida.</p>
 </section>
 </section>
 <section id="ejercicio-5-circuito-mixto-con-fuente-de-tensión-y-fuente-de-corriente" class="level2" data-number="6.5">
@@ -1142,7 +1155,7 @@ j2
 <p>En el nodo 2 confluyen:</p>
 <ul>
 <li><p>Corriente que entra desde el nodo 1 a través de la rama serie <span class="math inline">40\,\Omega + j20\,\Omega</span>: <span class="math display">\mathbf{I}_{12} = \frac{\mathbf{V}_1 - \mathbf{V}}{40 + j20}</span></p></li>
-<li><p>Fuente de corriente <span class="math inline">6\angle 30^\circ\,\text{A}</span> <strong>inyectando</strong> al nodo 2 (la flecha apunta hacia abajo, hacia tierra; según el símbolo, entra al nodo desde arriba, pero como está conectada a tierra, <strong>sale</strong> del nodo 2 hacia tierra). Adoptamos el criterio de la regla de oro: fuentes que <strong>entran</strong> al nodo suman positivo.</p></li>
+<li><p>Fuente de corriente <span class="math inline">6\angle 30^\circ\,\text{A}</span> <strong>saliendo</strong> del nodo 2 hacia tierra, de acuerdo con la flecha del esquema. Por tanto, con el convenio de corrientes inyectadas, su contribución al vector de corriente del nodo es <span class="math inline">-6\angle30^\circ</span> A.</p></li>
 <li><p>Corriente por el condensador <span class="math inline">-j30\,\Omega</span>: <span class="math display">\mathbf{I}_C = \frac{\mathbf{V}}{-j30} = j\frac{\mathbf{V}}{30}</span></p></li>
 <li><p>Corriente por la resistencia <span class="math inline">50\,\Omega</span>: <span class="math display">\mathbf{I}_R = \frac{\mathbf{V}}{50}</span></p></li>
 </ul>
@@ -1150,7 +1163,7 @@ j2
 <p><span class="math display">\frac{\mathbf{V} - \mathbf{V}_1}{40 + j20} + \frac{\mathbf{V}}{-j30} + \frac{\mathbf{V}}{50} = 6\angle 30^\circ</span></p>
 <p><strong>Paso 4 — Agrupación y resolución.</strong></p>
 <p>Pasando <span class="math inline">\mathbf{V}_1</span> al lado derecho:</p>
-<p><span class="math display">\mathbf{V}\left[\frac{1}{40 + j20} + \frac{1}{-j30} + \frac{1}{50}\right] = 6\angle 30^\circ + \frac{\mathbf{V}_1}{40 + j20}</span></p>
+<p><span class="math display">\mathbf{V}\left[\frac{1}{40 + j20} + \frac{1}{-j30} + \frac{1}{50}\right] = -6\angle 30^\circ + \frac{\mathbf{V}_1}{40 + j20}</span></p>
 <p>Calculamos cada admitancia:</p>
 <p><span class="math display">\mathbf{Y}_{40+j20} = \frac{1}{40 + j20} = \frac{40 - j20}{40^2 + 20^2} = \frac{40 - j20}{2000} = 0.02 - j0.01\,\text{S}</span></p>
 <p><span class="math display">\mathbf{Y}_{-j30} = \frac{1}{-j30} = j\frac{1}{30} = j0.0333\,\text{S}</span></p>
@@ -1164,20 +1177,34 @@ j2
 <p><span class="math display">= 2.007 - j1.780\,\text{A}</span></p>
 <p><span class="math display">6\angle 30^\circ = 5.196 + j3.0\,\text{A}</span></p>
 <p>Término derecho total:</p>
-<p><span class="math display">\mathbf{I}_{\text{total}} = (5.196 + j3.0) + (2.007 - j1.780) = 7.203 + j1.220\,\text{A}</span></p>
+<p><span class="math display">-6\angle30^\circ = -5.196-j3.0\,\text{A}</span></p>
+<p>Término derecho total:</p>
+<p><span class="math display">\mathbf{I}_{\text{total}} = (-5.196-j3.0) + (2.007-j1.780) = -3.189-j4.780\,\text{A}</span></p>
 <p>Finalmente:</p>
-<p><span class="math display">\mathbf{V} = \frac{7.203 + j1.220}{0.04 + j0.0233} = \frac{7.203 + j1.220}{0.0463\angle 30.22^\circ}</span></p>
-<p><span class="math display">= \frac{7.306\angle 9.62^\circ}{0.0463\angle 30.22^\circ} = 157.8\angle -20.6^\circ\,\text{V}</span></p>
-<p><span class="math display">\boxed{\mathbf{V} \approx 157.8\,\angle\,-20.6^\circ\,\text{V}}</span></p>
+<p><span class="math display">\mathbf{V} = \frac{-3.189-j4.780}{0.04+j0.0233}</span></p>
+<p><span class="math display">\boxed{\mathbf{V} \approx -111.49-j54.47\,\text{V}}</span></p>
+<p>En forma polar:</p>
+<p><span class="math display">\boxed{\mathbf{V} \approx 124.08\,\angle\,-153.96^\circ\,\text{V}}</span></p>
 <p><strong>Paso 5 — Verificación por LCK.</strong></p>
-<p>Comprobamos que la corriente total que sale del nodo 2 hacia las tres ramas coincide con la que entra desde el nodo 1 más la fuente:</p>
-<p><span class="math display">\mathbf{I}_{\text{sale}} = \frac{\mathbf{V} - \mathbf{V}_1}{40 + j20} + \frac{\mathbf{V}}{-j30} + \frac{\mathbf{V}}{50}</span></p>
-<p><span class="math display">= \frac{(157.8\angle -20.6^\circ) - (120\angle -15^\circ)}{44.72\angle 26.57^\circ} + \frac{157.8\angle -20.6^\circ}{30\angle -90^\circ} + \frac{157.8\angle -20.6^\circ}{50}</span></p>
-<p><span class="math display">= \frac{148.4 - j55.5 - 115.9 + j31.1}{44.72\angle 26.57^\circ} + 5.26\angle 69.4^\circ + 3.156\angle -20.6^\circ</span></p>
-<p><span class="math display">= \frac{32.5 - j24.4}{44.72\angle 26.57^\circ} + 5.26\angle 69.4^\circ + 3.156\angle -20.6^\circ</span></p>
-<p><span class="math display">= 0.909\angle -63.4^\circ + 5.26\angle 69.4^\circ + 3.156\angle -20.6^\circ</span></p>
-<p><span class="math display">= (0.408 - j0.812) + (1.850 + j4.925) + (2.954 - j1.111) = 5.212 + j3.002 \approx 6\angle 30^\circ\,\text{A}</span></p>
-<p>✔ Coincide con la fuente de corriente. <strong>Verificación exitosa.</strong></p>
+<p>Usando:</p>
+<p><span class="math display">\mathbf{V}\approx -111.49-j54.47\,\text{V}</span></p>
+<p>la suma de las corrientes que salen del nodo 2 por las tres ramas es:</p>
+<p><span class="math display">
+\mathbf{I}_{\text{ramas}}=
+\frac{\mathbf{V}-\mathbf{V}_1}{40+j20}
++\frac{\mathbf{V}}{-j30}
++\frac{\mathbf{V}}{50}
+</span></p>
+<p>Numéricamente:</p>
+<p><span class="math display">\mathbf{I}_{\text{ramas}}\approx -5.196-j3.000\,\text{A}
+=-6\angle30^\circ\,\text{A}</span></p>
+<p>Por tanto, se verifica:</p>
+<p><span class="math display">
+\boxed{
+\mathbf{I}_{\text{ramas}}+6\angle30^\circ\approx0
+}
+</span></p>
+<p>lo que confirma la LCK y, especialmente, el <strong>signo correcto de la fuente de corriente según la dirección de su flecha</strong>.</p>
 </section>
 </section>
 <section id="ejercicio-6-red-en-puente-de-ca-transformación-fasorial-y-eficiencia-nodal" class="level2" data-number="6.6">
@@ -1309,7 +1336,7 @@ j2
 <li><strong>Confusión entre Impedancias y Admitancias:</strong> El error más común al llenar <span class="math inline">[\mathbf{Y}]</span> es colocar <span class="math inline">\mathbf{Z}</span> en vez de su inverso <span class="math inline">\mathbf{Y} = 1/\mathbf{Z}</span>. ¡Recuerda que en una rama inductiva con <span class="math inline">\mathbf{Z} = j\omega L</span>, la admitancia es <span class="math inline">\mathbf{Y} = -j/(\omega L)</span> con signo negativo!</li>
 <li><strong>Signo de los elementos mutuos <span class="math inline">\mathbf{Y}_{ij}</span>:</strong> Los elementos fuera de la diagonal SIEMPRE deben llevar el signo menos exterior: <span class="math inline">-\mathbf{Y}_{\text{enlace}}</span>.</li>
 <li><strong>Intentar plantear LCK directa en una fuente ideal de tensión:</strong> Nunca apliques LCK en un nodo conectado a una fuente de tensión a menos que conozcas o aisles la corriente de la fuente mediante un supernodo.</li>
-<li><strong>Convenio de signos de corrientes inyectadas:</strong> Fuentes que entran al nodo suman positivo (<span class="math inline">+</span>), fuentes que salen restan (<span class="math inline">-</span>).</li>
+<li><strong>Convenio de signos de corrientes inyectadas:</strong> Fuentes que entran al nodo suman positivo (<span class="math inline">+</span>); fuentes que salen del nodo aparecen con signo negativo (<span class="math inline">-</span>). Mantén el mismo convenio en todo el ejercicio.</li>
 </ol>
 </div>
 </div>

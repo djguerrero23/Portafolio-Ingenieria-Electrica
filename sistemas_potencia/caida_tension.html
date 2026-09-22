@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="David Guerrero">
+<meta name="dcterms.date" content="2026-09-10">
+<meta name="description" content="Metodología analítica para regulación de tensión en alimentadores trifásicos y monofásicos de baja tensión, con criterios de pérdidas Joule y selección óptima.">
 
-<title>⚡ Circuitos Eléctricos – ⚡ Portafolio de Ingeniería Eléctrica</title>
+<title>Cálculo de Caída de Tensión y Dimensionamiento de Alimentadores – ⚡ Portafolio de Ingeniería Eléctrica</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -37,8 +40,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../favicon.svg" rel="icon" type="image/svg+xml">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -76,35 +77,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-subtitle','listing-description','listing-categories','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <style>html{ scroll-behavior: smooth; }</style>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
@@ -311,22 +283,64 @@ window.Quarto = {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(7)</span></div><div class="category" data-category="QWRtaXRhbmNpYXM=">Admitancias <span class="quarto-category-count">(1)</span></div><div class="category" data-category="QW4lQzMlQTFsaXNpcyUyMGRlJTIwTWFsbGFz">Análisis de Mallas <span class="quarto-category-count">(1)</span></div><div class="category" data-category="QW4lQzMlQTFsaXNpcyUyME5vZGFs">Análisis Nodal <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Q0E=">CA <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Q2FsY3VsYWRvcmE=">Calculadora <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Q2lyY3VpdG9zJTIwQ0E=">Circuitos CA <span class="quarto-category-count">(5)</span></div><div class="category" data-category="Q2lyY3VpdG9zJTIwRWwlQzMlQTljdHJpY29z">Circuitos Eléctricos <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Q2lyY3VpdG9zJTIwRXF1aXZhbGVudGVz">Circuitos Equivalentes <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RGVsdGEtRXN0cmVsbGE=">Delta-Estrella <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RmFjdG9yJTIwZGUlMjBQb3RlbmNpYQ==">Factor de Potencia <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RmFzb3Jlcw==">Fasores <span class="quarto-category-count">(1)</span></div><div class="category" data-category="SW1wZWRhbmNpYQ==">Impedancia <span class="quarto-category-count">(1)</span></div><div class="category" data-category="SW1wZWRhbmNpYSUyMENvbXBsZWph">Impedancia Compleja <span class="quarto-category-count">(2)</span></div><div class="category" data-category="SW1wZWRhbmNpYXM=">Impedancias <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TENL">LCK <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TFZL">LVK <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TSVDMyVBMXhpbWElMjBUcmFuc2ZlcmVuY2lh">Máxima Transferencia <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TSVDMyVBOXRvZG9zJTIwZGUlMjBSZWRlcw==">Métodos de Redes <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Tm9ydG9u">Norton <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TiVDMyVCQW1lcm9zJTIwQ29tcGxlam9z">Números Complejos <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UG90ZW5jaWElMjBDQQ==">Potencia CA <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UG90ZW5jaWElMjBDb21wbGVqYQ==">Potencia Compleja <span class="quarto-category-count">(1)</span></div><div class="category" data-category="U2ltdWxhY2klQzMlQjNu">Simulación <span class="quarto-category-count">(1)</span></div><div class="category" data-category="U3RyZWFtbGl0">Streamlit <span class="quarto-category-count">(1)</span></div><div class="category" data-category="U3VwZXJub2Rvcw==">Supernodos <span class="quarto-category-count">(1)</span></div><div class="category" data-category="VGVvcmVtYXMlMjBkZSUyMFJlZGVz">Teoremas de Redes <span class="quarto-category-count">(2)</span></div><div class="category" data-category="VGglQzMlQTl2ZW5pbg==">Thévenin <span class="quarto-category-count">(1)</span></div><div class="category" data-category="VHJhbnNmb3JtYWNpJUMzJUIzbiUyMGRlJTIwRnVlbnRlcw==">Transformación de Fuentes <span class="quarto-category-count">(1)</span></div><div class="category" data-category="VHJpJUMzJUExbmd1bG8lMjBkZSUyMFBvdGVuY2lhcw==">Triángulo de Potencias <span class="quarto-category-count">(1)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Índice de Contenido</h2>
+   
+  <ul>
+  <li><a href="#justificación-técnica-y-criterios-normativos" id="toc-justificación-técnica-y-criterios-normativos" class="nav-link active" data-scroll-target="#justificación-técnica-y-criterios-normativos"><span class="header-section-number">1</span> 1. Justificación Técnica y Criterios Normativos</a>
+  <ul class="collapse">
+  <li><a href="#límites-de-regulación-normativa" id="toc-límites-de-regulación-normativa" class="nav-link" data-scroll-target="#límites-de-regulación-normativa"><span class="header-section-number">1.1</span> Límites de Regulación Normativa</a></li>
+  </ul></li>
+  <li><a href="#formulación-matemática-de-impedancia-compleja" id="toc-formulación-matemática-de-impedancia-compleja" class="nav-link" data-scroll-target="#formulación-matemática-de-impedancia-compleja"><span class="header-section-number">2</span> 2. Formulación Matemática de Impedancia Compleja</a>
+  <ul class="collapse">
+  <li><a href="#sistema-trifásico-equilibrado-3-hilos-4-hilos" id="toc-sistema-trifásico-equilibrado-3-hilos-4-hilos" class="nav-link" data-scroll-target="#sistema-trifásico-equilibrado-3-hilos-4-hilos"><span class="header-section-number">2.1</span> Sistema Trifásico Equilibrado (3 Hilos / 4 Hilos)</a></li>
+  </ul></li>
+  <li><a href="#caso-de-estudio-práctico" id="toc-caso-de-estudio-práctico" class="nav-link" data-scroll-target="#caso-de-estudio-práctico"><span class="header-section-number">3</span> 3. Caso de Estudio Práctico</a>
+  <ul class="collapse">
+  <li><a href="#análisis-comparativo-de-calibres" id="toc-análisis-comparativo-de-calibres" class="nav-link" data-scroll-target="#análisis-comparativo-de-calibres"><span class="header-section-number">3.1</span> Análisis Comparativo de Calibres</a></li>
+  </ul></li>
+  <li><a href="#dictamen-técnico-y-recomendaciones" id="toc-dictamen-técnico-y-recomendaciones" class="nav-link" data-scroll-target="#dictamen-técnico-y-recomendaciones"><span class="header-section-number">4</span> 4. Dictamen Técnico y Recomendaciones</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content column-page-left" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">⚡ Circuitos Eléctricos</h1>
-<p class="subtitle lead">Análisis en régimen permanente, métodos sistemáticos de redes, teoremas fundamentales, fasores y potencia compleja</p>
-</div>
+<h1 class="title">Cálculo de Caída de Tensión y Dimensionamiento de Alimentadores</h1>
+<p class="subtitle lead">Memoria de cálculo y análisis comparativo según tablas de impedancia del Código Eléctrico (NEC / NTC 2050)</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Sistemas de Potencia</div>
+    <div class="quarto-category">Caída de Tensión</div>
+    <div class="quarto-category">NEC / NTC 2050</div>
+    <div class="quarto-category">Conductores</div>
+    <div class="quarto-category">IEEE</div>
+  </div>
+  </div>
 
+<div>
+  <div class="description">
+    Metodología analítica para regulación de tensión en alimentadores trifásicos y monofásicos de baja tensión, con criterios de pérdidas Joule y selección óptima.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta column-page-left">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>David Guerrero </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 10, 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -336,255 +350,203 @@ window.Quarto = {
 </header>
 
 
-<div class="hero-banner-modern">
-<div class="hero-pill">
-<p>⚡ MÓDULO TÉCNICO · CIRCUITOS ELÉCTRICOS EN CA</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<section id="análisis-en-régimen-permanente-sinusoidal-métodos-y-teoremas" class="level1 unnumbered">
-<h1 class="unnumbered">Análisis en Régimen Permanente Sinusoidal, Métodos y Teoremas</h1>
-<p>Colección estructurada de memorias de cálculo, análisis fasorial riguroso, formulación matricial por admitancias e impedancias, y teoremas de simplificación de redes en corriente alterna con soporte computacional en Python y simuladores interactivos.</p>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>📌 Resumen Ejecutivo
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Este informe técnico establece el marco metodológico para el cálculo analítico y la verificación de la caída de tensión porcentual (<span class="math inline">\Delta V\%</span>) en alimentadores trifásicos y monofásicos de baja tensión. Se evalúa el impacto de la impedancia en corriente alterna (resistencia efectiva <span class="math inline">R</span> y reactancia inductiva <span class="math inline">X</span>) sobre la regulación de tensión, asegurando el cumplimiento de los límites normativos del <strong><span class="math inline">3\%</span> en el alimentador</strong> y <strong><span class="math inline">5\%</span> total acumulado hasta la carga más crítica</strong>.</p>
+</div>
+</div>
+<section id="justificación-técnica-y-criterios-normativos" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="justificación-técnica-y-criterios-normativos"><span class="header-section-number">1</span> 1. Justificación Técnica y Criterios Normativos</h2>
+<p>El dimensionamiento de alimentadores en sistemas de distribución de energía no solo debe satisfacer el criterio de <strong>capacidad de corriente (ampacidad)</strong> por temperatura, sino también el criterio de <strong>regulación de tensión</strong>. Una caída excesiva produce:</p>
+<ol type="1">
+<li><strong>Sobrecalentamiento y reducción de eficiencia:</strong> Aumento no deseado de pérdidas Joule en los conductores (<span class="math inline">P_{loss} = 3 I^2 R</span>).</li>
+<li><strong>Degradación del par en motores eléctricos:</strong> El par electromagnético de un motor de inducción disminuye proporcionalmente al cuadrado de la tensión aplicada (<span class="math inline">T \propto V^2</span>).</li>
+<li><strong>Inestabilidad en equipos electrónicos sensibles:</strong> Variaciones de tensión fuera del estándar ANSI C84.1 (<span class="math inline">+5\%, -10\%</span>) generan disparos erráticos y desconexión de cargas críticas.</li>
+</ol>
+<section id="límites-de-regulación-normativa" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="límites-de-regulación-normativa"><span class="header-section-number">1.1</span> Límites de Regulación Normativa</h3>
+<div id="tbl-normativa" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-normativa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Criterios normativos de regulación de tensión.
+</figcaption>
+<div aria-describedby="tbl-normativa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 38%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Segmento del Sistema Eléctrico</th>
+<th style="text-align: center;">Caída Máxima Recomendada (<span class="math inline">\Delta V\%</span>)</th>
+<th style="text-align: left;">Referencia</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Alimentador Principal (Tablero General a Subtablero)</strong></td>
+<td style="text-align: center;"><span class="math inline">\le 3.0\%</span></td>
+<td style="text-align: left;">NEC Art. 215.2(A)(1) / NTC 2050</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Circuito Ramal (Subtablero a Carga Final)</strong></td>
+<td style="text-align: center;"><span class="math inline">\le 3.0\%</span></td>
+<td style="text-align: left;">NEC Art. 210.19(A)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Caída Total Combinada (Fuente a Carga Final)</strong></td>
+<td style="text-align: center;"><span class="math inline">\le 5.0\%</span></td>
+<td style="text-align: left;">Estándar de Calidad IEEE Std 141</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<hr>
 </section>
+</section>
+<section id="formulación-matemática-de-impedancia-compleja" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="formulación-matemática-de-impedancia-compleja"><span class="header-section-number">2</span> 2. Formulación Matemática de Impedancia Compleja</h2>
+<p>La caída de tensión fasorial en un alimentador con impedancia <span class="math inline">\mathbf{Z} = R + jX</span> alimentando una carga con factor de potencia <span class="math inline">\cos\theta</span> se modela analíticamente considerando la proyección del fasor de caída sobre la tensión de referencia.</p>
+<section id="sistema-trifásico-equilibrado-3-hilos-4-hilos" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="sistema-trifásico-equilibrado-3-hilos-4-hilos"><span class="header-section-number">2.1</span> Sistema Trifásico Equilibrado (3 Hilos / 4 Hilos)</h3>
+<p>Para un sistema trifásico con tensión nominal línea a línea <span class="math inline">V_{LL}</span>:</p>
+<p><span class="math display">
+\Delta V_{3\phi} = \sqrt{3} \cdot I \cdot L \cdot \left( R_{CA} \cos\theta + X_L \sin\theta \right)
+</span></p>
+<p>Donde:</p>
+<ul>
+<li><span class="math inline">I</span>: Corriente nominal de diseño en amperios (<span class="math inline">\text{A}</span>).</li>
+<li><span class="math inline">L</span>: Longitud del alimentador en kilómetros (<span class="math inline">\text{km}</span>).</li>
+<li><span class="math inline">R_{CA}</span>: Resistencia efectiva en CA a la temperatura de operación (<span class="math inline">75^\circ\text{C}</span>) en <span class="math inline">\Omega/\text{km}</span>.</li>
+<li><span class="math inline">X_L</span>: Reactancia inductiva del conductor en ducto en <span class="math inline">\Omega/\text{km}</span>.</li>
+<li><span class="math inline">\cos\theta</span>: Factor de potencia en atraso de la carga instalada.</li>
+<li><span class="math inline">\sin\theta = \sqrt{1 - \cos^2\theta}</span>: Factor de reactancia.</li>
+</ul>
+<p>La caída de tensión porcentual normalizada se calcula como:</p>
+<p><span class="math display">
+\Delta V\% = \left( \frac{\Delta V_{3\phi}}{V_{LL}} \right) \times 100\%
+</span></p>
+<hr>
+</section>
+</section>
+<section id="caso-de-estudio-práctico" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="caso-de-estudio-práctico"><span class="header-section-number">3</span> 3. Caso de Estudio Práctico</h2>
+<p>Se diseña un alimentador trifásico con las siguientes condiciones de servicio:</p>
+<ul>
+<li><strong>Tensión nominal de línea:</strong> <span class="math inline">V_{LL} = 480\text{ V}</span> (<span class="math inline">3\phi</span>, <span class="math inline">60\text{ Hz}</span>).</li>
+<li><strong>Corriente de carga máxima:</strong> <span class="math inline">I = 85\text{ A}</span>.</li>
+<li><strong>Longitud de trayectoria:</strong> <span class="math inline">L = 120\text{ m} = 0.12\text{ km}</span>.</li>
+<li><strong>Factor de potencia:</strong> <span class="math inline">\cos\theta = 0.88</span> en atraso (<span class="math inline">\sin\theta = 0.4749</span>).</li>
+<li><strong>Tipo de conductor:</strong> Cobre electrolítico clase B, aislamiento THHN/THWN-2 (<span class="math inline">75^\circ\text{C}</span>), canalización en tubería conduit de PVC.</li>
+</ul>
+<section id="análisis-comparativo-de-calibres" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="análisis-comparativo-de-calibres"><span class="header-section-number">3.1</span> Análisis Comparativo de Calibres</h3>
+<p>A continuación se evalúa la respuesta técnica para calibres comerciales estándar utilizando los parámetros de la <strong>Tabla 9 del NEC</strong>:</p>
+<div id="tbl-analisis" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-analisis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: Comparación de regulación de tensión para alimentador trifásico de 480 V, 85 A y 120 m.
+</figcaption>
+<div aria-describedby="tbl-analisis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Calibre AWG / kcmil</th>
+<th style="text-align: center;"><span class="math inline">R_{CA}</span> (<span class="math inline">\Omega/\text{km}</span>)</th>
+<th style="text-align: center;"><span class="math inline">X_L</span> (<span class="math inline">\Omega/\text{km}</span>)</th>
+<th style="text-align: center;">Caída <span class="math inline">\Delta V</span> (<span class="math inline">\text{V}</span>)</th>
+<th style="text-align: center;">Regulación <span class="math inline">\Delta V\%</span></th>
+<th style="text-align: center;">Cumplimiento Normativo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>#4 AWG</strong></td>
+<td style="text-align: center;"><span class="math inline">1.050</span></td>
+<td style="text-align: center;"><span class="math inline">0.177</span></td>
+<td style="text-align: center;"><span class="math inline">17.84\text{ V}</span></td>
+<td style="text-align: center;"><strong><span class="math inline">3.72\%</span></strong></td>
+<td style="text-align: center;"><span class="badge-fail">✕ No Cumple (&gt; 3%)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>#2 AWG</strong></td>
+<td style="text-align: center;"><span class="math inline">0.656</span></td>
+<td style="text-align: center;"><span class="math inline">0.167</span></td>
+<td style="text-align: center;"><span class="math inline">11.60\text{ V}</span></td>
+<td style="text-align: center;"><strong><span class="math inline">2.42\%</span></strong></td>
+<td style="text-align: center;"><span class="badge-pass">✓ Cumple (≤ 3%)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>#1/0 AWG</strong></td>
+<td style="text-align: center;"><span class="math inline">0.413</span></td>
+<td style="text-align: center;"><span class="math inline">0.161</span></td>
+<td style="text-align: center;"><span class="math inline">7.74\text{ V}</span></td>
+<td style="text-align: center;"><strong><span class="math inline">1.61\%</span></strong></td>
+<td style="text-align: center;"><span class="badge-pass">✓ Cumple (Óptimo)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>#2/0 AWG</strong></td>
+<td style="text-align: center;"><span class="math inline">0.328</span></td>
+<td style="text-align: center;"><span class="math inline">0.157</span></td>
+<td style="text-align: center;"><span class="math inline">6.42\text{ V}</span></td>
+<td style="text-align: center;"><strong><span class="math inline">1.34\%</span></strong></td>
+<td style="text-align: center;"><span class="badge-pass">✓ Cumple (Baja Pérdida)</span></td>
+</tr>
+</tbody>
+</table>
 </div>
-<p>Utiliza las categorías o el buscador para filtrar entre <strong>Fasores</strong>, <strong>Métodos de Redes</strong> (Delta-Estrella, Nodos, Mallas), <strong>Teoremas Fundamentales</strong> (Thévenin, Norton) y <strong>Potencia en CA</strong>.</p>
-
-
-
-
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-    <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-      <option value="" disabled="" selected="" hidden="">Order By</option>
-      <option value="index" data-direction="asc">Default</option>
-      <option value="listing-title" data-direction="asc">
-        Title
-      </option>
-    </select>
-  </div>
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
-    </div>
+</figure>
 </div>
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="TSVDMyVBOXRvZG9zJTIwZGUlMjBSZWRlcyUyQ0FuJUMzJUExbGlzaXMlMjBOb2RhbCUyQ0FkbWl0YW5jaWFzJTJDTENLJTJDQ2lyY3VpdG9zJTIwQ0ElMkNTdXBlcm5vZG9z" data-listing-date-sort="1789538400000" data-listing-file-modified-sort="1790049881693" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="25" data-listing-word-count-sort="4820">
-<a href="../circuitos_electricos/analisis_nodal.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Análisis Nodal en Corriente Alterna
-</h5>
-<div class="card-subtitle listing-subtitle">
-Formulación sistemática por Ley de Corrientes de Kirchhoff (LCK) y Matriz de Admitancias Complejas
+<hr>
+</section>
+</section>
+<section id="dictamen-técnico-y-recomendaciones" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="dictamen-técnico-y-recomendaciones"><span class="header-section-number">4</span> 4. Dictamen Técnico y Recomendaciones</h2>
+<ol type="1">
+<li><strong>Selección por Criterio Técnico:</strong> El calibre mínimo aceptable es <strong>#2 AWG THHN</strong>, el cual garantiza una regulación del <strong><span class="math inline">2.42\%</span></strong>, encontrándose dentro del umbral normativo del <span class="math inline">3.0\%</span>.</li>
+<li><strong>Evaluación de Eficiencia Energética:</strong> Para régimen de carga continua (<span class="math inline">\ge 16\text{ h/día}</span>), el calibre <strong>#1/0 AWG</strong> reduce las pérdidas térmicas en los conductores en más de un <strong><span class="math inline">33\%</span></strong>, compensando el costo marginal del conductor de cobre en menos de 14 meses de operación.</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<div class="listing-reading-time card-text text-muted">25 min</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('TSVDMyVBOXRvZG9zJTIwZGUlMjBSZWRlcw=='); return false;">Métodos de Redes</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('QW4lQzMlQTFsaXNpcyUyME5vZGFs'); return false;">Análisis Nodal</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('QWRtaXRhbmNpYXM='); return false;">Admitancias</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('TENL'); return false;">LCK</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Q2lyY3VpdG9zJTIwQ0E='); return false;">Circuitos CA</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('U3VwZXJub2Rvcw=='); return false;">Supernodos</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Guía maestra y rigurosa de análisis nodal en CA: criterios de decisión (Nodos vs Mallas), formulación matricial [Y][V] = [I], tratamiento de supernodos, fuentes controladas…</p>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="TSVDMyVBOXRvZG9zJTIwZGUlMjBSZWRlcyUyQ0FuJUMzJUExbGlzaXMlMjBkZSUyME1hbGxhcyUyQ0ltcGVkYW5jaWFzJTJDTFZLJTJDQ2lyY3VpdG9zJTIwQ0E=" data-listing-date-sort="1789538400000" data-listing-file-modified-sort="1789951567895" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="792">
-<a href="../circuitos_electricos/analisis_mallas.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Análisis de Mallas en Corriente Alterna
-</h5>
-<div class="card-subtitle listing-subtitle">
-Formulación sistemática por Ley de Tensiones de Kirchhoff (LVK) y Matriz de Impedancias Complejas
-</div>
-<div class="listing-reading-time card-text text-muted">4 min</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('TSVDMyVBOXRvZG9zJTIwZGUlMjBSZWRlcw=='); return false;">Métodos de Redes</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('QW4lQzMlQTFsaXNpcyUyMGRlJTIwTWFsbGFz'); return false;">Análisis de Mallas</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('SW1wZWRhbmNpYXM='); return false;">Impedancias</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('TFZL'); return false;">LVK</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Q2lyY3VpdG9zJTIwQ0E='); return false;">Circuitos CA</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Resolución de circuitos planos de corriente alterna en régimen permanente mediante corrientes ficticias de lazo: matriz de impedancias de malla [Z][I] = [V], supermallas y…</p>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="2" data-categories="RmFzb3JlcyUyQ04lQzMlQkFtZXJvcyUyMENvbXBsZWpvcyUyQ0NpcmN1aXRvcyUyMEVsJUMzJUE5Y3RyaWNvcyUyQ0NBJTJDSW1wZWRhbmNpYQ==" data-listing-date-sort="1789106400000" data-listing-file-modified-sort="1789951567994" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="26" data-listing-word-count-sort="5165">
-<a href="../circuitos_electricos/teoria_fasores.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Fasores y Análisis de Circuitos en CA
-</h5>
-<div class="card-subtitle listing-subtitle">
-De la señal sinusoidal al circuito: representación, álgebra compleja e interpretación física
-</div>
-<div class="listing-reading-time card-text text-muted">26 min</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('RmFzb3Jlcw=='); return false;">Fasores</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('TiVDMyVCQW1lcm9zJTIwQ29tcGxlam9z'); return false;">Números Complejos</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Q2lyY3VpdG9zJTIwRWwlQzMlQTljdHJpY29z'); return false;">Circuitos Eléctricos</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Q0E='); return false;">CA</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('SW1wZWRhbmNpYQ=='); return false;">Impedancia</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Guía progresiva de fasores, números complejos, impedancias RLC y resolución de circuitos en régimen sinusoidal permanente.</p>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="3" data-categories="VGVvcmVtYXMlMjBkZSUyMFJlZGVzJTJDVGglQzMlQTl2ZW5pbiUyQ00lQzMlQTF4aW1hJTIwVHJhbnNmZXJlbmNpYSUyQ0ltcGVkYW5jaWElMjBDb21wbGVqYSUyQ0NpcmN1aXRvcyUyMENBJTJDQ2FsY3VsYWRvcmE=" data-listing-date-sort="1789538400000" data-listing-file-modified-sort="1789951567899" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="657">
-<a href="../circuitos_electricos/circuito_thevenin.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Laboratorio Interactivo: Teorema de Thévenin en CA
-</h5>
-<div class="card-subtitle listing-subtitle">
-Circuito equivalente unifilar, cálculo de Vth y Zth, máxima transferencia de potencia compleja y laboratorio interactivo
-</div>
-<div class="listing-reading-time card-text text-muted">4 min</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('VGVvcmVtYXMlMjBkZSUyMFJlZGVz'); return false;">Teoremas de Redes</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('VGglQzMlQTl2ZW5pbg=='); return false;">Thévenin</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('TSVDMyVBMXhpbWElMjBUcmFuc2ZlcmVuY2lh'); return false;">Máxima Transferencia</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('SW1wZWRhbmNpYSUyMENvbXBsZWph'); return false;">Impedancia Compleja</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Q2lyY3VpdG9zJTIwQ0E='); return false;">Circuitos CA</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Q2FsY3VsYWRvcmE='); return false;">Calculadora</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Reducción de redes lineales activas de CA a un modelo equivalente serie: cálculo riguroso de tensión de circuito abierto, impedancia Thévenin, adaptación conjugada y…</p>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>📥 Recursos Disponibles para este Informe
 </div>
 </div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="4" data-categories="UG90ZW5jaWElMjBDQSUyQ1BvdGVuY2lhJTIwQ29tcGxlamElMkNGYWN0b3IlMjBkZSUyMFBvdGVuY2lhJTJDVHJpJUMzJUExbmd1bG8lMjBkZSUyMFBvdGVuY2lhcyUyQ1N0cmVhbWxpdCUyQ1NpbXVsYWNpJUMzJUIzbg==" data-listing-date-sort="1789020000000" data-listing-file-modified-sort="1789951567963" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="604">
-<a href="../circuitos_electricos/potencia_ca.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Potencia en Corriente Alterna y Triángulo de Potencias
-</h5>
-<div class="card-subtitle listing-subtitle">
-Modelado analítico de potencia instantánea, activa, reactiva, aparente y compensación del factor de potencia
-</div>
-<div class="listing-reading-time card-text text-muted">4 min</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('UG90ZW5jaWElMjBDQQ=='); return false;">Potencia CA</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UG90ZW5jaWElMjBDb21wbGVqYQ=='); return false;">Potencia Compleja</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('RmFjdG9yJTIwZGUlMjBQb3RlbmNpYQ=='); return false;">Factor de Potencia</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('VHJpJUMzJUExbmd1bG8lMjBkZSUyMFBvdGVuY2lhcw=='); return false;">Triángulo de Potencias</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('U3RyZWFtbGl0'); return false;">Streamlit</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('U2ltdWxhY2klQzMlQjNu'); return false;">Simulación</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Formulación de potencia compleja, deducción del triángulo de potencias, análisis de cargas en atraso/adelanto y simulador interactivo en Streamlit.</p>
+<div class="callout-body-container callout-body">
+<ul>
+<li><a href="../descargas/tabla_calibres_awg.csv" class="btn btn-primary" role="button">Descargar Dataset de Parámetros de Conductores (CSV)</a></li>
+<li><a href="../descargas/calculo_fasores.py" class="btn btn-outline-primary" role="button">Script de Automatización en Python</a></li>
+</ul>
 </div>
 </div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="5" data-categories="VGVvcmVtYXMlMjBkZSUyMFJlZGVzJTJDTm9ydG9uJTJDVHJhbnNmb3JtYWNpJUMzJUIzbiUyMGRlJTIwRnVlbnRlcyUyQ0NpcmN1aXRvcyUyMEVxdWl2YWxlbnRlcyUyQ0NpcmN1aXRvcyUyMENB" data-listing-date-sort="1789538400000" data-listing-file-modified-sort="1789951567897" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="521">
-<a href="../circuitos_electricos/circuito_norton.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Teorema de Norton en Corriente Alterna
-</h5>
-<div class="card-subtitle listing-subtitle">
-Circuito equivalente dual de corriente, corriente de cortocircuito y transformación de fuentes en CA
-</div>
-<div class="listing-reading-time card-text text-muted">3 min</div>
-<div class="listing-categories">
 
-<div class="listing-category" onclick="window.quartoListingCategory('VGVvcmVtYXMlMjBkZSUyMFJlZGVz'); return false;">Teoremas de Redes</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('Tm9ydG9u'); return false;">Norton</div>
+</section>
 
-<div class="listing-category" onclick="window.quartoListingCategory('VHJhbnNmb3JtYWNpJUMzJUIzbiUyMGRlJTIwRnVlbnRlcw=='); return false;">Transformación de Fuentes</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Q2lyY3VpdG9zJTIwRXF1aXZhbGVudGVz'); return false;">Circuitos Equivalentes</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Q2lyY3VpdG9zJTIwQ0E='); return false;">Circuitos CA</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Modelado y simplificación de circuitos de corriente alterna mediante el equivalente Norton: determinación de IN, impedancia y admitancia de Norton, y equivalencia recíproca…</p>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="6" data-categories="TSVDMyVBOXRvZG9zJTIwZGUlMjBSZWRlcyUyQ0RlbHRhLUVzdHJlbGxhJTJDSW1wZWRhbmNpYSUyMENvbXBsZWphJTJDQ2lyY3VpdG9zJTIwQ0E=" data-listing-date-sort="1789538400000" data-listing-file-modified-sort="1789960565294" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="31" data-listing-word-count-sort="6158">
-<a href="../circuitos_electricos/delta_estrella.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Transformación Delta – Estrella (Δ ↔︎ Y) en Corriente Alterna
-</h5>
-<div class="card-subtitle listing-subtitle">
-Conversión de impedancias complejas, topologías en puente, doble T y calculadora interactiva
-</div>
-<div class="listing-reading-time card-text text-muted">31 min</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('TSVDMyVBOXRvZG9zJTIwZGUlMjBSZWRlcw=='); return false;">Métodos de Redes</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('RGVsdGEtRXN0cmVsbGE='); return false;">Delta-Estrella</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('SW1wZWRhbmNpYSUyMENvbXBsZWph'); return false;">Impedancia Compleja</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Q2lyY3VpdG9zJTIwQ0E='); return false;">Circuitos CA</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Formulación analítica rigurosa y herramienta de cálculo para la conversión bidireccional Delta-Estrella con impedancias complejas en régimen permanente sinusoidal.</p>
-</div>
-</div>
-</div></a>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

@@ -182,14 +182,14 @@ Cuando una fuente de tensión (independiente o controlada) une dos nodos no refe
 
 ## Caso 3: Circuitos con Fuentes Controladas (Dependientes)
 
-Las fuentes dependientes introducen acoplamientos asimétricos en el circuito:
+Las fuentes dependientes pueden introducir acoplamientos asimétricos en el circuito:
 
 1. Trata la fuente controlada inicialmente como si fuera una fuente independiente ordinaria.
 2. Expresa la **variable de control** (sea una tensión $\mathbf{V}_x$ o una corriente $\mathbf{I}_x$) en términos estrictos de las tensiones nodales del circuito:
    * Si depende de una tensión: $\mathbf{V}_x = \mathbf{V}_a - \mathbf{V}_b$.
    * Si depende de una corriente: $\mathbf{I}_x = \mathbf{Y}_{ab}(\mathbf{V}_a - \mathbf{V}_b)$.
 3. Sustituye la variable de control y transfiere todos los coeficientes que involucren potenciales incógnitas al lado izquierdo de la ecuación matricial.
-4. **Consecuencia física:** La matriz $[\mathbf{Y}]$ pierde la simetría ($\mathbf{Y}_{ij} \neq \mathbf{Y}_{ji}$).
+4. **Consecuencia posible:** La matriz $[\mathbf{Y}]$ puede perder la simetría ($\mathbf{Y}_{ij} \neq \mathbf{Y}_{ji}$), dependiendo de cómo esté conectada y controlada la fuente dependiente.
 
 ---
 
@@ -231,12 +231,14 @@ Para el circuito eléctrico en régimen permanente sinusoidal mostrado en el esq
 ### Solución Paso a Paso
 
 **Paso 1 — Construcción de los coeficientes de la Matriz de Admitancias $[\mathbf{Y}]$:**
+* **Admitancia de la rama entre nodos 1 y 2:**
+  $$y_{12}=j0.20\,\text{S}$$
 * **Admitancia propia del nodo 1 ($\mathbf{Y}_{11}$):**
-  $$\mathbf{Y}_{11} = \mathbf{Y}_1 + \mathbf{Y}_{12} = (0.05 - j0.05) + j0.2 = \mathbf{0.05 + j0.15\,\text{S}}$$
+  $$\mathbf{Y}_{11}=\mathbf{Y}_1+y_{12}=(0.05-j0.05)+j0.2=\mathbf{0.05+j0.15\,S}$$
 * **Admitancia propia del nodo 2 ($\mathbf{Y}_{22}$):**
-  $$\mathbf{Y}_{22} = \mathbf{Y}_2 + \mathbf{Y}_{12} = 0.05 + j0.2 = \mathbf{0.05 + j0.20\,\text{S}}$$
-* **Admitancia mutua entre nodos 1 y 2 ($\mathbf{Y}_{12} = \mathbf{Y}_{21}$):**
-  $$\mathbf{Y}_{12} = -\mathbf{Y}_{12,\text{rama}} = -(j0.2) = \mathbf{-j0.20\,\text{S}}$$
+  $$\mathbf{Y}_{22}=\mathbf{Y}_2+y_{12}=0.05+j0.2=\mathbf{0.05+j0.20\,S}$$
+* **Elemento mutuo de la matriz ($\mathbf{Y}_{12}=\mathbf{Y}_{21}$):**
+  $$\mathbf{Y}_{12}=-y_{12}=-(j0.2)=\mathbf{-j0.20\,S}$$
 
 **Paso 2 — Vector de corrientes inyectadas $[\mathbf{I}]$:**
 $$\mathbf{I}_1 = 4 + j0\,\text{A}, \qquad \mathbf{I}_2 = 0 + j2\,\text{A}$$
@@ -437,7 +439,7 @@ $$
 
 $$\mathbf{I}_{x} = g_m \mathbf{V}_1 = 0.5(-7.692) = -3.846\,\text{A}$$
 
-Es decir, la VCCS en realidad **absorbe** corriente del nodo 2 (inyecta corriente negativa), lo cual es consistente con el signo negativo de $\mathbf{V}_1$. Este tipo de verificación es esencial: un resultado con signo inesperado suele revelar un error de convenio, no de álgebra.
+El valor negativo indica que la corriente real de la VCCS tiene sentido opuesto al sentido de referencia adoptado para $\mathbf{I}_x$. En régimen sinusoidal, el signo de un fasor no debe interpretarse como que la corriente invierte su sentido durante una parte del ciclo; representa un desplazamiento de fase de $180^\circ$ respecto de la referencia.
 
 ## Ejercicio 4 — Circuito con Fuentes Controladas (VCVS + CCCS)
 
@@ -454,6 +456,11 @@ Para el circuito mostrado en el esquema, que incorpora una fuente de tensión co
 3. **Cálculo de Potenciales:** Determinar las tensiones nodales $\mathbf{V}_A$, $\mathbf{V}_B$, $\mathbf{V}_C$ y la tensión de salida $\mathbf{V}_o$.
 
 ### Solución Paso a Paso
+
+::: {.callout-note}
+### Convención de signos
+En este ejercicio se adopta $\mathbf{I}_o$ con sentido **de B hacia A**, tal como se define en la ecuación siguiente. Todas las ecuaciones posteriores mantienen esta referencia.
+:::
 
 **Paso 1 — Definición de nodos y variables de control.**
 
@@ -578,7 +585,7 @@ $$\mathbf{I}_o = \frac{\mathbf{V}_B - \mathbf{V}_A}{4} = \frac{-0.996 - j0.904}{
 
 $$\boxed{\mathbf{I}_o \approx 0.336\angle -137.8°\,\text{A}}$$
 
-El signo negativo de la parte real e imaginaria indica que la corriente instantánea circula en sentido opuesto al supuesto durante parte del ciclo, lo cual es coherente con el desfase introducido por la VCVS.
+El fasor tiene un ángulo de $-137.8^\circ$ respecto al sentido de referencia $B\rightarrow A$. El signo de sus componentes rectangulares no significa que la corriente instantánea cambie de sentido durante una parte del ciclo; describe su fase respecto de la referencia elegida.
 
 ## Ejercicio 5 — Circuito Mixto con Fuente de Tensión y Fuente de Corriente
 
@@ -615,7 +622,7 @@ En el nodo 2 confluyen:
 * Corriente que entra desde el nodo 1 a través de la rama serie $40\,\Omega + j20\,\Omega$:
   $$\mathbf{I}_{12} = \frac{\mathbf{V}_1 - \mathbf{V}}{40 + j20}$$
 
-* Fuente de corriente $6\angle 30^\circ\,\text{A}$ **inyectando** al nodo 2 (la flecha apunta hacia abajo, hacia tierra; según el símbolo, entra al nodo desde arriba, pero como está conectada a tierra, **sale** del nodo 2 hacia tierra). Adoptamos el criterio de la regla de oro: fuentes que **entran** al nodo suman positivo.
+* Fuente de corriente $6\angle 30^\circ\,\text{A}$ **saliendo** del nodo 2 hacia tierra, de acuerdo con la flecha del esquema. Por tanto, con el convenio de corrientes inyectadas, su contribución al vector de corriente del nodo es $-6\angle30^\circ$ A.
 
 * Corriente por el condensador $-j30\,\Omega$:
   $$\mathbf{I}_C = \frac{\mathbf{V}}{-j30} = j\frac{\mathbf{V}}{30}$$
@@ -631,7 +638,7 @@ $$\frac{\mathbf{V} - \mathbf{V}_1}{40 + j20} + \frac{\mathbf{V}}{-j30} + \frac{\
 
 Pasando $\mathbf{V}_1$ al lado derecho:
 
-$$\mathbf{V}\left[\frac{1}{40 + j20} + \frac{1}{-j30} + \frac{1}{50}\right] = 6\angle 30^\circ + \frac{\mathbf{V}_1}{40 + j20}$$
+$$\mathbf{V}\left[\frac{1}{40 + j20} + \frac{1}{-j30} + \frac{1}{50}\right] = -6\angle 30^\circ + \frac{\mathbf{V}_1}{40 + j20}$$
 
 Calculamos cada admitancia:
 
@@ -659,33 +666,51 @@ $$6\angle 30^\circ = 5.196 + j3.0\,\text{A}$$
 
 Término derecho total:
 
-$$\mathbf{I}_{\text{total}} = (5.196 + j3.0) + (2.007 - j1.780) = 7.203 + j1.220\,\text{A}$$
+$$-6\angle30^\circ = -5.196-j3.0\,\text{A}$$
+
+Término derecho total:
+
+$$\mathbf{I}_{\text{total}} = (-5.196-j3.0) + (2.007-j1.780) = -3.189-j4.780\,\text{A}$$
 
 Finalmente:
 
-$$\mathbf{V} = \frac{7.203 + j1.220}{0.04 + j0.0233} = \frac{7.203 + j1.220}{0.0463\angle 30.22^\circ}$$
+$$\mathbf{V} = \frac{-3.189-j4.780}{0.04+j0.0233}$$
 
-$$= \frac{7.306\angle 9.62^\circ}{0.0463\angle 30.22^\circ} = 157.8\angle -20.6^\circ\,\text{V}$$
+$$\boxed{\mathbf{V} \approx -111.49-j54.47\,\text{V}}$$
 
-$$\boxed{\mathbf{V} \approx 157.8\,\angle\,-20.6^\circ\,\text{V}}$$
+En forma polar:
+
+$$\boxed{\mathbf{V} \approx 124.08\,\angle\,-153.96^\circ\,\text{V}}$$
 
 **Paso 5 — Verificación por LCK.**
 
-Comprobamos que la corriente total que sale del nodo 2 hacia las tres ramas coincide con la que entra desde el nodo 1 más la fuente:
+Usando:
 
-$$\mathbf{I}_{\text{sale}} = \frac{\mathbf{V} - \mathbf{V}_1}{40 + j20} + \frac{\mathbf{V}}{-j30} + \frac{\mathbf{V}}{50}$$
+$$\mathbf{V}\approx -111.49-j54.47\,\text{V}$$
 
-$$= \frac{(157.8\angle -20.6^\circ) - (120\angle -15^\circ)}{44.72\angle 26.57^\circ} + \frac{157.8\angle -20.6^\circ}{30\angle -90^\circ} + \frac{157.8\angle -20.6^\circ}{50}$$
+la suma de las corrientes que salen del nodo 2 por las tres ramas es:
 
-$$= \frac{148.4 - j55.5 - 115.9 + j31.1}{44.72\angle 26.57^\circ} + 5.26\angle 69.4^\circ + 3.156\angle -20.6^\circ$$
+$$
+\mathbf{I}_{\text{ramas}}=
+\frac{\mathbf{V}-\mathbf{V}_1}{40+j20}
++\frac{\mathbf{V}}{-j30}
++\frac{\mathbf{V}}{50}
+$$
 
-$$= \frac{32.5 - j24.4}{44.72\angle 26.57^\circ} + 5.26\angle 69.4^\circ + 3.156\angle -20.6^\circ$$
+Numéricamente:
 
-$$= 0.909\angle -63.4^\circ + 5.26\angle 69.4^\circ + 3.156\angle -20.6^\circ$$
+$$\mathbf{I}_{\text{ramas}}\approx -5.196-j3.000\,\text{A}
+=-6\angle30^\circ\,\text{A}$$
 
-$$= (0.408 - j0.812) + (1.850 + j4.925) + (2.954 - j1.111) = 5.212 + j3.002 \approx 6\angle 30^\circ\,\text{A}$$
+Por tanto, se verifica:
 
-✔ Coincide con la fuente de corriente. **Verificación exitosa.**
+$$
+\boxed{
+\mathbf{I}_{\text{ramas}}+6\angle30^\circ\approx0
+}
+$$
+
+lo que confirma la LCK y, especialmente, el **signo correcto de la fuente de corriente según la dirección de su flecha**.
 
 ## Ejercicio 6 — Red en Puente de CA: Transformación Fasorial y Eficiencia Nodal
 
@@ -850,7 +875,7 @@ for i, v in enumerate(V, start=1):
 1. **Confusión entre Impedancias y Admitancias:** El error más común al llenar $[\mathbf{Y}]$ es colocar $\mathbf{Z}$ en vez de su inverso $\mathbf{Y} = 1/\mathbf{Z}$. ¡Recuerda que en una rama inductiva con $\mathbf{Z} = j\omega L$, la admitancia es $\mathbf{Y} = -j/(\omega L)$ con signo negativo!
 2. **Signo de los elementos mutuos $\mathbf{Y}_{ij}$:** Los elementos fuera de la diagonal SIEMPRE deben llevar el signo menos exterior: $-\mathbf{Y}_{\text{enlace}}$.
 3. **Intentar plantear LCK directa en una fuente ideal de tensión:** Nunca apliques LCK en un nodo conectado a una fuente de tensión a menos que conozcas o aisles la corriente de la fuente mediante un supernodo.
-4. **Convenio de signos de corrientes inyectadas:** Fuentes que entran al nodo suman positivo ($+$), fuentes que salen restan ($-$).
+4. **Convenio de signos de corrientes inyectadas:** Fuentes que entran al nodo suman positivo ($+$); fuentes que salen del nodo aparecen con signo negativo ($-$). Mantén el mismo convenio en todo el ejercicio.
 :::
 
 ---
