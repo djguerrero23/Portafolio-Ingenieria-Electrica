@@ -113,6 +113,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
+<script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
   <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
@@ -339,7 +342,7 @@ window.Quarto = {
   <li><a href="#caso-3-circuitos-con-fuentes-controladas-dependientes" id="toc-caso-3-circuitos-con-fuentes-controladas-dependientes" class="nav-link" data-scroll-target="#caso-3-circuitos-con-fuentes-controladas-dependientes"><span class="header-section-number">4.3</span> Caso 3: Circuitos con Fuentes Controladas (Dependientes)</a></li>
   </ul></li>
   <li><a href="#algoritmo-maestro-de-5-pasos-para-resolver-cualquier-red-nodal" id="toc-algoritmo-maestro-de-5-pasos-para-resolver-cualquier-red-nodal" class="nav-link" data-scroll-target="#algoritmo-maestro-de-5-pasos-para-resolver-cualquier-red-nodal"><span class="header-section-number">5</span> Algoritmo Maestro de 5 Pasos para Resolver Cualquier Red Nodal</a></li>
-  <li><a href="#ejemplos-prácticos-resueltos-con-rigor" id="toc-ejemplos-prácticos-resueltos-con-rigor" class="nav-link" data-scroll-target="#ejemplos-prácticos-resueltos-con-rigor"><span class="header-section-number">6</span> Ejemplos Prácticos Resueltos con Rigor</a>
+  <li><a href="#ejemplos-resueltos" id="toc-ejemplos-resueltos" class="nav-link" data-scroll-target="#ejemplos-resueltos"><span class="header-section-number">6</span> Ejemplos Resueltos</a>
   <ul class="collapse">
   <li><a href="#ejercicio-1-formulación-por-inspección-directa-3-nodos-fuentes-de-corriente" id="toc-ejercicio-1-formulación-por-inspección-directa-3-nodos-fuentes-de-corriente" class="nav-link" data-scroll-target="#ejercicio-1-formulación-por-inspección-directa-3-nodos-fuentes-de-corriente"><span class="header-section-number">6.1</span> Ejercicio 1 — Formulación por Inspección Directa (3 Nodos, Fuentes de Corriente)</a>
   <ul class="collapse">
@@ -350,6 +353,26 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#enunciado-1" id="toc-enunciado-1" class="nav-link" data-scroll-target="#enunciado-1"><span class="header-section-number">6.2.1</span> Enunciado</a></li>
   <li><a href="#solución-paso-a-paso-1" id="toc-solución-paso-a-paso-1" class="nav-link" data-scroll-target="#solución-paso-a-paso-1"><span class="header-section-number">6.2.2</span> Solución Paso a Paso</a></li>
+  </ul></li>
+  <li><a href="#ejercicio-3-circuito-con-fuente-dependiente-controlada-vccs" id="toc-ejercicio-3-circuito-con-fuente-dependiente-controlada-vccs" class="nav-link" data-scroll-target="#ejercicio-3-circuito-con-fuente-dependiente-controlada-vccs"><span class="header-section-number">6.3</span> Ejercicio 3 — Circuito con Fuente Dependiente / Controlada (VCCS)</a>
+  <ul class="collapse">
+  <li><a href="#enunciado-2" id="toc-enunciado-2" class="nav-link" data-scroll-target="#enunciado-2"><span class="header-section-number">6.3.1</span> Enunciado</a></li>
+  <li><a href="#solución-paso-a-paso-2" id="toc-solución-paso-a-paso-2" class="nav-link" data-scroll-target="#solución-paso-a-paso-2"><span class="header-section-number">6.3.2</span> Solución Paso a Paso</a></li>
+  </ul></li>
+  <li><a href="#ejercicio-4-circuito-con-fuentes-controladas-vcvs-cccs" id="toc-ejercicio-4-circuito-con-fuentes-controladas-vcvs-cccs" class="nav-link" data-scroll-target="#ejercicio-4-circuito-con-fuentes-controladas-vcvs-cccs"><span class="header-section-number">6.4</span> Ejercicio 4 — Circuito con Fuentes Controladas (VCVS + CCCS)</a>
+  <ul class="collapse">
+  <li><a href="#enunciado-3" id="toc-enunciado-3" class="nav-link" data-scroll-target="#enunciado-3"><span class="header-section-number">6.4.1</span> Enunciado</a></li>
+  <li><a href="#solución-paso-a-paso-3" id="toc-solución-paso-a-paso-3" class="nav-link" data-scroll-target="#solución-paso-a-paso-3"><span class="header-section-number">6.4.2</span> Solución Paso a Paso</a></li>
+  </ul></li>
+  <li><a href="#ejercicio-5-circuito-mixto-con-fuente-de-tensión-y-fuente-de-corriente" id="toc-ejercicio-5-circuito-mixto-con-fuente-de-tensión-y-fuente-de-corriente" class="nav-link" data-scroll-target="#ejercicio-5-circuito-mixto-con-fuente-de-tensión-y-fuente-de-corriente"><span class="header-section-number">6.5</span> Ejercicio 5 — Circuito Mixto con Fuente de Tensión y Fuente de Corriente</a>
+  <ul class="collapse">
+  <li><a href="#enunciado-4" id="toc-enunciado-4" class="nav-link" data-scroll-target="#enunciado-4"><span class="header-section-number">6.5.1</span> Enunciado</a></li>
+  <li><a href="#solución-paso-a-paso-4" id="toc-solución-paso-a-paso-4" class="nav-link" data-scroll-target="#solución-paso-a-paso-4"><span class="header-section-number">6.5.2</span> Solución Paso a Paso</a></li>
+  </ul></li>
+  <li><a href="#ejercicio-6-red-en-puente-de-ca-transformación-fasorial-y-eficiencia-nodal" id="toc-ejercicio-6-red-en-puente-de-ca-transformación-fasorial-y-eficiencia-nodal" class="nav-link" data-scroll-target="#ejercicio-6-red-en-puente-de-ca-transformación-fasorial-y-eficiencia-nodal"><span class="header-section-number">6.6</span> Ejercicio 6 — Red en Puente de CA: Transformación Fasorial y Eficiencia Nodal</a>
+  <ul class="collapse">
+  <li><a href="#enunciado-5" id="toc-enunciado-5" class="nav-link" data-scroll-target="#enunciado-5"><span class="header-section-number">6.6.1</span> Enunciado</a></li>
+  <li><a href="#solución-paso-a-paso-5" id="toc-solución-paso-a-paso-5" class="nav-link" data-scroll-target="#solución-paso-a-paso-5"><span class="header-section-number">6.6.2</span> Solución Paso a Paso</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#verificación-computacional-en-python" id="toc-verificación-computacional-en-python" class="nav-link" data-scroll-target="#verificación-computacional-en-python"><span class="header-section-number">7</span> Verificación Computacional en Python</a></li>
@@ -426,6 +449,11 @@ window.Quarto = {
 <li><strong>Redes No Planares (Cruces tridimensionales de ramas):</strong> El método de mallas <strong>no se puede aplicar</strong> en redes no planares (redes que no pueden dibujarse en un plano sin cruce de conductores). El análisis nodal es universal y funciona en cualquier topología.</li>
 <li><strong>Formulación computacional directa:</strong> La matriz de admitancias de barra <span class="math inline">[\mathbf{Y}]</span> se puede ensamblar por inspección directa mediante reglas topológicas simples.</li>
 </ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="imagenes/topologia_optima_nodal.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:95.0%"></p>
+</figure>
+</div>
 </section>
 </div>
 <div class="g-col-12 g-col-md-6">
@@ -437,8 +465,181 @@ window.Quarto = {
 <li><strong>Múltiples fuentes de tensión flotantes:</strong> Si hay demasiadas fuentes de tensión no conectadas a tierra, el análisis nodal requiere múltiples supernodos y ecuaciones de ligadura simultáneas.</li>
 <li><strong>Variables de interés en serie:</strong> Cuando el objetivo principal es calcular la corriente de una malla específica o rama en serie.</li>
 </ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="imagenes/topologia_optima_mallas.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:95.0%"></p>
+</figure>
+</div>
 </section>
 </div>
+</div>
+<div class="my-4 d-flex justify-content-center">
+  <div class="border rounded-3 bg-white shadow-sm p-3 w-100" style="max-width: 980px;">
+    <svg viewbox="0 0 960 430" width="100%" height="auto" preserveaspectratio="xMidYMid meet" style="display:block; font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;">
+      <defs>
+        <!-- Marcador de flecha para corrientes de malla -->
+        <marker id="arrow-mesh" viewbox="0 0 10 10" refx="5" refy="5" markerwidth="6" markerheight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"></path>
+        </marker>
+        <!-- Marcador de flecha para fuentes de corriente -->
+        <marker id="arrow-source" viewbox="0 0 10 10" refx="5" refy="5" markerwidth="5" markerheight="5" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"></path>
+        </marker>
+        <filter id="card-shadow" x="-5%" y="-5%" width="110%" height="110%">
+          <fedropshadow dx="0" dy="2" stddeviation="3" flood-opacity="0.08"></fedropshadow>
+        </filter>
+      </defs>
+
+      <!-- ============================================================ -->
+      <!-- PANEL IZQUIERDO: TOPOLOGÍA IDEAL PARA ANÁLISIS NODAL          -->
+      <!-- ============================================================ -->
+      <!-- Fondo contenedor izquierdo -->
+      <rect x="15" y="15" width="455" height="400" rx="10" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"></rect>
+      
+      <!-- Encabezado Nodal -->
+      <rect x="35" y="28" width="195" height="28" rx="6" fill="#059669"></rect>
+      <text x="132" y="47" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">RECOMENDADO: NODOS</text>
+      
+      <text x="35" y="78" font-size="14" font-weight="800" fill="#065f46">Topología en Paralelo / Nodal</text>
+      <text x="35" y="96" font-size="12" fill="#047857">Pocos nodos esenciales y fuentes de corriente directas</text>
+
+      <!-- Circuito Nodal -->
+      <!-- Línea bus de referencia (Tierra) -->
+      <line x1="50" y1="260" x2="430" y2="260" stroke="#0f172a" stroke-width="2.5"></line>
+      <!-- Símbolo de tierra -->
+      <g transform="translate(240, 260)">
+        <line x1="0" y1="0" x2="0" y2="12" stroke="#0f172a" stroke-width="2"></line>
+        <line x1="-14" y1="12" x2="14" y2="12" stroke="#0f172a" stroke-width="2"></line>
+        <line x1="-9" y1="17" x2="9" y2="17" stroke="#0f172a" stroke-width="1.8"></line>
+        <line x1="-4" y1="22" x2="4" y2="22" stroke="#0f172a" stroke-width="1.5"></line>
+        <text x="24" y="16" font-size="11" font-weight="bold" fill="#64748b">Ref (0 V)</text>
+      </g>
+
+      <!-- Rama 1: Fuente de corriente Is1 (x=80) -->
+      <line x1="80" y1="260" x2="80" y2="150" stroke="#0f172a" stroke-width="2"></line>
+      <!-- Círculo fuente Is1 -->
+      <circle cx="80" cy="205" r="18" fill="#ffffff" stroke="#059669" stroke-width="2"></circle>
+      <line x1="80" y1="216" x2="80" y2="194" stroke="#059669" stroke-width="2" marker-end="url(#arrow-source)"></line>
+      <text x="50" y="210" font-size="12" font-weight="bold" fill="#059669" text-anchor="end">I<tspan baseline-shift="sub" font-size="0.75em">s1</tspan></text>
+
+      <!-- Rama 2: Impedancia Z1 a tierra (x=160) -->
+      <line x1="160" y1="260" x2="160" y2="150" stroke="#0f172a" stroke-width="2"></line>
+      <rect x="149" y="185" width="22" height="42" rx="3" fill="#ffffff" stroke="#0f172a" stroke-width="1.8"></rect>
+      <text x="138" y="210" font-size="12" font-style="italic" font-weight="bold" fill="#0f172a" text-anchor="end">Z<tspan baseline-shift="sub" font-size="0.75em">1</tspan></text>
+
+      <!-- Rama 3: Impedancia central Z12 de enlace entre Nodo 1 y 2 -->
+      <line x1="80" y1="150" x2="400" y2="150" stroke="#0f172a" stroke-width="2"></line>
+      <rect x="219" y="139" width="42" height="22" rx="3" fill="#ffffff" stroke="#0f172a" stroke-width="1.8"></rect>
+      <text x="240" y="132" font-size="12" font-style="italic" font-weight="bold" fill="#0f172a" text-anchor="middle">Z<tspan baseline-shift="sub" font-size="0.75em">12</tspan></text>
+
+      <!-- Rama 4: Impedancia Z2 a tierra (x=320) -->
+      <line x1="320" y1="260" x2="320" y2="150" stroke="#0f172a" stroke-width="2"></line>
+      <rect x="309" y="185" width="22" height="42" rx="3" fill="#ffffff" stroke="#0f172a" stroke-width="1.8"></rect>
+      <text x="342" y="210" font-size="12" font-style="italic" font-weight="bold" fill="#0f172a" text-anchor="start">Z<tspan baseline-shift="sub" font-size="0.75em">2</tspan></text>
+
+      <!-- Rama 5: Fuente de corriente Is2 (x=400) -->
+      <line x1="400" y1="260" x2="400" y2="150" stroke="#0f172a" stroke-width="2"></line>
+      <!-- Círculo fuente Is2 -->
+      <circle cx="400" cy="205" r="18" fill="#ffffff" stroke="#059669" stroke-width="2"></circle>
+      <line x1="400" y1="216" x2="400" y2="194" stroke="#059669" stroke-width="2" marker-end="url(#arrow-source)"></line>
+      <text x="430" y="210" font-size="12" font-weight="bold" fill="#059669" text-anchor="start">I<tspan baseline-shift="sub" font-size="0.75em">s2</tspan></text>
+
+      <!-- Destacar Nodos Esenciales -->
+      <!-- Nodo 1 -->
+      <circle cx="160" cy="150" r="7" fill="#059669" stroke="#ffffff" stroke-width="2"></circle>
+      <rect x="135" y="108" width="50" height="24" rx="12" fill="#059669"></rect>
+      <text x="160" y="124" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">V₁ (?)</text>
+
+      <!-- Nodo 2 -->
+      <circle cx="320" cy="150" r="7" fill="#059669" stroke="#ffffff" stroke-width="2"></circle>
+      <rect x="295" y="108" width="50" height="24" rx="12" fill="#059669"></rect>
+      <text x="320" y="124" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">V₂ (?)</text>
+
+      <!-- Píldoras de Conclusión Nodal -->
+      <rect x="35" y="300" width="415" height="100" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"></rect>
+      <text x="48" y="322" font-size="12" font-weight="bold" fill="#059669">✅ Ventaja Nodal: Solo 2 ecuaciones lineales</text>
+      <text x="48" y="342" font-size="11.5" fill="#334155">• Nodos independientes: <tspan font-weight="bold">N - 1 = 2 incógnitas (V₁, V₂)</tspan></text>
+      <text x="48" y="360" font-size="11.5" fill="#334155">• Matriz [Y] ensamblable directamente por inspección visual</text>
+      <text x="48" y="382" font-size="11.5" fill="#dc2626">❌ Por Mallas: Exigiría 4 mallas y tratar 2 supermallas</text>
+
+
+      <!-- ============================================================ -->
+      <!-- SEPARADOR CENTRAL                                            -->
+      <!-- ============================================================ -->
+      <line x1="480" y1="35" x2="480" y2="395" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="6 6"></line>
+      <circle cx="480" cy="215" r="16" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"></circle>
+      <text x="480" y="220" font-size="11" font-weight="bold" fill="#64748b" text-anchor="middle">VS</text>
+
+
+      <!-- ============================================================ -->
+      <!-- PANEL DERECHO: TOPOLOGÍA IDEAL PARA ANÁLISIS DE MALLAS        -->
+      <!-- ============================================================ -->
+      <!-- Fondo contenedor derecho -->
+      <rect x="490" y="15" width="455" height="400" rx="10" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.5"></rect>
+
+      <!-- Encabezado Mallas -->
+      <rect x="510" y="28" width="195" height="28" rx="6" fill="#dc2626"></rect>
+      <text x="607" y="47" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">RECOMENDADO: MALLAS</text>
+
+      <text x="510" y="78" font-size="14" font-weight="800" fill="#991b1b">Topología Plana en Escalera (Ladder)</text>
+      <text x="510" y="96" font-size="12" fill="#b91c1c">Pocas ventanas cerradas y fuentes de tensión serie</text>
+
+      <!-- Circuito Mallas (Escalera de 2 mallas) -->
+      <!-- Línea exterior -->
+      <!-- Malla 1: (545, 140) a (695, 260) -->
+      <!-- Malla 2: (695, 140) a (845, 260) -->
+      
+      <!-- Línea inferior común -->
+      <line x1="545" y1="260" x2="845" y2="260" stroke="#0f172a" stroke-width="2"></line>
+      
+      <!-- Rama Izquierda: Fuente de tensión Vs1 -->
+      <line x1="545" y1="260" x2="545" y2="140" stroke="#0f172a" stroke-width="2"></line>
+      <circle cx="545" cy="200" r="17" fill="#ffffff" stroke="#dc2626" stroke-width="2"></circle>
+      <text x="545" y="196" font-size="13" font-weight="bold" fill="#dc2626" text-anchor="middle">+</text>
+      <text x="545" y="210" font-size="14" font-weight="bold" fill="#dc2626" text-anchor="middle">-</text>
+      <text x="518" y="204" font-size="12" font-weight="bold" fill="#dc2626" text-anchor="end">V<tspan baseline-shift="sub" font-size="0.75em">s1</tspan></text>
+
+      <!-- Rama Superior Malla 1: Impedancia Za -->
+      <line x1="545" y1="140" x2="695" y2="140" stroke="#0f172a" stroke-width="2"></line>
+      <rect x="599" y="129" width="42" height="22" rx="3" fill="#ffffff" stroke="#0f172a" stroke-width="1.8"></rect>
+      <text x="620" y="123" font-size="12" font-style="italic" font-weight="bold" fill="#0f172a" text-anchor="middle">Z<tspan baseline-shift="sub" font-size="0.75em">a</tspan></text>
+
+      <!-- Rama Central Compartida: Impedancia Zc -->
+      <line x1="695" y1="140" x2="695" y2="260" stroke="#0f172a" stroke-width="2"></line>
+      <rect x="684" y="180" width="22" height="42" rx="3" fill="#ffffff" stroke="#0f172a" stroke-width="1.8"></rect>
+      <text x="674" y="204" font-size="12" font-style="italic" font-weight="bold" fill="#0f172a" text-anchor="end">Z<tspan baseline-shift="sub" font-size="0.75em">c</tspan></text>
+
+      <!-- Rama Superior Malla 2: Impedancia Zb -->
+      <line x1="695" y1="140" x2="845" y2="140" stroke="#0f172a" stroke-width="2"></line>
+      <rect x="749" y="129" width="42" height="22" rx="3" fill="#ffffff" stroke="#0f172a" stroke-width="1.8"></rect>
+      <text x="770" y="123" font-size="12" font-style="italic" font-weight="bold" fill="#0f172a" text-anchor="middle">Z<tspan baseline-shift="sub" font-size="0.75em">b</tspan></text>
+
+      <!-- Rama Derecha: Fuente de tensión Vs2 -->
+      <line x1="845" y1="140" x2="845" y2="260" stroke="#0f172a" stroke-width="2"></line>
+      <circle cx="845" cy="200" r="17" fill="#ffffff" stroke="#dc2626" stroke-width="2"></circle>
+      <text x="845" y="196" font-size="13" font-weight="bold" fill="#dc2626" text-anchor="middle">+</text>
+      <text x="845" y="210" font-size="14" font-weight="bold" fill="#dc2626" text-anchor="middle">-</text>
+      <text x="872" y="204" font-size="12" font-weight="bold" fill="#dc2626" text-anchor="start">V<tspan baseline-shift="sub" font-size="0.75em">s2</tspan></text>
+
+      <!-- Corriente de Malla 1 (Flecha circular horaria roja) -->
+      <path d="M 610,182 A 20,20 0 1,1 628,212" fill="none" stroke="#dc2626" stroke-width="2" marker-end="url(#arrow-mesh)"></path>
+      <rect x="608" y="190" width="24" height="18" rx="4" fill="#fee2e2"></rect>
+      <text x="620" y="203" font-size="12" font-weight="bold" fill="#dc2626" text-anchor="middle">I₁</text>
+
+      <!-- Corriente de Malla 2 (Flecha circular horaria roja) -->
+      <path d="M 760,182 A 20,20 0 1,1 778,212" fill="none" stroke="#dc2626" stroke-width="2" marker-end="url(#arrow-mesh)"></path>
+      <rect x="758" y="190" width="24" height="18" rx="4" fill="#fee2e2"></rect>
+      <text x="770" y="203" font-size="12" font-weight="bold" fill="#dc2626" text-anchor="middle">I₂</text>
+
+      <!-- Píldoras de Conclusión Mallas -->
+      <rect x="510" y="300" width="415" height="100" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"></rect>
+      <text x="523" y="322" font-size="12" font-weight="bold" fill="#dc2626">✅ Ventaja Mallas: Solo 2 ecuaciones lineales</text>
+      <text x="523" y="342" font-size="11.5" fill="#334155">• Lazos independientes: <tspan font-weight="bold">M = 2 mallas simples (I₁, I₂)</tspan></text>
+      <text x="523" y="360" font-size="11.5" fill="#334155">• Fuentes de tensión en serie entran directo en el vector [V]</text>
+      <text x="523" y="382" font-size="11.5" fill="#d97706">⚠️ Por Nodos: Requiere 4 nodos y lidiar con fuentes de tensión</text>
+
+    </svg>
+  </div>
 </div>
 <hr>
 </section>
@@ -524,18 +725,38 @@ window.Quarto = {
 </section>
 <section id="tratamiento-de-casos-especiales" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Tratamiento de Casos Especiales</h1>
-<pre><code>                                  ¿Qué tipos de fuentes existen?
-                                                │
-                 ┌──────────────────────────────┴──────────────────────────────┐
-                 ▼                                                             ▼
-       Solo Fuentes de Corriente                                      Fuentes de Tensión
-                 │                                                             │
-        Inspección Directa                               ┌─────────────────────┴─────────────────────┐
-        [Y][V] = [I] pura                                ▼                                           ▼
-                                             Conectada a Referencia                         Flotante
-                                                         │                                           │
-                                            Fija potencial directo:                    Requiere SUPERNODO
-                                                V_k = V_fuente                       (LCK global + Ligadura)</code></pre>
+<div class="cell" data-fig-width="8" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+    A["¿Qué tipos de fuentes&lt;br/&gt;contiene la red?"] --&gt; B["Solo fuentes&lt;br/&gt;de corriente"]
+    A --&gt; C["Fuentes&lt;br/&gt;de tensión"]
+
+    B --&gt; B1["Inspección directa&lt;br/&gt;[Y][V] = [I] pura"]
+
+    C --&gt; D["Conectada a&lt;br/&gt;referencia"]
+    C --&gt; E["Flotante"]
+
+    D --&gt; D1["Fija potencial directo:&lt;br/&gt;&lt;b&gt;V&lt;sub&gt;k&lt;/sub&gt; = V&lt;sub&gt;fuente&lt;/sub&gt;&lt;/b&gt;&lt;br/&gt;(elimina una incógnita)"]
+
+    E --&gt; E1["Requiere SUPERNODO:&lt;br/&gt;LCK global +&lt;br/&gt;ecuación de ligadura"]
+
+    classDef ok fill:#d1fae5,stroke:#059669,stroke-width:2px,color:#065f46
+    classDef warn fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#92400e
+    classDef neutral fill:#e0e7ff,stroke:#4f46e5,stroke-width:2px,color:#3730a3
+
+    class B1 ok
+    class D1 ok
+    class E1 warn
+    class A neutral
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
 <section id="caso-1-fuente-de-tensión-conectada-a-referencia" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="caso-1-fuente-de-tensión-conectada-a-referencia"><span class="header-section-number">4.1</span> Caso 1: Fuente de Tensión Conectada a Referencia</h2>
 <p>Si una fuente ideal de tensión <span class="math inline">\mathbf{V}_s</span> se encuentra conectada entre el nodo <span class="math inline">k</span> y el nodo de referencia: * El potencial del nodo <span class="math inline">k</span> queda fijado de forma unívoca: <span class="math display">\mathbf{V}_k = \mathbf{V}_s</span> * El nodo <span class="math inline">k</span> deja de ser una incógnita. Se elimina su fila en el sistema o se transfiere como término conocido al vector independiente del lado derecho.</p>
@@ -605,14 +826,25 @@ window.Quarto = {
 </div>
 <hr>
 </section>
-<section id="ejemplos-prácticos-resueltos-con-rigor" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Ejemplos Prácticos Resueltos con Rigor</h1>
+<section id="ejemplos-resueltos" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Ejemplos Resueltos</h1>
 <section id="ejercicio-1-formulación-por-inspección-directa-3-nodos-fuentes-de-corriente" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="ejercicio-1-formulación-por-inspección-directa-3-nodos-fuentes-de-corriente"><span class="header-section-number">6.1</span> Ejercicio 1 — Formulación por Inspección Directa (3 Nodos, Fuentes de Corriente)</h2>
+<div style="float: right; width: 48%; max-width: 450px; margin: 0 0 1rem 1.5rem;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="imagenes/Eje1Nodal.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
 <section id="enunciado" class="level3" data-number="6.1.1">
 <h3 data-number="6.1.1" class="anchored" data-anchor-id="enunciado"><span class="header-section-number">6.1.1</span> Enunciado</h3>
-<p>Dado el circuito de corriente alterna que opera a <span class="math inline">\omega = 1000\text{ rad/s}</span> con nodo de referencia seleccionado, dos nodos esenciales independientes (<span class="math inline">1</span> y <span class="math inline">2</span>), y los siguientes componentes: * Rama conectada entre nodo 1 y tierra: <span class="math inline">\mathbf{Z}_1 = 10 + j10\,\Omega \implies \mathbf{Y}_1 = \dfrac{1}{10+j10} = 0.05 - j0.05\,\text{S}</span>. * Rama de enlace entre nodo 1 y nodo 2: <span class="math inline">\mathbf{Z}_{12} = -j5\,\Omega \implies \mathbf{Y}_{12} = \dfrac{1}{-j5} = j0.2\,\text{S}</span>. * Rama conectada entre nodo 2 y tierra: <span class="math inline">\mathbf{Z}_2 = 20\,\Omega \implies \mathbf{Y}_2 = \dfrac{1}{20} = 0.05\,\text{S}</span>. * Fuente de corriente inyectando al nodo 1: <span class="math inline">\mathbf{I}_{s1} = 4\angle 0^\circ\,\text{A} = 4 + j0\,\text{A}</span>. * Fuente de corriente inyectando al nodo 2: <span class="math inline">\mathbf{I}_{s2} = 2\angle 90^\circ\,\text{A} = j2\,\text{A}</span>.</p>
-<p>Determinar las tensiones nodales complejas <span class="math inline">\mathbf{V}_1</span> y <span class="math inline">\mathbf{V}_2</span>.</p>
+<p>Para el circuito eléctrico en régimen permanente sinusoidal mostrado en el esquema:</p>
+<ol type="1">
+<li><strong>Formulación Matricial:</strong> Calcular las admitancias de rama <span class="math inline">\mathbf{Y}_1, \mathbf{Y}_2, \mathbf{Y}_{12}</span> y ensamblar directamente por inspección visual el sistema de ecuaciones nodales <span class="math inline">[\mathbf{Y}][\mathbf{V}] = [\mathbf{I}]</span>.</li>
+<li><strong>Determinante de Red:</strong> Evaluar el determinante nodal <span class="math inline">\Delta_Y</span> de la matriz de admitancias complejas.</li>
+<li><strong>Cálculo de Potenciales:</strong> Resolver el sistema matricial mediante determinantes (Regla de Cramer) para determinar los fasores de tensión de nodo <span class="math inline">\mathbf{V}_1</span> y <span class="math inline">\mathbf{V}_2</span> en forma rectangular y polar.</li>
+</ol>
 </section>
 <section id="solución-paso-a-paso" class="level3" data-number="6.1.2">
 <h3 data-number="6.1.2" class="anchored" data-anchor-id="solución-paso-a-paso"><span class="header-section-number">6.1.2</span> Solución Paso a Paso</h3>
@@ -642,10 +874,19 @@ j2
 </section>
 <section id="ejercicio-2-circuito-con-supernodo-flotante" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="ejercicio-2-circuito-con-supernodo-flotante"><span class="header-section-number">6.2</span> Ejercicio 2 — Circuito con Supernodo Flotante</h2>
+<div style="float: right; width: 48%; max-width: 450px; margin: 0 0 1rem 1.5rem;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="imagenes/Eje2Nodal.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
 <section id="enunciado-1" class="level3" data-number="6.2.1">
 <h3 data-number="6.2.1" class="anchored" data-anchor-id="enunciado-1"><span class="header-section-number">6.2.1</span> Enunciado</h3>
-<p>En el circuito de la figura se tienen tres nodos esenciales (<span class="math inline">1, 2</span> y tierra <span class="math inline">0</span>): * Una fuente de tensión ideal flotante <span class="math inline">\mathbf{V}_s = 20\angle 0^\circ\,\text{V}</span> conecta el nodo 1 con el nodo 2, con terminal positivo en el nodo 1: <span class="math inline">\mathbf{V}_1 - \mathbf{V}_2 = 20\,\text{V}</span>. * Nodo 1 conectado a tierra mediante una resistencia <span class="math inline">R_1 = 5\,\Omega</span> (<span class="math inline">\mathbf{Y}_1 = 0.2\,\text{S}</span>). * Nodo 2 conectado a tierra mediante un condensador con reactancia <span class="math inline">\mathbf{Z}_C = -j10\,\Omega</span> (<span class="math inline">\mathbf{Y}_2 = j0.1\,\text{S}</span>). * Nodo 2 recibe una corriente inyectada por una fuente independiente <span class="math inline">\mathbf{I}_s = 3\angle 90^\circ\,\text{A} = j3\,\text{A}</span>.</p>
-<p>Determinar los potenciales <span class="math inline">\mathbf{V}_1</span> y <span class="math inline">\mathbf{V}_2</span> y la corriente entregada por la fuente de tensión flotante.</p>
+<p>En el circuito de corriente alterna mostrado en el esquema, una fuente de tensión ideal conecta dos nodos no referenciales sin impedancia serie en su rama, originando un <strong>supernodo</strong>:<br>
+1. <strong>Ecuación de Ligadura:</strong> Establecer la relación de potenciales nodales impuesta por la fuente de tensión flotante <span class="math inline">\mathbf{V}_s</span>.<br>
+2. <strong>LCK Global del Supernodo:</strong> Plantear la ecuación de balance de corrientes en la superficie cerrada del supernodo (1-2).<br>
+3. <strong>Tensiones y Corrientes:</strong> Determinar las tensiones fasoriales de nodo <span class="math inline">\mathbf{V}_1</span> y <span class="math inline">\mathbf{V}_2</span>, así como la corriente neta suministrada por la fuente de tensión flotante.</p>
 </section>
 <section id="solución-paso-a-paso-1" class="level3" data-number="6.2.2">
 <h3 data-number="6.2.2" class="anchored" data-anchor-id="solución-paso-a-paso-1"><span class="header-section-number">6.2.2</span> Solución Paso a Paso</h3>
@@ -659,31 +900,397 @@ j2
 <hr>
 </section>
 </section>
+<section id="ejercicio-3-circuito-con-fuente-dependiente-controlada-vccs" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="ejercicio-3-circuito-con-fuente-dependiente-controlada-vccs"><span class="header-section-number">6.3</span> Ejercicio 3 — Circuito con Fuente Dependiente / Controlada (VCCS)</h2>
+<div style="float: right; width: 48%; max-width: 450px; margin: 0 0 1rem 1.5rem;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="imagenes/Eje3Nodal.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+<section id="enunciado-2" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1" class="anchored" data-anchor-id="enunciado-2"><span class="header-section-number">6.3.1</span> Enunciado</h3>
+<p>Para el circuito mostrado en el esquema, el cual incorpora una fuente de corriente dependiente controlada por la tensión del nodo 1 (<span class="math inline">\mathbf{I}_x = 0.5\,\mathbf{V}_1</span>):<br>
+1. <strong>Formulación Matricial:</strong> Plantear las ecuaciones de nodo considerando la fuente dependiente y transferir los términos de control a la matriz de admitancias para obtener el sistema <span class="math inline">[\mathbf{Y}][\mathbf{V}] = [\mathbf{I}]</span>.<br>
+2. <strong>Pérdida de Simetría:</strong> Comprobar y explicar analíticamente la asimetría de la matriz de admitancias (<span class="math inline">\mathbf{Y}_{12} \neq \mathbf{Y}_{21}</span>).<br>
+3. <strong>Tensiones y Verificación:</strong> Determinar las tensiones nodales <span class="math inline">\mathbf{V}_1</span> y <span class="math inline">\mathbf{V}_2</span>, y evaluar el valor y sentido real de la corriente suministrada por la fuente controlada.</p>
+</section>
+<section id="solución-paso-a-paso-2" class="level3" data-number="6.3.2">
+<h3 data-number="6.3.2" class="anchored" data-anchor-id="solución-paso-a-paso-2"><span class="header-section-number">6.3.2</span> Solución Paso a Paso</h3>
+<p><strong>Paso 1 — Planteamiento inicial como fuente independiente.</strong></p>
+<p>Tratamos provisionalmente la VCCS como si fuera una fuente independiente <span class="math inline">\mathbf{I}_x</span> inyectando al nodo 2. Las ecuaciones nodales por inspección directa son:</p>
+<p><span class="math display">
+\begin{aligned}
+(\mathbf{Y}_1 + \mathbf{Y}_{12})\,\mathbf{V}_1 - \mathbf{Y}_{12}\,\mathbf{V}_2 &amp;= \mathbf{I}_{s1} \\
+-\mathbf{Y}_{12}\,\mathbf{V}_1 + (\mathbf{Y}_2 + \mathbf{Y}_{12})\,\mathbf{V}_2 &amp;= \mathbf{I}_{x}
+\end{aligned}
+</span></p>
+<p>Sustituyendo valores numéricos:</p>
+<p><span class="math display">
+\begin{aligned}
+(0.1 + 0.2)\,\mathbf{V}_1 - 0.2\,\mathbf{V}_2 &amp;= 2 \\
+-0.2\,\mathbf{V}_1 + (0.05 + 0.2)\,\mathbf{V}_2 &amp;= \mathbf{I}_{x}
+\end{aligned}
+</span></p>
+<p><span class="math display">
+\begin{aligned}
+0.3\,\mathbf{V}_1 - 0.2\,\mathbf{V}_2 &amp;= 2 \\
+-0.2\,\mathbf{V}_1 + 0.25\,\mathbf{V}_2 &amp;= \mathbf{I}_{x}
+\end{aligned}
+</span></p>
+<p><strong>Paso 2 — Expresar la variable de control en términos de tensiones nodales.</strong></p>
+<p>La variable de control es <span class="math inline">\mathbf{V}_x = \mathbf{V}_1</span>, por lo que:</p>
+<p><span class="math display">\mathbf{I}_{x} = g_m \mathbf{V}_1 = 0.5\,\mathbf{V}_1</span></p>
+<p><strong>Paso 3 — Sustituir y transferir términos al lado izquierdo.</strong></p>
+<p>Reemplazando en la segunda ecuación:</p>
+<p><span class="math display">-0.2\,\mathbf{V}_1 + 0.25\,\mathbf{V}_2 = 0.5\,\mathbf{V}_1</span></p>
+<p>Pasando el término dependiente de <span class="math inline">\mathbf{V}_1</span> al lado izquierdo:</p>
+<p><span class="math display">-0.2\,\mathbf{V}_1 - 0.5\,\mathbf{V}_1 + 0.25\,\mathbf{V}_2 = 0</span></p>
+<p><span class="math display">-0.7\,\mathbf{V}_1 + 0.25\,\mathbf{V}_2 = 0</span></p>
+<p><strong>Paso 4 — Sistema matricial final.</strong></p>
+<p><span class="math display">
+\begin{bmatrix}
+0.3 &amp; -0.2 \\
+-0.7 &amp; 0.25
+\end{bmatrix}
+\begin{bmatrix}
+\mathbf{V}_1 \\
+\mathbf{V}_2
+\end{bmatrix}
+=
+\begin{bmatrix}
+2 \\
+0
+\end{bmatrix}
+</span></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>📌 Observación clave: pérdida de simetría
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Compárese la matriz <span class="math inline">[\mathbf{Y}]</span> resultante:</p>
+<p><span class="math display">
+[\mathbf{Y}] =
+\begin{bmatrix}
+0.3 &amp; -0.2 \\
+-0.7 &amp; 0.25
+\end{bmatrix}
+</span></p>
+<p>El elemento <span class="math inline">\mathbf{Y}_{21} = -0.7</span> <strong>ya no es igual</strong> a <span class="math inline">\mathbf{Y}_{12} = -0.2</span>. La fuente controlada ha introducido un acoplamiento asimétrico: la tensión del nodo 1 afecta la corriente inyectada al nodo 2, pero no al revés. Esta es la firma matemática de una fuente dependiente en el análisis nodal.</p>
+</div>
+</div>
+<p><strong>Paso 5 — Resolución por Regla de Cramer.</strong></p>
+<p>Determinante principal:</p>
+<p><span class="math display">\Delta_Y = (0.3)(0.25) - (-0.2)(-0.7) = 0.075 - 0.14 = -0.065\,\text{S}^2</span></p>
+<p>Tensión del nodo 1:</p>
+<p><span class="math display">\mathbf{V}_1 = \frac{\det\begin{bmatrix} 2 &amp; -0.2 \\ 0 &amp; 0.25 \end{bmatrix}}{\Delta_Y} = \frac{(2)(0.25) - (-0.2)(0)}{-0.065} = \frac{0.5}{-0.065} \approx -7.692\,\text{V}</span></p>
+<p>Tensión del nodo 2:</p>
+<p><span class="math display">\mathbf{V}_2 = \frac{\det\begin{bmatrix} 0.3 &amp; 2 \\ -0.7 &amp; 0 \end{bmatrix}}{\Delta_Y} = \frac{(0.3)(0) - (2)(-0.7)}{-0.065} = \frac{1.4}{-0.065} \approx -21.538\,\text{V}</span></p>
+<p><span class="math display">
+\boxed{\mathbf{V}_1 \approx -7.69\,\text{V}, \qquad \mathbf{V}_2 \approx -21.54\,\text{V}}
+</span></p>
+<p><strong>Paso 6 — Verificación de la corriente controlada.</strong></p>
+<p><span class="math display">\mathbf{I}_{x} = g_m \mathbf{V}_1 = 0.5(-7.692) = -3.846\,\text{A}</span></p>
+<p>Es decir, la VCCS en realidad <strong>absorbe</strong> corriente del nodo 2 (inyecta corriente negativa), lo cual es consistente con el signo negativo de <span class="math inline">\mathbf{V}_1</span>. Este tipo de verificación es esencial: un resultado con signo inesperado suele revelar un error de convenio, no de álgebra.</p>
+</section>
+</section>
+<section id="ejercicio-4-circuito-con-fuentes-controladas-vcvs-cccs" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="ejercicio-4-circuito-con-fuentes-controladas-vcvs-cccs"><span class="header-section-number">6.4</span> Ejercicio 4 — Circuito con Fuentes Controladas (VCVS + CCCS)</h2>
+<div style="float: right; width: 48%; max-width: 450px; margin: 0 0 1rem 1.5rem;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="imagenes/Ejercicio4Nodal.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+<section id="enunciado-3" class="level3" data-number="6.4.1">
+<h3 data-number="6.4.1" class="anchored" data-anchor-id="enunciado-3"><span class="header-section-number">6.4.1</span> Enunciado</h3>
+<p>Para el circuito mostrado en el esquema, que incorpora una fuente de tensión controlada por tensión (VCVS) de valor <span class="math inline">0.1\,\mathbf{V}_o</span> y una fuente de corriente controlada por corriente (CCCS) de valor <span class="math inline">8\,\mathbf{I}_o</span>:</p>
+<ol type="1">
+<li><strong>Variables de control:</strong> Expresar <span class="math inline">\mathbf{V}_o</span> e <span class="math inline">\mathbf{I}_o</span> en términos de las tensiones nodales.</li>
+<li><strong>Formulación Matricial:</strong> Plantear las ecuaciones nodales tratando adecuadamente la VCVS y la CCCS.</li>
+<li><strong>Cálculo de Potenciales:</strong> Determinar las tensiones nodales <span class="math inline">\mathbf{V}_A</span>, <span class="math inline">\mathbf{V}_B</span>, <span class="math inline">\mathbf{V}_C</span> y la tensión de salida <span class="math inline">\mathbf{V}_o</span>.</li>
+</ol>
+</section>
+<section id="solución-paso-a-paso-3" class="level3" data-number="6.4.2">
+<h3 data-number="6.4.2" class="anchored" data-anchor-id="solución-paso-a-paso-3"><span class="header-section-number">6.4.2</span> Solución Paso a Paso</h3>
+<p><strong>Paso 1 — Definición de nodos y variables de control.</strong></p>
+<p>Sea el nodo de referencia la rama inferior (tierra, <span class="math inline">0\,\text{V}</span>). Los nodos esenciales son:</p>
+<ul>
+<li><strong>Nodo A:</strong> unión de la fuente <span class="math inline">8\angle 20°\,\text{V}</span>, la resistencia <span class="math inline">4\,\Omega</span> y el terminal positivo de la VCVS.</li>
+<li><strong>Nodo B:</strong> terminal negativo de la VCVS, unión con la CCCS <span class="math inline">8\mathbf{I}_o</span> y el condensador <span class="math inline">-j5\,\Omega</span>.</li>
+<li><strong>Nodo C:</strong> unión del condensador <span class="math inline">-j5\,\Omega</span>, la inductancia <span class="math inline">j5\,\Omega</span> y la resistencia <span class="math inline">10\,\Omega</span>. Aquí se mide <span class="math inline">\mathbf{V}_o</span>.</li>
+</ul>
+<p>Las variables de control se expresan como:</p>
+<p><span class="math display">\mathbf{V}_o = \mathbf{V}_C</span></p>
+<p><span class="math display">\mathbf{I}_o = \frac{\mathbf{V}_B - \mathbf{V}_A}{4} \qquad \text{(sentido de B hacia A, según el esquema)}</span></p>
+<p><strong>Paso 2 — Ecuación de ligadura de la VCVS.</strong></p>
+<p>La VCVS impone la relación:</p>
+<p><span class="math display">\mathbf{V}_A - \mathbf{V}_B = 0.1\,\mathbf{V}_o = 0.1\,\mathbf{V}_C</span></p>
+<p>Como el nodo A está fijado por la fuente independiente:</p>
+<p><span class="math display">\mathbf{V}_A = 8\angle 20°\,\text{V}</span></p>
+<p>se obtiene la ecuación de ligadura:</p>
+<p><span class="math display">\mathbf{V}_B = 8\angle 20° - 0.1\,\mathbf{V}_C \qquad \text{[Ligadura]}</span></p>
+<p><strong>Paso 3 — LCK en el nodo B.</strong></p>
+<p>Corrientes que salen del nodo B:</p>
+<ul>
+<li>Hacia A por <span class="math inline">4\,\Omega</span>: <span class="math inline">\dfrac{\mathbf{V}_B - \mathbf{V}_A}{4} = \mathbf{I}_o</span></li>
+<li>Hacia tierra por la CCCS: <span class="math inline">8\,\mathbf{I}_o</span></li>
+<li>Hacia C por <span class="math inline">-j5\,\Omega</span>: <span class="math inline">\dfrac{\mathbf{V}_B - \mathbf{V}_C}{-j5}</span></li>
+</ul>
+<p>Balance de corrientes:</p>
+<p><span class="math display">\frac{\mathbf{V}_B - \mathbf{V}_A}{4} + 8\,\mathbf{I}_o + \frac{\mathbf{V}_B - \mathbf{V}_C}{-j5} = 0</span></p>
+<p>Sustituyendo <span class="math inline">\mathbf{I}_o</span>:</p>
+<p><span class="math display">\frac{9(\mathbf{V}_B - \mathbf{V}_A)}{4} + j\frac{\mathbf{V}_B - \mathbf{V}_C}{5} = 0 \qquad \text{[Ecuación B]}</span></p>
+<p><strong>Paso 4 — LCK en el nodo C.</strong></p>
+<p>Corrientes que salen de C:</p>
+<ul>
+<li>Hacia B por <span class="math inline">-j5\,\Omega</span>: <span class="math inline">\dfrac{\mathbf{V}_C - \mathbf{V}_B}{-j5}</span></li>
+<li>A tierra por <span class="math inline">j5\,\Omega</span>: <span class="math inline">\dfrac{\mathbf{V}_C}{j5}</span></li>
+<li>A tierra por <span class="math inline">10\,\Omega</span>: <span class="math inline">\dfrac{\mathbf{V}_C}{10}</span></li>
+</ul>
+<p>Balance de corrientes:</p>
+<p><span class="math display">\frac{\mathbf{V}_C - \mathbf{V}_B}{-j5} + \frac{\mathbf{V}_C}{j5} + \frac{\mathbf{V}_C}{10} = 0</span></p>
+<p>Simplificando:</p>
+<p><span class="math display">-\frac{j\mathbf{V}_B}{5} + \frac{\mathbf{V}_C}{10} = 0 \implies \boxed{\mathbf{V}_C = j2\,\mathbf{V}_B} \qquad \text{[Ecuación C]}</span></p>
+<p><strong>Paso 5 — Sustitución y resolución.</strong></p>
+<p>Sustituyendo <span class="math inline">\mathbf{V}_C = j2\,\mathbf{V}_B</span> en la Ecuación B:</p>
+<p><span class="math display">\frac{9(\mathbf{V}_B - \mathbf{V}_A)}{4} + \frac{j\mathbf{V}_B(1 - j2)}{5} = 0</span></p>
+<p><span class="math display">\frac{9\mathbf{V}_B}{4} - \frac{9\mathbf{V}_A}{4} + \frac{(2 + j)\mathbf{V}_B}{5} = 0</span></p>
+<p><span class="math display">\mathbf{V}_B\left(\frac{9}{4} + \frac{2+j}{5}\right) = \frac{9\mathbf{V}_A}{4}</span></p>
+<p><span class="math display">(2.65 + j0.2)\,\mathbf{V}_B = 2.25\,\mathbf{V}_A</span></p>
+<p>Despejando <span class="math inline">\mathbf{V}_B</span>:</p>
+<p><span class="math display">\mathbf{V}_B = \frac{2.25 \cdot 8\angle 20°}{2.6575\angle 4.32°} = 6.774\angle 15.68°\,\text{V}</span></p>
+<p><span class="math display">\boxed{\mathbf{V}_B \approx 6.774\angle 15.68°\,\text{V} \approx 6.52 + j1.83\,\text{V}}</span></p>
+<p>Calculando <span class="math inline">\mathbf{V}_C</span>:</p>
+<p><span class="math display">\mathbf{V}_C = j2\,\mathbf{V}_B = 2\angle 90° \cdot 6.774\angle 15.68° = 13.548\angle 105.68°\,\text{V}</span></p>
+<p><span class="math display">\boxed{\mathbf{V}_o = \mathbf{V}_C \approx 13.55\angle 105.68°\,\text{V} \approx -3.66 + j13.04\,\text{V}}</span></p>
+<p><strong>Paso 6 — Verificación por LCK.</strong></p>
+<p>Sustituyendo los valores numéricos en la Ecuación B:</p>
+<ul>
+<li><span class="math inline">\mathbf{V}_A = 7.518 + j2.736\,\text{V}</span></li>
+<li><span class="math inline">\mathbf{V}_B = 6.522 + j1.832\,\text{V}</span></li>
+<li><span class="math inline">\mathbf{V}_C = -3.66 + j13.04\,\text{V}</span></li>
+</ul>
+<p>Término 1:</p>
+<p><span class="math display">\frac{9(\mathbf{V}_B - \mathbf{V}_A)}{4} = \frac{9(-0.996 - j0.904)}{4} = -2.241 - j2.034</span></p>
+<p>Término 2:</p>
+<p><span class="math display">j\frac{\mathbf{V}_B - \mathbf{V}_C}{5} = j\frac{10.182 - j11.208}{5} = 2.242 + j2.036</span></p>
+<p>Suma de ambos términos:</p>
+<p><span class="math display">(-2.241 + 2.242) + j(-2.034 + 2.036) \approx 0 \quad ✔</span></p>
+<p>La ecuación de LCK se satisface, confirmando la consistencia del resultado.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>📌 Observación clave: pérdida de simetría
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La presencia simultánea de una VCVS y una CCCS introduce <strong>dos acoplamientos asimétricos</strong> en el circuito:</p>
+<ol type="1">
+<li>La VCVS acopla el nodo A con el nodo C mediante la variable de control <span class="math inline">\mathbf{V}_o</span>.</li>
+<li>La CCCS acopla el nodo B consigo mismo mediante la variable de control <span class="math inline">\mathbf{I}_o</span>, que depende de <span class="math inline">\mathbf{V}_B - \mathbf{V}_A</span>.</li>
+</ol>
+<p>Como consecuencia, la matriz de admitancias <strong>no es simétrica</strong> (<span class="math inline">\mathbf{Y}_{ij} \neq \mathbf{Y}_{ji}</span>) y el sistema debe resolverse por sustitución directa o por formulación matricial aumentada, <strong>no por simple inspección</strong>.</p>
+</div>
+</div>
+<p><strong>Paso 7 — Cálculo de la corriente de control.</strong></p>
+<p><span class="math display">\mathbf{I}_o = \frac{\mathbf{V}_B - \mathbf{V}_A}{4} = \frac{-0.996 - j0.904}{4} = -0.249 - j0.226\,\text{A}</span></p>
+<p><span class="math display">\boxed{\mathbf{I}_o \approx 0.336\angle -137.8°\,\text{A}}</span></p>
+<p>El signo negativo de la parte real e imaginaria indica que la corriente instantánea circula en sentido opuesto al supuesto durante parte del ciclo, lo cual es coherente con el desfase introducido por la VCVS.</p>
+</section>
+</section>
+<section id="ejercicio-5-circuito-mixto-con-fuente-de-tensión-y-fuente-de-corriente" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="ejercicio-5-circuito-mixto-con-fuente-de-tensión-y-fuente-de-corriente"><span class="header-section-number">6.5</span> Ejercicio 5 — Circuito Mixto con Fuente de Tensión y Fuente de Corriente</h2>
+<div style="float: right; width: 48%; max-width: 450px; margin: 0 0 1rem 1.5rem;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="imagenes/Ejercicio5Nodal.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+<section id="enunciado-4" class="level3" data-number="6.5.1">
+<h3 data-number="6.5.1" class="anchored" data-anchor-id="enunciado-4"><span class="header-section-number">6.5.1</span> Enunciado</h3>
+<p>Para el circuito mostrado en el esquema, que opera en régimen permanente sinusoidal:</p>
+<ol type="1">
+<li><strong>Identificación de nodos:</strong> Determinar el número de nodos esenciales y elegir la referencia.</li>
+<li><strong>Formulación Matricial:</strong> Plantear el sistema <span class="math inline">[\mathbf{Y}][\mathbf{V}] = [\mathbf{I}]</span> por inspección directa.</li>
+<li><strong>Cálculo del potencial nodal:</strong> Determinar la tensión fasorial <span class="math inline">\mathbf{V}</span> en el nodo superior.</li>
+</ol>
+</section>
+<section id="solución-paso-a-paso-4" class="level3" data-number="6.5.2">
+<h3 data-number="6.5.2" class="anchored" data-anchor-id="solución-paso-a-paso-4"><span class="header-section-number">6.5.2</span> Solución Paso a Paso</h3>
+<p><strong>Paso 1 — Identificación de nodos y referencia.</strong></p>
+<ul>
+<li><strong>Nodo de referencia:</strong> La tierra inferior (conectada al terminal negativo de la fuente de <span class="math inline">120\angle -15^\circ\,\text{V}</span>).</li>
+<li><strong>Nodo 1:</strong> Nodo entre la resistencia de <span class="math inline">40\,\Omega</span> y la inductancia <span class="math inline">j20\,\Omega</span>. Llamémoslo <span class="math inline">\mathbf{V}_1</span>.</li>
+<li><strong>Nodo 2:</strong> Nodo superior derecho, donde se conectan la fuente de corriente, el condensador y la resistencia de <span class="math inline">50\,\Omega</span>. Es la tensión pedida <span class="math inline">\mathbf{V}</span>.</li>
+</ul>
+<p><strong>Paso 2 — Ecuación de ligadura de la fuente de tensión.</strong></p>
+<p>La fuente de <span class="math inline">120\angle -15^\circ\,\text{V}</span> está conectada a referencia por su terminal negativo, así que fija directamente el potencial del nodo 1:</p>
+<p><span class="math display">\mathbf{V}_1 = 120\angle -15^\circ\,\text{V} = 115.91 - j31.06\,\text{V}</span></p>
+<p><strong>Paso 3 — LCK en el nodo 2 (única incógnita).</strong></p>
+<p>En el nodo 2 confluyen:</p>
+<ul>
+<li><p>Corriente que entra desde el nodo 1 a través de la rama serie <span class="math inline">40\,\Omega + j20\,\Omega</span>: <span class="math display">\mathbf{I}_{12} = \frac{\mathbf{V}_1 - \mathbf{V}}{40 + j20}</span></p></li>
+<li><p>Fuente de corriente <span class="math inline">6\angle 30^\circ\,\text{A}</span> <strong>inyectando</strong> al nodo 2 (la flecha apunta hacia abajo, hacia tierra; según el símbolo, entra al nodo desde arriba, pero como está conectada a tierra, <strong>sale</strong> del nodo 2 hacia tierra). Adoptamos el criterio de la regla de oro: fuentes que <strong>entran</strong> al nodo suman positivo.</p></li>
+<li><p>Corriente por el condensador <span class="math inline">-j30\,\Omega</span>: <span class="math display">\mathbf{I}_C = \frac{\mathbf{V}}{-j30} = j\frac{\mathbf{V}}{30}</span></p></li>
+<li><p>Corriente por la resistencia <span class="math inline">50\,\Omega</span>: <span class="math display">\mathbf{I}_R = \frac{\mathbf{V}}{50}</span></p></li>
+</ul>
+<p>Aplicando LCK (corrientes salientes = corrientes entrantes):</p>
+<p><span class="math display">\frac{\mathbf{V} - \mathbf{V}_1}{40 + j20} + \frac{\mathbf{V}}{-j30} + \frac{\mathbf{V}}{50} = 6\angle 30^\circ</span></p>
+<p><strong>Paso 4 — Agrupación y resolución.</strong></p>
+<p>Pasando <span class="math inline">\mathbf{V}_1</span> al lado derecho:</p>
+<p><span class="math display">\mathbf{V}\left[\frac{1}{40 + j20} + \frac{1}{-j30} + \frac{1}{50}\right] = 6\angle 30^\circ + \frac{\mathbf{V}_1}{40 + j20}</span></p>
+<p>Calculamos cada admitancia:</p>
+<p><span class="math display">\mathbf{Y}_{40+j20} = \frac{1}{40 + j20} = \frac{40 - j20}{40^2 + 20^2} = \frac{40 - j20}{2000} = 0.02 - j0.01\,\text{S}</span></p>
+<p><span class="math display">\mathbf{Y}_{-j30} = \frac{1}{-j30} = j\frac{1}{30} = j0.0333\,\text{S}</span></p>
+<p><span class="math display">\mathbf{Y}_{50} = \frac{1}{50} = 0.02\,\text{S}</span></p>
+<p>Suma de admitancias:</p>
+<p><span class="math display">\mathbf{Y}_{\text{total}} = (0.02 - j0.01) + j0.0333 + 0.02 = 0.04 + j0.0233\,\text{S}</span></p>
+<p>Término independiente:</p>
+<p><span class="math display">\frac{\mathbf{V}_1}{40 + j20} = (0.02 - j0.01)(115.91 - j31.06)</span></p>
+<p><span class="math display">= 0.02(115.91) - 0.02(j31.06) - j0.01(115.91) + j0.01(j31.06)</span></p>
+<p><span class="math display">= 2.318 - j0.621 - j1.159 - 0.311</span></p>
+<p><span class="math display">= 2.007 - j1.780\,\text{A}</span></p>
+<p><span class="math display">6\angle 30^\circ = 5.196 + j3.0\,\text{A}</span></p>
+<p>Término derecho total:</p>
+<p><span class="math display">\mathbf{I}_{\text{total}} = (5.196 + j3.0) + (2.007 - j1.780) = 7.203 + j1.220\,\text{A}</span></p>
+<p>Finalmente:</p>
+<p><span class="math display">\mathbf{V} = \frac{7.203 + j1.220}{0.04 + j0.0233} = \frac{7.203 + j1.220}{0.0463\angle 30.22^\circ}</span></p>
+<p><span class="math display">= \frac{7.306\angle 9.62^\circ}{0.0463\angle 30.22^\circ} = 157.8\angle -20.6^\circ\,\text{V}</span></p>
+<p><span class="math display">\boxed{\mathbf{V} \approx 157.8\,\angle\,-20.6^\circ\,\text{V}}</span></p>
+<p><strong>Paso 5 — Verificación por LCK.</strong></p>
+<p>Comprobamos que la corriente total que sale del nodo 2 hacia las tres ramas coincide con la que entra desde el nodo 1 más la fuente:</p>
+<p><span class="math display">\mathbf{I}_{\text{sale}} = \frac{\mathbf{V} - \mathbf{V}_1}{40 + j20} + \frac{\mathbf{V}}{-j30} + \frac{\mathbf{V}}{50}</span></p>
+<p><span class="math display">= \frac{(157.8\angle -20.6^\circ) - (120\angle -15^\circ)}{44.72\angle 26.57^\circ} + \frac{157.8\angle -20.6^\circ}{30\angle -90^\circ} + \frac{157.8\angle -20.6^\circ}{50}</span></p>
+<p><span class="math display">= \frac{148.4 - j55.5 - 115.9 + j31.1}{44.72\angle 26.57^\circ} + 5.26\angle 69.4^\circ + 3.156\angle -20.6^\circ</span></p>
+<p><span class="math display">= \frac{32.5 - j24.4}{44.72\angle 26.57^\circ} + 5.26\angle 69.4^\circ + 3.156\angle -20.6^\circ</span></p>
+<p><span class="math display">= 0.909\angle -63.4^\circ + 5.26\angle 69.4^\circ + 3.156\angle -20.6^\circ</span></p>
+<p><span class="math display">= (0.408 - j0.812) + (1.850 + j4.925) + (2.954 - j1.111) = 5.212 + j3.002 \approx 6\angle 30^\circ\,\text{A}</span></p>
+<p>✔ Coincide con la fuente de corriente. <strong>Verificación exitosa.</strong></p>
+</section>
+</section>
+<section id="ejercicio-6-red-en-puente-de-ca-transformación-fasorial-y-eficiencia-nodal" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="ejercicio-6-red-en-puente-de-ca-transformación-fasorial-y-eficiencia-nodal"><span class="header-section-number">6.6</span> Ejercicio 6 — Red en Puente de CA: Transformación Fasorial y Eficiencia Nodal</h2>
+<div style="float: right; width: 45%; max-width: 440px; margin: 0 0 1rem 1.5rem;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="imagenes/Eje6NOdal.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+<section id="enunciado-5" class="level3" data-number="6.6.1">
+<h3 data-number="6.6.1" class="anchored" data-anchor-id="enunciado-5"><span class="header-section-number">6.6.1</span> Enunciado</h3>
+<p>Para el circuito en puente de corriente alterna alimentado por una fuente sinusoidal <span class="math inline">\mathbf{E} = 10\angle 0^\circ\,\text{V}</span> a una frecuencia <span class="math inline">f = 100\,\text{Hz}</span>:</p>
+<ol type="1">
+<li><strong>Modelado en el Dominio Fasorial:</strong> Determinar la pulsación angular <span class="math inline">\omega</span>, las reactancias de los elementos dinámicos y las impedancias/admitancias complejas de las 5 ramas pasivas (<span class="math inline">\mathbf{Z}_1</span> a <span class="math inline">\mathbf{Z}_5</span>).</li>
+<li><strong>Evaluación de Complejidad Topológica:</strong> Justificar cuantitativamente por qué el análisis nodal reduce la dimensión del problema a un sistema <span class="math inline">2 \times 2</span>, frente a las 3 ecuaciones que exigiría el método de mallas.</li>
+<li><strong>Formulación y Resolución Nodal:</strong> Tomando el nodo inferior como referencia (tierra, <span class="math inline">0\,\text{V}</span>), plantear el sistema matricial de admitancias <span class="math inline">[\mathbf{Y}][\mathbf{V}] = [\mathbf{I}]</span> y resolver los potenciales nodales <span class="math inline">\mathbf{V}_A</span> (nodo central izquierdo) y <span class="math inline">\mathbf{V}_B</span> (nodo central derecho).</li>
+<li><strong>Respuesta en el Detector:</strong> Calcular la tensión fasorial diferencial <span class="math inline">\mathbf{V}_{AB}</span> en el resistor central <span class="math inline">R_5 = 500\,\Omega</span> y la corriente fasorial <span class="math inline">\mathbf{I}_5</span> que fluye a través de él.</li>
+</ol>
+</section>
+<section id="solución-paso-a-paso-5" class="level3" data-number="6.6.2">
+<h3 data-number="6.6.2" class="anchored" data-anchor-id="solución-paso-a-paso-5"><span class="header-section-number">6.6.2</span> Solución Paso a Paso</h3>
+<p><strong>Paso 1 — Parámetros en el Dominio Fasorial.</strong></p>
+<p>La frecuencia angular de excitación es:</p>
+<p><span class="math display">\omega = 2\pi f = 2\pi(100) \approx 628.32\,\text{rad/s}</span></p>
+<p>Calculamos las impedancias y admitancias complejas de cada rama:</p>
+<ul>
+<li><p><strong>Rama 1 (<span class="math inline">R_1 \parallel C_1</span>):</strong> <span class="math display">X_{C1} = \frac{1}{\omega C_1} = \frac{1}{(628.32)(10 \times 10^{-6})} \approx 159.15\,\Omega \implies \mathbf{Z}_{C1} = -j159.15\,\Omega</span> <span class="math display">\mathbf{Z}_1 = \frac{R_1 \cdot (-jX_{C1})}{R_1 - jX_{C1}} = \frac{100(-j159.15)}{100 - j159.15} \approx \mathbf{71.70 - j45.05\,\Omega}</span> Su admitancia de rama se obtiene sumando conductancia y susceptancia en paralelo: <span class="math display">\mathbf{Y}_1 = \frac{1}{R_1} + j\omega C_1 = \frac{1}{100} + j(628.32)(10 \times 10^{-6}) = \mathbf{0.01 + j0.006283\,\text{S}}</span></p></li>
+<li><p><strong>Rama 2 (<span class="math inline">R_2</span>):</strong> <span class="math display">\mathbf{Z}_2 = 200\,\Omega \implies \mathbf{Y}_2 = \frac{1}{200} = \mathbf{0.005\,\text{S}}</span></p></li>
+<li><p><strong>Rama 3 (<span class="math inline">R_3</span>):</strong> <span class="math display">\mathbf{Z}_3 = 300\,\Omega \implies \mathbf{Y}_3 = \frac{1}{300} \approx \mathbf{0.003333\,\text{S}}</span></p></li>
+<li><p><strong>Rama 4 (<span class="math inline">R_4</span> en serie con <span class="math inline">L_4</span>):</strong> <span class="math display">X_{L4} = \omega L_4 = (628.32)(0.1) \approx 62.83\,\Omega</span> <span class="math display">\mathbf{Z}_4 = R_4 + jX_{L4} = \mathbf{400 + j62.83\,\Omega}</span> <span class="math display">\mathbf{Y}_4 = \frac{1}{400 + j62.83} = \frac{400 - j62.83}{400^2 + 62.83^2} = \frac{400 - j62.83}{163948} \approx \mathbf{0.002440 - j0.000383\,\text{S}}</span></p></li>
+<li><p><strong>Rama 5 (<span class="math inline">R_5</span>, puente central):</strong> <span class="math display">\mathbf{Z}_5 = 500\,\Omega \implies \mathbf{Y}_5 = \frac{1}{500} = \mathbf{0.002\,\text{S}}</span></p></li>
+</ul>
+<p><strong>Paso 2 — Análisis de Complejidad: Nodal (<span class="math inline">2 \times 2</span>) vs Mallas (<span class="math inline">3 \times 3</span>).</strong></p>
+<ul>
+<li><strong>Método de Mallas:</strong> El puente con la fuente de alimentación contiene <strong>3 ventanas planares independientes</strong> (mallas <span class="math inline">I_1, I_2, I_3</span>), exigiendo resolver un sistema de 3 ecuaciones complejas acopladas.</li>
+<li><strong>Método Nodal:</strong> La red posee 4 nodos esenciales. Al asignar el nodo inferior como referencia (<span class="math inline">0\,\text{V}</span>), la fuente independiente <span class="math inline">\mathbf{E} = 10\angle 0^\circ\,\text{V}</span> queda conectada directamente entre el nodo superior y tierra, <strong>fijando de forma unívoca el potencial superior</strong>: <span class="math display">\mathbf{V}_{\text{superior}} = \mathbf{E} = 10\angle 0^\circ\,\text{V}</span> Por lo tanto, <strong>solo restan 2 incógnitas nodales</strong>: el nodo izquierdo <span class="math inline">\mathbf{V}_A</span> y el nodo derecho <span class="math inline">\mathbf{V}_B</span>. El sistema se reduce drásticamente a una matriz de <strong><span class="math inline">2 \times 2</span></strong>.</li>
+</ul>
+<p><strong>Paso 3 — Formulación Matricial Nodal.</strong></p>
+<p>Planteamos las ecuaciones de Kirchhoff de corriente (LCK) para los dos nodos libres:</p>
+<ul>
+<li><p><strong>LCK en el Nodo A (entre <span class="math inline">\mathbf{Z}_1</span>, <span class="math inline">\mathbf{Z}_3</span> y <span class="math inline">\mathbf{Z}_5</span>):</strong> <span class="math display">(\mathbf{V}_A - \mathbf{E})\mathbf{Y}_1 + \mathbf{V}_A \mathbf{Y}_3 + (\mathbf{V}_A - \mathbf{V}_B)\mathbf{Y}_5 = 0</span> <span class="math display">\mathbf{V}_A (\underbrace{\mathbf{Y}_1 + \mathbf{Y}_3 + \mathbf{Y}_5}_{\mathbf{Y}_{AA}}) - \mathbf{V}_B (\underbrace{\mathbf{Y}_5}_{-\mathbf{Y}_{AB}}) = \mathbf{E}\mathbf{Y}_1</span></p>
+<p>Calculando coeficientes: <span class="math display">\mathbf{Y}_{AA} = (0.01 + j0.006283) + 0.003333 + 0.002 = \mathbf{0.015333 + j0.006283\,\text{S}}</span> <span class="math display">\mathbf{Y}_{AB} = \mathbf{Y}_{BA} = -\mathbf{Y}_5 = \mathbf{-0.002\,\text{S}}</span> <span class="math display">\mathbf{I}_A = \mathbf{E}\mathbf{Y}_1 = 10(0.01 + j0.006283) = \mathbf{0.10 + j0.06283\,\text{A}}</span></p></li>
+<li><p><strong>LCK en el Nodo B (entre <span class="math inline">\mathbf{Z}_2</span>, <span class="math inline">\mathbf{Z}_4</span> y <span class="math inline">\mathbf{Z}_5</span>):</strong> <span class="math display">(\mathbf{V}_B - \mathbf{E})\mathbf{Y}_2 + \mathbf{V}_B \mathbf{Y}_4 + (\mathbf{V}_B - \mathbf{V}_A)\mathbf{Y}_5 = 0</span> <span class="math display">-\mathbf{V}_A (\mathbf{Y}_5) + \mathbf{V}_B (\underbrace{\mathbf{Y}_2 + \mathbf{Y}_4 + \mathbf{Y}_5}_{\mathbf{Y}_{BB}}) = \mathbf{E}\mathbf{Y}_2</span></p>
+<p>Calculando coeficientes: <span class="math display">\mathbf{Y}_{BB} = 0.005 + (0.002440 - j0.000383) + 0.002 = \mathbf{0.009440 - j0.000383\,\text{S}}</span> <span class="math display">\mathbf{I}_B = \mathbf{E}\mathbf{Y}_2 = 10(0.005) = \mathbf{0.05 + j0\,\text{A}}</span></p></li>
+</ul>
+<p>Sistema Matricial <span class="math inline">[\mathbf{Y}][\mathbf{V}] = [\mathbf{I}]</span>: <span class="math display">
+\begin{bmatrix}
+0.015333 + j0.006283 &amp; -0.002 \\
+-0.002 &amp; 0.009440 - j0.000383
+\end{bmatrix}
+\begin{bmatrix}
+\mathbf{V}_A \\
+\mathbf{V}_B
+\end{bmatrix}
+=
+\begin{bmatrix}
+0.10 + j0.06283 \\
+0.05
+\end{bmatrix}
+</span></p>
+<p><strong>Paso 4 — Resolución por Regla de Cramer.</strong></p>
+<p>Calculamos el determinante principal <span class="math inline">\Delta_Y</span>:</p>
+<p><span class="math display">\Delta_Y = \mathbf{Y}_{AA}\mathbf{Y}_{BB} - (\mathbf{Y}_{AB})^2</span> <span class="math display">\Delta_Y = (0.015333 + j0.006283)(0.009440 - j0.000383) - (-0.002)^2</span> <span class="math display">\Delta_Y \approx \mathbf{0.00014315 + j0.00005344\,\text{S}^2} = \mathbf{1.528 \times 10^{-4}\angle 20.47^\circ\,\text{S}^2}</span></p>
+<p>Determinante para <span class="math inline">\mathbf{V}_A</span>: <span class="math display">\Delta_{V_A} = \det\begin{bmatrix} 0.10 + j0.06283 &amp; -0.002 \\ 0.05 &amp; 0.009440 - j0.000383 \end{bmatrix} \approx \mathbf{0.0010681 + j0.0005548\,\text{V}\cdot\text{S}}</span> <span class="math display">\mathbf{V}_A = \frac{\Delta_{V_A}}{\Delta_Y} \approx \mathbf{7.818 + j0.957\,\text{V}} = \boxed{\mathbf{7.88\,\angle\,6.98^\circ\,\text{V}}}</span></p>
+<p>Determinante para <span class="math inline">\mathbf{V}_B</span>: <span class="math display">\Delta_{V_B} = \det\begin{bmatrix} 0.015333 + j0.006283 &amp; 0.10 + j0.06283 \\ -0.002 &amp; 0.05 \end{bmatrix} \approx \mathbf{0.0009667 + j0.0004398\,\text{V}\cdot\text{S}}</span> <span class="math display">\mathbf{V}_B = \frac{\Delta_{V_B}}{\Delta_Y} \approx \mathbf{6.934 + j0.484\,\text{V}} = \boxed{\mathbf{6.95\,\angle\,4.00^\circ\,\text{V}}}</span></p>
+<p><strong>Paso 5 — Tensión y Corriente en el Resistor del Puente (<span class="math inline">R_5</span>).</strong></p>
+<p>La tensión de desbalance en los terminales de <span class="math inline">R_5</span> (de izquierda a derecha):</p>
+<p><span class="math display">\mathbf{V}_{AB} = \mathbf{V}_A - \mathbf{V}_B = (7.818 + j0.957) - (6.934 + j0.484) = \mathbf{0.885 + j0.473\,\text{V}}</span> <span class="math display">\boxed{\mathbf{V}_{AB} \approx 1.003\,\angle\,28.12^\circ\,\text{V}}</span></p>
+<p>La corriente fasorial que atraviesa el puente (de <span class="math inline">A</span> hacia <span class="math inline">B</span>) es:</p>
+<p><span class="math display">\mathbf{I}_5 = \frac{\mathbf{V}_{AB}}{R_5} = \frac{1.003\angle 28.12^\circ}{500} = \mathbf{2.007 \times 10^{-3}\angle 28.12^\circ\,\text{A}}</span> <span class="math display">\boxed{\mathbf{I}_5 \approx 2.01\,\angle\,28.12^\circ\,\text{mA}}</span></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>💡 Conclusión y Comparativa con Mallas
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Observa que la corriente <span class="math inline">\mathbf{I}_5</span> coincide de forma exacta con la corriente obtenida al resolver las 3 mallas simultáneas (<span class="math inline">\mathbf{I}_3 - \mathbf{I}_2 = 2.01\angle 28.12^\circ\,\text{mA}</span>). Sin embargo, mediante <strong>análisis nodal</strong>, el circuito se resolvió invirtiendo una simple matriz de <span class="math inline">2 \times 2</span>, ahorrando más del 50% del esfuerzo algebraico gracias a la conexión a tierra de la fuente.</p>
+</div>
+</div>
+<hr>
+</section>
+</section>
 </section>
 <section id="verificación-computacional-en-python" class="level1" data-number="7">
 <h1 data-number="7"><span class="header-section-number">7</span> Verificación Computacional en Python</h1>
 <p>Para verificar sistemas de cualquier orden de forma automatizada mediante álgebra matricial compleja:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Definición del sistema matricial [Y][V] = [I] para el Ejercicio 1</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> np.array([</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    [<span class="fl">0.05</span> <span class="op">+</span> <span class="ot">0.15j</span>,  <span class="fl">0.00</span> <span class="op">-</span> <span class="ot">0.20j</span>],</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    [<span class="fl">0.00</span> <span class="op">-</span> <span class="ot">0.20j</span>,  <span class="fl">0.05</span> <span class="op">+</span> <span class="ot">0.20j</span>]</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>], dtype<span class="op">=</span><span class="bu">complex</span>)</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>I <span class="op">=</span> np.array([</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="fl">4.0</span> <span class="op">+</span> <span class="ot">0.0j</span>,</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="fl">0.0</span> <span class="op">+</span> <span class="ot">2.0j</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>], dtype<span class="op">=</span><span class="bu">complex</span>)</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Resolución del sistema lineal de ecuaciones</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> np.linalg.solve(Y, I)</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"--- RESULTADOS NODALES EXACTOS ---"</span>)</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, v <span class="kw">in</span> <span class="bu">enumerate</span>(V, start<span class="op">=</span><span class="dv">1</span>):</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    modulo <span class="op">=</span> np.<span class="bu">abs</span>(v)</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    fase_deg <span class="op">=</span> np.rad2deg(np.angle(v))</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"V_</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss"> = </span><span class="sc">{</span>v<span class="sc">.</span>real<span class="sc">:8.4f}</span><span class="ss"> + j</span><span class="sc">{</span>v<span class="sc">.</span>imag<span class="sc">:8.4f}</span><span class="ss"> V  |  </span><span class="sc">{</span>modulo<span class="sc">:8.4f}</span><span class="ss"> ∠ </span><span class="sc">{</span>fase_deg<span class="sc">:6.2f}</span><span class="ss">° V"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Definición del sistema matricial [Y][V] = [I] para el Ejercicio 1</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> np.array([</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    [<span class="fl">0.05</span> <span class="op">+</span> <span class="ot">0.15j</span>,  <span class="fl">0.00</span> <span class="op">-</span> <span class="ot">0.20j</span>],</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    [<span class="fl">0.00</span> <span class="op">-</span> <span class="ot">0.20j</span>,  <span class="fl">0.05</span> <span class="op">+</span> <span class="ot">0.20j</span>]</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>], dtype<span class="op">=</span><span class="bu">complex</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>I <span class="op">=</span> np.array([</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="fl">4.0</span> <span class="op">+</span> <span class="ot">0.0j</span>,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="fl">0.0</span> <span class="op">+</span> <span class="ot">2.0j</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>], dtype<span class="op">=</span><span class="bu">complex</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Resolución del sistema lineal de ecuaciones</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> np.linalg.solve(Y, I)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"--- RESULTADOS NODALES EXACTOS ---"</span>)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, v <span class="kw">in</span> <span class="bu">enumerate</span>(V, start<span class="op">=</span><span class="dv">1</span>):</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    modulo <span class="op">=</span> np.<span class="bu">abs</span>(v)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    fase_deg <span class="op">=</span> np.rad2deg(np.angle(v))</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"V_</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss"> = </span><span class="sc">{</span>v<span class="sc">.</span>real<span class="sc">:8.4f}</span><span class="ss"> + j</span><span class="sc">{</span>v<span class="sc">.</span>imag<span class="sc">:8.4f}</span><span class="ss"> V  |  </span><span class="sc">{</span>modulo<span class="sc">:8.4f}</span><span class="ss"> ∠ </span><span class="sc">{</span>fase_deg<span class="sc">:6.2f}</span><span class="ss">° V"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <hr>
 </section>
 <section id="errores-frecuentes-y-consejos-prácticos" class="level1" data-number="8">
