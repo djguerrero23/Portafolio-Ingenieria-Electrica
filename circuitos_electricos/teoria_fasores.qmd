@@ -377,7 +377,7 @@ $$
 \boxed{\mathbf z=re^{j\theta}}
 $$
 
-## Conversión rectangular → polar
+## Conversión rectangular $(x + jy)$ $\;\implies\;$  polar $(r\angle\theta)$
 
 Para obtener la magnitud $r$ y el ángulo $\theta$ a partir de las coordenadas cartesianas $(x, y)$:
 
@@ -385,21 +385,123 @@ $$
 \boxed{r=\sqrt{x^2+y^2}}
 $$
 
-y el ángulo $\theta$ debe calcularse considerando estrictamente el **signo de $x$ y de $y$ (ajuste de cuadrante)**:
+
+Para obtener el ángulo $\theta$ a partir de las coordenadas cartesianas $(x, y)$:
 
 $$
 \boxed{\theta=\operatorname{atan2}(y,x)}
 $$
 
+
+$$
+{ó}
+$$
+
+
+$$
+\boxed{\theta=\operatorname{\tan^{-1}(y/x) \quad ó \quad \operatorname{atan}(y,x)}}
+$$
+Pero el ángulo $\theta$ debe calcularse realizando un **ajuste de cuadrante**, considerando estrictamente el
+**signo de $x$** \
+y el **signo de $y$**
+
+### Correccion de angulo $\theta$ cuando se usa la funcion $\tan^{-1}(y/x)$
+
+| Cuadrante | Signos | $\theta = \arctan(y/x)$ | $\theta = \operatorname{atan2}(y, x)$ |
+| :---: | :---: | :---: | :---: |
+| I | $(+, +)$ | $\phi$ | $\phi$ |
+| II | $(-, +)$ | $\phi - 180^\circ$ | $\phi$ |
+| III | $(-, -)$ | $\phi$ | $\phi - 180^\circ$ |
+| IV | $(+, -)$ | $\phi - 180^\circ$ o $\phi$ | $\phi$ |
+
 ::: {.callout-note}
 ### 🧭 ¿Por qué `atan2` y no solo $\arctan(y/x)$?
 
-La función arco tangente estándar $\arctan(y/x)$ de las matemáticas continuas únicamente devuelve valores en el rango $(-90^\circ, +90^\circ)$ (Cuadrantes I y IV). 
+La función arco tangente estándar $\arctan(y/x)$ de las matemáticas continuas únicamente devuelve valores en el rango $(-90^\circ, +90^\circ)$ (correspondientes a los Cuadrantes I y IV). 
 
-Si un número complejo tiene $x < 0$ (Cuadrantes II y III), la división $y/x$ arroja un signo ambiguo:
-- $\frac{4}{-3} = -1.33 \implies \arctan(-1.33) = -53.13^\circ$ *(¡Falso! El punto $(-3, 4)$ está en el Cuadrante II a $126.87^\circ$)*.
+Si un número complejo tiene **$x < 0$ (Cuadrantes II y III)** o **$x = 0$ (sobre el eje imaginario)**, la división algebraica $y/x$ pierde la información de los signos individuales o produce una indeterminación matemática.
 
-La función matemática $\operatorname{atan2}(y,x)$ analiza **ambos signos independientemente** para entregar el ángulo geométrico verdadero en $(-180^\circ, +180^\circ]$.
+La función $\operatorname{atan2}(y, x)$ analiza **ambos signos de forma independiente**, entregando el ángulo geométrico verdadero en todo el plano complejo $(-180^\circ, +180^\circ]$.
+
+---
+
+#### 🧪 Suite de Pruebas (Unit Testing de Cuadrantes)
+
+A continuación se presenta una batería de pruebas automatizadas (*Unit Tests*) que ilustra exactamente qué sucede si un estudiante o programa aplica la fórmula ciega $\arctan(y/x)$ frente al resultado esperado real ($\operatorname{atan2}$ o corrección por cuadrante):
+
+| Eje | Entrada Compleja ($z = x + jy$) | Cuadrante / Ubicación | Cálculo Ciego $\arctan(y/x)$ | Resultado Real $\operatorname{atan2}(y, x)$ | Estado de Prueba ($\arctan$) | Diagnóstico del Error |
+| :---: | :--- | :---: | :---: | :---: | :---: | :--- |
+| `1` | $\mathbf{Z} = 3 + j4$ | **Cuadrante I** \ ($+x, +y$) | $\arctan(4/3) = \mathbf{+53.13^\circ}$ | $\mathbf{+53.13^\circ}$ | `PASA` ✅ | Ambos signos positivos. Coincide exactamente. |
+| `2` | $\mathbf{Z} = -5 + j5$ *(Ejercicio 2)* | **Cuadrante II** \ ($-x, +y$) | $\arctan(5/-5) = \mathbf{-45^\circ}$ | $\mathbf{+135^\circ}$ | `NO PASA` ❌ | **Desfase de $180^\circ$**. La división no sabe si el signo menos era de $x$ o de $y$; apunta al Cuadrante IV. Requiere: $180^\circ - 45^\circ = 135^\circ$. |
+| `3` | $\mathbf{Z} = -4 - j4$ | **Cuadrante III** \ ($-x, -y$) | $\arctan(-4/-4) = \mathbf{+45^\circ}$ | $\mathbf{-135^\circ}$ | `NO PASA` ❌ | **Desfase de $180^\circ$**. Menos entre menos da más ($(-)/(-) = +$). La calculadora cree erróneamente que está en el Cuadrante I. Requiere: $-180^\circ + 45^\circ = -135^\circ$. |
+| `4` | $\mathbf{Z} = 3 - j4$ | **Cuadrante IV** \ ($+x, -y$) | $\arctan(-4/3) = \mathbf{-53.13^\circ}$ | $\mathbf{-53.13^\circ}$ | `PASA` ✅ | Coincide. El ángulo cae naturalmente en $(-90^\circ, 0^\circ)$. |
+| `5` | $\mathbf{Z} = 5 + j0$ | **Eje $+x$** ($+x, y=0$) | $\arctan(0/5) = \mathbf{0^\circ}$ | $\mathbf{0^\circ}$ | `PASA` ✅ | **Parte imaginaria nula ($j=0$)**. Vector sobre el semieje real positivo ($5\angle 0^\circ$). Coincide. |
+| `6` | $\mathbf{Z} = 0 + j5$ | **Eje $+j$** ($x=0, +y$) | $\arctan(5/0) \to$ `ZeroDivisionError` | $\mathbf{+90^\circ}$ | `ERROR` 💥 | **Indeterminación matemática**. Pendiente vertical infinita ($\infty$); $\operatorname{atan2}$ devuelve $+90^\circ$ de forma directa y robusta. |
+| `7` | $\mathbf{Z} = -5 + j0$ | **Eje $-x$** ($-x, y=0$) | $\arctan(0/-5) = \mathbf{0^\circ}$ | $\mathbf{180^\circ}$ | `NO PASA` ❌ | Entrega $0^\circ$ (semieje positivo) ignorando que la coordenada real es estrictamente negativa. |
+
+```python
+# =====================================================================
+# Suite de Pruebas Automatizadas con Reporte en Consola (Python)
+# =====================================================================
+import math
+import sys
+
+# Forzar salida en UTF-8 para que la consola de Windows renderice superíndices (⁻¹) y emojis (✅)
+if sys.stdout.encoding and sys.stdout.encoding.lower() != 'utf-8':
+    sys.stdout.reconfigure(encoding='utf-8')
+
+def angulo_polar_grados(x, y):
+    """Calcula el ángulo de fase real con resolución completa de cuadrantes."""
+    return math.degrees(math.atan2(y, x))
+
+def arctan_sin_ajuste_grados(x, y):
+    """Fórmula simple de calculadora (tan⁻¹(y/x)) sin corrección de cuadrante."""
+    try:
+        return math.degrees(math.atan(y / x))
+    except ZeroDivisionError:
+        return None
+
+# Batería de pruebas: (Nombre del caso, x, y, Ángulo esperado, Observación didáctica)
+casos_de_prueba = [
+    ("Q1 (+, +)",      3,  4,   53.13, "Coinciden"),
+    ("Q2 (-, +)",     -5,  5,  135.00, "Ejercicio 2: Desfase 180°"),
+    ("Q3 (-, -)",     -4, -4, -135.00, "Signos se cancelan (+ vs -)"),
+    ("Q4 (+, -)",      3, -4,  -53.13, "Coinciden"),
+    ("Eje +x (j=0)",   5,  0,    0.00, "Resistivo puro / Referencia"),
+    ("Eje +j (x=0)",   0,  5,   90.00, "División entre cero evitada"),
+    ("Eje -x (y=0)",  -5,  0,  180.00, "Contrafase a 180°")
+]
+
+print("=" * 80)
+print(f"{'CASO':<14} | {'ENTRADA z':<10} | {'tan⁻¹(y/x)':<12} | {'ATAN2 REAL':<11} | {'ESTADO tan⁻¹'}")
+print("=" * 80)
+
+for caso, x, y, ang_esperado, observacion in casos_de_prueba:
+    texto_z = f"{x:+d}{y:+d}j" if y != 0 else f"{x:+d}+0j"
+    ang_atan2_real = angulo_polar_grados(x, y)
+    ang_sin_ajuste = arctan_sin_ajuste_grados(x, y)
+    
+    # Aserción de prueba unitaria (valida que atan2 entregue el ángulo real esperado)
+    assert round(ang_atan2_real, 2) == round(ang_esperado, 2)
+    
+    texto_sin_ajuste = f"{ang_sin_ajuste:+6.1f}°" if ang_sin_ajuste is not None else "ERROR (y/0)"
+
+    # Evaluamos si la fórmula simple arctan(y/x) acierta o falla:
+    if ang_sin_ajuste is None:
+        estado_arctan = "ERROR 💥"
+    elif round(ang_sin_ajuste, 2) == round(ang_esperado, 2):
+        estado_arctan = "PASA ✅"
+    else:
+        estado_arctan = "NO PASA ❌"
+
+    print(f"{caso:<14} | {texto_z:<10} | {texto_sin_ajuste:<12} | {ang_atan2_real:+7.2f}°   | {estado_arctan} ({observacion})")
+
+print("=" * 80)
+print("🎯 Conclusión: atan2(y, x) supera el 100% de las pruebas de cuadrante y utilizar tan⁻¹(y/x) requiere ajuste manual de cuadrante.")
+```
+
+> **📌 Regla mnemotécnica para estudiantes:**  
+> Siempre que la parte real sea negativa ($x < 0$), la fórmula ciega $\tan^{-1}(y/x)$ **siempre fallará por exactamente $\pm 180^\circ$**. Por esta razón, cuando uses una calculadora en modo manual, debes aplicar el ajuste del **Método 2** mostrado abajo.
 :::
 
 ::: {.callout-tip}
@@ -410,14 +512,10 @@ En tu calculadora física **no existe una tecla llamada `atan2` ni `atan`**. Tie
 #### 🥇 Método 1: La función directa `Pol(` (El `atan2` de la calculadora)
 Las calculadoras científicas estándar (Casio fx-570, fx-991, fx-82, etc.) incluyen la función de conversión automática de coordenadas con ajuste de cuadrante incluido:
 
-* **De Rectangular a Polar:**  
-  1. Presiona `SHIFT` + `+` $\longrightarrow$ Aparece en pantalla **`Pol(`**.
-  2. Digita la parte real $x$, luego la coma con `SHIFT` + `)` y la parte imaginaria $y$.  
-     *Ejemplo:* `Pol(-3, 4)` y presiona `=`.
-  3. **Resultado instantáneo:** `r = 5`, `θ = 126.87°` *(el ángulo ya viene con el cuadrante exacto)*.
-* **De Polar a Rectangular:**  
-  1. Presiona `SHIFT` + `-` $\longrightarrow$ Aparece **`Rec(`**.
-  2. Digita `Rec(r, θ)`. *Ejemplo:* `Rec(5, 126.87) =` $\longrightarrow$ Entrega `X = -3`, `Y = 4`.
+1. Presiona `SHIFT` + `+` $\longrightarrow$ Aparece en pantalla **`Pol(`**.
+2. Digita la parte real $x$, luego la coma con `SHIFT` + `)` y la parte imaginaria $y$.  
+   *Ejemplo:* digita `Pol(-3, 4)` y presiona `=`.
+3. **Resultado instantáneo:** `r = 5`, `θ = 126.87°` *(el ángulo ya viene con el cuadrante exacto)*.
 
 ---
 
@@ -457,7 +555,9 @@ El método más rápido para resolver circuitos completos:
 - 📺 **Calculadora Científica Universal / Genérica:** [Ver tutorial paso a paso](https://www.youtube.com/watch?v=_OXVmNMPaKY){target="_blank"}
 :::
 
-## Conversión polar → rectangular
+## Conversión polar $(r\angle\theta)$ $\implies$ rectangular $(x + jy)$
+
+Para descomponer un fasor de magnitud $r$ y ángulo de fase $\theta$ en sus componentes rectangulares $(x, y)$:
 
 $$
 \boxed{x=r\cos\theta}
@@ -467,7 +567,7 @@ $$
 \boxed{y=r\sin\theta}
 $$
 
-por tanto:
+por tanto, en forma binómica o rectangular:
 
 $$
 \boxed{
@@ -477,11 +577,73 @@ r\cos\theta+jr\sin\theta
 }
 $$
 
+::: {.callout-note}
+### 💡 Sin ambigüedad de cuadrante
+A diferencia de la conversión inversa, las funciones directas $\cos(\theta)$ y $\sin(\theta)$ evalúan el círculo trigonométrico completo (de $-180^\circ$ a $+180^\circ$) y entregan **automáticamente el signo algebraico correcto** para cada componente:
+
+- Por ejemplo, para $\mathbf{Z} = 5\angle126.87^\circ$ (Cuadrante II):
+  $$x = 5\cos(126.87^\circ) = -3 \quad (\text{negativo})$$
+  $$y = 5\sin(126.87^\circ) = +4 \quad (\text{positivo})$$
+- Por lo tanto, en la conversión polar a rectangular **no se requiere ningún ajuste de cuadrante ni funciones especiales como `atan2`**.
+:::
+
+::: {.callout-tip}
+### 📟 ¿Cómo calcularlo en tu calculadora científica física? (Polar → Rectangular)
+
+Para convertir un fasor dado en forma polar $r\angle\theta$ a su forma rectangular $x + jy$ en tu calculadora física, cuentas con 3 métodos:
+
+#### 🥇 Método 1: La función directa `Rec(` (Conversión directa de coordenadas)
+La función **`Rec(`** es la función inversa de `Pol(` y está integrada en todas las calculadoras Casio (fx-82, fx-350, fx-570, fx-991, ClassWiz) y modelos compatibles:
+
+1. Presiona `SHIFT` + `−` (tecla de resta) $\longrightarrow$ Aparece en pantalla **`Rec(`**.
+2. Digita la magnitud $r$, luego la coma con `SHIFT` + `)` y el ángulo de fase $\theta$ en grados sexagesimales.  
+   *Ejemplo:* digita `Rec(5, 126.87)` y presiona `=`.
+3. **Resultado en pantalla:**  
+   - `X = -3` (componente real $x$)
+   - `Y = 4` (componente imaginaria $y$, asociada a $j$)  
+   *Forma rectangular final:* $-3 + j4$.  
+   *(Tip: En modelos de una sola línea como la fx-82MS, para consultar la componente $Y$ presiona la tecla `RCL` y luego `tan` para la memoria $Y$, o `RCL` `)` para $X$)*.
+
+---
+
+#### 🥈 Método 2: Por componentes trigonométricas directas
+Puedes calcular cada componente de forma independiente en la pantalla principal:
+
+- **Parte real ($x$):** Digita $5 \times \cos(126.87)$ y presiona `=` $\longrightarrow$ Obtienes **$-3$**.
+- **Parte imaginaria ($y$):** Digita $5 \times \sin(126.87)$ y presiona `=` $\longrightarrow$ Obtienes **$+4$**.
+
+*(Asegúrate de que la calculadora esté en modo grados sexagesimales: letra **`D`** o `Deg` en la barra superior)*.
+
+---
+
+#### 🥉 Método 3: Modo Números Complejos (`MODE 2: CMPLX`) con la tecla de ángulo ($\angle$)
+Este es el método más rápido y potente cuando estás resolviendo leyes de Kirchhoff, mallas o nodos:
+
+1. **Activar modo complejo:** Presiona `MODE` $\longrightarrow$ `2: CMPLX`.
+2. **Ingresar el fasor con la tecla $\angle$:**
+   - Digita la magnitud: `5`.
+   - Inserta el símbolo de ángulo $\angle$ presionando **`SHIFT` + `(-)`** (la tecla del signo negativo entre paréntesis).
+   - Digita el ángulo de fase: `126.87`.  
+   *(En la pantalla se leerá: `5 ∠ 126.87`)*.
+3. **Convertir a forma rectangular ($a + bi$):**
+   - En **Casio clásica (fx-570ES / fx-991ES PLUS / MS):** Presiona `SHIFT` + `2` (menú CMPLX) $\longrightarrow$ selecciona `4: ▶a+bi` $\longrightarrow$ presiona `=`.
+   - En **Casio ClassWiz (fx-991LA X / CW):** Presiona `OPTN` $\longrightarrow$ flecha hacia abajo $\longrightarrow$ selecciona `2: ▶a+bi` $\longrightarrow$ presiona `=`.
+4. La pantalla mostrará directamente: **`-3 + 4i`** (es decir, $-3 + j4$).
+
+---
+
+##### 🎬 Videotutoriales paso a paso según tu modelo de calculadora:
+- 📺 **Casio fx-9750GIII (Gráfica):** [Ver tutorial paso a paso](https://www.youtube.com/watch?v=-QkvEE_9P4M&t=17s){target="_blank"}
+- 📺 **Casio fx-991ES PLUS / fx-570ES:** [Ver tutorial paso a paso](https://www.youtube.com/watch?v=mrMpLfHkxRk){target="_blank"}
+- 📺 **Casio fx-82MS / fx-350MS:** [Ver tutorial paso a paso](https://www.youtube.com/watch?v=Em3XkHxGPn4){target="_blank"}
+- 📺 **Calculadora Científica Universal / Genérica:** [Ver tutorial paso a paso](https://www.youtube.com/watch?v=_OXVmNMPaKY){target="_blank"}
+:::
+
 ---
 
 # Cuadrantes: magnitud y fase con significado
 
-![Cuadrantes del plano complejo para el análisis fasorial.](imagenes/cuad_fasorial.svg){width=100%}
+![Cuadrantes del plano complejo para el análisis fasorial.](imagenes/cuadro_fasorial.webp){width=100%}
 
 | Cuadrante | $x$ | $y$ | Interpretación angular |
 |---:|:---:|:---:|---|
@@ -490,18 +652,43 @@ $$
 | III | $-$ | $-$ | $-180^\circ<\theta<-90^\circ$ |
 | IV | $+$ | $-$ | $-90^\circ<\theta<0^\circ$ |
 
+### Ejes de frontera: cuando una componente es cero ($x=0$ \quad ó \quad $y=0$)
+
+Los cuadrantes describen áreas abiertas entre los ejes, pero en el análisis de circuitos fasoriales muchas variables caen **exactamente sobre los ejes coordenados**:
+
+| Eje Coordenado | Condición | Forma Rectangular | Forma Polar | Significado Físico en Circuitos |
+| :-- | :--: | :--: | :--: | :--- |
+| **Semieje Real Positivo ($+x$)** | $x > 0,\ y = 0$ | $x + j0$ | $\mathbf{x\angle 0^\circ}$ | **Referencia / En fase:** Fuentes de tensión de referencia ($\mathbf V = 120\angle 0^\circ\ \mathrm V$), corriente de referencia, resistores puros ($\mathbf Z_R = R\angle 0^\circ$) o circuitos en resonancia ($X_L = X_C$). |
+| **Semieje Imaginario Positivo ($+j$)** | $x = 0,\ y > 0$ | $0 + jy$ | $\mathbf{y\angle +90^\circ}$ | **Inductivo puro:** Inductores ideales ($\mathbf Z_L = j\omega L = X_L\angle 90^\circ$) o tensiones adelantadas exactamente $90^\circ$. |
+| **Semieje Real Negativo ($-x$)** | $x < 0,\ y = 0$ | $-x + j0$ | $\mathbf{x\angle 180^\circ}$ | **Contrafase / Inversión:** Tensión o corriente invertida $180^\circ$ respecto a la referencia (equivalente a invertir terminales o signo negativo). |
+| **Semieje Imaginario Negativo ($-j$)** | $x = 0,\ y < 0$ | $0 - jy$ | $\mathbf{y\angle -90^\circ}$ | **Capacitivo puro:** Condensadores ideales ($\mathbf Z_C = -j\frac{1}{\omega C} = X_C\angle -90^\circ$) o corrientes adelantadas $90^\circ$ a la tensión. |
+: {tbl-colwidths="[20, 15, 16, 14, 38]"}
+
+::: {.callout-note}
+### 💡 ¿El caso $j=0$ ($5 + j0 \iff 5\angle 0^\circ$) solo existe en impedancias resistivas?
+
+**No, no es exclusivo de los resistores.** Cualquier magnitud física fasorial de corriente alterna puede tener parte imaginaria nula ($y = 0$):
+
+1. **Voltajes de referencia:** Es el estándar en análisis de circuitos. En la inmensa mayoría de problemas se toma la fuente principal como origen de fase:  
+   $$\mathbf{V}_s = 120\angle 0^\circ\ \mathrm{V} = 120 + j0\ \mathrm{V}$$
+2. **Corrientes de referencia:** En circuitos en serie es común definir la corriente total del lazo como referencia de fase:  
+   $$\mathbf{I} = 5\angle 0^\circ\ \mathrm{A} = 5 + j0\ \mathrm{A}$$
+3. **Impedancia puramente resistiva:** Un resistor disipa calor pero no almacena energía en campos eléctricos ni magnéticos ($X = 0$), por lo que:  
+   $$\mathbf{Z}_R = R + j0 = R\angle 0^\circ\ \Omega$$
+   *(Esto también ocurre en circuitos completos RLC cuando entran en **resonancia**, donde $X_L = X_C$ y se cancelan mutuamente)*.
+4. **Potencia aparente con factor de potencia unitario:** Si una carga no demanda reactivos ($Q = 0$, $\mathrm{FP} = 1.0$), la potencia compleja queda puramente activa:  
+   $$\mathbf{S} = P + j0 = P\angle 0^\circ\ \mathrm{VA}$$
+
+**Principio analítico:** Todo número real positivo $a > 0$ es un vector sobre el semieje horizontal de fase $0^\circ$:
+$$
+\boxed{a + j0 = a\angle 0^\circ}
+$$
+:::
+
 ::: {.callout-tip}
 ### Regla de oro
 
-No corrijas el ángulo “a ojo”.
-
-Primero identifica:
-
-$$
-(x,y)
-$$
-
-después el cuadrante y finalmente el ángulo.
+No corrijas el ángulo “a ojo” $\implies$  Primero identifica: $(x,y)$  $\implies$ después el cuadrante $\implies$ finalmente el ángulo.
 :::
 
 ---
@@ -614,6 +801,51 @@ $$
 }
 $$
 
+El superíndice asterisco ($*$) representa la operación de **conjugación compleja**. Cuando se tiene $(a + jb)^*$, indica que se debe obtener el complejo conjugado de dicho número. En el contexto de números complejos y análisis fasorial:
+
+### ¿Qué hace matemáticamente?
+
+Cambia únicamente el signo de la parte imaginaria (la que acompaña al operador $j$):
+
+- **Si es positivo, pasa a negativo:** $(a + jb)^* = a - jb$.
+- **Si es negativo, pasa a positivo:** $(a - jb)^* = a + jb$.
+
+### ¿Qué significa en forma polar (fasores)?
+
+Si se expresa el fasor en forma polar con magnitud ($M$) y ángulo ($\theta$), el conjugado mantiene exactamente la misma magnitud e invierte el signo del ángulo de fase:
+
+$$
+(M\angle\theta)^* = M\angle(-\theta)
+$$
+
+### ¿Qué significa geométricamente?
+
+En el plano complejo, aplicar el conjugado equivale a una **reflexión especular respecto al eje real (horizontal)**:
+
+- El vector se refleja verticalmente.
+- Si el fasor original apuntaba hacia arriba y a la derecha (primer cuadrante con ángulo $+\theta$), su conjugado apuntará hacia abajo y a la derecha (cuarto cuadrante con ángulo $-\theta$), con idéntica longitud.
+
+::: {.callout-note}
+### ⚡ ¿Para qué se usa en circuitos eléctricos?
+
+El uso más común e importante del conjugado en fasores es para calcular la **potencia compleja** ($\mathbf{S}$) en corriente alterna:
+
+$$
+\mathbf{S} = \mathbf{V}\mathbf{I}^*
+$$
+
+Se utiliza el conjugado de la corriente ($\mathbf{I}^*$) para que el ángulo resultante de la potencia sea exactamente la diferencia angular de fases $(\theta_v - \theta_i)$:
+
+$$
+\mathbf{S} = (V\angle\theta_v)(I\angle\theta_i)^* = (V\angle\theta_v)(I\angle-\theta_i) = VI\angle(\theta_v - \theta_i)
+$$
+
+Esto permite que la potencia reactiva ($Q = VI\sin(\theta_v - \theta_i)$) tenga el signo convencional correcto:
+
+- **Positiva ($+Q$)**: Circuito inductivo (la corriente se retrasa respecto a la tensión).
+- **Negativa ($-Q$)**: Circuito capacitivo (la corriente se adelanta respecto a la tensión).
+:::
+
 ## División rectangular
 
 $$
@@ -659,14 +891,55 @@ $$
 
 donde:
 
-- $R$ → resistencia;
-- $X$ → reactancia.
+- $R$ → **resistencia** ($\Omega$): parte real, asociada a la disipación irreversible de potencia activa. En redes pasivas siempre se cumple $R \ge 0$.
+- $X$ → **reactancia neta** ($\Omega$): parte imaginaria, asociada al almacenamiento y devolución de energía en campos magnéticos y eléctricos.
 
 Su forma polar es:
 
 $$
 \boxed{\mathbf Z=|\mathbf Z|\angle\theta_Z}
 $$
+
+donde su módulo y ángulo de fase vienen dados por:
+
+$$
+|\mathbf Z| = \sqrt{R^2 + X^2}, \qquad \theta_Z = \operatorname{atan2}(X, R)
+$$
+
+::: {.callout-note}
+### 🔍 ¿Qué representa realmente la reactancia $X$ cuando hay inductores y capacitores?
+
+Una duda fundamental al ver la expresión general $\mathbf{Z} = R + jX$ es: *¿por qué tiene un signo positivo ($+jX$) si la impedancia de un capacitor es negativa ($-jX_C$)?*
+
+La razón es que $X$ representa la **reactancia neta** de la rama o circuito. Si en una rama en serie coinciden resistencia, inductancia y capacitancia (rama RLC serie):
+
+$$
+\mathbf{Z} = \mathbf{Z}_R + \mathbf{Z}_L + \mathbf{Z}_C = R + jX_L - jX_C = R + j(X_L - X_C)
+$$
+
+Por lo tanto:
+
+$$
+\boxed{X = X_L - X_C}
+$$
+
+Como el inductor aporta reactancia positiva ($+jX_L$, con $X_L = \omega L$) y el capacitor reactancia negativa ($-jX_C$, con $X_C = \frac{1}{\omega C}$), ambos efectos compiten y se restan algebraicamente en el eje imaginario:
+
+1. **Predominio inductivo ($X_L > X_C \implies X > 0$):**  
+   Predomina la bobina. La reactancia neta es positiva:
+   $$\mathbf{Z} = R + j|X| = |\mathbf{Z}|\angle+\theta_Z$$
+   La tensión adelanta a la corriente ($0^\circ < \theta_Z \le 90^\circ$).
+
+2. **Predominio capacitivo ($X_C > X_L \implies X < 0$):**  
+   Predomina el condensador. La reactancia neta es negativa:
+   $$\mathbf{Z} = R - j|X| = |\mathbf{Z}|\angle-\theta_Z$$
+   La corriente adelanta a la tensión ($-90^\circ \le \theta_Z < 0^\circ$).
+
+3. **Resonancia serie ($X_L = X_C \implies X = 0$):**  
+   Ambos efectos se anulan con exactitud ($+jX_L - jX_C = 0$):
+   $$\mathbf{Z} = R + j0 = R\angle0^\circ$$
+   La rama se comporta como puramente resistiva, la impedancia se reduce al mínimo posible ($|\mathbf{Z}| = R$) y la corriente alcanza su valor máximo.
+:::
 
 ---
 
@@ -928,15 +1201,70 @@ $$
 152.0\angle-78.43^\circ\ \mathrm V
 $$
 
-Finalmente:
+### Paso 6 — Comprobación por Ley de Tensiones de Kirchhoff (LVK)
+
+De acuerdo con la Ley de Kirchhoff de tensiones, la suma de las caídas de tensión en cada elemento pasivo debe igualar exactamente a la tensión suministrada por la fuente:
 
 $$
-\boxed{
-\mathbf V_R+\mathbf V_L+\mathbf V_C
-=
-\mathbf V
-}
+\boxed{\mathbf V_R + \mathbf V_L + \mathbf V_C = \mathbf V}
 $$
+
+::: {.callout-warning}
+### ⚠️ Error conceptual clásico: No sumar magnitudes escalares
+Un error muy frecuente en análisis de circuitos de CA es sumar directamente las magnitudes en forma polar:
+$$114.0\text{ V} + 190.0\text{ V} + 152.0\text{ V} = 456.0\text{ V} \neq 120.0\text{ V}$$
+¡Esto es completamente falso! Como las tres tensiones están desfasadas en el tiempo, **la suma fasorial exige operar vectorialmente en forma rectangular**.
+:::
+
+#### 1. Conversión de cada tensión fasorial a forma rectangular:
+Utilizando la función `Rec(` o trigonometría directa ($x = r\cos\theta$, $y = r\sin\theta$):
+
+- **Resistor:**
+  $$\mathbf V_R = 114.0\angle 11.57^\circ\ \mathrm V = 114.0\cos(11.57^\circ) + j114.0\sin(11.57^\circ) = 111.69 + j22.87\ \mathrm V$$
+
+- **Inductor:**
+  $$\mathbf V_L = 190.0\angle 101.57^\circ\ \mathrm V = 190.0\cos(101.57^\circ) + j190.0\sin(101.57^\circ) = -38.11 + j186.14\ \mathrm V$$
+
+- **Capacitor:**
+  $$\mathbf V_C = 152.0\angle -78.43^\circ\ \mathrm V = 152.0\cos(-78.43^\circ) + j152.0\sin(-78.43^\circ) = 30.49 - j148.91\ \mathrm V$$
+
+#### 2. Suma directa agrupando componentes reales e imaginarias:
+Aplicando la regla de suma en forma rectangular, sumamos todas las partes reales juntas y todas las partes imaginarias juntas en un solo paso:
+
+$$
+\begin{aligned}
+\mathbf V_{\text{total}} &= (111.69 - 38.11 + 30.49) + j(22.87 + 186.14 - 148.91) \\
+&= 104.07 + j60.10\ \mathrm V
+\end{aligned}
+$$
+
+#### 3. Conversión final a forma polar:
+Calculamos la magnitud y la fase de la tensión resultante:
+
+$$
+|\mathbf V_{\text{total}}| = \sqrt{(104.07)^2 + (60.10)^2} = \sqrt{10830.56 + 3612.01} = 120.18\ \mathrm V \approx 120.0\ \mathrm V
+$$
+
+$$
+\theta_V = \operatorname{atan2}(60.10, 104.07) = 29.99^\circ \approx 30.0^\circ
+$$
+
+Por tanto:
+
+$$
+\boxed{\mathbf V_{\text{total}} = 120.0\angle 30.0^\circ\ \mathrm V = \mathbf V}
+$$
+
+*(La mínima diferencia de $0.18\ \mathrm V$ y $0.01^\circ$ se debe exclusivamente a los redondeos de tres cifras significativas en el valor de la corriente $\mathbf I = 3.80\angle11.57^\circ\ \mathrm A$)*.
+
+::: {.callout-tip}
+### 💡 Comprobación directa en tu calculadora física (Modo CMPLX)
+En un examen o laboratorio no necesitas descomponer cada fasor en papel. En tu calculadora física (en `MODE 2: CMPLX`), escribe la suma continua en una sola línea usando la tecla del ángulo ($\angle$ con `SHIFT` + `(-)`):
+
+$$114.0\angle 11.57 + 190.0\angle 101.57 + 152.0\angle -78.43 =$$
+
+La calculadora realiza la conversión rectangular y la suma vectorial internamente, entregándote directamente $\mathbf V = 120\angle 30^\circ\ \mathrm V$.
+:::
 
 Esta es la conexión fundamental:
 

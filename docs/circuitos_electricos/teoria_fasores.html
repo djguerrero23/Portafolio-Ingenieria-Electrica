@@ -29,6 +29,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -310,10 +345,16 @@ window.Quarto = {
   <li><a href="#cuándo-puedo-utilizar-fasores" id="toc-cuándo-puedo-utilizar-fasores" class="nav-link" data-scroll-target="#cuándo-puedo-utilizar-fasores"><span class="header-section-number">7</span> ¿Cuándo puedo utilizar fasores?</a></li>
   <li><a href="#el-plano-complejo" id="toc-el-plano-complejo" class="nav-link" data-scroll-target="#el-plano-complejo"><span class="header-section-number">8</span> El plano complejo</a>
   <ul class="collapse">
-  <li><a href="#conversión-rectangular-polar" id="toc-conversión-rectangular-polar" class="nav-link" data-scroll-target="#conversión-rectangular-polar"><span class="header-section-number">8.1</span> Conversión rectangular → polar</a></li>
-  <li><a href="#conversión-polar-rectangular" id="toc-conversión-polar-rectangular" class="nav-link" data-scroll-target="#conversión-polar-rectangular"><span class="header-section-number">8.2</span> Conversión polar → rectangular</a></li>
+  <li><a href="#conversión-rectangular-x-jy-implies-polar-rangletheta" id="toc-conversión-rectangular-x-jy-implies-polar-rangletheta" class="nav-link" data-scroll-target="#conversión-rectangular-x-jy-implies-polar-rangletheta"><span class="header-section-number">8.1</span> Conversión rectangular <span class="math inline">(x + jy)</span> <span class="math inline">\;\implies\;</span> polar <span class="math inline">(r\angle\theta)</span></a>
+  <ul class="collapse">
+  <li><a href="#correccion-de-angulo-theta-cuando-se-usa-la-funcion-tan-1yx" id="toc-correccion-de-angulo-theta-cuando-se-usa-la-funcion-tan-1yx" class="nav-link" data-scroll-target="#correccion-de-angulo-theta-cuando-se-usa-la-funcion-tan-1yx"><span class="header-section-number">8.1.1</span> Correccion de angulo <span class="math inline">\theta</span> cuando se usa la funcion <span class="math inline">\tan^{-1}(y/x)</span></a></li>
   </ul></li>
-  <li><a href="#cuadrantes-magnitud-y-fase-con-significado" id="toc-cuadrantes-magnitud-y-fase-con-significado" class="nav-link" data-scroll-target="#cuadrantes-magnitud-y-fase-con-significado"><span class="header-section-number">9</span> Cuadrantes: magnitud y fase con significado</a></li>
+  <li><a href="#conversión-polar-rangletheta-implies-rectangular-x-jy" id="toc-conversión-polar-rangletheta-implies-rectangular-x-jy" class="nav-link" data-scroll-target="#conversión-polar-rangletheta-implies-rectangular-x-jy"><span class="header-section-number">8.2</span> Conversión polar <span class="math inline">(r\angle\theta)</span> <span class="math inline">\implies</span> rectangular <span class="math inline">(x + jy)</span></a></li>
+  </ul></li>
+  <li><a href="#cuadrantes-magnitud-y-fase-con-significado" id="toc-cuadrantes-magnitud-y-fase-con-significado" class="nav-link" data-scroll-target="#cuadrantes-magnitud-y-fase-con-significado"><span class="header-section-number">9</span> Cuadrantes: magnitud y fase con significado</a>
+  <ul class="collapse">
+  <li><a href="#ejes-de-frontera-cuando-una-componente-es-cero-x0-ó-y0" id="toc-ejes-de-frontera-cuando-una-componente-es-cero-x0-ó-y0" class="nav-link" data-scroll-target="#ejes-de-frontera-cuando-una-componente-es-cero-x0-ó-y0"><span class="header-section-number">9.0.1</span> Ejes de frontera: cuando una componente es cero (<span class="math inline">x=0</span> ó <span class="math inline">y=0</span>)</a></li>
+  </ul></li>
   <li><a href="#el-operador-j-un-giro-de-90circ" id="toc-el-operador-j-un-giro-de-90circ" class="nav-link" data-scroll-target="#el-operador-j-un-giro-de-90circ"><span class="header-section-number">10</span> El operador <span class="math inline">j</span>: un giro de <span class="math inline">90^\circ</span></a>
   <ul class="collapse">
   <li><a href="#ciclo-de-potencias" id="toc-ciclo-de-potencias" class="nav-link" data-scroll-target="#ciclo-de-potencias"><span class="header-section-number">10.1</span> Ciclo de potencias</a></li>
@@ -323,7 +364,12 @@ window.Quarto = {
   <li><a href="#suma-y-resta" id="toc-suma-y-resta" class="nav-link" data-scroll-target="#suma-y-resta"><span class="header-section-number">11.1</span> Suma y resta</a></li>
   <li><a href="#multiplicación" id="toc-multiplicación" class="nav-link" data-scroll-target="#multiplicación"><span class="header-section-number">11.2</span> Multiplicación</a></li>
   <li><a href="#división" id="toc-división" class="nav-link" data-scroll-target="#división"><span class="header-section-number">11.3</span> División</a></li>
-  <li><a href="#conjugado" id="toc-conjugado" class="nav-link" data-scroll-target="#conjugado"><span class="header-section-number">11.4</span> Conjugado</a></li>
+  <li><a href="#conjugado" id="toc-conjugado" class="nav-link" data-scroll-target="#conjugado"><span class="header-section-number">11.4</span> Conjugado</a>
+  <ul class="collapse">
+  <li><a href="#qué-hace-matemáticamente" id="toc-qué-hace-matemáticamente" class="nav-link" data-scroll-target="#qué-hace-matemáticamente"><span class="header-section-number">11.4.1</span> ¿Qué hace matemáticamente?</a></li>
+  <li><a href="#qué-significa-en-forma-polar-fasores" id="toc-qué-significa-en-forma-polar-fasores" class="nav-link" data-scroll-target="#qué-significa-en-forma-polar-fasores"><span class="header-section-number">11.4.2</span> ¿Qué significa en forma polar (fasores)?</a></li>
+  <li><a href="#qué-significa-geométricamente" id="toc-qué-significa-geométricamente" class="nav-link" data-scroll-target="#qué-significa-geométricamente"><span class="header-section-number">11.4.3</span> ¿Qué significa geométricamente?</a></li>
+  </ul></li>
   <li><a href="#división-rectangular" id="toc-división-rectangular" class="nav-link" data-scroll-target="#división-rectangular"><span class="header-section-number">11.5</span> División rectangular</a>
   <ul class="collapse">
   <li><a href="#laboratorio-3-transformación-complejo-polar-y-cuadrantes" id="toc-laboratorio-3-transformación-complejo-polar-y-cuadrantes" class="nav-link" data-scroll-target="#laboratorio-3-transformación-complejo-polar-y-cuadrantes">🔬 Laboratorio 3 — Transformación Complejo ↔︎ Polar y Cuadrantes</a></li>
@@ -348,7 +394,10 @@ window.Quarto = {
   <li><a href="#paso-2-impedancias" id="toc-paso-2-impedancias" class="nav-link" data-scroll-target="#paso-2-impedancias"><span class="header-section-number">14.2</span> Paso 2 — Impedancias</a></li>
   <li><a href="#paso-3-impedancia-equivalente" id="toc-paso-3-impedancia-equivalente" class="nav-link" data-scroll-target="#paso-3-impedancia-equivalente"><span class="header-section-number">14.3</span> Paso 3 — Impedancia equivalente</a></li>
   <li><a href="#paso-4-corriente" id="toc-paso-4-corriente" class="nav-link" data-scroll-target="#paso-4-corriente"><span class="header-section-number">14.4</span> Paso 4 — Corriente</a></li>
-  <li><a href="#paso-5-tensiones-individuales" id="toc-paso-5-tensiones-individuales" class="nav-link" data-scroll-target="#paso-5-tensiones-individuales"><span class="header-section-number">14.5</span> Paso 5 — Tensiones individuales</a></li>
+  <li><a href="#paso-5-tensiones-individuales" id="toc-paso-5-tensiones-individuales" class="nav-link" data-scroll-target="#paso-5-tensiones-individuales"><span class="header-section-number">14.5</span> Paso 5 — Tensiones individuales</a>
+  <ul class="collapse">
+  <li><a href="#paso-6-comprobación-por-ley-de-tensiones-de-kirchhoff-lvk" id="toc-paso-6-comprobación-por-ley-de-tensiones-de-kirchhoff-lvk" class="nav-link" data-scroll-target="#paso-6-comprobación-por-ley-de-tensiones-de-kirchhoff-lvk"><span class="header-section-number">14.5.1</span> Paso 6 — Comprobación por Ley de Tensiones de Kirchhoff (LVK)</a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#diagrama-fasorial-no-basta-con-calcular" id="toc-diagrama-fasorial-no-basta-con-calcular" class="nav-link" data-scroll-target="#diagrama-fasorial-no-basta-con-calcular"><span class="header-section-number">15</span> Diagrama fasorial: no basta con calcular</a></li>
   <li><a href="#herramienta-interactiva-diagrama-fasorial-del-circuito-rlc" id="toc-herramienta-interactiva-diagrama-fasorial-del-circuito-rlc" class="nav-link" data-scroll-target="#herramienta-interactiva-diagrama-fasorial-del-circuito-rlc"><span class="header-section-number">16</span> Herramienta interactiva: Diagrama Fasorial del Circuito RLC</a>
@@ -1554,16 +1603,67 @@ x(t)=\sin(10t)+\sin(100t)
 <p><span class="math display">
 \boxed{\mathbf z=re^{j\theta}}
 </span></p>
-<section id="conversión-rectangular-polar" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="conversión-rectangular-polar"><span class="header-section-number">8.1</span> Conversión rectangular → polar</h2>
+<section id="conversión-rectangular-x-jy-implies-polar-rangletheta" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="conversión-rectangular-x-jy-implies-polar-rangletheta"><span class="header-section-number">8.1</span> Conversión rectangular <span class="math inline">(x + jy)</span> <span class="math inline">\;\implies\;</span> polar <span class="math inline">(r\angle\theta)</span></h2>
 <p>Para obtener la magnitud <span class="math inline">r</span> y el ángulo <span class="math inline">\theta</span> a partir de las coordenadas cartesianas <span class="math inline">(x, y)</span>:</p>
 <p><span class="math display">
 \boxed{r=\sqrt{x^2+y^2}}
 </span></p>
-<p>y el ángulo <span class="math inline">\theta</span> debe calcularse considerando estrictamente el <strong>signo de <span class="math inline">x</span> y de <span class="math inline">y</span> (ajuste de cuadrante)</strong>:</p>
+<p>Para obtener el ángulo <span class="math inline">\theta</span> a partir de las coordenadas cartesianas <span class="math inline">(x, y)</span>:</p>
 <p><span class="math display">
 \boxed{\theta=\operatorname{atan2}(y,x)}
 </span></p>
+<p><span class="math display">
+{ó}
+</span></p>
+<p><span class="math display">
+\boxed{\theta=\operatorname{\tan^{-1}(y/x) \quad ó \quad \operatorname{atan}(y,x)}}
+</span> Pero el ángulo <span class="math inline">\theta</span> debe calcularse realizando un <strong>ajuste de cuadrante</strong>, considerando estrictamente el <strong>signo de <span class="math inline">x</span></strong><br>
+y el <strong>signo de <span class="math inline">y</span></strong></p>
+<section id="correccion-de-angulo-theta-cuando-se-usa-la-funcion-tan-1yx" class="level3" data-number="8.1.1">
+<h3 data-number="8.1.1" class="anchored" data-anchor-id="correccion-de-angulo-theta-cuando-se-usa-la-funcion-tan-1yx"><span class="header-section-number">8.1.1</span> Correccion de angulo <span class="math inline">\theta</span> cuando se usa la funcion <span class="math inline">\tan^{-1}(y/x)</span></h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Cuadrante</th>
+<th style="text-align: center;">Signos</th>
+<th style="text-align: center;"><span class="math inline">\theta = \arctan(y/x)</span></th>
+<th style="text-align: center;"><span class="math inline">\theta = \operatorname{atan2}(y, x)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">I</td>
+<td style="text-align: center;"><span class="math inline">(+, +)</span></td>
+<td style="text-align: center;"><span class="math inline">\phi</span></td>
+<td style="text-align: center;"><span class="math inline">\phi</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">II</td>
+<td style="text-align: center;"><span class="math inline">(-, +)</span></td>
+<td style="text-align: center;"><span class="math inline">\phi - 180^\circ</span></td>
+<td style="text-align: center;"><span class="math inline">\phi</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">III</td>
+<td style="text-align: center;"><span class="math inline">(-, -)</span></td>
+<td style="text-align: center;"><span class="math inline">\phi</span></td>
+<td style="text-align: center;"><span class="math inline">\phi - 180^\circ</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">IV</td>
+<td style="text-align: center;"><span class="math inline">(+, -)</span></td>
+<td style="text-align: center;"><span class="math inline">\phi - 180^\circ</span> o <span class="math inline">\phi</span></td>
+<td style="text-align: center;"><span class="math inline">\phi</span></td>
+</tr>
+</tbody>
+</table>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1574,9 +1674,163 @@ x(t)=\sin(10t)+\sin(100t)
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>La función arco tangente estándar <span class="math inline">\arctan(y/x)</span> de las matemáticas continuas únicamente devuelve valores en el rango <span class="math inline">(-90^\circ, +90^\circ)</span> (Cuadrantes I y IV).</p>
-<p>Si un número complejo tiene <span class="math inline">x &lt; 0</span> (Cuadrantes II y III), la división <span class="math inline">y/x</span> arroja un signo ambiguo: - <span class="math inline">\frac{4}{-3} = -1.33 \implies \arctan(-1.33) = -53.13^\circ</span> <em>(¡Falso! El punto <span class="math inline">(-3, 4)</span> está en el Cuadrante II a <span class="math inline">126.87^\circ</span>)</em>.</p>
-<p>La función matemática <span class="math inline">\operatorname{atan2}(y,x)</span> analiza <strong>ambos signos independientemente</strong> para entregar el ángulo geométrico verdadero en <span class="math inline">(-180^\circ, +180^\circ]</span>.</p>
+<p>La función arco tangente estándar <span class="math inline">\arctan(y/x)</span> de las matemáticas continuas únicamente devuelve valores en el rango <span class="math inline">(-90^\circ, +90^\circ)</span> (correspondientes a los Cuadrantes I y IV).</p>
+<p>Si un número complejo tiene <strong><span class="math inline">x &lt; 0</span> (Cuadrantes II y III)</strong> o <strong><span class="math inline">x = 0</span> (sobre el eje imaginario)</strong>, la división algebraica <span class="math inline">y/x</span> pierde la información de los signos individuales o produce una indeterminación matemática.</p>
+<p>La función <span class="math inline">\operatorname{atan2}(y, x)</span> analiza <strong>ambos signos de forma independiente</strong>, entregando el ángulo geométrico verdadero en todo el plano complejo <span class="math inline">(-180^\circ, +180^\circ]</span>.</p>
+<hr>
+<section id="suite-de-pruebas-unit-testing-de-cuadrantes" class="level4" data-number="8.1.1.1">
+<h4 data-number="8.1.1.1" class="anchored" data-anchor-id="suite-de-pruebas-unit-testing-de-cuadrantes"><span class="header-section-number">8.1.1.1</span> 🧪 Suite de Pruebas (Unit Testing de Cuadrantes)</h4>
+<p>A continuación se presenta una batería de pruebas automatizadas (<em>Unit Tests</em>) que ilustra exactamente qué sucede si un estudiante o programa aplica la fórmula ciega <span class="math inline">\arctan(y/x)</span> frente al resultado esperado real (<span class="math inline">\operatorname{atan2}</span> o corrección por cuadrante):</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 12%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Eje</th>
+<th style="text-align: left;">Entrada Compleja (<span class="math inline">z = x + jy</span>)</th>
+<th style="text-align: center;">Cuadrante / Ubicación</th>
+<th style="text-align: center;">Cálculo Ciego <span class="math inline">\arctan(y/x)</span></th>
+<th style="text-align: center;">Resultado Real <span class="math inline">\operatorname{atan2}(y, x)</span></th>
+<th style="text-align: center;">Estado de Prueba (<span class="math inline">\arctan</span>)</th>
+<th style="text-align: left;">Diagnóstico del Error</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><code>1</code></td>
+<td style="text-align: left;"><span class="math inline">\mathbf{Z} = 3 + j4</span></td>
+<td style="text-align: center;"><strong>Cuadrante I</strong> &nbsp;(<span class="math inline">+x, +y</span>)</td>
+<td style="text-align: center;"><span class="math inline">\arctan(4/3) = \mathbf{+53.13^\circ}</span></td>
+<td style="text-align: center;"><span class="math inline">\mathbf{+53.13^\circ}</span></td>
+<td style="text-align: center;"><code>PASA</code> ✅</td>
+<td style="text-align: left;">Ambos signos positivos. Coincide exactamente.</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>2</code></td>
+<td style="text-align: left;"><span class="math inline">\mathbf{Z} = -5 + j5</span> <em>(Ejercicio 2)</em></td>
+<td style="text-align: center;"><strong>Cuadrante II</strong> &nbsp;(<span class="math inline">-x, +y</span>)</td>
+<td style="text-align: center;"><span class="math inline">\arctan(5/-5) = \mathbf{-45^\circ}</span></td>
+<td style="text-align: center;"><span class="math inline">\mathbf{+135^\circ}</span></td>
+<td style="text-align: center;"><code>NO PASA</code> ❌</td>
+<td style="text-align: left;"><strong>Desfase de <span class="math inline">180^\circ</span></strong>. La división no sabe si el signo menos era de <span class="math inline">x</span> o de <span class="math inline">y</span>; apunta al Cuadrante IV. Requiere: <span class="math inline">180^\circ - 45^\circ = 135^\circ</span>.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>3</code></td>
+<td style="text-align: left;"><span class="math inline">\mathbf{Z} = -4 - j4</span></td>
+<td style="text-align: center;"><strong>Cuadrante III</strong> &nbsp;(<span class="math inline">-x, -y</span>)</td>
+<td style="text-align: center;"><span class="math inline">\arctan(-4/-4) = \mathbf{+45^\circ}</span></td>
+<td style="text-align: center;"><span class="math inline">\mathbf{-135^\circ}</span></td>
+<td style="text-align: center;"><code>NO PASA</code> ❌</td>
+<td style="text-align: left;"><strong>Desfase de <span class="math inline">180^\circ</span></strong>. Menos entre menos da más (<span class="math inline">(-)/(-) = +</span>). La calculadora cree erróneamente que está en el Cuadrante I. Requiere: <span class="math inline">-180^\circ + 45^\circ = -135^\circ</span>.</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>4</code></td>
+<td style="text-align: left;"><span class="math inline">\mathbf{Z} = 3 - j4</span></td>
+<td style="text-align: center;"><strong>Cuadrante IV</strong> &nbsp;(<span class="math inline">+x, -y</span>)</td>
+<td style="text-align: center;"><span class="math inline">\arctan(-4/3) = \mathbf{-53.13^\circ}</span></td>
+<td style="text-align: center;"><span class="math inline">\mathbf{-53.13^\circ}</span></td>
+<td style="text-align: center;"><code>PASA</code> ✅</td>
+<td style="text-align: left;">Coincide. El ángulo cae naturalmente en <span class="math inline">(-90^\circ, 0^\circ)</span>.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>5</code></td>
+<td style="text-align: left;"><span class="math inline">\mathbf{Z} = 5 + j0</span></td>
+<td style="text-align: center;"><strong>Eje <span class="math inline">+x</span></strong> (<span class="math inline">+x, y=0</span>)</td>
+<td style="text-align: center;"><span class="math inline">\arctan(0/5) = \mathbf{0^\circ}</span></td>
+<td style="text-align: center;"><span class="math inline">\mathbf{0^\circ}</span></td>
+<td style="text-align: center;"><code>PASA</code> ✅</td>
+<td style="text-align: left;"><strong>Parte imaginaria nula (<span class="math inline">j=0</span>)</strong>. Vector sobre el semieje real positivo (<span class="math inline">5\angle 0^\circ</span>). Coincide.</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>6</code></td>
+<td style="text-align: left;"><span class="math inline">\mathbf{Z} = 0 + j5</span></td>
+<td style="text-align: center;"><strong>Eje <span class="math inline">+j</span></strong> (<span class="math inline">x=0, +y</span>)</td>
+<td style="text-align: center;"><span class="math inline">\arctan(5/0) \to</span> <code>ZeroDivisionError</code></td>
+<td style="text-align: center;"><span class="math inline">\mathbf{+90^\circ}</span></td>
+<td style="text-align: center;"><code>ERROR</code> 💥</td>
+<td style="text-align: left;"><strong>Indeterminación matemática</strong>. Pendiente vertical infinita (<span class="math inline">\infty</span>); <span class="math inline">\operatorname{atan2}</span> devuelve <span class="math inline">+90^\circ</span> de forma directa y robusta.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>7</code></td>
+<td style="text-align: left;"><span class="math inline">\mathbf{Z} = -5 + j0</span></td>
+<td style="text-align: center;"><strong>Eje <span class="math inline">-x</span></strong> (<span class="math inline">-x, y=0</span>)</td>
+<td style="text-align: center;"><span class="math inline">\arctan(0/-5) = \mathbf{0^\circ}</span></td>
+<td style="text-align: center;"><span class="math inline">\mathbf{180^\circ}</span></td>
+<td style="text-align: center;"><code>NO PASA</code> ❌</td>
+<td style="text-align: left;">Entrega <span class="math inline">0^\circ</span> (semieje positivo) ignorando que la coordenada real es estrictamente negativa.</td>
+</tr>
+</tbody>
+</table>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># =====================================================================</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Suite de Pruebas Automatizadas con Reporte en Consola (Python)</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># =====================================================================</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Forzar salida en UTF-8 para que la consola de Windows renderice superíndices (⁻¹) y emojis (✅)</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> sys.stdout.encoding <span class="kw">and</span> sys.stdout.encoding.lower() <span class="op">!=</span> <span class="st">'utf-8'</span>:</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    sys.stdout.reconfigure(encoding<span class="op">=</span><span class="st">'utf-8'</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> angulo_polar_grados(x, y):</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Calcula el ángulo de fase real con resolución completa de cuadrantes."""</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> math.degrees(math.atan2(y, x))</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> arctan_sin_ajuste_grados(x, y):</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Fórmula simple de calculadora (tan⁻¹(y/x)) sin corrección de cuadrante."""</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> math.degrees(math.atan(y <span class="op">/</span> x))</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">ZeroDivisionError</span>:</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Batería de pruebas: (Nombre del caso, x, y, Ángulo esperado, Observación didáctica)</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>casos_de_prueba <span class="op">=</span> [</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"Q1 (+, +)"</span>,      <span class="dv">3</span>,  <span class="dv">4</span>,   <span class="fl">53.13</span>, <span class="st">"Coinciden"</span>),</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"Q2 (-, +)"</span>,     <span class="op">-</span><span class="dv">5</span>,  <span class="dv">5</span>,  <span class="fl">135.00</span>, <span class="st">"Ejercicio 2: Desfase 180°"</span>),</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"Q3 (-, -)"</span>,     <span class="op">-</span><span class="dv">4</span>, <span class="op">-</span><span class="dv">4</span>, <span class="op">-</span><span class="fl">135.00</span>, <span class="st">"Signos se cancelan (+ vs -)"</span>),</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"Q4 (+, -)"</span>,      <span class="dv">3</span>, <span class="op">-</span><span class="dv">4</span>,  <span class="op">-</span><span class="fl">53.13</span>, <span class="st">"Coinciden"</span>),</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"Eje +x (j=0)"</span>,   <span class="dv">5</span>,  <span class="dv">0</span>,    <span class="fl">0.00</span>, <span class="st">"Resistivo puro / Referencia"</span>),</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"Eje +j (x=0)"</span>,   <span class="dv">0</span>,  <span class="dv">5</span>,   <span class="fl">90.00</span>, <span class="st">"División entre cero evitada"</span>),</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"Eje -x (y=0)"</span>,  <span class="op">-</span><span class="dv">5</span>,  <span class="dv">0</span>,  <span class="fl">180.00</span>, <span class="st">"Contrafase a 180°"</span>)</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">80</span>)</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="st">'CASO'</span><span class="sc">:&lt;14}</span><span class="ss"> | </span><span class="sc">{</span><span class="st">'ENTRADA z'</span><span class="sc">:&lt;10}</span><span class="ss"> | </span><span class="sc">{</span><span class="st">'tan⁻¹(y/x)'</span><span class="sc">:&lt;12}</span><span class="ss"> | </span><span class="sc">{</span><span class="st">'ATAN2 REAL'</span><span class="sc">:&lt;11}</span><span class="ss"> | </span><span class="sc">{</span><span class="st">'ESTADO tan⁻¹'</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">80</span>)</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> caso, x, y, ang_esperado, observacion <span class="kw">in</span> casos_de_prueba:</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    texto_z <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>x<span class="sc">:+d}{</span>y<span class="sc">:+d}</span><span class="ss">j"</span> <span class="cf">if</span> y <span class="op">!=</span> <span class="dv">0</span> <span class="cf">else</span> <span class="ss">f"</span><span class="sc">{</span>x<span class="sc">:+d}</span><span class="ss">+0j"</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    ang_atan2_real <span class="op">=</span> angulo_polar_grados(x, y)</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    ang_sin_ajuste <span class="op">=</span> arctan_sin_ajuste_grados(x, y)</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Aserción de prueba unitaria (valida que atan2 entregue el ángulo real esperado)</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> <span class="bu">round</span>(ang_atan2_real, <span class="dv">2</span>) <span class="op">==</span> <span class="bu">round</span>(ang_esperado, <span class="dv">2</span>)</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>    texto_sin_ajuste <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>ang_sin_ajuste<span class="sc">:+6.1f}</span><span class="ss">°"</span> <span class="cf">if</span> ang_sin_ajuste <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="cf">else</span> <span class="st">"ERROR (y/0)"</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Evaluamos si la fórmula simple arctan(y/x) acierta o falla:</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> ang_sin_ajuste <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>        estado_arctan <span class="op">=</span> <span class="st">"ERROR 💥"</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> <span class="bu">round</span>(ang_sin_ajuste, <span class="dv">2</span>) <span class="op">==</span> <span class="bu">round</span>(ang_esperado, <span class="dv">2</span>):</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>        estado_arctan <span class="op">=</span> <span class="st">"PASA ✅"</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>        estado_arctan <span class="op">=</span> <span class="st">"NO PASA ❌"</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>caso<span class="sc">:&lt;14}</span><span class="ss"> | </span><span class="sc">{</span>texto_z<span class="sc">:&lt;10}</span><span class="ss"> | </span><span class="sc">{</span>texto_sin_ajuste<span class="sc">:&lt;12}</span><span class="ss"> | </span><span class="sc">{</span>ang_atan2_real<span class="sc">:+7.2f}</span><span class="ss">°   | </span><span class="sc">{</span>estado_arctan<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>observacion<span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">80</span>)</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"🎯 Conclusión: atan2(y, x) supera el 100</span><span class="sc">% d</span><span class="st">e las pruebas de cuadrante y utilizar tan⁻¹(y/x) requiere ajuste manual de cuadrante."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>📌 Regla mnemotécnica para estudiantes:</strong><br>
+Siempre que la parte real sea negativa (<span class="math inline">x &lt; 0</span>), la fórmula ciega <span class="math inline">\tan^{-1}(y/x)</span> <strong>siempre fallará por exactamente <span class="math inline">\pm 180^\circ</span></strong>. Por esta razón, cuando uses una calculadora en modo manual, debes aplicar el ajuste del <strong>Método 2</strong> mostrado abajo.</p>
+</blockquote>
+</section>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -1590,27 +1844,19 @@ x(t)=\sin(10t)+\sin(100t)
 </div>
 <div class="callout-body-container callout-body">
 <p>En tu calculadora física <strong>no existe una tecla llamada <code>atan2</code> ni <code>atan</code></strong>. Tienes 3 formas prácticas de calcularlo en exámenes y laboratorio:</p>
-<section id="método-1-la-función-directa-pol-el-atan2-de-la-calculadora" class="level4" data-number="8.1.0.1">
-<h4 data-number="8.1.0.1" class="anchored" data-anchor-id="método-1-la-función-directa-pol-el-atan2-de-la-calculadora"><span class="header-section-number">8.1.0.1</span> 🥇 Método 1: La función directa <code>Pol(</code> (El <code>atan2</code> de la calculadora)</h4>
+<section id="método-1-la-función-directa-pol-el-atan2-de-la-calculadora" class="level4" data-number="8.1.1.2">
+<h4 data-number="8.1.1.2" class="anchored" data-anchor-id="método-1-la-función-directa-pol-el-atan2-de-la-calculadora"><span class="header-section-number">8.1.1.2</span> 🥇 Método 1: La función directa <code>Pol(</code> (El <code>atan2</code> de la calculadora)</h4>
 <p>Las calculadoras científicas estándar (Casio fx-570, fx-991, fx-82, etc.) incluyen la función de conversión automática de coordenadas con ajuste de cuadrante incluido:</p>
-<ul>
-<li><strong>De Rectangular a Polar:</strong>
 <ol type="1">
 <li>Presiona <code>SHIFT</code> + <code>+</code> <span class="math inline">\longrightarrow</span> Aparece en pantalla <strong><code>Pol(</code></strong>.</li>
 <li>Digita la parte real <span class="math inline">x</span>, luego la coma con <code>SHIFT</code> + <code>)</code> y la parte imaginaria <span class="math inline">y</span>.<br>
-<em>Ejemplo:</em> <code>Pol(-3, 4)</code> y presiona <code>=</code>.</li>
+<em>Ejemplo:</em> digita <code>Pol(-3, 4)</code> y presiona <code>=</code>.</li>
 <li><strong>Resultado instantáneo:</strong> <code>r = 5</code>, <code>θ = 126.87°</code> <em>(el ángulo ya viene con el cuadrante exacto)</em>.</li>
-</ol></li>
-<li><strong>De Polar a Rectangular:</strong>
-<ol type="1">
-<li>Presiona <code>SHIFT</code> + <code>-</code> <span class="math inline">\longrightarrow</span> Aparece <strong><code>Rec(</code></strong>.</li>
-<li>Digita <code>Rec(r, θ)</code>. <em>Ejemplo:</em> <code>Rec(5, 126.87) =</code> <span class="math inline">\longrightarrow</span> Entrega <code>X = -3</code>, <code>Y = 4</code>.</li>
-</ol></li>
-</ul>
+</ol>
 <hr>
 </section>
-<section id="método-2-con-la-tecla-tan¹-y-ajuste-manual-de-cuadrante" class="level4" data-number="8.1.0.2">
-<h4 data-number="8.1.0.2" class="anchored" data-anchor-id="método-2-con-la-tecla-tan¹-y-ajuste-manual-de-cuadrante"><span class="header-section-number">8.1.0.2</span> 🥈 Método 2: Con la tecla <code>tan⁻¹</code> y ajuste manual de cuadrante</h4>
+<section id="método-2-con-la-tecla-tan¹-y-ajuste-manual-de-cuadrante" class="level4" data-number="8.1.1.3">
+<h4 data-number="8.1.1.3" class="anchored" data-anchor-id="método-2-con-la-tecla-tan¹-y-ajuste-manual-de-cuadrante"><span class="header-section-number">8.1.1.3</span> 🥈 Método 2: Con la tecla <code>tan⁻¹</code> y ajuste manual de cuadrante</h4>
 <p>Si calculas por partes mediante <span class="math inline">r = \sqrt{x^2+y^2}</span> y la tecla <code>tan⁻¹</code> (<code>SHIFT</code> + <code>tan</code>):</p>
 <ol type="1">
 <li>Calcula el ángulo base con valores absolutos: <span class="math inline">\alpha = \tan^{-1}\left(\left|\frac{y}{x}\right|\right)</span>.</li>
@@ -1660,8 +1906,8 @@ x(t)=\sin(10t)+\sin(100t)
 </table>
 <hr>
 </section>
-<section id="método-3-modo-números-complejos-mode-2-cmplx" class="level4" data-number="8.1.0.3">
-<h4 data-number="8.1.0.3" class="anchored" data-anchor-id="método-3-modo-números-complejos-mode-2-cmplx"><span class="header-section-number">8.1.0.3</span> 🥉 Método 3: Modo Números Complejos (<code>MODE 2: CMPLX</code>)</h4>
+<section id="método-3-modo-números-complejos-mode-2-cmplx" class="level4" data-number="8.1.1.4">
+<h4 data-number="8.1.1.4" class="anchored" data-anchor-id="método-3-modo-números-complejos-mode-2-cmplx"><span class="header-section-number">8.1.1.4</span> 🥉 Método 3: Modo Números Complejos (<code>MODE 2: CMPLX</code>)</h4>
 <p>El método más rápido para resolver circuitos completos:</p>
 <ol type="1">
 <li><strong>Activar modo complejo:</strong> Presiona <code>MODE</code> <span class="math inline">\longrightarrow</span> <code>2: CMPLX</code>.</li>
@@ -1676,8 +1922,8 @@ Digita <code>-3 + 4</code> e inserta la unidad imaginaria <span class="math inli
 <li>La pantalla mostrará directamente: <code>5 ∠ 126.87°</code>.</li>
 </ol>
 <hr>
-<section id="videotutoriales-paso-a-paso-según-tu-modelo-de-calculadora" class="level5" data-number="8.1.0.3.1">
-<h5 data-number="8.1.0.3.1" class="anchored" data-anchor-id="videotutoriales-paso-a-paso-según-tu-modelo-de-calculadora"><span class="header-section-number">8.1.0.3.1</span> 🎬 Videotutoriales paso a paso según tu modelo de calculadora:</h5>
+<section id="videotutoriales-paso-a-paso-según-tu-modelo-de-calculadora" class="level5" data-number="8.1.1.4.1">
+<h5 data-number="8.1.1.4.1" class="anchored" data-anchor-id="videotutoriales-paso-a-paso-según-tu-modelo-de-calculadora"><span class="header-section-number">8.1.1.4.1</span> 🎬 Videotutoriales paso a paso según tu modelo de calculadora:</h5>
 <ul>
 <li>📺 <strong>Casio fx-9750GIII (Gráfica):</strong> <a href="https://www.youtube.com/watch?v=-QkvEE_9P4M&amp;t=17s" target="_blank">Ver tutorial paso a paso</a></li>
 <li>📺 <strong>Casio fx-991ES PLUS / fx-570ES:</strong> <a href="https://www.youtube.com/watch?v=mrMpLfHkxRk" target="_blank">Ver tutorial paso a paso</a></li>
@@ -1689,15 +1935,17 @@ Digita <code>-3 + 4</code> e inserta la unidad imaginaria <span class="math inli
 </div>
 </div>
 </section>
-<section id="conversión-polar-rectangular" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="conversión-polar-rectangular"><span class="header-section-number">8.2</span> Conversión polar → rectangular</h2>
+</section>
+<section id="conversión-polar-rangletheta-implies-rectangular-x-jy" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="conversión-polar-rangletheta-implies-rectangular-x-jy"><span class="header-section-number">8.2</span> Conversión polar <span class="math inline">(r\angle\theta)</span> <span class="math inline">\implies</span> rectangular <span class="math inline">(x + jy)</span></h2>
+<p>Para descomponer un fasor de magnitud <span class="math inline">r</span> y ángulo de fase <span class="math inline">\theta</span> en sus componentes rectangulares <span class="math inline">(x, y)</span>:</p>
 <p><span class="math display">
 \boxed{x=r\cos\theta}
 </span></p>
 <p><span class="math display">
 \boxed{y=r\sin\theta}
 </span></p>
-<p>por tanto:</p>
+<p>por tanto, en forma binómica o rectangular:</p>
 <p><span class="math display">
 \boxed{
 r\angle\theta
@@ -1705,6 +1953,93 @@ r\angle\theta
 r\cos\theta+jr\sin\theta
 }
 </span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>💡 Sin ambigüedad de cuadrante
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A diferencia de la conversión inversa, las funciones directas <span class="math inline">\cos(\theta)</span> y <span class="math inline">\sin(\theta)</span> evalúan el círculo trigonométrico completo (de <span class="math inline">-180^\circ</span> a <span class="math inline">+180^\circ</span>) y entregan <strong>automáticamente el signo algebraico correcto</strong> para cada componente:</p>
+<ul>
+<li>Por ejemplo, para <span class="math inline">\mathbf{Z} = 5\angle126.87^\circ</span> (Cuadrante II): <span class="math display">x = 5\cos(126.87^\circ) = -3 \quad (\text{negativo})</span> <span class="math display">y = 5\sin(126.87^\circ) = +4 \quad (\text{positivo})</span></li>
+<li>Por lo tanto, en la conversión polar a rectangular <strong>no se requiere ningún ajuste de cuadrante ni funciones especiales como <code>atan2</code></strong>.</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>📟 ¿Cómo calcularlo en tu calculadora científica física? (Polar → Rectangular)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Para convertir un fasor dado en forma polar <span class="math inline">r\angle\theta</span> a su forma rectangular <span class="math inline">x + jy</span> en tu calculadora física, cuentas con 3 métodos:</p>
+<section id="método-1-la-función-directa-rec-conversión-directa-de-coordenadas" class="level4" data-number="8.2.0.1">
+<h4 data-number="8.2.0.1" class="anchored" data-anchor-id="método-1-la-función-directa-rec-conversión-directa-de-coordenadas"><span class="header-section-number">8.2.0.1</span> 🥇 Método 1: La función directa <code>Rec(</code> (Conversión directa de coordenadas)</h4>
+<p>La función <strong><code>Rec(</code></strong> es la función inversa de <code>Pol(</code> y está integrada en todas las calculadoras Casio (fx-82, fx-350, fx-570, fx-991, ClassWiz) y modelos compatibles:</p>
+<ol type="1">
+<li>Presiona <code>SHIFT</code> + <code>−</code> (tecla de resta) <span class="math inline">\longrightarrow</span> Aparece en pantalla <strong><code>Rec(</code></strong>.</li>
+<li>Digita la magnitud <span class="math inline">r</span>, luego la coma con <code>SHIFT</code> + <code>)</code> y el ángulo de fase <span class="math inline">\theta</span> en grados sexagesimales.<br>
+<em>Ejemplo:</em> digita <code>Rec(5, 126.87)</code> y presiona <code>=</code>.</li>
+<li><strong>Resultado en pantalla:</strong>
+<ul>
+<li><code>X = -3</code> (componente real <span class="math inline">x</span>)</li>
+<li><code>Y = 4</code> (componente imaginaria <span class="math inline">y</span>, asociada a <span class="math inline">j</span>)<br>
+<em>Forma rectangular final:</em> <span class="math inline">-3 + j4</span>.<br>
+<em>(Tip: En modelos de una sola línea como la fx-82MS, para consultar la componente <span class="math inline">Y</span> presiona la tecla <code>RCL</code> y luego <code>tan</code> para la memoria <span class="math inline">Y</span>, o <code>RCL</code> <code>)</code> para <span class="math inline">X</span>)</em>.</li>
+</ul></li>
+</ol>
+<hr>
+</section>
+<section id="método-2-por-componentes-trigonométricas-directas" class="level4" data-number="8.2.0.2">
+<h4 data-number="8.2.0.2" class="anchored" data-anchor-id="método-2-por-componentes-trigonométricas-directas"><span class="header-section-number">8.2.0.2</span> 🥈 Método 2: Por componentes trigonométricas directas</h4>
+<p>Puedes calcular cada componente de forma independiente en la pantalla principal:</p>
+<ul>
+<li><strong>Parte real (<span class="math inline">x</span>):</strong> Digita <span class="math inline">5 \times \cos(126.87)</span> y presiona <code>=</code> <span class="math inline">\longrightarrow</span> Obtienes <strong><span class="math inline">-3</span></strong>.</li>
+<li><strong>Parte imaginaria (<span class="math inline">y</span>):</strong> Digita <span class="math inline">5 \times \sin(126.87)</span> y presiona <code>=</code> <span class="math inline">\longrightarrow</span> Obtienes <strong><span class="math inline">+4</span></strong>.</li>
+</ul>
+<p><em>(Asegúrate de que la calculadora esté en modo grados sexagesimales: letra <strong><code>D</code></strong> o <code>Deg</code> en la barra superior)</em>.</p>
+<hr>
+</section>
+<section id="método-3-modo-números-complejos-mode-2-cmplx-con-la-tecla-de-ángulo-angle" class="level4" data-number="8.2.0.3">
+<h4 data-number="8.2.0.3" class="anchored" data-anchor-id="método-3-modo-números-complejos-mode-2-cmplx-con-la-tecla-de-ángulo-angle"><span class="header-section-number">8.2.0.3</span> 🥉 Método 3: Modo Números Complejos (<code>MODE 2: CMPLX</code>) con la tecla de ángulo (<span class="math inline">\angle</span>)</h4>
+<p>Este es el método más rápido y potente cuando estás resolviendo leyes de Kirchhoff, mallas o nodos:</p>
+<ol type="1">
+<li><strong>Activar modo complejo:</strong> Presiona <code>MODE</code> <span class="math inline">\longrightarrow</span> <code>2: CMPLX</code>.</li>
+<li><strong>Ingresar el fasor con la tecla <span class="math inline">\angle</span>:</strong>
+<ul>
+<li>Digita la magnitud: <code>5</code>.</li>
+<li>Inserta el símbolo de ángulo <span class="math inline">\angle</span> presionando <strong><code>SHIFT</code> + <code>(-)</code></strong> (la tecla del signo negativo entre paréntesis).</li>
+<li>Digita el ángulo de fase: <code>126.87</code>.<br>
+<em>(En la pantalla se leerá: <code>5 ∠ 126.87</code>)</em>.</li>
+</ul></li>
+<li><strong>Convertir a forma rectangular (<span class="math inline">a + bi</span>):</strong>
+<ul>
+<li>En <strong>Casio clásica (fx-570ES / fx-991ES PLUS / MS):</strong> Presiona <code>SHIFT</code> + <code>2</code> (menú CMPLX) <span class="math inline">\longrightarrow</span> selecciona <code>4: ▶a+bi</code> <span class="math inline">\longrightarrow</span> presiona <code>=</code>.</li>
+<li>En <strong>Casio ClassWiz (fx-991LA X / CW):</strong> Presiona <code>OPTN</code> <span class="math inline">\longrightarrow</span> flecha hacia abajo <span class="math inline">\longrightarrow</span> selecciona <code>2: ▶a+bi</code> <span class="math inline">\longrightarrow</span> presiona <code>=</code>.</li>
+</ul></li>
+<li>La pantalla mostrará directamente: <strong><code>-3 + 4i</code></strong> (es decir, <span class="math inline">-3 + j4</span>).</li>
+</ol>
+<hr>
+<section id="videotutoriales-paso-a-paso-según-tu-modelo-de-calculadora-1" class="level5" data-number="8.2.0.3.1">
+<h5 data-number="8.2.0.3.1" class="anchored" data-anchor-id="videotutoriales-paso-a-paso-según-tu-modelo-de-calculadora-1"><span class="header-section-number">8.2.0.3.1</span> 🎬 Videotutoriales paso a paso según tu modelo de calculadora:</h5>
+<ul>
+<li>📺 <strong>Casio fx-9750GIII (Gráfica):</strong> <a href="https://www.youtube.com/watch?v=-QkvEE_9P4M&amp;t=17s" target="_blank">Ver tutorial paso a paso</a></li>
+<li>📺 <strong>Casio fx-991ES PLUS / fx-570ES:</strong> <a href="https://www.youtube.com/watch?v=mrMpLfHkxRk" target="_blank">Ver tutorial paso a paso</a></li>
+<li>📺 <strong>Casio fx-82MS / fx-350MS:</strong> <a href="https://www.youtube.com/watch?v=Em3XkHxGPn4" target="_blank">Ver tutorial paso a paso</a></li>
+<li>📺 <strong>Calculadora Científica Universal / Genérica:</strong> <a href="https://www.youtube.com/watch?v=_OXVmNMPaKY" target="_blank">Ver tutorial paso a paso</a></li>
+</ul>
+</section>
+</section>
+</div>
+</div>
 <hr>
 </section>
 </section>
@@ -1712,7 +2047,7 @@ r\cos\theta+jr\sin\theta
 <h1 data-number="9"><span class="header-section-number">9</span> Cuadrantes: magnitud y fase con significado</h1>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="imagenes/cuad_fasorial.svg" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="imagenes/cuadro_fasorial.webp" class="img-fluid figure-img" style="width:100.0%"></p>
 <figcaption>Cuadrantes del plano complejo para el análisis fasorial.</figcaption>
 </figure>
 </div>
@@ -1752,6 +2087,83 @@ r\cos\theta+jr\sin\theta
 </tr>
 </tbody>
 </table>
+<section id="ejes-de-frontera-cuando-una-componente-es-cero-x0-ó-y0" class="level3" data-number="9.0.1">
+<h3 data-number="9.0.1" class="anchored" data-anchor-id="ejes-de-frontera-cuando-una-componente-es-cero-x0-ó-y0"><span class="header-section-number">9.0.1</span> Ejes de frontera: cuando una componente es cero (<span class="math inline">x=0</span> ó <span class="math inline">y=0</span>)</h3>
+<p>Los cuadrantes describen áreas abiertas entre los ejes, pero en el análisis de circuitos fasoriales muchas variables caen <strong>exactamente sobre los ejes coordenados</strong>:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 15%">
+<col style="width: 16%">
+<col style="width: 14%">
+<col style="width: 37%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Eje Coordenado</th>
+<th style="text-align: center;">Condición</th>
+<th style="text-align: center;">Forma Rectangular</th>
+<th style="text-align: center;">Forma Polar</th>
+<th style="text-align: left;">Significado Físico en Circuitos</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Semieje Real Positivo (<span class="math inline">+x</span>)</strong></td>
+<td style="text-align: center;"><span class="math inline">x &gt; 0,\ y = 0</span></td>
+<td style="text-align: center;"><span class="math inline">x + j0</span></td>
+<td style="text-align: center;"><span class="math inline">\mathbf{x\angle 0^\circ}</span></td>
+<td style="text-align: left;"><strong>Referencia / En fase:</strong> Fuentes de tensión de referencia (<span class="math inline">\mathbf V = 120\angle 0^\circ\ \mathrm V</span>), corriente de referencia, resistores puros (<span class="math inline">\mathbf Z_R = R\angle 0^\circ</span>) o circuitos en resonancia (<span class="math inline">X_L = X_C</span>).</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Semieje Imaginario Positivo (<span class="math inline">+j</span>)</strong></td>
+<td style="text-align: center;"><span class="math inline">x = 0,\ y &gt; 0</span></td>
+<td style="text-align: center;"><span class="math inline">0 + jy</span></td>
+<td style="text-align: center;"><span class="math inline">\mathbf{y\angle +90^\circ}</span></td>
+<td style="text-align: left;"><strong>Inductivo puro:</strong> Inductores ideales (<span class="math inline">\mathbf Z_L = j\omega L = X_L\angle 90^\circ</span>) o tensiones adelantadas exactamente <span class="math inline">90^\circ</span>.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Semieje Real Negativo (<span class="math inline">-x</span>)</strong></td>
+<td style="text-align: center;"><span class="math inline">x &lt; 0,\ y = 0</span></td>
+<td style="text-align: center;"><span class="math inline">-x + j0</span></td>
+<td style="text-align: center;"><span class="math inline">\mathbf{x\angle 180^\circ}</span></td>
+<td style="text-align: left;"><strong>Contrafase / Inversión:</strong> Tensión o corriente invertida <span class="math inline">180^\circ</span> respecto a la referencia (equivalente a invertir terminales o signo negativo).</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Semieje Imaginario Negativo (<span class="math inline">-j</span>)</strong></td>
+<td style="text-align: center;"><span class="math inline">x = 0,\ y &lt; 0</span></td>
+<td style="text-align: center;"><span class="math inline">0 - jy</span></td>
+<td style="text-align: center;"><span class="math inline">\mathbf{y\angle -90^\circ}</span></td>
+<td style="text-align: left;"><strong>Capacitivo puro:</strong> Condensadores ideales (<span class="math inline">\mathbf Z_C = -j\frac{1}{\omega C} = X_C\angle -90^\circ</span>) o corrientes adelantadas <span class="math inline">90^\circ</span> a la tensión.</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>💡 ¿El caso <span class="math inline">j=0</span> (<span class="math inline">5 + j0 \iff 5\angle 0^\circ</span>) solo existe en impedancias resistivas?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>No, no es exclusivo de los resistores.</strong> Cualquier magnitud física fasorial de corriente alterna puede tener parte imaginaria nula (<span class="math inline">y = 0</span>):</p>
+<ol type="1">
+<li><strong>Voltajes de referencia:</strong> Es el estándar en análisis de circuitos. En la inmensa mayoría de problemas se toma la fuente principal como origen de fase:<br>
+<span class="math display">\mathbf{V}_s = 120\angle 0^\circ\ \mathrm{V} = 120 + j0\ \mathrm{V}</span></li>
+<li><strong>Corrientes de referencia:</strong> En circuitos en serie es común definir la corriente total del lazo como referencia de fase:<br>
+<span class="math display">\mathbf{I} = 5\angle 0^\circ\ \mathrm{A} = 5 + j0\ \mathrm{A}</span></li>
+<li><strong>Impedancia puramente resistiva:</strong> Un resistor disipa calor pero no almacena energía en campos eléctricos ni magnéticos (<span class="math inline">X = 0</span>), por lo que:<br>
+<span class="math display">\mathbf{Z}_R = R + j0 = R\angle 0^\circ\ \Omega</span> <em>(Esto también ocurre en circuitos completos RLC cuando entran en <strong>resonancia</strong>, donde <span class="math inline">X_L = X_C</span> y se cancelan mutuamente)</em>.</li>
+<li><strong>Potencia aparente con factor de potencia unitario:</strong> Si una carga no demanda reactivos (<span class="math inline">Q = 0</span>, <span class="math inline">\mathrm{FP} = 1.0</span>), la potencia compleja queda puramente activa:<br>
+<span class="math display">\mathbf{S} = P + j0 = P\angle 0^\circ\ \mathrm{VA}</span></li>
+</ol>
+<p><strong>Principio analítico:</strong> Todo número real positivo <span class="math inline">a &gt; 0</span> es un vector sobre el semieje horizontal de fase <span class="math inline">0^\circ</span>: <span class="math display">
+\boxed{a + j0 = a\angle 0^\circ}
+</span></p>
+</div>
+</div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1762,15 +2174,11 @@ r\cos\theta+jr\sin\theta
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>No corrijas el ángulo “a ojo”.</p>
-<p>Primero identifica:</p>
-<p><span class="math display">
-(x,y)
-</span></p>
-<p>después el cuadrante y finalmente el ángulo.</p>
+<p>No corrijas el ángulo “a ojo” <span class="math inline">\implies</span> Primero identifica: <span class="math inline">(x,y)</span> <span class="math inline">\implies</span> después el cuadrante <span class="math inline">\implies</span> finalmente el ángulo.</p>
 </div>
 </div>
 <hr>
+</section>
 </section>
 <section id="el-operador-j-un-giro-de-90circ" class="level1" data-number="10">
 <h1 data-number="10"><span class="header-section-number">10</span> El operador <span class="math inline">j</span>: un giro de <span class="math inline">90^\circ</span></h1>
@@ -3405,6 +3813,55 @@ r_1r_2\angle(\theta_1+\theta_2)
 (r\angle\theta)^*=r\angle(-\theta)
 }
 </span></p>
+<p>El superíndice asterisco (<span class="math inline">*</span>) representa la operación de <strong>conjugación compleja</strong>. Cuando se tiene <span class="math inline">(a + jb)^*</span>, indica que se debe obtener el complejo conjugado de dicho número. En el contexto de números complejos y análisis fasorial:</p>
+<section id="qué-hace-matemáticamente" class="level3" data-number="11.4.1">
+<h3 data-number="11.4.1" class="anchored" data-anchor-id="qué-hace-matemáticamente"><span class="header-section-number">11.4.1</span> ¿Qué hace matemáticamente?</h3>
+<p>Cambia únicamente el signo de la parte imaginaria (la que acompaña al operador <span class="math inline">j</span>):</p>
+<ul>
+<li><strong>Si es positivo, pasa a negativo:</strong> <span class="math inline">(a + jb)^* = a - jb</span>.</li>
+<li><strong>Si es negativo, pasa a positivo:</strong> <span class="math inline">(a - jb)^* = a + jb</span>.</li>
+</ul>
+</section>
+<section id="qué-significa-en-forma-polar-fasores" class="level3" data-number="11.4.2">
+<h3 data-number="11.4.2" class="anchored" data-anchor-id="qué-significa-en-forma-polar-fasores"><span class="header-section-number">11.4.2</span> ¿Qué significa en forma polar (fasores)?</h3>
+<p>Si se expresa el fasor en forma polar con magnitud (<span class="math inline">M</span>) y ángulo (<span class="math inline">\theta</span>), el conjugado mantiene exactamente la misma magnitud e invierte el signo del ángulo de fase:</p>
+<p><span class="math display">
+(M\angle\theta)^* = M\angle(-\theta)
+</span></p>
+</section>
+<section id="qué-significa-geométricamente" class="level3" data-number="11.4.3">
+<h3 data-number="11.4.3" class="anchored" data-anchor-id="qué-significa-geométricamente"><span class="header-section-number">11.4.3</span> ¿Qué significa geométricamente?</h3>
+<p>En el plano complejo, aplicar el conjugado equivale a una <strong>reflexión especular respecto al eje real (horizontal)</strong>:</p>
+<ul>
+<li>El vector se refleja verticalmente.</li>
+<li>Si el fasor original apuntaba hacia arriba y a la derecha (primer cuadrante con ángulo <span class="math inline">+\theta</span>), su conjugado apuntará hacia abajo y a la derecha (cuarto cuadrante con ángulo <span class="math inline">-\theta</span>), con idéntica longitud.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>⚡ ¿Para qué se usa en circuitos eléctricos?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>El uso más común e importante del conjugado en fasores es para calcular la <strong>potencia compleja</strong> (<span class="math inline">\mathbf{S}</span>) en corriente alterna:</p>
+<p><span class="math display">
+\mathbf{S} = \mathbf{V}\mathbf{I}^*
+</span></p>
+<p>Se utiliza el conjugado de la corriente (<span class="math inline">\mathbf{I}^*</span>) para que el ángulo resultante de la potencia sea exactamente la diferencia angular de fases <span class="math inline">(\theta_v - \theta_i)</span>:</p>
+<p><span class="math display">
+\mathbf{S} = (V\angle\theta_v)(I\angle\theta_i)^* = (V\angle\theta_v)(I\angle-\theta_i) = VI\angle(\theta_v - \theta_i)
+</span></p>
+<p>Esto permite que la potencia reactiva (<span class="math inline">Q = VI\sin(\theta_v - \theta_i)</span>) tenga el signo convencional correcto:</p>
+<ul>
+<li><strong>Positiva (<span class="math inline">+Q</span>)</strong>: Circuito inductivo (la corriente se retrasa respecto a la tensión).</li>
+<li><strong>Negativa (<span class="math inline">-Q</span>)</strong>: Circuito capacitivo (la corriente se adelanta respecto a la tensión).</li>
+</ul>
+</div>
+</div>
+</section>
 </section>
 <section id="división-rectangular" class="level2" data-number="11.5">
 <h2 data-number="11.5" class="anchored" data-anchor-id="división-rectangular"><span class="header-section-number">11.5</span> División rectangular</h2>
@@ -3880,13 +4337,47 @@ r = \sqrt{x^2 + y^2}, \qquad \theta = \operatorname{atan2}(y, x)
 </span></p>
 <p>donde:</p>
 <ul>
-<li><span class="math inline">R</span> → resistencia;</li>
-<li><span class="math inline">X</span> → reactancia.</li>
+<li><span class="math inline">R</span> → <strong>resistencia</strong> (<span class="math inline">\Omega</span>): parte real, asociada a la disipación irreversible de potencia activa. En redes pasivas siempre se cumple <span class="math inline">R \ge 0</span>.</li>
+<li><span class="math inline">X</span> → <strong>reactancia neta</strong> (<span class="math inline">\Omega</span>): parte imaginaria, asociada al almacenamiento y devolución de energía en campos magnéticos y eléctricos.</li>
 </ul>
 <p>Su forma polar es:</p>
 <p><span class="math display">
 \boxed{\mathbf Z=|\mathbf Z|\angle\theta_Z}
 </span></p>
+<p>donde su módulo y ángulo de fase vienen dados por:</p>
+<p><span class="math display">
+|\mathbf Z| = \sqrt{R^2 + X^2}, \qquad \theta_Z = \operatorname{atan2}(X, R)
+</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>🔍 ¿Qué representa realmente la reactancia <span class="math inline">X</span> cuando hay inductores y capacitores?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Una duda fundamental al ver la expresión general <span class="math inline">\mathbf{Z} = R + jX</span> es: <em>¿por qué tiene un signo positivo (<span class="math inline">+jX</span>) si la impedancia de un capacitor es negativa (<span class="math inline">-jX_C</span>)?</em></p>
+<p>La razón es que <span class="math inline">X</span> representa la <strong>reactancia neta</strong> de la rama o circuito. Si en una rama en serie coinciden resistencia, inductancia y capacitancia (rama RLC serie):</p>
+<p><span class="math display">
+\mathbf{Z} = \mathbf{Z}_R + \mathbf{Z}_L + \mathbf{Z}_C = R + jX_L - jX_C = R + j(X_L - X_C)
+</span></p>
+<p>Por lo tanto:</p>
+<p><span class="math display">
+\boxed{X = X_L - X_C}
+</span></p>
+<p>Como el inductor aporta reactancia positiva (<span class="math inline">+jX_L</span>, con <span class="math inline">X_L = \omega L</span>) y el capacitor reactancia negativa (<span class="math inline">-jX_C</span>, con <span class="math inline">X_C = \frac{1}{\omega C}</span>), ambos efectos compiten y se restan algebraicamente en el eje imaginario:</p>
+<ol type="1">
+<li><p><strong>Predominio inductivo (<span class="math inline">X_L &gt; X_C \implies X &gt; 0</span>):</strong><br>
+Predomina la bobina. La reactancia neta es positiva: <span class="math display">\mathbf{Z} = R + j|X| = |\mathbf{Z}|\angle+\theta_Z</span> La tensión adelanta a la corriente (<span class="math inline">0^\circ &lt; \theta_Z \le 90^\circ</span>).</p></li>
+<li><p><strong>Predominio capacitivo (<span class="math inline">X_C &gt; X_L \implies X &lt; 0</span>):</strong><br>
+Predomina el condensador. La reactancia neta es negativa: <span class="math display">\mathbf{Z} = R - j|X| = |\mathbf{Z}|\angle-\theta_Z</span> La corriente adelanta a la tensión (<span class="math inline">-90^\circ \le \theta_Z &lt; 0^\circ</span>).</p></li>
+<li><p><strong>Resonancia serie (<span class="math inline">X_L = X_C \implies X = 0</span>):</strong><br>
+Ambos efectos se anulan con exactitud (<span class="math inline">+jX_L - jX_C = 0</span>): <span class="math display">\mathbf{Z} = R + j0 = R\angle0^\circ</span> La rama se comporta como puramente resistiva, la impedancia se reduce al mínimo posible (<span class="math inline">|\mathbf{Z}| = R</span>) y la corriente alcanza su valor máximo.</p></li>
+</ol>
+</div>
+</div>
 <hr>
 </section>
 <section id="elementos-pasivos-r-l-y-c" class="level1" data-number="13">
@@ -4134,14 +4625,73 @@ i(t)=3.80\cos(1000t+11.57^\circ)\ \mathrm A
 =
 152.0\angle-78.43^\circ\ \mathrm V
 </span></p>
-<p>Finalmente:</p>
+<section id="paso-6-comprobación-por-ley-de-tensiones-de-kirchhoff-lvk" class="level3" data-number="14.5.1">
+<h3 data-number="14.5.1" class="anchored" data-anchor-id="paso-6-comprobación-por-ley-de-tensiones-de-kirchhoff-lvk"><span class="header-section-number">14.5.1</span> Paso 6 — Comprobación por Ley de Tensiones de Kirchhoff (LVK)</h3>
+<p>De acuerdo con la Ley de Kirchhoff de tensiones, la suma de las caídas de tensión en cada elemento pasivo debe igualar exactamente a la tensión suministrada por la fuente:</p>
 <p><span class="math display">
-\boxed{
-\mathbf V_R+\mathbf V_L+\mathbf V_C
-=
-\mathbf V
-}
+\boxed{\mathbf V_R + \mathbf V_L + \mathbf V_C = \mathbf V}
 </span></p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>⚠️ Error conceptual clásico: No sumar magnitudes escalares
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Un error muy frecuente en análisis de circuitos de CA es sumar directamente las magnitudes en forma polar: <span class="math display">114.0\text{ V} + 190.0\text{ V} + 152.0\text{ V} = 456.0\text{ V} \neq 120.0\text{ V}</span> ¡Esto es completamente falso! Como las tres tensiones están desfasadas en el tiempo, <strong>la suma fasorial exige operar vectorialmente en forma rectangular</strong>.</p>
+</div>
+</div>
+<section id="conversión-de-cada-tensión-fasorial-a-forma-rectangular" class="level4" data-number="14.5.1.1">
+<h4 data-number="14.5.1.1" class="anchored" data-anchor-id="conversión-de-cada-tensión-fasorial-a-forma-rectangular"><span class="header-section-number">14.5.1.1</span> 1. Conversión de cada tensión fasorial a forma rectangular:</h4>
+<p>Utilizando la función <code>Rec(</code> o trigonometría directa (<span class="math inline">x = r\cos\theta</span>, <span class="math inline">y = r\sin\theta</span>):</p>
+<ul>
+<li><p><strong>Resistor:</strong> <span class="math display">\mathbf V_R = 114.0\angle 11.57^\circ\ \mathrm V = 114.0\cos(11.57^\circ) + j114.0\sin(11.57^\circ) = 111.69 + j22.87\ \mathrm V</span></p></li>
+<li><p><strong>Inductor:</strong> <span class="math display">\mathbf V_L = 190.0\angle 101.57^\circ\ \mathrm V = 190.0\cos(101.57^\circ) + j190.0\sin(101.57^\circ) = -38.11 + j186.14\ \mathrm V</span></p></li>
+<li><p><strong>Capacitor:</strong> <span class="math display">\mathbf V_C = 152.0\angle -78.43^\circ\ \mathrm V = 152.0\cos(-78.43^\circ) + j152.0\sin(-78.43^\circ) = 30.49 - j148.91\ \mathrm V</span></p></li>
+</ul>
+</section>
+<section id="suma-directa-agrupando-componentes-reales-e-imaginarias" class="level4" data-number="14.5.1.2">
+<h4 data-number="14.5.1.2" class="anchored" data-anchor-id="suma-directa-agrupando-componentes-reales-e-imaginarias"><span class="header-section-number">14.5.1.2</span> 2. Suma directa agrupando componentes reales e imaginarias:</h4>
+<p>Aplicando la regla de suma en forma rectangular, sumamos todas las partes reales juntas y todas las partes imaginarias juntas en un solo paso:</p>
+<p><span class="math display">
+\begin{aligned}
+\mathbf V_{\text{total}} &amp;= (111.69 - 38.11 + 30.49) + j(22.87 + 186.14 - 148.91) \\
+&amp;= 104.07 + j60.10\ \mathrm V
+\end{aligned}
+</span></p>
+</section>
+<section id="conversión-final-a-forma-polar" class="level4" data-number="14.5.1.3">
+<h4 data-number="14.5.1.3" class="anchored" data-anchor-id="conversión-final-a-forma-polar"><span class="header-section-number">14.5.1.3</span> 3. Conversión final a forma polar:</h4>
+<p>Calculamos la magnitud y la fase de la tensión resultante:</p>
+<p><span class="math display">
+|\mathbf V_{\text{total}}| = \sqrt{(104.07)^2 + (60.10)^2} = \sqrt{10830.56 + 3612.01} = 120.18\ \mathrm V \approx 120.0\ \mathrm V
+</span></p>
+<p><span class="math display">
+\theta_V = \operatorname{atan2}(60.10, 104.07) = 29.99^\circ \approx 30.0^\circ
+</span></p>
+<p>Por tanto:</p>
+<p><span class="math display">
+\boxed{\mathbf V_{\text{total}} = 120.0\angle 30.0^\circ\ \mathrm V = \mathbf V}
+</span></p>
+<p><em>(La mínima diferencia de <span class="math inline">0.18\ \mathrm V</span> y <span class="math inline">0.01^\circ</span> se debe exclusivamente a los redondeos de tres cifras significativas en el valor de la corriente <span class="math inline">\mathbf I = 3.80\angle11.57^\circ\ \mathrm A</span>)</em>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>💡 Comprobación directa en tu calculadora física (Modo CMPLX)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>En un examen o laboratorio no necesitas descomponer cada fasor en papel. En tu calculadora física (en <code>MODE 2: CMPLX</code>), escribe la suma continua en una sola línea usando la tecla del ángulo (<span class="math inline">\angle</span> con <code>SHIFT</code> + <code>(-)</code>):</p>
+<p><span class="math display">114.0\angle 11.57 + 190.0\angle 101.57 + 152.0\angle -78.43 =</span></p>
+<p>La calculadora realiza la conversión rectangular y la suma vectorial internamente, entregándote directamente <span class="math inline">\mathbf V = 120\angle 30^\circ\ \mathrm V</span>.</p>
+</div>
+</div>
 <p>Esta es la conexión fundamental:</p>
 <p><span class="math display">
 \boxed{
@@ -4157,6 +4707,8 @@ i(t)
 }
 </span></p>
 <hr>
+</section>
+</section>
 </section>
 </section>
 <section id="diagrama-fasorial-no-basta-con-calcular" class="level1" data-number="15">
@@ -4402,7 +4954,7 @@ i(t) = -10\sin(377t + 30^\circ)\ \mathrm A
 </ol>
 </section>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -4411,7 +4963,7 @@ i(t) = -10\sin(377t + 30^\circ)\ \mathrm A
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li>La forma estándar de referencia es la función coseno positiva: <span class="math inline">A\cos(\omega t + \theta) \longleftrightarrow A\angle\theta</span>.</li>
@@ -4426,7 +4978,7 @@ X_{\mathrm{rms}} = \frac{X_p}{\sqrt{2}}
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -4435,7 +4987,7 @@ X_{\mathrm{rms}} = \frac{X_p}{\sqrt{2}}
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>1. Para la tensión <span class="math inline">v(t)</span>:</strong> - Como ya se encuentra en forma coseno positiva: <span class="math display">
   \mathbf V_p = 120\sqrt{2}\angle -45^\circ \approx 169.71\angle -45^\circ\ \mathrm V
@@ -4482,7 +5034,7 @@ La pulsación <span class="math inline">\omega = 377\ \mathrm{rad/s}</span> corr
 </ol>
 </section>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -4491,7 +5043,7 @@ La pulsación <span class="math inline">\omega = 377\ \mathrm{rad/s}</span> corr
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div id="callout-23" class="callout-23-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li>Para rectangular a polar (<span class="math inline">z = x + jy \implies r\angle\theta</span>):
@@ -4513,7 +5065,7 @@ La pulsación <span class="math inline">\omega = 377\ \mathrm{rad/s}</span> corr
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -4522,7 +5074,7 @@ La pulsación <span class="math inline">\omega = 377\ \mathrm{rad/s}</span> corr
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div id="callout-24" class="callout-24-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>1. Para <span class="math inline">\mathbf Z_1 = 6 + j8\ \Omega</span> (Cuadrante I):</strong> - Módulo: <span class="math inline">|\mathbf Z_1| = \sqrt{6^2 + 8^2} = \sqrt{36 + 64} = \sqrt{100} = 10\ \Omega</span> - Ángulo: <span class="math inline">\theta_1 = \arctan\left(\frac{8}{6}\right) \approx 53.13^\circ</span> <span class="math display">
 \mathbf Z_1 = 10\angle 53.13^\circ\ \Omega
@@ -4585,7 +5137,7 @@ i_2(t) = 6\sin(\omega t + 60^\circ)\ \mathrm A
 La corriente total <span class="math inline">i_T(t) = i_1(t) + i_2(t)</span> en el dominio del tiempo.</p>
 </section>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -4594,7 +5146,7 @@ La corriente total <span class="math inline">i_T(t) = i_1(t) + i_2(t)</span> en 
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div id="callout-26" class="callout-26-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ol type="1">
 <li><strong>Regla de oro:</strong> Nunca sumes directamente las amplitudes temporales (<span class="math inline">4 + 6 \neq 10</span>).</li>
@@ -4606,7 +5158,7 @@ La corriente total <span class="math inline">i_T(t) = i_1(t) + i_2(t)</span> en 
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -4615,7 +5167,7 @@ La corriente total <span class="math inline">i_T(t) = i_1(t) + i_2(t)</span> en 
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div id="callout-27" class="callout-27-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Paso 1: Homogeneización y conversión a fasores:</strong> - <span class="math inline">\mathbf I_1 = 4\angle 30^\circ\ \mathrm A</span> - <span class="math inline">i_2(t) = 6\sin(\omega t + 60^\circ) = 6\cos(\omega t + 60^\circ - 90^\circ) = 6\cos(\omega t - 30^\circ)\ \mathrm A</span><br>
 <span class="math inline">\implies \mathbf I_2 = 6\angle -30^\circ\ \mathrm A</span></p>
@@ -4660,7 +5212,7 @@ La amplitud total resultante (<span class="math inline">8.72\ \mathrm A</span>) 
 <p>Exprese el resultado en forma rectangular y polar.</p>
 </section>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-28-contents" aria-controls="callout-28" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -4669,7 +5221,7 @@ La amplitud total resultante (<span class="math inline">8.72\ \mathrm A</span>) 
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div id="callout-28" class="callout-28-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li>Desarrolla primero el producto del numerador recordando que <span class="math inline">j^2 = -1</span>.</li>
@@ -4681,7 +5233,7 @@ La amplitud total resultante (<span class="math inline">8.72\ \mathrm A</span>) 
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-29-contents" aria-controls="callout-29" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -4690,7 +5242,7 @@ La amplitud total resultante (<span class="math inline">8.72\ \mathrm A</span>) 
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-22" class="callout-22-contents callout-collapse collapse">
+<div id="callout-29" class="callout-29-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Paso 1: Multiplicación en el numerador (<span class="math inline">j^2 = -1</span>):</strong> <span class="math display">
 (4+j3)(2-j4) = 8 - j16 + j6 - j^2(12) = 8 - j10 + 12 = 20 - j10
@@ -4744,7 +5296,7 @@ El operador conjugado refleja el fasor respecto al eje real (mantiene constante 
 </ol>
 </section>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-30-contents" aria-controls="callout-30" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -4753,7 +5305,7 @@ El operador conjugado refleja el fasor respecto al eje real (mantiene constante 
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-23" class="callout-23-contents callout-collapse collapse">
+<div id="callout-30" class="callout-30-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li>Para la suma del denominador (<span class="math inline">\mathbf Z_1 + \mathbf Z_2</span>), opera en forma rectangular: suma partes reales y partes imaginarias.</li>
@@ -4764,7 +5316,7 @@ El operador conjugado refleja el fasor respecto al eje real (mantiene constante 
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-31-contents" aria-controls="callout-31" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -4773,7 +5325,7 @@ El operador conjugado refleja el fasor respecto al eje real (mantiene constante 
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-24" class="callout-24-contents callout-collapse collapse">
+<div id="callout-31" class="callout-31-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Paso 1: Suma en el denominador (<span class="math inline">\mathbf Z_1 + \mathbf Z_2</span>):</strong> <span class="math display">
 \mathbf Z_1 + \mathbf Z_2 = (10 + 20) + j(15 - 10) = 30 + j5\ \Omega
@@ -4827,7 +5379,7 @@ v(t) = 100\cos(200t + 10^\circ)\ \mathrm V
 </ol>
 </section>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-32-contents" aria-controls="callout-32" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -4836,7 +5388,7 @@ v(t) = 100\cos(200t + 10^\circ)\ \mathrm V
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-25" class="callout-25-contents callout-collapse collapse">
+<div id="callout-32" class="callout-32-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ol type="1">
 <li>Identifica la pulsación angular <span class="math inline">\omega</span> y el fasor de tensión <span class="math inline">\mathbf V</span> directamente de la expresión de <span class="math inline">v(t)</span>.</li>
@@ -4849,7 +5401,7 @@ v(t) = 100\cos(200t + 10^\circ)\ \mathrm V
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-33-contents" aria-controls="callout-33" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -4858,7 +5410,7 @@ v(t) = 100\cos(200t + 10^\circ)\ \mathrm V
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-26" class="callout-26-contents callout-collapse collapse">
+<div id="callout-33" class="callout-33-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Paso 1: Parámetros de excitación e impedancias individuales:</strong><br>
 De la fuente obtenemos <span class="math inline">\omega = 200\ \mathrm{rad/s}</span> y <span class="math inline">\mathbf V = 100\angle 10^\circ\ \mathrm V</span>.</p>
@@ -4912,7 +5464,7 @@ Como la reactancia capacitiva predomina sobre la inductiva (<span class="math in
 </ol>
 </section>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-34-contents" aria-controls="callout-34" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -4921,7 +5473,7 @@ Como la reactancia capacitiva predomina sobre la inductiva (<span class="math in
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-27" class="callout-27-contents callout-collapse collapse">
+<div id="callout-34" class="callout-34-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li>En la fórmula del divisor de corriente, la corriente por una rama se calcula multiplicando la corriente total por la impedancia de la <strong>otra</strong> rama dividida entre la suma de ambas.</li>
@@ -4932,7 +5484,7 @@ Como la reactancia capacitiva predomina sobre la inductiva (<span class="math in
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-28-contents" aria-controls="callout-28" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-35-contents" aria-controls="callout-35" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -4941,7 +5493,7 @@ Como la reactancia capacitiva predomina sobre la inductiva (<span class="math in
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-28" class="callout-28-contents callout-collapse collapse">
+<div id="callout-35" class="callout-35-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Paso 1: Suma de impedancias en el denominador:</strong> <span class="math display">
 \mathbf Z_A + \mathbf Z_B = (6 + 12) + j(8 - 16) = 18 - j8\ \Omega
@@ -4992,7 +5544,7 @@ Observa que la corriente por la rama A (<span class="math inline">5.08\ \mathrm 
 </ol>
 </section>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-29-contents" aria-controls="callout-29" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-36-contents" aria-controls="callout-36" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -5001,7 +5553,7 @@ Observa que la corriente por la rama A (<span class="math inline">5.08\ \mathrm 
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-29" class="callout-29-contents callout-collapse collapse">
+<div id="callout-36" class="callout-36-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>1. Tipo de comportamiento:</strong><br>
 Como la reactancia es estrictamente positiva (<span class="math inline">X = +6 &gt; 0</span>), el circuito presenta un comportamiento <strong>inductivo</strong>.</p>
